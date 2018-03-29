@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 
-    <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
-
     <script src='node_modules/@json-editor/json-editor/dist/jsoneditor.min.js'></script>
 </head>
 <body>
@@ -16,14 +14,13 @@
     <div class='row'>
         <div class='col-md-8 columns eight large-8'>
             <h2>Editor</h2>
-            <p>Below is the editor generated from the JSON Schema.</p>
-
+            <p>Editor generated from the JSON Schema.</p>
             <div id='editor'></div>
         </div>
         <div class='col-md-4 columns four large-4'>
 
             <h2>JSON Output</h2>
-            <p>You can also make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
+            <p>You can make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
             <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;' class='form-control'></textarea>
 
             <h2>Options</h2>
@@ -70,7 +67,7 @@
         <div class='row'>
             <div class='span12 col-md-12 columns twelve large-12'>
                 <h2>Schema</h2>
-                <p>You can change the schema and see how the generated form looks.  After you make changes, click <button class='btn btn-primary' id='setschema'>Update Schema</button></p>
+                <p>Change the schema and see how the generated form looks. After you make changes, click <button class='btn btn-primary' id='setschema'>Update Schema</button></p>
 
                 <textarea id='schema' style='width: 100%; height: 450px; font-family: monospace;' class='form-control'></textarea>
             </div>
@@ -96,11 +93,11 @@
     var $set_schema_button = document.getElementById('setschema');
     var $set_value_button = document.getElementById('setvalue');
 
+    // Default theme
     JSONEditor.defaults.options.theme = 'bootstrap3';
     JSONEditor.defaults.options.iconlib = 'fontawesome4';
 
     var jsoneditor;
-
 
 
     var reload = function(keep_value) {
