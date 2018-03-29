@@ -9,10 +9,10 @@
 
     <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
 
-    <script src='json-editor/dist/jsoneditor.min.js'></script>
+    <script src='node_modules/@json-editor/json-editor/dist/jsoneditor.min.js'></script>
 </head>
 <body>
-<div class='container-fluid'>
+<div class='container'>
     <div class='row'>
         <div class='col-md-8 columns eight large-8'>
             <h2>Editor</h2>
@@ -96,7 +96,7 @@
     var $set_schema_button = document.getElementById('setschema');
     var $set_value_button = document.getElementById('setvalue');
 
-    JSONEditor.defaults.options.theme = 'bootstrap2';
+    JSONEditor.defaults.options.theme = 'bootstrap3';
     JSONEditor.defaults.options.iconlib = 'fontawesome4';
 
     var jsoneditor;
