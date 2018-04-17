@@ -18,6 +18,7 @@ $ cd processing-activities/
 $ npm install
 $ pipenv install
 $ pipenv shell
+$ python src/runserver.py
 ```
 
 
