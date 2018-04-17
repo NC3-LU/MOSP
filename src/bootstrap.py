@@ -34,14 +34,14 @@ def set_logging(log_path=None, log_level=logging.INFO, modules=(),
         logger.setLevel(log_level)
 
 
-def create_directory(directory):
-    """Creates the necessary directories (public uploads, etc.)"""
-    if not os.path.exists(directory):
-        try:
-            os.makedirs(directory)
-        except OSError as e:
-            if e.errno != errno.EEXIST:
-                raise
+# def create_directory(directory):
+#     """Creates the necessary directories (public uploads, etc.)"""
+#     if not os.path.exists(directory):
+#         try:
+#             os.makedirs(directory)
+#         except OSError as e:
+#             if e.errno != errno.EEXIST:
+#                 raise
 
 # Create Flask application
 application = Flask('web', instance_relative_config=True)
@@ -64,7 +64,7 @@ application.jinja_env.filters['datetimeformat'] = datetimeformat
 
 set_logging(application.config['LOG_PATH'])
 
-create_directory(application.config['UPLOAD_FOLDER'])
+# create_directory(application.config['UPLOAD_FOLDER'])
 
 # Create the Flask-Restless API manager.
 manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
