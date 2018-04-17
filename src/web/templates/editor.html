@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Processing activities</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/font-awesome/css/font-awesome.min.css') }}">
+
+    <script src="{{ url_for('static', filename='npm_components/json-editor/dist/jsoneditor.min.js') }}"></script>
+</head>
+<body>
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-8 columns eight large-8'>
+            <h2>Editor</h2>
+            <p>Editor generated from the JSON Schema.</p>
+            <div id='editor'></div>
+        </div>
+        <div class='col-md-4 columns four large-4'>
+
+            <h2>JSON Output</h2>
+            <p>You can make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
+            <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;' class='form-control'></textarea>
+
+            <h2>Options</h2>
+            <div id='options_holder'>
+                <div>
+                    <label>Object Layout</label>
+                    <select id='object_layout' class='form-control'>
+                        <option value='normal'>normal</option>
+                        <option value='grid'>grid</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Show Errors</label>
+                    <select id='show_errors' class='form-control'>
+                        <option value='interaction'>On Interaction</option>
+                        <option value='change'>On Field Change</option>
+                        <option value='always'>Always</option>
+                        <option value='never'>Never</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Boolean options</label>
+                    <select multiple size=9 id='boolean_options' style='width: 100%;' class='form-control'>
+                        <option value='required_by_default'>Object properties required by default</option>
+                        <option value='display_required_only'>Only show required properties by default</option>
+                        <option value='no_additional_properties'>No additional object properties</option>
+                        <option value='ajax'>Allow loading schemas via Ajax</option>
+                        <option value='disable_edit_json'>Disable "Edit JSON" buttons</option>
+                        <option value='disable_collapse'>Disable collapse buttons</option>
+                        <option value='disable_properties'>Disable properties buttons</option>
+                        <option value='disable_array_add'>Disable array add buttons</option>
+                        <option value='disable_array_reorder'>Disable array move buttons</option>
+                        <option value='disable_array_delete'>Disable array delete buttons</option>
+                        <option value='disable_array_delete_all_rows'>Disable array delete all rows buttons</option>
+                        <option value='disable_array_delete_last_row'>Disable array delete last row buttons</option>
+                    </select>
+                </div>
+            </div>
+
+            <h2>Validation</h2>
+            <p>This will update whenever the form changes to show validation errors if there are any.</p>
+            <textarea id='validate' style='width: 100%; height: 100px; font-family: monospace;' readonly disabled class='form-control'></textarea>
+        </div>
+        <div class='row'>
+            <div class='span12 col-md-12 columns twelve large-12'>
+                <h2>Schema</h2>
+                <p>Change the schema and see how the generated form looks. After you make changes, click <button class='btn btn-primary' id='setschema'>Update Schema</button></p>
+
+                <textarea id='schema' style='width: 100%; height: 450px; font-family: monospace;' class='form-control'></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+(function() {
+    var schema;
+    // Default starting schema
+    if(!schema) {
+        schema = {
+        }
+    }
+
+    // Divs/textareas on the page
+    var $schema = document.getElementById('schema');
+    var $output = document.getElementById('output');
+    var $editor = document.getElementById('editor');
+    var $validate = document.getElementById('validate');
+
+    // Buttons
+    var $set_schema_button = document.getElementById('setschema');
+    var $set_value_button = document.getElementById('setvalue');
+
+    // Default theme
+    JSONEditor.defaults.options.theme = 'bootstrap3';
+    JSONEditor.defaults.options.iconlib = 'fontawesome4';
+
+    var jsoneditor;
+
+
+    var reload = function(keep_value) {
+        var startval = (jsoneditor && keep_value)? jsoneditor.getValue() : window.startval;
+        window.startval = undefined;
+
+        if(jsoneditor) jsoneditor.destroy();
+        jsoneditor = new JSONEditor($editor,{
+            schema: schema,
+            startval: startval
+        });
+        window.jsoneditor = jsoneditor;
+
+        // When the value of the editor changes, update the JSON output and validation message
+        jsoneditor.on('change',function() {
+            var json = jsoneditor.getValue();
+
+            $output.value = JSON.stringify(json,null,2);
+
+            var validation_errors = jsoneditor.validate();
+            // Show validation errors if there are any
+            if(validation_errors.length) {
+                $validate.value = JSON.stringify(validation_errors,null,2);
+            }
+            else {
+                $validate.value = 'valid';
+            }
+
+        });
+    };
+
+    // Start the schema and output textareas with initial values
+    $schema.value = JSON.stringify(schema,null,2);
+    $output.value = '';
+
+    // When the 'update form' button is clicked, set the editor's value
+    $set_value_button.addEventListener('click',function() {
+        jsoneditor.setValue(JSON.parse($output.value));
+    });
+
+    // Update the schema when the button is clicked
+    $set_schema_button.addEventListener('click',function() {
+        try {
+            schema = JSON.parse($schema.value);
+        }
+        catch(e) {
+            alert('Invalid Schema: '+e.message);
+            return;
+        }
+
+        reload();
+    });
+
+    var refreshBooleanOptions = function(no_reload) {
+        var boolean_options = document.getElementById('boolean_options').children;
+        for(var i=0; i<boolean_options.length; i++) {
+            JSONEditor.defaults.options[boolean_options[i].value] = boolean_options[i].selected;
+        }
+        if(!no_reload) reload(true);
+    };
+
+    // Change listeners for options
+    document.getElementById('object_layout').addEventListener('change',function() {
+       JSONEditor.defaults.options.object_layout = this.value;
+        reload(true);
+    });
+    document.getElementById('show_errors').addEventListener('change',function() {
+       JSONEditor.defaults.options.show_errors = this.value;
+        reload(true);
+    });
+    document.getElementById('boolean_options').addEventListener('change',function() {
+        refreshBooleanOptions();
+    });
+
+    // Set options from direct link
+    document.getElementById('object_layout').value = (window.location.href.match(/[?&]object_layout=([^&]+)/)||[])[1] || 'normal';
+    JSONEditor.defaults.options.object_layout = document.getElementById('object_layout').value;
+
+    document.getElementById('show_errors').value = (window.location.href.match(/[?&]show_errors=([^&]+)/)||[])[1] || 'interaction';
+    JSONEditor.defaults.options.show_errors = document.getElementById('show_errors').value;
+
+    var boolean_options = document.getElementById('boolean_options').children;
+    for(var i=0; i<boolean_options.length; i++) {
+        if(window.location.href.match(new RegExp('[?&]'+boolean_options[i].getAttribute('value')+'([&=]|$)'))) {
+            boolean_options[i].selected = true;
+        }
+    }
+    refreshBooleanOptions(true);
+
+    reload();
+})();
+</script>
+</body>
+</html>
