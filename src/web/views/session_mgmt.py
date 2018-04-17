@@ -8,8 +8,8 @@ from flask_principal import (Principal, AnonymousIdentity, UserNeed,
                              session_identity_loader)
 
 from bootstrap import db
-# from web.models import User
-# from web.views.common import admin_role, api_role, login_user_bundle
+from web.models import User
+from web.views.common import admin_role, api_role, login_user_bundle
 # from web.forms import SigninForm
 
 Principal(current_app)
