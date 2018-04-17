@@ -25,6 +25,8 @@ var/log/
 venv
 build
 
+.python-version
+
 # js and node files
 node_modules
 src/web/static/npm_components
