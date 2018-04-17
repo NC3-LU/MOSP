@@ -13,5 +13,8 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.1"
+},
+  "scripts": {
+    "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/'), 'src/web/static/npm_components', 'junction') } catch (e) { }\""
   }
 }

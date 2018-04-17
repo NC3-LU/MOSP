@@ -1,0 +1,32 @@
+[[source]]
+
+name = "pypi"
+verify_ssl = true
+url = "https://pypi.python.org/simple"
+
+
+[requires]
+
+python_version = "3.6"
+
+
+[packages]
+
+"psycopg2" = "*"
+SQLAlchemy = "*"
+Flask = "*"
+Flask-SQLAlchemy = "*"
+Flask-Login = "*"
+Flask-Principal = "*"
+Flask-WTF = "*"
+Flask-Restless = "*"
+Flask-Migrate = "*"
+Flask-Script = "*"
+Flask-Admin = "*"
+Flask-paginate = "*"
+Flask-Mail = "*"
+WTForms = "*"
+validate_email = "*"
+
+
+[dev-packages]
