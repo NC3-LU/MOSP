@@ -16,6 +16,8 @@
 $ git clone https://github.com/cedricbonhomme/processing-activities.git
 $ cd processing-activities/
 $ npm install
+$ pipenv install
+$ pipenv shell
 ```
 
 
