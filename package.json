@@ -8,7 +8,7 @@
   "author": "Cédric Bonhomme",
   "license": "AGPL-3.0-or-later",
   "dependencies": {
-    "json-editor/json-editor": "git+https://github.com/json-editor/json-editor.git#feature/testing",
+    "json-editor": "git+https://github.com/json-editor/json-editor.git#feature/testing",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
