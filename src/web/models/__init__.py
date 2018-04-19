@@ -1,10 +1,12 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from .schema import Schema
 from .user import User
+from .organization import Organization
 
 
-__all__ = ['User']
+__all__ = ['User', 'Organization', 'Schema']
 
 from sqlalchemy.engine import reflection
 from sqlalchemy import create_engine
@@ -25,7 +27,7 @@ def uml_graph(db):
     import sqlalchemy_schemadisplay as sasd
 
     graph = sasd.create_uml_graph(
-                        mappers(User,),
+                        mappers(User, Organization, Schema,),
                         show_operations=False,
                         show_multiplicity_one=True
     )

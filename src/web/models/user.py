@@ -24,8 +24,10 @@ class User(db.Model, UserMixin):
     is_admin = db.Column(db.Boolean(), default=False)
     is_api = db.Column(db.Boolean(), default=False)
 
-    # relationship
-    
+    # foreign keys
+    org_id = db.Column(db.Integer(), db.ForeignKey('organization.id'),
+                           default=None)
+
 
     def get_id(self):
         """
