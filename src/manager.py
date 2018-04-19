@@ -7,7 +7,6 @@ from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
 import web.models
-import scripts
 
 
 logger = logging.getLogger('manager')
