@@ -19,7 +19,16 @@ $ npm install --prefix node_modules/v3 bootstrap@3.3.7
 $ npm install
 $ pipenv install
 $ pipenv shell
+$ python src/manager.py db_create
+$ python src/manager.py db_init
+$ python src/manager.py create_admin <username> <password>
 $ python src/runserver.py
+```
+
+Generating the UML graph of the database:
+
+```bash
+$ python src/manager.py uml_graph
 ```
 
 
