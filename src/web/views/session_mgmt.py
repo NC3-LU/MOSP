@@ -10,7 +10,7 @@ from flask_principal import (Principal, AnonymousIdentity, UserNeed,
 from bootstrap import db
 from web.models import User
 from web.views.common import admin_role, api_role, login_user_bundle
-# from web.forms import SigninForm
+from web.forms import SigninForm
 
 Principal(current_app)
 # Create a permission with a single Need, in this case a RoleNeed.
