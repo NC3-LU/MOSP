@@ -6,6 +6,7 @@ from bootstrap import application, db
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
+import scripts
 import web.models
 
 
@@ -44,6 +45,21 @@ def db_init():
     with application.app_context():
         web.models.db_init(db)
 
+
+@manager.command
+def create_user(login, password):
+    "Initializes a user"
+    print("Creation of the user {} ...".format(login))
+    with application.app_context():
+        scripts.create_user(login, password, False)
+
+
+@manager.command
+def create_admin(login, password):
+    "Initializes an admin user"
+    print("Creation of the admin user {} ...".format(login))
+    with application.app_context():
+        scripts.create_user(login, password, True)
 
 
 if __name__ == '__main__':
