@@ -40,6 +40,11 @@ def handle_sqlalchemy_assertion_error(error):
     return error.args[0], 400
 
 
-@current_app.route('/editor', methods=['GET'])
+@current_app.route('/', methods=['GET'])
 def index():
+    return render_template('index.html')
+
+
+@current_app.route('/editor', methods=['GET'])
+def editor():
     return render_template('editor.html')

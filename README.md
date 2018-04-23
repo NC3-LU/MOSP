@@ -15,6 +15,7 @@
 ```bash
 $ git clone https://github.com/cedricbonhomme/processing-activities.git
 $ cd processing-activities/
+$ npm install --prefix node_modules/v3 bootstrap@3.3.7
 $ npm install
 $ pipenv install
 $ pipenv shell
