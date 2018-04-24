@@ -7,6 +7,8 @@ with application.app_context():
     populate_g()
 
     from web import views
+    application.register_blueprint(views.admin_bp)
+
 
 
 if __name__ == '__main__':
