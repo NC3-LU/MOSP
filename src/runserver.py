@@ -9,6 +9,9 @@ with application.app_context():
     from web import views
     application.register_blueprint(views.admin_bp)
 
+    # API v1
+    application.register_blueprint(views.api.v1.blueprint_organization)
+    application.register_blueprint(views.api.v1.blueprint_schema)
 
 
 if __name__ == '__main__':
