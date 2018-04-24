@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/v3/node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/font-awesome/css/font-awesome.min.css') }}">
 
+    <script src="{{ url_for('static', filename='npm_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='npm_components/json-editor/dist/jsoneditor.min.js') }}"></script>
 </head>
 <body>
@@ -75,8 +76,24 @@
     </div>
 </div>
 <script>
-(function() {
-    var schema;
+$(document).ready(function() {
+    // Get information about the schema
+    var filters = [{"name": "id", "op": "eq", "val": "1"}];
+    $.ajax({
+        url: "{{ url_for('schemaapi0.schemaapi',) }}",
+        data: {"q": JSON.stringify({"filters": filters})},
+        dataType: "json",
+        contentType: "application/json",
+        success: function(result) {
+            console.log(result.objects[0].json_schema);
+            initialize_editor_with_schema(result.objects[0].json_schema);
+        }
+    });
+});
+
+
+
+function initialize_editor_with_schema(schema) {
     // Default starting schema
     if(!schema) {
         schema = {
@@ -188,7 +205,7 @@
     refreshBooleanOptions(true);
 
     reload();
-})();
+};
 </script>
 </body>
 </html>
