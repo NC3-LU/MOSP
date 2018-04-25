@@ -8,6 +8,7 @@
 
 ## Presentation
 
+Create, edit and share JSON objects.
 
 ## Installation
 
