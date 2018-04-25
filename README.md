@@ -8,8 +8,8 @@
 
 ## Presentation
 
-[MOSP](https://github.com/cedricbonhomme/MOSP) lets you create, edit and share
-JSON objects.
+[MOSP](https://github.com/cedricbonhomme/MOSP) is a platform to create, edit
+and share JSON objects.
 
 
 ### What's in the name?
