@@ -17,7 +17,7 @@ and share JSON objects.
 MOSP can stands for a lot things:
 [MISP](https://github.com/MISP/MISP) Object Sharing Platform,
 [MONARC](https://github.com/monarc-project/MonarcAppFO) Object Sharing Platform,
-Multi Object Sharing Platform,
+Multi-purpose Object Sharing Platform,
 Meta Object Sharing Platform,
 and whatever you can imagine. Choose.
 
