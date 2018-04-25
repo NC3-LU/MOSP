@@ -2,6 +2,7 @@ import os
 import logging
 from flask import (render_template, url_for, redirect, current_app, flash,
                   send_from_directory, request)
+from flask_login import login_required
 
 from bootstrap import application
 
@@ -46,5 +47,6 @@ def index():
 
 
 @current_app.route('/editor', methods=['GET'])
+@login_required
 def editor():
     return render_template('editor.html')

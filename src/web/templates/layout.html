@@ -30,10 +30,10 @@
             {% block menu_links %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                    {% if current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('editor') }}" title="Projects">Editor</a>
                     </li>
-                    {% if current_user.is_authenticated %}
                     {% if current_user.is_admin %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
@@ -75,8 +75,8 @@
 <br />
 <footer class="footer">
     <div class="container-fluid">
-        <span class="text-muted"><a href="#"></a></span>
-        &nbsp;
+        <span class="text-muted">Create, edit and share JSON objects</span>
+        &nbsp;-&nbsp;
         <span class="text-muted">GNU Affero General Public License</span>
     </div>
 </footer>
