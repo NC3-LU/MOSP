@@ -1,4 +1,4 @@
-# processing activities
+# MOSP
 
 ![License](https://img.shields.io/github/license/cedricbonhomme/processing-activities.svg?style=flat-square)
 ![Contributors](https://img.shields.io/github/contributors/cedricbonhomme/processing-activities.svg?style=flat-square)
@@ -8,7 +8,19 @@
 
 ## Presentation
 
-Create, edit and share JSON objects.
+[MOSP](https://github.com/cedricbonhomme/MOSP) lets you create, edit and share
+JSON objects.
+
+
+### What's in the name?
+
+MOSP can stands for a lot things:
+[MISP](https://github.com/MISP/MISP) Object Sharing Platform,
+[MONARC](https://github.com/monarc-project/MonarcAppFO) Object Sharing Platform,
+Multi Object Sharing Platform,
+Meta Object Sharing Platform,
+and whatever you can imagine. Choose.
+
 
 ## Installation
 
