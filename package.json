@@ -3,18 +3,17 @@
   "version": "0.0.1",
   "description": "processing activities",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/'), 'src/web/static/npm_components', 'junction') } catch (e) { }\""
   },
   "author": "Cédric Bonhomme",
   "license": "AGPL-3.0-or-later",
   "dependencies": {
-    "json-editor": "git+https://github.com/json-editor/json-editor.git#feature/testing",
     "bootstrap": "^4.0.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
+    "json-editor": "git+https://github.com/json-editor/json-editor.git#feature/testing",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.1",
     "popper.js": "^1.14.1"
-},
-  "scripts": {
-    "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/'), 'src/web/static/npm_components', 'junction') } catch (e) { }\""
   }
 }
