@@ -19,8 +19,8 @@ class Organization(db.Model):
     last_updated = db.Column(db.DateTime(), default=datetime.utcnow())
 
     # relationship
-    members = db.relationship(User, backref='organization', lazy='dynamic',
-                               cascade='all,delete-orphan')
+    # members = db.relationship(User, backref='organization', lazy='dynamic',
+    #                            cascade='all,delete-orphan')
     schemas = db.relationship(Schema, backref='organization', lazy='dynamic',
                                cascade='all,delete-orphan')
 

@@ -6,6 +6,11 @@ from werkzeug import check_password_hash
 
 from bootstrap import db
 
+association_table_organization = db.Table('association_users_organizations',
+    db.metadata,
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('organization_id', db.Integer, db.ForeignKey('organization.id'))
+)
 
 class User(db.Model, UserMixin):
     """
@@ -25,8 +30,13 @@ class User(db.Model, UserMixin):
     is_api = db.Column(db.Boolean(), default=False)
 
     # foreign keys
-    org_id = db.Column(db.Integer(), db.ForeignKey('organization.id'),
-                           default=None)
+    # org_id = db.Column(db.Integer(), db.ForeignKey('organization.id'),
+    #                        default=None)
+
+    # relationships
+    organizations = db.relationship("Organization",
+                            secondary=lambda: association_table_organization,
+                            backref="users")
 
 
     def get_id(self):
