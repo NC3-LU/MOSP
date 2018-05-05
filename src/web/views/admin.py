@@ -26,8 +26,8 @@ class CustomAdminIndexView(AdminIndexView):
         return current_user.is_authenticated and current_user.is_admin
 
 
-menu_link_back_dashboard = MenuLink(name='Dashboard',
-                                    url='/admin/dashboard')
+menu_link_back_home = MenuLink(name='Home',
+                                    url='/')
 admin_flask = Admin(current_app,
                     name='Management of data',
                     template_mode='bootstrap3',
@@ -38,5 +38,5 @@ admin_flask = Admin(current_app,
 admin_flask.add_view(SecureView(models.User, db.session))
 admin_flask.add_view(SecureView(models.Organization, db.session))
 admin_flask.add_view(SecureView(models.Schema, db.session))
-# admin_flask.add_view(SecureView(models.Object, db.session))
-admin_flask.add_link(menu_link_back_dashboard)
+admin_flask.add_view(SecureView(models.JsonObject, db.session))
+admin_flask.add_link(menu_link_back_home)
