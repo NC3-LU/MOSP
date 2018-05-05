@@ -1,7 +1,7 @@
 {
-  "name": "processing-activities",
+  "name": "MOSP",
   "version": "0.0.1",
-  "description": "processing activities",
+  "description": "A platform to create, edit and share JSON objects.",
   "scripts": {
     "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/'), 'src/web/static/npm_components', 'junction') } catch (e) { }\""
   },
