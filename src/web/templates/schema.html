@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">
+            <b>Schema</b>
+        </div>
+        <div class="col-md-2">
+            {{ schema.name }}
+        </div>
+        <div class="col-md-7 text-right">
+            <a href="{{ url_for('object_bp.form') }}" class="btn btn-primary">Create a new object with this schema</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1">
+            <b>Description</b>
+        </div>
+        <div class="col-md-5">
+            {{ schema.description }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <b>Objects validated by this schema</b>
+            <ul>
+                {% for json_object in schema.objects %}
+                <li> json_object.name </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -28,7 +28,7 @@ $(document).ready(function() {
             })
             .map(function (schema) {
                 var cardHTML = schemaHomeTemplate({
-                    'project_url': '/schema/'+schema.name,
+                    'project_url': '/schema/'+schema.id,
                     'project_name': schema.name,
                     'project_description': schema.description,
                     'organization': schema.organization.name,

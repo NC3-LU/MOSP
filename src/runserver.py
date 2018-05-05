@@ -7,6 +7,10 @@ with application.app_context():
     populate_g()
 
     from web import views
+    application.register_blueprint(views.schema_bp)
+    application.register_blueprint(views.schemas_bp)
+    application.register_blueprint(views.object_bp)
+    application.register_blueprint(views.objects_bp)
     application.register_blueprint(views.admin_bp)
 
     # API v1
