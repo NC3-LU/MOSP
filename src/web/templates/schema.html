@@ -2,23 +2,32 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-1">
+        <div class="col-md-2">
             <b>Schema</b>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             {{ schema.name }}
         </div>
-        <div class="col-md-7 text-right">
-            <a href="{{ url_for('object_bp.form') }}" class="btn btn-primary">Create a new object with this schema</a>
+        <div class="col-md-5 text-right">
+            <a href="{{ url_for('object_bp.form', schema_id=schema.id) }}" class="btn btn-primary">Create a new object with this schema</a>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-1">
+        <div class="col-md-2">
             <b>Description</b>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-8">
             {{ schema.description }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <b>Organization</b>
+        </div>
+        <div class="col-md-8">
+            {{ schema.organization.name }}
         </div>
     </div>
 
