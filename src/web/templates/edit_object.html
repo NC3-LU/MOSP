@@ -64,6 +64,29 @@
 </div>
 <script>
 $(document).ready(function() {
+
+    $('#saveobject').click(function() {
+        var json = jsoneditor.getValue();
+        console.log(JSON.stringify(json, null, 2));
+
+        data = JSON.stringify({
+                                schema_id: {{ schema.id }},
+                                json_object: json
+                            });
+
+        $.ajax({
+            url: "{{ url_for('json_objectapi0.json_objectapi',) }}",
+            type: 'POST',
+            data: data,
+            dataType: "json",
+            contentType: "application/json",
+            success: function(result) {
+
+            }
+        });
+    });
+
+
     // Get information about the schema
     var filters = [{"name": "id", "op": "eq", "val": "{{ schema.id }}"}];
     $.ajax({
@@ -119,7 +142,7 @@ function initialize_editor_with_schema(schema) {
         jsoneditor.on('change',function() {
             var json = jsoneditor.getValue();
 
-            $output.value = JSON.stringify(json,null,2);
+            $output.value = JSON.stringify(json, null, 2);
 
             var validation_errors = jsoneditor.validate();
             // Show validation errors if there are any
