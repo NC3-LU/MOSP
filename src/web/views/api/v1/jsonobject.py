@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from flask_login import current_user
 from bootstrap import application, manager
 
 from web import models
@@ -14,10 +15,17 @@ def pre_get_many(search_params=None, **kw):
         search_params['order_by'] = []
     search_params['order_by'].extend(order_by)
 
-    filters = [dict(name='is_public', op='eq', val=True)]
-    if 'filters' not in search_params:
-        search_params['filters'] = []
-    search_params['filters'].extend(filters)
+    if not current_user.is_authenticated:
+        filters = [dict(name='is_public', op='eq', val=True)]
+        if 'filters' not in search_params:
+            search_params['filters'] = []
+        search_params['filters'].extend(filters)
+
+    if current_user.is_authenticated and not current_user.is_admin:
+        filters = [dict(name='is_public', op='eq', val=True)]
+        if 'filters' not in search_params:
+            search_params['filters'] = []
+        search_params['filters'].extend(filters)
 
 
 blueprint_object = manager.create_api_blueprint(
