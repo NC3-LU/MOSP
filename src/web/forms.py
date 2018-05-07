@@ -5,7 +5,7 @@ from flask import flash, url_for, redirect
 from flask_wtf import FlaskForm
 from wtforms import (TextField, TextAreaField, PasswordField, BooleanField,
                      SelectField, SubmitField, validators, HiddenField,
-                     SelectMultipleField)
+                     SelectMultipleField, HiddenField)
 
 from lib import misc_utils
 from web.models import User, Organization
@@ -61,3 +61,14 @@ class SigninForm(RedirectForm):
                 validated = False
             self.user = user
         return validated
+
+
+class AddObjectForm(FlaskForm):
+    name = TextField("Name",
+                    [validators.Required("Please enter a name")])
+    description = TextAreaField("Description",
+                    [validators.Required("Please enter a description")])
+    is_public = BooleanField("Public object", default=True)
+    schema_id = HiddenField("Validated by")
+
+    submit = SubmitField("Save")

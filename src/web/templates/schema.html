@@ -36,7 +36,7 @@
             <b>Objects validated by this schema</b>
             <ul>
                 {% for json_object in schema.objects %}
-                    <li>{{ json_object.name }}</li>
+                    <li>{{ json_object.name }} - <a href="{{ url_for('object_bp.form', object_id=json_object.id) }}">Edit</a> - <a href="{{ url_for('object_bp.edit_json', object_id=json_object.id) }}">Edit the object</a></li>
                 {% endfor %}
             </ul>
         </div>
