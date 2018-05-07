@@ -40,6 +40,9 @@ def form(schema_id=None, object_id=None):
 
     form = AddObjectForm()
     form.schema_id.data = schema_id
+    form.org_id.choices = [(0, '')]
+    form.org_id.choices.extend([(org.id, org.name) for org in
+                                                    current_user.organizations])
 
     if object_id is None:
         return render_template('edit_object.html', action=action,
@@ -47,6 +50,10 @@ def form(schema_id=None, object_id=None):
 
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     form = AddObjectForm(obj=json_object)
+    form.schema_id.data = schema_id
+    form.org_id.choices = [(0, '')]
+    form.org_id.choices.extend([(org.id, org.name) for org in
+                                                    current_user.organizations])
     action = "Edit an object"
     head_titles = [action]
     head_titles.append(json_object.name)
@@ -60,6 +67,9 @@ def form(schema_id=None, object_id=None):
 @login_required
 def process_form(object_id=None):
     form = AddObjectForm()
+    form.org_id.choices = [(0, '')]
+    form.org_id.choices.extend([(org.id, org.name) for org in
+                                                    current_user.organizations])
 
     if not form.validate():
         return render_template('edit_object.html', form=form)
@@ -79,7 +89,8 @@ def process_form(object_id=None):
     # Create a new JsonObject
     new_object = JsonObject(name=form.name.data,
                             description=form.description.data,
-                            schema_id=form.schema_id.data)
+                            schema_id=form.schema_id.data,
+                            org_id=form.org_id.data)
     db.session.add(new_object)
     try:
         db.session.commit()

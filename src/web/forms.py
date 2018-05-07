@@ -70,5 +70,8 @@ class AddObjectForm(FlaskForm):
                     [validators.Required("Please enter a description")])
     is_public = BooleanField("Public object", default=True)
     schema_id = HiddenField("Validated by")
+    org_id = SelectField("Organization", [validators.Required("Please select an organization")],
+                                  coerce=int)
+    org_id.choices = [(0, '')]
 
     submit = SubmitField("Save")
