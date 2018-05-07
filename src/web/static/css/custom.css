@@ -11,7 +11,7 @@ img {
 }
 
 .bg-MOSP-blue {
-    background-color: darkblue;
+    background-color: #6B5B95;
 }
 
 /* Sticky footer */
@@ -22,7 +22,11 @@ img {
   /* Set the fixed height of the footer here */
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
-  background-color: #f5f5f5;
+  background-color: #6B5B95;
+}
+.footer a{
+    color: #FFFFFF;
+    text-decoration: underline wavy; 
 }
 
 
