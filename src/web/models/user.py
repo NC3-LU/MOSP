@@ -51,6 +51,9 @@ class User(db.Model, UserMixin):
         """
         return check_password_hash(self.pwdhash, password)
 
+    def __str__(self):
+        return self.login
+
     @validates('login')
     def validates_login(self, key, value):
         assert 3 <= len(value) <= 30, \

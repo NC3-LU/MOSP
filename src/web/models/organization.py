@@ -24,6 +24,9 @@ class Organization(db.Model):
     schemas = db.relationship(Schema, backref='organization', lazy='dynamic',
                                cascade='all,delete-orphan')
 
+    def __str__(self):
+        return self.name
+
     @validates('name')
     def validates_name(self, key, value):
         assert len(value) <= 100, \
