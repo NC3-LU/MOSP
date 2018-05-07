@@ -26,7 +26,8 @@ img {
 }
 .footer a{
     color: #FFFFFF;
-    text-decoration: underline wavy; 
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
 }
 
 
