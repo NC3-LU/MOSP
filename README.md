@@ -3,7 +3,6 @@
 ![License](https://img.shields.io/github/license/cedricbonhomme/processing-activities.svg?style=flat-square)
 ![Contributors](https://img.shields.io/github/contributors/cedricbonhomme/processing-activities.svg?style=flat-square)
 ![Stars](https://img.shields.io/github/stars/cedricbonhomme/processing-activities.svg?style=flat-square)
-[![Say thanks to cedric](https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg?style=flat-square)](https://saythanks.io/to/cedricbonhomme)
 
 
 ## Presentation
