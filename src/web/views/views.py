@@ -46,7 +46,12 @@ def index():
     return render_template('index.html')
 
 
-@current_app.route('/editor', methods=['GET'])
-@login_required
-def editor():
-    return render_template('editor.html')
+@current_app.route('/about', methods=['GET'])
+def about():
+    return render_template('about.html')
+
+
+# @current_app.route('/editor', methods=['GET'])
+# @login_required
+# def editor():
+#     return render_template('editor.html')

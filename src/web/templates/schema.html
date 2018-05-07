@@ -42,31 +42,31 @@
         <div class="col-md-10">
             <b>Objects validated by this schema</b>
             <table id="table-objects" class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Organization</th>
-                    <th>Visibility</th>
-                    <th>Last updated</th>
-                    <th>Edit</th>
-                    <th>JSON editor</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for object in schema.objects %}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td>{{ object.name  }}</td>
-                    <td>{{ object.organization.name }}</td>
-                    <td>{{ 'Public' if object.is_public else 'Private' }}</td>
-                    <td class="date">{{ object.last_updated }}</td>
-                    <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                    <td><a href="{{ url_for('object_bp.edit_json', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-            </table
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Organization</th>
+                        <th>Visibility</th>
+                        <th>Last updated</th>
+                        <th>Edit</th>
+                        <th>JSON editor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for object in schema.objects %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ object.name  }}</td>
+                        <td>{{ object.organization.name }}</td>
+                        <td>{{ 'Public' if object.is_public else 'Private' }}</td>
+                        <td class="date">{{ object.last_updated }}</td>
+                        <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                        <td><a href="{{ url_for('object_bp.edit_json', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
