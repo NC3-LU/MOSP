@@ -14,6 +14,11 @@ def pre_get_many(search_params=None, **kw):
         search_params['order_by'] = []
     search_params['order_by'].extend(order_by)
 
+    filters = [dict(name='is_public', op='eq', val=True)]
+    if 'filters' not in search_params:
+        search_params['filters'] = []
+    search_params['filters'].extend(filters)
+
 
 blueprint_object = manager.create_api_blueprint(
     models.JsonObject,
