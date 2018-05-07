@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <b>Schema</b>
+            <b>Name of the schema</b>
         </div>
         <div class="col-md-7">
             {{ schema.name }}
@@ -51,6 +51,7 @@
                         <th>Last updated</th>
                         <th>Edit</th>
                         <th>JSON editor</th>
+                        <th>Object</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,6 +64,7 @@
                         <td class="date">{{ object.last_updated }}</td>
                         <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                         <td><a href="{{ url_for('object_bp.edit_json', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                        <td><i class="fa fa-download" aria-hidden="true"></i></td>
                     </tr>
                 {% endfor %}
                 </tbody>
