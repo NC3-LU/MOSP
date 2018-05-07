@@ -12,12 +12,13 @@
         </div>
         <div class="col">
             <h4>Recently updated objects</h4>
+            <div id="list-json-objects"></div>
         </div>
     </div>
 </div><!-- /.container -->
 <script>
 $(document).ready(function() {
-    $.ajax({ // Get the list of projects
+    $.ajax({ // Get the list of JSON schenmas
         url: "{{ url_for('schemaapi0.schemaapi',) }}",
         dataType: "json",
         contentType: "application/json",
@@ -28,13 +29,34 @@ $(document).ready(function() {
             })
             .map(function (schema) {
                 var cardHTML = schemaHomeTemplate({
-                    'project_url': '/schema/'+schema.id,
-                    'project_name': schema.name,
-                    'project_description': schema.description,
+                    'url': '/schema/'+schema.id,
+                    'name': schema.name,
+                    'description': schema.description,
                     'organization': schema.organization.name,
-                    'project_last_update': moment(schema.last_updated).fromNow()
+                    'last_update': moment(schema.last_updated).fromNow()
                  });
                  $('#list-schemas').append(cardHTML);
+            });
+        }
+    });
+
+    $.ajax({ // Get the list of JSON objects
+        url: "{{ url_for('json_objectapi0.json_objectapi',) }}",
+        dataType: "json",
+        contentType: "application/json",
+        success: function(json_objects) {
+            json_objects.objects
+            .sort(function (a, b) {
+                return a.last_updated < b.last_updated;
+            })
+            .map(function (json_object) {
+                var cardHTML = jsonObjectHomeTemplate({
+                    'name': json_object.name,
+                    'description': json_object.description,
+                    'organization': json_object.organization.name,
+                    'last_update': moment(json_object.last_updated).fromNow()
+                 });
+                 $('#list-json-objects').append(cardHTML);
             });
         }
     });
