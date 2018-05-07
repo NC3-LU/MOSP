@@ -64,7 +64,7 @@
                         <td class="date">{{ object.last_updated }}</td>
                         <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                         <td><a href="{{ url_for('object_bp.edit_json', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                        <td><i class="fa fa-download" aria-hidden="true"></i></td>
+                        <td><a href="{{ url_for('object_bp.get_json_object', object_id=object.id) }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

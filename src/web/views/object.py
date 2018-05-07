@@ -1,5 +1,6 @@
+import json
 from flask import Blueprint, render_template, redirect, url_for, flash, \
-                  request, abort
+                  request, abort, Response
 from flask_login import login_required, current_user
 
 from bootstrap import db, application
@@ -8,6 +9,23 @@ from web.forms import AddObjectForm
 
 object_bp = Blueprint('object_bp', __name__, url_prefix='/object')
 objects_bp = Blueprint('objects_bp', __name__, url_prefix='/objects')
+
+
+@object_bp.route('/get/<int:object_id>', methods=['GET'])
+def get_json_object(object_id):
+    """
+    Export a the JSON part of a JsonObject as a clean JSON file.
+    """
+    json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    result = json.dumps(json_object.json_object,
+                        sort_keys=True, indent=4, separators=(',', ': '))
+    return Response(result,
+                    mimetype='application/json',
+                    headers={
+                        'Content-Disposition':'attachment;filename={}.json'. \
+                            format(json_object.name)
+                            }
+                    )
 
 
 @object_bp.route('/jsoneditor/<int:object_id>', methods=['GET'])
