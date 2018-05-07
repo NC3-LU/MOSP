@@ -10,9 +10,12 @@ object_bp = Blueprint('object_bp', __name__, url_prefix='/object')
 objects_bp = Blueprint('objects_bp', __name__, url_prefix='/objects')
 
 
-@object_bp.route('/editor/<int:object_id>', methods=['GET'])
+@object_bp.route('/jsoneditor/<int:object_id>', methods=['GET'])
 @login_required
-def edit_json(schema_id=None, object_id=None):
+def edit_json(object_id=None):
+    """
+    Edit a JSON object with JSON editor.
+    """
     action = "Edit an object"
     head_titles = [action]
 
@@ -61,8 +64,17 @@ def process_form(object_id=None):
     if not form.validate():
         return render_template('edit_object.html', form=form)
 
+    # Edit an existing JsonObject
     if object_id is not None:
-        pass # edit an object
+        json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+        form.populate_obj(json_object)
+        try:
+            db.session.commit()
+            flash("'{object_name}' successfully updated.".
+                  format(object_name=form.name.data), 'success')
+        except Exception as e:
+            form.name.errors.append('Name already exists.')
+        return redirect(url_for('object_bp.form', object_id=json_object.id))
 
     # Create a new JsonObject
     new_object = JsonObject(name=form.name.data,
