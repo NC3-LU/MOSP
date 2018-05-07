@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy.orm import validates
 from sqlalchemy import event
 
-from web.models import Schema, User
+from web.models import Schema, User, JsonObject
 from bootstrap import db
 
 
@@ -19,8 +19,8 @@ class Organization(db.Model):
     last_updated = db.Column(db.DateTime(), default=datetime.utcnow())
 
     # relationship
-    # members = db.relationship(User, backref='organization', lazy='dynamic',
-    #                            cascade='all,delete-orphan')
+    objects = db.relationship(JsonObject, backref='organization', lazy='dynamic',
+                                cascade='all,delete-orphan')
     schemas = db.relationship(Schema, backref='organization', lazy='dynamic',
                                cascade='all,delete-orphan')
 
