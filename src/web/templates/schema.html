@@ -36,7 +36,7 @@
             <b>Objects validated by this schema</b>
             <ul>
                 {% for json_object in schema.objects %}
-                <li> json_object.name </li>
+                    <li>{{ json_object.name }}</li>
                 {% endfor %}
             </ul>
         </div>
