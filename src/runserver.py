@@ -12,6 +12,7 @@ with application.app_context():
     application.register_blueprint(views.object_bp)
     application.register_blueprint(views.objects_bp)
     application.register_blueprint(views.admin_bp)
+    application.register_blueprint(views.user_bp)
 
     # API v1
     application.register_blueprint(views.api.v1.blueprint_organization)

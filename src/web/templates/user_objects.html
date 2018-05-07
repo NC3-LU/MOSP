@@ -1,0 +1,19 @@
+{% extends "layout.html" %}}
+{% block content %}
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-10">
+            <h3>Objects in my organization(s)</h3>
+            {% for org in current_user.organizations %}
+                <h4>{{ org.name }}</h4>
+                <ul>
+                {% for schema in org.schemas %}
+                    <li><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a> - validates {{ schema.objects.count() }} objects</li>
+                {% endfor %}
+                </ul>
+            {% endfor  %}
+        </div>
+    </div>
+</div>
+{% endblock %}
