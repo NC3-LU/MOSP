@@ -11,6 +11,16 @@
 [MOSP](https://github.com/cedricbonhomme/MOSP) is a platform to create, edit
 and share JSON objects.
 
+The goal of this platform is to gather security related JSON schemas
+and objects.
+
+You can use any available schemas in order to create shareable JSON objects.
+It also possible to keep an object private even if our goal is to promote
+the sharing of information.
+
+Integration with third-party applications is possible thanks to an API.
+
+
 
 ### What's in the name?
 
