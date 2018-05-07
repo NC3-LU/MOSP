@@ -48,8 +48,6 @@
             {% for error in form.is_public.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
         </div>
 
-        {{ form.schema_id(class_="form-control") }}
-
         <div class="form-group">
             <div class="">
                 {{ form.submit(class_="btn btn-default") }}

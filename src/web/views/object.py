@@ -77,6 +77,7 @@ def process_form(object_id=None):
     # Edit an existing JsonObject
     if object_id is not None:
         json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+        form.schema_id.data = json_object.schema_id
         form.populate_obj(json_object)
         try:
             db.session.commit()
