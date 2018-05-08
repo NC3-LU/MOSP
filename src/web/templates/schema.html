@@ -59,7 +59,7 @@
                     <tr>
                         <td>{{ loop.index }}</td>
                         <td>{{ object.name  }}</td>
-                        <td>{{ object.organization.name }}</td>
+                        <td><a href="{{ url_for('organization_bp.get', organization_id=object.org_id) }}">{{ object.organization.name }}</a></td>
                         <td>{{ 'Public' if object.is_public else 'Private' }}</td>
                         <td class="date">{{ object.last_updated }}</td>
                         <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>

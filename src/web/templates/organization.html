@@ -1,0 +1,56 @@
+{% extends "layout.html" %}}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Name</h4>
+        </div>
+        <div class="col-md-6">
+            {{ organization.name }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Description</h4>
+        </div>
+        <div class="col-md-6">
+            {{ organization.description }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Website</h4>
+        </div>
+        <div class="col-md-6">
+            <a href="{{ organization.website }}">{{ organization.website }}</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <h4>Shared JSON schemas</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <table id="table-schemas" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Last updated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for schema in organization.schemas %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
+                        <td class="date">{{ schema.last_updated }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
