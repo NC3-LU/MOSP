@@ -3,6 +3,7 @@
 {{ super() }}
 <!-- overwrite Bootstrap 4 with Bootstrap 3.3.7 for json-editor -->
 <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/v3/node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/font-awesome/css/font-awesome.min.css') }}">
 
 <script src="{{ url_for('static', filename='npm_components/json-editor/dist/jsoneditor.min.js') }}"></script>
@@ -16,7 +17,11 @@
         <div class='col-md-4 columns four large-4'>
             <button class='btn btn-success' id='saveobject'>Save object</button>
             <h2>JSON Output</h2>
-            <p>You can make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
+            <p>
+            You can make changes to the JSON here and set the value in the
+            editor by clicking
+            <button class='btn btn-primary' id='setvalue'>Update Form</button>
+            </p>
             <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;' class='form-control'></textarea>
 
             <h2>Validation</h2>

@@ -1,3 +1,4 @@
+/* Bootstrap customization */
 html {
     position: relative;
     min-height: 100%;
@@ -9,10 +10,21 @@ body {
 img {
     padding: 5px;
 }
-
 .bg-MOSP-blue {
     background-color: #6B5B95;
 }
+.btn-primary {
+    background-color: #6B5B95;
+    border: none;
+    color: white;
+}
+.btn-default {
+    background-color: #6B5B95;
+    border: none;
+    color: white;
+}
+
+
 
 /* Sticky footer */
 .footer {
