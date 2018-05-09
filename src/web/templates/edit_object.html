@@ -2,8 +2,9 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-3">
+        <div class="col-12">
             <h3>{{ action }}</h3>
+            <p>validated by <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a></p>
         </div>
     </div>
 

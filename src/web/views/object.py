@@ -23,7 +23,7 @@ def get_json_object(object_id):
                     mimetype='application/json',
                     headers={
                         'Content-Disposition':'attachment;filename={}.json'. \
-                            format(json_object.name)
+                            format(json_object.name.replace(' ', '_'))
                             }
                     )
 
@@ -53,9 +53,6 @@ def form(schema_id=None, object_id=None):
     action = "Create an object"
     head_titles = [action]
 
-    schema_id = request.args.get('schema_id', None)
-    # schema = Schema.query.filter(Schema.id == schema_id).first()
-
     form = AddObjectForm()
     form.schema_id.data = schema_id
     form.org_id.choices = [(0, '')]
@@ -63,10 +60,14 @@ def form(schema_id=None, object_id=None):
                                                     current_user.organizations])
 
     if object_id is None:
+        schema_id = request.args.get('schema_id', None)
+        schema = Schema.query.filter(Schema.id == schema_id).first()
         return render_template('edit_object.html', action=action,
-                               head_titles=head_titles, form=form)
+                               head_titles=head_titles, form=form,
+                               schema=schema)
 
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    schema = json_object.schema
     form = AddObjectForm(obj=json_object)
     form.schema_id.data = schema_id
     form.org_id.choices = [(0, '')]
@@ -77,7 +78,7 @@ def form(schema_id=None, object_id=None):
     head_titles.append(json_object.name)
     return render_template('edit_object.html', action=action,
                            head_titles=head_titles,
-                           form=form, json_object=json_object)
+                           form=form, schema=schema)
 
 
 @object_bp.route('/create', methods=['POST'])
