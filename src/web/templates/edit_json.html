@@ -20,8 +20,9 @@
             <div id='editor'></div>
         </div>
         <div class='col-md-4 columns four large-4'>
-            <button class='btn btn-success' id='saveobject'>Save object</button>
-            <a class='btn btn-success' href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}"><i class="fa fa-download" aria-hidden="true"></i></a>
+            <button class='btn btn-success' id='saveobject' title="Save the object"><i class="fa fa-save" aria-hidden="true"></i></button>
+            <a class='btn btn-success' href="{{ url_for('object_bp.form', object_id=json_object.id) }}" title="Edit the object"><i class="fa fa-edit" aria-hidden="true"></i></a>
+            <a class='btn btn-success' href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}" title="Get the object"><i class="fa fa-download" aria-hidden="true"></i></a>
             <h2>JSON Output</h2>
             <p>
             You can make changes to the JSON here and set the value in the
