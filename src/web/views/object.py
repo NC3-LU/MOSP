@@ -54,13 +54,13 @@ def form(schema_id=None, object_id=None):
     head_titles = [action]
 
     form = AddObjectForm()
-    form.schema_id.data = schema_id
     form.org_id.choices = [(0, '')]
     form.org_id.choices.extend([(org.id, org.name) for org in
                                                     current_user.organizations])
 
     if object_id is None:
         schema_id = request.args.get('schema_id', None)
+        form.schema_id.data = schema_id
         schema = Schema.query.filter(Schema.id == schema_id).first()
         return render_template('edit_object.html', action=action,
                                head_titles=head_titles, form=form,
@@ -69,7 +69,7 @@ def form(schema_id=None, object_id=None):
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     schema = json_object.schema
     form = AddObjectForm(obj=json_object)
-    form.schema_id.data = schema_id
+    form.schema_id.data = schema.id
     form.org_id.choices = [(0, '')]
     form.org_id.choices.extend([(org.id, org.name) for org in
                                                     current_user.organizations])
