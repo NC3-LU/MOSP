@@ -28,6 +28,19 @@ def get_json_object(object_id):
                     )
 
 
+@object_bp.route('/view/<int:object_id>', methods=['GET'])
+@login_required
+def view(object_id=None):
+    """
+    Display the JSON part of a JsonObject object.
+    """
+    json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    result = json.dumps(json_object.json_object,
+                        sort_keys=True, indent=4, separators=(',', ': '))
+    return render_template('view_json.html',
+                            json_object=result)
+
+
 @object_bp.route('/jsoneditor/<int:object_id>', methods=['GET'])
 @login_required
 def edit_json(object_id=None):
