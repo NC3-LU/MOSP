@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, abort
 from flask_login import login_required, current_user
-from sqlalchemy import or_, and_
+from sqlalchemy import or_
 
 from bootstrap import db
 from web.models import Schema, JsonObject, User, Organization
@@ -22,7 +22,11 @@ def get(schema_id=None):
     schema = Schema.query.filter(Schema.id == schema_id).first()
     if schema is None:
         abort(404)
-    if current_user.is_admin:
+    if not current_user.is_authenticated:
+        objects = JsonObject.query. \
+                filter(JsonObject.schema_id==schema.id). \
+                filter(JsonObject.is_public)
+    elif current_user.is_admin:
         # Loads all objects related to the schema
         objects = JsonObject.query.filter(JsonObject.schema_id==schema.id)
     else:
