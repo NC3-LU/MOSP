@@ -4,6 +4,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash, \
 from flask_login import login_required, current_user
 
 from bootstrap import db, application
+from web.views.decorators import check_object_permission
 from web.models import Schema, JsonObject
 from web.forms import AddObjectForm
 
@@ -12,6 +13,7 @@ objects_bp = Blueprint('objects_bp', __name__, url_prefix='/objects')
 
 
 @object_bp.route('/get/<int:object_id>', methods=['GET'])
+@check_object_permission
 def get_json_object(object_id):
     """
     Export the JSON part of a JsonObject as a clean JSON file.
@@ -29,6 +31,7 @@ def get_json_object(object_id):
 
 
 @object_bp.route('/view/<int:object_id>', methods=['GET'])
+@check_object_permission
 def view(object_id=None):
     """
     Display the JSON part of a JsonObject object.
@@ -42,6 +45,7 @@ def view(object_id=None):
 
 @object_bp.route('/jsoneditor/<int:object_id>', methods=['GET'])
 @login_required
+@check_object_permission
 def edit_json(object_id=None):
     """
     Edit a JSON object with JSON editor.
