@@ -38,6 +38,7 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th># of objects validated by the schema</th>
                         <th>Last updated</th>
                     </tr>
                 </thead>
@@ -46,6 +47,7 @@
                     <tr>
                         <td>{{ loop.index }}</td>
                         <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
+                        <td align="center">{{ schema.objects.count() }}</td>
                         <td class="date">{{ schema.last_updated }}</td>
                     </tr>
                 {% endfor %}
