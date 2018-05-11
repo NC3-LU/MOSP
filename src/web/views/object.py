@@ -29,7 +29,6 @@ def get_json_object(object_id):
 
 
 @object_bp.route('/view/<int:object_id>', methods=['GET'])
-@login_required
 def view(object_id=None):
     """
     Display the JSON part of a JsonObject object.
