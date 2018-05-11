@@ -23,6 +23,7 @@ def get(schema_id=None):
     if schema is None:
         abort(404)
     if not current_user.is_authenticated:
+        # Loads public objects related to the schema
         objects = JsonObject.query. \
                 filter(JsonObject.schema_id==schema.id). \
                 filter(JsonObject.is_public)
@@ -30,7 +31,7 @@ def get(schema_id=None):
         # Loads all objects related to the schema
         objects = JsonObject.query.filter(JsonObject.schema_id==schema.id)
     else:
-        # Loads objects related to the schema which are:
+        # Loads objects related to the schema that are:
         #   - public;
         #   - private but related to the organizations the current user is
         #     affiliated to.
