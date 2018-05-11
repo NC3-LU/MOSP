@@ -5,7 +5,7 @@
         <div class="col-md-10">
             <h3>Objects in my organization(s)</h3>
             {% for org in current_user.organizations %}
-                <h4>{{ org.name }}</h4>
+                <h4><a href="{{ url_for('organization_bp.get', organization_id=org.id) }}">{{ org.name }}</a></h4>
                 <ul>
                 {% for schema in org.schemas %}
                     <li><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a> - validates {{ schema.objects.count() }} objects</li>
