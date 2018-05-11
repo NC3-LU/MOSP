@@ -1,9 +1,9 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from .user import User
 from .jsonobject import JsonObject
 from .schema import Schema
-from .user import User
 from .organization import Organization
 
 

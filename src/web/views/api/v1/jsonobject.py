@@ -22,7 +22,16 @@ def pre_get_many(search_params=None, **kw):
         search_params['filters'].extend(filters)
 
     if current_user.is_authenticated and not current_user.is_admin:
-        filters = [dict(name='is_public', op='eq', val=True)]
+        # filters = [dict(name='is_public', op='eq', val=True)]
+        filters = [{
+                    "or":  [dict(name='is_public', op='eq', val=True)],
+                            "and":
+                                [dict(name='org_id', op='in', val=[org.id for org in current_user.organizations]),
+                                dict(name='is_public', op='eq', val=False)]
+
+                   }]
+
+
         if 'filters' not in search_params:
             search_params['filters'] = []
         search_params['filters'].extend(filters)
