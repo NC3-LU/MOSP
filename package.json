@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A platform to create, edit and share JSON objects.",
   "scripts": {
-    "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/'), 'src/web/static/npm_components', 'junction') } catch (e) { }\""
+    "postinstall": "npm install --prefix node_modules/v3 bootstrap@3.3.7 ; cd src/web/static/ ; ln -sf ../../../node_modules npm_components"
   },
   "author": "Cédric Bonhomme",
   "license": "AGPL-3.0-or-later",
