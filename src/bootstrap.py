@@ -62,7 +62,7 @@ application.jinja_env.filters['datetimeformat'] = datetimeformat
 # application.jinja_env.filters['instance_domain_name'] = instance_domain_name
 
 
-set_logging(application.config['LOG_PATH'])
+# set_logging(application.config['LOG_PATH'])
 
 # create_directory(application.config['UPLOAD_FOLDER'])
 
