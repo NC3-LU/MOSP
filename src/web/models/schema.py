@@ -1,6 +1,5 @@
 
 from datetime import datetime
-from sqlalchemy.orm import validates
 from sqlalchemy.dialects.postgresql import JSON
 
 from bootstrap import db
@@ -23,10 +22,3 @@ class Schema(db.Model):
                         default=None)
     creator_id = db.Column(db.Integer(), db.ForeignKey('user.id'),
                            default=None)
-
-
-    @validates('name')
-    def validates_name(self, key, value):
-        assert len(value) <= 100, \
-            AssertionError("maximum length for name: 100")
-        return value.replace(' ', '').strip()

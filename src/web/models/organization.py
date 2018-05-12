@@ -1,6 +1,5 @@
 
 from datetime import datetime
-from sqlalchemy.orm import validates
 from sqlalchemy import event
 
 from web.models import Schema, User, JsonObject
@@ -25,9 +24,3 @@ class Organization(db.Model):
 
     def __str__(self):
         return self.name
-
-    @validates('name')
-    def validates_name(self, key, value):
-        assert len(value) <= 100, \
-            AssertionError("maximum length for name: 100")
-        return value.replace(' ', '').strip()
