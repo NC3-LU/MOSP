@@ -18,6 +18,14 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-3">
+            <b>Owned by</b>
+        </div>
+        <div class="col-md-7">
+            <a href="{{ url_for('organization_bp.get', organization_id=json_object.organization.id) }}">{{ json_object.organization.name }}</a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-10">
             <br />
             <pre class="prettyprint"><code>{{ json_object_pretty }}</code></pre>

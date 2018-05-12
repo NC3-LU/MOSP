@@ -51,6 +51,7 @@ $(document).ready(function() {
             })
             .map(function (json_object) {
                 var cardHTML = jsonObjectHomeTemplate({
+                    'url': '/object/view/'+json_object.id,
                     'name': json_object.name,
                     'description': json_object.description,
                     'organization': json_object.organization.name,
