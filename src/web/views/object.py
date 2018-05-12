@@ -40,7 +40,8 @@ def view(object_id=None):
     result = json.dumps(json_object.json_object,
                         sort_keys=True, indent=4, separators=(',', ': '))
     return render_template('view_json.html',
-                            json_object=result)
+                            json_object=json_object,
+                            json_object_pretty=result)
 
 
 @object_bp.route('/delete/<int:object_id>', methods=['GET'])

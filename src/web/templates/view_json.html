@@ -2,8 +2,25 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-             <pre class="prettyprint"><code>{{ json_object }}</code></pre>
+        <div class="col-md-3">
+            <b>Name</b>
+        </div>
+        <div class="col-md-7">
+            {{ json_object.name }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <b>Description</b>
+        </div>
+        <div class="col-md-7">
+            {{ json_object.description }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <br />
+            <pre class="prettyprint"><code>{{ json_object_pretty }}</code></pre>
         </div>
     </div>
 </div>
