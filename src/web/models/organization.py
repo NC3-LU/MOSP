@@ -12,10 +12,9 @@ class Organization(db.Model):
     """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True)
-    description = db.Column(db.String(), default='')
-    short_description = db.Column(db.String(400))
+    description = db.Column(db.String(500), default='')
     organization_type = db.Column(db.String(100), default='')
-    website = db.Column(db.String(), default='')
+    website = db.Column(db.String(100), default='')
     last_updated = db.Column(db.DateTime(), default=datetime.utcnow())
 
     # relationship

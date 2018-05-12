@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from sqlalchemy import or_
 
 from bootstrap import db
-from web.models import Schema, JsonObject, User, Organization
+from web.models import Schema, JsonObject, Organization
 
 schema_bp = Blueprint('schema_bp', __name__, url_prefix='/schema')
 schemas_bp = Blueprint('schemas_bp', __name__, url_prefix='/schemas')

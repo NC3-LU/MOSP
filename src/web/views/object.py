@@ -67,10 +67,8 @@ def edit_json(object_id=None):
     """
     action = "Edit an object"
     head_titles = [action]
-
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     schema = json_object.schema
-
     return render_template('edit_json.html', action=action,
                             head_titles=head_titles,
                             schema=schema,
@@ -141,7 +139,8 @@ def process_form(object_id=None):
     new_object = JsonObject(name=form.name.data,
                             description=form.description.data,
                             schema_id=form.schema_id.data,
-                            org_id=form.org_id.data)
+                            org_id=form.org_id.data,
+                            creator_id=current_user.id)
     db.session.add(new_object)
     try:
         db.session.commit()

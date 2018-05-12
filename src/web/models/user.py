@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     Represent a user.
     """
     id = db.Column(db.Integer, primary_key=True)
-    login = db.Column(db.String(), unique=True, nullable=False)
+    login = db.Column(db.String(30), unique=True, nullable=False)
     pwdhash = db.Column(db.String(), nullable=False)
     created_at = db.Column(db.DateTime(), default=datetime.utcnow())
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow())
@@ -29,14 +29,14 @@ class User(db.Model, UserMixin):
     is_admin = db.Column(db.Boolean(), default=False)
     is_api = db.Column(db.Boolean(), default=False)
 
-    # foreign keys
-    # org_id = db.Column(db.Integer(), db.ForeignKey('organization.id'),
-    #                        default=None)
-
     # relationships
-    organizations = db.relationship("Organization",
+    organizations = db.relationship('Organization',
                             secondary=lambda: association_table_organization,
-                            backref="users")
+                            backref='users')
+    objects = db.relationship('JsonObject', backref='creator', lazy='dynamic',
+                               cascade='all,delete-orphan')
+    schemas = db.relationship('Schema', backref='creator', lazy='dynamic',
+                               cascade='all,delete-orphan')
 
 
     def get_id(self):
