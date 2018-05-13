@@ -1,6 +1,6 @@
 {
   "name": "MOSP",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A platform to create, edit and share JSON objects.",
   "scripts": {
     "postinstall": "npm install --prefix node_modules/v3 bootstrap@3.3.7 ; cd src/web/static/ ; ln -sf ../../../node_modules npm_components"
