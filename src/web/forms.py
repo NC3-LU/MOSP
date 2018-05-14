@@ -75,3 +75,18 @@ class AddObjectForm(FlaskForm):
     org_id.choices = [(0, '')]
 
     submit = SubmitField("Save")
+
+
+class UserForm(FlaskForm):
+    """
+    Create or edit a user (for the administrator).
+    """
+    login = TextField("Login",
+            [validators.Length(min=3, max=30),
+            validators.Required("Please enter your login.")])
+    password = PasswordField("Password")
+    public_profile = BooleanField("Public profile", default=True)
+    is_active = BooleanField("Active", default=True)
+    is_admin = BooleanField("Admin", default=False)
+    is_api = BooleanField("API", default=False)
+    submit = SubmitField("Save")

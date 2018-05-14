@@ -42,6 +42,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{{ url_for('admin_bp.list_users') }}" title="Users"><i class="fa fa-user" aria-hidden="true">&nbsp;Users</i></a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/admin"><i class="fa fa-database" aria-hidden="true"></i>&nbsp;Data</a>
                         </div>
                     </li>

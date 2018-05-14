@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block head%}
+{{super()}}
+{% endblock %}
+{% block content %}
+<div class="container">
+<h1>Registered users</h1>
+<table id="table-users" class="table table-striped">
+<thead>
+    <tr>
+        <th>#</th>
+        <th>Login</th>
+        <th>Member since</th>
+        <th>Last seen</th>
+        <th>Actions</th>
+    </tr>
+</thead>
+<tbody>
+{% for user in users %}
+    <tr {% if not user.is_active  %}class="warning"{% endif %}>
+        <td>{{ loop.index }}</td>
+        <td><a href="{{ url_for("admin_bp.form_user", user_id=user.id) }}">{{ user.login  }}</a></td>
+        <td class="date">{{ user.created_at }}</td>
+        <td class="date">{{ user.last_seen }}</td>
+        <td><a href="{{ url_for("admin_bp.delete_user", user_id=user.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this user" onclick="return confirm('You are going to delete this account.');"></i></a></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+<a href="{{ url_for('admin_bp.form_user') }}" class="btn btn-default">Add a new user</a>
+</div>
+<script>
+$(document).ready(function() {
+$('#table-users').DataTable( {
+    responsive: true,
+    columnDefs: [
+        {
+            bSortable: false,
+            targets: [0, 5]
+        }
+    ]
+});
+});
+</script>
+{% endblock %}
