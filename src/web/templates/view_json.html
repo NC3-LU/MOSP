@@ -30,7 +30,7 @@
             <b>Validating JSON schema</b>
         </div>
         <div class="col-md-7">
-            <a href="{{ url_for('schema_bp.get', schema_id=json_object.schema.id) }}">{{ json_object.schema.name }}</a>
+            <a href="{{ url_for('schema_bp.get', schema_id=json_object.schema.id) }}">{{ json_object.schema.name }}</a> (provided by <a href="{{ url_for('organization_bp.get', organization_id=json_object.schema.organization.id) }}">{{ json_object.schema.organization.name }}</a>)
         </div>
     </div>
     <div class="row">
