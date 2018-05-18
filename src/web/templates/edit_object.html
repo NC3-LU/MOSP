@@ -2,58 +2,68 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-12">
             <h3>{{ action }}</h3>
             <p>validated by <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a></p>
         </div>
     </div>
-
-    <form action="" method="post" name="save" enctype="multipart/form-data">
-        {{ form.hidden_tag() }}
-        <div class="form-row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="{{ form.name.id }}" class="control-label">{{ form.name.label }}</label>
-                    <div>
-                        {{ form.name(class_="form-control") }}
+    <div class="row">
+        <div class="col-md-12">
+            <form action="" method="post" name="save" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="{{ form.name.id }}" class="control-label">{{ form.name.label }}</label>
+                            <div>
+                                {{ form.name(class_="form-control") }}
+                            </div>
+                            {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                        </div>
                     </div>
-                    {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
                 </div>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="{{ form.description.id }}" class="control-label">{{ form.description.label }}</label>
-                    <div>
-                        {{ form.description(class_="form-control") }}
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="{{ form.description.id }}" class="control-label">{{ form.description.label }}</label>
+                            <div>
+                                {{ form.description(class_="form-control") }}
+                            </div>
+                            {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                        </div>
                     </div>
-                    {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
                 </div>
-            </div>
-        </div>
 
-        <div class="form-group">
-            <label for="{{ form.org_id.id }}" class="control-label">{{ form.org_id.label }}</label>
-            <div>
-                {{ form.org_id(class_="form-control") }}
-            </div>
-            {% for error in form.org_id.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-        </div>
+                <div class="form-group">
+                    <label for="{{ form.org_id.id }}" class="control-label">{{ form.org_id.label }}</label>
+                    <div>
+                        {{ form.org_id(class_="form-control") }}
+                    </div>
+                    {% for error in form.org_id.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                </div>
 
-        <div class="form-group">
-            <label for="{{ form.is_public.id }}" class="control-label">{{ form.is_public.label }}</label>
-            <div>
-                {{ form.is_public(class_="form-control") }}
-            </div>
-            {% for error in form.is_public.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-        </div>
+                <div class="form-group">
+                    <label for="{{ form.is_public.id }}" class="control-label">{{ form.is_public.label }}</label>
+                    <div>
+                        {{ form.is_public(class_="form-control") }}
+                    </div>
+                    {% for error in form.is_public.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                </div>
 
-        <div class="form-group">
-            <div class="">
-                {{ form.submit(class_="btn btn-default") }}
-            </div>
+                <div class="form-group">
+                    <div class="">
+                        {{ form.submit(class_="btn btn-default") }}
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        {% if action == "Edit an object" %}
+            <td><a href="{{ url_for('object_bp.edit_json', object_id=object_id) }}">Edit the definition of the object</a></td>
+        {% endif %}
+        </div>
+    </div>
 </div><!-- /.container -->
 {% endblock %}

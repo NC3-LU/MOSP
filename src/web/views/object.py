@@ -127,7 +127,7 @@ def form(schema_id=None, object_id=None):
     head_titles = [action]
     head_titles.append(json_object.name)
     return render_template('edit_object.html', action=action,
-                           head_titles=head_titles,
+                           head_titles=head_titles, object_id=object_id,
                            form=form, schema=schema)
 
 
