@@ -6,7 +6,7 @@ var schemaHomeTemplate = _.template(
             '<h5 class="mb-1"><%= name %></h5>' +
             '<small>updated <%= last_update %></small>' +
         '</div>' +
-        '<p class="mb-1"><%= description %> by <%= organization %></p>' +
+        '<p class="mb-1 text-justify"><%= description %> by <%= organization %></p>' +
     '</a>');
 
 
@@ -16,5 +16,5 @@ var jsonObjectHomeTemplate = _.template(
             '<h5 class="mb-1"><%= name %></h5>' +
             '<small>updated <%= last_update %></small>' +
         '</div>' +
-        '<p class="mb-1"><%= description %> by <%= organization %></p>' +
+        '<p class="mb-1 text-justify"><%= description %> by <%= organization %></p>' +
     '</a>');
