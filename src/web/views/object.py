@@ -165,6 +165,8 @@ def process_form(object_id=None):
     db.session.add(new_object)
     try:
         db.session.commit()
+        flash("'{object_name}' successfully created.".
+              format(object_name=new_object.name), 'success')
     except Exception as e:
         # TODO: display the error
         return redirect(url_for('object_bp.form', object_id=new_object.id))
