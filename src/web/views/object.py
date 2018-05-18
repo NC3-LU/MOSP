@@ -34,8 +34,29 @@ def get_json_object(object_id):
 @check_object_view_permission
 def view(object_id=None):
     """
-    Display the JSON part of a JsonObject object.
+    Display the JSON part of a JsonObject object and some related informations.
     """
+    # res = JsonObject.query.filter(JsonObject.json_object[('values'), ('predicate')].astext == "source-type").first()
+
+    # res = JsonObject.query.filter(JsonObject.json_object[('predicates', 'value')].astext == 'lifetime').all()
+
+    # res = JsonObject.query.filter(JsonObject.json_object.has_all(['predicates', 'value'])).all()
+
+    # OK :
+    # res = JsonObject.query.filter(JsonObject.json_object.contains(
+    #                     {'predicates': [{'value': 'source-type'}]}
+    #                     )).all()
+    # OK :
+    # res = JsonObject.query.filter(JsonObject.json_object.contains(
+    #                     {'values': [{'entry': [{'value': 'news-report'}]}]}
+    #                     )).all()
+    # OK :
+    # res = JsonObject.query.filter(JsonObject.json_object[('namespace')].astext == 'osint').all()
+
+
+    # res = JsonObject.query.filter(JsonObject.json_object.has_any({'predicates': [{'value': 'source-type'}]})).first()
+    # print(res)
+
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     result = json.dumps(json_object.json_object,
                         sort_keys=True, indent=4, separators=(',', ': '))
