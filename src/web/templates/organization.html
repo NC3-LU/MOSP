@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <h4>Name</h4>
+            <h4>{{ _('Name') }}</h4>
         </div>
         <div class="col-md-7">
             {{ organization.name }}
@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <h4>Description</h4>
+            <h4>{{ _('Description') }}</h4>
         </div>
         <div class="col-md-7">
             {{ organization.description }}
@@ -19,7 +19,7 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <h4>Website</h4>
+            <h4>{{ _('Website') }}</h4>
         </div>
         <div class="col-md-7">
             <a href="{{ organization.website }}">{{ organization.website }}</a>
@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-md-10">
             <hr />
-            <h4>Shared JSON schemas</h4>
+            <h4>{{ _('Shared JSON schemas') }}</h4>
         </div>
     </div>
     <div class="row">
@@ -37,9 +37,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th># of objects validated by the schema</th>
-                        <th>Last updated</th>
+                        <th>{{ _('Name') }}</th>
+                        <th>{{ _('# of objects validated by the schema') }}</th>
+                        <th>{{ _('Last updated') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,7 +48,7 @@
                         <td>{{ loop.index }}</td>
                         <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
                         <td align="center">{{ schema.objects.count() }}</td>
-                        <td class="date">{{ schema.last_updated }}</td>
+                        <td class="date">{{ schema.last_updated | datetime }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

@@ -11,13 +11,13 @@ logger = logging.getLogger(__name__)
 
 @current_app.errorhandler(401)
 def authentication_required(error):
-    flash('Authentication required.', 'info')
+    flash(gettext('Authentication required.'), 'info')
     return redirect(url_for('login'))
 
 
 @current_app.errorhandler(403)
 def authentication_failed(error):
-    flash('Forbidden.', 'danger')
+    flash(gettext('Forbidden.'), 'danger')
     return redirect(url_for('login'))
 
 
@@ -49,9 +49,3 @@ def index():
 @current_app.route('/about', methods=['GET'])
 def about():
     return render_template('about.html')
-
-
-# @current_app.route('/editor', methods=['GET'])
-# @login_required
-# def editor():
-#     return render_template('editor.html')

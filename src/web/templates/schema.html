@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <b>Name of the schema</b>
+            <b>{{ _('Name of the schema') }}</b>
         </div>
         <div class="col-md-7">
             {{ schema.name }}
@@ -12,7 +12,7 @@
 
     <div class="row">
         <div class="col-md-3">
-            <b>Description</b>
+            <b>{{ _('Description') }}</b>
         </div>
         <div class="col-md-7">
             {{ schema.description }}
@@ -21,7 +21,7 @@
 
     <div class="row">
         <div class="col-md-3">
-            <b>Provided by</b>
+            <b>{{ _('Provided by') }}</b>
         </div>
         <div class="col-md-7">
             <a href="{{ url_for('organization_bp.get', organization_id=schema.organization.id) }}">{{ schema.organization.name }}</a>
@@ -32,7 +32,7 @@
 
     <div class="row">
         <div class="col-md-10">
-            <a href="{{ url_for('object_bp.form', schema_id=schema.id) }}" class="btn btn-primary">Create a new object with this schema</a>
+            <a href="{{ url_for('object_bp.form', schema_id=schema.id) }}" class="btn btn-primary">{{ _('Create a new object with this schema') }}</a>
         </div>
     </div>
 
@@ -40,20 +40,20 @@
 
     <div class="row">
         <div class="col-md-10">
-            <b>Objects validated by this schema</b>
+            <b>{{ _('Objects validated by this schema') }}</b>
             <table id="table-objects" class="table table-striped">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Organization</th>
-                        <th>Visibility</th>
-                        <th>Last updated</th>
-                        <th>View</th>
-                        <th>Edit</th>
-                        <th>Definition</th>
-                        <th>Object</th>
-                        <th>Delete</th>
+                        <th>{{ _('Name') }}</th>
+                        <th>{{ _('Organization') }}</th>
+                        <th>{{ _('Visibility') }}</th>
+                        <th>{{ _('Last updated') }}</th>
+                        <th>{{ _('View') }}</th>
+                        <th>{{ _('Edit') }}</th>
+                        <th>{{ _('Definition') }}</th>
+                        <th>{{ _('Object') }}</th>
+                        <th>{{ _('Delete') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,13 +62,13 @@
                         <td>{{ loop.index }}</td>
                         <td>{{ object.name  }}</td>
                         <td><a href="{{ url_for('organization_bp.get', organization_id=object.org_id) }}">{{ object.organization.name }}</a></td>
-                        <td>{{ 'Public' if object.is_public else 'Private' }}</td>
-                        <td class="date">{{ object.last_updated }}</td>
+                        <td>{{ _('Public') if object.is_public else _('Private') }}</td>
+                        <td class="date">{{ object.last_updated | datetime }}</td>
                         <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                         <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                         <td><a href="{{ url_for('object_bp.edit_json', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                         <td><a href="{{ url_for('object_bp.get_json_object', object_id=object.id) }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                        <td><a href="{{ url_for('object_bp.delete', object_id=object.id) }}"><i class="fa fa-trash" aria-hidden="true" onclick="return confirm('You are going to delete this object.');"></i></a></td>
+                        <td><a href="{{ url_for('object_bp.delete', object_id=object.id) }}"><i class="fa fa-trash" aria-hidden="true" onclick="return confirm(_('You are going to delete this object.'));"></i></a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

@@ -65,8 +65,8 @@ def process_user_form(user_id=None):
         if form.password.data:
             user.pwdhash = generate_password_hash(form.password.data)
         db.session.commit()
-        flash('User {user_login} successfully updated.'.
-              format(user_login=form.login.data), 'success')
+        flash(gettext('User %(user_login)s successfully updated.',
+                user_login=form.login.data), 'success')
         return redirect(url_for('admin_bp.form_user', user_id=user.id))
 
     # Create a new user
@@ -78,8 +78,8 @@ def process_user_form(user_id=None):
                            pwdhash=generate_password_hash(form.password.data))
     db.session.add(new_user)
     db.session.commit()
-    flash('User {user_login} successfully created.'.
-          format(user_login=new_user.login), 'success')
+    flash(gettext('User %(user_login)s successfully created.',
+            user_login=new_user.login), 'success')
 
     return redirect(url_for('admin_bp.form_user', user_id=new_user.id))
 
@@ -91,11 +91,11 @@ def delete_user(user_id=None):
     """Delete a user."""
     user = models.User.query.filter(models.User.id == user_id).first()
     if user.id == current_user.id:
-        flash('You can not delete your own user.', 'danger')
+        flash(gettext('You can not delete your own user.'), 'danger')
     else:
         db.session.delete(user)
         db.session.commit()
-        flash('User deleted.', 'success')
+        flash(gettext('User deleted.'), 'success')
     return redirect(url_for('admin_bp.list_users'))
 
 

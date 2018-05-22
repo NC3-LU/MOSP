@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-22 11:25+0200\n"
+"POT-Creation-Date: 2018-05-22 14:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,5 +27,143 @@ msgstr ""
 
 #: src/web/templates/layout.html:88
 msgid "Create, edit and share JSON objects"
+msgstr ""
+
+#: src/web/templates/login.html:9
+msgid "Log In"
+msgstr ""
+
+#: src/web/templates/organization.html:6 src/web/templates/organization.html:40
+#: src/web/templates/schema.html:48 src/web/templates/view_json.html:6
+msgid "Name"
+msgstr ""
+
+#: src/web/templates/organization.html:14 src/web/templates/schema.html:15
+#: src/web/templates/view_json.html:14
+msgid "Description"
+msgstr ""
+
+#: src/web/templates/organization.html:22
+msgid "Website"
+msgstr ""
+
+#: src/web/templates/organization.html:31
+msgid "Shared JSON schemas"
+msgstr ""
+
+#: src/web/templates/organization.html:41
+msgid "# of objects validated by the schema"
+msgstr ""
+
+#: src/web/templates/organization.html:42 src/web/templates/schema.html:51
+msgid "Last updated"
+msgstr ""
+
+#: src/web/templates/schema.html:6
+msgid "Name of the schema"
+msgstr ""
+
+#: src/web/templates/schema.html:24
+msgid "Provided by"
+msgstr ""
+
+#: src/web/templates/schema.html:35
+msgid "Create a new object with this schema"
+msgstr ""
+
+#: src/web/templates/schema.html:43
+msgid "Objects validated by this schema"
+msgstr ""
+
+#: src/web/templates/schema.html:49
+msgid "Organization"
+msgstr ""
+
+#: src/web/templates/schema.html:50
+msgid "Visibility"
+msgstr ""
+
+#: src/web/templates/schema.html:52
+msgid "View"
+msgstr ""
+
+#: src/web/templates/schema.html:53
+msgid "Edit"
+msgstr ""
+
+#: src/web/templates/schema.html:54
+msgid "Definition"
+msgstr ""
+
+#: src/web/templates/schema.html:55
+msgid "Object"
+msgstr ""
+
+#: src/web/templates/schema.html:56
+msgid "Delete"
+msgstr ""
+
+#: src/web/templates/schema.html:65
+msgid "Public"
+msgstr ""
+
+#: src/web/templates/schema.html:65
+msgid "Private"
+msgstr ""
+
+#: src/web/templates/user_objects.html:6
+msgid "Schemas in my organizations"
+msgstr ""
+
+#: src/web/templates/user_objects.html:11
+msgid "validates"
+msgstr ""
+
+#: src/web/templates/view_json.html:22
+msgid "Owning organization"
+msgstr ""
+
+#: src/web/templates/view_json.html:30
+msgid "Validating JSON schema"
+msgstr ""
+
+#: src/web/templates/view_json.html:33
+msgid "provided by"
+msgstr ""
+
+#: src/web/views/admin.py:68
+#, python-format
+msgid "User %(user_login)s successfully updated."
+msgstr ""
+
+#: src/web/views/admin.py:81
+#, python-format
+msgid "User %(user_login)s successfully created."
+msgstr ""
+
+#: src/web/views/admin.py:94
+msgid "You can not delete your own user."
+msgstr ""
+
+#: src/web/views/admin.py:98
+msgid "User deleted."
+msgstr ""
+
+#: src/web/views/object.py:154
+#, python-format
+msgid "%(object_name)s successfully updated."
+msgstr ""
+
+#: src/web/views/object.py:170
+#, python-format
+msgid "%(object_name)s successfully created."
+msgstr ""
+
+#: src/web/views/views.py:14
+msgid "Authentication required."
+msgstr ""
+
+#: src/web/views/views.py:20
+msgid "Forbidden."
 msgstr ""
 

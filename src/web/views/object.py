@@ -2,6 +2,7 @@ import json
 from flask import Blueprint, render_template, redirect, url_for, flash, \
                   request, abort, Response
 from flask_login import login_required, current_user
+from flask_babel import gettext
 
 from bootstrap import db, application
 from web.views.decorators import check_object_view_permission, check_object_edit_permission
@@ -150,9 +151,10 @@ def process_form(object_id=None):
         form.populate_obj(json_object)
         try:
             db.session.commit()
-            flash("'{object_name}' successfully updated.".
-                  format(object_name=form.name.data), 'success')
+            flash(gettext('%(object_name)s successfully updated.',
+                    object_name=form.name.data), 'success')
         except Exception as e:
+            print(e)
             form.name.errors.append('Name already exists.')
         return redirect(url_for('object_bp.form', object_id=json_object.id))
 
@@ -165,8 +167,8 @@ def process_form(object_id=None):
     db.session.add(new_object)
     try:
         db.session.commit()
-        flash("'{object_name}' successfully created.".
-              format(object_name=new_object.name), 'success')
+        flash(gettext('%(object_name)s successfully created.',
+                object_name=new_object.name), 'success')
     except Exception as e:
         # TODO: display the error
         return redirect(url_for('object_bp.form', object_id=new_object.id))
