@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-22 14:18+0200\n"
-"PO-Revision-Date: 2018-05-22 14:21+0200\n"
+"POT-Creation-Date: 2018-05-22 14:45+0200\n"
+"PO-Revision-Date: 2018-05-22 14:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
@@ -19,6 +19,79 @@ msgstr ""
 "Generated-By: Babel 2.5.3\n"
 "X-Generator: Poedit 2.0.6\n"
 
+#: src/web/forms.py:37 src/web/forms.py:85
+msgid "Login"
+msgstr "Identification"
+
+#: src/web/forms.py:39 src/web/forms.py:87
+msgid "Please enter your login."
+msgstr "Veuillez entrer votre identifiant."
+
+#: src/web/forms.py:40 src/web/forms.py:88
+msgid "Password"
+msgstr "Mot de passe"
+
+#: src/web/forms.py:41
+msgid "Please enter your password."
+msgstr "Veuillez entrer votre mot de passe."
+
+#: src/web/forms.py:43 src/web/templates/login.html:9
+msgid "Log In"
+msgstr "Connexion"
+
+#: src/web/forms.py:62
+msgid "Impossible to login."
+msgstr "Impossible de se connecter."
+
+#: src/web/forms.py:68
+msgid "Please enter a name"
+msgstr "S'il vous plaît entrer un nom"
+
+#: src/web/forms.py:69 src/web/templates/organization.html:14
+#: src/web/templates/schema.html:15 src/web/templates/view_json.html:14
+msgid "Description"
+msgstr "Description"
+
+#: src/web/forms.py:70
+msgid "Please enter a description"
+msgstr "S'il vous plaît entrer une description"
+
+#: src/web/forms.py:71
+msgid "Public object"
+msgstr "Objet public"
+
+#: src/web/forms.py:72
+msgid "Validated by"
+msgstr "Validé par"
+
+#: src/web/forms.py:73 src/web/templates/schema.html:49
+msgid "Organization"
+msgstr "Organisation"
+
+#: src/web/forms.py:74
+msgid "Please select an organization"
+msgstr "Veuillez sélectionner une organisation"
+
+#: src/web/forms.py:78 src/web/forms.py:93
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: src/web/forms.py:89
+msgid "Public profile"
+msgstr "Profil public"
+
+#: src/web/forms.py:90
+msgid "Active"
+msgstr "Actif"
+
+#: src/web/forms.py:91
+msgid "Admin"
+msgstr "Admin"
+
+#: src/web/forms.py:92
+msgid "API"
+msgstr "API"
+
 #: src/web/templates/index.html:10
 msgid "Recently updated schemas"
 msgstr "Schémas récemment mis à jour"
@@ -27,23 +100,34 @@ msgstr "Schémas récemment mis à jour"
 msgid "Recently updated objects"
 msgstr "Objets récemment mis à jour"
 
+#: src/web/templates/layout.html:43
+msgid "Administration"
+msgstr "Administration"
+
+#: src/web/templates/layout.html:45
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: src/web/templates/layout.html:47
+msgid "Data"
+msgstr "Données"
+
 #: src/web/templates/layout.html:88
 msgid "Create, edit and share JSON objects"
 msgstr "Créer, modifier et partager des objets JSON"
 
-#: src/web/templates/login.html:9
-msgid "Log In"
-msgstr "Connexion"
+#: src/web/templates/login.html:14
+msgid "Your login"
+msgstr "Votre identifiant"
+
+#: src/web/templates/login.html:21
+msgid "Your password"
+msgstr "Votre mot de passe"
 
 #: src/web/templates/organization.html:6 src/web/templates/organization.html:40
 #: src/web/templates/schema.html:48 src/web/templates/view_json.html:6
 msgid "Name"
 msgstr "Nom"
-
-#: src/web/templates/organization.html:14 src/web/templates/schema.html:15
-#: src/web/templates/view_json.html:14
-msgid "Description"
-msgstr "Description"
 
 #: src/web/templates/organization.html:22
 msgid "Website"
@@ -76,10 +160,6 @@ msgstr "Créer un nouvel objet avec ce schéma"
 #: src/web/templates/schema.html:43
 msgid "Objects validated by this schema"
 msgstr "Objets validés par ce schéma"
-
-#: src/web/templates/schema.html:49
-msgid "Organization"
-msgstr "Organisation"
 
 #: src/web/templates/schema.html:50
 msgid "Visibility"
@@ -160,6 +240,10 @@ msgstr "%(object_name)s mis à jour avec succès."
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr "%(object_name)s mis à jour avec succès."
+
+#: src/web/views/session_mgmt.py:22
+msgid "Please log in to access this page."
+msgstr "Veuillez vous connecter pour accéder à cette page."
 
 #: src/web/views/views.py:14
 msgid "Authentication required."

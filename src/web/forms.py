@@ -6,6 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import (TextField, TextAreaField, PasswordField, BooleanField,
                      SelectField, SubmitField, validators, HiddenField,
                      SelectMultipleField, HiddenField)
+from flask_babel import lazy_gettext
 
 from lib import misc_utils
 from web.models import User, Organization
@@ -33,13 +34,13 @@ class SigninForm(RedirectForm):
     """
     Sign in form.
     """
-    login = TextField("Login",
+    login = TextField(lazy_gettext('Login'),
             [validators.Length(min=3, max=30),
-            validators.Required("Please enter your login.")])
-    password = PasswordField('Password',
-            [validators.Required("Please enter a password."),
+            validators.Required(lazy_gettext('Please enter your login.'))])
+    password = PasswordField(lazy_gettext('Password'),
+            [validators.Required(lazy_gettext('Please enter your password.')),
              validators.Length(min=6, max=100)])
-    submit = SubmitField("Log In")
+    submit = SubmitField(lazy_gettext('Log In'))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -49,44 +50,44 @@ class SigninForm(RedirectForm):
         validated = super().validate()
         user = User.query.filter(User.login == self.login.data).first()
         if not user:
-            self.login.errors.append(
-                'Impossible to login.')
             validated = False
         else:
             if not user.is_active:
-                self.login.errors.append('Impossible to login.')
                 validated = False
             if not user.check_password(self.password.data):
-                self.password.errors.append('Impossible to login.')
                 validated = False
             self.user = user
+        if not validated:
+            # intentionaly do not explain why it is impossible to login
+            self.login.errors.append(lazy_gettext('Impossible to login.'))
         return validated
 
 
 class AddObjectForm(FlaskForm):
     name = TextField("Name",
-                    [validators.Required("Please enter a name")])
-    description = TextAreaField("Description",
-                    [validators.Required("Please enter a description")])
-    is_public = BooleanField("Public object", default=True)
-    schema_id = HiddenField("Validated by")
-    org_id = SelectField("Organization", [validators.Required("Please select an organization")],
-                                  coerce=int)
+                    [validators.Required(lazy_gettext('Please enter a name'))])
+    description = TextAreaField(lazy_gettext('Description'),
+                    [validators.Required(lazy_gettext('Please enter a description'))])
+    is_public = BooleanField(lazy_gettext('Public object'), default=True)
+    schema_id = HiddenField(lazy_gettext('Validated by'))
+    org_id = SelectField(lazy_gettext('Organization'),
+                    [validators.Required(lazy_gettext('Please select an organization'))],
+                    coerce=int)
     org_id.choices = [(0, '')]
 
-    submit = SubmitField("Save")
+    submit = SubmitField(lazy_gettext('Save'))
 
 
 class UserForm(FlaskForm):
     """
     Create or edit a user (for the administrator).
     """
-    login = TextField("Login",
+    login = TextField(lazy_gettext('Login'),
             [validators.Length(min=3, max=30),
-            validators.Required("Please enter your login.")])
-    password = PasswordField("Password")
-    public_profile = BooleanField("Public profile", default=True)
-    is_active = BooleanField("Active", default=True)
-    is_admin = BooleanField("Admin", default=False)
-    is_api = BooleanField("API", default=False)
-    submit = SubmitField("Save")
+            validators.Required(lazy_gettext('Please enter your login.'))])
+    password = PasswordField(lazy_gettext('Password'))
+    public_profile = BooleanField(lazy_gettext('Public profile'), default=True)
+    is_active = BooleanField(lazy_gettext('Active'), default=True)
+    is_admin = BooleanField(lazy_gettext('Admin'), default=False)
+    is_api = BooleanField(lazy_gettext('API'), default=False)
+    submit = SubmitField(lazy_gettext('Save'))

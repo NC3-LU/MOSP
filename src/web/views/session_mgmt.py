@@ -6,6 +6,7 @@ from flask_login import LoginManager, logout_user, login_required, current_user
 from flask_principal import (Principal, AnonymousIdentity, UserNeed,
                              identity_changed, identity_loaded,
                              session_identity_loader)
+from flask_babel import lazy_gettext
 
 from bootstrap import db
 from web.models import User
@@ -18,7 +19,7 @@ Principal(current_app)
 login_manager = LoginManager()
 login_manager.init_app(current_app)
 login_manager.login_view = 'login'
-login_manager.login_message = 'Please log in to access this page.'
+login_manager.login_message = lazy_gettext('Please log in to access this page.')
 login_manager.login_message_category = 'info'
 
 logger = logging.getLogger(__name__)

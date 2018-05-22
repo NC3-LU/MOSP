@@ -40,11 +40,11 @@
                     </li>
                     {% if current_user.is_admin %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ _('Administration') }}</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{{ url_for('admin_bp.list_users') }}" title="Users"><i class="fa fa-user" aria-hidden="true">&nbsp;Users</i></a>
+                            <a class="dropdown-item" href="{{ url_for('admin_bp.list_users') }}" title="Users"><i class="fa fa-user" aria-hidden="true">&nbsp;{{ _('Users') }}</i></a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/admin"><i class="fa fa-database" aria-hidden="true"></i>&nbsp;Data</a>
+                            <a class="dropdown-item" href="/admin"><i class="fa fa-database" aria-hidden="true"></i>&nbsp;{{ _('Data') }}</a>
                         </div>
                     </li>
                     {% endif %}

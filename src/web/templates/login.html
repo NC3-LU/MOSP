@@ -11,14 +11,14 @@
                         {{ form.hidden_tag() }}
 
                         <div class="form-group">
-                        {{ form.login(class_="form-control", placeholder='Your login') }}
+                        {{ form.login(class_="form-control", placeholder=_('Your login')) }}
                         </div>
                         {% for message in form.login.errors %}
                             <div class="alert alert-warning" role="alert">{{ message }}</div>
                         {% endfor %}
 
                         <div class="form-group">
-                        {{ form.password(class_="form-control", placeholder='Your Password') }}
+                        {{ form.password(class_="form-control", placeholder=_('Your password')) }}
                         </div>
                         {% for message in form.password.errors %}
                             <div class="alert alert-warning" role="alert">{{ message }}</div>

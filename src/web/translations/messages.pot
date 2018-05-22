@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-22 14:18+0200\n"
+"POT-Creation-Date: 2018-05-22 14:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,79 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.5.3\n"
+
+#: src/web/forms.py:37 src/web/forms.py:85
+msgid "Login"
+msgstr ""
+
+#: src/web/forms.py:39 src/web/forms.py:87
+msgid "Please enter your login."
+msgstr ""
+
+#: src/web/forms.py:40 src/web/forms.py:88
+msgid "Password"
+msgstr ""
+
+#: src/web/forms.py:41
+msgid "Please enter your password."
+msgstr ""
+
+#: src/web/forms.py:43 src/web/templates/login.html:9
+msgid "Log In"
+msgstr ""
+
+#: src/web/forms.py:62
+msgid "Impossible to login."
+msgstr ""
+
+#: src/web/forms.py:68
+msgid "Please enter a name"
+msgstr ""
+
+#: src/web/forms.py:69 src/web/templates/organization.html:14
+#: src/web/templates/schema.html:15 src/web/templates/view_json.html:14
+msgid "Description"
+msgstr ""
+
+#: src/web/forms.py:70
+msgid "Please enter a description"
+msgstr ""
+
+#: src/web/forms.py:71
+msgid "Public object"
+msgstr ""
+
+#: src/web/forms.py:72
+msgid "Validated by"
+msgstr ""
+
+#: src/web/forms.py:73 src/web/templates/schema.html:49
+msgid "Organization"
+msgstr ""
+
+#: src/web/forms.py:74
+msgid "Please select an organization"
+msgstr ""
+
+#: src/web/forms.py:78 src/web/forms.py:93
+msgid "Save"
+msgstr ""
+
+#: src/web/forms.py:89
+msgid "Public profile"
+msgstr ""
+
+#: src/web/forms.py:90
+msgid "Active"
+msgstr ""
+
+#: src/web/forms.py:91
+msgid "Admin"
+msgstr ""
+
+#: src/web/forms.py:92
+msgid "API"
+msgstr ""
 
 #: src/web/templates/index.html:10
 msgid "Recently updated schemas"
@@ -25,22 +98,33 @@ msgstr ""
 msgid "Recently updated objects"
 msgstr ""
 
+#: src/web/templates/layout.html:43
+msgid "Administration"
+msgstr ""
+
+#: src/web/templates/layout.html:45
+msgid "Users"
+msgstr ""
+
+#: src/web/templates/layout.html:47
+msgid "Data"
+msgstr ""
+
 #: src/web/templates/layout.html:88
 msgid "Create, edit and share JSON objects"
 msgstr ""
 
-#: src/web/templates/login.html:9
-msgid "Log In"
+#: src/web/templates/login.html:14
+msgid "Your login"
+msgstr ""
+
+#: src/web/templates/login.html:21
+msgid "Your password"
 msgstr ""
 
 #: src/web/templates/organization.html:6 src/web/templates/organization.html:40
 #: src/web/templates/schema.html:48 src/web/templates/view_json.html:6
 msgid "Name"
-msgstr ""
-
-#: src/web/templates/organization.html:14 src/web/templates/schema.html:15
-#: src/web/templates/view_json.html:14
-msgid "Description"
 msgstr ""
 
 #: src/web/templates/organization.html:22
@@ -73,10 +157,6 @@ msgstr ""
 
 #: src/web/templates/schema.html:43
 msgid "Objects validated by this schema"
-msgstr ""
-
-#: src/web/templates/schema.html:49
-msgid "Organization"
 msgstr ""
 
 #: src/web/templates/schema.html:50
@@ -157,6 +237,10 @@ msgstr ""
 #: src/web/views/object.py:170
 #, python-format
 msgid "%(object_name)s successfully created."
+msgstr ""
+
+#: src/web/views/session_mgmt.py:22
+msgid "Please log in to access this page."
 msgstr ""
 
 #: src/web/views/views.py:14
