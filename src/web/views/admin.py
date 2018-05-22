@@ -90,8 +90,12 @@ def process_user_form(user_id=None):
 def delete_user(user_id=None):
     """Delete a user."""
     user = models.User.query.filter(models.User.id == user_id).first()
-    db.session.delete(user)
-    db.session.commit()
+    if user.id == current_user.id:
+        flash('You can not delete your own user.', 'danger')
+    else:
+        db.session.delete(user)
+        db.session.commit()
+        flash('User deleted.', 'success')
     return redirect(url_for('admin_bp.list_users'))
 
 
