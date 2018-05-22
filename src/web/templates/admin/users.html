@@ -20,8 +20,8 @@
     <tr {% if not user.is_active  %}class="warning"{% endif %}>
         <td>{{ loop.index }}</td>
         <td><a href="{{ url_for("admin_bp.form_user", user_id=user.id) }}">{{ user.login  }}</a></td>
-        <td class="date">{{ user.created_at }}</td>
-        <td class="date">{{ user.last_seen }}</td>
+        <td class="date">{{ user.created_at | datetime }}</td>
+        <td class="date">{{ user.last_seen | datetime }}</td>
         <td>{% if current_user.id != user.id %}
             <a href="{{ url_for("admin_bp.delete_user", user_id=user.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this user" onclick="return confirm('You are going to delete this account.');"></i></a>
             {% endif %}

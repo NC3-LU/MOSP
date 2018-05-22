@@ -9,7 +9,7 @@ import logging
 import flask_restless
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
-from flask_babel import Babel, gettext
+from flask_babel import Babel, gettext, format_datetime
 
 # from flask_mail import Mail
 
@@ -79,6 +79,7 @@ def datetimeformat(value, format='%Y-%m-%d %H:%M'):
 #     return request.url_root.replace('http', 'https').strip("/")
 
 application.jinja_env.filters['datetimeformat'] = datetimeformat
+application.jinja_env.filters['datetime'] = format_datetime
 # application.jinja_env.filters['instance_domain_name'] = instance_domain_name
 
 
