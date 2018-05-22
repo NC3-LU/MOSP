@@ -22,6 +22,7 @@ Flask-paginate = "*"
 Flask-Mail = "*"
 WTForms = "*"
 validate_email = "*"
+flask-babel = "*"
 
 [dev-packages]
 sqlalchemy-schemadisplay = "*"

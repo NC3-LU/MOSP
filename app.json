@@ -1,0 +1,32 @@
+{
+    "name": "MOSP",
+    "description": "A platform to create, edit and share JSON objects.",
+    "keywords": [
+        "MOSP",
+        "json",
+        "json-schema"
+    ],
+    "website": "https://github.com/cedricbonhomme/MOSP",
+    "repository": "https://github.com/cedricbonhomme/MOSP",
+    "scripts": {
+        "postdeploy": "pybabel compile -d src/web/translations"
+    },
+    "addons": [
+        "heroku-postgresql:hobby-dev"
+    ],
+    "buildpacks": [
+        {
+            "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+        },
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "env": {
+        "APPLICATION_SETTINGS": {
+            "description": "Configuration file for Heroku",
+            "required": true,
+            "value": "heroku.cfg"
+        },
+    }
+}

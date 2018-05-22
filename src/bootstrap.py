@@ -6,10 +6,12 @@
 import os
 import errno
 import logging
+import flask_restless
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
-import flask_restless
-from flask_mail import Mail
+from flask_babel import Babel, gettext
+
+# from flask_mail import Mail
 
 
 def set_logging(log_path=None, log_level=logging.INFO, modules=(),
@@ -49,7 +51,25 @@ application.config.from_pyfile(os.environ.get(
                                'APPLICATION_SETTINGS',
                                'development.cfg'), silent=False)
 db = SQLAlchemy(application)
-mail = Mail(application)
+# mail = Mail(application)
+
+babel = Babel(application)
+@babel.localeselector
+def get_locale():
+    # if a user is logged in, use the locale from the user settings
+    # user = getattr(g, 'user', None)
+    # if user is not None:
+    #     return user.locale
+    # otherwise try to guess the language from the user accept
+    # header the browser transmits.  We support de/fr/en in this
+    # example.  The best match wins.
+    return request.accept_languages.best_match(['fr', 'en'])
+
+# @babel.timezoneselector
+# def get_timezone():
+#     user = getattr(g, 'user', None)
+#     if user is not None:
+#         return user.timezone
 
 
 # Jinja filters

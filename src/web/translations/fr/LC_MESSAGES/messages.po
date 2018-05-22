@@ -1,0 +1,32 @@
+# French translations for PROJECT.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-05-22 11:25+0200\n"
+"PO-Revision-Date: 2018-05-22 11:26+0200\n"
+"Last-Translator: \n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.5.3\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: src/web/templates/index.html:10
+msgid "Recently updated schemas"
+msgstr "Schémas récemment mis à jour"
+
+#: src/web/templates/index.html:14
+msgid "Recently updated objects"
+msgstr "Objets récemment mis à jour"
+
+#: src/web/templates/layout.html:88
+msgid "Create, edit and share JSON objects"
+msgstr "Créer, modifier et partager des objets JSON"
