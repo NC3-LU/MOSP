@@ -7,6 +7,7 @@ from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.menu import MenuLink
 from werkzeug import generate_password_hash
+from flask_babel import gettext
 
 from bootstrap import db
 from web.views.common import admin_permission

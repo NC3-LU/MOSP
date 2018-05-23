@@ -1,7 +1,4 @@
 {% extends "layout.html" %}
-{% block head%}
-{{super()}}
-{% endblock %}
 {% block content %}
 <div class="container">
 <h1>{{ _('Registered users') }}</h1>
@@ -23,7 +20,7 @@
         <td class="date">{{ user.created_at | datetime }}</td>
         <td class="date">{{ user.last_seen | datetime }}</td>
         <td>{% if current_user.id != user.id %}
-            <a href="{{ url_for("admin_bp.delete_user", user_id=user.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this user" onclick="return confirm({{ _('You are going to delete this account.') }});"></i></a>
+            <a href="{{ url_for("admin_bp.delete_user", user_id=user.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this user" onclick="return confirm(_('You are going to delete this account.'));"></i></a>
             {% endif %}
         </td>
     </tr>
