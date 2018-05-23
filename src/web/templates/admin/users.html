@@ -27,6 +27,7 @@
 {% endfor %}
 </tbody>
 </table>
+<br />
 <a href="{{ url_for('admin_bp.form_user') }}" class="btn btn-default">{{ _('Add a new user') }}</a>
 </div>
 <script>
@@ -36,7 +37,7 @@ $('#table-users').DataTable( {
     columnDefs: [
         {
             bSortable: false,
-            targets: [0, 5]
+            targets: [0, 4]
         }
     ]
 });

@@ -7,6 +7,7 @@
 
     {% block head_css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/font-awesome/css/font-awesome.min.css') }}">
     {% endblock %}
@@ -14,6 +15,8 @@
     <script src="{{ url_for('static', filename='npm_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='npm_components/popper.js/dist/umd/popper.min.js') }}"></script>
     <script src="{{ url_for('static', filename='npm_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='npm_components/datatables.net/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ url_for('static', filename='npm_components/datatables.net-bs4/js/dataTables.bootstrap4.js') }}"></script>
     <script src="{{ url_for('static', filename='npm_components/lodash/lodash.min.js') }}"></script>
     <script src="{{ url_for('static', filename='npm_components/moment/min/moment.min.js') }}"></script>
     <script src="{{ url_for('static', filename='npm_components/code-prettify/loader/run_prettify.js') }}"></script>

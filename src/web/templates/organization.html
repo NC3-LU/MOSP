@@ -56,4 +56,17 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+$('#table-schemas').DataTable( {
+    responsive: true,
+    columnDefs: [
+        {
+            bSortable: false,
+            targets: [0]
+        }
+    ]
+});
+});
+</script>
 {% endblock %}
