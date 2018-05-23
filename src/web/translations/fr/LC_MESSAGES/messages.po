@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-22 14:45+0200\n"
-"PO-Revision-Date: 2018-05-22 14:45+0200\n"
+"POT-Creation-Date: 2018-05-23 07:50+0200\n"
+"PO-Revision-Date: 2018-05-23 07:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
@@ -193,13 +193,17 @@ msgstr "Public"
 msgid "Private"
 msgstr "Privé"
 
-#: src/web/templates/user_objects.html:6
+#: src/web/templates/user_schemas.html:6
 msgid "Schemas in my organizations"
 msgstr "Schémas dans mes organisations"
 
-#: src/web/templates/user_objects.html:11
+#: src/web/templates/user_schemas.html:11
 msgid "validates"
 msgstr "valide"
+
+#: src/web/templates/user_schemas.html:11
+msgid "objects"
+msgstr "objets"
 
 #: src/web/templates/view_json.html:22
 msgid "Owning organization"

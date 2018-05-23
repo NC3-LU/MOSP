@@ -8,7 +8,7 @@
                 <h4><a href="{{ url_for('organization_bp.get', organization_id=org.id) }}">{{ org.name }}</a></h4>
                 <ul>
                 {% for schema in org.schemas %}
-                    <li><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a> - {{ _('validates') }} {{ schema.objects.count() }} objects</li>
+                    <li><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a> - {{ _('validates') }} {{ schema.objects.count() }} {{ _('objects') }}</li>
                 {% endfor %}
                 </ul>
             {% endfor  %}
