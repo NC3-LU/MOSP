@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-23 07:50+0200\n"
+"POT-Creation-Date: 2018-05-23 07:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Generated-By: Babel 2.5.3\n"
 
 #: src/web/forms.py:37 src/web/forms.py:85
+#: src/web/templates/admin/users.html:12
 msgid "Login"
 msgstr ""
 
@@ -213,6 +214,30 @@ msgstr ""
 
 #: src/web/templates/view_json.html:33
 msgid "provided by"
+msgstr ""
+
+#: src/web/templates/admin/users.html:7
+msgid "Registered users"
+msgstr ""
+
+#: src/web/templates/admin/users.html:13
+msgid "Member since"
+msgstr ""
+
+#: src/web/templates/admin/users.html:14
+msgid "Last seen"
+msgstr ""
+
+#: src/web/templates/admin/users.html:15
+msgid "Actions"
+msgstr ""
+
+#: src/web/templates/admin/users.html:26
+msgid "You are going to delete this account."
+msgstr ""
+
+#: src/web/templates/admin/users.html:33
+msgid "Add a new user"
 msgstr ""
 
 #: src/web/views/admin.py:68

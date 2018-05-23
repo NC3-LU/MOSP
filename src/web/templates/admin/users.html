@@ -4,15 +4,15 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-<h1>Registered users</h1>
+<h1>{{ _('Registered users') }}</h1>
 <table id="table-users" class="table table-striped">
 <thead>
     <tr>
         <th>#</th>
-        <th>Login</th>
-        <th>Member since</th>
-        <th>Last seen</th>
-        <th>Actions</th>
+        <th>{{ _('Login') }}</th>
+        <th>{{ _('Member since') }}</th>
+        <th>{{ _('Last seen') }}</th>
+        <th>{{ _('Actions') }}</th>
     </tr>
 </thead>
 <tbody>
@@ -23,14 +23,14 @@
         <td class="date">{{ user.created_at | datetime }}</td>
         <td class="date">{{ user.last_seen | datetime }}</td>
         <td>{% if current_user.id != user.id %}
-            <a href="{{ url_for("admin_bp.delete_user", user_id=user.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this user" onclick="return confirm('You are going to delete this account.');"></i></a>
+            <a href="{{ url_for("admin_bp.delete_user", user_id=user.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this user" onclick="return confirm({{ _('You are going to delete this account.') }});"></i></a>
             {% endif %}
         </td>
     </tr>
 {% endfor %}
 </tbody>
 </table>
-<a href="{{ url_for('admin_bp.form_user') }}" class="btn btn-default">Add a new user</a>
+<a href="{{ url_for('admin_bp.form_user') }}" class="btn btn-default">{{ _('Add a new user') }}</a>
 </div>
 <script>
 $(document).ready(function() {
