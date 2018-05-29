@@ -23,6 +23,9 @@
         <li class="nav-item">
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Options</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" id="schema-tab" data-toggle="tab" href="#schema" role="tab" aria-controls="schema" aria-selected="false">Schema</a>
+        </li>
     </ul>
 
     <div class="tab-content" id="myTabContent">
@@ -91,6 +94,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="tab-pane fade" id="schema" role="tabpanel" aria-labelledby="schema-tab">
+            <div class='row'>
+                <div class='col-md-8'>
+                    <br />
+                    <pre class="prettyprint"><code id="schema_code"></code></pre>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script>
@@ -130,6 +142,8 @@ function initialize_editor_with_schema(schema, json_object) {
         schema = {
         }
     }
+
+    document.getElementById('schema_code').textContent = JSON.stringify(schema, null, 4);
 
     // Divs/textareas on the page
     var $schema = schema;
