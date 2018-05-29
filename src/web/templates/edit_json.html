@@ -6,8 +6,13 @@
 {% block content %}
 <div class='container-fluid'>
     <div class='row'>
-        <div class='col-md-12'>
+        <div class='col-md-10'>
             <h1>{{ json_object.name }}</h1>
+        </div>
+        <div class='col-md-2 text-right'>
+            <button class='btn btn-success' id='saveobject' title="Save the object"><i class="fa fa-save" aria-hidden="true"></i></button>
+            <a class='btn btn-success' href="{{ url_for('object_bp.form', object_id=json_object.id) }}" title="Edit the object"><i class="fa fa-edit" aria-hidden="true"></i></a>
+            <a class='btn btn-success' href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}" title="Get the object"><i class="fa fa-download" aria-hidden="true"></i></a>
         </div>
     </div>
 
@@ -29,10 +34,6 @@
                 </div>
                 <div class='col-md-3 columns four large-3'>
                     <br />
-                    <button class='btn btn-success' id='saveobject' title="Save the object"><i class="fa fa-save" aria-hidden="true"></i></button>
-                    <a class='btn btn-success' href="{{ url_for('object_bp.form', object_id=json_object.id) }}" title="Edit the object"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                    <a class='btn btn-success' href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}" title="Get the object"><i class="fa fa-download" aria-hidden="true"></i></a>
-                    <br /><br />
                     <h2>JSON Output</h2>
                     <p>You can also make changes to the JSON below.</p>
                     <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;' class='form-control'></textarea>
