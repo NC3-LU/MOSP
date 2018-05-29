@@ -4,10 +4,10 @@
 <script src="{{ url_for('static', filename='npm_components/@json-editor/json-editor/dist/jsoneditor.min.js') }}"></script>
 {% endblock %}
 {% block content %}
-<div class='container'>
+<div class='container-fluid'>
     <div class='row'>
         <div class='col-md-12'>
-            <h3>{{ json_object.name }}</h3>
+            <h1>{{ json_object.name }}</h1>
         </div>
     </div>
     <div class='row'>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class='row'>
-        <div class='col-md-12'>
+        <div class='col-md-4'>
             <h2>Options</h2>
             <div id='options_holder'>
                 <div>
@@ -138,6 +138,7 @@ function initialize_editor_with_schema(schema, json_object) {
             ajax: true,
 
             theme: "bootstrap4",
+            iconlib: "fontawesome4",
         });
         window.jsoneditor = jsoneditor;
 
@@ -150,10 +151,10 @@ function initialize_editor_with_schema(schema, json_object) {
             var validation_errors = jsoneditor.validate();
             // Show validation errors if there are any
             if(validation_errors.length) {
-                $validate.value = JSON.stringify(validation_errors,null,2);
+                $validate.value = JSON.stringify(validation_errors, null, 2);
             }
             else {
-                $validate.value = 'valid';
+                $validate.value = 'Object is valid.';
             }
 
         });
