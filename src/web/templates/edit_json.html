@@ -129,7 +129,7 @@ function initialize_editor_with_schema(schema, json_object) {
         var startval = (jsoneditor && keep_value)? jsoneditor.getValue() : window.startval;
         window.startval = undefined;
 
-        if(jsoneditor) jsoneditor.destroy();
+        if (jsoneditor) jsoneditor.destroy();
         jsoneditor = new JSONEditor($editor, {
             schema: schema,
             startval: startval,
@@ -137,8 +137,6 @@ function initialize_editor_with_schema(schema, json_object) {
             // Enable fetching schemas via ajax
             ajax: true,
 
-            object_layout: "grid",
-            grid_columns: 2,
             theme: "bootstrap4",
         });
         window.jsoneditor = jsoneditor;
