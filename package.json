@@ -8,13 +8,13 @@
   "author": "Cédric Bonhomme",
   "license": "AGPL-3.0-or-later",
   "dependencies": {
+    "@json-editor/json-editor": "^1.0.0",
     "bootstrap": "^4.0.1",
     "code-prettify": "^0.1.0",
     "datatables": "^1.10.13",
     "datatables.net-bs4": "^1.10.16",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
-    "json-editor": "git+https://github.com/json-editor/json-editor.git#feature/testing",
     "lodash": "^4.17.10",
     "moment": "^2.22.1",
     "popper.js": "^1.14.1"
