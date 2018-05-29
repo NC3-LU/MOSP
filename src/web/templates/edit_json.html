@@ -1,11 +1,6 @@
 {% extends "layout.html" %}
 {% block head %}
 {{ super() }}
-<!-- overwrite Bootstrap 4 with Bootstrap 3.3.7 for json-editor -->
-<link rel="stylesheet" href="{{ url_for('static', filename='npm_components/v3/node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='npm_components/font-awesome/css/font-awesome.min.css') }}">
-
 <script src="{{ url_for('static', filename='npm_components/@json-editor/json-editor/dist/jsoneditor.min.js') }}"></script>
 {% endblock %}
 {% block content %}
@@ -86,7 +81,7 @@ $(document).ready(function() {
             dataType: "json",
             contentType: "application/json",
             success: function(result) {
-
+                alert('Object updated.');
             }
         });
     });
@@ -123,7 +118,7 @@ function initialize_editor_with_schema(schema, json_object) {
     var $set_value_button = document.getElementById('setvalue');
 
     // Default theme
-    JSONEditor.defaults.options.theme = 'bootstrap3';
+    JSONEditor.defaults.options.theme = 'bootstrap4';
     JSONEditor.defaults.options.iconlib = 'fontawesome4';
 
     window.startval = json_object;

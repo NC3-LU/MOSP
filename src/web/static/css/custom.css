@@ -18,6 +18,11 @@ img {
     border: none;
     color: white;
 }
+.btn-secondary {
+    background-color: #6B5B95;
+    border: none;
+    color: white;
+}
 .btn-default {
     background-color: #6B5B95;
     border: none;
