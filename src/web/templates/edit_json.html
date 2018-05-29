@@ -10,62 +10,85 @@
             <h1>{{ json_object.name }}</h1>
         </div>
     </div>
-    <div class='row'>
-        <div class='col-md-8 columns eight large-8'>
-            <div id='editor'></div>
-        </div>
-        <div class='col-md-4 columns four large-4'>
-            <button class='btn btn-success' id='saveobject' title="Save the object"><i class="fa fa-save" aria-hidden="true"></i></button>
-            <a class='btn btn-success' href="{{ url_for('object_bp.form', object_id=json_object.id) }}" title="Edit the object"><i class="fa fa-edit" aria-hidden="true"></i></a>
-            <a class='btn btn-success' href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}" title="Get the object"><i class="fa fa-download" aria-hidden="true"></i></a>
-            <h2>JSON Output</h2>
-            <p>You can also make changes to the JSON below.</p>
-            <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;' class='form-control'></textarea>
-            <button class='btn btn-success' id='setvalue'>Update Form</button>
-            <h2>Validation</h2>
-            <p>This will update whenever the form changes to show validation errors if there are any.</p>
-            <textarea id='validate' style='width: 100%; height: 100px; font-family: monospace;' readonly disabled class='form-control'></textarea>
-        </div>
-    </div>
-    <div class='row'>
-        <div class='col-md-4'>
-            <h2>Options</h2>
-            <div id='options_holder'>
-                <div>
-                    <label>Object Layout</label>
-                    <select id='object_layout' class='form-control'>
-                        <option value='normal'>normal</option>
-                        <option value='grid'>grid</option>
-                    </select>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="editobject-tab" data-toggle="tab" href="#editobject" role="tab" aria-controls="editobject" aria-selected="true">Editor</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Options</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="editobject" role="tabpanel" aria-labelledby="editobject-tab">
+            <div class='row'>
+                <div class='col-md-6 columns eight large-8'>
+                    <br />
+                    <div id='editor'></div>
                 </div>
-                <div>
-                    <label>Show Errors</label>
-                    <select id='show_errors' class='form-control'>
-                        <option value='interaction'>On Interaction</option>
-                        <option value='change'>On Field Change</option>
-                        <option value='always'>Always</option>
-                        <option value='never'>Never</option>
-                    </select>
+                <div class='col-md-3 columns four large-3'>
+                    <br />
+                    <button class='btn btn-success' id='saveobject' title="Save the object"><i class="fa fa-save" aria-hidden="true"></i></button>
+                    <a class='btn btn-success' href="{{ url_for('object_bp.form', object_id=json_object.id) }}" title="Edit the object"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                    <a class='btn btn-success' href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}" title="Get the object"><i class="fa fa-download" aria-hidden="true"></i></a>
+                    <br /><br />
+                    <h2>JSON Output</h2>
+                    <p>You can also make changes to the JSON below.</p>
+                    <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;' class='form-control'></textarea>
+                    <br />
+                    <button class='btn btn-success' id='setvalue'>Update Form</button>
                 </div>
-                <div>
-                    <label>Boolean options</label>
-                    <select multiple id='boolean_options' class='form-control'>
-                        <option value='required_by_default'>Object properties required by default</option>
-                        <option value='display_required_only'>Only show required properties by default</option>
-                        <option value='no_additional_properties'>No additional object properties</option>
-                        <option value='ajax'>Allow loading schemas via Ajax</option>
-                        <option value='disable_edit_json'>Disable "Edit JSON" buttons</option>
-                        <option value='disable_collapse'>Disable collapse buttons</option>
-                        <option value='disable_properties'>Disable properties buttons</option>
-                        <option value='disable_array_add'>Disable array add buttons</option>
-                        <option value='disable_array_reorder'>Disable array move buttons</option>
-                        <option value='disable_array_delete'>Disable array delete buttons</option>
-                        <option value='disable_array_delete_all_rows'>Disable array delete all rows buttons</option>
-                        <option value='disable_array_delete_last_row'>Disable array delete last row buttons</option>
-                    </select>
+                <div class='col-md-3 columns four large-3'>
+                    <br />
+                    <h2>Validation</h2>
+                    <p>This will update whenever the form changes to show validation errors if there are any.</p>
+                    <textarea id='validate' style='width: 100%; height: 100px; font-family: monospace;' readonly disabled class='form-control'></textarea>
                 </div>
             </div>
-            <br /><hr /><br />
+        </div>
+
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class='row'>
+                <div class='col-md-4'>
+                    <br />
+                    <div id='options_holder'>
+                        <div>
+                            <label>Object Layout</label>
+                            <select id='object_layout' class='form-control'>
+                                <option value='normal'>normal</option>
+                                <option value='grid'>grid</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Show Errors</label>
+                            <select id='show_errors' class='form-control'>
+                                <option value='interaction'>On Interaction</option>
+                                <option value='change'>On Field Change</option>
+                                <option value='always'>Always</option>
+                                <option value='never'>Never</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Boolean options</label>
+                            <select multiple id='boolean_options' class='form-control'>
+                                <option value='required_by_default'>Object properties required by default</option>
+                                <option value='display_required_only'>Only show required properties by default</option>
+                                <option value='no_additional_properties'>No additional object properties</option>
+                                <option value='ajax'>Allow loading schemas via Ajax</option>
+                                <option value='disable_edit_json'>Disable "Edit JSON" buttons</option>
+                                <option value='disable_collapse'>Disable collapse buttons</option>
+                                <option value='disable_properties'>Disable properties buttons</option>
+                                <option value='disable_array_add'>Disable array add buttons</option>
+                                <option value='disable_array_reorder'>Disable array move buttons</option>
+                                <option value='disable_array_delete'>Disable array delete buttons</option>
+                                <option value='disable_array_delete_all_rows'>Disable array delete all rows buttons</option>
+                                <option value='disable_array_delete_last_row'>Disable array delete last row buttons</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
