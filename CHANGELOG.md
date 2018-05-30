@@ -1,6 +1,20 @@
 MOSP Changelog
 ==============
 
+## 0.2.0 (2018-05-30)
+
+- the JSONB PostgreSQL type is now used instead of the JSON type;
+- the JSON editor has been upgraded and is now properly working with
+  Bootstrap 4.1;
+- the interface to edit JSON data has been revamped and is a lot cleaner;
+- DataTables is now used for all tables;
+- a new interface displays all the JSON schemas in the organization(s) of a
+  user;
+- a panel to manage users of the platform has been added;
+- the Web interface is internationalized in French (80% of strings are actually
+  translated);
+- various UI improvements.
+
 ## 0.1.0 (2018-05-13)
 
 - first beta release of MOSP;
