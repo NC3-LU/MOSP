@@ -69,3 +69,5 @@ $ heroku ps:scale web=1
 
 This software is licensed under
 [GNU Affero General Public License version 3](https://www.gnu.org/licenses/agpl-3.0.html)
+
+Copyright (C) 2018 Cédric Bonhomme
