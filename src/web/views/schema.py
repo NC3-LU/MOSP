@@ -1,3 +1,4 @@
+import json
 from flask import Blueprint, render_template, redirect, url_for, flash, \
                     request, abort
 from flask_login import login_required, current_user
@@ -103,9 +104,10 @@ def process_form(schema_id=None):
         return redirect(url_for('schema_bp.form', schema_id=schema.id))
 
     # Create a new schema
+    schema_json_obj = json.loads(form.json_schema.data)
     new_schema = Schema(name=form.name.data,
                         description=form.description.data,
-                        json_schema=form.json_schema.data,
+                        json_schema=schema_json_obj,
                         org_id=form.org_id.data,
                         creator_id=current_user.id)
     db.session.add(new_schema)
