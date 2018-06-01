@@ -87,9 +87,9 @@ def process_form(schema_id=None):
                                                     current_user.organizations])
 
     if not form.validate():
-        return render_template('edit_object.html', form=form)
+        return render_template('edit_schema.html', form=form)
 
-    # Edit an existing JsonObject
+    # Edit an existing schema
     if schema_id is not None:
         schema = Schema.query.filter(Schema.id == schema_id).first()
         form.populate_obj(schema)
