@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-01 11:25+0200\n"
+"POT-Creation-Date: 2018-06-01 22:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,12 +112,8 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
-#: src/web/templates/layout.html:46
+#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:46
 msgid "Users"
-msgstr ""
-
-#: src/web/templates/layout.html:48
-msgid "Data"
 msgstr ""
 
 #: src/web/templates/login.html:14
@@ -233,10 +229,6 @@ msgstr ""
 msgid "provided by"
 msgstr ""
 
-#: src/web/templates/admin/users.html:4
-msgid "Registered users"
-msgstr ""
-
 #: src/web/templates/admin/users.html:11
 msgid "Member since"
 msgstr ""
@@ -287,12 +279,12 @@ msgstr ""
 msgid "User deleted."
 msgstr ""
 
-#: src/web/views/object.py:154 src/web/views/schema.py:98
+#: src/web/views/object.py:154 src/web/views/schema.py:103
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr ""
 
-#: src/web/views/object.py:170 src/web/views/schema.py:114
+#: src/web/views/object.py:170 src/web/views/schema.py:119
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr ""

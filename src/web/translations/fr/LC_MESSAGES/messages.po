@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-01 11:25+0200\n"
-"PO-Revision-Date: 2018-06-01 11:25+0200\n"
+"POT-Creation-Date: 2018-06-01 22:09+0200\n"
+"PO-Revision-Date: 2018-06-01 22:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: src/web/forms.py:37 src/web/forms.py:100
 #: src/web/templates/admin/users.html:10
 msgid "Login"
-msgstr "Identification"
+msgstr "Identifiant"
 
 #: src/web/forms.py:39 src/web/forms.py:102
 msgid "Please enter your login."
@@ -114,13 +114,9 @@ msgstr "Créer, modifier et partager des objets JSON"
 msgid "Administration"
 msgstr "Administration"
 
-#: src/web/templates/layout.html:46
+#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:46
 msgid "Users"
 msgstr "Utilisateurs"
-
-#: src/web/templates/layout.html:48
-msgid "Data"
-msgstr "Données"
 
 #: src/web/templates/login.html:14
 msgid "Your login"
@@ -235,10 +231,6 @@ msgstr "Schéma JSON validant"
 msgid "provided by"
 msgstr "fourni par"
 
-#: src/web/templates/admin/users.html:4
-msgid "Registered users"
-msgstr "Utilisateurs enregistrés"
-
 #: src/web/templates/admin/users.html:11
 msgid "Member since"
 msgstr "Membre depuis"
@@ -289,12 +281,12 @@ msgstr "Vous ne pouvez pas supprimer votre propre utilisateur."
 msgid "User deleted."
 msgstr "Utilisateur supprimé."
 
-#: src/web/views/object.py:154 src/web/views/schema.py:98
+#: src/web/views/object.py:154 src/web/views/schema.py:103
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr "%(object_name)s mis à jour avec succès."
 
-#: src/web/views/object.py:170 src/web/views/schema.py:114
+#: src/web/views/object.py:170 src/web/views/schema.py:119
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr "%(object_name)s mis à jour avec succès."
@@ -310,6 +302,12 @@ msgstr "Authentification requise."
 #: src/web/views/views.py:20
 msgid "Forbidden."
 msgstr "Interdit."
+
+#~ msgid "Data"
+#~ msgstr "Données"
+
+#~ msgid "Registered users"
+#~ msgstr "Utilisateurs enregistrés"
 
 #~ msgid "You are going to delete this account."
 #~ msgstr "Vous allez supprimer ce compte."
