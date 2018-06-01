@@ -68,6 +68,7 @@ def form(schema_id=None, org_id=None):
 
     schema = Schema.query.filter(Schema.id == schema_id).first()
     form = SchemaForm(obj=schema)
+    form.json_schema.data = json.dumps(schema.json_schema)
     form.org_id.choices = [(0, '')]
     form.org_id.choices.extend([(org.id, org.name) for org in
                                                     current_user.organizations])
@@ -93,13 +94,15 @@ def process_form(schema_id=None):
     # Edit an existing schema
     if schema_id is not None:
         schema = Schema.query.filter(Schema.id == schema_id).first()
+        schema_json_obj = json.loads(form.json_schema.data)
+        del form.json_schema
         form.populate_obj(schema)
+        schema.json_schema = schema_json_obj
         try:
             db.session.commit()
             flash(gettext('%(object_name)s successfully updated.',
                     object_name=form.name.data), 'success')
         except Exception as e:
-            print(e)
             form.name.errors.append('Name already exists.')
         return redirect(url_for('schema_bp.form', schema_id=schema.id))
 
