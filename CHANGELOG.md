@@ -1,6 +1,13 @@
 MOSP Changelog
 ==============
 
+## 0.3.0 (2018-06-01)
+
+- new Web interface to list, create and edit JSON schemas;
+- improved management of users. It is now possible to block a user;
+- translations improvements;
+- various UI improvements.
+
 ## 0.2.0 (2018-05-30)
 
 - the JSONB PostgreSQL type is now used instead of the JSON type;

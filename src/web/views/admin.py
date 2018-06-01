@@ -96,7 +96,7 @@ def toggle_user(user_id=None):
     else:
         user.is_active = not user.is_active
         db.session.commit()
-        flash(gettext('User {status}.'.format(status='activated' if user.is_active else 'deactivated')), 'success')
+        flash(gettext('User {status}.').format(status=gettext('activated') if user.is_active else gettext('deactivated')), 'success')
     return redirect(url_for('admin_bp.list_users'))
 
 
