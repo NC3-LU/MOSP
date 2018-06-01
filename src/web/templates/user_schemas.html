@@ -3,6 +3,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <a href="{{ url_for('schema_bp.form') }}" class="btn btn-default">{{ _('Create a new schema') }}</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <br />
             <h3>{{ _('Schemas in my organizations') }}</h3>
             {% for org in current_user.organizations %}
                 <h4><a href="{{ url_for('organization_bp.get', organization_id=org.id) }}">{{ org.name }}</a></h4>

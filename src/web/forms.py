@@ -78,6 +78,21 @@ class AddObjectForm(FlaskForm):
     submit = SubmitField(lazy_gettext('Save'))
 
 
+class SchemaForm(FlaskForm):
+    name = TextField("Name",
+                    [validators.Required(lazy_gettext('Please enter a name'))])
+    description = TextAreaField(lazy_gettext('Description'),
+                    [validators.Required(lazy_gettext('Please enter a description'))])
+    json_schema = TextAreaField('JSON schema',
+                    [validators.Required(lazy_gettext('Please enter a JSON schema'))])
+    org_id = SelectField(lazy_gettext('Organization'),
+                    [validators.Required(lazy_gettext('Please select an organization'))],
+                    coerce=int)
+    org_id.choices = [(0, '')]
+
+    submit = SubmitField(lazy_gettext('Save'))
+
+
 class UserForm(FlaskForm):
     """
     Create or edit a user (for the administrator).
