@@ -5,7 +5,7 @@
         <div class="col-md-3">
             <b>{{ _('Name of the schema') }}</b>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-9">
             {{ schema.name }}
         </div>
     </div>
@@ -14,7 +14,7 @@
         <div class="col-md-3">
             <b>{{ _('Description') }}</b>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-9">
             {{ schema.description }}
         </div>
     </div>
@@ -23,7 +23,7 @@
         <div class="col-md-3">
             <b>{{ _('Provided by') }}</b>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-9">
             <a href="{{ url_for('organization_bp.get', organization_id=schema.organization.id) }}">{{ schema.organization.name }}</a>
         </div>
     </div>
@@ -31,7 +31,7 @@
     <br />
 
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <a href="{{ url_for('object_bp.form', schema_id=schema.id) }}" class="btn btn-primary">{{ _('Create a new object with this schema') }}</a>
         </div>
     </div>
@@ -39,40 +39,42 @@
     <br />
 
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <b>{{ _('Objects validated by this schema') }}</b>
-            <table id="table-objects" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>{{ _('Name') }}</th>
-                        <th>{{ _('Organization') }}</th>
-                        <th>{{ _('Visibility') }}</th>
-                        <th>{{ _('Last updated') }}</th>
-                        <th>{{ _('View') }}</th>
-                        <th>{{ _('Edit') }}</th>
-                        <th>{{ _('Definition') }}</th>
-                        <th>{{ _('Object') }}</th>
-                        <th>{{ _('Delete') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for object in objects %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
-                        <td>{{ object.name  }}</td>
-                        <td><a href="{{ url_for('organization_bp.get', organization_id=object.org_id) }}">{{ object.organization.name }}</a></td>
-                        <td>{{ _('Public') if object.is_public else _('Private') }}</td>
-                        <td class="date">{{ object.last_updated | datetime }}</td>
-                        <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                        <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                        <td><a href="{{ url_for('object_bp.edit_json', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                        <td><a href="{{ url_for('object_bp.get_json_object', object_id=object.id) }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                        <td><a href="{{ url_for('object_bp.delete', object_id=object.id) }}"><i class="fa fa-trash" aria-hidden="true" onclick="return confirm(_('You are going to delete this object.'));"></i></a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            <div class="table-responsive-md">
+                <table id="table-objects" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{ _('Name') }}</th>
+                            <th>{{ _('Organization') }}</th>
+                            <th>{{ _('Visibility') }}</th>
+                            <th>{{ _('Last updated') }}</th>
+                            <th>{{ _('View') }}</th>
+                            <th>{{ _('Edit') }}</th>
+                            <th>{{ _('Definition') }}</th>
+                            <th>{{ _('Object') }}</th>
+                            <th>{{ _('Delete') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in objects %}
+                        <tr>
+                            <td scope="row">{{ loop.index }}</td>
+                            <td>{{ object.name  }}</td>
+                            <td><a href="{{ url_for('organization_bp.get', organization_id=object.org_id) }}">{{ object.organization.name }}</a></td>
+                            <td>{{ _('Public') if object.is_public else _('Private') }}</td>
+                            <td class="date">{{ object.last_updated | datetime }}</td>
+                            <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                            <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                            <td><a href="{{ url_for('object_bp.edit_json', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                            <td><a href="{{ url_for('object_bp.get_json_object', object_id=object.id) }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                            <td><a href="{{ url_for('object_bp.delete', object_id=object.id) }}"><i class="fa fa-trash" aria-hidden="true" onclick="return confirm(_('You are going to delete this object.'));"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

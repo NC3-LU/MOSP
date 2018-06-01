@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <h3>{{ _('Schemas in my organizations') }}</h3>
             {% for org in current_user.organizations %}
                 <h4><a href="{{ url_for('organization_bp.get', organization_id=org.id) }}">{{ org.name }}</a></h4>

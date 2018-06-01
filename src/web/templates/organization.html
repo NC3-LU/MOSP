@@ -5,7 +5,7 @@
         <div class="col-md-3">
             <h4>{{ _('Name') }}</h4>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-9">
             {{ organization.name }}
         </div>
     </div>
@@ -13,7 +13,7 @@
         <div class="col-md-3">
             <h4>{{ _('Description') }}</h4>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-9">
             {{ organization.description }}
         </div>
     </div>
@@ -21,38 +21,40 @@
         <div class="col-md-3">
             <h4>{{ _('Website') }}</h4>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-9">
             <a href="{{ organization.website }}">{{ organization.website }}</a>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <hr />
             <h4>{{ _('Shared JSON schemas') }}</h4>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-10">
-            <table id="table-schemas" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>{{ _('Name') }}</th>
-                        <th>{{ _('# of objects validated by the schema') }}</th>
-                        <th>{{ _('Last updated') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for schema in organization.schemas %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
-                        <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
-                        <td align="center">{{ schema.objects.count() }}</td>
-                        <td class="date">{{ schema.last_updated | datetime }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+        <div class="col-md-12">
+            <div class="table-responsive-md">
+                <table id="table-schemas" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{ _('Name') }}</th>
+                            <th>{{ _('# of objects validated by the schema') }}</th>
+                            <th>{{ _('Last updated') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for schema in organization.schemas %}
+                        <tr>
+                            <td scope="row">{{ loop.index }}</td>
+                            <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
+                            <td align="center">{{ schema.objects.count() }}</td>
+                            <td class="date">{{ schema.last_updated | datetime }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

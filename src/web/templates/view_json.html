@@ -5,7 +5,7 @@
         <div class="col-md-3">
             <b>{{ _('Name') }}</b>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-9">
             {{ json_object.name }}
         </div>
     </div>
@@ -13,7 +13,7 @@
         <div class="col-md-3">
             <b>{{ _('Description') }}</b>
         </div>
-        <div class="col-md-7 text-justify">
+        <div class="col-md-9 text-justify">
             {{ json_object.description }}
         </div>
     </div>
@@ -21,7 +21,7 @@
         <div class="col-md-3">
             <b>{{ _('Owning organization') }}</b>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-9">
             <a href="{{ url_for('organization_bp.get', organization_id=json_object.organization.id) }}">{{ json_object.organization.name }}</a>
         </div>
     </div>
@@ -29,12 +29,12 @@
         <div class="col-md-3">
             <b>{{ _('Validating JSON schema') }}</b>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-9">
             <a href="{{ url_for('schema_bp.get', schema_id=json_object.schema.id) }}">{{ json_object.schema.name }}</a> ({{ _('provided by') }} <a href="{{ url_for('organization_bp.get', organization_id=json_object.schema.organization.id) }}">{{ json_object.schema.organization.name }}</a>)
         </div>
     </div>
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <br />
             <pre class="prettyprint"><code>{{ json_object_pretty }}</code></pre>
         </div>
