@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="container">
-<h1>{{ _('Registered users') }}</h1>
+<h1>{{ _('Users') }}</h1>
 <div class="table-responsive-md">
     <table id="table-users" class="table table-hover">
     <thead>
@@ -23,8 +23,8 @@
             <td>
                 <a href="{{ url_for("admin_bp.form_user", user_id=user.id) }}"><i class="fa fa-edit"></i></a>
                 {% if current_user.id != user.id %}
-                    <a href="{{ url_for("admin_bp.toggle_user", user_id=user.id) }}">{% if not user.is_active  %}<i class="fa fa-unlock" title="Unblock this user" onclick="return confirm(_('You are going to unblock this account.'));"></i>{% else %}<i class="fa fa-unlock" title="Block this user" onclick="return confirm(_('You are going to block this account.'));"></i>{% endif %}</a>
-                    <a href="{{ url_for("admin_bp.delete_user", user_id=user.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this user" onclick="return confirm(_('You are going to delete this account.'));"></i></a>
+                    <a href="{{ url_for("admin_bp.toggle_user", user_id=user.id) }}">{% if not user.is_active  %}<i class="fa fa-unlock" title="Unblock this user" onclick="return confirm(_('You are going to unblock this user.'));"></i>{% else %}<i class="fa fa-unlock" title="Block this user" onclick="return confirm(_('You are going to block this user.'));"></i>{% endif %}</a>
+                    <a href="{{ url_for("admin_bp.delete_user", user_id=user.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this user" onclick="return confirm(_('You are going to delete this user.'));"></i></a>
                 {% endif %}
             </td>
         </tr>
