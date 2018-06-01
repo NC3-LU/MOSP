@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, abort
+from flask import Blueprint, render_template, redirect, url_for, flash, \
+                    request, abort
 from flask_login import login_required, current_user
 from flask_babel import gettext
 from sqlalchemy import or_
@@ -48,7 +49,7 @@ def get(schema_id=None):
 @schema_bp.route('/create', methods=['GET'])
 @schema_bp.route('/edit/<int:schema_id>', methods=['GET'])
 @login_required
-def form(schema_id=None):
+def form(schema_id=None, org_id=None):
     action = "Create a schema"
     head_titles = [action]
 
@@ -58,6 +59,9 @@ def form(schema_id=None):
                                                     current_user.organizations])
 
     if schema_id is None:
+        org_id = request.args.get('org_id', None)
+        if org_id is not None:
+            form.org_id.data = int(org_id)
         return render_template('edit_schema.html', action=action,
                                head_titles=head_titles, form=form)
 

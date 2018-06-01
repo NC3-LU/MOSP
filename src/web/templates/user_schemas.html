@@ -19,6 +19,7 @@
                         <a href="{{ url_for('schema_bp.form', schema_id=schema.id) }}">{{ _('edit') }}</a>
                     </li>
                 {% endfor %}
+                <li style="list-style-type: none;"><a href="{{ url_for('schema_bp.form', org_id=org.id) }}"><i class="fa fa-plus" title="{{ _('Add a new schema in this organization') }}"></i></a></li>
                 </ul>
             {% endfor  %}
         </div>
