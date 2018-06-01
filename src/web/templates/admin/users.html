@@ -2,31 +2,36 @@
 {% block content %}
 <div class="container">
 <h1>{{ _('Registered users') }}</h1>
-<table id="table-users" class="table table-striped">
-<thead>
-    <tr>
-        <th>#</th>
-        <th>{{ _('Login') }}</th>
-        <th>{{ _('Member since') }}</th>
-        <th>{{ _('Last seen') }}</th>
-        <th>{{ _('Actions') }}</th>
-    </tr>
-</thead>
-<tbody>
-{% for user in users %}
-    <tr {% if not user.is_active  %}class="warning"{% endif %}>
-        <td>{{ loop.index }}</td>
-        <td><a href="{{ url_for("admin_bp.form_user", user_id=user.id) }}">{{ user.login  }}</a></td>
-        <td class="date">{{ user.created_at | datetime }}</td>
-        <td class="date">{{ user.last_seen | datetime }}</td>
-        <td>{% if current_user.id != user.id %}
-            <a href="{{ url_for("admin_bp.delete_user", user_id=user.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this user" onclick="return confirm(_('You are going to delete this account.'));"></i></a>
-            {% endif %}
-        </td>
-    </tr>
-{% endfor %}
-</tbody>
-</table>
+<div class="table-responsive-md">
+    <table id="table-users" class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>{{ _('Login') }}</th>
+            <th>{{ _('Member since') }}</th>
+            <th>{{ _('Last seen') }}</th>
+            <th>{{ _('Actions') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr {% if not user.is_active  %}class="table-warning"{% endif %}>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ user.login  }}</td>
+            <td class="date">{{ user.created_at | datetime }}</td>
+            <td class="date">{{ user.last_seen | datetime }}</td>
+            <td>
+                <a href="{{ url_for("admin_bp.form_user", user_id=user.id) }}"><i class="fa fa-edit"></i></a>
+                {% if current_user.id != user.id %}
+                    <a href="{{ url_for("admin_bp.toggle_user", user_id=user.id) }}">{% if not user.is_active  %}<i class="fa fa-unlock" title="Unblock this user" onclick="return confirm(_('You are going to unblock this account.'));"></i>{% else %}<i class="fa fa-unlock" title="Block this user" onclick="return confirm(_('You are going to block this account.'));"></i>{% endif %}</a>
+                    <a href="{{ url_for("admin_bp.delete_user", user_id=user.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this user" onclick="return confirm(_('You are going to delete this account.'));"></i></a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
 <br />
 <a href="{{ url_for('admin_bp.form_user') }}" class="btn btn-default">{{ _('Add a new user') }}</a>
 </div>

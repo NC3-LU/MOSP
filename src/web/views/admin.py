@@ -85,6 +85,21 @@ def process_user_form(user_id=None):
     return redirect(url_for('admin_bp.form_user', user_id=new_user.id))
 
 
+@admin_bp.route('/user/toggle/<int:user_id>', methods=['GET'])
+@login_required
+@admin_permission.require(http_exception=403)
+def toggle_user(user_id=None):
+    """Activate/deactivate a user."""
+    user = models.User.query.filter(models.User.id == user_id).first()
+    if user.id == current_user.id:
+        flash(gettext('You can not do this change to your own user.'), 'danger')
+    else:
+        user.is_active = not user.is_active
+        db.session.commit()
+        flash(gettext('User {status}.'.format(status='activated' if user.is_active else 'deactivated')), 'success')
+    return redirect(url_for('admin_bp.list_users'))
+
+
 @admin_bp.route('/user/delete/<int:user_id>', methods=['GET'])
 @login_required
 @admin_permission.require(http_exception=403)
