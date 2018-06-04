@@ -33,6 +33,16 @@
             <a href="{{ url_for('schema_bp.get', schema_id=json_object.schema.id) }}">{{ json_object.schema.name }}</a> ({{ _('provided by') }} <a href="{{ url_for('organization_bp.get', organization_id=json_object.schema.organization.id) }}">{{ json_object.schema.organization.name }}</a>)
         </div>
     </div>
+    {% if json_object.creator.public_profile %}
+    <div class="row">
+        <div class="col-md-3">
+            <b>{{ _('Creator') }}</b>
+        </div>
+        <div class="col-md-9">
+            <a href="#">{{ json_object.creator.login }}</a>
+        </div>
+    </div>
+    {% endif %}
     <div class="row">
         <div class="col-md-12">
             <br />
