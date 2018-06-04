@@ -34,7 +34,7 @@ def check_object_edit_permission(f):
     def decorated_function(*args, **kwargs):
         if not current_user.is_authenticated:
             return abort(403)
-        object_id = kwargs['object_id']
+        object_id = kwargs.get('object_id', None)
         if object_id is None:
             # user wants to create an object, not edit one:
             # no need to check the permissions
