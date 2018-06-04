@@ -42,9 +42,7 @@ def process_form():
     user = User.query.filter(User.id == current_user.id).first()
     form.populate_obj(user)
     if form.password.data:
-        print(form.password.data)
         user.pwdhash = generate_password_hash(form.password.data)
-        print(user.pwdhash)
     db.session.commit()
     flash(gettext('User %(user_login)s successfully updated.',
             user_login=form.login.data), 'success')
