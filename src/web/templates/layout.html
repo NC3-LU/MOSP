@@ -44,7 +44,12 @@
                         </div>
                     </li>
                     {% if current_user.is_admin %}
-                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+                            <a class="dropdown-item" href="{{ url_for('admin_bp.list_users') }}" title="Users">{{ _('Users') }}</i></a>
+                        </div>
+                    </li>
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}" title="Sign out"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
