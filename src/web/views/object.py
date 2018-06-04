@@ -82,7 +82,7 @@ def delete(object_id=None):
 
 @object_bp.route('/jsoneditor/<int:object_id>', methods=['GET'])
 @login_required
-@check_object_view_permission
+@check_object_edit_permission
 def edit_json(object_id=None):
     """
     Edit a JSON object with JSON editor.
@@ -100,6 +100,7 @@ def edit_json(object_id=None):
 @object_bp.route('/create', methods=['GET'])
 @object_bp.route('/edit/<int:object_id>', methods=['GET'])
 @login_required
+@check_object_edit_permission
 def form(schema_id=None, object_id=None):
     action = "Create an object"
     head_titles = [action]
@@ -135,6 +136,7 @@ def form(schema_id=None, object_id=None):
 @object_bp.route('/create', methods=['POST'])
 @object_bp.route('/edit/<int:object_id>', methods=['POST'])
 @login_required
+@check_object_edit_permission
 def process_form(object_id=None):
     form = AddObjectForm()
     form.org_id.choices = [(0, '')]

@@ -35,6 +35,10 @@ def check_object_edit_permission(f):
         if not current_user.is_authenticated:
             return abort(403)
         object_id = kwargs['object_id']
+        if object_id is None:
+            # user wants to create an object, not edit one:
+            # no need to check the permissions
+            return f(*args, **kwargs)
         if current_user.is_authenticated:
             obj = JsonObject.query. \
                 filter(JsonObject.id==object_id). \
