@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block head%}
+{{super()}}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>{{ action | safe }}</h2>
+    <form action="" method="post" name="saveprofileform" id="profileform">
+        {{ form.hidden_tag() }}
+
+        {{ form.login.label }}
+        {{ form.login(class_="form-control") }} {% for error in form.login.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+
+        {{ form.password.label }}
+        {{ form.password(class_="form-control") }} {% for error in form.password.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+
+        {{ form.public_profile.label }}
+        {{ form.public_profile(class_="form-control") }} {% for error in form.public_profile.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+
+        <br />
+        {{ form.submit(class_="btn btn-default") }}
+    </form>
+</div>
+{% endblock %}

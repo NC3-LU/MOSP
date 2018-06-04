@@ -106,3 +106,15 @@ class UserForm(FlaskForm):
     is_admin = BooleanField(lazy_gettext('Admin'), default=False)
     is_api = BooleanField(lazy_gettext('API'), default=False)
     submit = SubmitField(lazy_gettext('Save'))
+
+
+class ProfileForm(FlaskForm):
+    """
+    Edit a profile.
+    """
+    login = TextField(lazy_gettext('Login'),
+            [validators.Length(min=3, max=30),
+            validators.Required(lazy_gettext('Please enter your login.'))])
+    password = PasswordField(lazy_gettext('Password'))
+    public_profile = BooleanField(lazy_gettext('Public profile'), default=True)
+    submit = SubmitField(lazy_gettext('Save'))

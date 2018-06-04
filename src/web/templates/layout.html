@@ -36,16 +36,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto w-100 justify-content-end">
                     {% if current_user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('user_bp.me') }}" title="Me"><i class="fa fa-user" aria-hidden="true"></i></a>
-                    </li>
-                    {% if current_user.is_admin %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ _('Administration') }}</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{{ url_for('admin_bp.list_users') }}" title="Users"><i class="fa fa-user" aria-hidden="true">&nbsp;{{ _('Users') }}</i></a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownUser">
+                            <a class="dropdown-item" href="{{ url_for('user_bp.schemas') }}" title="Schemas">{{ _('Schemas') }}</a>
+                            <a class="dropdown-item" href="{{ url_for('user_bp.form') }}" title="Profile">{{ _('Profile') }}</a>
                         </div>
                     </li>
+                    {% if current_user.is_admin %}
+                    
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}" title="Sign out"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
