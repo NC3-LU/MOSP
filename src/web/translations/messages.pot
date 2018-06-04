@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-04 10:58+0200\n"
+"POT-Creation-Date: 2018-06-04 21:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,24 +109,24 @@ msgstr ""
 msgid "Create, edit and share JSON objects"
 msgstr ""
 
-#: src/web/templates/layout.html:39 src/web/templates/layout.html:48
+#: src/web/templates/layout.html:39 src/web/templates/layout.html:56
 msgid "Schemas"
 msgstr ""
 
-#: src/web/templates/layout.html:45
-msgid "Signed as"
+#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:46
+msgid "Users"
 msgstr ""
 
-#: src/web/templates/layout.html:47
+#: src/web/templates/layout.html:53
+msgid "Signed in as"
+msgstr ""
+
+#: src/web/templates/layout.html:55
 msgid "Profile"
 msgstr ""
 
-#: src/web/templates/layout.html:50
+#: src/web/templates/layout.html:58
 msgid "Sign out"
-msgstr ""
-
-#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:57
-msgid "Users"
 msgstr ""
 
 #: src/web/templates/layout.html:93
@@ -266,7 +266,7 @@ msgstr ""
 msgid "Add a new user"
 msgstr ""
 
-#: src/web/views/admin.py:69 src/web/views/user.py:49
+#: src/web/views/admin.py:69 src/web/views/user.py:47
 #, python-format
 msgid "User %(user_login)s successfully updated."
 msgstr ""
