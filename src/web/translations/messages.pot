@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-01 22:09+0200\n"
+"POT-Creation-Date: 2018-06-04 10:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: src/web/forms.py:37 src/web/forms.py:100
+#: src/web/forms.py:37 src/web/forms.py:100 src/web/forms.py:115
 #: src/web/templates/admin/users.html:10
 msgid "Login"
 msgstr ""
 
-#: src/web/forms.py:39 src/web/forms.py:102
+#: src/web/forms.py:39 src/web/forms.py:102 src/web/forms.py:117
 msgid "Please enter your login."
 msgstr ""
 
-#: src/web/forms.py:40 src/web/forms.py:103
+#: src/web/forms.py:40 src/web/forms.py:103 src/web/forms.py:118
 msgid "Password"
 msgstr ""
 
@@ -73,6 +73,7 @@ msgid "Please select an organization"
 msgstr ""
 
 #: src/web/forms.py:78 src/web/forms.py:93 src/web/forms.py:108
+#: src/web/forms.py:120
 msgid "Save"
 msgstr ""
 
@@ -80,7 +81,7 @@ msgstr ""
 msgid "Please enter a JSON schema"
 msgstr ""
 
-#: src/web/forms.py:104
+#: src/web/forms.py:104 src/web/forms.py:119
 msgid "Public profile"
 msgstr ""
 
@@ -108,12 +109,28 @@ msgstr ""
 msgid "Create, edit and share JSON objects"
 msgstr ""
 
-#: src/web/templates/layout.html:44
-msgid "Administration"
+#: src/web/templates/layout.html:39 src/web/templates/layout.html:48
+msgid "Schemas"
 msgstr ""
 
-#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:46
+#: src/web/templates/layout.html:45
+msgid "Signed as"
+msgstr ""
+
+#: src/web/templates/layout.html:47
+msgid "Profile"
+msgstr ""
+
+#: src/web/templates/layout.html:50
+msgid "Sign out"
+msgstr ""
+
+#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:57
 msgid "Users"
+msgstr ""
+
+#: src/web/templates/layout.html:93
+msgid "About"
 msgstr ""
 
 #: src/web/templates/login.html:14
@@ -229,6 +246,10 @@ msgstr ""
 msgid "provided by"
 msgstr ""
 
+#: src/web/templates/view_json.html:39
+msgid "Creator"
+msgstr ""
+
 #: src/web/templates/admin/users.html:11
 msgid "Member since"
 msgstr ""
@@ -245,7 +266,7 @@ msgstr ""
 msgid "Add a new user"
 msgstr ""
 
-#: src/web/views/admin.py:69
+#: src/web/views/admin.py:69 src/web/views/user.py:49
 #, python-format
 msgid "User %(user_login)s successfully updated."
 msgstr ""
@@ -279,12 +300,12 @@ msgstr ""
 msgid "User deleted."
 msgstr ""
 
-#: src/web/views/object.py:154 src/web/views/schema.py:103
+#: src/web/views/object.py:156 src/web/views/schema.py:103
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr ""
 
-#: src/web/views/object.py:170 src/web/views/schema.py:119
+#: src/web/views/object.py:172 src/web/views/schema.py:119
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr ""
@@ -293,11 +314,11 @@ msgstr ""
 msgid "Please log in to access this page."
 msgstr ""
 
-#: src/web/views/views.py:14
+#: src/web/views/views.py:15
 msgid "Authentication required."
 msgstr ""
 
-#: src/web/views/views.py:20
+#: src/web/views/views.py:21
 msgid "Forbidden."
 msgstr ""
 

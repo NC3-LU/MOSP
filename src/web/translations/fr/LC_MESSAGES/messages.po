@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-01 22:09+0200\n"
-"PO-Revision-Date: 2018-06-01 22:11+0200\n"
+"POT-Creation-Date: 2018-06-04 10:58+0200\n"
+"PO-Revision-Date: 2018-06-04 11:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
@@ -19,16 +19,16 @@ msgstr ""
 "Generated-By: Babel 2.5.3\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: src/web/forms.py:37 src/web/forms.py:100
+#: src/web/forms.py:37 src/web/forms.py:100 src/web/forms.py:115
 #: src/web/templates/admin/users.html:10
 msgid "Login"
 msgstr "Identifiant"
 
-#: src/web/forms.py:39 src/web/forms.py:102
+#: src/web/forms.py:39 src/web/forms.py:102 src/web/forms.py:117
 msgid "Please enter your login."
 msgstr "Veuillez entrer votre identifiant."
 
-#: src/web/forms.py:40 src/web/forms.py:103
+#: src/web/forms.py:40 src/web/forms.py:103 src/web/forms.py:118
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -75,6 +75,7 @@ msgid "Please select an organization"
 msgstr "Veuillez sélectionner une organisation"
 
 #: src/web/forms.py:78 src/web/forms.py:93 src/web/forms.py:108
+#: src/web/forms.py:120
 msgid "Save"
 msgstr "Sauvegarder"
 
@@ -82,7 +83,7 @@ msgstr "Sauvegarder"
 msgid "Please enter a JSON schema"
 msgstr "S'il vous plaît entrer un schéma JSON"
 
-#: src/web/forms.py:104
+#: src/web/forms.py:104 src/web/forms.py:119
 msgid "Public profile"
 msgstr "Profil public"
 
@@ -110,13 +111,29 @@ msgstr "Objets récemment mis à jour"
 msgid "Create, edit and share JSON objects"
 msgstr "Créer, modifier et partager des objets JSON"
 
-#: src/web/templates/layout.html:44
-msgid "Administration"
-msgstr "Administration"
+#: src/web/templates/layout.html:39 src/web/templates/layout.html:48
+msgid "Schemas"
+msgstr "Schemas"
 
-#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:46
+#: src/web/templates/layout.html:45
+msgid "Signed as"
+msgstr "Connecté en tant que"
+
+#: src/web/templates/layout.html:47
+msgid "Profile"
+msgstr "Profil"
+
+#: src/web/templates/layout.html:50
+msgid "Sign out"
+msgstr "Déconnexion"
+
+#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:57
 msgid "Users"
 msgstr "Utilisateurs"
+
+#: src/web/templates/layout.html:93
+msgid "About"
+msgstr "À propos"
 
 #: src/web/templates/login.html:14
 msgid "Your login"
@@ -231,6 +248,10 @@ msgstr "Schéma JSON validant"
 msgid "provided by"
 msgstr "fourni par"
 
+#: src/web/templates/view_json.html:39
+msgid "Creator"
+msgstr "Créateur"
+
 #: src/web/templates/admin/users.html:11
 msgid "Member since"
 msgstr "Membre depuis"
@@ -247,7 +268,7 @@ msgstr "Actions"
 msgid "Add a new user"
 msgstr "Ajouter un nouvel utilisateur"
 
-#: src/web/views/admin.py:69
+#: src/web/views/admin.py:69 src/web/views/user.py:49
 #, python-format
 msgid "User %(user_login)s successfully updated."
 msgstr "Utilisateur %(user_login)s mis à jour avec succès."
@@ -281,12 +302,12 @@ msgstr "Vous ne pouvez pas supprimer votre propre utilisateur."
 msgid "User deleted."
 msgstr "Utilisateur supprimé."
 
-#: src/web/views/object.py:154 src/web/views/schema.py:103
+#: src/web/views/object.py:156 src/web/views/schema.py:103
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr "%(object_name)s mis à jour avec succès."
 
-#: src/web/views/object.py:170 src/web/views/schema.py:119
+#: src/web/views/object.py:172 src/web/views/schema.py:119
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr "%(object_name)s mis à jour avec succès."
@@ -295,13 +316,16 @@ msgstr "%(object_name)s mis à jour avec succès."
 msgid "Please log in to access this page."
 msgstr "Veuillez vous connecter pour accéder à cette page."
 
-#: src/web/views/views.py:14
+#: src/web/views/views.py:15
 msgid "Authentication required."
 msgstr "Authentification requise."
 
-#: src/web/views/views.py:20
+#: src/web/views/views.py:21
 msgid "Forbidden."
 msgstr "Interdit."
+
+#~ msgid "Administration"
+#~ msgstr "Administration"
 
 #~ msgid "Data"
 #~ msgstr "Données"
