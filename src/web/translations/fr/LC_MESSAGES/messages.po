@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-04 10:58+0200\n"
-"PO-Revision-Date: 2018-06-04 11:00+0200\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2018-06-04 21:26+0200\n"
+"PO-Revision-Date: 2018-06-04 21:27+0200\n"
+"Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -111,25 +111,25 @@ msgstr "Objets récemment mis à jour"
 msgid "Create, edit and share JSON objects"
 msgstr "Créer, modifier et partager des objets JSON"
 
-#: src/web/templates/layout.html:39 src/web/templates/layout.html:48
+#: src/web/templates/layout.html:39 src/web/templates/layout.html:56
 msgid "Schemas"
 msgstr "Schemas"
 
-#: src/web/templates/layout.html:45
-msgid "Signed as"
+#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:46
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: src/web/templates/layout.html:53
+msgid "Signed in as"
 msgstr "Connecté en tant que"
 
-#: src/web/templates/layout.html:47
+#: src/web/templates/layout.html:55
 msgid "Profile"
 msgstr "Profil"
 
-#: src/web/templates/layout.html:50
+#: src/web/templates/layout.html:58
 msgid "Sign out"
 msgstr "Déconnexion"
-
-#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:57
-msgid "Users"
-msgstr "Utilisateurs"
 
 #: src/web/templates/layout.html:93
 msgid "About"
@@ -268,7 +268,7 @@ msgstr "Actions"
 msgid "Add a new user"
 msgstr "Ajouter un nouvel utilisateur"
 
-#: src/web/views/admin.py:69 src/web/views/user.py:49
+#: src/web/views/admin.py:69 src/web/views/user.py:47
 #, python-format
 msgid "User %(user_login)s successfully updated."
 msgstr "Utilisateur %(user_login)s mis à jour avec succès."
