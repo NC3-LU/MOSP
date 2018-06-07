@@ -6,8 +6,8 @@
         "json",
         "json-schema"
     ],
-    "website": "https://github.com/cedricbonhomme/MOSP",
-    "repository": "https://github.com/cedricbonhomme/MOSP",
+    "website": "https://github.com/CASES-LU/MOSP",
+    "repository": "https://github.com/CASES-LU/MOSP",
     "scripts": {
         "postdeploy": "pybabel compile -d src/web/translations"
     },

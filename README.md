@@ -1,13 +1,13 @@
 # MOSP
 
-![License](https://img.shields.io/github/license/cedricbonhomme/processing-activities.svg?style=flat-square)
-![Contributors](https://img.shields.io/github/contributors/cedricbonhomme/processing-activities.svg?style=flat-square)
-![Stars](https://img.shields.io/github/stars/cedricbonhomme/processing-activities.svg?style=flat-square)
+![License](https://img.shields.io/github/license/CASES-LU/MOSP.svg?style=flat-square)
+![Contributors](https://img.shields.io/github/contributors/CASES-LU/MOSP.svg?style=flat-square)
+![Stars](https://img.shields.io/github/stars/CASES-LU/MOSP.svg?style=flat-square)
 
 
 ## Presentation
 
-[MOSP](https://github.com/cedricbonhomme/MOSP) is a platform to create, edit
+[MOSP](https://github.com/CASES-LU/MOSP) is a platform to create, edit
 and share JSON objects.
 
 The goal of this platform is to gather security related JSON schemas
@@ -35,7 +35,7 @@ and whatever you can imagine. Choose.
 
 
 ```bash
-$ git clone https://github.com/cedricbonhomme/MOSP.git
+$ git clone https://github.com/CASES-LU/MOSP.git
 $ cd MOSP/
 $ npm install
 $ pipenv install
@@ -70,4 +70,6 @@ $ heroku ps:scale web=1
 This software is licensed under
 [GNU Affero General Public License version 3](https://www.gnu.org/licenses/agpl-3.0.html)
 
+
 Copyright (C) 2018 Cédric Bonhomme
+Copyright (C) 2018 SMILE gie securitymadein.l
