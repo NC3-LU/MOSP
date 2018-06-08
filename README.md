@@ -1,5 +1,6 @@
 # MOSP
 
+![Latest release](https://img.shields.io/github/release/CASES-LU/MOSP.svg?style=flat-square)
 ![License](https://img.shields.io/github/license/CASES-LU/MOSP.svg?style=flat-square)
 ![Contributors](https://img.shields.io/github/contributors/CASES-LU/MOSP.svg?style=flat-square)
 ![Stars](https://img.shields.io/github/stars/CASES-LU/MOSP.svg?style=flat-square)
@@ -14,11 +15,10 @@ The goal of this platform is to gather security related JSON schemas
 and objects.
 
 You can use any available schemas in order to create shareable JSON objects.
-It also possible to keep an object private even if our goal is to promote
+It is also possible to keep an object private even if our goal is to promote
 the sharing of information.
 
 Integration with third-party applications is possible thanks to an API.
-
 
 
 ### What's in the name?
@@ -32,7 +32,6 @@ and whatever you can imagine. Choose.
 
 
 ## Installation
-
 
 ```bash
 $ git clone https://github.com/CASES-LU/MOSP.git
@@ -73,3 +72,6 @@ This software is licensed under
 
 * Copyright (C) 2018 Cédric Bonhomme
 * Copyright (C) 2018 SMILE gie securitymadein.lu
+
+For more information, the [list of authors and contributors](AUTHORS.md) is
+available.
