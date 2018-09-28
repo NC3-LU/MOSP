@@ -1,4 +1,8 @@
-{% extends "layout.html" %}}
+{% extends "layout.html" %}
+{% block head %}
+{{ super() }}
+<script src="{{ url_for('static', filename='npm_components/papaparse/papaparse.min.js') }}"></script>
+{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -43,6 +47,7 @@
         </div>
     </div>
     {% endif %}
+    <i id="download-csv" class="fa fa-download" aria-hidden="true"></i>
     <div class="row">
         <div class="col-md-12">
             <br />
@@ -50,4 +55,30 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    $('#download-csv').click(function(e) {
+        $.ajax({
+            url: "{{ url_for('json_objectapi0.json_objectapi',) }}/{{ json_object.id }}",
+            type: 'GET',
+            contentType: "application/json",
+            success: function(result) {
+                console.log(result);
+                console.log(result.json_object.values[0].entry[0]);
+
+                csvContent = Papa.unparse(result.json_object.values[0].entry);
+                console.log(csvContent);
+
+                var hiddenElement = document.createElement('a');
+                hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
+                hiddenElement.target = '_blank';
+                hiddenElement.download = 'people.csv';
+                hiddenElement.click();
+
+            }
+        });
+    });
+});
+</script>
+<!-- /.container -->
 {% endblock %}
