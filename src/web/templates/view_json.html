@@ -47,7 +47,30 @@
         </div>
     </div>
     {% endif %}
-    <i id="download-csv" class="fa fa-download" aria-hidden="true"></i>
+    <div class="row">
+        <div class="col-md-3">
+            <b>Download the object</b>
+        </div>
+        <div class="col-md-9">
+            <a href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}"><i class="fa fa-download" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <b>Export only values to CSV</b>
+        </div>
+        <div class="col-md-9">
+            <a href="#"><i id="download-csv" class="fa fa-download" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <b>Export only values to JSON</b>
+        </div>
+        <div class="col-md-9">
+            <a href="#"><i id="download-json" class="fa fa-download" aria-hidden="true"></i></a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <br />
@@ -63,18 +86,33 @@ $(document).ready(function() {
             type: 'GET',
             contentType: "application/json",
             success: function(result) {
-                console.log(result);
-                console.log(result.json_object.values[0].entry[0]);
-
-                csvContent = Papa.unparse(result.json_object.values[0].entry);
-                console.log(csvContent);
-
+                csvContent = '';
+                result.json_object.values.map(function(value){
+                    csvContent += Papa.unparse(value.entry) + '\n';
+                })
                 var hiddenElement = document.createElement('a');
                 hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
                 hiddenElement.target = '_blank';
-                hiddenElement.download = 'people.csv';
+                hiddenElement.download = '{{ json_object.name }}.csv';
+                document.body.appendChild(hiddenElement);
                 hiddenElement.click();
-
+                document.body.removeChild(hiddenElement);
+            }
+        });
+    });
+    $('#download-json').click(function(e) {
+        $.ajax({
+            url: "{{ url_for('json_objectapi0.json_objectapi',) }}/{{ json_object.id }}",
+            type: 'GET',
+            contentType: "application/json",
+            success: function(result) {
+                var hiddenElement = document.createElement('a');
+                hiddenElement.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(result.json_object.values));
+                hiddenElement.target = '_blank';
+                hiddenElement.download = '{{ json_object.name }}.json';
+                document.body.appendChild(hiddenElement);
+                hiddenElement.click();
+                document.body.removeChild(hiddenElement);
             }
         });
     });
