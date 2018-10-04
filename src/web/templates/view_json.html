@@ -9,8 +9,11 @@
         <div class="col-md-3">
             <b>{{ _('Name') }}</b>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-7">
             {{ json_object.name }}
+        </div>
+        <div class="col-md-2 text-right">
+            <a href="{{ url_for('object_bp.form', object_id=json_object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
         </div>
     </div>
     <div class="row">
@@ -52,7 +55,7 @@
             <b>{{ _('License') }}</b>
         </div>
         <div class="col-md-9">
-            {% for license in json_object.licenses %}{{license.name}}{% endfor %}
+            {{ json_object.licenses | join(', ') }}
         </div>
     </div>
     <div class="row">
@@ -65,18 +68,11 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <b>Export only values to CSV</b>
+            <b>Export only values</b>
         </div>
         <div class="col-md-9">
-            <a href="#"><i id="download-csv" class="fa fa-download" aria-hidden="true"></i></a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <b>Export only values to JSON</b>
-        </div>
-        <div class="col-md-9">
-            <a href="#"><i id="download-json" class="fa fa-download" aria-hidden="true"></i></a>
+            <a href="#"><i id="download-csv" class="fa fa-download" aria-hidden="true" title="To CSV"></i></a>
+            <a href="#"><i id="download-json" class="fa fa-download" aria-hidden="true" title="To JSON"></i></a>
         </div>
     </div>
     <div class="row">
