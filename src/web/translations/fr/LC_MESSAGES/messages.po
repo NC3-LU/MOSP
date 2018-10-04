@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-04 13:59+0200\n"
-"PO-Revision-Date: 2018-10-04 14:00+0200\n"
+"POT-Creation-Date: 2018-10-04 14:03+0200\n"
+"PO-Revision-Date: 2018-10-04 14:04+0200\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
@@ -263,6 +263,14 @@ msgstr "Créateur"
 #: src/web/templates/view_json.html:55
 msgid "License"
 msgstr "License"
+
+#: src/web/templates/view_json.html:63
+msgid "Download the object"
+msgstr "Télécharger l'objet"
+
+#: src/web/templates/view_json.html:71
+msgid "Export only values"
+msgstr "Exporter uniquement les valeurs"
 
 #: src/web/templates/admin/users.html:11
 msgid "Member since"

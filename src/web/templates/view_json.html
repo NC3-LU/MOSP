@@ -60,7 +60,7 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <b>Download the object</b>
+            <b>{{ _('Download the object') }}</b>
         </div>
         <div class="col-md-9">
             <a href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}"><i class="fa fa-download" aria-hidden="true"></i></a>
@@ -68,7 +68,7 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <b>Export only values</b>
+            <b>{{ _('Export only values') }}</b>
         </div>
         <div class="col-md-9">
             <a href="#"><i id="download-csv" class="fa fa-download" aria-hidden="true" title="To CSV"></i></a>&nbsp;&nbsp;

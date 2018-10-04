@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-04 13:59+0200\n"
+"POT-Creation-Date: 2018-10-04 14:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -260,6 +260,14 @@ msgstr ""
 
 #: src/web/templates/view_json.html:55
 msgid "License"
+msgstr ""
+
+#: src/web/templates/view_json.html:63
+msgid "Download the object"
+msgstr ""
+
+#: src/web/templates/view_json.html:71
+msgid "Export only values"
 msgstr ""
 
 #: src/web/templates/admin/users.html:11
