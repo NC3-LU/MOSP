@@ -5,9 +5,10 @@ from .user import User
 from .jsonobject import JsonObject
 from .schema import Schema
 from .organization import Organization
+from .license import License
 
 
-__all__ = ['User', 'Organization', 'Schema', 'JsonObject']
+__all__ = ['User', 'Organization', 'Schema', 'JsonObject', 'License']
 
 from sqlalchemy.engine import reflection
 from sqlalchemy import create_engine

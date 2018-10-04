@@ -23,6 +23,7 @@ Flask-Mail = "*"
 WTForms = "*"
 validate_email = "*"
 flask-babel = "*"
+alembic = "*"
 
 [dev-packages]
 sqlalchemy-schemadisplay = "*"

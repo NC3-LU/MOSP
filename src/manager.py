@@ -9,7 +9,6 @@ from flask_migrate import Migrate, MigrateCommand
 import scripts
 import web.models
 
-
 logger = logging.getLogger('manager')
 
 Migrate(application, db)

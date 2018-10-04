@@ -4,6 +4,12 @@ from sqlalchemy.dialects.postgresql import JSONB
 
 from bootstrap import db
 
+association_table_license = db.Table('association_schemas_licenses',
+    db.metadata,
+    db.Column('schema_id', db.Integer, db.ForeignKey('schema.id')),
+    db.Column('license_id', db.Integer, db.ForeignKey('license.id'))
+)
+
 class Schema(db.Model):
     """Represent a JSON schema.
     """
@@ -16,6 +22,9 @@ class Schema(db.Model):
     # relationship
     objects = db.relationship('JsonObject', backref='schema', lazy='dynamic',
                                cascade='all,delete-orphan')
+    licenses = db.relationship("License",
+                            secondary=lambda: association_table_license,
+                            backref="schemas")
 
     # foreign keys
     org_id = db.Column(db.Integer(), db.ForeignKey('organization.id'),
