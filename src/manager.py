@@ -46,6 +46,14 @@ def db_init():
 
 
 @manager.command
+def import_licenses_from_spdx():
+    "Import licenses from spdx.org."
+    print("Importing licenses from spdx.org...")
+    with application.app_context():
+        scripts.import_licenses_from_spdx()
+
+
+@manager.command
 def create_user(login, password):
     "Initializes a user"
     print("Creation of the user {} ...".format(login))

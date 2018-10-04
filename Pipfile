@@ -24,6 +24,7 @@ WTForms = "*"
 validate_email = "*"
 flask-babel = "*"
 alembic = "*"
+requests = "*"
 
 [dev-packages]
 sqlalchemy-schemadisplay = "*"
