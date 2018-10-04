@@ -46,7 +46,7 @@
             <b>{{ _('Creator') }}</b>
         </div>
         <div class="col-md-9">
-            <a href="#">{{ json_object.creator.login }}</a>
+        <a href="{{ url_for('user_bp.get', login=json_object.creator.login) }}">{{ json_object.creator.login }}</a>
         </div>
     </div>
     {% endif %}

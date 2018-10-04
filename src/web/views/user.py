@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash
+from flask import Blueprint, render_template, redirect, url_for, flash, abort
 from flask_login import login_required, current_user
 from werkzeug import generate_password_hash
 from flask_babel import gettext
@@ -9,6 +9,16 @@ from web.forms import ProfileForm
 
 
 user_bp = Blueprint('user_bp', __name__, url_prefix='/user')
+
+
+@user_bp.route('/<string:login>', methods=['GET'])
+def get(login=None):
+    """Return the user given in parameter with the objects created by this
+    user."""
+    user = User.query.filter(User.login == login).first()
+    if user is None:
+        abort(404)
+    return render_template('user.html', user=user)
 
 
 @user_bp.route('/schemas', methods=['GET'])
