@@ -1,6 +1,7 @@
 
 from datetime import datetime
 from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy import event
 
 from bootstrap import db
 
@@ -31,3 +32,11 @@ class Schema(db.Model):
                         default=None)
     creator_id = db.Column(db.Integer(), db.ForeignKey('user.id'),
                            default=None)
+
+
+@event.listens_for(Schema, 'before_update')
+def update_modified_on_update_listener(mapper, connection, target):
+    """Event listener that runs before a record is updated, and sets the
+    last_updated field accordingly.
+    """
+    target.last_updated = datetime.utcnow()
