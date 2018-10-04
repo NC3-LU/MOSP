@@ -49,6 +49,14 @@
     {% endif %}
     <div class="row">
         <div class="col-md-3">
+            <b>{{ _('License') }}</b>
+        </div>
+        <div class="col-md-9">
+            {% for license in json_object.licenses %}{{license.name}}{% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
             <b>Download the object</b>
         </div>
         <div class="col-md-9">
