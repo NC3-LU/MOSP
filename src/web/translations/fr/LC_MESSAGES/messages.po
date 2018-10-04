@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-06 07:36+0200\n"
-"PO-Revision-Date: 2018-06-06 07:36+0200\n"
+"POT-Creation-Date: 2018-10-04 13:59+0200\n"
+"PO-Revision-Date: 2018-10-04 14:00+0200\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
@@ -19,16 +19,16 @@ msgstr ""
 "Generated-By: Babel 2.5.3\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: src/web/forms.py:37 src/web/forms.py:100 src/web/forms.py:115
+#: src/web/forms.py:37 src/web/forms.py:108 src/web/forms.py:123
 #: src/web/templates/admin/users.html:10
 msgid "Login"
 msgstr "Identifiant"
 
-#: src/web/forms.py:39 src/web/forms.py:102 src/web/forms.py:117
+#: src/web/forms.py:39 src/web/forms.py:110 src/web/forms.py:125
 msgid "Please enter your login."
 msgstr "Veuillez entrer votre identifiant."
 
-#: src/web/forms.py:40 src/web/forms.py:103 src/web/forms.py:118
+#: src/web/forms.py:40 src/web/forms.py:111 src/web/forms.py:126
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -44,17 +44,17 @@ msgstr "Connexion"
 msgid "Impossible to login."
 msgstr "Impossible de se connecter."
 
-#: src/web/forms.py:68 src/web/forms.py:83
+#: src/web/forms.py:68 src/web/forms.py:91
 msgid "Please enter a name"
 msgstr "S'il vous plaît entrer un nom"
 
-#: src/web/forms.py:69 src/web/forms.py:84
+#: src/web/forms.py:69 src/web/forms.py:92
 #: src/web/templates/organization.html:14 src/web/templates/schema.html:15
-#: src/web/templates/view_json.html:14
+#: src/web/templates/view_json.html:21
 msgid "Description"
 msgstr "Description"
 
-#: src/web/forms.py:70 src/web/forms.py:85
+#: src/web/forms.py:70 src/web/forms.py:93
 msgid "Please enter a description"
 msgstr "S'il vous plaît entrer une description"
 
@@ -63,75 +63,83 @@ msgid "Public object"
 msgstr "Objet public"
 
 #: src/web/forms.py:72
+msgid "Licenses"
+msgstr "Licences"
+
+#: src/web/forms.py:73
+msgid "Please choose a license"
+msgstr "S'il vous plaît sélectionner une licence"
+
+#: src/web/forms.py:75
 msgid "Validated by"
 msgstr "Validé par"
 
-#: src/web/forms.py:73 src/web/forms.py:88 src/web/templates/schema.html:50
+#: src/web/forms.py:76 src/web/forms.py:96 src/web/templates/schema.html:50
 msgid "Organization"
 msgstr "Organisation"
 
-#: src/web/forms.py:74 src/web/forms.py:89
+#: src/web/forms.py:77 src/web/forms.py:97
 msgid "Please select an organization"
 msgstr "Veuillez sélectionner une organisation"
 
-#: src/web/forms.py:78 src/web/forms.py:93 src/web/forms.py:108
-#: src/web/forms.py:120
+#: src/web/forms.py:81 src/web/forms.py:101 src/web/forms.py:116
+#: src/web/forms.py:128
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: src/web/forms.py:87
+#: src/web/forms.py:95
 msgid "Please enter a JSON schema"
 msgstr "S'il vous plaît entrer un schéma JSON"
 
-#: src/web/forms.py:104 src/web/forms.py:119
+#: src/web/forms.py:112 src/web/forms.py:127
 msgid "Public profile"
 msgstr "Profil public"
 
-#: src/web/forms.py:105
+#: src/web/forms.py:113
 msgid "Active"
 msgstr "Actif"
 
-#: src/web/forms.py:106
+#: src/web/forms.py:114
 msgid "Admin"
 msgstr "Admin"
 
-#: src/web/forms.py:107
+#: src/web/forms.py:115
 msgid "API"
 msgstr "API"
 
 #: src/web/templates/index.html:6
-msgid "Recently updated schemas"
-msgstr "Schémas récemment mis à jour"
-
-#: src/web/templates/index.html:10
 msgid "Recently updated objects"
 msgstr "Objets récemment mis à jour"
+
+#: src/web/templates/index.html:10
+msgid "Recently updated schemas"
+msgstr "Schémas récemment mis à jour"
 
 #: src/web/templates/layout.html:7
 msgid "Create, edit and share JSON objects"
 msgstr "Créer, modifier et partager des objets JSON"
 
-#: src/web/templates/layout.html:39 src/web/templates/layout.html:56
+#: src/web/templates/layout.html:41 src/web/templates/layout.html:58
 msgid "Schemas"
 msgstr "Schemas"
 
-#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:46
+#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:48
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: src/web/templates/layout.html:53
+#: src/web/templates/layout.html:55
 msgid "Signed in as"
 msgstr "Connecté en tant que"
 
-#: src/web/templates/layout.html:55
+#: src/web/templates/layout.html:57
 msgid "Profile"
 msgstr "Profil"
 
-#: src/web/templates/layout.html:58
+#: src/web/templates/layout.html:60
 msgid "Sign out"
 msgstr "Déconnexion"
 
-#: src/web/templates/layout.html:93
+#: src/web/templates/layout.html:95
 msgid "About"
 msgstr "À propos"
 
@@ -144,7 +152,7 @@ msgid "Your password"
 msgstr "Votre mot de passe"
 
 #: src/web/templates/organization.html:6 src/web/templates/organization.html:41
-#: src/web/templates/schema.html:49 src/web/templates/view_json.html:6
+#: src/web/templates/schema.html:49 src/web/templates/view_json.html:10
 msgid "Name"
 msgstr "Nom"
 
@@ -236,21 +244,25 @@ msgstr "modifier"
 msgid "Add a new schema in this organization"
 msgstr "Créer un nouveau schéma dans cette organisation"
 
-#: src/web/templates/view_json.html:22
+#: src/web/templates/view_json.html:29
 msgid "Owning organization"
 msgstr "Organisation propriétaire"
 
-#: src/web/templates/view_json.html:30
+#: src/web/templates/view_json.html:37
 msgid "Validating JSON schema"
 msgstr "Schéma JSON validant"
 
-#: src/web/templates/view_json.html:33
+#: src/web/templates/view_json.html:40
 msgid "provided by"
 msgstr "fourni par"
 
-#: src/web/templates/view_json.html:39
+#: src/web/templates/view_json.html:46
 msgid "Creator"
 msgstr "Créateur"
+
+#: src/web/templates/view_json.html:55
+msgid "License"
+msgstr "License"
 
 #: src/web/templates/admin/users.html:11
 msgid "Member since"
@@ -302,12 +314,12 @@ msgstr "Vous ne pouvez pas supprimer votre propre utilisateur."
 msgid "User deleted."
 msgstr "Utilisateur supprimé."
 
-#: src/web/views/object.py:156 src/web/views/schema.py:103
+#: src/web/views/object.py:166 src/web/views/schema.py:103
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr "%(object_name)s mis à jour avec succès."
 
-#: src/web/views/object.py:172 src/web/views/schema.py:119
+#: src/web/views/object.py:196 src/web/views/schema.py:119
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr "%(object_name)s mis à jour avec succès."
