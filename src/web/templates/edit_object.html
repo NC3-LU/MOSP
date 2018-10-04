@@ -4,7 +4,11 @@
     <div class="row">
         <div class="col-md-12">
             <h3>{{ action }}</h3>
-            <p>validated by <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a></p>
+            <p>validated by <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a>
+                {% if action == "Edit an object" %}
+                    &nbsp;-&nbsp;<a href="{{ url_for('object_bp.edit_json', object_id=object_id) }}">Edit the definition of the object</a>
+                {% endif %}
+            </p>
         </div>
     </div>
     <div class="row">
@@ -64,13 +68,6 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-        {% if action == "Edit an object" %}
-            <td><a href="{{ url_for('object_bp.edit_json', object_id=object_id) }}">Edit the definition of the object</a></td>
-        {% endif %}
         </div>
     </div>
 </div><!-- /.container -->
