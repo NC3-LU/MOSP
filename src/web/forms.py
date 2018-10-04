@@ -9,7 +9,7 @@ from wtforms import (TextField, TextAreaField, PasswordField, BooleanField,
 from flask_babel import lazy_gettext
 
 from lib import misc_utils
-from web.models import User, Organization
+from web.models import User, Organization, License
 
 
 class RedirectForm(FlaskForm):
@@ -69,6 +69,9 @@ class AddObjectForm(FlaskForm):
     description = TextAreaField(lazy_gettext('Description'),
                     [validators.Required(lazy_gettext('Please enter a description'))])
     is_public = BooleanField(lazy_gettext('Public object'), default=True)
+    licenses = SelectMultipleField(lazy_gettext('Licenses'),
+                            [validators.Required(lazy_gettext('Please choose a license'))],
+                            coerce=int)
     schema_id = HiddenField(lazy_gettext('Validated by'))
     org_id = SelectField(lazy_gettext('Organization'),
                     [validators.Required(lazy_gettext('Please select an organization'))],
@@ -76,6 +79,11 @@ class AddObjectForm(FlaskForm):
     org_id.choices = [(0, '')]
 
     submit = SubmitField(lazy_gettext('Save'))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.licenses.choices = [(license.id, license.name) \
+                                        for license in License.query.all()]
 
 
 class SchemaForm(FlaskForm):

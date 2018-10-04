@@ -6,7 +6,7 @@ from flask_babel import gettext
 
 from bootstrap import db, application
 from web.views.decorators import check_object_view_permission, check_object_edit_permission
-from web.models import Schema, JsonObject
+from web.models import Schema, JsonObject, License
 from web.forms import AddObjectForm
 
 object_bp = Blueprint('object_bp', __name__, url_prefix='/object')
@@ -125,6 +125,8 @@ def form(schema_id=None, object_id=None):
     form.org_id.choices = [(0, '')]
     form.org_id.choices.extend([(org.id, org.name) for org in
                                                     current_user.organizations])
+    form.licenses.data = [license.id for license in
+                                            json_object.licenses]
     action = "Edit an object"
     head_titles = [action]
     head_titles.append(json_object.name)
@@ -150,6 +152,14 @@ def process_form(object_id=None):
     if object_id is not None:
         json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
         form.schema_id.data = json_object.schema_id
+        # Licenses
+        new_licenses = []
+        for license_id in form.licenses.data:
+            license = License.query.filter(License.id == license_id).first()
+            new_licenses.append(license)
+        json_object.licenses = new_licenses
+        del form.licenses
+
         form.populate_obj(json_object)
         try:
             db.session.commit()
@@ -169,9 +179,23 @@ def process_form(object_id=None):
     db.session.add(new_object)
     try:
         db.session.commit()
-        flash(gettext('%(object_name)s successfully created.',
-                object_name=new_object.name), 'success')
     except Exception as e:
         # TODO: display the error
         return redirect(url_for('object_bp.form', object_id=new_object.id))
+
+    # Licenses
+    new_licenses = []
+    for license_id in form.licenses.data:
+        license = License.query.filter(License.id == license_id).first()
+        new_licenses.append(license)
+    new_object.licenses = new_licenses
+    del form.licenses
+
+    try:
+        db.session.commit()
+        flash(gettext('%(object_name)s successfully created.',
+                object_name=new_object.name), 'success')
+    except Exception as e:
+        return redirect(url_for('object_bp.form', object_id=new_object.id))
+
     return redirect(url_for('object_bp.form', object_id=new_object.id))
