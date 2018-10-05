@@ -1,6 +1,16 @@
 MOSP Changelog
 ==============
 
+## 0.4 (2018-10-05)
+
+- it is now possible to select one or several licenses for an object (#2). A
+  script is provided in order to initialize the database with licenses from
+  https://spdx.org/licenses/licenses.json;
+- the values of a JSON object can now be exported to a CSV file;
+- the management of permissions has been improved;
+- added a new profile page for users;
+- various fixes and UI improvements.
+
 ## 0.3.0 (2018-06-01)
 
 - new Web interface to list, create and edit JSON schemas;

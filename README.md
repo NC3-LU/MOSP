@@ -16,9 +16,8 @@ and objects.
 
 You can use any available schemas in order to create shareable JSON objects.
 It is also possible to keep an object private even if the goal is to promote
-the sharing of information.
-
-Integration with third-party applications is possible thanks to an API.
+the sharing of information. Integration with third-party applications is
+possible thanks to an API.
 
 
 ### What's in the name?
