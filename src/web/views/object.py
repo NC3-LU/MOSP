@@ -20,6 +20,8 @@ def get_json_object(object_id):
     Export the JSON part of a JsonObject as a clean JSON file.
     """
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    if json_object is None:
+        abort(404)
     result = json.dumps(json_object.json_object,
                         sort_keys=True, indent=4, separators=(',', ': '))
     return Response(result,
@@ -59,6 +61,8 @@ def view(object_id=None):
     # print(res)
 
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    if json_object is None:
+        abort(404)
     result = json.dumps(json_object.json_object,
                         sort_keys=True, indent=4, separators=(',', ': '))
     return render_template('view_json.html',

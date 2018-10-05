@@ -24,12 +24,14 @@ def get(login=None):
 @user_bp.route('/schemas', methods=['GET'])
 @login_required
 def schemas():
+    """Displays the schemas of the currently logged user."""
     return render_template('user_schemas.html')
 
 
 @user_bp.route('/profile', methods=['GET'])
 @login_required
 def form():
+    """Retruns the fom to edit a user."""
     user = User.query.filter(User.id == current_user.id).first()
     form = ProfileForm(obj=user)
     form.populate_obj(current_user)
@@ -44,6 +46,7 @@ def form():
 @user_bp.route('/profile', methods=['POST'])
 @login_required
 def process_form():
+    """Process the form for the user edition."""
     form = ProfileForm()
 
     if not form.validate():
