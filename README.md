@@ -15,7 +15,7 @@ The goal of this platform is to gather security related JSON schemas
 and objects.
 
 You can use any available schemas in order to create shareable JSON objects.
-It is also possible to keep an object private even if our goal is to promote
+It is also possible to keep an object private even if the goal is to promote
 the sharing of information.
 
 Integration with third-party applications is possible thanks to an API.
@@ -41,15 +41,11 @@ $ pipenv install
 $ pipenv shell
 $ python src/manager.py db_create
 $ python src/manager.py db_init
+$ python src/manager.py import_licenses_from_spdx
 $ python src/manager.py create_admin <username> <password>
 $ python src/runserver.py
 ```
 
-Generating the UML graph of the database:
-
-```bash
-$ python src/manager.py uml_graph
-```
 
 ### Deploy on Heroku
 
@@ -61,6 +57,7 @@ $ heroku buildpacks:add --index 1 heroku/python
 $ heroku buildpacks:add --index 2 https://github.com/heroku/heroku-buildpack-nodejs
 $ git push heroku master
 $ heroku run init
+$ heroku run python src/manager.py import_licenses_from_spdx
 $ heroku ps:scale web=1
 ```
 

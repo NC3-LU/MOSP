@@ -7,8 +7,6 @@ MOSP is a free software written and maintained by:
 
 # Contributors
 
-* Cédric Bonhomme
-
 * Copyright (C) 2018 Cédric Bonhomme
 * Copyright (C) 2018 SMILE/CASES gie securitymadein.lu
 
