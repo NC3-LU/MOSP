@@ -50,7 +50,6 @@
                             <th>{{ _('Organization') }}</th>
                             <th>{{ _('Visibility') }}</th>
                             <th>{{ _('Last updated') }}</th>
-                            <th>{{ _('View') }}</th>
                             <th>{{ _('Edit') }}</th>
                             <th>{{ _('Definition') }}</th>
                             <th>{{ _('Object') }}</th>
@@ -61,11 +60,10 @@
                     {% for object in objects %}
                         <tr>
                             <td scope="row">{{ loop.index }}</td>
-                            <td>{{ object.name  }}</td>
+                            <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
                             <td><a href="{{ url_for('organization_bp.get', organization_id=object.org_id) }}">{{ object.organization.name }}</a></td>
                             <td>{{ _('Public') if object.is_public else _('Private') }}</td>
                             <td class="date">{{ object.last_updated | datetime }}</td>
-                            <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                             <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                             <td><a href="{{ url_for('object_bp.edit_json', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                             <td><a href="{{ url_for('object_bp.get_json_object', object_id=object.id) }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
@@ -85,7 +83,7 @@ $('#table-objects').DataTable( {
     columnDefs: [
         {
             bSortable: false,
-            targets: [0, 5, 6, 7, 8, 9]
+            targets: [0, 5, 6, 7, 8]
         }
     ],
     "order": [[ 4, "desc" ]]
