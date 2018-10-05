@@ -3,10 +3,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <b>{{ user.login }} is the creator of the folowing object(s):</b>
-            <div class="list-group">
+            <p>{{ user.login }} is the creator of the following object(s):</p>
+            <div class="list-group list-group-flush">
                 {% for object in user.objects %}
-                    <a href="{{ url_for('object_bp.view', object_id=object.id) }}" class="list-group-item list-group-item-action">{{ object.name }}</a>
+                    <a href="{{ url_for('object_bp.view', object_id=object.id) }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            {{ object.name }} <span class="badge badge-primary badge-pill">{{ object.schema.name }}</span>
+                        </div>
+                        <small>{{ object.description }}</small>
+                    </a>
                 {% endfor %}
             </div>
         </div>
