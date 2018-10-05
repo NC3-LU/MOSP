@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-04 14:03+0200\n"
-"PO-Revision-Date: 2018-10-04 14:32+0200\n"
+"POT-Creation-Date: 2018-10-05 09:02+0200\n"
+"PO-Revision-Date: 2018-10-05 09:03+0200\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
@@ -193,32 +193,32 @@ msgid "Visibility"
 msgstr "Visibilité"
 
 #: src/web/templates/schema.html:53
-msgid "View"
-msgstr "Afficher"
-
-#: src/web/templates/schema.html:54
 msgid "Edit"
 msgstr "Éditer"
 
-#: src/web/templates/schema.html:55
+#: src/web/templates/schema.html:54
 msgid "Definition"
 msgstr "Définition"
 
-#: src/web/templates/schema.html:56
+#: src/web/templates/schema.html:55
 msgid "Object"
 msgstr "Objet"
 
-#: src/web/templates/schema.html:57
+#: src/web/templates/schema.html:56
 msgid "Delete"
 msgstr "Supprimer"
 
-#: src/web/templates/schema.html:66
+#: src/web/templates/schema.html:65
 msgid "Public"
 msgstr "Public"
 
-#: src/web/templates/schema.html:66
+#: src/web/templates/schema.html:65
 msgid "Private"
 msgstr "Privé"
+
+#: src/web/templates/user.html:6
+msgid "is the creator of the following object(s):"
+msgstr "est le créateur des objets suivant:"
 
 #: src/web/templates/user_schemas.html:6
 msgid "Create a new schema"
@@ -288,7 +288,7 @@ msgstr "Actions"
 msgid "Add a new user"
 msgstr "Ajouter un nouvel utilisateur"
 
-#: src/web/views/admin.py:69 src/web/views/user.py:47
+#: src/web/views/admin.py:69 src/web/views/user.py:60
 #, python-format
 msgid "User %(user_login)s successfully updated."
 msgstr "Utilisateur %(user_login)s mis à jour avec succès."
@@ -322,12 +322,12 @@ msgstr "Vous ne pouvez pas supprimer votre propre utilisateur."
 msgid "User deleted."
 msgstr "Utilisateur supprimé."
 
-#: src/web/views/object.py:166 src/web/views/schema.py:103
+#: src/web/views/object.py:170 src/web/views/schema.py:103
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr "%(object_name)s mis à jour avec succès."
 
-#: src/web/views/object.py:196 src/web/views/schema.py:119
+#: src/web/views/object.py:200 src/web/views/schema.py:119
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr "%(object_name)s mis à jour avec succès."
@@ -343,6 +343,9 @@ msgstr "Authentification requise."
 #: src/web/views/views.py:21
 msgid "Forbidden."
 msgstr "Interdit."
+
+#~ msgid "View"
+#~ msgstr "Afficher"
 
 #~ msgid "Administration"
 #~ msgstr "Administration"

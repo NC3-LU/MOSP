@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-04 14:32+0200\n"
+"POT-Creation-Date: 2018-10-05 09:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,31 +191,31 @@ msgid "Visibility"
 msgstr ""
 
 #: src/web/templates/schema.html:53
-msgid "View"
-msgstr ""
-
-#: src/web/templates/schema.html:54
 msgid "Edit"
 msgstr ""
 
-#: src/web/templates/schema.html:55
+#: src/web/templates/schema.html:54
 msgid "Definition"
 msgstr ""
 
-#: src/web/templates/schema.html:56
+#: src/web/templates/schema.html:55
 msgid "Object"
 msgstr ""
 
-#: src/web/templates/schema.html:57
+#: src/web/templates/schema.html:56
 msgid "Delete"
 msgstr ""
 
-#: src/web/templates/schema.html:66
+#: src/web/templates/schema.html:65
 msgid "Public"
 msgstr ""
 
-#: src/web/templates/schema.html:66
+#: src/web/templates/schema.html:65
 msgid "Private"
+msgstr ""
+
+#: src/web/templates/user.html:6
+msgid "is the creator of the following object(s):"
 msgstr ""
 
 #: src/web/templates/user_schemas.html:6
@@ -286,7 +286,7 @@ msgstr ""
 msgid "Add a new user"
 msgstr ""
 
-#: src/web/views/admin.py:69 src/web/views/user.py:47
+#: src/web/views/admin.py:69 src/web/views/user.py:60
 #, python-format
 msgid "User %(user_login)s successfully updated."
 msgstr ""
@@ -320,12 +320,12 @@ msgstr ""
 msgid "User deleted."
 msgstr ""
 
-#: src/web/views/object.py:166 src/web/views/schema.py:103
+#: src/web/views/object.py:170 src/web/views/schema.py:103
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr ""
 
-#: src/web/views/object.py:196 src/web/views/schema.py:119
+#: src/web/views/object.py:200 src/web/views/schema.py:119
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr ""

@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <p>{{ user.login }} is the creator of the following object(s):</p>
+            <p>{{ user.login }} {{ _('is the creator of the following object(s):') }}</p>
             <div class="list-group list-group-flush">
                 {% for object in user.objects %}
                     <a href="{{ url_for('object_bp.view', object_id=object.id) }}" class="list-group-item list-group-item-action flex-column align-items-start">
