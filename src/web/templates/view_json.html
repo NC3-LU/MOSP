@@ -67,60 +67,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
-            <b>{{ _('Export only values') }}</b>
-        </div>
-        <div class="col-md-9">
-            <a href="#"><i id="download-csv" class="fa fa-download" aria-hidden="true" title="To CSV"></i></a>&nbsp;&nbsp;
-            <a href="#"><i id="download-json" class="fa fa-download" aria-hidden="true" title="To JSON"></i></a>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-12">
             <br />
             <pre class="prettyprint"><code>{{ json_object_pretty }}</code></pre>
         </div>
     </div>
 </div>
-<script>
-$(document).ready(function() {
-    $('#download-csv').click(function(e) {
-        $.ajax({
-            url: "{{ url_for('json_objectapi0.json_objectapi',) }}/{{ json_object.id }}",
-            type: 'GET',
-            contentType: "application/json",
-            success: function(result) {
-                csvContent = '';
-                result.json_object.values.map(function(value){
-                    csvContent += Papa.unparse(value.entry) + '\n';
-                })
-                var hiddenElement = document.createElement('a');
-                hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
-                hiddenElement.target = '_blank';
-                hiddenElement.download = '{{ json_object.name }}.csv';
-                document.body.appendChild(hiddenElement);
-                hiddenElement.click();
-                document.body.removeChild(hiddenElement);
-            }
-        });
-    });
-    $('#download-json').click(function(e) {
-        $.ajax({
-            url: "{{ url_for('json_objectapi0.json_objectapi',) }}/{{ json_object.id }}",
-            type: 'GET',
-            contentType: "application/json",
-            success: function(result) {
-                var hiddenElement = document.createElement('a');
-                hiddenElement.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(result.json_object.values));
-                hiddenElement.target = '_blank';
-                hiddenElement.download = '{{ json_object.name }}.json';
-                document.body.appendChild(hiddenElement);
-                hiddenElement.click();
-                document.body.removeChild(hiddenElement);
-            }
-        });
-    });
-});
-</script>
 <!-- /.container -->
 {% endblock %}
