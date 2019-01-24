@@ -8,7 +8,7 @@
   "author": "Cédric Bonhomme",
   "license": "AGPL-3.0-or-later",
   "dependencies": {
-    "@json-editor/json-editor": "^1.2.1",
+    "@json-editor/json-editor": "^1.3.2",
     "bootstrap": "^4.2.1",
     "bootstrap-select": "^1.13.5",
     "code-prettify": "^0.1.0",
