@@ -19,6 +19,8 @@ It is also possible to keep an object private even if the goal is to promote
 the sharing of information. Integration with third-party applications is
 possible thanks to an API.
 
+Official instance:  
+[http://objects.monarc.lu](http://objects.monarc.lu)
 
 ### What's in the name?
 
@@ -66,8 +68,8 @@ This software is licensed under
 [GNU Affero General Public License version 3](https://www.gnu.org/licenses/agpl-3.0.html)
 
 
-* Copyright (C) 2018 Cédric Bonhomme
-* Copyright (C) 2018 SMILE gie securitymadein.lu
+* Copyright (C) 2018-2019 Cédric Bonhomme
+* Copyright (C) 2018-2019 SMILE gie securitymadein.lu
 
 For more information, the [list of authors and contributors](AUTHORS.md) is
 available.

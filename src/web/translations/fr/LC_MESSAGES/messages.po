@@ -1,5 +1,5 @@
 # French translations for PROJECT.
-# Copyright (C) 2018 ORGANIZATION
+# Copyright (C) 2018-2019 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
