@@ -90,10 +90,8 @@ $(document).ready(function() {
             type: 'GET',
             contentType: "application/json",
             success: function(result) {
-                csvContent = '';
-                result.json_object.measures.map(function(measure){
-                    csvContent += Papa.unparse(measure) + '\n';
-                })
+                csvContent = Papa.unparse(result.json_object.measures);
+                csvContent.replace(/(^[ \t]*\n)/gm, "");
                 var hiddenElement = document.createElement('a');
                 hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
                 hiddenElement.target = '_blank';
