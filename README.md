@@ -1,4 +1,5 @@
-# MOSP
+# MONARC Objects Sharing Platform
+
 
 ![Latest release](https://img.shields.io/github/release/CASES-LU/MOSP.svg?style=flat-square)
 ![License](https://img.shields.io/github/license/CASES-LU/MOSP.svg?style=flat-square)
@@ -21,15 +22,6 @@ possible thanks to an API.
 
 Official instance:  
 [http://objects.monarc.lu](http://objects.monarc.lu)
-
-### What's in the name?
-
-MOSP can stands for a lot things:
-[MISP](https://github.com/MISP/MISP) Object Sharing Platform,
-[MONARC](https://github.com/monarc-project/MonarcAppFO) Object Sharing Platform,
-Multi-purpose Object Sharing Platform,
-Meta Object Sharing Platform,
-and whatever you can imagine. Choose.
 
 
 ## Installation
