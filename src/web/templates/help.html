@@ -1,0 +1,32 @@
+{% extends "layout.html" %}}
+{% block content %}
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md">
+            <div>
+                <h1>Documentation</h1>
+                <h3>JSON schema</h3>
+                <p class="text-justify">A JSON schema describes and validates your existing data
+                    format(s). This ensures the quality of client submitted data.
+                    MOSP also uses JSON schemas for the generation of the model editor.<br />
+                    For example the JSON schema available <a href="https://github.com/monarc-project/monarc-objects/blob/master/referentials-shema.json">here</a>
+                    validates the <a href="http://objects.monarc.lu/schema/12">Security referentials</a> used in MONARC.<br />
+                    When creating a new object with MOSP you have first to choose a JSON schema.
+                </p>
+
+                <hr class="my-4" />
+                <h3>Using the API</h3>
+                <p>
+                    Integration with third-party applications is possible thanks to an API:<br />
+                    <ul>
+                        <li><a href="{{ url_for('schemaapi0.schemaapi',) }}">JSON Schemas</a></li>
+                        <li><a href="{{ url_for('json_objectapi0.json_objectapi',) }}">JSON Objects</a></li>
+                    </ul>
+                <p>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -52,3 +52,8 @@ def index():
 def about():
     """About page."""
     return render_template('about.html')
+
+@current_app.route('/help', methods=['GET'])
+def help():
+    """Documentation page."""
+    return render_template('help.html')
