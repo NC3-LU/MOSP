@@ -72,7 +72,7 @@ def form(schema_id=None, org_id=None):
     form.org_id.choices = [(0, '')]
     form.org_id.choices.extend([(org.id, org.name) for org in
                                                     current_user.organizations])
-    action = "Edit an object"
+    action = "Edit a schema"
     head_titles = [action]
     head_titles.append(schema.name)
     return render_template('edit_schema.html', action=action,
