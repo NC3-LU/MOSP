@@ -5,7 +5,6 @@ syntax: glob
 *.pyc
 *~
 *.db
-
 *.mo
 
 # Emacs
@@ -30,7 +29,6 @@ build
 .python-version
 
 # js and node files
+package-lock.json
 node_modules
 src/web/static/npm_components
-
-src/web/public/
