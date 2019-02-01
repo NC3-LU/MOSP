@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, abort
+from sqlalchemy import or_
 
 from web.models import Organization
 
@@ -13,9 +14,11 @@ def list_organizations():
 
 
 @organization_bp.route('/<int:organization_id>', methods=['GET'])
-def get(organization_id=None):
+@organization_bp.route('/<string:organization_name>', methods=['GET'])
+def get(organization_id=None, organization_name=None):
     """Return the organization given in parameter."""
-    org = Organization.query.filter(Organization.id == organization_id).first()
+    org = Organization.query.filter(or_(Organization.id == organization_id,
+            Organization.name == organization_name)).first()
     if org is None:
         abort(404)
     return render_template('organization.html', organization=org)
