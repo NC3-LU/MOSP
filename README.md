@@ -1,6 +1,5 @@
 # MONARC Objects Sharing Platform
 
-
 ![Latest release](https://img.shields.io/github/release/CASES-LU/MOSP.svg?style=flat-square)
 ![License](https://img.shields.io/github/license/CASES-LU/MOSP.svg?style=flat-square)
 ![Contributors](https://img.shields.io/github/contributors/CASES-LU/MOSP.svg?style=flat-square)
@@ -12,11 +11,12 @@
 [MOSP](https://github.com/CASES-LU/MOSP) is a platform to create, edit
 and share JSON objects.
 
-The goal of this platform is to gather security related JSON schemas
-and objects.
+The goal is to gather security related JSON objects,
+in the first place aimed to be used with
+[MONARC](https://github.com/monarc-project/MonarcAppFO).
 
 You can use any available schemas in order to create shareable JSON objects.
-It is also possible to keep an object private even if the goal is to promote
+It is possible to keep an object private even if the goal is to promote
 the sharing of information. Integration with third-party applications is
 possible thanks to an API.
 
