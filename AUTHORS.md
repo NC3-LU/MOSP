@@ -12,3 +12,8 @@ MOSP is a free software written and maintained by:
 
 MOSP is licensed under
 [GNU Affero General Public License version 3](https://www.gnu.org/licenses/agpl-3.0.html)
+
+## Logo
+
+Thank you to [Tebriz](https://github.com/tebriz159) who
+[created](https://github.com/CASES-LU/MOSP/issues/7) the logo of MOSP.

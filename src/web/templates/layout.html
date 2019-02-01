@@ -7,6 +7,7 @@
     <meta name="description" content="MOSP - {{ _('Create, edit and share JSON objects') }}" />
     <meta name="author" content="" />
     {% block head_css %}
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon-16x16.png') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/bootstrap-select/dist/css/bootstrap-select.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" />
@@ -30,7 +31,7 @@
 <body>
     {% block main_menu %}
         <nav class="navbar navbar-expand-lg navbar-dark bg-MOSP-blue">
-            <a class="navbar-brand" href="/">MONARC Objects Sharing Platform</a>
+            <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/logo.png') }}" width="120px" alt="MONARC Objects Sharing Platform" title="MONARC Objects Sharing Platform" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
