@@ -14,9 +14,10 @@ schemas_bp = Blueprint('schemas_bp', __name__, url_prefix='/schemas')
 
 
 @schemas_bp.route('/', methods=['GET'])
-def list_shemas():
+def list_schemas():
     """Return the page which will display the list of schemas."""
-    return render_template('schemas.html')
+    schemas = Schema.query.filter().all()
+    return render_template('schemas.html', schemas=schemas)
 
 
 @schema_bp.route('/<int:schema_id>', methods=['GET'])

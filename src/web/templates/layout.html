@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto w-100 justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" title="Sign in">{{ _('Schemas') }}</a>
+                        <a class="nav-link" href="{{ url_for('schemas_bp.list_schemas') }}" title="Schemas">{{ _('Schemas') }}</a>
                     </li>
                     {% if current_user.is_authenticated %}
                     {% if current_user.is_admin %}
