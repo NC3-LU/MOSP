@@ -29,7 +29,7 @@
             <b>{{ _('Owning organization') }}</b>
         </div>
         <div class="col-md-9">
-            <a href="{{ url_for('organization_bp.get', organization_id=json_object.organization.id) }}">{{ json_object.organization.name }}</a>
+            <a href="{{ url_for('organization_bp.get', organization_name=json_object.organization.name) }}">{{ json_object.organization.name }}</a>
         </div>
     </div>
     <div class="row">

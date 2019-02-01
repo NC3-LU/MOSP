@@ -24,7 +24,7 @@
             <b>{{ _('Provided by') }}</b>
         </div>
         <div class="col-md-9">
-            <a href="{{ url_for('organization_bp.get', organization_id=schema.organization.id) }}">{{ schema.organization.name }}</a>
+            <a href="{{ url_for('organization_bp.get', organization_name=schema.organization.name) }}">{{ schema.organization.name }}</a>
         </div>
     </div>
 
