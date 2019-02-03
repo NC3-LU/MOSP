@@ -1,3 +1,4 @@
 # Team
 
-Cédric Bonhomme - cedricbonhomme.org
+  Current development team members:
+  Cédric Bonhomme - cedricbonhomme.org
