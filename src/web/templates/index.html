@@ -4,11 +4,19 @@
     <div class="row">
         <div class="col">
             <h4>{{ _('Recently updated objects') }}</h4>
-            <div id="list-json-objects"></div>
+            <div id="list-json-objects">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
+               </div>
+            </div>
         </div>
         <div class="col">
             <h4>{{ _('Recently updated schemas') }}</h4>
-            <div id="list-schemas"></div>
+            <div id="list-schemas">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
+                </div>
+            </div>
         </div>
     </div>
 </div><!-- /.container -->
@@ -19,6 +27,7 @@ $(document).ready(function() {
         dataType: "json",
         contentType: "application/json",
         success: function(schemas) {
+            $('#list-schemas').empty();
             schemas.objects
             .sort(function (a, b) {
                 return a.last_updated < b.last_updated;
@@ -41,6 +50,7 @@ $(document).ready(function() {
         dataType: "json",
         contentType: "application/json",
         success: function(json_objects) {
+            $('#list-json-objects').empty();
             json_objects.objects
             .sort(function (a, b) {
                 return a.last_updated < b.last_updated;
