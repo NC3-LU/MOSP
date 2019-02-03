@@ -61,6 +61,6 @@ def help():
 
 
 @current_app.route('/human.txt', methods=['GET'])
-def help():
+def human():
     """Human dot txt page."""
     return render_template('human.txt')
