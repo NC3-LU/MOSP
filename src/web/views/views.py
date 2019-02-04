@@ -53,7 +53,14 @@ def about():
     """About page."""
     return render_template('about.html')
 
+
 @current_app.route('/help', methods=['GET'])
 def help():
     """Documentation page."""
     return render_template('help.html')
+
+
+@current_app.route('/human.txt', methods=['GET'])
+def human():
+    """Human dot txt page."""
+    return render_template('human.txt'), 200, {'Content-Type': 'text/plain'}
