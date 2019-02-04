@@ -54,6 +54,13 @@ $ heroku run python src/manager.py import_licenses_from_spdx
 $ heroku ps:scale web=1
 ```
 
+
+## Documentation
+
+[A documentation](https://www.monarc.lu/documentation/MOSP-documentation/)
+is available on the MONARC website.
+
+
 ## License
 
 This software is licensed under
