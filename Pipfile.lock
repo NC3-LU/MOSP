@@ -103,10 +103,10 @@
         },
         "flask-paginate": {
             "hashes": [
-                "sha256:b68e8d7664419ad53728514139811bce9c3f2e56199a6c057ef4c08f9f35f35d"
+                "sha256:ebc896bf6e8d7a414e3efba0bd0770a8f73dcd7023f99e849c64164287e36e9b"
             ],
             "index": "pypi",
-            "version": "==0.5.1"
+            "version": "==0.5.2"
         },
         "flask-principal": {
             "hashes": [
@@ -256,9 +256,11 @@
         },
         "python-editor": {
             "hashes": [
-                "sha256:a3c066acee22a1c94f63938341d4fb374e3fdd69366ed6603d7b24bed1efc565"
+                "sha256:1bf6e860a8ad52a14c3ee1252d5dc25b2030618ed80c022598f00176adc8367d",
+                "sha256:51fda6bcc5ddbbb7063b2af7509e43bd84bfc32a4ff71349ec7847713882327b",
+                "sha256:5f98b069316ea1c2ed3f67e7f5df6c0d8f10b689964a4a811ff64f0106819ec8"
             ],
-            "version": "==1.0.3"
+            "version": "==1.0.4"
         },
         "python-mimeparse": {
             "hashes": [
