@@ -17,6 +17,14 @@ img {
     background-color: #006FBA;
     color: white;
 }
+.btn-outline-primary {
+    border-color: #006FBA;
+    color: #006FBA;
+}
+.btn-secondary {
+    background-color: #006FBA;
+    color: white;
+}
 .btn-default {
     background-color: #006FBA;
     color: white;
