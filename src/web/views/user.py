@@ -25,7 +25,7 @@ def get(login=None):
 @login_required
 def schemas():
     """Displays the schemas of the currently logged user."""
-    return render_template('user_schemas.html')
+    return render_template('user_schemas.html', user=current_user)
 
 
 @user_bp.route('/profile', methods=['GET'])
