@@ -99,6 +99,8 @@
             <div class='row'>
                 <div class='col-md-8'>
                     <br />
+                    <a href="{{ url_for('schema_bp.form', schema_id=schema.id) }}">{{ _('Edit this schema') }}</a>
+                    <br /><br />
                     <pre class="prettyprint"><code id="schema_code"></code></pre>
                 </div>
             </div>
