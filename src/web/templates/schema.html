@@ -31,6 +31,14 @@
     <br />
 
     <div class="row">
+        <div class="col-md-2">
+            <a href="{{ url_for('schema_bp.form', schema_id=schema.id) }}" class="btn btn-secondary">{{ _('Edit this schema') }}</a>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
         <div class="col-md-12">
             <a href="{{ url_for('object_bp.form', schema_id=schema.id) }}" class="btn btn-primary">{{ _('Create a new object with this schema') }}</a>
         </div>

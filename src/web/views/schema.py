@@ -123,3 +123,15 @@ def process_form(schema_id=None):
         # TODO: display the error
         return redirect(url_for('schema_bp.form', schema_id=new_schema.id))
     return redirect(url_for('schema_bp.form', schema_id=new_schema.id))
+
+
+@schema_bp.route('/delete/<int:schema_id>', methods=['GET'])
+@login_required
+def delete(schema_id=None):
+    """
+    Delete the requested schema.
+    """
+    schema = Schema.query.filter(Schema.id == schema_id).first()
+    db.session.delete(schema)
+    db.session.commit()
+    return redirect(url_for('schemas_bp.list_schemas'))
