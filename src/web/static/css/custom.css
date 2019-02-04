@@ -15,17 +15,10 @@ img {
 }
 .btn-primary {
     background-color: #006FBA;
-    border: none;
-    color: white;
-}
-.btn-secondary {
-    background-color: #006FBA;
-    border: none;
     color: white;
 }
 .btn-default {
     background-color: #006FBA;
-    border: none;
     color: white;
 }
 

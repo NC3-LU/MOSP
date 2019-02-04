@@ -57,6 +57,7 @@
                 <div class="form-group">
                     <div class="">
                         {{ form.submit(class_="btn btn-default") }}
+                        <a href="{{ url_for('schema_bp.delete', schema_id=schema.id) }}" class="btn btn-warning" onclick="return confirm(_('You are going to delete this schema.'));">{{ _('Delete this schema') }}</a>
                     </div>
                 </div>
             </form>
