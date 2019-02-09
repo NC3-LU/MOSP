@@ -48,6 +48,21 @@ def get(schema_id=None):
     return render_template('schema.html', schema=schema, objects=objects)
 
 
+@schema_bp.route('/view/<int:schema_id>', methods=['GET'])
+def view(schema_id=None):
+    """
+    Display the JSON part of a Schema object and some related informations.
+    """
+    json_schema = Schema.query.filter(Schema.id == schema_id).first()
+    if json_schema is None:
+        abort(404)
+    result = json.dumps(json_schema.json_schema,
+                        sort_keys=True, indent=4, separators=(',', ': '))
+    return render_template('view_schema.html',
+                            json_schema=json_schema,
+                            json_schema_pretty=result)
+
+
 @schema_bp.route('/create', methods=['GET'])
 @schema_bp.route('/edit/<int:schema_id>', methods=['GET'])
 @login_required
