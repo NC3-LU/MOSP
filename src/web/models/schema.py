@@ -11,6 +11,7 @@ association_table_license = db.Table('association_schemas_licenses',
     db.Column('license_id', db.Integer, db.ForeignKey('license.id'))
 )
 
+
 class Schema(db.Model):
     """Represent a JSON schema.
     """
