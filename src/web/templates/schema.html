@@ -2,14 +2,21 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <b>{{ _('Name of the schema') }}</b>
+        <div class="col-md">
+            <h2>{{ schema.name }}</h2>
         </div>
-        <div class="col-md-9">
-            {{ schema.name }}
+        <div class="col-md-2 text-right">
+            <div class="btn-group btn-group" role="group">
+                <a class="btn btn-secondary" type="button" href="{{ url_for('schema_bp.view', schema_id=schema.id) }}" title="{{ _('View the schema') }}">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-secondary" type="button" href="{{ url_for('schema_bp.form', schema_id=schema.id) }}" title="{{ _('Edit the object') }}">
+                    <i class="fa fa-edit" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
     </div>
-
+    <br />
     <div class="row">
         <div class="col-md-3">
             <b>{{ _('Description') }}</b>
@@ -28,32 +35,13 @@
         </div>
     </div>
 
-    <br />
-
-    <div class="row">
-        <div class="col-md-2">
-            <a href="{{ url_for('schema_bp.view', schema_id=schema.id) }}" class="btn btn-outline-primary">{{ _('View this schema') }}</a>
-        </div>
-        <div class="col-md-2">
-            <a href="{{ url_for('schema_bp.form', schema_id=schema.id) }}" class="btn btn-outline-primary">{{ _('Edit this schema') }}</a>
-        </div>
-    </div>
-
-    <br />
+    <br /><br />
 
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ url_for('object_bp.form', schema_id=schema.id) }}" class="btn btn-primary">{{ _('Create a new object with this schema') }}</a>
-        </div>
-    </div>
-
-    <br />
-
-    <div class="row">
-        <div class="col-md-12">
-            <b>{{ _('Objects validated by this schema') }}</b>
             <div class="table-responsive-md">
                 <table id="table-objects" class="table table-hover">
+                    <caption>{{ _('Objects validated by the schema') }}</caption>
                     <thead>
                         <tr>
                             <th>#</th>
@@ -84,6 +72,14 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ url_for('object_bp.form', schema_id=schema.id) }}" class="btn btn-primary">{{ _('Create a new object with this schema') }}</a>
         </div>
     </div>
 </div>
