@@ -19,8 +19,10 @@
                         <i class="fa fa-share-square"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop2">
-                        <a class="dropdown-item" href="https://twitter.com/intent/tweet?url={{ url_for('object_bp.view', object_id=json_object.id, _external=True) }}&text=%27{{ json_object.name }}%27%20%23MONARC%20object%20on%20%23MOSP" rel="noreferrer" target="_blank"><i class="fa fa-twitter"></i>&nbsp;{{ _('Share on') }} Twitter</a>
-                        <a class="dropdown-item" href="https://reddit.com/submit?url={{ url_for('object_bp.view', object_id=json_object.id, _external=True) }}&title=%27{{ json_object.name }}%27%20%23MONARC%20object%20on%20%23MOSP" rel="noreferrer" target="_blank"><i class="fa fa-reddit"></i>&nbsp;{{ _('Share on') }} Reddit</a>
+                        <a class="dropdown-item" href="https://twitter.com/intent/tweet?url={{ url_for('object_bp.view', object_id=json_object.id, _external=True) }}&text=%27{{ json_object.name }}%27%20%23MONARC%20object%20on%20%23MOSP" rel="noreferrer" target="_blank">{{ _('Share on') }} Twitter</a>
+                        <a class="dropdown-item" href="https://reddit.com/submit?url={{ url_for('object_bp.view', object_id=json_object.id, _external=True) }}&title=%27{{ json_object.name }}%27%20%23MONARC%20object%20on%20%23MOSP" rel="noreferrer" target="_blank">{{ _('Share on') }} Reddit</a>
+                        <a class="dropdown-item" href="https://api.pinboard.in/v1/posts/add?url={{ url_for('object_bp.view', object_id=json_object.id, _external=True) }}&description=%27{{ json_object.name }}%27%20%23MONARC%20object%20on%20%23MOSP" target="_blank" title="Share on Pinboard">{{ _('Share on') }} Pinboard</a>
+                        <a class="dropdown-item" href="https://www.newspipe.org/bookmark/bookmarklet?href={{ url_for('object_bp.view', object_id=json_object.id, _external=True) }}&title=%27{{ json_object.name }}%27%20%23MONARC%20object%20on%20%23MOSP" target="_blank" title="Share on Newspipe">{{ _('Share on') }} Newspipe</a>
                     </div>
                 </div>
                 <div class="btn-group btn-group" role="group" title="{{ _('Download the object') }}">
