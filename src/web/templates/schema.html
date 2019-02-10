@@ -72,7 +72,7 @@
                         <tr>
                             <td scope="row">{{ loop.index }}</td>
                             <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
-                            <td><a href="{{ url_for('organization_bp.get', organization_id=object.org_id) }}">{{ object.organization.name }}</a></td>
+                            <td><a href="{{ url_for('organization_bp.get', organization_name=object.organization.name) }}">{{ object.organization.name }}</a></td>
                             <td>{{ _('Public') if object.is_public else _('Private') }}</td>
                             <td class="date">{{ object.last_updated | datetime }}</td>
                             <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
