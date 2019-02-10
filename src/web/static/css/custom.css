@@ -6,10 +6,13 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    background-color: rgb(246, 248, 250);
 }
 img {
     padding: 2px;
 }
+
+
 .bg-MOSP-blue {
     background-color: #006FBA;
 }
@@ -29,7 +32,6 @@ img {
     background-color: #006FBA;
     color: white;
 }
-
 
 
 /* Sticky footer */
