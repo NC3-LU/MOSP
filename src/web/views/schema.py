@@ -17,10 +17,8 @@ schemas_bp = Blueprint('schemas_bp', __name__, url_prefix='/schemas')
 def list_schemas():
     """Return the page which will display the list of schemas."""
     #schemas = db.session.query(Schema, func.count(Schema.objects).label('total')).order_by('total DESC')
-    schemas = db.session.query(Schema, func.count(JsonObject.id).label('total')).join(JsonObject).group_by(Schema).order_by('total DESC')
-
-    print(schemas.first())
-    
+    #schemas = db.session.query(Schema, func.count(JsonObject.id).label('total')).join(JsonObject).group_by(Schema).order_by('total DESC')
+    #print(schemas.first())
     schemas = Schema.query.filter().all()
     return render_template('schemas.html', schemas=schemas)
 
