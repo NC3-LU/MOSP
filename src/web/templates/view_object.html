@@ -11,11 +11,9 @@
         </div>
         <div class="col-md-2 text-right">
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-secondary" title="{{ _('Edit the object') }}">
-                    <a href="{{ url_for('object_bp.form', object_id=json_object.id) }}">
-                        <i class="fa fa-edit" aria-hidden="true"></i>
-                    </a>
-                </button>
+                <a type="button" class="btn btn-secondary" title="{{ _('Edit the object') }}" href="{{ url_for('object_bp.form', object_id=json_object.id) }}">
+                    <i class="fa fa-edit" aria-hidden="true"></i>
+                </a>
                 <div class="btn-group btn-group" role="group" title="{{ _('Share the object') }}">
                     <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-share-square"></i>
