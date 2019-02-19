@@ -1,11 +1,13 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import flash, url_for, redirect
+from urllib.parse import urlparse
+from flask import flash, url_for, redirect, request, current_app
 from flask_wtf import FlaskForm
 from wtforms import (TextField, TextAreaField, PasswordField, BooleanField,
                      SelectField, SubmitField, validators, HiddenField,
                      SelectMultipleField, HiddenField)
+from werkzeug.exceptions import NotFound, HTTPException
 from flask_babel import lazy_gettext
 
 from lib import misc_utils
@@ -13,21 +15,30 @@ from web.models import User, Organization, License
 
 
 class RedirectForm(FlaskForm):
-    """
-    Secure back redirects with WTForms.
-    """
     next = HiddenField()
 
     def __init__(self, *args, **kwargs):
-        FlaskForm.__init__(self, *args, **kwargs)
+        super(RedirectForm, self).__init__(*args, **kwargs)
         if not self.next.data:
-            self.next.data = misc_utils.get_redirect_target() or ''
+            self.next.data = request.args.get('next') or request.referrer
+        try:
+            ref_url = urlparse(self.next.data)
+            if ref_url.path == '/':
+                self.next.data = 'user/schemas'
+            else:
+                # Will raise an exception if no endpoint exists for the url
+                current_app.create_url_adapter(request).match(ref_url.path)
+        except NotFound:
+            print('not found')
+            self.next.data = 'user/schemas'
+        except HTTPException:
+            # Any other exceptions
+            pass
 
-    def redirect(self, endpoint='services', **values):
-        if misc_utils.is_safe_url(self.next.data):
-            return redirect(self.next.data)
-        target = misc_utils.get_redirect_target()
-        return redirect(target or url_for(endpoint, **values))
+
+    @property
+    def redirect_target(self):
+        return self.next.data
 
 
 class SigninForm(RedirectForm):

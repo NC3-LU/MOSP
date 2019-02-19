@@ -65,7 +65,7 @@ def view(object_id=None):
         abort(404)
     result = json.dumps(json_object.json_object,
                         sort_keys=True, indent=4, separators=(',', ': '))
-    return render_template('view_json.html',
+    return render_template('view_object.html',
                             json_object=json_object,
                             json_object_pretty=result)
 

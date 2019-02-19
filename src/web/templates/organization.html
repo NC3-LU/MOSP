@@ -2,16 +2,13 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <h4>{{ _('Name') }}</h4>
-        </div>
-        <div class="col-md-9">
-            {{ organization.name }}
+        <div class="col-md">
+            <h2>{{ organization.name }}</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3">
-            <h4>{{ _('Description') }}</h4>
+            <b>{{ _('Description') }}</b>
         </div>
         <div class="col-md-9">
             {{ organization.description }}
@@ -19,22 +16,18 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <h4>{{ _('Website') }}</h4>
+            <b>{{ _('Website') }}</b>
         </div>
         <div class="col-md-9">
             <a href="{{ organization.website }}">{{ organization.website }}</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <hr />
-            <h4>{{ _('Shared JSON schemas') }}</h4>
-        </div>
-    </div>
+    <br /><br />
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive-md">
                 <table id="table-schemas" class="table table-hover">
+                    <caption>{{ _('Shared JSON schemas') }}</caption>
                     <thead>
                         <tr>
                             <th>#</th>
