@@ -21,7 +21,7 @@ the sharing of information. Integration with third-party applications is
 possible thanks to an API.
 
 Official instance:  
-[http://objects.monarc.lu](http://objects.monarc.lu)
+[http://objects.monarc.lu](https://objects.monarc.lu)
 
 
 ## Installation
