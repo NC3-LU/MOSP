@@ -47,9 +47,10 @@ def set_logging(log_path=None, log_level=logging.INFO, modules=(),
 
 # Create Flask application
 application = Flask('web', instance_relative_config=True)
-application.config.from_pyfile(os.environ.get(
-                               'APPLICATION_SETTINGS',
-                               'development.cfg'), silent=False)
+try:
+    application.config.from_pyfile('production.cfg', silent=False)
+except:
+    application.config.from_pyfile('development.cfg', silent=False)
 db = SQLAlchemy(application)
 # mail = Mail(application)
 
