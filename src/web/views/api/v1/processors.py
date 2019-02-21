@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import logging
+import jsonschema
 from flask import request
 from flask_login import current_user
 from flask_restless import ProcessingException
-from jsonschema import validate
 
 from web.views.common import login_user_bundle
 from web.models import User, Schema
@@ -30,6 +30,9 @@ def auth_func(*args, **kw):
 
 
 def check_object_edit_permission(data):
+    """Ensures a user has the rights to create/edit an abject in a
+    specific organization. Checks also the validity of the submitted
+    JSON object against the specified the JSON schema."""
     if not current_user.is_authenticated:
         raise ProcessingException(description='Not authenticated!', code=401)
 
@@ -39,16 +42,17 @@ def check_object_edit_permission(data):
 
     if org_id is None:
         raise ProcessingException(description='You must provide the id of an organization.', code=400)
-
     if org_id not in [org.id for org in current_user.organizations]:
         raise ProcessingException(description='You are not allowed to create/edit object from this organization.', code=400)
 
     if schema_id is None:
         raise ProcessingException(description='You must provide the id of a schema.', code=400)
-
-    schema = Schema.query.filter(Schema.id == schema_id).first()
-
+    schema = Schema.query.filter(Schema.id == schema_id)
+    if not schema.count():
+        raise ProcessingException(description='Bad schema id', code=400)
     try:
-        validate(data.get('json_object', {}), schema.json_schema)
+        # check the validity of the submitted object
+        # (an empty JSON object is validated by any schema)
+        jsonschema.validate(data.get('json_object', {}), schema.first().json_schema)
     except Exception as e:
         raise ProcessingException(description='The object submited is not validated by the schema.', code=400)
