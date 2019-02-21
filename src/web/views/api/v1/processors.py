@@ -35,7 +35,6 @@ def check_object_edit_permission(data):
 
     schema_id = data.get('schema_id', None)
     org_id = data.get('org_id', None)
-
     data['creator_id'] = current_user.id
 
     if org_id is None:
@@ -52,5 +51,4 @@ def check_object_edit_permission(data):
     try:
         validate(data.get('json_object', {}), schema.json_schema)
     except Exception as e:
-        print(e)
         raise ProcessingException(description='The object submited is not validated by the schema.', code=400)
