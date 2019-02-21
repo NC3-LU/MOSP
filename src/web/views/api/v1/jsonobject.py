@@ -9,7 +9,7 @@ from web.views.api.v1 import processors
 from web.views.api.v1.common import url_prefix
 
 
-def pre_get_many(search_params=None, **kw):
+def check_rights(search_params=None, **kw):
     order_by = [{"field":"last_updated", "direction":"desc"}]
     if 'order_by' not in search_params:
         search_params['order_by'] = []
@@ -31,7 +31,6 @@ def pre_get_many(search_params=None, **kw):
 
                    }]
 
-
         if 'filters' not in search_params:
             search_params['filters'] = []
         search_params['filters'].extend(filters)
@@ -43,7 +42,7 @@ blueprint_object = manager.create_api_blueprint(
     methods=['GET', 'POST', 'PUT', 'DELETE'],
     exclude_columns=['creator', 'creator_id'],
     preprocessors=dict(
-        GET_MANY=[pre_get_many],
-        POST=[processors.auth_func],
-        PUT=[processors.auth_func],
-        DELETE=[processors.auth_func]))
+        GET_MANY=[check_rights],
+        POST=[processors.auth_func, processors.check_object_edit_permission],
+        PUT=[processors.auth_func, check_rights],
+        DELETE=[processors.auth_func, check_rights]))

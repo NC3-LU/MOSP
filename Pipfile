@@ -25,6 +25,7 @@ validate_email = "*"
 flask-babel = "*"
 alembic = "*"
 requests = "*"
+jsonschema = "*"
 
 [dev-packages]
 sqlalchemy-schemadisplay = "*"
