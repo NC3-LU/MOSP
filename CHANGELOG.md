@@ -1,6 +1,17 @@
 MOSP Changelog
 ==============
 
+## 0.5 (2019-02-24)
+
+- major improvements to the API. It is now possible to create a valid JSON
+  object programmatically with the HTTP POST method. The validity of the
+  submitted object is checked against the specified JSON schema;
+- the project has now an official logo (#7);
+- a human.txt file has been added (https://objects.monarc.lu/human.txt).
+- various fixes and UI improvements. All views have been improved;
+- a documentation is now available and will be improved
+  (https://www.monarc.lu/documentation/MOSP-documentation)
+
 ## 0.4 (2018-10-05)
 
 - it is now possible to select one or several licenses for an object (#2). A
