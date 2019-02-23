@@ -39,10 +39,9 @@ def pre_get_many(search_params=None, **kw):
 blueprint_object = manager.create_api_blueprint(
     models.JsonObject,
     url_prefix=url_prefix,
-    methods=['GET', 'POST', 'PUT', 'DELETE'],
+    methods=['GET', 'POST', 'PUT'],
     exclude_columns=['creator', 'creator_id'],
     preprocessors=dict(
         GET_MANY=[pre_get_many],
         POST=[processors.auth_func, processors.check_object_edit_permission],
-        PUT=[processors.auth_func, processors.check_object_edit_permission],
-        DELETE=[processors.auth_func, processors.check_object_edit_permission]))
+        PUT=[processors.auth_func, processors.check_object_edit_permission]))

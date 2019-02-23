@@ -18,10 +18,7 @@ def pre_get_many(search_params=None, **kw):
 blueprint_schema = manager.create_api_blueprint(
     models.Schema,
     url_prefix=url_prefix,
-    methods=['GET', 'POST', 'PUT', 'DELETE'],
+    methods=['GET'],
     exclude_columns=['creator', 'creator_id'],
     preprocessors=dict(
-        GET_MANY=[pre_get_many],
-        POST=[processors.auth_func],
-        PUT=[processors.auth_func],
-        DELETE=[processors.auth_func]))
+        GET_MANY=[pre_get_many]))
