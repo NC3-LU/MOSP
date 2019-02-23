@@ -9,7 +9,9 @@ from web.views.api.v1 import processors
 from web.views.api.v1.common import url_prefix
 
 
-def check_rights(search_params=None, **kw):
+def pre_get_many(search_params=None, **kw):
+    """Filter for HTTP GET many requests. Checks if a authenticated user
+    has appropriate rights to see an object."""
     order_by = [{"field":"last_updated", "direction":"desc"}]
     if 'order_by' not in search_params:
         search_params['order_by'] = []
@@ -22,13 +24,11 @@ def check_rights(search_params=None, **kw):
         search_params['filters'].extend(filters)
 
     if current_user.is_authenticated and not current_user.is_admin:
-        # filters = [dict(name='is_public', op='eq', val=True)]
         filters = [{
                     "or":  [dict(name='is_public', op='eq', val=True)],
                             "and":
                                 [dict(name='org_id', op='in', val=[org.id for org in current_user.organizations]),
                                 dict(name='is_public', op='eq', val=False)]
-
                    }]
 
         if 'filters' not in search_params:
@@ -42,7 +42,7 @@ blueprint_object = manager.create_api_blueprint(
     methods=['GET', 'POST', 'PUT', 'DELETE'],
     exclude_columns=['creator', 'creator_id'],
     preprocessors=dict(
-        GET_MANY=[check_rights],
+        GET_MANY=[pre_get_many],
         POST=[processors.auth_func, processors.check_object_edit_permission],
-        PUT=[processors.auth_func, check_rights],
-        DELETE=[processors.auth_func, check_rights]))
+        PUT=[processors.auth_func, processors.check_object_edit_permission],
+        DELETE=[processors.auth_func, processors.check_object_edit_permission]))
