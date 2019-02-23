@@ -12,6 +12,7 @@ from web.models import User, Schema
 
 logger = logging.getLogger(__name__)
 
+
 def auth_func(*args, **kw):
     if request.authorization:
         user = User.query.filter(User.login == request.authorization.username).first()
@@ -26,7 +27,6 @@ def auth_func(*args, **kw):
         login_user_bundle(user)
     if not current_user.is_authenticated:
         raise ProcessingException(description='Not authenticated!', code=401)
-
 
 
 def check_object_edit_permission(data):
@@ -52,7 +52,7 @@ def check_object_edit_permission(data):
         raise ProcessingException(description='Bad schema id', code=400)
     try:
         # check the validity of the submitted object
-        # (an empty JSON object is validated by any schema)
+        # (note: an empty JSON object is validated by any schema)
         jsonschema.validate(data.get('json_object', {}), schema.first().json_schema)
     except Exception as e:
         raise ProcessingException(description='The object submited is not validated by the schema.', code=400)
