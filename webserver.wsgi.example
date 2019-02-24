@@ -1,0 +1,14 @@
+#! /usr/bin/env python
+
+import sys
+
+sys.path.insert(0, '/home/user/MOSP/src/')
+
+# virtualenv root of the project
+python_home = '/home/user/.local/share/virtualenvs/mosp--AuKpeUm'
+
+activate_this = python_home + '/bin/activate_this.py'
+with open(activate_this) as file_:
+    exec(file_.read(), dict(__file__=activate_this))
+
+from runserver import application
