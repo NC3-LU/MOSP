@@ -16,9 +16,9 @@ in the first place aimed to be used with
 [MONARC](https://github.com/monarc-project/MonarcAppFO).
 You can use any available schemas in order to create shareable JSON objects.
   
-[Official instance](https://objects.monarc.lu) operated by
-[CASES](https://github.com/CASES-LU).
-[Objects](https://objects.monarc.lu/organization/MONARC) shared by the
+You can have a look at [official instance](https://objects.monarc.lu) operated
+by [CASES](https://github.com/CASES-LU). And as example the
+[objects](https://objects.monarc.lu/organization/MONARC) shared by the
 [MONARC project](https://github.com/monarc-project).
 
 
