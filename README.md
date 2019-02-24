@@ -11,10 +11,9 @@
 [MOSP](https://github.com/CASES-LU/MOSP) is a platform to create, edit
 and share JSON objects.
 
-The goal is to gather security related JSON objects,
-in the first place aimed to be used with
-[MONARC](https://github.com/monarc-project/MonarcAppFO).
-You can use any available schemas in order to create shareable JSON objects.
+The goal is to gather security related JSON objects, in the first place aimed
+to be used with [MONARC](https://github.com/monarc-project/MonarcAppFO).
+You can use any available schemas in order to create new JSON objects.
   
 You can have a look at [official instance](https://objects.monarc.lu) operated
 by [CASES](https://github.com/CASES-LU). And as example the
@@ -55,7 +54,7 @@ $ heroku ps:scale web=1
 
 ## Documentation
 
-[A documentation](https://www.monarc.lu/documentation/MOSP-documentation/)
+A [documentation](https://www.monarc.lu/documentation/MOSP-documentation)
 is available on the MONARC website.
 
 
