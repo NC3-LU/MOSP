@@ -23,6 +23,8 @@ SECURITY_PASSWORD_SALT = os.urandom(12)
 UPLOAD_FOLDER = './src/web/public/pictures/'
 ALLOWED_EXTENSIONS = set(['png'])
 
+ADMIN_EMAIL = 'info@cases.lu'
+
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024
 
 MAIL_SERVER = 'localhost'
