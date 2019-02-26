@@ -60,6 +60,12 @@ def help():
     return render_template('help.html')
 
 
+@current_app.route('/terms', methods=['GET'])
+def terms():
+    """Terms page."""
+    return render_template('terms.html')
+
+
 @current_app.route('/human.txt', methods=['GET'])
 def human():
     """Human dot txt page."""
