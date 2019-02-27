@@ -17,8 +17,8 @@
     {% for organization in organizations %}
         <tr>
             <th scope="row">{{ loop.index }}</th>
-            <td>{{ organization.name  }}</td>
-            <td>{{ organization.website  }}</td>
+            <td><a href="{{ url_for('organization_bp.get', organization_name=organization.name) }}">{{ organization.name }}</a></td>
+            <td><a href="{{ organization.website  }}" target="_blank">{{ organization.website  }}</a></td>
             <td>{{ organization.users | count  }}</td>
             <td>
                 <a href="{{ url_for("admin_bp.form_organization", organization_id=organization.id) }}"><i class="fa fa-edit"></i></a>

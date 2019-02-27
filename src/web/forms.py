@@ -136,10 +136,8 @@ class OrganizationForm(FlaskForm):
             validators.Required(lazy_gettext('Please enter a name.'))])
     description = TextAreaField(lazy_gettext('Description'),
                     [validators.Required(lazy_gettext('Please enter a description'))])
-    organization_type = TextField(lazy_gettext('Type'),
-                    [validators.Required(lazy_gettext('Please enter a type'))])
-    website = TextField(lazy_gettext('Website'),
-                    [validators.Required(lazy_gettext('Please enter a website'))])
+    organization_type = TextField(lazy_gettext('Type'))
+    website = TextField(lazy_gettext('Website'))
     submit = SubmitField(lazy_gettext('Save'))
 
 
