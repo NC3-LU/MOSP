@@ -127,6 +127,22 @@ class UserForm(FlaskForm):
     submit = SubmitField(lazy_gettext('Save'))
 
 
+class OrganizationForm(FlaskForm):
+    """
+    Create or edit an organization (for the administrator).
+    """
+    name = TextField(lazy_gettext('Name'),
+            [validators.Length(min=3, max=30),
+            validators.Required(lazy_gettext('Please enter a name.'))])
+    description = TextAreaField(lazy_gettext('Description'),
+                    [validators.Required(lazy_gettext('Please enter a description'))])
+    organization_type = TextField(lazy_gettext('Type'),
+                    [validators.Required(lazy_gettext('Please enter a type'))])
+    website = TextField(lazy_gettext('Website'),
+                    [validators.Required(lazy_gettext('Please enter a website'))])
+    submit = SubmitField(lazy_gettext('Save'))
+
+
 class ProfileForm(FlaskForm):
     """
     Edit a profile.

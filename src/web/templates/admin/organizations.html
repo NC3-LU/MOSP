@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+<h1>{{ _('Organizations') }}</h1>
+<div class="table-responsive-md">
+    <table id="table-organizations" class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>{{ _('Name') }}</th>
+            <th>{{ _('Website') }}</th>
+            <th>{{ _('Members') }}</th>
+            <th>{{ _('Actions') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for organization in organizations %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ organization.name  }}</td>
+            <td>{{ organization.website  }}</td>
+            <td>{{ organization.users | count  }}</td>
+            <td>
+                <a href="{{ url_for("admin_bp.form_organization", organization_id=organization.id) }}"><i class="fa fa-edit"></i></a>
+                <a href="{{ url_for("admin_bp.delete_organization", organization_id=organization.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this organization" onclick="return confirm(_('You are going to delete this organization.'));"></i></a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
+<br />
+<a href="{{ url_for('admin_bp.form_organization') }}" class="btn btn-default">{{ _('Add a new organization') }}</a>
+</div>
+<script>
+$(document).ready(function() {
+$('#table-organizations').DataTable( {
+    responsive: true,
+    columnDefs: [
+        {
+            bSortable: false,
+            targets: [0, 3]
+        }
+    ]
+});
+});
+</script>
+{% endblock %}
