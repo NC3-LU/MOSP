@@ -7,7 +7,7 @@ from flask_login import login_required
 from flask_babel import gettext
 
 from web import __version__
-from web.models import JsonObject, Organization, Schema
+from web.models import JsonObject, Organization, User, Schema
 from bootstrap import application
 
 logger = logging.getLogger(__name__)
@@ -64,7 +64,8 @@ def about_more():
                 python_version="{}.{}.{}".format(*sys.version_info[:3]),
                 nb_objects=JsonObject.query.count(),
                 nb_schemas=Schema.query.count(),
-                nb_organizations=Organization.query.count())
+                nb_organizations=Organization.query.count(),
+                nb_users=User.query.count())
 
 
 @current_app.route('/help', methods=['GET'])
