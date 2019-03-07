@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block head%}
+{{super()}}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>{{ action | safe }}</h2>
+    <form action="" method="post" name="saveprofileform" id="profileform">
+        {{ form.hidden_tag() }}
+
+        {{ form.name.label }}
+        {{ form.name(class_="form-control") }} {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+
+        {{ form.description.label }}
+        {{ form.description(class_="form-control") }} {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+
+        {{ form.website.label }}
+        {{ form.website(class_="form-control") }} {% for error in form.website.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+
+        {{ form.organization_type.label }}
+        {{ form.organization_type(class_="form-control") }} {% for error in form.organization_type.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+        <br />
+        {{ form.submit(class_="btn btn-default") }}
+    </form>
+</div>
+{% endblock %}

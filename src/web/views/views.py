@@ -1,10 +1,13 @@
 import os
+import sys
 import logging
 from flask import (render_template, url_for, redirect, current_app, flash,
                   send_from_directory, request)
 from flask_login import login_required
 from flask_babel import gettext
 
+from web import __version__
+from web.models import JsonObject, Organization, Schema
 from bootstrap import application
 
 logger = logging.getLogger(__name__)
@@ -54,10 +57,26 @@ def about():
     return render_template('about.html')
 
 
+@current_app.route('/about/more', methods=['GET'])
+def about_more():
+    return render_template('about_more.html',
+                mosp_version=__version__.split()[1],
+                python_version="{}.{}.{}".format(*sys.version_info[:3]),
+                nb_objects=JsonObject.query.count(),
+                nb_schemas=Schema.query.count(),
+                nb_organizations=Organization.query.count())
+
+
 @current_app.route('/help', methods=['GET'])
 def help():
     """Documentation page."""
     return render_template('help.html')
+
+
+@current_app.route('/terms', methods=['GET'])
+def terms():
+    """Terms page."""
+    return render_template('terms.html')
 
 
 @current_app.route('/human.txt', methods=['GET'])

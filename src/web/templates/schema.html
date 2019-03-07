@@ -63,10 +63,10 @@
                             <td><a href="{{ url_for('organization_bp.get', organization_name=object.organization.name) }}">{{ object.organization.name }}</a></td>
                             <td>{{ _('Public') if object.is_public else _('Private') }}</td>
                             <td class="date">{{ object.last_updated | datetime }}</td>
-                            <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
-                            <td><a href="{{ url_for('object_bp.edit_json', object_id=object.id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                            <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}" {% if not current_user.is_authenticated %}class="disabled"{% endif %}><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                            <td><a href="{{ url_for('object_bp.edit_json', object_id=object.id) }}" {% if not current_user.is_authenticated %}class="disabled"{% endif %}><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                             <td><a href="{{ url_for('object_bp.get_json_object', object_id=object.id) }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                            <td><a href="{{ url_for('object_bp.delete', object_id=object.id) }}"><i class="fa fa-trash" aria-hidden="true" onclick="return confirm(_('You are going to delete this object.'));"></i></a></td>
+                            <td><a href="{{ url_for('object_bp.delete', object_id=object.id) }}" {% if not current_user.is_authenticated %}class="disabled"{% endif %}><i class="fa fa-trash" aria-hidden="true" onclick="return confirm(_('You are going to delete this object.'));"></i></a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

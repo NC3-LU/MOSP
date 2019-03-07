@@ -49,6 +49,9 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownAdmin">
                             <a class="dropdown-item" href="{{ url_for('admin_bp.list_users') }}" title="Users">{{ _('Users') }}</i></a>
+                            <a class="dropdown-item" href="{{ url_for('admin_bp.list_organizations') }}" title="Organizations">{{ _('Organizations') }}</i></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/admin">Expert mode</a>
                         </div>
                     </li>
                     {% endif %}
@@ -98,6 +101,8 @@
                 <a href="{{ url_for('about') }}">{{ _('About') }}</a>
                 &nbsp;&nbsp;
                 <a href="{{ url_for('help') }}">{{ _('Help') }}</a>
+                &nbsp;&nbsp;
+                <a href="{{ url_for('terms') }}">{{ _('Terms') }}</a>
             </div>
         </div>
     </div>

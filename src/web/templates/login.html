@@ -21,7 +21,14 @@
                         {% for message in form.password.errors %}
                             <div class="alert alert-warning" role="alert">{{ message }}</div>
                         {% endfor %}
-                        {{ form.submit(class_="btn btn-default") }}
+                        <div class="row">
+                            <div class="col-md">
+                                {{ form.submit(class_="btn btn-default") }}
+                            </div>
+                            <div class="col-md text-right">
+                                <a href="{{ url_for('help') }}">Want to join the community?</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

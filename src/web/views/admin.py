@@ -12,12 +12,16 @@ from flask_babel import gettext
 from bootstrap import db
 from web.views.common import admin_permission
 from web import models
-from web.forms import UserForm
+from web.forms import UserForm, OrganizationForm
 
 logger = logging.getLogger(__name__)
 
 admin_bp = Blueprint('admin_bp', __name__, url_prefix='/admin')
 
+
+#
+# Users
+#
 
 @admin_bp.route('/users', methods=['GET'])
 @login_required
@@ -113,6 +117,87 @@ def delete_user(user_id=None):
         db.session.commit()
         flash(gettext('User deleted.'), 'success')
     return redirect(url_for('admin_bp.list_users'))
+
+#
+# Organizations
+#
+
+@admin_bp.route('/organizations', methods=['GET'])
+@login_required
+@admin_permission.require(http_exception=403)
+def list_organizations():
+    organizations = models.Organization.query.all()
+    return render_template('admin/organizations.html',
+                            organizations=organizations)
+
+
+@admin_bp.route('/organization/create', methods=['GET'])
+@admin_bp.route('/organization/edit/<int:organization_id>', methods=['GET'])
+@login_required
+@admin_permission.require(http_exception=403)
+def form_organization(organization_id=None):
+    """Return a form to create and edit a user."""
+    action = "Add an organization"
+    head_titles = [action]
+    form = OrganizationForm()
+    if organization_id is None:
+        return render_template('admin/edit_organization.html', action=action,
+                               head_titles=head_titles, form=form)
+
+    organization = models.Organization.query. \
+                    filter(models.Organization.id == organization_id).first()
+    form = OrganizationForm(obj=organization)
+    action = "Edit an organization"
+    head_titles = [action]
+    head_titles.append(organization.name)
+    return render_template('admin/edit_organization.html', action=action,
+                           head_titles=head_titles,
+                           form=form, organization=organization)
+
+
+@admin_bp.route('/organization/create', methods=['POST'])
+@admin_bp.route('/organization/edit/<int:organization_id>', methods=['POST'])
+@login_required
+def process_organization_form(organization_id=None):
+    """Edit an organization."""
+    form = OrganizationForm()
+
+    if not form.validate():
+        return render_template('admin/edit_organization.html', form=form)
+
+    if organization_id is not None:
+        organization = models.Organization.query.filter(models.Organization.id == organization_id).first()
+        form.populate_obj(organization)
+        db.session.commit()
+        flash(gettext('Organization %(org_name)s successfully updated.',
+                org_name=form.name.data), 'success')
+        return redirect(url_for('admin_bp.form_organization',
+                                organization_id=organization.id))
+
+    # Create a new organization
+    new_organization = models.Organization(name=form.name.data,
+                           description=form.description.data,
+                           organization_type=form.organization_type.data)
+    db.session.add(new_organization)
+    db.session.commit()
+    flash(gettext('Organization %(org_name)s successfully created.',
+            org_name=new_organization.name), 'success')
+
+    return redirect(url_for('admin_bp.form_organization',
+                            organization_id=new_organization.id))
+
+
+@admin_bp.route('/organization/delete/<int:organization_id>', methods=['GET'])
+@login_required
+@admin_permission.require(http_exception=403)
+def delete_organization(organization_id=None):
+    """Delete an organization."""
+    organization = models.Organization.query. \
+                    filter(models.Organization.id == organization_id).first()
+    db.session.delete(organization)
+    db.session.commit()
+    flash(gettext('Organization deleted.'), 'success')
+    return redirect(url_for('admin_bp.list_organizations'))
 
 
 # Flask-Admin views
