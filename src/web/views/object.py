@@ -1,4 +1,5 @@
 import json
+import hashlib
 from flask import Blueprint, render_template, redirect, url_for, flash, \
                   request, abort, Response
 from flask_login import login_required, current_user
@@ -65,9 +66,11 @@ def view(object_id=None):
         abort(404)
     result = json.dumps(json_object.json_object,
                         sort_keys=True, indent=4, separators=(',', ': '))
+    m = hashlib.sha256()
+    m.update(str(result).encode()) # evaluate the SHA256 of the prettified object
     return render_template('view_object.html',
                             json_object=json_object,
-                            json_object_pretty=result)
+                            json_object_pretty=result, sha256=m.hexdigest())
 
 
 @object_bp.route('/delete/<int:object_id>', methods=['GET'])

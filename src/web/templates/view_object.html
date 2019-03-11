@@ -82,6 +82,14 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-3">
+            <b>{{ _('SHA 256') }}</b>
+        </div>
+        <div class="col-md-9 text-truncate">
+            {{ sha256 }}
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md">
             <br />
             <pre class="prettyprint"><code>{{ json_object_pretty }}</code></pre>
