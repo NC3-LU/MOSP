@@ -105,22 +105,18 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="refers-to" role="tabpanel" aria-labelledby="refers-to-tab">
-                    <div class="list-group list-group-flush">
-                        <ul class="list-group  list-group-flush">
-                        {% for jsonobject in json_object.refers_to  %}
-                            <li class="list-group-item list-group-item-action" ><a href="{{ url_for('object_bp.view', object_id=jsonobject.id) }}">{{ jsonobject.name }}</a> ({{ _('schema') }}: <a href="{{ url_for('schema_bp.get', schema_id=jsonobject.schema.id) }}">{{ jsonobject.schema.name }})</a></li>
-                        {% endfor %}
-                        </ul>
-                    </div>
+                    <ul class="list-group  list-group-flush">
+                    {% for jsonobject in json_object.refers_to  %}
+                        <li class="list-group-item list-group-item-action" ><a href="{{ url_for('object_bp.view', object_id=jsonobject.id) }}">{{ jsonobject.name }}</a> ({{ _('schema') }}: <a href="{{ url_for('schema_bp.get', schema_id=jsonobject.schema.id) }}">{{ jsonobject.schema.name }})</a></li>
+                    {% endfor %}
+                    </ul>
                 </div>
                 <div class="tab-pane fade" id="referred-to-by" role="tabpanel" aria-labelledby="referred-to-by-tab">
-                    <div class="list-group list-group-flush">
-                        <ul class="list-group  list-group-flush">
-                        {% for jsonobject in json_object.referred_to_by  %}
-                            <li class="list-group-item list-group-item-action" ><a href="{{ url_for('object_bp.view', object_id=jsonobject.id) }}">{{ jsonobject.name }}</a> ({{ _('schema') }}: <a href="{{ url_for('schema_bp.get', schema_id=jsonobject.schema.id) }}">{{ jsonobject.schema.name }})</a></li>
-                        {% endfor %}
-                        </ul>
-                    </div>
+                    <ul class="list-group  list-group-flush">
+                    {% for jsonobject in json_object.referred_to_by  %}
+                        <li class="list-group-item list-group-item-action" ><a href="{{ url_for('object_bp.view', object_id=jsonobject.id) }}">{{ jsonobject.name }}</a> ({{ _('schema') }}: <a href="{{ url_for('schema_bp.get', schema_id=jsonobject.schema.id) }}">{{ jsonobject.schema.name }})</a></li>
+                    {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
