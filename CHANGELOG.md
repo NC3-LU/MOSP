@@ -1,6 +1,16 @@
 MOSP Changelog
 ==============
 
+## 0.6 (2019-03-12)
+
+- added the possibility to link objects (#8);
+- the footprint (SHA 256 sum of objects is now displayed);
+- added the possibility to copy an object to the clipboard;
+- added a terms page;
+- improved the organization page;
+- improved the admin/users page;
+- minor UI fixes.
+
 ## 0.5 (2019-02-24)
 
 - major improvements to the API. It is now possible to create a valid JSON
