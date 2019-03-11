@@ -9,11 +9,14 @@
         <div class="col-md">
             <h2>{{ json_object.name }}</h2>
         </div>
-        <div class="col-md-2 text-right">
+        <div class="col-md-4 text-right">
             <div class="btn-group" role="group">
-                <a type="button" class="btn btn-secondary" title="{{ _('Edit the object') }}" href="{{ url_for('object_bp.form', object_id=json_object.id) }}">
+                <a role="button" class="btn btn-secondary" title="{{ _('Edit the object') }}" href="{{ url_for('object_bp.form', object_id=json_object.id) }}">
                     <i class="fa fa-edit" aria-hidden="true"></i>
                 </a>
+                <button type="button" class="btn btn-secondary" title="{{ _('Copy to clipboard') }}" onclick="copyToClipboard()" href="#">
+                    <i class="fa fa-copy" aria-hidden="true"></i>
+                </button>
                 <div class="btn-group btn-group" role="group" title="{{ _('Share the object') }}">
                     <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-share-square"></i>
@@ -92,7 +95,7 @@
     <div class="row">
         <div class="col-md">
             <br />
-            <pre class="prettyprint"><code>{{ json_object_pretty }}</code></pre>
+            <pre class="prettyprint"><code id="jsonObject">{{ json_object_pretty }}</code></pre>
         </div>
     </div>
 </div>
@@ -133,6 +136,19 @@ $(document).ready(function() {
         });
     });
 });
+function copyToClipboard() {
+    const copyText = document.getElementById("jsonObject").textContent;
+    const textArea = document.createElement('textarea');
+    textArea.textContent = copyText;
+    // document.body.append(textArea);
+    // textArea.select();
+    navigator.clipboard.writeText(textArea.value).then(function() {
+          /* clipboard successfully set */
+          alert('Object copied in your clipboard.');
+        }, function() {
+          /* clipboard write failed */
+    });
+}
 </script>
 <!-- /.container -->
 {% endblock %}
