@@ -12,6 +12,12 @@ association_table_license = db.Table('association_jsonobjects_licenses',
     db.Column('license_id', db.Integer, db.ForeignKey('license.id'))
 )
 
+association_table_jsonobject = db.Table('association_jsonobject_jsonobject',
+    db.metadata,
+    db.Column('jsonobject_refers_to_id', db.Integer, db.ForeignKey('json_object.id')),
+    db.Column('jsonobject_referred_to_by_id', db.Integer, db.ForeignKey('json_object.id'))
+)
+
 class JsonObject(db.Model):
     """Represent a JSON object.
     """
@@ -26,6 +32,11 @@ class JsonObject(db.Model):
     licenses = db.relationship("License",
                             secondary=lambda: association_table_license,
                             backref="objects")
+    refers_to = db.relationship('JsonObject',
+            secondary=lambda: association_table_jsonobject,
+            primaryjoin=association_table_jsonobject.c.jsonobject_refers_to_id==id,
+            secondaryjoin=association_table_jsonobject.c.jsonobject_referred_to_by_id==id,
+            backref="referred_to_by")
 
     # foreign keys
     org_id = db.Column(db.Integer(), db.ForeignKey('organization.id'),
