@@ -11,7 +11,7 @@ from werkzeug.exceptions import NotFound, HTTPException
 from flask_babel import lazy_gettext
 
 from lib import misc_utils
-from web.models import User, Organization, License
+from web.models import User, Organization, License, JsonObject
 
 
 class RedirectForm(FlaskForm):
@@ -83,6 +83,8 @@ class AddObjectForm(FlaskForm):
     licenses = SelectMultipleField(lazy_gettext('Licenses'),
                             [validators.Required(lazy_gettext('Please choose a license'))],
                             coerce=int)
+    refers_to = SelectMultipleField(lazy_gettext('Refers to the objects'), coerce=int)
+    referred_to_by = SelectMultipleField(lazy_gettext('Referred to by the objects'), coerce=int)
     schema_id = HiddenField(lazy_gettext('Validated by'))
     org_id = SelectField(lazy_gettext('Organization'),
                     [validators.Required(lazy_gettext('Please select an organization'))],
@@ -95,6 +97,10 @@ class AddObjectForm(FlaskForm):
         super().__init__(*args, **kwargs)
         self.licenses.choices = [(license.id, license.name) \
                                         for license in License.query.all()]
+        self.refers_to.choices = [(jsonobject.id, jsonobject.name) \
+                                        for jsonobject in JsonObject.query.all()]
+        self.referred_to_by.choices = [(jsonobject.id, jsonobject.name) \
+                                        for jsonobject in JsonObject.query.all()]
 
 
 class SchemaForm(FlaskForm):

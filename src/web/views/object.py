@@ -134,6 +134,18 @@ def form(schema_id=None, object_id=None):
                                                     current_user.organizations])
     form.licenses.data = [license.id for license in
                                             json_object.licenses]
+    form.refers_to.data = [jsonobject.id
+                                for jsonobject in json_object.refers_to
+                                if jsonobject.id != json_object.id]
+    form.refers_to.choices = [(jsonobject.id, jsonobject.name)
+                                for jsonobject in JsonObject.query.all()
+                                if jsonobject.id != json_object.id]
+    form.referred_to_by.data = [jsonobject.id
+                                for jsonobject in json_object.referred_to_by
+                                if jsonobject.id != json_object.id]
+    form.referred_to_by.choices = [(jsonobject.id, jsonobject.name)
+                                for jsonobject in JsonObject.query.all()
+                                if jsonobject.id != json_object.id]
     action = "Edit an object"
     head_titles = [action]
     head_titles.append(json_object.name)
@@ -166,6 +178,23 @@ def process_form(object_id=None):
             new_licenses.append(license)
         json_object.licenses = new_licenses
         del form.licenses
+
+        # refers_to
+        new_json_object = []
+        for cur_json_object_id in form.refers_to.data:
+            json_object_dep = JsonObject.query.filter(JsonObject.id == cur_json_object_id).first()
+            new_json_object.append(json_object_dep)
+        json_object.refers_to = new_json_object
+        del form.refers_to
+        
+        # referred_to_by
+        new_json_object = []
+        for cur_json_object_id in form.referred_to_by.data:
+            json_object_dep = JsonObject.query.filter(JsonObject.id == cur_json_object_id).first()
+            new_json_object.append(json_object_dep)
+        json_object.referred_to_by = new_json_object
+        del form.referred_to_by
+
 
         form.populate_obj(json_object)
         try:

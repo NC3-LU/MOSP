@@ -61,6 +61,27 @@
                     </div>
                     {% for error in form.licenses.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
                 </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="{{ form.refers_to.id }}" class="control-label">{{ form.refers_to.label }}</label>
+                            <div>
+                                {{ form.refers_to(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}
+                            </div>
+                            {% for error in form.refers_to.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="{{ form.referred_to_by.id }}" class="control-label">{{ form.referred_to_by.label }}</label>
+                            <div>
+                                {{ form.referred_to_by(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}
+                            </div>
+                            {% for error in form.referred_to_by.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <div class="">
