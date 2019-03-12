@@ -159,6 +159,7 @@ def form(schema_id=None, object_id=None):
 @login_required
 @check_object_edit_permission
 def process_form(object_id=None):
+    """"Process the form to edit an object."""
     form = AddObjectForm()
     form.org_id.choices = [(0, '')]
     form.org_id.choices.extend([(org.id, org.name) for org in
@@ -179,20 +180,20 @@ def process_form(object_id=None):
         json_object.licenses = new_licenses
         del form.licenses
 
-        # refers_to
-        new_json_object = []
+        # refers_to relationship
+        new_json_objects_to_link = []
         for cur_json_object_id in form.refers_to.data:
             json_object_dep = JsonObject.query.filter(JsonObject.id == cur_json_object_id).first()
-            new_json_object.append(json_object_dep)
-        json_object.refers_to = new_json_object
+            new_json_objects_to_link.append(json_object_dep)
+        json_object.refers_to = new_json_objects_to_link
         del form.refers_to
-        
-        # referred_to_by
-        new_json_object = []
+
+        # referred_to_by relationship
+        new_json_objects_to_link = []
         for cur_json_object_id in form.referred_to_by.data:
             json_object_dep = JsonObject.query.filter(JsonObject.id == cur_json_object_id).first()
-            new_json_object.append(json_object_dep)
-        json_object.referred_to_by = new_json_object
+            new_json_objects_to_link.append(json_object_dep)
+        json_object.referred_to_by = new_json_objects_to_link
         del form.referred_to_by
 
 
@@ -226,6 +227,22 @@ def process_form(object_id=None):
         new_licenses.append(license)
     new_object.licenses = new_licenses
     del form.licenses
+
+    # refers_to relationship
+    new_json_objects_to_link = []
+    for cur_json_object_id in form.refers_to.data:
+        json_object_dep = JsonObject.query.filter(JsonObject.id == cur_json_object_id).first()
+        new_json_objects_to_link.append(json_object_dep)
+    new_object.refers_to = new_json_objects_to_link
+    del form.refers_to
+
+    # referred_to_by relationship
+    new_json_objects_to_link = []
+    for cur_json_object_id in form.referred_to_by.data:
+        json_object_dep = JsonObject.query.filter(JsonObject.id == cur_json_object_id).first()
+        new_json_objects_to_link.append(json_object_dep)
+    new_object.referred_to_by = new_json_objects_to_link
+    del form.referred_to_by
 
     try:
         db.session.commit()
