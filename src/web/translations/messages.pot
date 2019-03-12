@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2018-2019 ORGANIZATION
+# Copyright (C) 2019 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-05 09:02+0200\n"
+"POT-Creation-Date: 2019-03-12 13:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,99 +17,170 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: src/web/forms.py:37 src/web/forms.py:108 src/web/forms.py:123
-#: src/web/templates/admin/users.html:10
+#: src/web/forms.py:48 src/web/forms.py:125 src/web/forms.py:154
+#: src/web/templates/admin/users.html:11
 msgid "Login"
 msgstr ""
 
-#: src/web/forms.py:39 src/web/forms.py:110 src/web/forms.py:125
+#: src/web/forms.py:50 src/web/forms.py:127 src/web/forms.py:156
 msgid "Please enter your login."
 msgstr ""
 
-#: src/web/forms.py:40 src/web/forms.py:111 src/web/forms.py:126
+#: src/web/forms.py:51 src/web/forms.py:128 src/web/forms.py:157
 msgid "Password"
 msgstr ""
 
-#: src/web/forms.py:41
+#: src/web/forms.py:52
 msgid "Please enter your password."
 msgstr ""
 
-#: src/web/forms.py:43 src/web/templates/login.html:9
+#: src/web/forms.py:54 src/web/templates/login.html:9
 msgid "Log In"
 msgstr ""
 
-#: src/web/forms.py:62
+#: src/web/forms.py:73
 msgid "Impossible to login."
 msgstr ""
 
-#: src/web/forms.py:68 src/web/forms.py:91
+#: src/web/forms.py:79 src/web/forms.py:108
 msgid "Please enter a name"
 msgstr ""
 
-#: src/web/forms.py:69 src/web/forms.py:92
-#: src/web/templates/organization.html:14 src/web/templates/schema.html:15
-#: src/web/templates/view_json.html:21
+#: src/web/forms.py:80 src/web/forms.py:109 src/web/forms.py:143
+#: src/web/templates/organization.html:11 src/web/templates/schema.html:22
+#: src/web/templates/view_object.html:47
 msgid "Description"
 msgstr ""
 
-#: src/web/forms.py:70 src/web/forms.py:93
+#: src/web/forms.py:81 src/web/forms.py:110 src/web/forms.py:144
 msgid "Please enter a description"
 msgstr ""
 
-#: src/web/forms.py:71
+#: src/web/forms.py:82
 msgid "Public object"
 msgstr ""
 
-#: src/web/forms.py:72
+#: src/web/forms.py:83
 msgid "Licenses"
 msgstr ""
 
-#: src/web/forms.py:73
+#: src/web/forms.py:84
 msgid "Please choose a license"
 msgstr ""
 
-#: src/web/forms.py:75
+#: src/web/forms.py:86
+msgid "Refers to the objects"
+msgstr ""
+
+#: src/web/forms.py:87
+msgid "Referred to by the objects"
+msgstr ""
+
+#: src/web/forms.py:88
 msgid "Validated by"
 msgstr ""
 
-#: src/web/forms.py:76 src/web/forms.py:96 src/web/templates/schema.html:50
+#: src/web/forms.py:89 src/web/forms.py:113 src/web/templates/schema.html:49
 msgid "Organization"
 msgstr ""
 
-#: src/web/forms.py:77 src/web/forms.py:97
+#: src/web/forms.py:90 src/web/forms.py:114
 msgid "Please select an organization"
 msgstr ""
 
-#: src/web/forms.py:81 src/web/forms.py:101 src/web/forms.py:116
-#: src/web/forms.py:128
+#: src/web/forms.py:94 src/web/forms.py:118 src/web/forms.py:133
+#: src/web/forms.py:147 src/web/forms.py:159
 msgid "Save"
 msgstr ""
 
-#: src/web/forms.py:95
+#: src/web/forms.py:112
 msgid "Please enter a JSON schema"
 msgstr ""
 
-#: src/web/forms.py:112 src/web/forms.py:127
+#: src/web/forms.py:129 src/web/forms.py:158
 msgid "Public profile"
 msgstr ""
 
-#: src/web/forms.py:113
+#: src/web/forms.py:130
 msgid "Active"
 msgstr ""
 
-#: src/web/forms.py:114
+#: src/web/forms.py:131
 msgid "Admin"
 msgstr ""
 
-#: src/web/forms.py:115
+#: src/web/forms.py:132
 msgid "API"
+msgstr ""
+
+#: src/web/forms.py:140 src/web/templates/admin/organizations.html:10
+#: src/web/templates/organization.html:34
+#: src/web/templates/organization.html:60 src/web/templates/schema.html:48
+msgid "Name"
+msgstr ""
+
+#: src/web/forms.py:142
+msgid "Please enter a name."
+msgstr ""
+
+#: src/web/forms.py:145
+msgid "Type"
+msgstr ""
+
+#: src/web/forms.py:146 src/web/templates/admin/organizations.html:11
+#: src/web/templates/organization.html:19
+msgid "Website"
+msgstr ""
+
+#: src/web/templates/about.html:19
+msgid "More information"
+msgstr ""
+
+#: src/web/templates/about.html:19
+msgid "about this instance."
+msgstr ""
+
+#: src/web/templates/about_more.html:7
+msgid "MOSP version"
+msgstr ""
+
+#: src/web/templates/about_more.html:8
+msgid "Python version"
+msgstr ""
+
+#: src/web/templates/about_more.html:9
+msgid "Number of objects"
+msgstr ""
+
+#: src/web/templates/about_more.html:10
+msgid "Number of schemas"
+msgstr ""
+
+#: src/web/templates/about_more.html:11
+msgid "Number of organizations"
+msgstr ""
+
+#: src/web/templates/about_more.html:12
+msgid "Number of users"
+msgstr ""
+
+#: src/web/templates/about_more.html:13
+msgid "Contact"
+msgstr ""
+
+#: src/web/templates/edit_json.html:102
+msgid "Edit this schema"
+msgstr ""
+
+#: src/web/templates/edit_schema.html:61
+msgid "Delete this schema"
 msgstr ""
 
 #: src/web/templates/index.html:6
 msgid "Recently updated objects"
 msgstr ""
 
-#: src/web/templates/index.html:10
+#: src/web/templates/index.html:14
 msgid "Recently updated schemas"
 msgstr ""
 
@@ -117,215 +188,318 @@ msgstr ""
 msgid "Create, edit and share JSON objects"
 msgstr ""
 
-#: src/web/templates/layout.html:41 src/web/templates/layout.html:58
+#: src/web/templates/layout.html:44 src/web/templates/layout.html:64
 msgid "Schemas"
 msgstr ""
 
-#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:48
+#: src/web/templates/admin/users.html:4 src/web/templates/layout.html:51
 msgid "Users"
 msgstr ""
 
-#: src/web/templates/layout.html:55
+#: src/web/templates/admin/organizations.html:4
+#: src/web/templates/layout.html:52
+msgid "Organizations"
+msgstr ""
+
+#: src/web/templates/layout.html:61
 msgid "Signed in as"
 msgstr ""
 
-#: src/web/templates/layout.html:57
+#: src/web/templates/layout.html:63
 msgid "Profile"
 msgstr ""
 
-#: src/web/templates/layout.html:60
+#: src/web/templates/layout.html:66
 msgid "Sign out"
 msgstr ""
 
-#: src/web/templates/layout.html:95
+#: src/web/templates/layout.html:101
 msgid "About"
 msgstr ""
 
-#: src/web/templates/login.html:14
+#: src/web/templates/layout.html:103
+msgid "Help"
+msgstr ""
+
+#: src/web/templates/layout.html:105
+msgid "Terms"
+msgstr ""
+
+#: src/web/templates/login.html:13
 msgid "Your login"
 msgstr ""
 
-#: src/web/templates/login.html:21
+#: src/web/templates/login.html:19
 msgid "Your password"
 msgstr ""
 
-#: src/web/templates/organization.html:6 src/web/templates/organization.html:41
-#: src/web/templates/schema.html:49 src/web/templates/view_json.html:10
-msgid "Name"
+#: src/web/templates/organization.html:30
+msgid "Shared JSON objects"
 msgstr ""
 
-#: src/web/templates/organization.html:22
-msgid "Website"
-msgstr ""
-
-#: src/web/templates/organization.html:31
-msgid "Shared JSON schemas"
-msgstr ""
-
-#: src/web/templates/organization.html:42
-msgid "# of objects validated by the schema"
-msgstr ""
-
-#: src/web/templates/organization.html:43 src/web/templates/schema.html:52
+#: src/web/templates/organization.html:35
+#: src/web/templates/organization.html:62 src/web/templates/schema.html:51
 msgid "Last updated"
 msgstr ""
 
-#: src/web/templates/schema.html:6
-msgid "Name of the schema"
+#: src/web/templates/organization.html:56
+msgid "Shared JSON schemas"
 msgstr ""
 
-#: src/web/templates/schema.html:24
+#: src/web/templates/organization.html:61
+msgid "# of objects validated by the schema"
+msgstr ""
+
+#: src/web/templates/schema.html:10
+msgid "View the schema"
+msgstr ""
+
+#: src/web/templates/schema.html:13 src/web/templates/view_object.html:14
+msgid "Edit the object"
+msgstr ""
+
+#: src/web/templates/schema.html:31
 msgid "Provided by"
 msgstr ""
 
-#: src/web/templates/schema.html:35
-msgid "Create a new object with this schema"
+#: src/web/templates/schema.html:44
+msgid "Objects validated by the schema"
 msgstr ""
 
-#: src/web/templates/schema.html:43
-msgid "Objects validated by this schema"
-msgstr ""
-
-#: src/web/templates/schema.html:51
+#: src/web/templates/schema.html:50
 msgid "Visibility"
 msgstr ""
 
-#: src/web/templates/schema.html:53
+#: src/web/templates/schema.html:52
 msgid "Edit"
 msgstr ""
 
-#: src/web/templates/schema.html:54
+#: src/web/templates/schema.html:53
 msgid "Definition"
 msgstr ""
 
-#: src/web/templates/schema.html:55
+#: src/web/templates/schema.html:54
 msgid "Object"
 msgstr ""
 
-#: src/web/templates/schema.html:56
+#: src/web/templates/schema.html:55
 msgid "Delete"
 msgstr ""
 
-#: src/web/templates/schema.html:65
+#: src/web/templates/schema.html:64
 msgid "Public"
 msgstr ""
 
-#: src/web/templates/schema.html:65
+#: src/web/templates/schema.html:64
 msgid "Private"
+msgstr ""
+
+#: src/web/templates/schema.html:82
+msgid "Create a new object with this schema"
+msgstr ""
+
+#: src/web/templates/schemas.html:6
+msgid "Available schemas"
+msgstr ""
+
+#: src/web/templates/schemas.html:11 src/web/templates/user_schemas.html:24
+msgid "validates"
+msgstr ""
+
+#: src/web/templates/schemas.html:11 src/web/templates/user_schemas.html:24
+msgid "objects"
 msgstr ""
 
 #: src/web/templates/user.html:6
 msgid "is the creator of the following object(s):"
 msgstr ""
 
-#: src/web/templates/user_schemas.html:6
-msgid "Create a new schema"
-msgstr ""
-
-#: src/web/templates/user_schemas.html:12
+#: src/web/templates/user_schemas.html:18
 msgid "Schemas in my organizations"
 msgstr ""
 
-#: src/web/templates/user_schemas.html:18
-msgid "validates"
-msgstr ""
-
-#: src/web/templates/user_schemas.html:18
-msgid "objects"
-msgstr ""
-
-#: src/web/templates/user_schemas.html:19
+#: src/web/templates/user_schemas.html:25
 msgid "edit"
 msgstr ""
 
-#: src/web/templates/user_schemas.html:22
+#: src/web/templates/user_schemas.html:28
 msgid "Add a new schema in this organization"
 msgstr ""
 
-#: src/web/templates/view_json.html:29
-msgid "Owning organization"
+#: src/web/templates/user_schemas.html:35
+msgid "Create a new schema"
 msgstr ""
 
-#: src/web/templates/view_json.html:37
-msgid "Validating JSON schema"
+#: src/web/templates/view_object.html:17
+msgid "Copy to clipboard"
 msgstr ""
 
-#: src/web/templates/view_json.html:40
-msgid "provided by"
+#: src/web/templates/view_object.html:20
+msgid "Share the object"
 msgstr ""
 
-#: src/web/templates/view_json.html:46
-msgid "Creator"
+#: src/web/templates/view_object.html:25 src/web/templates/view_object.html:26
+#: src/web/templates/view_object.html:27 src/web/templates/view_object.html:28
+msgid "Share on"
 msgstr ""
 
-#: src/web/templates/view_json.html:55
-msgid "License"
-msgstr ""
-
-#: src/web/templates/view_json.html:63
+#: src/web/templates/view_object.html:31
 msgid "Download the object"
 msgstr ""
 
-#: src/web/templates/view_json.html:71
-msgid "Export only values"
+#: src/web/templates/view_object.html:36
+msgid "The whole object"
 msgstr ""
 
-#: src/web/templates/admin/users.html:11
-msgid "Member since"
+#: src/web/templates/view_object.html:37
+msgid "Only values in CSV"
 msgstr ""
 
-#: src/web/templates/admin/users.html:12
-msgid "Last seen"
+#: src/web/templates/view_object.html:38
+msgid "Only values in JSON"
 msgstr ""
 
-#: src/web/templates/admin/users.html:13
+#: src/web/templates/view_object.html:55
+msgid "Owning organization"
+msgstr ""
+
+#: src/web/templates/view_object.html:63
+msgid "Validating JSON schema"
+msgstr ""
+
+#: src/web/templates/view_object.html:66
+msgid "provided by"
+msgstr ""
+
+#: src/web/templates/view_object.html:72
+msgid "Creator"
+msgstr ""
+
+#: src/web/templates/view_object.html:81
+msgid "License"
+msgstr ""
+
+#: src/web/templates/view_object.html:89
+msgid "SHA 256 footprint"
+msgstr ""
+
+#: src/web/templates/view_object.html:98
+msgid "Related objects"
+msgstr ""
+
+#: src/web/templates/view_object.html:101
+msgid "Refers to"
+msgstr ""
+
+#: src/web/templates/view_object.html:101
+#: src/web/templates/view_object.html:104
+msgid "object(s)"
+msgstr ""
+
+#: src/web/templates/view_object.html:104
+msgid "Referred to by"
+msgstr ""
+
+#: src/web/templates/view_object.html:111
+#: src/web/templates/view_object.html:118
+msgid "schema"
+msgstr ""
+
+#: src/web/templates/view_object.html:128
+msgid "Definition of the object"
+msgstr ""
+
+#: src/web/templates/view_object.html:178
+msgid "Object copied to your clipboard."
+msgstr ""
+
+#: src/web/templates/view_schema.html:6
+msgid "Updated"
+msgstr ""
+
+#: src/web/templates/admin/organizations.html:12
+msgid "Members"
+msgstr ""
+
+#: src/web/templates/admin/organizations.html:13
+#: src/web/templates/admin/users.html:14
 msgid "Actions"
 msgstr ""
 
-#: src/web/templates/admin/users.html:36
+#: src/web/templates/admin/organizations.html:33
+msgid "Add a new organization"
+msgstr ""
+
+#: src/web/templates/admin/users.html:10
+msgid "State"
+msgstr ""
+
+#: src/web/templates/admin/users.html:12
+msgid "Member since"
+msgstr ""
+
+#: src/web/templates/admin/users.html:13
+msgid "Last seen"
+msgstr ""
+
+#: src/web/templates/admin/users.html:42
 msgid "Add a new user"
 msgstr ""
 
-#: src/web/views/admin.py:69 src/web/views/user.py:60
+#: src/web/views/admin.py:73 src/web/views/user.py:60
 #, python-format
 msgid "User %(user_login)s successfully updated."
 msgstr ""
 
-#: src/web/views/admin.py:82
+#: src/web/views/admin.py:86
 #, python-format
 msgid "User %(user_login)s successfully created."
 msgstr ""
 
-#: src/web/views/admin.py:95
+#: src/web/views/admin.py:99
 msgid "You can not do this change to your own user."
 msgstr ""
 
-#: src/web/views/admin.py:99
+#: src/web/views/admin.py:103
 msgid "User {status}."
 msgstr ""
 
-#: src/web/views/admin.py:99
+#: src/web/views/admin.py:103
 msgid "activated"
 msgstr ""
 
-#: src/web/views/admin.py:99
+#: src/web/views/admin.py:103
 msgid "deactivated"
 msgstr ""
 
-#: src/web/views/admin.py:110
+#: src/web/views/admin.py:114
 msgid "You can not delete your own user."
 msgstr ""
 
-#: src/web/views/admin.py:114
+#: src/web/views/admin.py:118
 msgid "User deleted."
 msgstr ""
 
-#: src/web/views/object.py:170 src/web/views/schema.py:103
+#: src/web/views/admin.py:172
+#, python-format
+msgid "Organization %(org_name)s successfully updated."
+msgstr ""
+
+#: src/web/views/admin.py:183
+#, python-format
+msgid "Organization %(org_name)s successfully created."
+msgstr ""
+
+#: src/web/views/admin.py:199
+msgid "Organization deleted."
+msgstr ""
+
+#: src/web/views/object.py:203 src/web/views/schema.py:122
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr ""
 
-#: src/web/views/object.py:200 src/web/views/schema.py:119
+#: src/web/views/object.py:249 src/web/views/schema.py:138
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr ""
@@ -334,11 +508,11 @@ msgstr ""
 msgid "Please log in to access this page."
 msgstr ""
 
-#: src/web/views/views.py:15
+#: src/web/views/views.py:18
 msgid "Authentication required."
 msgstr ""
 
-#: src/web/views/views.py:21
+#: src/web/views/views.py:24
 msgid "Forbidden."
 msgstr ""
 
