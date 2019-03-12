@@ -10,11 +10,11 @@ from wtforms import (TextField, TextAreaField, PasswordField, BooleanField,
 from werkzeug.exceptions import NotFound, HTTPException
 from flask_babel import lazy_gettext
 
-from lib import misc_utils
 from web.models import User, Organization, License, JsonObject
 
 
 class RedirectForm(FlaskForm):
+    """Redirect form used for the redirection after the sign in."""
     next = HiddenField()
 
     def __init__(self, *args, **kwargs):
@@ -75,6 +75,7 @@ class SigninForm(RedirectForm):
 
 
 class AddObjectForm(FlaskForm):
+    """Form to create and edit JsonObject."""
     name = TextField("Name",
                     [validators.Required(lazy_gettext('Please enter a name'))])
     description = TextAreaField(lazy_gettext('Description'),
