@@ -14,7 +14,7 @@ and share JSON objects.
 The goal is to gather security related JSON objects, in the first place aimed
 to be used with [MONARC](https://github.com/monarc-project/MonarcAppFO).
 You can use any available schemas in order to create new JSON objects.
-  
+
 You can have a look at [official instance](https://objects.monarc.lu) operated
 by [CASES](https://github.com/CASES-LU). And as example the
 [objects](https://objects.monarc.lu/organization/MONARC) shared by the
@@ -33,6 +33,7 @@ $ python src/manager.py db_create
 $ python src/manager.py db_init
 $ python src/manager.py import_licenses_from_spdx
 $ python src/manager.py create_admin <username> <password>
+$ pybabel compile -d src/web/translations
 $ python src/runserver.py
 ```
 
