@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-12 13:16+0100\n"
-"PO-Revision-Date: 2019-03-12 13:19+0100\n"
+"POT-Creation-Date: 2019-03-13 17:33+0100\n"
+"PO-Revision-Date: 2019-03-13 17:34+0100\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
@@ -237,7 +237,7 @@ msgstr "Votre mot de passe"
 
 #: src/web/templates/organization.html:30
 msgid "Shared JSON objects"
-msgstr "Schémas JSON partagés"
+msgstr "Objets JSON partagés"
 
 #: src/web/templates/organization.html:35
 #: src/web/templates/organization.html:62 src/web/templates/schema.html:51
@@ -413,7 +413,7 @@ msgstr "Définition de l'objet"
 
 #: src/web/templates/view_object.html:178
 msgid "Object copied to your clipboard."
-msgstr "Objet copié dans le presse-papier"
+msgstr "Objet copié dans le presse-papier."
 
 #: src/web/templates/view_schema.html:6
 msgid "Updated"
@@ -496,12 +496,12 @@ msgstr "%(org_name)s créée avec succès."
 msgid "Organization deleted."
 msgstr "Organisation supprimée."
 
-#: src/web/views/object.py:203 src/web/views/schema.py:122
+#: src/web/views/object.py:203 src/web/views/schema.py:124
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr "%(object_name)s mis à jour avec succès."
 
-#: src/web/views/object.py:249 src/web/views/schema.py:138
+#: src/web/views/object.py:249 src/web/views/schema.py:140
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr "%(object_name)s mis à jour avec succès."

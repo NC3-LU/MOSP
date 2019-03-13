@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-12 13:18+0100\n"
+"POT-Creation-Date: 2019-03-13 17:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -494,12 +494,12 @@ msgstr ""
 msgid "Organization deleted."
 msgstr ""
 
-#: src/web/views/object.py:203 src/web/views/schema.py:122
+#: src/web/views/object.py:203 src/web/views/schema.py:124
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr ""
 
-#: src/web/views/object.py:249 src/web/views/schema.py:138
+#: src/web/views/object.py:249 src/web/views/schema.py:140
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr ""
