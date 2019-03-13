@@ -15,4 +15,3 @@ def login_user_bundle(user):
     login_user(user)
     identity_changed.send(current_app, identity=Identity(user.id))
     session_identity_loader()
-    # TODO: set last_seen

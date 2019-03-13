@@ -70,6 +70,7 @@ def view(schema_id=None):
 @schema_bp.route('/edit/<int:schema_id>', methods=['GET'])
 @login_required
 def form(schema_id=None, org_id=None):
+    """Returns a form in order to edit a schema."""
     action = "Create a schema"
     head_titles = [action]
 
@@ -102,6 +103,7 @@ def form(schema_id=None, org_id=None):
 @schema_bp.route('/edit/<int:schema_id>', methods=['POST'])
 @login_required
 def process_form(schema_id=None):
+    """"Process the form to edit a schema."""
     form = SchemaForm()
     form.org_id.choices = [(0, '')]
     form.org_id.choices.extend([(org.id, org.name) for org in
