@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-13 17:33+0100\n"
-"PO-Revision-Date: 2019-03-13 17:34+0100\n"
+"POT-Creation-Date: 2019-03-13 17:48+0100\n"
+"PO-Revision-Date: 2019-03-13 17:49+0100\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
@@ -173,6 +173,18 @@ msgstr "Contact"
 #: src/web/templates/edit_json.html:102
 msgid "Edit this schema"
 msgstr "Éditez ce schéma"
+
+#: src/web/templates/edit_object.html:7
+msgid "validated by"
+msgstr "validé par"
+
+#: src/web/templates/edit_object.html:9
+msgid "Edit the definition of the object"
+msgstr "Éditez la définition de l'objet"
+
+#: src/web/templates/edit_object.html:67
+msgid "Specify whether this object is linked to other objects"
+msgstr "Indiquez si cet objet est lié à d'autres objets"
 
 #: src/web/templates/edit_schema.html:61
 msgid "Delete this schema"

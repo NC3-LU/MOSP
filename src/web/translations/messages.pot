@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-13 17:33+0100\n"
+"POT-Creation-Date: 2019-03-13 17:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,6 +170,18 @@ msgstr ""
 
 #: src/web/templates/edit_json.html:102
 msgid "Edit this schema"
+msgstr ""
+
+#: src/web/templates/edit_object.html:7
+msgid "validated by"
+msgstr ""
+
+#: src/web/templates/edit_object.html:9
+msgid "Edit the definition of the object"
+msgstr ""
+
+#: src/web/templates/edit_object.html:67
+msgid "Specify whether this object is linked to other objects"
 msgstr ""
 
 #: src/web/templates/edit_schema.html:61
