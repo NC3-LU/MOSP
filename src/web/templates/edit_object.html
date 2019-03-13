@@ -60,8 +60,13 @@
                         {{ form.licenses(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}
                     </div>
                     {% for error in form.licenses.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-                </div>
                 <hr />
+                </div>
+                <div class="row">
+                    <div class="col-md">
+                        <h4>Specify whether this object is linked to other objects</h4>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md">
                         <div class="form-group">
