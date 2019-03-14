@@ -2,13 +2,22 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md">
             <h3>{{ action }}</h3>
             <p>{{ _('validated by') }} <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a>
                 {% if action == "Edit an object" %}
                     &nbsp;-&nbsp;<a href="{{ url_for('object_bp.edit_json', object_id=object_id) }}">{{ _('Edit the definition of the object') }}</a>
                 {% endif %}
             </p>
+        </div>
+        <div class="col-md-3 text-right">
+            <div class="btn-group" role="group">
+                {% if action == "Edit an object" %}
+                <a role="button" class="btn btn-secondary" href="{{ url_for('object_bp.view', object_id=object_id) }}" title="{{ _('View the object') }}">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                </a>
+                {% endif %}
+            </div>
         </div>
     </div>
     <div class="row">
@@ -60,13 +69,20 @@
                         {{ form.licenses(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}
                     </div>
                     {% for error in form.licenses.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-                <hr />
                 </div>
+
+                <div class="form-group">
+                    <div class="">
+                        {{ form.submit(class_="btn btn-default") }}
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md">
                         <h4>{{ _('Specify whether this object is linked to other objects') }}</h4>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md">
                         <div class="form-group">
