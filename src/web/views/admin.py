@@ -147,6 +147,7 @@ def form_organization(organization_id=None):
     organization = models.Organization.query. \
                     filter(models.Organization.id == organization_id).first()
     form = OrganizationForm(obj=organization)
+    form.users.data = [user.id for user in organization.users]
     action = "Edit an organization"
     head_titles = [action]
     head_titles.append(organization.name)
@@ -165,8 +166,16 @@ def process_organization_form(organization_id=None):
     if not form.validate():
         return render_template('admin/edit_organization.html', form=form)
 
+    # Edit an existing organization
     if organization_id is not None:
         organization = models.Organization.query.filter(models.Organization.id == organization_id).first()
+        # Members
+        new_members = []
+        for user_id in form.users.data:
+            user = models.User.query.filter(models.User.id == user_id).first()
+            new_members.append(user)
+        organization.users = new_members
+        del form.users
         form.populate_obj(organization)
         db.session.commit()
         flash(gettext('Organization %(org_name)s successfully updated.',
@@ -178,6 +187,12 @@ def process_organization_form(organization_id=None):
     new_organization = models.Organization(name=form.name.data,
                            description=form.description.data,
                            organization_type=form.organization_type.data)
+    new_members = []
+    for user_id in form.users.data:
+        user = models.User.query.filter(models.User.id == user_id).first()
+        new_members.append(user)
+    new_organization.users = new_members
+    del form.users
     db.session.add(new_organization)
     db.session.commit()
     flash(gettext('Organization %(org_name)s successfully created.',

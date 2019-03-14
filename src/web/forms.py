@@ -145,7 +145,13 @@ class OrganizationForm(FlaskForm):
                     [validators.Required(lazy_gettext('Please enter a description'))])
     organization_type = TextField(lazy_gettext('Type'))
     website = TextField(lazy_gettext('Website'))
+    users = SelectMultipleField(lazy_gettext('Members'), coerce=int)
     submit = SubmitField(lazy_gettext('Save'))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.users.choices = [(user.id, user.login) \
+                                        for user in User.query.all()]
 
 
 class ProfileForm(FlaskForm):
