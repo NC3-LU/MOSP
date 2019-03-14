@@ -4,9 +4,9 @@
     <div class="row">
         <div class="col-md-12">
             <h3>{{ action }}</h3>
-            <p>validated by <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a>
+            <p>{{ _('validated by') }} <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a>
                 {% if action == "Edit an object" %}
-                    &nbsp;-&nbsp;<a href="{{ url_for('object_bp.edit_json', object_id=object_id) }}">Edit the definition of the object</a>
+                    &nbsp;-&nbsp;<a href="{{ url_for('object_bp.edit_json', object_id=object_id) }}">{{ _('Edit the definition of the object') }}</a>
                 {% endif %}
             </p>
         </div>
@@ -60,8 +60,13 @@
                         {{ form.licenses(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}
                     </div>
                     {% for error in form.licenses.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-                </div>
                 <hr />
+                </div>
+                <div class="row">
+                    <div class="col-md">
+                        <h4>{{ _('Specify whether this object is linked to other objects') }}</h4>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md">
                         <div class="form-group">
