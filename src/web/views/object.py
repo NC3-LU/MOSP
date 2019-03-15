@@ -55,7 +55,18 @@ def view(object_id=None):
     #                     {'values': [{'entry': [{'value': 'news-report'}]}]}
     #                     )).all()
     # OK :
-    # res = JsonObject.query.filter(JsonObject.json_object[('namespace')].astext == 'osint').all()
+    #res = JsonObject.query.filter(JsonObject.json_object[('namespace')].astext == 'osint')
+    #res = JsonObject.query.filter(JsonObject.json_object[('father-uuid')].astext == 'fdsfsf')
+    #res = JsonObject.query.filter(JsonObject.json_object[('mapping', 'father-uuid')].astext == 'fdsfsf')
+    #res = JsonObject.query.filter(JsonObject.json_object[('mapping'), [('father-uuid')]].astext == "fdsfsf")
+
+    #expr = JsonObject.json_object[("mapping", "father-uuid")]
+    #res = (db.session.query(JsonObject.id, expr.label("fdsfsf"))
+    #    .filter(expr != None)
+    #    .all())
+    #print(res)
+    #if res.count():
+        #print(res[0].json_object.get('label'))
 
 
     # res = JsonObject.query.filter(JsonObject.json_object.has_any({'predicates': [{'value': 'source-type'}]})).first()
@@ -64,7 +75,7 @@ def view(object_id=None):
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     if json_object is None:
         abort(404)
-    result = json.dumps(json_object.json_object,
+    result = json.dumps(json_object.json_object, ensure_ascii=False,
                         sort_keys=True, indent=4, separators=(',', ': '))
     m = hashlib.sha256()
     m.update(str(result).encode()) # evaluate the SHA256 of the prettified object
