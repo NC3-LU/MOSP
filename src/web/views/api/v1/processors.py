@@ -8,7 +8,7 @@ from flask_login import current_user
 from flask_restless import ProcessingException
 
 from web.views.common import login_user_bundle
-from web.models import User, Schema
+from web.models import User, Schema, JsonObject
 
 logger = logging.getLogger(__name__)
 
@@ -29,9 +29,28 @@ def auth_func(*args, **kw):
         raise ProcessingException(description='Not authenticated!', code=401)
 
 
+def check_single_object_edit_permission(instance_id, data):
+    """Pre-processor to test a single object.
+    Uses check_object_edit_permission()"""
+    if not current_user.is_authenticated:
+        raise ProcessingException(description='Not authenticated!', code=401)
+
+    json_object = JsonObject.query.filter(JsonObject.id == instance_id).first()
+    if json_object:
+        data['schema_id'] = json_object.schema.id
+        data['org_id'] = json_object.organization.id
+        data['creator_id'] = current_user.id
+    else:
+        raise ProcessingException(description='Unknown object', code=401)
+    try:
+        check_object_edit_permission(data)
+    except Exception as e:
+        raise(e)
+
+
 def check_object_edit_permission(data):
-    """Ensures a user has the rights to create/edit an abject in a
-    specific organization. Checks also the validity of the submitted
+    """Pre-processor to ensure a user has the rights to create/edit an abject
+    in a specific organization. Checks also the validity of the submitted
     JSON object against the specified the JSON schema."""
     if not current_user.is_authenticated:
         raise ProcessingException(description='Not authenticated!', code=401)

@@ -44,4 +44,6 @@ blueprint_object = manager.create_api_blueprint(
     preprocessors=dict(
         GET_MANY=[pre_get_many],
         POST=[processors.auth_func, processors.check_object_edit_permission],
-        PUT=[processors.auth_func, processors.check_object_edit_permission]))
+        PUT=[processors.auth_func, processors.check_object_edit_permission],
+        PUT_SINGLE=[processors.auth_func,
+                        processors.check_single_object_edit_permission]))

@@ -120,6 +120,9 @@ $(document).ready(function() {
             contentType: "application/json",
             success: function(result) {
                 alert('Object updated.');
+            },
+            error: function(message) {
+                alert(message.responseJSON.message);
             }
         });
     });
