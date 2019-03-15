@@ -14,6 +14,9 @@ logger = logging.getLogger(__name__)
 
 
 def auth_func(*args, **kw):
+    """
+    Pre-processor used to check if a user is authenticated.
+    """
     if request.authorization:
         user = User.query.filter(User.login == request.authorization.username).first()
         if not user:
@@ -37,6 +40,7 @@ def check_single_object_edit_permission(instance_id, data):
 
     json_object = JsonObject.query.filter(JsonObject.id == instance_id).first()
     if json_object:
+        # retrieve information required by check_object_edit_permission()
         data['schema_id'] = json_object.schema.id
         data['org_id'] = json_object.organization.id
         data['creator_id'] = current_user.id
@@ -50,8 +54,9 @@ def check_single_object_edit_permission(instance_id, data):
 
 def check_object_edit_permission(data):
     """Pre-processor to ensure a user has the rights to create/edit an abject
-    in a specific organization. Checks also the validity of the submitted
-    JSON object against the specified the JSON schema."""
+    in a specific organization.
+    Checks also the validity of the submitted JSON object against the specified
+    the JSON schema."""
     if not current_user.is_authenticated:
         raise ProcessingException(description='Not authenticated!', code=401)
 
