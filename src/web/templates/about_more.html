@@ -1,4 +1,8 @@
 {% extends "layout.html" %}}
+{% block head %}
+{{ super() }}
+<script src="{{ url_for('static', filename='npm_components/node-forge/dist/forge.min.js') }}"></script>
+{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -12,7 +16,40 @@
                 <li class="list-group-item">{{ _('Number of users') }}: {{nb_users}}</li>
                 <li class="list-group-item">{{ _('Contact') }}: <a href="mailto:{{ config['ADMIN_EMAIL'] }}">{{ config['ADMIN_EMAIL'] }}</a></li>
             </ul>
+            <br />
+            <div id="version"></div>
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    var publicKey = forge.pki.publicKeyFromPem('-----BEGIN PUBLIC KEY-----' +
+        'MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA4IeYX0OcbSp9/DVtbfL3' +
+        'JtMl6arnxUf5u+H53neqvzGcPo5JWzHHtwY7gkuetIj7r46ChWw075goYBpWFi+l' +
+        'gSOnsFhUn1EW+1gjgqXsxNDaRCosK/7ji4fTJTg5FykNaBZ4B9fUNYWyoOpW+OwZ' +
+        '3Y1DsJFJi+7K3ntoHsPMID6WIUhloEYLNVmpVSqajAx25FgcREyIEO3HXpkurzUF' +
+        'OQWdZvKRDycGJcXs8smCadW7OR81BUiuU2jmv1+dNnKlhEh3JskPc3sJB3K+mSvT' +
+        'tWrwudZU09FPwxfgd6MM0RC3A4bQw7GfoIwx8n/zb4GpTvjG9StykFgWm99NrP6l' +
+        '6EOVzBAEQZsFt53hrLw6xW6+rfxvof6BY9BOOFv6W3BQ3SG3jNw4uU+Q/BNg46FT' +
+        '6J3E7bvC8491K1iwuNEvYTl2rZ4evGT+XqxC4GHlgmgtJeHkKOPeINwzIjLE7Zwd' +
+        '20Dxe69STYIOTtiszWvBHxPqBwUdsptzHVMGVDSb3MCHaFerpKBl8fJhms6mpW0i' +
+        'WipcEVoJXH4ss2RKmpiTmQKcv3BnBRRMg2xeX3vinOl82+71YcoGPMduSw7UZiEK' +
+        'YkuqVhJVcVT7ZZdBfpVIW4MFh2Fh7WeRRRO20i96JpaYoZMeDm58Be6KscAItyev' +
+        'SWKmTgAVrISbNIvmDIKZ5csCAwEAAQ==' +
+        '-----END PUBLIC KEY-----');
+    var encrypted = publicKey.encrypt('{{mosp_version}}', "RSA-OAEP", {
+        md: forge.md.sha256.create(),
+        mgf1: forge.mgf1.create()
+    });
+    var encryptedAppVersion = encodeURIComponent(forge.util.encode64(encrypted))
+    var appVersionCheckingTimestamp = new Date().getTime();
+
+    var oImg = document.createElement("img");
+    oImg.setAttribute('src', 'https://version.monarc.lu/check/MOSP?version='+encryptedAppVersion+'&timestamp='+appVersionCheckingTimestamp);
+    oImg.setAttribute('alt', 'State of this MOSP instance.');
+    // oImg.setAttribute('height', '1px');
+    // oImg.setAttribute('width', '1px');
+    document.getElementById("version").appendChild(oImg);
+});
+</script>
 {% endblock %}
