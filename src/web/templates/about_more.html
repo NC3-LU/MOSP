@@ -17,10 +17,11 @@
                 <li class="list-group-item">{{ _('Contact') }}: <a href="mailto:{{ config['ADMIN_EMAIL'] }}">{{ config['ADMIN_EMAIL'] }}</a></li>
             </ul>
             <br />
-            <div id="version"></div>
+            {% if config['CHECK_VERSION'] %}<div id="version"></div>{% endif %}
         </div>
     </div>
 </div>
+{% if config['CHECK_VERSION'] %}
 <script>
 $(document).ready(function() {
     var publicKey = forge.pki.publicKeyFromPem('-----BEGIN PUBLIC KEY-----' +
@@ -52,4 +53,5 @@ $(document).ready(function() {
     document.getElementById("version").appendChild(oImg);
 });
 </script>
+{% endif %}
 {% endblock %}

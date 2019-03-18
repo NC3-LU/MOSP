@@ -1,5 +1,3 @@
-import os
-
 HOST = '127.0.0.1'
 PORT = 5000
 DEBUG = False
@@ -17,8 +15,13 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_POOL_SIZE = 15
 SQLALCHEMY_MAX_OVERFLOW = 0
 
-SECRET_KEY = os.urandom(12)
-SECURITY_PASSWORD_SALT = os.urandom(12)
+SECRET_KEY = 'LCx3BchmHRxFzkEv4BqQJyeXRLXenf'
+SECURITY_PASSWORD_SALT = 'L8gTsyrpRQEF8jNWQPyvRfv7U5kJkD'
+
+CHECK_VERSION = True
+
+LOG_PATH = './var/log/mosp.log'
+LOG_LEVEL = 'info'
 
 UPLOAD_FOLDER = './src/web/public/pictures/'
 ALLOWED_EXTENSIONS = set(['png'])
@@ -34,4 +37,4 @@ MAIL_USE_SSL = False
 MAIL_DEBUG = DEBUG
 MAIL_USERNAME = None
 MAIL_PASSWORD = None
-MAIL_DEFAULT_SENDER = 'services@securitymadein.lu'
+MAIL_DEFAULT_SENDER = ADMIN_EMAIL
