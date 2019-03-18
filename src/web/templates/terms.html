@@ -112,7 +112,7 @@
             <p>The company reserves the right to change, redact, and delete content on the website for any reason.  If you believe someone has submitted content to the website in violation of these terms, <a href="#contact">please contact us immediately</a>.</p>
             <h2><a id="your-account">Your Account</a></h2>
             <p>You must create and log into an account to use some features of the website.</p>
-            <p>To create an account, you must <a href="#contact">contact us</a>. You do not have to provide an e-mail address, only a nickname. You may close your account at any time by e-mailing <a href="mailto:info@cases.lu">info@cases.lu</a> or via <a href="{{ url_for('user_bp.form') }}">your profile</a> page.</p>
+            <p>To create an account, you must <a href="#contact">contact us</a>. You do not have to provide an e-mail address, only a nickname. You may close your account at any time by e-mailing <a href="mailto:{{ config['ADMIN_EMAIL'] }}">{{ config['ADMIN_EMAIL'] }}</a> or via <a href="{{ url_for('user_bp.form') }}">your profile</a> page.</p>
             <p>You agree to be responsible for all action taken using your account, whether authorized by you or not, until you either close your account or notify the company that your account has been compromised.  You agree to notify the company immediately if you suspect your account has been compromised.  You agree to select a secure password for your account, and keep it secret.</p>
             <p>The company may restrict, suspend, or close your account on the website according to its policy for handling copyright-related takedown requests, or if the company reasonably believes that you’ve breached these terms.</p>
             <h2><a id="your-content">Your Content</a></h2>
@@ -144,7 +144,7 @@
             <p>Neither the exercise of any right under this Agreement, nor waiver of any breach of this Agreement, waives any other breach of this Agreement.</p>
             <p>These terms embody all the terms of agreement between you and the company about use of the website.  These terms entirely replace any other agreements about your use of the website, written or not.</p>
             <h2><a id="contact">Contact</a></h2>
-            <p>You may notify the company under these terms, and send questions to the company, at <a href="mailto:info@cases.lu">info@cases.lu</a>.</p>
+            <p>You may notify the company under these terms, and send questions to the company, at <a href="mailto:{{ config['ADMIN_EMAIL'] }}">{{ config['ADMIN_EMAIL'] }}</a>.</p>
             <p>The company may notify you under these terms using the e-mail address you provide for your account on the website, or by posting a message to the homepage of the website or your account page.</p>
             <h2><a id="changes">Changes</a></h2>
             <p>The company last updated these terms on February 26, 2019, and may update these terms again.  The company will post all updates to the website.  For updates that contain substantial changes, the company agrees to e-mail you, if you’ve created an account and provided a valid e-mail address.  The company may also announce updates with special messages or alerts on the website.</p>
