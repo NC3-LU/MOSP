@@ -11,14 +11,14 @@
         </div>
         <div class="col text-right">
             <div class="btn-group" role="group">
-                <a role="button" class="btn btn-secondary" title="{{ _('Edit the object') }}" href="{{ url_for('object_bp.form', object_id=json_object.id) }}">
+                {%if current_user.is_authenticated %}<a role="button" class="btn btn-secondary" title="{{ _('Edit the object') }}" href="{{ url_for('object_bp.form', object_id=json_object.id) }}">
                     <i class="fa fa-edit" aria-hidden="true"></i>
                 </a>
-                <button type="button" class="btn btn-secondary" title="{{ _('Copy to clipboard') }}" onclick="copyToClipboard()" href="#">
-                    <i class="fa fa-clipboard" aria-hidden="true"></i>
-                </button>
-                <button type="button" class="btn btn-secondary" title="{{ _('Fork the object') }}" data-toggle="modal" data-target="#forkModal" href="#" {%if not current_user.is_authenticated%}disabled{% endif %}>
+                <button type="button" class="btn btn-secondary" title="{{ _('Fork the object') }}" data-toggle="modal" data-target="#forkModal" href="#">
                     <i class="fas fa-code-branch"></i>
+                </button>{% endif %}
+		<button type="button" class="btn btn-secondary" title="{{ _('Copy to clipboard') }}" onclick="copyToClipboard()" href="#">
+                    <i class="fa fa-clipboard" aria-hidden="true"></i>
                 </button>
                 <div class="btn-group btn-group" role="group" title="{{ _('Share the object') }}">
                     <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
