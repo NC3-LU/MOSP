@@ -17,7 +17,7 @@
                 <button type="button" class="btn btn-secondary" title="{{ _('Copy to clipboard') }}" onclick="copyToClipboard()" href="#">
                     <i class="fa fa-clipboard" aria-hidden="true"></i>
                 </button>
-                <button type="button" class="btn btn-secondary" title="{{ _('Fork the object') }}" data-toggle="modal" data-target="#forkModal" href="#">
+                <button type="button" class="btn btn-secondary" title="{{ _('Fork the object') }}" data-toggle="modal" data-target="#forkModal" href="#" {%if not current_user.is_authenticated%}disabled{% endif %}>
                     <i class="fas fa-code-branch"></i>
                 </button>
                 <div class="btn-group btn-group" role="group" title="{{ _('Share the object') }}">
