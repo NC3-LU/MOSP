@@ -6,10 +6,10 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md">
+        <div class="col">
             <h2>{{ json_object.name }}</h2>
         </div>
-        <div class="col-md-4 text-right">
+        <div class="col text-right">
             <div class="btn-group" role="group">
                 <a role="button" class="btn btn-secondary" title="{{ _('Edit the object') }}" href="{{ url_for('object_bp.form', object_id=json_object.id) }}">
                     <i class="fa fa-edit" aria-hidden="true"></i>
@@ -96,7 +96,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md">
+        <div class="col">
             <br />
             <b>{{ _('Related objects') }}</b>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -126,7 +126,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md">
+        <div class="col">
             <br />
             <b>{{ _('Definition of the object') }}</b>
             <pre class="prettyprint"><code id="jsonObject">{{ json_object_pretty }}</code></pre>
@@ -144,7 +144,7 @@
           </div>
           <div class="modal-body">
             <p>Select a destination organization:</p>
-            <select id="orgSelector">
+            <select id="orgSelector" class="selectpicker">
                 {% for organization in current_user.organizations%}
                     <option value="{{ organization.id }}">{{ organization.name }}</option>
                 {% endfor %}
@@ -160,6 +160,8 @@
 </div>
 <script>
 $(document).ready(function() {
+    $('.selectpicker').selectpicker();
+
     $('#download-csv').click(function(e) {
         $.ajax({
             url: "{{ url_for('json_objectapi0.json_objectapi',) }}/{{ json_object.id }}",

@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md">
+        <div class="col">
             <h3>{{ action }}</h3>
             <p>{{ _('validated by') }} <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a>
                 {% if action == "Edit an object" %}
@@ -10,7 +10,7 @@
                 {% endif %}
             </p>
         </div>
-        <div class="col-md-3 text-right">
+        <div class="col text-right">
             <div class="btn-group" role="group">
                 {% if action == "Edit an object" %}
                 <a role="button" class="btn btn-secondary" href="{{ url_for('object_bp.view', object_id=object_id) }}" title="{{ _('View the object') }}">
@@ -78,13 +78,13 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md">
+                    <div class="col">
                         <h4>{{ _('Specify whether this object is linked to other objects') }}</h4>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md">
+                    <div class="col">
                         <div class="form-group">
                             <label for="{{ form.refers_to.id }}" class="control-label">{{ form.refers_to.label }}</label>
                             <div>
@@ -93,7 +93,7 @@
                             {% for error in form.refers_to.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
                         </div>
                     </div>
-                    <div class="col-md">
+                    <div class="col">
                         <div class="form-group">
                             <label for="{{ form.referred_to_by.id }}" class="control-label">{{ form.referred_to_by.label }}</label>
                             <div>

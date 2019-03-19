@@ -2,10 +2,10 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md">
+        <div class="col">
             <h2>{{ schema.name }}</h2>
         </div>
-        <div class="col-md-3 text-right">
+        <div class="col text-right">
             <div class="btn-group" role="group">
                 <a role="button" class="btn btn-secondary" href="{{ url_for('schema_bp.view', schema_id=schema.id) }}" title="{{ _('View the schema') }}">
                     <i class="fa fa-eye" aria-hidden="true"></i>
