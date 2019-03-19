@@ -12,6 +12,9 @@ img {
     padding: 2px;
 }
 
+.text-primary {
+    color: #006FBA !important;
+}
 
 .bg-MOSP-blue {
     background-color: #006FBA;

@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h3>{{ organization.name }}</h3>
+            <h3 class="text-primary">{{ organization.name }}</h3>
         </div>
     </div>
     <div class="row">
@@ -25,6 +25,7 @@
     <br />
     <div class="row">
         <div class="col-md-12">
+            <h4>{{ _('Shared JSON objects') }}</h4>
             <div class="table-responsive-md">
                 <table id="table-objects" class="table table-hover">
                     <caption>{{ _('Shared JSON objects') }}</caption>
@@ -51,6 +52,7 @@
     <br /><hr /><br />
     <div class="row">
         <div class="col-md-12">
+            <h4>{{ _('Shared JSON schemas') }}</h4>
             <div class="table-responsive-md">
                 <table id="table-schemas" class="table table-hover">
                     <caption>{{ _('Shared JSON schemas') }}</caption>
