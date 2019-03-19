@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/bootstrap-select/dist/css/bootstrap-select.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/@fortawesome/fontawesome-free/css/all.min.css') }}">
     {% endblock %}
     <script src="{{ url_for('static', filename='npm_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='npm_components/popper.js/dist/umd/popper.min.js') }}"></script>
@@ -68,7 +68,7 @@
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('login') }}" title="Sign in"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                        <a class="nav-link" href="{{ url_for('login') }}" title="Sign in"><i class="fas fa-sign-in-alt"></i></a>
                     </li>
                     {% endif %}
                 </ul>

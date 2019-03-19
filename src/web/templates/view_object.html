@@ -17,6 +17,9 @@
                 <button type="button" class="btn btn-secondary" title="{{ _('Copy to clipboard') }}" onclick="copyToClipboard()" href="#">
                     <i class="fa fa-clipboard" aria-hidden="true"></i>
                 </button>
+                <button type="button" class="btn btn-secondary" title="{{ _('Fork this object') }}" data-toggle="modal" data-target="#forkModal" href="#">
+                    <i class="fas fa-code-branch"></i>
+                </button>
                 <div class="btn-group btn-group" role="group" title="{{ _('Share the object') }}">
                     <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-share-square"></i>
@@ -129,6 +132,31 @@
             <pre class="prettyprint"><code id="jsonObject">{{ json_object_pretty }}</code></pre>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="forkModal" tabindex="-1" role="dialog" aria-labelledby="forkModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Fork the object</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Select a destination organization:</p>
+            <select>
+                {% for organization in current_user.organizations%}
+                    <option value="{{ organization.id }}">{{ organization.name }}</option>
+                {% endfor %}
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Fork</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 <script>
 $(document).ready(function() {
@@ -179,6 +207,9 @@ function copyToClipboard() {
         }, function() {
           /* clipboard write failed */
     });
+}
+function forkObject() {
+
 }
 </script>
 <!-- /.container -->
