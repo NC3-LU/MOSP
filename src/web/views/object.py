@@ -266,11 +266,11 @@ def process_form(object_id=None):
     return redirect(url_for('object_bp.form', object_id=new_object.id))
 
 
-@object_bp.route('/fork/<int:object_id>', methods=['GET'])
+@object_bp.route('/copy/<int:object_id>', methods=['GET'])
 @login_required
 @check_object_edit_permission
-def fork(object_id=None):
-    """For an object from one organization to another.
+def copy(object_id=None):
+    """Copy an object from one organization to another.
     """
     org_id = request.args.get('org_id', None)
     if org_id is None:
