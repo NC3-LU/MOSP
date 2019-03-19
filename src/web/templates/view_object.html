@@ -17,7 +17,7 @@
                 <button type="button" class="btn btn-secondary" title="{{ _('Copy to clipboard') }}" onclick="copyToClipboard()" href="#">
                     <i class="fa fa-clipboard" aria-hidden="true"></i>
                 </button>
-                <button type="button" class="btn btn-secondary" title="{{ _('Fork this object') }}" data-toggle="modal" data-target="#forkModal" href="#">
+                <button type="button" class="btn btn-secondary" title="{{ _('Fork the object') }}" data-toggle="modal" data-target="#forkModal" href="#">
                     <i class="fas fa-code-branch"></i>
                 </button>
                 <div class="btn-group btn-group" role="group" title="{{ _('Share the object') }}">
@@ -144,7 +144,7 @@
           </div>
           <div class="modal-body">
             <p>Select a destination organization:</p>
-            <select>
+            <select id="orgSelector">
                 {% for organization in current_user.organizations%}
                     <option value="{{ organization.id }}">{{ organization.name }}</option>
                 {% endfor %}
@@ -152,7 +152,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Fork</button>
+            <button type="button" class="btn btn-primary" onclick="forkObject()">Fork</button>
           </div>
         </div>
       </div>
@@ -209,6 +209,18 @@ function copyToClipboard() {
     });
 }
 function forkObject() {
+    var e = document.getElementById("orgSelector");
+    var orgID = e.options[e.selectedIndex].value;
+
+    $.ajax({
+        url: "{{ url_for('object_bp.fork', object_id=json_object.id) }}"+'?org_id='+orgID,
+        type: 'GET',
+        contentType: "application/json",
+        success: function(result) {
+            window.location.replace('/object/view/'+result.id);
+        }
+    });
+
 
 }
 </script>

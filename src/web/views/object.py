@@ -1,7 +1,8 @@
 import json
 import hashlib
+from datetime import datetime
 from flask import Blueprint, render_template, redirect, url_for, flash, \
-                  request, abort, Response
+                  request, abort, Response, jsonify
 from flask_login import login_required, current_user
 from flask_babel import gettext
 
@@ -263,3 +264,38 @@ def process_form(object_id=None):
         return redirect(url_for('object_bp.form', object_id=new_object.id))
 
     return redirect(url_for('object_bp.form', object_id=new_object.id))
+
+
+@object_bp.route('/fork/<int:object_id>', methods=['GET'])
+@login_required
+@check_object_edit_permission
+def fork(object_id=None):
+    """For an object from one organization to another.
+    """
+    org_id = request.args.get('org_id', None)
+    if org_id is None:
+        abort(404)
+    if int(org_id) not in [org.id for org in current_user.organizations]:
+        abort(404)
+
+    json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    if json_object is None:
+        abort(404)
+
+    new_object = JsonObject()
+    new_object.org_id = org_id
+    new_object.schema_id = json_object.schema_id
+    new_object.creator_id = current_user.id
+    new_object.licenses = json_object.licenses
+    new_object.name = json_object.name
+    new_object.description = json_object.description
+    new_object.json_object = json_object.json_object
+    new_object.refers_to.append(json_object)
+    new_object.last_updated = datetime.utcnow()
+
+    db.session.add(new_object)
+    db.session.commit()
+
+    return jsonify(
+        id = new_object.id
+    )
