@@ -6,7 +6,7 @@
     <table id="table-organizations" class="table table-hover">
     <thead>
         <tr>
-            <th>#</th>
+            <th>{{ _('id') }}</th>
             <th>{{ _('Name') }}</th>
             <th>{{ _('Website') }}</th>
             <th>{{ _('Members') }}</th>
@@ -16,7 +16,7 @@
     <tbody>
     {% for organization in organizations %}
         <tr>
-            <th scope="row">{{ loop.index }}</th>
+            <th scope="row">{{ organization.id }}</th>
             <td><a href="{{ url_for('organization_bp.get', organization_name=organization.name) }}">{{ organization.name }}</a></td>
             <td><a href="{{ organization.website  }}" target="_blank">{{ organization.website  }}</a></td>
             <td>{{ organization.users | count  }}</td>
