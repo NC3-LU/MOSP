@@ -6,7 +6,7 @@
     <table id="table-users" class="table table-hover">
     <thead>
         <tr>
-            <th>#</th>
+            <th>{{ _('id') }}</th>
             <th>{{ _('State') }}</th>
             <th>{{ _('Login') }}</th>
             <th>{{ _('Member since') }}</th>
@@ -17,7 +17,7 @@
     <tbody>
     {% for user in users %}
         <tr {% if user.is_admin  %}class="table-warning"{% endif %}>
-            <th scope="row">{{ loop.index }}</th>
+            <th scope="row">{{ user.id }}</th>
             <td>
                 {% if user.is_admin %}<i class="fa fa-coffee" title="Super user"></i>{% endif %}
                 {% if user.is_api %}<i class="fa fa-cog" title="Can use the API"></i>{% endif %}

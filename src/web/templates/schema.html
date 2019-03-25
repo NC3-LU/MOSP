@@ -44,7 +44,7 @@
                     <caption>{{ _('Objects validated by the schema') }}</caption>
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>{{ _('id') }}</th>
                             <th>{{ _('Name') }}</th>
                             <th>{{ _('Organization') }}</th>
                             <th>{{ _('Visibility') }}</th>
@@ -58,7 +58,7 @@
                     <tbody>
                     {% for object in objects %}
                         <tr>
-                            <td scope="row">{{ loop.index }}</td>
+                            <td scope="row">{{object.id }}</td>
                             <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
                             <td><a href="{{ url_for('organization_bp.get', organization_name=object.organization.name) }}">{{ object.organization.name }}</a></td>
                             <td>{{ _('Public') if object.is_public else _('Private') }}</td>

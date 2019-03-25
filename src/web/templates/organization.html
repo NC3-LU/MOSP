@@ -31,7 +31,7 @@
                     <caption>{{ _('Shared JSON objects') }}</caption>
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>{{ _('id') }}</th>
                             <th>{{ _('Name') }}</th>
                             <th>{{ _('Last updated') }}</th>
                         </tr>
@@ -39,7 +39,7 @@
                     <tbody>
                     {% for object in organization.objects if object.is_public %}
                         <tr>
-                            <td scope="row">{{ loop.index }}</td>
+                            <td scope="row">{{ object.id }}</td>
                             <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
                             <td class="date">{{ object.last_updated | datetime }}</td>
                         </tr>
@@ -58,7 +58,7 @@
                     <caption>{{ _('Shared JSON schemas') }}</caption>
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>{{ _('id') }}</th>
                             <th>{{ _('Name') }}</th>
                             <th>{{ _('# of objects validated by the schema') }}</th>
                             <th>{{ _('Last updated') }}</th>
@@ -67,7 +67,7 @@
                     <tbody>
                     {% for schema in organization.schemas %}
                         <tr>
-                            <td scope="row">{{ loop.index }}</td>
+                            <td scope="row">{{ schema.id }}</td>
                             <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
                             <td align="center">{{ schema.objects.count() }}</td>
                             <td class="date">{{ schema.last_updated | datetime }}</td>
