@@ -83,6 +83,7 @@
 $(document).ready(function() {
     $('#table-schemas').DataTable( {
         responsive: true,
+        order: [[2, "desc"]],
         columnDefs: [
             {
                 bSortable: false,
@@ -92,6 +93,7 @@ $(document).ready(function() {
     });
     $('#table-objects').DataTable( {
         responsive: true,
+        order: [[2, "desc"]],
         columnDefs: [
             {
                 bSortable: false,
