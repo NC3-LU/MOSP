@@ -7,14 +7,12 @@ url = "https://pypi.python.org/simple"
 python_version = "3.7"
 
 [packages]
-"psycopg2" = "*"
 SQLAlchemy = "*"
 Flask = "*"
 Flask-SQLAlchemy = "*"
 Flask-Login = "*"
 Flask-Principal = "*"
 Flask-WTF = "*"
-Flask-Restless = "*"
 Flask-Migrate = "*"
 Flask-Script = "*"
 Flask-Admin = "*"
@@ -26,6 +24,8 @@ flask-babel = "*"
 alembic = "*"
 requests = "*"
 jsonschema = "*"
+flask-restless = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 sqlalchemy-schemadisplay = "*"
