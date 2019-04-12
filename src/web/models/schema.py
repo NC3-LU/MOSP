@@ -18,7 +18,7 @@ class Schema(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     description = db.Column(db.String(500))
-    last_updated = db.Column(db.DateTime(), default=datetime.utcnow())
+    last_updated = db.Column(db.DateTime(), default=datetime.utcnow)
     json_schema = db.Column(JSONB, default={})
 
     # relationship

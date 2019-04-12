@@ -19,8 +19,8 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(30), unique=True, nullable=False)
     pwdhash = db.Column(db.String(), nullable=False)
-    created_at = db.Column(db.DateTime(), default=datetime.utcnow())
-    last_seen = db.Column(db.DateTime(), default=datetime.utcnow())
+    created_at = db.Column(db.DateTime(), default=datetime.utcnow)
+    last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
 
     public_profile = db.Column(db.Boolean(), default=True)
 

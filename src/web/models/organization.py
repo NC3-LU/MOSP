@@ -14,7 +14,7 @@ class Organization(db.Model):
     description = db.Column(db.String(500), default='')
     organization_type = db.Column(db.String(100), default='')
     website = db.Column(db.String(100), default='')
-    last_updated = db.Column(db.DateTime(), default=datetime.utcnow())
+    last_updated = db.Column(db.DateTime(), default=datetime.utcnow)
 
     # relationship
     objects = db.relationship(JsonObject, backref='organization', lazy='dynamic',
