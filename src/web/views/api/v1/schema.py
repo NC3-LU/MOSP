@@ -17,6 +17,8 @@ def pre_get_many(search_params=None, **kw):
 
 blueprint_schema = manager.create_api_blueprint(
     models.Schema,
+    max_results_per_page=1000,
+    results_per_page=10,
     url_prefix=url_prefix,
     methods=['GET'],
     exclude_columns=['creator', 'creator_id'],

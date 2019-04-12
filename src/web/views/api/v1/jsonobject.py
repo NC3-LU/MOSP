@@ -38,6 +38,8 @@ def pre_get_many(search_params=None, **kw):
 
 blueprint_object = manager.create_api_blueprint(
     models.JsonObject,
+    max_results_per_page=1000,
+    results_per_page=10,
     url_prefix=url_prefix,
     methods=['GET', 'POST', 'PUT'],
     exclude_columns=['creator', 'creator_id'],
