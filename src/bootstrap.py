@@ -3,13 +3,16 @@
 
 # required imports and code exection for basic functionning
 
+import re
 import os
+import uuid
 import errno
 import logging
 import flask_restless
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_babel import Babel, gettext, format_datetime
+from werkzeug.routing import BaseConverter, ValidationError
 
 # from flask_mail import Mail
 
@@ -83,6 +86,31 @@ application.jinja_env.filters['datetimeformat'] = datetimeformat
 application.jinja_env.filters['datetime'] = format_datetime
 # application.jinja_env.filters['instance_domain_name'] = instance_domain_name
 
+# URL Converters
+UUID_RE = re.compile(
+    r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$')
+class UUIDConverter(BaseConverter):
+    """
+    UUID converter for the Werkzeug routing system.
+    """
+
+    def __init__(self, map, strict=True):
+        super(UUIDConverter, self).__init__(map)
+        self.strict = strict
+
+    def to_python(self, value):
+        if self.strict and not UUID_RE.match(value):
+            raise ValidationError()
+
+        try:
+            return uuid.UUID(value)
+        except ValueError:
+            raise ValidationError()
+
+    def to_url(self, value):
+        return str(value)
+
+application.url_map.converters['uuid'] = UUIDConverter
 
 # set_logging(application.config['LOG_PATH'])
 

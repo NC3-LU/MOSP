@@ -10,7 +10,7 @@ def check_object_view_permission(f):
     JsonObject."""
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        object_id = kwargs['object_id']
+        object_id = kwargs.get('object_id')
         if current_user.is_authenticated:
             obj = JsonObject.query. \
                 filter(JsonObject.id==object_id). \
@@ -20,6 +20,28 @@ def check_object_view_permission(f):
         else:
             obj = JsonObject.query. \
                     filter(JsonObject.id==object_id). \
+                    filter(JsonObject.is_public)
+        if not obj.first():
+            return abort(403)
+        return f(*args, **kwargs)
+    return decorated_function
+
+
+def check_object_view_permission_by_uuid(f):
+    """Check if the user has permission to access to the requested
+    JsonObject."""
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        object_uuid = kwargs['object_uuid']
+        if current_user.is_authenticated:
+            obj = JsonObject.query. \
+                filter(JsonObject.json_object[('uuid')].astext==str(object_uuid)). \
+                filter(or_(JsonObject.is_public,
+                            JsonObject.organization. \
+                            has(Organization.id.in_([org.id for org in current_user.organizations]))))
+        else:
+            obj = JsonObject.query. \
+                    filter(JsonObject.json_object[('uuid')].astext==str(object_uuid)). \
                     filter(JsonObject.is_public)
         if not obj.first():
             return abort(403)

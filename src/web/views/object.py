@@ -7,12 +7,31 @@ from flask_login import login_required, current_user
 from flask_babel import gettext
 
 from bootstrap import db, application
-from web.views.decorators import check_object_view_permission, check_object_edit_permission
+from web.views.decorators import (check_object_view_permission,
+    check_object_edit_permission, check_object_view_permission_by_uuid)
 from web.models import Schema, JsonObject, License
 from web.forms import AddObjectForm
 
 object_bp = Blueprint('object_bp', __name__, url_prefix='/object')
 objects_bp = Blueprint('objects_bp', __name__, url_prefix='/objects')
+
+
+@object_bp.route('/<uuid:object_uuid>', methods=['GET'])
+@check_object_view_permission_by_uuid
+def get_by_uuid(object_uuid):
+    """
+    Export the JSON part of a JsonObject as a clean JSON file.
+    """
+    query = JsonObject.query.filter(JsonObject.json_object[('uuid')].astext==str(object_uuid))
+    if not query.count():
+        abort(404)
+    if query.count() == 1:
+        json_object = query.first()
+        result = json.dumps(json_object.json_object,
+                        sort_keys=True, indent=4, separators=(',', ': '))
+        return redirect(url_for('object_bp.view', object_id=json_object.id))
+    else:
+        return render_template('list_objects.html', uuid=object_uuid, objects=query.all())
 
 
 @object_bp.route('/get/<int:object_id>', methods=['GET'])
