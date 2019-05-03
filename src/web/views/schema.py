@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash, \
                     request, abort
 from flask_login import login_required, current_user
 from flask_babel import gettext
+from flask_paginate import Pagination, get_page_args
 from sqlalchemy import or_, func
 
 from bootstrap import db
@@ -23,8 +24,8 @@ def list_schemas():
     return render_template('schemas.html', schemas=schemas)
 
 
-@schema_bp.route('/<int:schema_id>', methods=['GET'])
-def get(schema_id=None):
+@schema_bp.route('/<int:schema_id>', defaults={'per_page': '20'}, methods=['GET'])
+def get(per_page, schema_id=None):
     """Return the schema given in parameter with the objects validated by this
     schema."""
     schema = Schema.query.filter(Schema.id == schema_id).first()
@@ -32,23 +33,32 @@ def get(schema_id=None):
         abort(404)
     if not current_user.is_authenticated:
         # Loads public objects related to the schema
-        objects = JsonObject.query. \
+        query = JsonObject.query. \
                 filter(JsonObject.schema_id==schema.id). \
                 filter(JsonObject.is_public)
     elif current_user.is_admin:
         # Loads all objects related to the schema
-        objects = JsonObject.query.filter(JsonObject.schema_id==schema.id)
+        query = JsonObject.query.filter(JsonObject.schema_id==schema.id)
     else:
         # Loads objects related to the schema that are:
         #   - public;
         #   - private but related to the organizations the current user is
         #     affiliated to.
-        objects = JsonObject.query. \
+        query = JsonObject.query. \
                 filter(JsonObject.schema_id==schema.id). \
                 filter(or_(JsonObject.is_public,
                             JsonObject.organization. \
                                 has(Organization.id.in_([org.id for org in current_user.organizations]))))
-    return render_template('schema.html', schema=schema, objects=objects)
+
+    page, per_page, offset = get_page_args()
+    pagination = Pagination(page=page, total=query.count(),
+                            css_framework='bootstrap4',
+                            search=False, record_name='objects',
+                            per_page=per_page)
+
+    return render_template('schema.html', schema=schema,
+                           objects=query.offset(offset).limit(per_page),
+                           pagination=pagination)
 
 
 @schema_bp.route('/view/<int:schema_id>', methods=['GET'])

@@ -38,6 +38,16 @@
     <br /><br />
 
     <div class="row">
+        <div class="col">
+            {{ pagination.links }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ pagination.info }}
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <div class="table-responsive-md">
                 <table id="table-objects" class="table table-hover">
@@ -75,6 +85,12 @@
         </div>
     </div>
 
+     <div class="row">
+        <div class="col">
+            {{ pagination.links }}
+        </div>
+    </div>
+
     <br /><br />
 
     <div class="row">
@@ -87,6 +103,8 @@
 $(document).ready(function() {
 $('#table-objects').DataTable( {
     responsive: true,
+    paging: false,
+    info: false,
     order: [[4, 'desc']],
     columnDefs: [
         {
