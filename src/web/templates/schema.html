@@ -35,7 +35,24 @@
         </div>
     </div>
 
-    <br /><br />
+    <br />
+
+    <div class="row justify-content-end">
+      <div class="col-6">
+	Search on the properties of the objects
+	<form  method="get">
+	  <select id="search_key" name="search_key" class="selectpicker" data-live-search="true" data-width="auto">
+	  {% for key in search_keys %}
+	    <option value="{{ key }}" {{ 'selected' if search_key == key else '' }}>{{ key }}</option>
+	  {% endfor  %}
+	  </select>
+	  <input id="search_term" type="text" name="search_term" value="{{ search_term  }}" />
+	  <input type="submit" value="Submit" class="btn btn-secondary">
+	</form>
+      </div>
+    </div>
+
+    <br />
 
     <div class="row">
         <div class="col">
@@ -100,11 +117,13 @@
     </div>
 </div>
 <script>
-$(document).ready(function() {
+  $(document).ready(function() {
+   $('.selectpicker').selectpicker();
 $('#table-objects').DataTable( {
     responsive: true,
     paging: false,
     info: false,
+    searching: false,
     order: [[4, 'desc']],
     columnDefs: [
         {

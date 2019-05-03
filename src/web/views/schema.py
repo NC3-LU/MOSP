@@ -1,10 +1,11 @@
 import json
+import ast
 from flask import Blueprint, render_template, redirect, url_for, flash, \
                     request, abort
 from flask_login import login_required, current_user
 from flask_babel import gettext
 from flask_paginate import Pagination, get_page_args
-from sqlalchemy import or_, func
+from sqlalchemy import or_, func, Boolean, Integer
 
 from bootstrap import db
 from web.forms import SchemaForm
@@ -27,10 +28,13 @@ def list_schemas():
 @schema_bp.route('/<int:schema_id>', defaults={'per_page': '20'}, methods=['GET'])
 def get(per_page, schema_id=None):
     """Return the schema given in parameter with the objects validated by this
-    schema."""
+    schema. Also returns the objects validated by this schema. It is possible
+    to filter the objects based on some properties of the schema.
+    """
     schema = Schema.query.filter(Schema.id == schema_id).first()
     if schema is None:
         abort(404)
+        
     if not current_user.is_authenticated:
         # Loads public objects related to the schema
         query = JsonObject.query. \
@@ -50,6 +54,36 @@ def get(per_page, schema_id=None):
                             JsonObject.organization. \
                                 has(Organization.id.in_([org.id for org in current_user.organizations]))))
 
+    # Search on the fields of the JSONB object
+    # 1. Look for the searchable properties of the current schema. Actuellay we
+    # accept string, boolean and integer
+    search_keys = {
+        key: (key in schema.json_schema['required'],
+              schema.json_schema['properties'][key].get('type', False)) \
+        for key in schema.json_schema.get('properties', []) \
+            if schema.json_schema['properties'][key].get('type', False)
+                in ['string', 'boolean', 'integer']
+    }
+    # 2. Get the query of the user
+    search_key = request.args.get('search_key', '')
+    search_term = request.args.get('search_term', '')
+    # 3. Prepare the filter (query on a JSONB object)  based on the type of the
+    # attribute
+    if search_key and search_term:
+        if search_keys[search_key][1] == 'string':
+            # string: ilike search
+            query = query.filter(JsonObject.json_object[(search_key)]
+                                 .astext.ilike("%"+search_term+"%"))
+        elif search_keys[search_key][1] == 'boolean':
+            # boolean
+            query = query.filter(JsonObject.json_object[(search_key)].astext
+                    .cast(Boolean).is_(ast.literal_eval(search_term)))
+        elif search_keys[search_key][1] == 'integer':
+            # integer
+            query = query.filter(JsonObject.json_object[(search_key)].astext
+                    .cast(Integer) == ast.literal_eval(search_term))
+
+    # Pagination
     page, per_page, offset = get_page_args()
     pagination = Pagination(page=page, total=query.count(),
                             css_framework='bootstrap4',
@@ -58,7 +92,9 @@ def get(per_page, schema_id=None):
 
     return render_template('schema.html', schema=schema,
                            objects=query.offset(offset).limit(per_page),
-                           pagination=pagination)
+                           pagination=pagination,
+                           search_keys=search_keys,
+                           search_key=search_key, search_term=search_term)
 
 
 @schema_bp.route('/view/<int:schema_id>', methods=['GET'])
