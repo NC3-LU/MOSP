@@ -2,23 +2,33 @@ from flask import Blueprint, render_template, redirect, url_for, flash, abort
 from flask_login import login_required, current_user
 from werkzeug import generate_password_hash
 from flask_babel import gettext
+from flask_paginate import Pagination, get_page_args
 
 from bootstrap import db
-from web.models import User
+from web.models import User, JsonObject
 from web.forms import ProfileForm
 
 
 user_bp = Blueprint('user_bp', __name__, url_prefix='/user')
 
 
-@user_bp.route('/<string:login>', methods=['GET'])
-def get(login=None):
+@user_bp.route('/<string:login>', defaults={'per_page': '10'}, methods=['GET'])
+def get(per_page, login=None):
     """Return the user given in parameter with the objects created by this
     user."""
     user = User.query.filter(User.login == login).first()
     if user is None:
         abort(404)
-    return render_template('user.html', user=user)
+    # Pagination on objects created by the user
+    query = JsonObject.query.filter(JsonObject.is_public)
+    page, per_page, offset = get_page_args()
+    pagination = Pagination(page=page, total=query.count(),
+                            css_framework='bootstrap4',
+                            search=False, record_name='objects',
+                            per_page=per_page)
+    return render_template('user.html', user=user,
+                           pagination=pagination,
+                           objects=query.offset(offset).limit(per_page))
 
 
 @user_bp.route('/schemas', methods=['GET'])
