@@ -23,9 +23,19 @@
         </div>
     </div>
     <br />
+    <h4>{{ _('Shared JSON objects') }}</h4>
     <div class="row">
-        <div class="col-md-12">
-            <h4>{{ _('Shared JSON objects') }}</h4>
+        <div class="col">
+            {{ pagination_objects.links }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ pagination_objects.info }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <div class="table-responsive-md">
                 <table id="table-objects" class="table table-hover">
                     <caption>{{ _('Shared JSON objects') }}</caption>
@@ -37,7 +47,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for object in organization.objects if object.is_public %}
+                    {% for object in objects %}
                         <tr>
                             <td scope="row">{{ object.id }}</td>
                             <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
@@ -51,7 +61,17 @@
     </div>
     <br /><hr /><br />
     <div class="row">
-        <div class="col-md-12">
+        <div class="col">
+            {{ pagination_schemas.links }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ pagination_schemas.info }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <h4>{{ _('Shared JSON schemas') }}</h4>
             <div class="table-responsive-md">
                 <table id="table-schemas" class="table table-hover">
@@ -65,7 +85,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for schema in organization.schemas %}
+                    {% for schema in schemas %}
                         <tr>
                             <td scope="row">{{ schema.id }}</td>
                             <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
@@ -83,6 +103,7 @@
 $(document).ready(function() {
     $('#table-schemas').DataTable( {
         responsive: true,
+        searching: false,
         order: [[2, "desc"]],
         columnDefs: [
             {
@@ -93,6 +114,7 @@ $(document).ready(function() {
     });
     $('#table-objects').DataTable( {
         responsive: true,
+        searching: false,
         order: [[2, "desc"]],
         columnDefs: [
             {
