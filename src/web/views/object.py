@@ -7,8 +7,7 @@ from flask_login import login_required, current_user
 from flask_babel import gettext
 
 from bootstrap import db, application
-from web.views.decorators import (check_object_view_permission,
-    check_object_edit_permission, check_object_view_permission_by_uuid)
+from web.views.decorators import check_object_edit_permission
 from web.models import Schema, JsonObject, License
 from web.forms import AddObjectForm
 
@@ -17,7 +16,6 @@ objects_bp = Blueprint('objects_bp', __name__, url_prefix='/objects')
 
 
 @object_bp.route('/<uuid:object_uuid>', methods=['GET'])
-@check_object_view_permission_by_uuid
 def get_by_uuid(object_uuid):
     """
     Export the JSON part of a JsonObject as a clean JSON file.
@@ -35,7 +33,6 @@ def get_by_uuid(object_uuid):
 
 
 @object_bp.route('/get/<int:object_id>', methods=['GET'])
-@check_object_view_permission
 def get_json_object(object_id):
     """
     Export the JSON part of a JsonObject as a clean JSON file.
@@ -55,7 +52,6 @@ def get_json_object(object_id):
 
 
 @object_bp.route('/view/<int:object_id>', methods=['GET'])
-@check_object_view_permission
 def view(object_id=None):
     """
     Display the JSON part of a JsonObject object and some related informations.

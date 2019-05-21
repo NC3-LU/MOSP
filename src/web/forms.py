@@ -80,7 +80,6 @@ class AddObjectForm(FlaskForm):
                     [validators.Required(lazy_gettext('Please enter a name'))])
     description = TextAreaField(lazy_gettext('Description'),
                     [validators.Required(lazy_gettext('Please enter a description'))])
-    is_public = BooleanField(lazy_gettext('Public object'), default=True)
     licenses = SelectMultipleField(lazy_gettext('Licenses'),
                             [validators.Required(lazy_gettext('Please choose a license'))],
                             coerce=int)

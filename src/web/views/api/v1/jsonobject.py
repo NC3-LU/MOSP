@@ -17,24 +17,6 @@ def pre_get_many(search_params=None, **kw):
         search_params['order_by'] = []
     search_params['order_by'].extend(order_by)
 
-    if not current_user.is_authenticated:
-        filters = [dict(name='is_public', op='eq', val=True)]
-        if 'filters' not in search_params:
-            search_params['filters'] = []
-        search_params['filters'].extend(filters)
-
-    if current_user.is_authenticated and not current_user.is_admin:
-        filters = [{
-                    "or":  [dict(name='is_public', op='eq', val=True)],
-                            "and":
-                                [dict(name='org_id', op='in', val=[org.id for org in current_user.organizations]),
-                                dict(name='is_public', op='eq', val=False)]
-                   }]
-
-        if 'filters' not in search_params:
-            search_params['filters'] = []
-        search_params['filters'].extend(filters)
-
 
 blueprint_object = manager.create_api_blueprint(
     models.JsonObject,

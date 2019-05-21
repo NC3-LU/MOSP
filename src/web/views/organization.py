@@ -23,8 +23,7 @@ def get(per_page_objects, per_page_schemas, organization_id=None, organization_n
     if org is None:
         abort(404)
     # Pagination on objects created by the organization
-    query_objects = JsonObject.query.filter(JsonObject.is_public) \
-                                    .filter(JsonObject.org_id==org.id)
+    query_objects = JsonObject.query.filter(JsonObject.org_id==org.id)
     page_objects, per_page_objects, offset = get_page_args()
     pagination_objects = Pagination(page_parameter='page_objects',
                             per_page_parameter='per_page_objects',

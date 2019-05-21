@@ -56,14 +56,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.is_public.id }}" class="control-label">{{ form.is_public.label }}</label>
-                    <div>
-                        {{ form.is_public(class_="form-control") }}
-                    </div>
-                    {% for error in form.is_public.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-                </div>
-
-                <div class="form-group">
                     <label for="{{ form.licenses.id }}" class="control-label">{{ form.licenses.label }}</label>
                     <div>
                         {{ form.licenses(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}

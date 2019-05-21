@@ -20,8 +20,7 @@ def get(per_page, login=None):
     if user is None:
         abort(404)
     # Pagination on objects created by the user
-    query = JsonObject.query.filter(JsonObject.is_public) \
-                            .filter(JsonObject.creator_id==user.id)
+    query = JsonObject.query.filter(JsonObject.creator_id==user.id)
     page, per_page, offset = get_page_args()
     pagination = Pagination(page=page, total=query.count(),
                             css_framework='bootstrap4',

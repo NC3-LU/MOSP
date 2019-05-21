@@ -34,25 +34,14 @@ def get(per_page, schema_id=None):
     schema = Schema.query.filter(Schema.id == schema_id).first()
     if schema is None:
         abort(404)
-        
+
     if not current_user.is_authenticated:
         # Loads public objects related to the schema
         query = JsonObject.query. \
-                filter(JsonObject.schema_id==schema.id). \
-                filter(JsonObject.is_public)
-    elif current_user.is_admin:
+                filter(JsonObject.schema_id==schema.id)
+    else:
         # Loads all objects related to the schema
         query = JsonObject.query.filter(JsonObject.schema_id==schema.id)
-    else:
-        # Loads objects related to the schema that are:
-        #   - public;
-        #   - private but related to the organizations the current user is
-        #     affiliated to.
-        query = JsonObject.query. \
-                filter(JsonObject.schema_id==schema.id). \
-                filter(or_(JsonObject.is_public,
-                            JsonObject.organization. \
-                                has(Organization.id.in_([org.id for org in current_user.organizations]))))
 
     # Search on the fields of the JSONB object
     # 1. Look for the searchable properties of the current schema. Actuellay we
