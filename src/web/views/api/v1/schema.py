@@ -21,6 +21,6 @@ blueprint_schema = manager.create_api_blueprint(
     results_per_page=10,
     url_prefix=url_prefix,
     methods=['GET'],
-    exclude_columns=['creator', 'creator_id'],
+    exclude_columns=['creator', 'creator_id', 'objects'],
     preprocessors=dict(
         GET_MANY=[pre_get_many]))
