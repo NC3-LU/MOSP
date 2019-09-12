@@ -1,6 +1,19 @@
 MOSP Changelog
 ==============
 
+## 0.7 (2019-09-12)
+
+- it is now possible to specify linkgs between objects when creating a new one;
+- it is now possible to acces to an object with its id or with the UUID of the
+  JSONB object attribute of this object (objects.monarc.lu/object/<UUID>);
+- it is now possible to copy an object from one organization to an other (#11);
+- it is now possible to download all JSON objects validated by a schema.
+  Objects are returned in a flattened list;
+- the contact e-mail address from the terms page is now using the one defined
+  in the configuration file;
+- updated version of json-editor used in the project.
+
+
 ## 0.6 (2019-03-12)
 
 - added the possibility to link objects (#8);
@@ -10,6 +23,7 @@ MOSP Changelog
 - improved the organization page;
 - improved the admin/users page;
 - minor UI fixes.
+
 
 ## 0.5 (2019-02-24)
 
@@ -22,6 +36,7 @@ MOSP Changelog
 - a documentation is now available and will be improved
   (https://www.monarc.lu/documentation/MOSP-documentation)
 
+
 ## 0.4 (2018-10-05)
 
 - it is now possible to select one or several licenses for an object (#2). A
@@ -32,12 +47,14 @@ MOSP Changelog
 - added a new profile page for users;
 - various fixes and UI improvements.
 
+
 ## 0.3.0 (2018-06-01)
 
 - new Web interface to list, create and edit JSON schemas;
 - improved management of users. It is now possible to block a user;
 - translations improvements;
 - various UI improvements.
+
 
 ## 0.2.0 (2018-05-30)
 
@@ -52,6 +69,7 @@ MOSP Changelog
 - the Web interface is internationalized in French (80% of strings are actually
   translated);
 - various UI improvements.
+
 
 ## 0.1.0 (2018-05-13)
 
