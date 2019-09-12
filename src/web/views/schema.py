@@ -1,7 +1,9 @@
 import json
 import ast
-from flask import Blueprint, render_template, redirect, url_for, flash, \
-                    request, abort
+import operator
+import functools
+from flask import Blueprint, Response, render_template, redirect, url_for, \
+                    request, abort, flash
 from flask_login import login_required, current_user
 from flask_babel import gettext
 from flask_paginate import Pagination, get_page_args
@@ -99,6 +101,30 @@ def view(schema_id=None):
     return render_template('view_schema.html',
                             json_schema=json_schema,
                             json_schema_pretty=result)
+
+
+@schema_bp.route('/<int:schema_id>/get_objects', methods=['GET'])
+def get_objects(schema_id=None):
+    """Returns all JSON objects (JsonObject.json_object) validated by the
+    JSON schema.
+    """
+    json_schema = Schema.query.filter(Schema.id == schema_id).first()
+    if json_schema is None:
+        abort(404)
+    # Get all JSON objects (JsonObject.json_object) validated by this schema
+    json_objects = [elem.json_object for elem in json_schema.objects]
+    # Flatten the list json_objects
+    flat_json_objects = functools.reduce(operator.iconcat, json_objects, [])
+    # Prepare the result
+    result = json.dumps(flat_json_objects,
+                        sort_keys=True, indent=4, separators=(',', ': '))
+    return Response(result,
+                    mimetype='application/json',
+                    headers={
+                        'Content-Disposition':'attachment;filename={}.json'. \
+                            format(json_schema.name.replace(' ', '_'))
+                            }
+                    )
 
 
 @schema_bp.route('/create', methods=['GET'])
