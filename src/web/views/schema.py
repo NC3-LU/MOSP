@@ -112,7 +112,8 @@ def get_objects(schema_id=None):
     if json_schema is None:
         abort(404)
     # Get all JSON objects (JsonObject.json_object) validated by this schema
-    json_objects = [elem.json_object for elem in json_schema.objects]
+    json_objects = [elem.json_object if isinstance(elem.json_object, list) \
+                        else [elem.json_object] for elem in json_schema.objects]
     # Flatten the list json_objects
     flat_json_objects = functools.reduce(operator.iconcat, json_objects, [])
     # Prepare the result
