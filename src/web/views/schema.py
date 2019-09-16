@@ -50,7 +50,7 @@ def get(per_page, schema_id=None):
         query = JsonObject.query.filter(JsonObject.schema_id==schema.id)
 
     # Search on the fields of the JSONB object
-    # 1. Look for the searchable properties of the current schema. Actuellay we
+    # 1. Look for the searchable properties of the current schema. Actuallay we
     # accept string, boolean and integer
     search_keys = {
         key: (key in schema.json_schema['required'],
