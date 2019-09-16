@@ -10,6 +10,7 @@
                     <div class="d-flex w-100 justify-content-between">
                         {{ schema.name }} <span class="badge badge-primary badge-pill">{{ _('validates') }} {{ schema.objects.count() }} {{ _('objects') }}</span>
                     </div>
+                    <p class="mb-1">{{ schema.description }}</p>
                 </a>
             {% endfor  %}
             </div>
