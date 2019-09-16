@@ -7,7 +7,7 @@ from flask import Blueprint, Response, render_template, redirect, url_for, \
 from flask_login import login_required, current_user
 from flask_babel import gettext
 from flask_paginate import Pagination, get_page_args
-from sqlalchemy import or_, func, Boolean, Integer, text
+from sqlalchemy import or_, func, Boolean, Integer, text, desc, nullslast
 
 from bootstrap import db
 from web.forms import SchemaForm
@@ -27,7 +27,7 @@ def list_schemas():
                     .subquery()
     schemas = db.session.query(Schema) \
             .outerjoin(hot_schemas, (Schema.id == hot_schemas.c.schema_id)) \
-            .order_by(hot_schemas.c.JsonObject_count.asc())
+            .order_by(nullslast(desc(hot_schemas.c.JsonObject_count)))
     return render_template('schemas.html', schemas=schemas)
 
 
