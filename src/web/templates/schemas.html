@@ -8,9 +8,10 @@
             {% for schema in schemas %}
                 <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}" class="list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
-                        {{ schema.name }} <span class="badge badge-primary badge-pill">{{ _('validates') }} {{ schema.objects.count() }} {{ _('objects') }}</span>
+                        <h5 class="mb-1">{{ schema.name }}</h5> <span class="badge badge-primary badge-pill">{{ _('validates') }} {{ schema.objects.count() }} {{ _('objects') }}</span>
                     </div>
                     <p class="mb-1">{{ schema.description }}</p>
+                    <small>provided by {{ schema.organization.name }}.</small>
                 </a>
             {% endfor  %}
             </div>
