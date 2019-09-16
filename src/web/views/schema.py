@@ -7,7 +7,7 @@ from flask import Blueprint, Response, render_template, redirect, url_for, \
 from flask_login import login_required, current_user
 from flask_babel import gettext
 from flask_paginate import Pagination, get_page_args
-from sqlalchemy import or_, func, Boolean, Integer
+from sqlalchemy import or_, func, Boolean, Integer, text
 
 from bootstrap import db
 from web.forms import SchemaForm
@@ -20,10 +20,14 @@ schemas_bp = Blueprint('schemas_bp', __name__, url_prefix='/schemas')
 @schemas_bp.route('/', methods=['GET'])
 def list_schemas():
     """Return the page which will display the list of schemas."""
-    #schemas = db.session.query(Schema, func.count(Schema.objects).label('total')).order_by('total DESC')
-    #schemas = db.session.query(Schema, func.count(JsonObject.id).label('total')).join(JsonObject).group_by(Schema).order_by('total DESC')
-    #print(schemas.first())
-    schemas = Schema.query.filter().all()
+    # Order by schema wich validates the most JSON objects.
+    hot_schemas = db.session.query(JsonObject.schema_id, func.count('*') \
+                    .label('JsonObject_count')) \
+                    .group_by(JsonObject.schema_id) \
+                    .subquery()
+    schemas = db.session.query(Schema) \
+            .outerjoin(hot_schemas, (Schema.id == hot_schemas.c.schema_id)) \
+            .order_by(hot_schemas.c.JsonObject_count.asc())
     return render_template('schemas.html', schemas=schemas)
 
 
