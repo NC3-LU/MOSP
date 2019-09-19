@@ -103,6 +103,8 @@
 $(document).ready(function() {
     $('#table-schemas').DataTable( {
         responsive: true,
+        paging: false,
+        info: false,
         searching: false,
         order: [[2, "desc"]],
         columnDefs: [
@@ -114,6 +116,8 @@ $(document).ready(function() {
     });
     $('#table-objects').DataTable( {
         responsive: true,
+        paging: false,
+        info: false,
         searching: false,
         order: [[2, "desc"]],
         columnDefs: [

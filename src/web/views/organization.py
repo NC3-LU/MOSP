@@ -22,26 +22,29 @@ def get(per_page_objects, per_page_schemas, organization_id=None, organization_n
             Organization.name == organization_name)).first()
     if org is None:
         abort(404)
+
     # Pagination on objects created by the organization
     query_objects = JsonObject.query.filter(JsonObject.org_id==org.id)
-    page_objects, per_page_objects, offset = get_page_args()
-    pagination_objects = Pagination(page_parameter='page_objects',
-                            per_page_parameter='per_page_objects',
-                            page=page_objects, total=query_objects.count(),
+    page_objects, per_page_objects, offset_objects = get_page_args(page_parameter='page_objects', per_page_parameter='per_page_objects')
+    pagination_objects = Pagination(
+                            page_parameter='page_objects',
+                            page=page_objects,
+                            per_page=per_page_objects,
+                            total=query_objects.count(),
                             css_framework='bootstrap4',
-                            search=False, record_name='objects',
-                            per_page=per_page_objects)
+                            search=False)
      # Pagination on objects created by the organization
     query_schemas = Schema.query.filter(Schema.org_id==org.id)
-    page_schemas, per_page_schemas, offset = get_page_args()
+    page_schemas, per_page_schemas, offset_schemas = get_page_args(page_parameter='page_schemas', per_page_parameter='per_page_schemas')
     pagination_schemas = Pagination(page_parameter='page_schemas',
-                            per_page_parameter='per_page_schemas',
-                            page=page_schemas, total=query_schemas.count(),
+                            page=page_schemas,
+                            per_page=per_page_schemas,
+                            total=query_schemas.count(),
                             css_framework='bootstrap4',
-                            search=False, record_name='schemas',
-                            per_page=per_page_schemas)
+                            search=False)
+
     return render_template('organization.html', organization=org,
                            pagination_objects=pagination_objects,
                            pagination_schemas=pagination_schemas,
-                           objects=query_objects.offset(offset).limit(per_page_objects),
-                           schemas=query_schemas.offset(offset).limit(per_page_schemas))
+                           objects=query_objects.offset(offset_objects).limit(per_page_objects),
+                           schemas=query_schemas.offset(offset_schemas).limit(per_page_schemas))
