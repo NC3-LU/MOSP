@@ -33,7 +33,7 @@ def get(per_page_objects, per_page_schemas, organization_id=None, organization_n
                             total=query_objects.count(),
                             css_framework='bootstrap4',
                             search=False)
-     # Pagination on objects created by the organization
+     # Pagination on schemas created by the organization
     query_schemas = Schema.query.filter(Schema.org_id==org.id)
     page_schemas, per_page_schemas, offset_schemas = get_page_args(page_parameter='page_schemas', per_page_parameter='per_page_schemas')
     pagination_schemas = Pagination(page_parameter='page_schemas',
