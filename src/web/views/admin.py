@@ -27,7 +27,9 @@ admin_bp = Blueprint('admin_bp', __name__, url_prefix='/admin')
 @login_required
 @admin_permission.require(http_exception=403)
 def list_users():
-    users = models.User.query.all()
+    users = {}
+    users['Admins'] = models.User.query.filter(models.User.is_admin==True)
+    users['Users'] = models.User.query.filter(models.User.is_admin==False)
     return render_template('admin/users.html', users=users)
 
 
