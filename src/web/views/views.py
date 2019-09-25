@@ -1,14 +1,11 @@
-import os
 import sys
 import logging
-from flask import (render_template, url_for, redirect, current_app, flash,
-                  send_from_directory, request)
+from flask import render_template, url_for, redirect, current_app, flash
 from flask_login import login_required
 from flask_babel import gettext
 
 from web import __version__
 from web.models import JsonObject, Organization, User, Schema
-from bootstrap import application
 
 logger = logging.getLogger(__name__)
 

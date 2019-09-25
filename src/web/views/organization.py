@@ -17,7 +17,7 @@ def list_organizations():
 @organization_bp.route('/<int:organization_id>', defaults={'per_page_objects': '10', 'per_page_schemas': '10'}, methods=['GET'])
 @organization_bp.route('/<string:organization_name>', defaults={'per_page_objects': '10', 'per_page_schemas': '10'}, methods=['GET'])
 def get(per_page_objects, per_page_schemas, organization_id=None, organization_name=None):
-    """Return the organization given in parameter."""
+    """Return details about the organization."""
     org = Organization.query.filter(or_(Organization.id == organization_id,
             Organization.name == organization_name)).first()
     if org is None:
