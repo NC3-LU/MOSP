@@ -32,7 +32,7 @@
             {{ form.users.label }}
             {{ form.users(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }} {% for error in form.users.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
         </div>
-        <br />
+
         {{ form.submit(class_="btn btn-default") }}
     </form>
 </div>
