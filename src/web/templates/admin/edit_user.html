@@ -26,6 +26,8 @@
         {{ form.is_api.label }}
         {{ form.is_api(class_="form-control") }} {% for error in form.is_api.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
 
+        {{ form.organizations.label }}
+        <div>{{ form.organizations(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }} {% for error in form.organizations.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}</div>
         <br />
         {{ form.submit(class_="btn btn-default") }}
     </form>

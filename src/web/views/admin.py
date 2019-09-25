@@ -48,6 +48,7 @@ def form_user(user_id=None):
 
     user = models.User.query.filter(models.User.id == user_id).first()
     form = UserForm(obj=user)
+    form.organizations.data = [organization.id for organization in user.organizations]
     action = "Edit user"
     head_titles = [action]
     head_titles.append(user.login)
@@ -68,6 +69,13 @@ def process_user_form(user_id=None):
 
     if user_id is not None:
         user = models.User.query.filter(models.User.id == user_id).first()
+        # Linked organizations
+        linked_organizations = []
+        for organization_id in form.organizations.data:
+            organization = models.Organization.query.filter(models.Organization.id == organization_id).first()
+            linked_organizations.append(organization)
+        user.organizations = linked_organizations
+        del form.organizations
         form.populate_obj(user)
         if form.password.data:
             user.pwdhash = generate_password_hash(form.password.data)
@@ -83,6 +91,13 @@ def process_user_form(user_id=None):
                            is_admin=form.is_admin.data,
                            is_api=form.is_api.data,
                            pwdhash=generate_password_hash(form.password.data))
+    # Linked organizations
+    linked_organizations = []
+    for organization_id in form.organizations.data:
+        organization = models.Organization.query.filter(models.Organization.id == organization_id).first()
+        linked_organizations.append(organization)
+    new_user.organizations.extend(linked_organizations)
+    del form.organizations
     db.session.add(new_user)
     db.session.commit()
     flash(gettext('User %(user_login)s successfully created.',

@@ -130,8 +130,13 @@ class UserForm(FlaskForm):
     is_active = BooleanField(lazy_gettext('Active'), default=True)
     is_admin = BooleanField(lazy_gettext('Admin'), default=False)
     is_api = BooleanField(lazy_gettext('API'), default=False)
+    organizations = SelectMultipleField(lazy_gettext('Organizations'), coerce=int)
     submit = SubmitField(lazy_gettext('Save'))
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.organizations.choices = [(organization.id, organization.name) \
+                                        for organization in Organization.query.all()]
 
 class OrganizationForm(FlaskForm):
     """
