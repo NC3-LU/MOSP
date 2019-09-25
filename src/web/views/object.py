@@ -1,12 +1,11 @@
 import json
-import hashlib
 from datetime import datetime
 from flask import Blueprint, render_template, redirect, url_for, flash, \
                   request, abort, Response, jsonify
 from flask_login import login_required, current_user
 from flask_babel import gettext
 
-from bootstrap import db, application
+from bootstrap import db
 from web.views.decorators import check_object_edit_permission
 from web.models import Schema, JsonObject, License
 from web.forms import AddObjectForm
@@ -56,48 +55,26 @@ def view(object_id=None):
     """
     Display the JSON part of a JsonObject object and some related informations.
     """
-    # res = JsonObject.query.filter(JsonObject.json_object[('values'), ('predicate')].astext == "source-type").first()
 
-    # res = JsonObject.query.filter(JsonObject.json_object[('predicates', 'value')].astext == 'lifetime').all()
-
-    # res = JsonObject.query.filter(JsonObject.json_object.has_all(['predicates', 'value'])).all()
-
-    # OK :
     # res = JsonObject.query.filter(JsonObject.json_object.contains(
     #                     {'predicates': [{'value': 'source-type'}]}
     #                     )).all()
-    # OK :
     # res = JsonObject.query.filter(JsonObject.json_object.contains(
     #                     {'values': [{'entry': [{'value': 'news-report'}]}]}
     #                     )).all()
-    # OK :
     #res = JsonObject.query.filter(JsonObject.json_object[('namespace')].astext == 'osint')
     #res = JsonObject.query.filter(JsonObject.json_object[('father-uuid')].astext == 'fdsfsf')
     #res = JsonObject.query.filter(JsonObject.json_object[('mapping', 'father-uuid')].astext == 'fdsfsf')
     #res = JsonObject.query.filter(JsonObject.json_object[('mapping'), [('father-uuid')]].astext == "fdsfsf")
-
-    #expr = JsonObject.json_object[("mapping", "father-uuid")]
-    #res = (db.session.query(JsonObject.id, expr.label("fdsfsf"))
-    #    .filter(expr != None)
-    #    .all())
-    #print(res)
-    #if res.count():
-        #print(res[0].json_object.get('label'))
-
-
-    # res = JsonObject.query.filter(JsonObject.json_object.has_any({'predicates': [{'value': 'source-type'}]})).first()
-    # print(res)
 
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     if json_object is None:
         abort(404)
     result = json.dumps(json_object.json_object, ensure_ascii=False,
                         sort_keys=True, indent=4, separators=(',', ': '))
-    m = hashlib.sha256()
-    m.update(str(result).encode()) # evaluate the SHA256 of the prettified object
     return render_template('view_object.html',
                             json_object=json_object,
-                            json_object_pretty=result, sha256=m.hexdigest())
+                            json_object_pretty=result)
 
 
 @object_bp.route('/delete/<int:object_id>', methods=['GET'])
