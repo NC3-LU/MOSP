@@ -49,7 +49,10 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownAdmin">
                             <a class="dropdown-item" href="{{ url_for('admin_bp.list_users') }}" title="Users">{{ _('Users') }}</i></a>
+                            <a class="dropdown-item" href="{{ url_for('admin_bp.form_user') }}" title="Users">{{ _('Add user') }}</i></a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ url_for('admin_bp.list_organizations') }}" title="Organizations">{{ _('Organizations') }}</i></a>
+                            <a class="dropdown-item" href="{{ url_for('admin_bp.form_organization') }}" title="Organizations">{{ _('Add organization') }}</i></a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/admin">Expert mode</a>
                         </div>
