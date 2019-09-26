@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ _('Dashboard') }}</h1>
+            <h2>{{ _('Active users') }}</h2>
+            <p>{{ _('List of users connected during the last week.') }}</p>
+            {% include "./admin/template_responsive_table_users.html" %}
+            
+            <h2>{{ _('New and updated objects') }}</h2>
+        </div>
+    </div>
+</div>
+{% endblock %}

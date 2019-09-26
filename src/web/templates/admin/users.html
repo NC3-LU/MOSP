@@ -2,57 +2,10 @@
 {% block content %}
 <div class="container">
 {% for kind_user in users %}
-<h1>{{ _(kind_user) }}</h1>
-<div class="table-responsive-md">
-    <table id="table-{{ kind_user }}" class="table table-hover">
-    <thead>
-        <tr>
-            <th>{{ _('id') }}</th>
-            <th>{{ _('Login') }}</th>
-            <th>{{ _('Member since') }}</th>
-            <th>{{ _('Last seen') }}</th>
-            <th>{{ _('Memberships') }}</th>
-            <th>{{ _('State') }}</th>
-            <th>{{ _('Actions') }}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for user in users[kind_user] %}
-        <tr>
-            <th scope="row">{{ user.id }}</th>
-            <td><a href="{{ url_for("user_bp.get", login=user.login) }}">{{ user.login  }}</a></td>
-            <td class="date">{{ user.created_at | datetime }}</td>
-            <td class="date">{{ user.last_seen | datetime }}</td>
-            <td>{{ user.organizations | count }}</td>
-            <td>
-                {% if user.is_api %}<i class="fa fa-cog" title="Can use the API"></i>{% endif %}
-                {% if not user.is_active %}<i class="fa fa-lock" title="Blocked"></i>{% endif %}
-            </td>
-            <td>
-                <a href="{{ url_for("admin_bp.form_user", user_id=user.id) }}">
-                    <i class="fa fa-edit"></i>
-                </a>&nbsp;
-                {% if current_user.id != user.id %}
-                <a href="{{ url_for("admin_bp.toggle_user", user_id=user.id) }}">
-                    {% if not user.is_active  %}
-                    <i class="fa fa-unlock" title="Unblock this user" onclick="return confirm(_('You are going to unblock this user.'));"></i>
-                    {% else %}
-                    <i class="fa fa-lock" title="Block this user" onclick="return confirm(_('You are going to block this user.'));"></i>
-                    {% endif %}
-                </a>&nbsp;
-                <a href="{{ url_for("admin_bp.delete_user", user_id=user.id) }}">
-                    <i class="fa fa-user-times" aria-hidden="true" title="Delete this user" onclick="return confirm(_('You are going to delete this user.'));"></i>
-                </a>
-                {% endif %}
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-    </table>
-    <br />
-</div>
+    <h1>{{ _(kind_user) }}</h1>
+    {% set USERS = users[kind_user] %}
+    {% include "./admin/template_responsive_table_users.html" %}
 {% endfor %}
-<br />
 <a href="{{ url_for('admin_bp.form_user') }}" class="btn btn-default">{{ _('Add a new user') }}</a>
 </div>
 <script>

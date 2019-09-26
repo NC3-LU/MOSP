@@ -8,6 +8,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_admin.menu import MenuLink
 from werkzeug import generate_password_hash
 from flask_babel import gettext
+from datetime import datetime, timedelta
 
 from bootstrap import db
 from web.views.common import admin_permission
@@ -17,6 +18,15 @@ from web.forms import UserForm, OrganizationForm
 logger = logging.getLogger(__name__)
 
 admin_bp = Blueprint('admin_bp', __name__, url_prefix='/admin')
+
+
+@admin_bp.route('/dashboard', methods=['GET'])
+@login_required
+@admin_permission.require(http_exception=403)
+def dashboard():
+    on_week_ago = datetime.utcnow() - timedelta(weeks=1)
+    active_users = models.User.query.filter(models.User.last_seen >= on_week_ago)
+    return render_template('admin/dashboard.html', USERS=active_users)
 
 
 #
