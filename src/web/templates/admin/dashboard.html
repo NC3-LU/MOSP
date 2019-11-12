@@ -7,9 +7,50 @@
             <h2>{{ _('Active users') }}</h2>
             <p>{{ _('List of users connected during the last week.') }}</p>
             {% include "./admin/template_responsive_table_users.html" %}
-            
+
             <h2>{{ _('New and updated objects') }}</h2>
+            <div class="table-responsive-md">
+                <table id="table-objects" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>{{ _('id') }}</th>
+                            <th>{{ _('Name') }}</th>
+                            <th>{{ _('Organization') }}</th>
+                            <th>{{ _('Owner') }}</th>
+                            <th>{{ _('Last updated') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in OBJECTS %}
+                        <tr>
+                            <td scope="row">{{object.id }}</td>
+                            <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
+                            <td><a href="{{ url_for('organization_bp.get', organization_name=object.organization.name) }}">{{ object.organization.name }}</a></td>
+                            <td><a href="{{ url_for('user_bp.get', login=object.creator.login) }}">{{ object.creator.login }}</a></td>
+                            <td class="date">{{ object.last_updated | datetime }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    $('#table-objects').DataTable( {
+        responsive: true,
+        paging: false,
+        info: false,
+        searching: false,
+        order: [[4, 'desc']],
+        columnDefs: [
+            {
+                bSortable: false,
+                targets: [0]
+            }
+        ]
+    });
+});
+</script>
 {% endblock %}
