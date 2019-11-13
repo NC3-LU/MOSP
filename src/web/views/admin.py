@@ -24,8 +24,9 @@ admin_bp = Blueprint('admin_bp', __name__, url_prefix='/admin')
 @login_required
 @admin_permission.require(http_exception=403)
 def dashboard():
-    on_week_ago = datetime.utcnow() - timedelta(weeks=1)
-    four_weeks_ago = datetime.utcnow() - timedelta(weeks=4)
+    now = datetime.utcnow()
+    on_week_ago = now - timedelta(weeks=1)
+    four_weeks_ago = now - timedelta(weeks=4)
     active_users = models.User.query.filter(
                             models.User.last_seen >= on_week_ago)
     recent_objects = models.JsonObject.query.filter(
