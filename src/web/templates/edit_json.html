@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block head %}
 {{ super() }}
+<script src="{{ url_for('static', filename='js/utils.js') }}"></script>
 <script src="{{ url_for('static', filename='npm_components/@json-editor/json-editor/dist/jsoneditor.min.js') }}"></script>
 {% endblock %}
 {% block content %}
@@ -55,7 +56,8 @@
                     <p>You can also make changes to the JSON below.</p>
                     <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;' class='form-control'></textarea>
                     <br />
-                    <button class='btn btn-success' id='setvalue'>Update Form</button>
+                    <button class='btn btn-success' id='setvalue'>Update Form</button><br /><br />
+                    <button class='btn btn-success' id='generateUUID'>Generate a UUID</button>
                 </div>
                 <div class='col-md-3 columns four large-3'>
                     <br />
@@ -141,6 +143,16 @@ $(document).ready(function() {
                 $('#toast-body').html(message.responseJSON.message);
                 $('.toast').toast('show');
             }
+        });
+    });
+
+    $('#generateUUID').click(function() {
+        var uuid = CreateUUID();
+        navigator.clipboard.writeText(uuid).then(function() {
+              /* clipboard successfully set */
+              alert('{{ _('UUID copied to your clipboard.') }}');
+            }, function() {
+              /* clipboard write failed */
         });
     });
 
