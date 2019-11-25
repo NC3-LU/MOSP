@@ -9,6 +9,7 @@ from bootstrap import db
 from web.views.decorators import check_object_edit_permission
 from web.models import Schema, JsonObject, License
 from web.forms import AddObjectForm
+from web.lib import objects_utils
 
 object_bp = Blueprint('object_bp', __name__, url_prefix='/object')
 objects_bp = Blueprint('objects_bp', __name__, url_prefix='/objects')
@@ -102,6 +103,14 @@ def edit_json(object_id=None):
     head_titles = [action]
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     schema = json_object.schema
+
+    try:
+        duplicates = objects_utils.check_duplicates(json_object)
+        flash('An object with the same UUID exists: <a href="{}" target="_blank">{}</a>'
+            .format(url_for('object_bp.view', object_id=duplicates[0].id), duplicates[0].name), 'warning')
+    except:
+        pass
+
     return render_template('edit_json.html', action=action,
                             head_titles=head_titles,
                             schema=schema,

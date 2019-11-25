@@ -89,7 +89,7 @@
             {% for category, message in messages %}
                 <div class="alert alert-{{category}}">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {{ message }}
+                    {{ message | safe }}
                 </div>
             {% endfor %}
         {% endif %}
