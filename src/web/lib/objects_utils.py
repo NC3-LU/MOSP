@@ -59,7 +59,7 @@ def generate_misp_galaxy_cluster(json_object):
         "description": json_object.description,
         "version": json_object.json_object.get('version', ''),
         "type": json_object.schema.name,
-        "authors": json_object.json_object.get('authors', ''),
+        "authors": json_object.json_object.get('authors', []),
         # let assume that for us the source is the organization name:
         "source": json_object.organization.name,
         # and the category is the schema which is validating the object:
