@@ -1,10 +1,17 @@
 MOSP Changelog
 ==============
 
+## 0.8 (not yet released)
+
+- Add a warning when the UUID of new object is already taken (#14);
+- Generation of MISP galaxies and clusters based on an object from MOSP (#15);
+- Add a button in order to help the user generate a UUID easily (#16).
+
+
 ## 0.7 (2019-09-12)
 
-- it is now possible to specify linkgs between objects when creating a new one;
-- it is now possible to acces to an object with its id or with the UUID of the
+- it is now possible to specify links between objects when creating a new one;
+- it is now possible to access to an object with its id or with the UUID of the
   JSONB object attribute of this object (objects.monarc.lu/object/<UUID>);
 - it is now possible to copy an object from one organization to an other (#11);
 - it is now possible to download all JSON objects validated by a schema.
