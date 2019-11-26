@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-11-12 14:06+0100\n"
-"PO-Revision-Date: 2019-11-12 14:09+0100\n"
+"POT-Creation-Date: 2019-11-26 14:52+0100\n"
+"PO-Revision-Date: 2019-11-26 14:54+0100\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
@@ -50,7 +50,7 @@ msgstr "S'il vous plaît entrer un nom"
 
 #: src/web/forms.py:81 src/web/forms.py:109 src/web/forms.py:148
 #: src/web/templates/organization.html:11 src/web/templates/schema.html:25
-#: src/web/templates/view_object.html:54
+#: src/web/templates/view_object.html:55
 msgid "Description"
 msgstr "Description"
 
@@ -177,9 +177,13 @@ msgstr "Nombre d'utilisateurs"
 msgid "Contact"
 msgstr "Contact"
 
-#: src/web/templates/edit_json.html:116
+#: src/web/templates/edit_json.html:118
 msgid "Edit this schema"
 msgstr "Éditez ce schéma"
+
+#: src/web/templates/edit_json.html:153
+msgid "UUID copied to your clipboard."
+msgstr "UUID copié dans votre presse-papiers."
 
 #: src/web/templates/edit_object.html:7
 msgid "validated by"
@@ -395,72 +399,68 @@ msgid "Download the object"
 msgstr "Télécharger l'objet"
 
 #: src/web/templates/view_object.html:43
-msgid "The whole object"
-msgstr "Tout l'objet"
+msgid "Get the object"
+msgstr "Obtenez l'objet"
 
 #: src/web/templates/view_object.html:44
-msgid "To CSV"
-msgstr "En CSV"
-
-#: src/web/templates/view_object.html:44
-msgid "Only values in CSV"
-msgstr "Uniquement les valeurs en CSV"
+msgid "Export to a MISP galaxy"
+msgstr "Exporter vers une galaxie MISP"
 
 #: src/web/templates/view_object.html:45
-msgid "To JSON"
-msgstr "En JSON"
+msgid "Get only values in CSV"
+msgstr "Obtenir uniquement les valeurs en CSV"
 
-#: src/web/templates/view_object.html:45
-msgid "Only values in JSON"
-msgstr "Uniquement les valeurs en JSON"
+#: src/web/templates/view_object.html:46
+msgid "Get only values in JSON"
+msgstr "Obtenir uniquement les valeurs en JSON"
 
-#: src/web/templates/view_object.html:62
+#: src/web/templates/view_object.html:63
 msgid "Owning organization"
 msgstr "Organisation propriétaire"
 
-#: src/web/templates/view_object.html:70
+#: src/web/templates/view_object.html:71
 msgid "Validating JSON schema"
 msgstr "Schéma JSON validant"
 
-#: src/web/templates/view_object.html:73
+#: src/web/templates/view_object.html:74
 msgid "provided by"
 msgstr "fourni par"
 
-#: src/web/templates/view_object.html:79
+#: src/web/templates/view_object.html:80
 msgid "Creator"
 msgstr "Créateur"
 
-#: src/web/templates/view_object.html:88
+#: src/web/templates/view_object.html:89
 msgid "License"
 msgstr "Licence"
 
-#: src/web/templates/view_object.html:97
+#: src/web/templates/view_object.html:98
 msgid "Related objects"
 msgstr "Objets liés"
 
-#: src/web/templates/view_object.html:100
+#: src/web/templates/view_object.html:101
 msgid "Refers to"
 msgstr "Fait référence à"
 
-#: src/web/templates/view_object.html:100
-#: src/web/templates/view_object.html:103
+#: src/web/templates/view_object.html:101
+#: src/web/templates/view_object.html:104
 msgid "object(s)"
 msgstr "objet(s)"
 
-#: src/web/templates/view_object.html:103
+#: src/web/templates/view_object.html:104
 msgid "Referred to by"
 msgstr "Référencé par"
 
-#: src/web/templates/view_object.html:110
-#: src/web/templates/view_object.html:117
+#: src/web/templates/view_object.html:111
+#: src/web/templates/view_object.html:118
 msgid "schema"
 msgstr "schémas"
 
-#: src/web/templates/view_object.html:127
+#: src/web/templates/view_object.html:128
 msgid "Definition of the object"
 msgstr "Définition de l'objet"
 
-#: src/web/templates/view_object.html:204
+#: src/web/templates/view_object.html:205
 msgid "Object copied to your clipboard."
 msgstr "Objet copié dans le presse-papier."
 
@@ -517,60 +517,60 @@ msgstr "État"
 msgid "Add a new user"
 msgstr "Ajouter un nouvel utilisateur"
 
-#: src/web/views/admin.py:98 src/web/views/user.py:70
+#: src/web/views/admin.py:99 src/web/views/user.py:70
 #, python-format
 msgid "User %(user_login)s successfully updated."
 msgstr "Utilisateur %(user_login)s mis à jour avec succès."
 
-#: src/web/views/admin.py:118
+#: src/web/views/admin.py:119
 #, python-format
 msgid "User %(user_login)s successfully created."
 msgstr "Utilisateur %(user_login)s créé avec succès."
 
-#: src/web/views/admin.py:131
+#: src/web/views/admin.py:132
 msgid "You can not do this change to your own user."
 msgstr "Vous ne pouvez pas faire cette modification pour votre propre utilisateur."
 
-#: src/web/views/admin.py:135
+#: src/web/views/admin.py:136
 msgid "User {status}."
 msgstr "Utilisateur {status}."
 
-#: src/web/views/admin.py:135
+#: src/web/views/admin.py:136
 msgid "activated"
 msgstr "activé"
 
-#: src/web/views/admin.py:135
+#: src/web/views/admin.py:136
 msgid "deactivated"
 msgstr "désactivé"
 
-#: src/web/views/admin.py:146
+#: src/web/views/admin.py:147
 msgid "You can not delete your own user."
 msgstr "Vous ne pouvez pas supprimer votre propre utilisateur."
 
-#: src/web/views/admin.py:150
+#: src/web/views/admin.py:151
 msgid "User deleted."
 msgstr "Utilisateur supprimé."
 
-#: src/web/views/admin.py:213
+#: src/web/views/admin.py:214
 #, python-format
 msgid "Organization %(org_name)s successfully updated."
 msgstr "%(org_name)s mise à jour avec succès."
 
-#: src/web/views/admin.py:230
+#: src/web/views/admin.py:231
 #, python-format
 msgid "Organization %(org_name)s successfully created."
 msgstr "%(org_name)s créée avec succès."
 
-#: src/web/views/admin.py:246
+#: src/web/views/admin.py:247
 msgid "Organization deleted."
 msgstr "Organisation supprimée."
 
-#: src/web/views/object.py:207 src/web/views/schema.py:190
+#: src/web/views/object.py:234 src/web/views/schema.py:190
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr "%(object_name)s mis à jour avec succès."
 
-#: src/web/views/object.py:253 src/web/views/schema.py:206
+#: src/web/views/object.py:280 src/web/views/schema.py:206
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr "%(object_name)s mis à jour avec succès."
@@ -590,6 +590,15 @@ msgstr "Authentification requise."
 #: src/web/views/views.py:21
 msgid "Forbidden."
 msgstr "Interdit."
+
+#~ msgid "The whole object"
+#~ msgstr "Tout l'objet"
+
+#~ msgid "To CSV"
+#~ msgstr "En CSV"
+
+#~ msgid "To JSON"
+#~ msgstr "En JSON"
 
 #~ msgid "Public object"
 #~ msgstr "Objet public"

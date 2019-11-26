@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-11-12 14:06+0100\n"
+"POT-Creation-Date: 2019-11-26 14:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: src/web/forms.py:81 src/web/forms.py:109 src/web/forms.py:148
 #: src/web/templates/organization.html:11 src/web/templates/schema.html:25
-#: src/web/templates/view_object.html:54
+#: src/web/templates/view_object.html:55
 msgid "Description"
 msgstr ""
 
@@ -175,8 +175,12 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: src/web/templates/edit_json.html:116
+#: src/web/templates/edit_json.html:118
 msgid "Edit this schema"
+msgstr ""
+
+#: src/web/templates/edit_json.html:153
+msgid "UUID copied to your clipboard."
 msgstr ""
 
 #: src/web/templates/edit_object.html:7
@@ -393,72 +397,68 @@ msgid "Download the object"
 msgstr ""
 
 #: src/web/templates/view_object.html:43
-msgid "The whole object"
+msgid "Get the object"
 msgstr ""
 
 #: src/web/templates/view_object.html:44
-msgid "To CSV"
-msgstr ""
-
-#: src/web/templates/view_object.html:44
-msgid "Only values in CSV"
+msgid "Export to a MISP galaxy"
 msgstr ""
 
 #: src/web/templates/view_object.html:45
-msgid "To JSON"
+msgid "Get only values in CSV"
 msgstr ""
 
-#: src/web/templates/view_object.html:45
-msgid "Only values in JSON"
+#: src/web/templates/view_object.html:46
+msgid "Get only values in JSON"
 msgstr ""
 
-#: src/web/templates/view_object.html:62
+#: src/web/templates/view_object.html:63
 msgid "Owning organization"
 msgstr ""
 
-#: src/web/templates/view_object.html:70
+#: src/web/templates/view_object.html:71
 msgid "Validating JSON schema"
 msgstr ""
 
-#: src/web/templates/view_object.html:73
+#: src/web/templates/view_object.html:74
 msgid "provided by"
 msgstr ""
 
-#: src/web/templates/view_object.html:79
+#: src/web/templates/view_object.html:80
 msgid "Creator"
 msgstr ""
 
-#: src/web/templates/view_object.html:88
+#: src/web/templates/view_object.html:89
 msgid "License"
 msgstr ""
 
-#: src/web/templates/view_object.html:97
+#: src/web/templates/view_object.html:98
 msgid "Related objects"
 msgstr ""
 
-#: src/web/templates/view_object.html:100
+#: src/web/templates/view_object.html:101
 msgid "Refers to"
 msgstr ""
 
-#: src/web/templates/view_object.html:100
-#: src/web/templates/view_object.html:103
+#: src/web/templates/view_object.html:101
+#: src/web/templates/view_object.html:104
 msgid "object(s)"
 msgstr ""
 
-#: src/web/templates/view_object.html:103
+#: src/web/templates/view_object.html:104
 msgid "Referred to by"
 msgstr ""
 
-#: src/web/templates/view_object.html:110
-#: src/web/templates/view_object.html:117
+#: src/web/templates/view_object.html:111
+#: src/web/templates/view_object.html:118
 msgid "schema"
 msgstr ""
 
-#: src/web/templates/view_object.html:127
+#: src/web/templates/view_object.html:128
 msgid "Definition of the object"
 msgstr ""
 
-#: src/web/templates/view_object.html:204
+#: src/web/templates/view_object.html:205
 msgid "Object copied to your clipboard."
 msgstr ""
 
@@ -515,60 +515,60 @@ msgstr ""
 msgid "Add a new user"
 msgstr ""
 
-#: src/web/views/admin.py:98 src/web/views/user.py:70
+#: src/web/views/admin.py:99 src/web/views/user.py:70
 #, python-format
 msgid "User %(user_login)s successfully updated."
 msgstr ""
 
-#: src/web/views/admin.py:118
+#: src/web/views/admin.py:119
 #, python-format
 msgid "User %(user_login)s successfully created."
 msgstr ""
 
-#: src/web/views/admin.py:131
+#: src/web/views/admin.py:132
 msgid "You can not do this change to your own user."
 msgstr ""
 
-#: src/web/views/admin.py:135
+#: src/web/views/admin.py:136
 msgid "User {status}."
 msgstr ""
 
-#: src/web/views/admin.py:135
+#: src/web/views/admin.py:136
 msgid "activated"
 msgstr ""
 
-#: src/web/views/admin.py:135
+#: src/web/views/admin.py:136
 msgid "deactivated"
 msgstr ""
 
-#: src/web/views/admin.py:146
+#: src/web/views/admin.py:147
 msgid "You can not delete your own user."
 msgstr ""
 
-#: src/web/views/admin.py:150
+#: src/web/views/admin.py:151
 msgid "User deleted."
 msgstr ""
 
-#: src/web/views/admin.py:213
+#: src/web/views/admin.py:214
 #, python-format
 msgid "Organization %(org_name)s successfully updated."
 msgstr ""
 
-#: src/web/views/admin.py:230
+#: src/web/views/admin.py:231
 #, python-format
 msgid "Organization %(org_name)s successfully created."
 msgstr ""
 
-#: src/web/views/admin.py:246
+#: src/web/views/admin.py:247
 msgid "Organization deleted."
 msgstr ""
 
-#: src/web/views/object.py:207 src/web/views/schema.py:190
+#: src/web/views/object.py:234 src/web/views/schema.py:190
 #, python-format
 msgid "%(object_name)s successfully updated."
 msgstr ""
 
-#: src/web/views/object.py:253 src/web/views/schema.py:206
+#: src/web/views/object.py:280 src/web/views/schema.py:206
 #, python-format
 msgid "%(object_name)s successfully created."
 msgstr ""
