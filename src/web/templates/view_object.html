@@ -40,10 +40,10 @@
                         <i class="fa fa-download" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-                        <a class="dropdown-item" href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}">{{ _('Get the object') }}</a>
-                        <a class="dropdown-item" href="{{ url_for('object_bp.get_misp_galaxy_cluster', object_id=json_object.id) }}">{{ _('Export to a MISP galaxy') }}</a>
-                        <a id="download-csv" class="dropdown-item" href="#" title="{{ _('To CSV') }}">{{ _('Get only values in CSV') }}</a>
-                        <a id="download-json" class="dropdown-item" href="#" title="{{ _('To JSON') }}">{{ _('Get only values in JSON') }}</a>
+                        <a class="dropdown-item" href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}" title="{{ _('Get the object') }}">{{ _('Get the object') }}</a>
+                        <a class="dropdown-item" href="{{ url_for('object_bp.get_misp_galaxy_cluster', object_id=json_object.id) }}" title="{{ _('Export to a MISP galaxy') }}">{{ _('Export to a MISP galaxy') }}</a>
+                        <a id="download-csv" class="dropdown-item" href="#" title="{{ _('Get only values in CSV') }}">{{ _('Get only values in CSV') }}</a>
+                        <a id="download-json" class="dropdown-item" href="#" title="{{ _('Get only values in JSON') }}">{{ _('Get only values in JSON') }}</a>
                     </div>
                 </div>
             </div>
@@ -219,8 +219,6 @@ function copyObject() {
             window.location.replace('/object/view/'+result.id);
         }
     });
-
-
 }
 </script>
 <!-- /.container -->
