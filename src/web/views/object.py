@@ -70,14 +70,11 @@ def get_misp_galaxy_cluster(object_id):
                     )
 
 
-
-
 @object_bp.route('/view/<int:object_id>', methods=['GET'])
 def view(object_id=None):
     """
     Display the JSON part of a JsonObject object and some related informations.
     """
-
     # res = JsonObject.query.filter(JsonObject.json_object.contains(
     #                     {'predicates': [{'value': 'source-type'}]}
     #                     )).all()

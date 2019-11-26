@@ -1,6 +1,9 @@
 #! /usr/bin/env python
 #-*- coding: utf-8 -*-
 
+"""This file contains functions useful with JsonObject objects.
+"""
+
 import json
 import tarfile
 from io import BytesIO
