@@ -5,7 +5,11 @@ MOSP Changelog
 
 - Add a warning when the UUID of new object is already taken (#14);
 - Generation of MISP galaxies and clusters based on an object from MOSP (#15);
-- Add a button in order to help the user generate a UUID easily (#16).
+- Add a button in order to help the user generate a UUID easily (#16);
+- Added a way to list the recently created/updated objects for an administrator;
+- Added shortcuts to create new users and organizations. Simplify the creation
+  of new users/organizations;
+- The footprint of objects is no more displayed.
 
 
 ## 0.7 (2019-09-12)
