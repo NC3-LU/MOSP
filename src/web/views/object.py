@@ -51,6 +51,27 @@ def get_json_object(object_id):
                     )
 
 
+@object_bp.route('/galaxy/<int:object_id>', methods=['GET'])
+def get_misp_galaxy_cluster(object_id):
+    """Return the MISP galaxy and cluster from the object.
+    """
+    json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    if json_object is None:
+        abort(404)
+    galaxy, cluster = objects_utils.generate_misp_galaxy_cluster(json_object)
+    tar_file = objects_utils.generate_tar_gz_archive(galaxy, cluster)
+
+    return Response(tar_file,
+                    mimetype='application/x-tar',
+                    headers={
+                        'Content-Disposition':'attachment;filename={}.tgz'. \
+                            format(json_object.name.replace(' ', '_'))
+                            }
+                    )
+
+
+
+
 @object_bp.route('/view/<int:object_id>', methods=['GET'])
 def view(object_id=None):
     """
