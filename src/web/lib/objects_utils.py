@@ -36,7 +36,7 @@ def check_duplicates(json_object):
 
 
 def generate_misp_galaxy_cluster(json_object):
-    """Generates a MISP galaxy and a cluster from an object.
+    """Generates a MISP galaxy and cluster from an object.
     """
     # Creation of the galaxy
     galaxy = {
@@ -54,8 +54,10 @@ def generate_misp_galaxy_cluster(json_object):
         "version": json_object.json_object.get('version', ''),
         "type": json_object.schema.name,
         "authors": json_object.json_object.get('authors', ''),
-        #"source": "",
-        #"category": "",
+        # let assume that for us the source is the organization name:
+        "source": json_object.organization.name,
+        # and the category is the schema which is validating the object:
+        "category": json_object.schema.name,
         "values": []
     }
     for value in json_object.json_object.get('measures', []):
@@ -70,7 +72,7 @@ def generate_misp_galaxy_cluster(json_object):
 
 
 def generate_tar_gz_archive(galaxy, cluster):
-    """Generate a tar.gz archive from a MISP galaxy.
+    """Generates a tar.gz archive from a MISP galaxy (galaxy and a cluster).
     """
     out = BytesIO()
     tar = tarfile.open(mode="w:gz", fileobj=out)
