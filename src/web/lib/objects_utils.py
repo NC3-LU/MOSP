@@ -42,14 +42,17 @@ def generate_misp_galaxy_cluster(json_object):
     """Generates a MISP galaxy and cluster from an object.
     """
     # Creation of the galaxy
+    # (https://github.com/MISP/misp-galaxy/blob/master/schema_galaxies.json)
     galaxy = {
-        "description": json_object.description,
-        "name": json_object.name,
-        "type": json_object.schema.name,
         "uuid": json_object.json_object.get('uuid', ''),
+        "name": json_object.name,
+        "description": json_object.description,
+        # let assume that for us the type is the schema name:
+        "type": json_object.schema.name,
         "version": json_object.json_object.get('version', '')
     }
     # Creation of the cluster
+    # (https://github.com/MISP/misp-galaxy/blob/master/schema_clusters.json)
     cluster = {
         "uuid": json_object.json_object.get('uuid', ''),
         "name": json_object.name,
