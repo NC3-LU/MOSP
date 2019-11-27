@@ -9,7 +9,9 @@ MOSP Changelog
 - Added a way to list the recently created/updated objects for an administrator;
 - Added shortcuts to create new users and organizations. Simplify the creation
   of new users/organizations;
-- The footprint of objects is no more displayed.
+- The footprint of objects is no more displayed;
+- Improved the performances on JsonObject GET many by removing useless
+  attributes from the result.
 
 
 ## 0.7 (2019-09-12)
