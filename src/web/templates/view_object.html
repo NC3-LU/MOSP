@@ -165,7 +165,7 @@ $(document).ready(function() {
             type: 'GET',
             contentType: "application/json",
             success: function(result) {
-                csvContent = Papa.unparse(result.json_object.measures);
+                csvContent = Papa.unparse(result.json_object.values);
                 csvContent.replace(/(^[ \t]*\n)/gm, "");
                 var hiddenElement = document.createElement('a');
                 hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
@@ -184,7 +184,7 @@ $(document).ready(function() {
             contentType: "application/json",
             success: function(result) {
                 var hiddenElement = document.createElement('a');
-                hiddenElement.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(result.json_object.measures));
+                hiddenElement.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(result.json_object.values));
                 hiddenElement.target = '_blank';
                 hiddenElement.download = '{{ json_object.name }}.json';
                 document.body.appendChild(hiddenElement);

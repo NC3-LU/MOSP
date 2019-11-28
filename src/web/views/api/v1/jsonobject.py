@@ -28,7 +28,7 @@ def get_many_postprocessor(result=None, search_params=None, **kw):
     It would be better to filter these columns with a preprocessor.
     """
     def pop_object(elem):
-        elem.pop('json_object')
+        # elem.pop('json_object')
         elem.pop('schema')
         elem.pop('referred_to_by')
         elem.pop('refers_to')

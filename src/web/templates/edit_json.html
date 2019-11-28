@@ -159,13 +159,13 @@ $(document).ready(function() {
     // Get information about the JsonObject
     var filters = [{"name": "id", "op": "eq", "val": "{{ json_object.id }}"}];
     $.ajax({
-        url: "{{ url_for('json_objectapi0.json_objectapi',) }}",
+        url: "{{ url_for('json_objectapi0.json_objectapi',) }}/{{ json_object.id }}",
         data: {"q": JSON.stringify({"filters": filters})},
         dataType: "json",
         contentType: "application/json",
         success: function(result) {
-            initialize_editor_with_schema(result.objects[0].schema.json_schema,
-                                            result.objects[0].json_object);
+            initialize_editor_with_schema(result.schema.json_schema,
+                                            result.json_object);
         }
     });
 });
