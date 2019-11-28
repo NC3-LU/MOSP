@@ -2,7 +2,6 @@
 from datetime import datetime
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import event
-from web.models import User
 
 from bootstrap import db
 
