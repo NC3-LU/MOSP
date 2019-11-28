@@ -1,9 +1,9 @@
 MOSP Changelog
 ==============
 
-## 0.8 (not yet released)
+## 0.8 (2019-11-28)
 
-- Add a warning when the UUID of new object is already taken (#14);
+- Add a warning when the UUID of new a object is already taken (#14);
 - Generation of MISP galaxies and clusters based on an object from MOSP (#15);
 - Add a button in order to help the user generate a UUID easily (#16);
 - Added a way to list the recently created/updated objects for an administrator;
@@ -11,7 +11,8 @@ MOSP Changelog
   of new users/organizations;
 - The footprint of objects is no more displayed;
 - Improved the performances on JsonObject GET many by removing useless
-  attributes from the result.
+  attributes from the result;
+- updated Bootstrap to the version 4.4.
 
 
 ## 0.7 (2019-09-12)
