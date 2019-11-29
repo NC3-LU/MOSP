@@ -66,7 +66,7 @@ def generate_misp_galaxy_cluster(json_object):
         "category": json_object.schema.name,
         "values": []
     }
-    for value in json_object.json_object.get('measures', []):
+    for value in json_object.json_object.get('values', []):
         cluster["values"].append({
             "uuid": value["uuid"],
             "value": value["code"],
