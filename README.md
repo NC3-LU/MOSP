@@ -1,9 +1,10 @@
 # MONARC Objects Sharing Platform
 
-![Latest release](https://img.shields.io/github/release/CASES-LU/MOSP.svg?style=flat-square)
+[![Latest release](https://img.shields.io/github/release/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/releases/latest)
 ![License](https://img.shields.io/github/license/CASES-LU/MOSP.svg?style=flat-square)
 ![Contributors](https://img.shields.io/github/contributors/CASES-LU/MOSP.svg?style=flat-square)
 ![Stars](https://img.shields.io/github/stars/CASES-LU/MOSP.svg?style=flat-square)
+[![Workflow](https://github.com/CASES-LU/MOSP/workflows/Python%20application/badge.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/actions?query=workflow%3A%22Python+application%22)
 
 
 ## Presentation
