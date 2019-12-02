@@ -33,36 +33,43 @@ def auth_func(*args, **kw):
 
 
 def check_single_object_edit_permission(instance_id, data):
-    """Pre-processor to test a single object.
-    Uses check_object_edit_permission()"""
+    """Pre-processor to edit a single object.
+    """
     if not current_user.is_authenticated:
         raise ProcessingException(description='Not authenticated!', code=401)
 
     json_object = JsonObject.query.filter(JsonObject.id == instance_id).first()
     if json_object:
-        # retrieve information required by check_object_edit_permission()
+        # set the values requires by check_information()
         data['schema_id'] = json_object.schema.id
         data['org_id'] = json_object.organization.id
-        data['creator_id'] = current_user.id
+        data['creator_id'] = json_object.creator.id if json_object.creator.id else current_user.id
     else:
         raise ProcessingException(description='Unknown object', code=401)
     try:
-        check_object_edit_permission(data)
+        check_information(data)
     except Exception as e:
         raise(e)
 
 
-def check_object_edit_permission(data):
-    """Pre-processor to ensure a user has the rights to create/edit an abject
-    in a specific organization.
-    Checks also the validity of the submitted JSON object against the specified
-    the JSON schema."""
+def check_object_creation_permission(data):
+    """Check if the user is authenticated and set the creator_id.
+    """
     if not current_user.is_authenticated:
         raise ProcessingException(description='Not authenticated!', code=401)
 
+    data['creator_id'] = current_user.id
+    check_information(data)
+
+
+def check_information(data):
+    """Ensures. a user has the rights to create/edit an abject
+    in a specific organization.
+    Checks also the validity of the submitted JSON object against the specified
+    the JSON schema.
+    """
     schema_id = data.get('schema_id', None)
     org_id = data.get('org_id', None)
-    data['creator_id'] = current_user.id
 
     if org_id is None:
         raise ProcessingException(description='You must provide the id of an organization.', code=400)
