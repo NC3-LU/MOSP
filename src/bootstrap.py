@@ -13,13 +13,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_babel import Babel, format_datetime
 from werkzeug.routing import BaseConverter, ValidationError
 
-# from flask_mail import Mail
-
 
 def set_logging(log_path=None, log_level=logging.INFO, modules=(),
                 log_format='%(asctime)s %(levelname)s %(message)s'):
     if not modules:
-        modules = ('workers.fetch_cve', 'bootstrap', 'runserver', 'web',)
+        modules = ('bootstrap', 'runserver', 'web',)
     if log_path:
         if not os.path.exists(os.path.dirname(log_path)):
             os.makedirs(os.path.dirname(log_path))
@@ -42,10 +40,10 @@ def set_logging(log_path=None, log_level=logging.INFO, modules=(),
 application = Flask('web', instance_relative_config=True)
 try:
     application.config.from_pyfile('production.cfg', silent=False)
-except:
+except Exception:
     application.config.from_pyfile('development.cfg', silent=False)
 db = SQLAlchemy(application)
-# mail = Mail(application)
+
 
 babel = Babel(application)
 @babel.localeselector
