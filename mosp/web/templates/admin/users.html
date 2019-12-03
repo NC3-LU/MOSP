@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+{% for kind_user in users %}
+    <h1>{{ _(kind_user) }}</h1>
+    {% set USERS = users[kind_user] %}
+    {% include "./admin/template_responsive_table_users.html" %}
+{% endfor %}
+<a href="{{ url_for('admin_bp.form_user') }}" class="btn btn-default">{{ _('Add a new user') }}</a>
+</div>
+<script>
+$(document).ready(function() {
+$('.table').DataTable( {
+    responsive: true,
+    columnDefs: [
+        {
+            bSortable: false,
+            targets: [0, 5]
+        }
+    ]
+});
+});
+</script>
+{% endblock %}

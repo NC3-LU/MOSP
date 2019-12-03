@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+           <h1>~/{{ user.login }}</h1>
+       </div>
+   </div>
+    <div class="row">
+        <div class="col">
+           <p>{{ user.login  }} is a member since
+               {{ user.created_at | datetimeformat('%c') }} and {{ _('is the creator of the following object(s):') }}</p>
+       </div>
+   </div>
+   <div class="row">
+       <div class="col">
+            <div class="list-group">
+                {% for object in objects %}
+                    <a href="{{ url_for('object_bp.view', object_id=object.id) }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            {{ object.name }} <span class="badge badge-primary badge-pill">{{ object.schema.name }}</span>
+                        </div>
+                        <small>{{ object.description }}</small>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ pagination.info }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ pagination.links }}
+        </div>
+    </div>
+</div>
+{% endblock %}

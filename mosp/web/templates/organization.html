@@ -1,0 +1,132 @@
+{% extends "layout.html" %}}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 class="text-primary">{{ organization.name }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <b>{{ _('Description') }}</b>
+        </div>
+        <div class="col-md-9">
+            {{ organization.description }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <b>{{ _('Website') }}</b>
+        </div>
+        <div class="col-md-9">
+            <a href="{{ organization.website }}">{{ organization.website }}</a>
+        </div>
+    </div>
+    <br />
+    <h4>{{ _('Shared JSON objects') }}</h4>
+    <div class="row">
+        <div class="col">
+            {{ pagination_objects.links }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ pagination_objects.info }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive-md">
+                <table id="table-objects" class="table table-hover">
+                    <caption>{{ _('Shared JSON objects') }}</caption>
+                    <thead>
+                        <tr>
+                            <th>{{ _('id') }}</th>
+                            <th>{{ _('Name') }}</th>
+                            <th>{{ _('Last updated') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in objects %}
+                        <tr>
+                            <td scope="row">{{ object.id }}</td>
+                            <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
+                            <td class="date">{{ object.last_updated | datetime }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br /><hr /><br />
+    <div class="row">
+        <div class="col">
+            {{ pagination_schemas.links }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ pagination_schemas.info }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4>{{ _('Shared JSON schemas') }}</h4>
+            <div class="table-responsive-md">
+                <table id="table-schemas" class="table table-hover">
+                    <caption>{{ _('Shared JSON schemas') }}</caption>
+                    <thead>
+                        <tr>
+                            <th>{{ _('id') }}</th>
+                            <th>{{ _('Name') }}</th>
+                            <th>{{ _('# of objects validated by the schema') }}</th>
+                            <th>{{ _('Last updated') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for schema in schemas %}
+                        <tr>
+                            <td scope="row">{{ schema.id }}</td>
+                            <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
+                            <td align="center">{{ schema.objects.count() }}</td>
+                            <td class="date">{{ schema.last_updated | datetime }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#table-schemas').DataTable( {
+        responsive: true,
+        paging: false,
+        info: false,
+        searching: false,
+        order: [[2, "desc"]],
+        columnDefs: [
+            {
+                bSortable: false,
+                targets: [0]
+            }
+        ]
+    });
+    $('#table-objects').DataTable( {
+        responsive: true,
+        paging: false,
+        info: false,
+        searching: false,
+        order: [[2, "desc"]],
+        columnDefs: [
+            {
+                bSortable: false,
+                targets: [0]
+            }
+        ]
+    });
+});
+</script>
+{% endblock %}

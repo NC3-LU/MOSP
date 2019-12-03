@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                <li class="list-group-item">{{ _('MOSP version') }}: <a href="https://github.com/CASES-LU/MOSP/releases/tag/v{{mosp_version}}" target="_blank">{{mosp_version}}</a></li>
+                <li class="list-group-item">{{ _('Python version') }}: {{python_version}}</li>
+                <li class="list-group-item">{{ _('Number of objects') }}: {{nb_objects}}</li>
+                <li class="list-group-item">{{ _('Number of schemas') }}: {{nb_schemas}}</li>
+                <li class="list-group-item">{{ _('Number of organizations') }}: {{nb_organizations}}</li>
+                <li class="list-group-item">{{ _('Number of users') }}: {{nb_users}}</li>
+                <li class="list-group-item">{{ _('Contact') }}: <a href="mailto:{{ config['ADMIN_EMAIL'] }}">{{ config['ADMIN_EMAIL'] }}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Welcome {{ user.login }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>You are a member since {{ user.created_at | datetimeformat }}.</p>
+            <p>See the <a href="{{ url_for('user_bp.get', login=user.login) }}">objects</a> you already created.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <br />
+            <h2>{{ _('Schemas in my organizations') }}</h2>
+            {% for org in current_user.organizations %}
+                <h3><a href="{{ url_for('organization_bp.get', organization_name=org.name) }}">{{ org.name }}</a></h3>
+                <ul>
+                {% for schema in org.schemas %}
+                    <li><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name }}</a> -
+                        {{ _('validates') }} {{ schema.objects.count() }} {{ _('objects') }} -
+                        <a href="{{ url_for('schema_bp.form', schema_id=schema.id) }}">{{ _('edit') }}</a>
+                    </li>
+                {% endfor %}
+                <li style="list-style-type: none;"><a href="{{ url_for('schema_bp.form', org_id=org.id) }}"><i class="fa fa-plus" title="{{ _('Add a new schema in this organization') }}"></i></a></li>
+                </ul>
+            {% endfor  %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ url_for('schema_bp.form') }}" class="btn btn-default">{{ _('Create a new schema') }}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
