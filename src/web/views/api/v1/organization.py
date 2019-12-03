@@ -4,7 +4,6 @@
 from bootstrap import application, manager
 
 from web import models
-from web.views.api.v1 import processors
 from web.views.api.v1.common import url_prefix
 
 

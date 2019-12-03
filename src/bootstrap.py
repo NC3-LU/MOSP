@@ -6,12 +6,11 @@
 import re
 import os
 import uuid
-import errno
 import logging
 import flask_restless
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
-from flask_babel import Babel, gettext, format_datetime
+from flask_babel import Babel, format_datetime
 from werkzeug.routing import BaseConverter, ValidationError
 
 # from flask_mail import Mail
@@ -38,15 +37,6 @@ def set_logging(log_path=None, log_level=logging.INFO, modules=(),
             handler.setLevel(log_level)
         logger.setLevel(log_level)
 
-
-# def create_directory(directory):
-#     """Creates the necessary directories (public uploads, etc.)"""
-#     if not os.path.exists(directory):
-#         try:
-#             os.makedirs(directory)
-#         except OSError as e:
-#             if e.errno != errno.EEXIST:
-#                 raise
 
 # Create Flask application
 application = Flask('web', instance_relative_config=True)
@@ -93,28 +83,27 @@ class UUIDConverter(BaseConverter):
     """
     UUID converter for the Werkzeug routing system.
     """
-
     def __init__(self, map, strict=True):
         super(UUIDConverter, self).__init__(map)
         self.strict = strict
 
+
     def to_python(self, value):
         if self.strict and not UUID_RE.match(value):
             raise ValidationError()
-
         try:
             return uuid.UUID(value)
         except ValueError:
             raise ValidationError()
 
+
     def to_url(self, value):
         return str(value)
+
 
 application.url_map.converters['uuid'] = UUIDConverter
 
 # set_logging(application.config['LOG_PATH'])
-
-# create_directory(application.config['UPLOAD_FOLDER'])
 
 # Create the Flask-Restless API manager.
 manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)

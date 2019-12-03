@@ -126,7 +126,7 @@ def get_objects(schema_id=None):
     return Response(result,
                     mimetype='application/json',
                     headers={
-                        'Content-Disposition':'attachment;filename={}.json'. \
+                        'Content-Disposition': 'attachment;filename={}.json'.
                             format(json_schema.name.replace(' ', '_'))
                             }
                     )
@@ -189,7 +189,7 @@ def process_form(schema_id=None):
             db.session.commit()
             flash(gettext('%(object_name)s successfully updated.',
                     object_name=form.name.data), 'success')
-        except Exception as e:
+        except Exception:
             form.name.errors.append('Name already exists.')
         return redirect(url_for('schema_bp.form', schema_id=schema.id))
 

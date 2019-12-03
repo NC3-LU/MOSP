@@ -1,7 +1,6 @@
 import sys
 import logging
 from flask import render_template, url_for, redirect, current_app, flash
-from flask_login import login_required
 from flask_babel import gettext
 
 from web import __version__
@@ -28,12 +27,12 @@ def page_not_found(error):
 
 
 @current_app.errorhandler(500)
-def internal_server_error(error):
+def internal_server_error_500(error):
     return render_template('errors/500.html'), 500
 
 
 @current_app.errorhandler(503)
-def internal_server_error(error):
+def internal_server_error_503(error):
     return render_template('errors/503.html'), 503
 
 

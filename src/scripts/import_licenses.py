@@ -7,6 +7,7 @@ import requests
 from web.models import License
 from bootstrap import db
 
+
 def import_licenses_from_spdx():
     r = requests.get('https://spdx.org/licenses/licenses.json')
     if r.status_code == 200:

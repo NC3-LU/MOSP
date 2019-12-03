@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from urllib.parse import urlparse
-from flask import flash, url_for, redirect, request, current_app
+from flask import url_for, redirect, request, current_app
 from flask_wtf import FlaskForm
 from wtforms import (TextField, TextAreaField, PasswordField, BooleanField,
                      SelectField, SubmitField, validators, HiddenField,

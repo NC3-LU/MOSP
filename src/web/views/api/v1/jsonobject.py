@@ -1,8 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask_login import current_user
-from bootstrap import application, manager
+from bootstrap import manager
 
 from web import models
 from web.views.api.v1 import processors
@@ -12,11 +11,12 @@ from web.views.api.v1.common import url_prefix
 def pre_get_many(search_params=None, **kw):
     """Filter for HTTP GET many requests. Checks if a authenticated user
     has appropriate rights to see an object."""
-    order_by = [{"field":"last_updated", "direction":"desc"}]
+    order_by = [{"field": "last_updated", "direction": "desc"}]
     if 'order_by' not in search_params:
         search_params['order_by'] = []
     search_params['order_by'].extend(order_by)
     search_params['exclude'] = ["description"]
+
 
 def get_many_postprocessor(result=None, search_params=None, **kw):
     """Accepts two arguments, `result`, which is the dictionary
@@ -34,6 +34,7 @@ def get_many_postprocessor(result=None, search_params=None, **kw):
         elem.pop('refers_to')
         return elem
     list(map(lambda elem: pop_object(elem), result['objects']))
+
 
 blueprint_object = manager.create_api_blueprint(
     models.JsonObject,

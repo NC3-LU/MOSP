@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*-
 
 import logging
-from urllib.parse import urlparse, parse_qs, urlunparse, urljoin
+from urllib.parse import urlparse, urljoin
 
 from flask import request
 

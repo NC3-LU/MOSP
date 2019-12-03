@@ -85,5 +85,5 @@ def check_information(data):
         # check the validity of the submitted object
         # (note: an empty JSON object is validated by any schema)
         jsonschema.validate(data.get('json_object', {}), schema.first().json_schema)
-    except Exception as e:
+    except Exception:
         raise ProcessingException(description='The object submited is not validated by the schema.', code=400)
