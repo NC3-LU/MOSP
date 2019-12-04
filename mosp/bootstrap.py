@@ -38,10 +38,14 @@ def set_logging(log_path=None, log_level=logging.INFO, modules=(),
 
 # Create Flask application
 application = Flask(__name__, instance_relative_config=True)
-try:
-    application.config.from_pyfile('production.py', silent=False)
-except Exception:
-    application.config.from_pyfile('development.py', silent=False)
+ON_HEROKU = int(os.environ.get('HEROKU', 0)) == 1
+if ON_HEROKU:
+    application.config.from_pyfile('heroku.py', silent=False)
+else:
+    try:
+        application.config.from_pyfile('production.py', silent=False)
+    except Exception:
+        application.config.from_pyfile('development.py', silent=False)
 db = SQLAlchemy(application)
 
 

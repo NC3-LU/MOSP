@@ -23,6 +23,7 @@
         }
     ],
     "env": {
+        "HEROKU": "1",
         "APPLICATION_SETTINGS": {
             "description": "Configuration file for Heroku",
             "required": true,

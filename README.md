@@ -73,7 +73,7 @@ or with this button:
 to create your first user:
 
 ```bash
-$ heroku run python mosp/manager.py create_admin <login> <password>
+$ heroku run python mosp/manager.py create_admin <login> <password> 
 ```
 
 ## Contributing
