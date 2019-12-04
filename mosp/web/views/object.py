@@ -85,13 +85,17 @@ def view(object_id=None):
     #res = JsonObject.query.filter(JsonObject.json_object[('father-uuid')].astext == 'fdsfsf')
     #res = JsonObject.query.filter(JsonObject.json_object[('mapping', 'father-uuid')].astext == 'fdsfsf')
     #res = JsonObject.query.filter(JsonObject.json_object[('mapping'), [('father-uuid')]].astext == "fdsfsf")
-
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     if json_object is None:
         abort(404)
+    try:
+        uuid = json_object.json_object['uuid']
+    except Exception as e:
+        uuid = None
     result = json.dumps(json_object.json_object, ensure_ascii=False,
                         sort_keys=True, indent=4, separators=(',', ': '))
     return render_template('view_object.html',
+                            uuid=uuid,
                             json_object=json_object,
                             json_object_pretty=result)
 
