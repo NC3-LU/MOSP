@@ -3,7 +3,7 @@
 
 from bootstrap import application, manager
 
-from web import models
+import models
 from web.views.api.v1.common import url_prefix
 
 

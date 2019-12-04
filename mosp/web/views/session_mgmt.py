@@ -9,7 +9,7 @@ from flask_principal import (Principal, AnonymousIdentity, UserNeed,
 from flask_babel import lazy_gettext
 
 from bootstrap import db
-from web.models import User
+from models import User
 from web.views.common import admin_role, api_role, login_user_bundle
 from web.forms import SigninForm
 

@@ -11,7 +11,7 @@ from sqlalchemy import or_, func, Boolean, Integer, text, desc, nullslast
 
 from bootstrap import db
 from web.forms import SchemaForm
-from web.models import Schema, JsonObject, Organization
+from models import Schema, JsonObject, Organization
 
 schema_bp = Blueprint('schema_bp', __name__, url_prefix='/schema')
 schemas_bp = Blueprint('schemas_bp', __name__, url_prefix='/schemas')

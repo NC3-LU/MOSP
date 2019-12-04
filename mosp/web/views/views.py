@@ -4,7 +4,7 @@ from flask import render_template, url_for, redirect, current_app, flash
 from flask_babel import gettext
 
 from web import __version__
-from web.models import JsonObject, Organization, User, Schema
+from models import JsonObject, Organization, User, Schema
 
 logger = logging.getLogger(__name__)
 

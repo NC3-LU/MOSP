@@ -2,7 +2,7 @@
 from datetime import datetime
 from sqlalchemy import event
 
-from web.models import Schema, User, JsonObject
+from models import Schema, User, JsonObject
 from bootstrap import db
 
 

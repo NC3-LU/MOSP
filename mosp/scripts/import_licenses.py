@@ -4,8 +4,8 @@
 import json
 import requests
 
-from web.models import License
 from bootstrap import db
+from models import License
 
 
 def import_licenses_from_spdx():

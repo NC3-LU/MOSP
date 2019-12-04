@@ -3,8 +3,8 @@
 
 from werkzeug import generate_password_hash
 
-from web.models import User
 from bootstrap import db
+from models import User
 
 
 def create_user(login, password, is_admin):

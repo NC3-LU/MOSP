@@ -10,9 +10,9 @@ from werkzeug import generate_password_hash
 from flask_babel import gettext
 from datetime import datetime, timedelta
 
+import models
 from bootstrap import db
 from web.views.common import admin_permission
-from web import models
 from web.forms import UserForm, OrganizationForm
 
 logger = logging.getLogger(__name__)

@@ -5,7 +5,7 @@ from flask_babel import gettext
 from flask_paginate import Pagination, get_page_args
 
 from bootstrap import db
-from web.models import User, JsonObject
+from models import User, JsonObject
 from web.forms import ProfileForm
 
 

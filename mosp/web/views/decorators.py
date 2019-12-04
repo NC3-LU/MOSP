@@ -2,7 +2,7 @@ from sqlalchemy import or_
 from functools import wraps
 from flask import abort
 from flask_login import current_user
-from web.models import JsonObject, Organization
+from models import JsonObject, Organization
 
 
 def check_object_edit_permission(f):

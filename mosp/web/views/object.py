@@ -6,8 +6,8 @@ from flask_login import login_required, current_user
 from flask_babel import gettext
 
 from bootstrap import db
+from models import Schema, JsonObject, License
 from web.views.decorators import check_object_edit_permission
-from web.models import Schema, JsonObject, License
 from web.forms import AddObjectForm
 from web.lib import objects_utils
 
