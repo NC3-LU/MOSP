@@ -4,7 +4,7 @@
     "description": "A platform to create, edit and share JSON objects.",
     "private": true,
     "scripts": {
-        "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/'), 'src/web/static/npm_components', 'junction') } catch (e) { }\""
+        "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/'), 'mosp/web/static/npm_components', 'junction') } catch (e) { }\""
     },
     "author": "Cédric Bonhomme",
     "license": "AGPL-3.0-or-later",
