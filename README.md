@@ -30,12 +30,12 @@ $ cd MOSP/
 $ npm install
 $ pipenv install
 $ pipenv shell
-$ python src/manager.py db_create
-$ python src/manager.py db_init
-$ python src/manager.py import_licenses_from_spdx
-$ python src/manager.py create_admin <username> <password>
-$ pybabel compile -d src/web/translations
-$ python src/runserver.py
+$ python mosp/manager.py db_create
+$ python mosp/manager.py db_init
+$ python mosp/manager.py import_licenses_from_spdx
+$ python mosp/manager.py create_admin <username> <password>
+$ pybabel compile -d mosp/web/translations
+$ python mosp/runserver.py
 ```
 
 
@@ -49,7 +49,7 @@ $ heroku buildpacks:add --index 1 heroku/python
 $ heroku buildpacks:add --index 2 https://github.com/heroku/heroku-buildpack-nodejs
 $ git push heroku master
 $ heroku run init
-$ heroku run python src/manager.py import_licenses_from_spdx
+$ heroku run python mosp/manager.py import_licenses_from_spdx
 $ heroku ps:scale web=1
 ```
 

@@ -9,7 +9,7 @@
     "website": "https://github.com/CASES-LU/MOSP",
     "repository": "https://github.com/CASES-LU/MOSP",
     "scripts": {
-        "postdeploy": "pybabel compile -d src/web/translations"
+        "postdeploy": "pybabel compile -d mosp/web/translations"
     },
     "addons": [
         "heroku-postgresql:hobby-dev"

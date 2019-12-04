@@ -2,7 +2,7 @@
 
 import sys
 
-sys.path.insert(0, '/home/user/MOSP/src/')
+sys.path.insert(0, '/home/user/MOSP/mosp/')
 
 # virtualenv root of the project
 python_home = '/home/user/.local/share/virtualenvs/mosp--AuKpeUm'

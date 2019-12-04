@@ -1,2 +1,2 @@
-web: pybabel compile -d src/web/translations; python src/runserver.py
-init: python src/manager.py db_init
+web: pybabel compile -d src/web/translations; python mosp/runserver.py
+init: python mosp/manager.py db_init
