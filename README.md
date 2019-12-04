@@ -29,6 +29,11 @@ operated by [CASES](https://github.com/CASES-LU) and more particularly the
 
 ## Installation
 
+There are different ways to deploy MOSP.
+
+
+### Clone the repository and use a Python virtualenv
+
 ```bash
 $ git clone https://github.com/CASES-LU/MOSP.git
 $ cd MOSP/
@@ -46,6 +51,8 @@ $ python mosp/runserver.py
 
 ### Deploy on Heroku
 
+With some simple commands:
+
 ```bash
 $ heroku create --region eu <name-of-your-instance>
 $ heroku addons:add heroku-postgresql:hobby-dev
@@ -57,6 +64,10 @@ $ heroku run init
 $ heroku run python mosp/manager.py import_licenses_from_spdx
 $ heroku ps:scale web=1
 ```
+
+or with this button:
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/CASES-LU/MOSP)
 
 
 ## Contributing
