@@ -70,6 +70,12 @@ or with this button:
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/CASES-LU/MOSP)
 
 
+to create your first user:
+
+```bash
+$ heroku run python mosp/manager.py create_admin <login> <password>
+```
+
 ## Contributing
 
 Contributions are welcome and there are many ways to participate to the
