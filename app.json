@@ -27,6 +27,6 @@
             "description": "Configuration file for Heroku",
             "required": true,
             "value": "heroku.cfg"
-        },
+        }
     }
 }
