@@ -1,7 +1,7 @@
 #! /usr/bin/python
 #-*- coding:utf-8 -*
 
-from werkzeug import generate_password_hash
+from werkzeug.security import generate_password_hash
 
 from bootstrap import db
 from models import User
