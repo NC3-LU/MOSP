@@ -21,8 +21,8 @@ can create new JSON schemas.
 
 It is possible to interact with MOSP programmatically thanks to its API.
 
-You can have a look at [official instance](https://objects.monarc.lu) operated
-by [CASES](https://github.com/CASES-LU). And as example the
+As example you can have a look at [official instance](https://objects.monarc.lu)
+operated by [CASES](https://github.com/CASES-LU) and more particularly the
 [objects](https://objects.monarc.lu/organization/MONARC) shared by the
 [MONARC project](https://github.com/monarc-project).
 
@@ -57,6 +57,26 @@ $ heroku run init
 $ heroku run python mosp/manager.py import_licenses_from_spdx
 $ heroku ps:scale web=1
 ```
+
+
+## Contributing
+
+Contributions are welcome and there are many ways to participate to the
+project. You can contribute to MOSP by:
+
+- reporting bugs;
+- suggesting enhancements or new features;
+- improving the documentation;
+- creating new objects on [our instance](https://objects.monarc.lu).
+
+Feel free to fork the code, play with it, make some patches and send us
+pull requests.
+
+There is one main branch: what we consider as stable with frequent updates as
+hot-fixes.
+
+Features are developed in separated branches and then regularly merged into the
+master stable branch.
 
 
 ## Documentation
