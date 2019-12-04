@@ -1,7 +1,7 @@
 HOST = '127.0.0.1'
 PORT = 5000
-DEBUG = False
-TESTING = False
+DEBUG = True
+TESTING = True
 
 DB_CONFIG_DICT = {
     'user': 'pgsqluser',
@@ -12,21 +12,21 @@ DB_CONFIG_DICT = {
 DATABASE_NAME = 'MOSP'
 SQLALCHEMY_DATABASE_URI = 'postgres://{user}:{password}@{host}:{port}/{name}'.format(name=DATABASE_NAME, **DB_CONFIG_DICT)
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLALCHEMY_POOL_SIZE = 15
-SQLALCHEMY_MAX_OVERFLOW = 0
 
-SECRET_KEY = 'LCx3BchmHRxFzkEv4BqQJyeXRLXenf'
-SECURITY_PASSWORD_SALT = 'L8gTsyrpRQEF8jNWQPyvRfv7U5kJkD'
+SECRET_KEY = 'dev'
+SECURITY_PASSWORD_SALT = 'dev'
 
-LOG_PATH = './var/log/mosp.log'
-LOG_LEVEL = 'info'
-
-UPLOAD_FOLDER = './src/web/public/pictures/'
+UPLOAD_FOLDER = './mosp/web/public/pictures/'
 ALLOWED_EXTENSIONS = set(['png'])
 
 ADMIN_EMAIL = 'info@cases.lu'
 
-MAX_CONTENT_LENGTH = 16 * 1024 * 1024
+LOG_PATH = './var/log/mosp.log'
+LOG_LEVEL = 'info'
+
+CSRF_ENABLED = True
+# slow database query threshold (in seconds)
+DATABASE_QUERY_TIMEOUT = 0.5
 
 MAIL_SERVER = 'localhost'
 MAIL_PORT = 25

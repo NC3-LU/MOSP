@@ -37,11 +37,11 @@ def set_logging(log_path=None, log_level=logging.INFO, modules=(),
 
 
 # Create Flask application
-application = Flask('web', instance_relative_config=True)
+application = Flask('mosp', instance_relative_config=True)
 try:
-    application.config.from_pyfile('production.cfg', silent=False)
+    application.config.from_pyfile('production.py', silent=False)
 except Exception:
-    application.config.from_pyfile('development.cfg', silent=False)
+    application.config.from_pyfile('development.py', silent=False)
 db = SQLAlchemy(application)
 
 
