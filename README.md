@@ -1,5 +1,7 @@
 # MONARC Objects Sharing Platform
 
+![MOSP logo](https://github.com/CASES-LU/MOSP/blob/master/mosp/static/img/logo-large.png)
+
 [![Latest release](https://img.shields.io/github/release/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/releases/latest)
 ![License](https://img.shields.io/github/license/CASES-LU/MOSP.svg?style=flat-square)
 ![Contributors](https://img.shields.io/github/contributors/CASES-LU/MOSP.svg?style=flat-square)
@@ -9,12 +11,15 @@
 
 ## Presentation
 
-[MOSP](https://github.com/CASES-LU/MOSP) is a platform to create, edit
-and share JSON objects.
+[MOSP](https://github.com/CASES-LU/MOSP) is a platform for creating, editing
+and sharing JSON objects of any type.
 
 The goal is to gather security related JSON objects, in the first place aimed
 to be used with [MONARC](https://github.com/monarc-project/MonarcAppFO).
-You can use any available schemas in order to create new JSON objects.
+You can use any available schemas in order to create new JSON objects or you
+can create new JSON schemas.
+
+It is possible to interact with MOSP programmatically thanks to its API.
 
 You can have a look at [official instance](https://objects.monarc.lu) operated
 by [CASES](https://github.com/CASES-LU). And as example the
