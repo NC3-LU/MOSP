@@ -37,7 +37,7 @@ def set_logging(log_path=None, log_level=logging.INFO, modules=(),
 
 
 # Create Flask application
-application = Flask('mosp', instance_relative_config=True)
+application = Flask(__name__, instance_relative_config=True)
 try:
     application.config.from_pyfile('production.py', silent=False)
 except Exception:
