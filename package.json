@@ -1,10 +1,10 @@
 {
     "name": "MOSP",
     "version": "0.8.0",
-    "description": "A platform to create, edit and share JSON objects.",
+    "description": "A platform for creating, editing and sharing JSON objects.",
     "private": true,
     "scripts": {
-        "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/'), 'mosp/static/npm_components', 'junction') } catch (e) { }\""
+        "postinstall": "cd mosp/static/ ; ln -sf ../../node_modules npm_components"
     },
     "author": "Cédric Bonhomme",
     "license": "AGPL-3.0-or-later",
