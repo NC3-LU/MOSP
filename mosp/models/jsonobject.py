@@ -27,9 +27,9 @@ class JsonObject(db.Model):
     json_object = db.Column(JSONB, default={})
 
     # relationship
-    licenses = db.relationship("License",
+    licenses = db.relationship('License',
                             secondary=lambda: association_table_license,
-                            backref="objects")
+                            backref='objects')
     refers_to = db.relationship('JsonObject',
             secondary=lambda: association_table_jsonobject,
             primaryjoin=association_table_jsonobject.c.jsonobject_refers_to_id==id,

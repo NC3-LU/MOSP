@@ -1,15 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from .user import User
-from .jsonobject import JsonObject
-from .schema import Schema
-from .organization import Organization
-from .license import License
-
-
-__all__ = ['User', 'Organization', 'Schema', 'JsonObject', 'License']
-
 from sqlalchemy.engine import reflection
 from sqlalchemy import create_engine
 from sqlalchemy.schema import (MetaData,
@@ -17,6 +8,13 @@ from sqlalchemy.schema import (MetaData,
                                DropTable,
                                ForeignKeyConstraint,
                                DropConstraint)
+
+
+from mosp.models.user import User
+from mosp.models.jsonobject import JsonObject
+from mosp.models.schema import Schema
+from mosp.models.organization import Organization
+from mosp.models.license import License
 
 
 def mappers(*args):
