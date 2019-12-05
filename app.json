@@ -1,6 +1,6 @@
 {
     "name": "MOSP",
-    "description": "A platform to create, edit and share JSON objects.",
+    "description": "A platform for creating, editing and sharing JSON objects.",
     "keywords": [
         "MOSP",
         "json",
@@ -9,7 +9,11 @@
     "website": "https://github.com/CASES-LU/MOSP",
     "repository": "https://github.com/CASES-LU/MOSP",
     "scripts": {
-        "postdeploy": "pybabel compile -d mosp/web/translations"
+        "postdeploy": [
+            "pybabel compile -d mosp/web/translations",
+            "python mosp/manager.py db_init",
+            "python mosp/manager.py create_admin admin password"
+        ]
     },
     "addons": [
         "heroku-postgresql:hobby-dev"

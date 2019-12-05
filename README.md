@@ -54,6 +54,8 @@ $ python mosp/runserver.py
 With some simple commands:
 
 ```bash
+$ git clone https://github.com/CASES-LU/MOSP.git
+$ cd MOSP/
 $ heroku create --region eu <name-of-your-instance>
 $ heroku addons:add heroku-postgresql:hobby-dev
 $ heroku config:set APPLICATION_SETTINGS='heroku.cfg'
@@ -65,15 +67,18 @@ $ heroku run python mosp/manager.py import_licenses_from_spdx
 $ heroku ps:scale web=1
 ```
 
-or with this button:
+or simply with this button:
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/CASES-LU/MOSP)
 
+The default credentials are *admin* for the login and *password* for the
+password.
 
-to create your first user:
+If you want to create other users programmatically:
 
 ```bash
-$ heroku run python mosp/manager.py create_admin <login> <password> 
+$ heroku run python mosp/manager.py create_user <login> <password>
+$ heroku run python mosp/manager.py create_admin <login> <password>
 ```
 
 ## Contributing
