@@ -20,10 +20,10 @@ def app(request):
     """Session-wide test `Flask` application."""
     settings_override = {
         'TESTING': True,
-        'SQLALCHEMY_DATABASE_URI': 'postgres://mosp:password@localhost:54332/mosp'
+        'SQLALCHEMY_DATABASE_URI': 'postgres://mosp:password@localhost:5432/mosp'
     }
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://mosp:password@localhost:54332/mosp'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://mosp:password@localhost:5432/mosp'
 
     # Establish an application context before running the tests.
     ctx = app.app_context()
