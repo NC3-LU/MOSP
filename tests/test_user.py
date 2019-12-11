@@ -11,6 +11,10 @@ from mosp.bootstrap import db as _db
 
 from mosp.models import User
 
+
+
+
+
 @pytest.fixture(scope='session')
 def app(request):
     """Session-wide test `Flask` application."""

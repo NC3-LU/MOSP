@@ -40,3 +40,5 @@ jobs:
         pipenv install
         pipenv install --dev
         pipenv run pytest
+      env:
+        testing: actions

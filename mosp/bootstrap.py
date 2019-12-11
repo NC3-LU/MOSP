@@ -41,6 +41,8 @@ application = Flask(__name__, instance_relative_config=True)
 ON_HEROKU = int(os.environ.get('HEROKU', 0)) == 1
 if ON_HEROKU:
     application.config.from_pyfile('heroku.py', silent=False)
+else if os.environ.get('testing', '') == 'actions':
+    application.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://mosp:password@localhost:54332/mosp'
 else:
     try:
         application.config.from_pyfile('production.py', silent=False)
