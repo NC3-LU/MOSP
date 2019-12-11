@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, abort
 from flask_paginate import Pagination, get_page_args
 from sqlalchemy import or_
 
-from models import Organization, JsonObject, Schema
+from mosp.models import Organization, JsonObject, Schema
 
 organization_bp = Blueprint('organization_bp', __name__, url_prefix='/organization')
 organizations_bp = Blueprint('organizations_bp', __name__, url_prefix='/organizations')

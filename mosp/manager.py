@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import logging
-from mosp.bootstrap import application, db
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
 import scripts
 import models
+from mosp.bootstrap import application, db
 
 logger = logging.getLogger('manager')
 

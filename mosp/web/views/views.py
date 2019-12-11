@@ -3,8 +3,8 @@ import logging
 from flask import render_template, url_for, redirect, current_app, flash
 from flask_babel import gettext
 
-from web import __version__
-from models import JsonObject, Organization, User, Schema
+from mosp.web import __version__
+from mosp.models import JsonObject, Organization, User, Schema
 
 logger = logging.getLogger(__name__)
 

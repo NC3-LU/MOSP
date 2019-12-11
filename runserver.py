@@ -4,9 +4,8 @@
 from mosp.bootstrap import application
 
 with application.app_context():
-    # populate_g()
 
-    from web import views
+    from mosp.web import views
     application.register_blueprint(views.schema_bp)
     application.register_blueprint(views.schemas_bp)
     application.register_blueprint(views.object_bp)

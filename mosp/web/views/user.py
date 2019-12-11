@@ -4,9 +4,9 @@ from werkzeug import generate_password_hash
 from flask_babel import gettext
 from flask_paginate import Pagination, get_page_args
 
-from bootstrap import db
-from models import User, JsonObject
-from web.forms import ProfileForm
+from mosp.bootstrap import db
+from mosp.models import User, JsonObject
+from mosp.web.forms import ProfileForm
 
 
 user_bp = Blueprint('user_bp', __name__, url_prefix='/user')

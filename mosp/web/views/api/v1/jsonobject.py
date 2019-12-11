@@ -1,11 +1,11 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from bootstrap import manager
+from mosp.bootstrap import manager
 
-import models
-from web.views.api.v1 import processors
-from web.views.api.v1.common import url_prefix
+from mosp.models import JsonObject
+from mosp.web.views.api.v1 import processors
+from mosp.web.views.api.v1.common import url_prefix
 
 
 def pre_get_many(search_params=None, **kw):
@@ -37,7 +37,7 @@ def get_many_postprocessor(result=None, search_params=None, **kw):
 
 
 blueprint_object = manager.create_api_blueprint(
-    models.JsonObject,
+    JsonObject,
     max_results_per_page=5000,
     results_per_page=10,
     url_prefix=url_prefix,

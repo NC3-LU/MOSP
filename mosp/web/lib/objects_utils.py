@@ -8,7 +8,7 @@ import json
 import tarfile
 from io import BytesIO
 from sqlalchemy import and_
-from models import JsonObject
+from mosp.models import JsonObject
 
 def check_duplicates(json_object):
     """Check for duplicates, by UUID, of the object given in parameter.

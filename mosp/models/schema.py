@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import event
 
-from bootstrap import db
+from mosp.bootstrap import db
 
 association_table_license = db.Table('association_schemas_licenses',
     db.metadata,

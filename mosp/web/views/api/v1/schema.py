@@ -1,10 +1,10 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from bootstrap import manager
+from mosp.bootstrap import manager
 
-import models
-from web.views.api.v1.common import url_prefix
+from mosp.models import Schema
+from mosp.web.views.api.v1.common import url_prefix
 
 
 def pre_get_many(search_params=None, **kw):
@@ -15,7 +15,7 @@ def pre_get_many(search_params=None, **kw):
 
 
 blueprint_schema = manager.create_api_blueprint(
-    models.Schema,
+    Schema,
     max_results_per_page=1000,
     results_per_page=10,
     url_prefix=url_prefix,

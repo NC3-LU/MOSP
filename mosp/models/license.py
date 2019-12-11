@@ -1,6 +1,6 @@
 
 from datetime import datetime
-from bootstrap import db
+from mosp.bootstrap import db
 
 
 class License(db.Model):

@@ -10,7 +10,7 @@ from wtforms import (TextField, TextAreaField, PasswordField, BooleanField,
 from werkzeug.exceptions import NotFound, HTTPException
 from flask_babel import lazy_gettext
 
-from models import User, Organization, License, JsonObject
+from mosp.models import User, Organization, License, JsonObject
 
 
 class RedirectForm(FlaskForm):

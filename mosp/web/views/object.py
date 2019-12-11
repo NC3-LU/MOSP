@@ -5,11 +5,11 @@ from flask import Blueprint, render_template, redirect, url_for, flash, \
 from flask_login import login_required, current_user
 from flask_babel import gettext
 
-from bootstrap import db
-from models import Schema, JsonObject, License
-from web.views.decorators import check_object_edit_permission
-from web.forms import AddObjectForm
-from web.lib import objects_utils
+from mosp.bootstrap import db
+from mosp.models import Schema, JsonObject, License
+from mosp.web.views.decorators import check_object_edit_permission
+from mosp.web.forms import AddObjectForm
+from mosp.web.lib import objects_utils
 
 object_bp = Blueprint('object_bp', __name__, url_prefix='/object')
 objects_bp = Blueprint('objects_bp', __name__, url_prefix='/objects')

@@ -8,10 +8,10 @@ from flask_principal import (Principal, AnonymousIdentity, UserNeed,
                              session_identity_loader)
 from flask_babel import lazy_gettext
 
-from bootstrap import db
-from models import User
-from web.views.common import admin_role, api_role, login_user_bundle
-from web.forms import SigninForm
+from mosp.bootstrap import db
+from mosp.models import User
+from mosp.web.views.common import admin_role, api_role, login_user_bundle
+from mosp.web.forms import SigninForm
 
 Principal(current_app)
 # Create a permission with a single Need, in this case a RoleNeed.

@@ -10,10 +10,10 @@ from werkzeug import generate_password_hash
 from flask_babel import gettext
 from datetime import datetime, timedelta
 
-import models
-from bootstrap import db
-from web.views.common import admin_permission
-from web.forms import UserForm, OrganizationForm
+from mosp.models import User, JsonObject, Schema, Organization, License
+from mosp.bootstrap import db
+from mosp.web.views.common import admin_permission
+from mosp.web.forms import UserForm, OrganizationForm
 
 logger = logging.getLogger(__name__)
 
@@ -27,10 +27,10 @@ def dashboard():
     now = datetime.utcnow()
     on_week_ago = now - timedelta(weeks=1)
     four_weeks_ago = now - timedelta(weeks=4)
-    active_users = models.User.query.filter(
-                            models.User.last_seen >= on_week_ago)
-    recent_objects = models.JsonObject.query.filter(
-                            models.JsonObject.last_updated >= four_weeks_ago)
+    active_users = User.query.filter(
+                            User.last_seen >= on_week_ago)
+    recent_objects = JsonObject.query.filter(
+                            JsonObject.last_updated >= four_weeks_ago)
     return render_template('admin/dashboard.html', USERS=active_users,
                             OBJECTS=recent_objects)
 
@@ -44,8 +44,8 @@ def dashboard():
 @admin_permission.require(http_exception=403)
 def list_users():
     users = {}
-    users['Admins'] = models.User.query.filter(models.User.is_admin==True)
-    users['Users'] = models.User.query.filter(models.User.is_admin==False)
+    users['Admins'] = User.query.filter(User.is_admin==True)
+    users['Users'] = User.query.filter(User.is_admin==False)
     return render_template('admin/users.html', users=users)
 
 
@@ -62,7 +62,7 @@ def form_user(user_id=None):
         return render_template('admin/edit_user.html', action=action,
                                head_titles=head_titles, form=form)
 
-    user = models.User.query.filter(models.User.id == user_id).first()
+    user = User.query.filter(User.id == user_id).first()
     form = UserForm(obj=user)
     form.organizations.data = [organization.id for organization in user.organizations]
     action = "Edit user"
@@ -84,11 +84,11 @@ def process_user_form(user_id=None):
         return render_template('admin/edit_user.html', form=form)
 
     if user_id is not None:
-        user = models.User.query.filter(models.User.id == user_id).first()
+        user = User.query.filter(User.id == user_id).first()
         # Linked organizations
         linked_organizations = []
         for organization_id in form.organizations.data:
-            organization = models.Organization.query.filter(models.Organization.id == organization_id).first()
+            organization = Organization.query.filter(Organization.id == organization_id).first()
             linked_organizations.append(organization)
         user.organizations = linked_organizations
         del form.organizations
@@ -101,7 +101,7 @@ def process_user_form(user_id=None):
         return redirect(url_for('admin_bp.form_user', user_id=user.id))
 
     # Create a new user
-    new_user = models.User(login=form.login.data,
+    new_user = User(login=form.login.data,
                            public_profile=form.public_profile.data,
                            is_active=form.is_active.data,
                            is_admin=form.is_admin.data,
@@ -110,7 +110,7 @@ def process_user_form(user_id=None):
     # Linked organizations
     linked_organizations = []
     for organization_id in form.organizations.data:
-        organization = models.Organization.query.filter(models.Organization.id == organization_id).first()
+        organization = Organization.query.filter(Organization.id == organization_id).first()
         linked_organizations.append(organization)
     new_user.organizations.extend(linked_organizations)
     del form.organizations
@@ -127,7 +127,7 @@ def process_user_form(user_id=None):
 @admin_permission.require(http_exception=403)
 def toggle_user(user_id=None):
     """Activate/deactivate a user."""
-    user = models.User.query.filter(models.User.id == user_id).first()
+    user = User.query.filter(User.id == user_id).first()
     if user.id == current_user.id:
         flash(gettext('You can not do this change to your own user.'), 'danger')
     else:
@@ -142,7 +142,7 @@ def toggle_user(user_id=None):
 @admin_permission.require(http_exception=403)
 def delete_user(user_id=None):
     """Delete a user."""
-    user = models.User.query.filter(models.User.id == user_id).first()
+    user = User.query.filter(User.id == user_id).first()
     if user.id == current_user.id:
         flash(gettext('You can not delete your own user.'), 'danger')
     else:
@@ -159,7 +159,7 @@ def delete_user(user_id=None):
 @login_required
 @admin_permission.require(http_exception=403)
 def list_organizations():
-    organizations = models.Organization.query.all()
+    organizations = Organization.query.all()
     return render_template('admin/organizations.html',
                             organizations=organizations)
 
@@ -177,8 +177,8 @@ def form_organization(organization_id=None):
         return render_template('admin/edit_organization.html', action=action,
                                head_titles=head_titles, form=form)
 
-    organization = models.Organization.query. \
-                    filter(models.Organization.id == organization_id).first()
+    organization = Organization.query. \
+                    filter(Organization.id == organization_id).first()
     form = OrganizationForm(obj=organization)
     form.users.data = [user.id for user in organization.users]
     action = "Edit an organization"
@@ -201,11 +201,11 @@ def process_organization_form(organization_id=None):
 
     # Edit an existing organization
     if organization_id is not None:
-        organization = models.Organization.query.filter(models.Organization.id == organization_id).first()
+        organization = Organization.query.filter(Organization.id == organization_id).first()
         # Members
         new_members = []
         for user_id in form.users.data:
-            user = models.User.query.filter(models.User.id == user_id).first()
+            user = User.query.filter(User.id == user_id).first()
             new_members.append(user)
         organization.users = new_members
         del form.users
@@ -217,12 +217,12 @@ def process_organization_form(organization_id=None):
                                 organization_id=organization.id))
 
     # Create a new organization
-    new_organization = models.Organization(name=form.name.data,
+    new_organization = Organization(name=form.name.data,
                            description=form.description.data,
                            organization_type=form.organization_type.data)
     new_members = []
     for user_id in form.users.data:
-        user = models.User.query.filter(models.User.id == user_id).first()
+        user = User.query.filter(User.id == user_id).first()
         new_members.append(user)
     new_organization.users = new_members
     del form.users
@@ -240,8 +240,8 @@ def process_organization_form(organization_id=None):
 @admin_permission.require(http_exception=403)
 def delete_organization(organization_id=None):
     """Delete an organization."""
-    organization = models.Organization.query. \
-                    filter(models.Organization.id == organization_id).first()
+    organization = Organization.query. \
+                    filter(Organization.id == organization_id).first()
     db.session.delete(organization)
     db.session.commit()
     flash(gettext('Organization deleted.'), 'success')
@@ -268,9 +268,9 @@ admin_flask = Admin(current_app,
                         name='Home',
                         url='/admin'
                     ))
-admin_flask.add_view(SecureView(models.User, db.session))
-admin_flask.add_view(SecureView(models.Organization, db.session))
-admin_flask.add_view(SecureView(models.Schema, db.session))
-admin_flask.add_view(SecureView(models.JsonObject, db.session))
-admin_flask.add_view(SecureView(models.License, db.session))
+admin_flask.add_view(SecureView(User, db.session))
+admin_flask.add_view(SecureView(Organization, db.session))
+admin_flask.add_view(SecureView(Schema, db.session))
+admin_flask.add_view(SecureView(JsonObject, db.session))
+admin_flask.add_view(SecureView(License, db.session))
 admin_flask.add_link(menu_link_back_home)

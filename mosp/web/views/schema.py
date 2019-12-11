@@ -9,9 +9,9 @@ from flask_babel import gettext
 from flask_paginate import Pagination, get_page_args
 from sqlalchemy import or_, func, Boolean, Integer, text, desc, nullslast
 
-from bootstrap import db
-from web.forms import SchemaForm
-from models import Schema, JsonObject, Organization
+from mosp.bootstrap import db
+from mosp.web.forms import SchemaForm
+from mosp.models import Schema, JsonObject, Organization
 
 schema_bp = Blueprint('schema_bp', __name__, url_prefix='/schema')
 schemas_bp = Blueprint('schemas_bp', __name__, url_prefix='/schemas')

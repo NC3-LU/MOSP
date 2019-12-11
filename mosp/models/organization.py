@@ -2,7 +2,7 @@
 from datetime import datetime
 from sqlalchemy import event
 
-from bootstrap import db
+from mosp.bootstrap import db
 
 
 class Organization(db.Model):
