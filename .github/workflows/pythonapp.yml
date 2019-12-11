@@ -9,6 +9,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Setup PostgreSQL
+      uses: Harmon758/postgresql-action@v1.0.0
+      with:
+        postgresql db: 'mosp'
+        postgresql user: 'mosp'
+        postgresql password: 'password'
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
@@ -29,4 +35,3 @@ jobs:
       run: |
         pip install pytest
         # pytest # no tests yet...
-
