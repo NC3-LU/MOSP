@@ -22,7 +22,7 @@ def app(request):
         'TESTING': True,
         'SQLALCHEMY_DATABASE_URI': 'postgres://mosp:password@localhost:54332/mosp'
     }
-    app = Flask(__name__)
+    app = Flask(__name__, settings_override)
 
     # Establish an application context before running the tests.
     ctx = app.app_context()
