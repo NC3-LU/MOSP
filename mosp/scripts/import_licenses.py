@@ -4,8 +4,8 @@
 import json
 import requests
 
-from bootstrap import db
-from models import License
+from mosp.bootstrap import db
+from mosp.models import License
 
 
 def import_licenses_from_spdx():

@@ -34,7 +34,7 @@ class JsonObject(db.Model):
             secondary=lambda: association_table_jsonobject,
             primaryjoin=association_table_jsonobject.c.jsonobject_refers_to_id==id,
             secondaryjoin=association_table_jsonobject.c.jsonobject_referred_to_by_id==id,
-            backref="referred_to_by")
+            backref='referred_to_by')
 
     # foreign keys
     org_id = db.Column(db.Integer(), db.ForeignKey('organization.id'),

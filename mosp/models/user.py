@@ -4,7 +4,7 @@ from flask_login import UserMixin
 from sqlalchemy.orm import validates
 from werkzeug import check_password_hash
 
-from mosp.bootstrap import db
+from bootstrap import db
 
 association_table_organization = db.Table('association_users_organizations',
     db.metadata,

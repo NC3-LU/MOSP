@@ -27,4 +27,3 @@ psycopg2-binary = "*"
 [dev-packages]
 sqlalchemy-schemadisplay = "*"
 pytest = "*"
-mosp = {editable = true,path = "."}

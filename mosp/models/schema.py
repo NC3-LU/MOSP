@@ -24,7 +24,7 @@ class Schema(db.Model):
     # relationship
     objects = db.relationship('JsonObject', backref='schema', lazy='dynamic',
                                cascade='all,delete-orphan')
-    licenses = db.relationship("License",
+    licenses = db.relationship('License',
                             secondary=lambda: association_table_license,
                             backref="schemas")
 

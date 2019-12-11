@@ -9,7 +9,6 @@ from sqlalchemy.schema import (MetaData,
                                ForeignKeyConstraint,
                                DropConstraint)
 
-
 from mosp.models.user import User
 from mosp.models.jsonobject import JsonObject
 from mosp.models.schema import Schema

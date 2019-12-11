@@ -3,8 +3,8 @@
 
 from werkzeug.security import generate_password_hash
 
-# from bootstrap import db
-from models import User
+from mosp.bootstrap import db
+from mosp.models import User
 
 
 def create_user(login, password, is_admin):

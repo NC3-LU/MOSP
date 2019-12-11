@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
-from bootstrap import application, db
+from mosp.bootstrap import application, db
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
