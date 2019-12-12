@@ -40,12 +40,12 @@ $ cd MOSP/
 $ npm install
 $ pipenv install
 $ pipenv shell
-$ python mosp/manager.py db_create
-$ python mosp/manager.py db_init
-$ python mosp/manager.py import_licenses_from_spdx
-$ python mosp/manager.py create_admin <username> <password>
+$ python manager.py db_create
+$ python manager.py db_init
+$ python manager.py import_licenses_from_spdx
+$ python manager.py create_admin <username> <password>
 $ pybabel compile -d mosp/web/translations
-$ python mosp/runserver.py
+$ python runserver.py
 ```
 
 
@@ -63,7 +63,7 @@ $ heroku buildpacks:add --index 1 heroku/python
 $ heroku buildpacks:add --index 2 https://github.com/heroku/heroku-buildpack-nodejs
 $ git push heroku master
 $ heroku run init
-$ heroku run python mosp/manager.py import_licenses_from_spdx
+$ heroku run python manager.py import_licenses_from_spdx
 $ heroku ps:scale web=1
 ```
 
@@ -77,8 +77,8 @@ password.
 If you want to create other users programmatically:
 
 ```bash
-$ heroku run python mosp/manager.py create_user <login> <password>
-$ heroku run python mosp/manager.py create_admin <login> <password>
+$ heroku run python manager.py create_user <login> <password>
+$ heroku run python manager.py create_admin <login> <password>
 ```
 
 ## Contributing
