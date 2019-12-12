@@ -8,13 +8,13 @@ with io.open("README.md", "rt", encoding="utf8") as f:
 
 setup(
     name="MOSP",
-    version="0.8.0",
+    version="0.9.0",
     url="https://github.com/CASES-LU/MOSP",
     license="AGPL",
     maintainer="Cédric Bonhomme",
     author_email='cedric@cedricbonhomme.org',
     maintainer_email="",
-    description="A platform to create, edit and share security related JSON objects.",
+    description="A platform for creating, editing and sharing JSON objects.",
     long_description_content_type='text/markdown',
     long_description=readme,
     packages=find_packages(),
