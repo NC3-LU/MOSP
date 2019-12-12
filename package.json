@@ -9,7 +9,7 @@
     "author": "Cédric Bonhomme",
     "license": "AGPL-3.0-or-later",
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.11.2",
+        "@fortawesome/fontawesome-free": "^5.12.0",
         "@json-editor/json-editor": "^1.3.5",
         "bootstrap": "^4.4.1",
         "bootstrap-select": "^1.13.12",
