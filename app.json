@@ -10,7 +10,7 @@
     "repository": "https://github.com/CASES-LU/MOSP",
     "scripts": {
         "postdeploy": [
-            "pybabel compile -d mosp/web/translations && python manager.py db_init && python manager.py create_admin admin password && python manager.py import_licenses_from_spdx",
+            "pybabel compile -d mosp/web/translations && python manager.py db_init && python manager.py create_admin admin password && python manager.py import_licenses_from_spdx"
         ]
     },
     "addons": [
