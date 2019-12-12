@@ -1,11 +1,12 @@
 MOSP Changelog
 ==============
 
-## 0.9 (not yet released)
+## 0.9 (2019-12-12)
 
-- improvements to the structure of the backend and the models;
+- major improvements to the structure of the backend and to the models;
 - introduction of tests with pytest;
-- added GitHub test workflow (GitHub Actions).
+- now using GitHub test workflow (GitHub Actions);
+- added app.json file for easy deployment with the Heroku button.
 
 
 ## 0.8 (2019-11-28)
