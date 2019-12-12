@@ -1,6 +1,13 @@
 MOSP Changelog
 ==============
 
+## 0.9 (not yet released)
+
+- improvements to the structure of the backend and the models;
+- introduction of tests with pytest;
+- added GitHub test workflow (GitHub Actions).
+
+
 ## 0.8 (2019-11-28)
 
 - Add a warning when the UUID of new a object is already taken (#14);

@@ -1,18 +1,13 @@
 
 import pytest
-from flask import Flask
-from werkzeug.security import generate_password_hash
 
 from mosp.bootstrap import db as _db
 from mosp.bootstrap import application
 
+
 @pytest.fixture(scope='session')
 def app(request):
     """Session-wide test `Flask` application."""
-    settings_override = {
-        'TESTING': True,
-        'SQLALCHEMY_DATABASE_URI': 'postgres://mosp:password@localhost:5432/mosp'
-    }
     app = application
 
     # Establish an application context before running the tests.

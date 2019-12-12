@@ -39,12 +39,14 @@ def set_logging(log_path=None, log_level=logging.INFO, modules=(),
 # Create Flask application
 application = Flask(__name__, instance_relative_config=True)
 
-# Load the appropriate configuration
+# Loads the appropriate configuration
 ON_HEROKU = int(os.environ.get('HEROKU', 0)) == 1
 TESTING = os.environ.get('testing', '') == 'actions'
 if TESTING:
+    # Testing on GitHub Actions
     application.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://mosp:password@localhost:5432/mosp'
 elif ON_HEROKU:
+    # Deployment on Heroku
     application.config.from_pyfile('heroku.py', silent=False)
 else:
     try:
