@@ -4,7 +4,7 @@ from flask import Flask
 from werkzeug.security import generate_password_hash
 
 from mosp.bootstrap import db as _db
-
+from mosp.bootstrap import application
 
 @pytest.fixture(scope='session')
 def app(request):
@@ -13,8 +13,7 @@ def app(request):
         'TESTING': True,
         'SQLALCHEMY_DATABASE_URI': 'postgres://mosp:password@localhost:5432/mosp'
     }
-    app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://mosp:password@localhost:5432/mosp'
+    app = application
 
     # Establish an application context before running the tests.
     ctx = app.app_context()
