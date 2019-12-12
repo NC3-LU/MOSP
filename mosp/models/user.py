@@ -2,7 +2,7 @@ import re
 from datetime import datetime
 from flask_login import UserMixin
 from sqlalchemy.orm import validates
-from werkzeug import check_password_hash
+from werkzeug.security import check_password_hash
 
 from mosp.bootstrap import db
 
