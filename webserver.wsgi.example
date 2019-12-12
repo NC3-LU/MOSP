@@ -1,9 +1,5 @@
 #! /usr/bin/env python
 
-import sys
-
-sys.path.insert(0, '/home/user/MOSP/')
-
 # virtualenv root of the project
 python_home = '/home/user/.local/share/virtualenvs/mosp--AuKpeUm'
 
