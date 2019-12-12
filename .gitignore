@@ -33,5 +33,5 @@ node_modules
 mosp/static/npm_components
 
 
-mosp/instance/production.py
+instance/production.py
 *.wsgi
