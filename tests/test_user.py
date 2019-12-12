@@ -1,18 +1,11 @@
-import os
-import tempfile
 
 import pytest
 from flask import Flask
 from werkzeug.security import generate_password_hash
 
-from mosp.models import db_init
-# from mosp.bootstrap import application
 from mosp.bootstrap import db as _db
 
 from mosp.models import User
-
-
-
 
 
 @pytest.fixture(scope='session')
@@ -39,7 +32,6 @@ def app(request):
 @pytest.fixture(scope='session')
 def db(app, request):
     """Session-wide test database."""
-
     def teardown():
         _db.drop_all()
 
@@ -78,30 +70,3 @@ def test_user(session):
     session.commit()
 
     assert user.is_admin == False
-
-
-
-#
-# @pytest.fixture
-# def client():
-#     db_fd, application.config['DATABASE'] = tempfile.mkstemp()
-#     application.config['TESTING'] = True
-#
-#     with application.test_client() as client:
-#         with application.app_context():
-#             db_init(db)
-#         yield client
-#
-#     os.close(db_fd)
-#     os.unlink(application.config['DATABASE'])
-
-
-# @pytest.fixture
-# def new_user(client):
-#     user = User(login='john1', pwdhash=generate_password_hash('password'))
-#     client.session.add(user)
-#     client.session.commit()
-#     yield user
-#
-# def test_rights(new_user):
-#     assert new_user.is_admin == False
