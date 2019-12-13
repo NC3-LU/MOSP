@@ -81,6 +81,7 @@ def datetimeformat(value, format='%Y-%m-%d %H:%M'):
 # def instance_domain_name(*args):
 #     return request.url_root.replace('http', 'https').strip("/")
 
+
 application.jinja_env.filters['datetimeformat'] = datetimeformat
 application.jinja_env.filters['datetime'] = format_datetime
 # application.jinja_env.filters['instance_domain_name'] = instance_domain_name
@@ -88,6 +89,8 @@ application.jinja_env.filters['datetime'] = format_datetime
 # URL Converters
 UUID_RE = re.compile(
     r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$')
+
+
 class UUIDConverter(BaseConverter):
     """
     UUID converter for the Werkzeug routing system.
@@ -96,7 +99,6 @@ class UUIDConverter(BaseConverter):
         super(UUIDConverter, self).__init__(map)
         self.strict = strict
 
-
     def to_python(self, value):
         if self.strict and not UUID_RE.match(value):
             raise ValidationError()
@@ -104,7 +106,6 @@ class UUIDConverter(BaseConverter):
             return uuid.UUID(value)
         except ValueError:
             raise ValidationError()
-
 
     def to_url(self, value):
         return str(value)

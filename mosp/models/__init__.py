@@ -26,11 +26,11 @@ def uml_graph(db):
     import sqlalchemy_schemadisplay as sasd
 
     graph = sasd.create_uml_graph(
-                        mappers(User, Organization, Schema, JsonObject),
+                        mappers(User, Organization, Schema, JsonObject, License),
                         show_operations=False,
                         show_multiplicity_one=True
     )
-    graph.write_png('uml_graph.png') # write out the file
+    graph.write_png('uml_graph.png')  # write out the file
 
 
 def get_or_create(session, model, **kwargs):

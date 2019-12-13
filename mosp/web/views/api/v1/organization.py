@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from mosp.bootstrap import application, manager
+from mosp.bootstrap import manager
 
 from mosp.models import Organization
 from mosp.web.views.api.v1.common import url_prefix

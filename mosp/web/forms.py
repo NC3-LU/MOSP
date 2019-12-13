@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 from urllib.parse import urlparse
-from flask import url_for, redirect, request, current_app
+from flask import request, current_app
 from flask_wtf import FlaskForm
 from wtforms import (TextField, TextAreaField, PasswordField, BooleanField,
                      SelectField, SubmitField, validators, HiddenField,
-                     SelectMultipleField, HiddenField)
+                     SelectMultipleField)
 from werkzeug.exceptions import NotFound, HTTPException
 from flask_babel import lazy_gettext
 
@@ -35,7 +35,6 @@ class RedirectForm(FlaskForm):
             # Any other exceptions
             pass
 
-
     @property
     def redirect_target(self):
         return self.next.data
@@ -46,11 +45,11 @@ class SigninForm(RedirectForm):
     Sign in form.
     """
     login = TextField(lazy_gettext('Login'),
-            [validators.Length(min=3, max=30),
-            validators.Required(lazy_gettext('Please enter your login.'))])
+                      [validators.Length(min=3, max=30),
+                       validators.Required(lazy_gettext('Please enter your login.'))])
     password = PasswordField(lazy_gettext('Password'),
-            [validators.Required(lazy_gettext('Please enter your password.')),
-             validators.Length(min=6, max=100)])
+                             [validators.Required(lazy_gettext('Please enter your password.')),
+                              validators.Length(min=6, max=100)])
     submit = SubmitField(lazy_gettext('Log In'))
 
     def __init__(self, *args, **kwargs):
@@ -95,11 +94,11 @@ class AddObjectForm(FlaskForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.licenses.choices = [(license.id, license.name) \
+        self.licenses.choices = [(license.id, license.name)
                                         for license in License.query.all()]
-        self.refers_to.choices = [(jsonobject.id, jsonobject.name) \
+        self.refers_to.choices = [(jsonobject.id, jsonobject.name)
                                         for jsonobject in JsonObject.query.all()]
-        self.referred_to_by.choices = [(jsonobject.id, jsonobject.name) \
+        self.referred_to_by.choices = [(jsonobject.id, jsonobject.name)
                                         for jsonobject in JsonObject.query.all()]
 
 
@@ -135,8 +134,9 @@ class UserForm(FlaskForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.organizations.choices = [(organization.id, organization.name) \
+        self.organizations.choices = [(organization.id, organization.name)
                                         for organization in Organization.query.all()]
+
 
 class OrganizationForm(FlaskForm):
     """
@@ -154,7 +154,7 @@ class OrganizationForm(FlaskForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.users.choices = [(user.id, user.login) \
+        self.users.choices = [(user.id, user.login)
                                         for user in User.query.all()]
 
 
