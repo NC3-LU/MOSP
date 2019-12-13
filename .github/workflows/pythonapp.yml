@@ -24,9 +24,9 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install pipenv
-        pipenv install
-        pipenv install --dev
+        pip install poetry
+        poetry install
+        poetry install --dev
 
     - name: Lint with flake8
       run: |
@@ -38,6 +38,6 @@ jobs:
 
     - name: Test with pytest
       run: |
-        pipenv run pytest
+        poetry run pytest
       env:
         testing: actions
