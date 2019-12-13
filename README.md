@@ -38,8 +38,8 @@ There are different ways to deploy MOSP.
 $ git clone https://github.com/CASES-LU/MOSP.git
 $ cd MOSP/
 $ npm install
-$ pipenv install
-$ pipenv shell
+$ poetry install
+$ poetry shell
 $ python manager.py db_create
 $ python manager.py db_init
 $ python manager.py import_licenses_from_spdx
