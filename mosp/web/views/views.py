@@ -3,7 +3,7 @@ import logging
 from flask import render_template, url_for, redirect, current_app, flash
 from flask_babel import gettext
 
-from mosp.web import __version__
+from mosp import __version__
 from mosp.models import JsonObject, Organization, User, Schema
 
 logger = logging.getLogger(__name__)
@@ -55,8 +55,21 @@ def about():
 
 @current_app.route('/about/more', methods=['GET'])
 def about_more():
+    """Returns some details about the current MOSP instance (version of MOSP
+    version of Python, number of objects, etc.)
+    """
+    version = __version__.split('-')
+    if len(version) == 1:
+        mosp_version = version[0]
+        version_url = 'https://github.com/CASES-LU/MOSP/releases/tag/{}'. \
+                        format(version[0])
+    else:
+        mosp_version = '{} - {}'.format(version[0], version[2][1:])
+        version_url = 'https://github.com/CASES-LU/MOSP/commits/{}'. \
+                        format(version[2][1:])
     return render_template('about_more.html',
-                mosp_version=__version__.split()[1],
+                mosp_version=mosp_version,
+                version_url=version_url,
                 python_version="{}.{}.{}".format(*sys.version_info[:3]),
                 nb_objects=JsonObject.query.count(),
                 nb_schemas=Schema.query.count(),
