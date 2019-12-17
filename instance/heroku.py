@@ -15,5 +15,3 @@ LOG_PATH = 'mosp.log'
 LOG_LEVEL = 'info'
 
 CSRF_ENABLED = True
-# slow database query threshold (in seconds)
-#DATABASE_QUERY_TIMEOUT = 0.5

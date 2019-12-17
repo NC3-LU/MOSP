@@ -260,8 +260,7 @@ def process_form(schema_id=None):
             ),
             "success",
         )
-    except Exception as e:
-        # TODO: display the error
+    except Exception:
         return redirect(url_for("schema_bp.form", schema_id=new_schema.id))
     return redirect(url_for("schema_bp.form", schema_id=new_schema.id))
 

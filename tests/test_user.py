@@ -12,5 +12,5 @@ def test_user(session):
     assert user.is_admin is False
     assert user.is_api is False
     assert user.is_api is False
-    assert user.public_profile == True
-    assert user.check_password("password") == True
+    assert user.public_profile is True
+    assert user.check_password("password") is True

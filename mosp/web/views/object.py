@@ -109,7 +109,7 @@ def view(object_id=None):
         abort(404)
     try:
         uuid = json_object.json_object["uuid"]
-    except Exception as e:
+    except Exception:
         uuid = None
     result = json.dumps(
         json_object.json_object,
@@ -161,7 +161,7 @@ def edit_json(object_id=None):
             ),
             "warning",
         )
-    except:
+    except Exception:
         pass
 
     return render_template(
@@ -313,8 +313,7 @@ def process_form(object_id=None):
     db.session.add(new_object)
     try:
         db.session.commit()
-    except Exception as e:
-        # TODO: display the error
+    except Exception:
         return redirect(url_for("object_bp.form", object_id=new_object.id))
 
     # Licenses
@@ -353,7 +352,7 @@ def process_form(object_id=None):
             ),
             "success",
         )
-    except Exception as e:
+    except Exception:
         return redirect(url_for("object_bp.form", object_id=new_object.id))
 
     return redirect(url_for("object_bp.form", object_id=new_object.id))

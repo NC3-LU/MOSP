@@ -1,5 +1,4 @@
 from datetime import datetime
-from sqlalchemy import event
 
 from mosp.bootstrap import db
 
