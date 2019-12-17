@@ -1,1 +1,1 @@
-url_prefix = '/api/v1'
+url_prefix = "/api/v1"

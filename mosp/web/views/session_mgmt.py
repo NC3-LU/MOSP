@@ -3,9 +3,14 @@ import logging
 from datetime import datetime
 from flask import render_template, session, url_for, redirect, current_app
 from flask_login import LoginManager, logout_user, login_required, current_user
-from flask_principal import (Principal, AnonymousIdentity, UserNeed,
-                             identity_changed, identity_loaded,
-                             session_identity_loader)
+from flask_principal import (
+    Principal,
+    AnonymousIdentity,
+    UserNeed,
+    identity_changed,
+    identity_loaded,
+    session_identity_loader,
+)
 from flask_babel import lazy_gettext
 
 from mosp.bootstrap import db
@@ -18,9 +23,9 @@ Principal(current_app)
 
 login_manager = LoginManager()
 login_manager.init_app(current_app)
-login_manager.login_view = 'login'
-login_manager.login_message = lazy_gettext('Please log in to access this page.')
-login_manager.login_message_category = 'info'
+login_manager.login_view = "login"
+login_manager.login_message = lazy_gettext("Please log in to access this page.")
+login_manager.login_message_category = "info"
 
 logger = logging.getLogger(__name__)
 
@@ -51,29 +56,29 @@ def before_request():
         db.session.commit()
 
 
-@current_app.route('/login', methods=['GET', 'POST'])
+@current_app.route("/login", methods=["GET", "POST"])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for("index"))
     form = SigninForm()
     if form.validate_on_submit():
         login_user_bundle(form.user)
-        return redirect(form.redirect_target or url_for('user_bp.schemas'))
-    return render_template('login.html', form=form)
+        return redirect(form.redirect_target or url_for("user_bp.schemas"))
+    return render_template("login.html", form=form)
 
 
-@current_app.route('/logout')
+@current_app.route("/logout")
 @login_required
 def logout():
     # Remove the user information from the session
     logout_user()
 
     # Remove session keys set by Flask-Principal
-    for key in ('identity.name', 'identity.auth_type'):
+    for key in ("identity.name", "identity.auth_type"):
         session.pop(key, None)
 
     # Tell Flask-Principal the user is anonymous
     identity_changed.send(current_app, identity=AnonymousIdentity())
     session_identity_loader()
 
-    return redirect(url_for('login'))
+    return redirect(url_for("login"))

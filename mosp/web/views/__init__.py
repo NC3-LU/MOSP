@@ -6,4 +6,4 @@ from mosp.web.views.object import object_bp, objects_bp
 from mosp.web.views.user import user_bp
 from mosp.web.views.organization import organization_bp, organizations_bp
 
-__all__ = ['views', 'session_mgmt']
+__all__ = ["views", "session_mgmt"]

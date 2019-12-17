@@ -1,11 +1,10 @@
-
 import pytest
 
 from mosp.bootstrap import db as _db
 from mosp.bootstrap import application
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def app(request):
     """Session-wide test `Flask` application."""
     app = application
@@ -21,9 +20,10 @@ def app(request):
     return app
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def db(app, request):
     """Session-wide test database."""
+
     def teardown():
         _db.drop_all()
 
@@ -35,7 +35,7 @@ def db(app, request):
     return _db
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope="function")
 def session(db, request):
     """Creates a new database session for a test."""
     connection = db.engine.connect()

@@ -5,6 +5,7 @@
 This file contain the variables used by the application.
 """
 import os
+
 # import logging
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))

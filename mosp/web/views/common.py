@@ -1,11 +1,15 @@
-
 from flask import current_app
 from flask_login import login_user
-from flask_principal import (Identity, Permission, RoleNeed,
-                                 session_identity_loader, identity_changed)
+from flask_principal import (
+    Identity,
+    Permission,
+    RoleNeed,
+    session_identity_loader,
+    identity_changed,
+)
 
-admin_role = RoleNeed('admin')
-api_role = RoleNeed('api')
+admin_role = RoleNeed("admin")
+api_role = RoleNeed("api")
 
 admin_permission = Permission(admin_role)
 api_permission = Permission(api_role)

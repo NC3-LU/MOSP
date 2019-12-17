@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """This file contains functions useful with JsonObject objects.
 """
@@ -10,6 +10,7 @@ from io import BytesIO
 from sqlalchemy import and_
 from mosp.models import JsonObject
 
+
 def check_duplicates(json_object):
     """Check for duplicates, by UUID, of the object given in parameter.
     """
@@ -19,19 +20,21 @@ def check_duplicates(json_object):
     if isinstance(json_obj, list):
         # if we have a list of JSON objects with a UUI for each of them
         for elem in json_obj:
-            if elem.get('uuid', False):
-                duplicate = JsonObject.query.filter(and_(
-                    JsonObject.json_object[('uuid')].astext == elem['uuid']),
-                    JsonObject.id != json_object.id)
+            if elem.get("uuid", False):
+                duplicate = JsonObject.query.filter(
+                    and_(JsonObject.json_object[("uuid")].astext == elem["uuid"]),
+                    JsonObject.id != json_object.id,
+                )
                 if duplicate.count() > 0:
                     duplicates.append(duplicate[0])
 
     if isinstance(json_obj, dict):
         # if we directly have an object
-        if json_obj.get('uuid', False):
-            duplicate = JsonObject.query.filter(and_(
-                JsonObject.json_object[('uuid')].astext == json_obj['uuid']),
-                JsonObject.id != json_object.id)
+        if json_obj.get("uuid", False):
+            duplicate = JsonObject.query.filter(
+                and_(JsonObject.json_object[("uuid")].astext == json_obj["uuid"]),
+                JsonObject.id != json_object.id,
+            )
             if duplicate.count() > 0:
                 duplicates.append(duplicate[0])
 
@@ -44,37 +47,39 @@ def generate_misp_galaxy_cluster(json_object):
     # Creation of the galaxy
     # (https://github.com/MISP/misp-galaxy/blob/master/schema_galaxies.json)
     galaxy = {
-        "uuid": json_object.json_object.get('uuid', ''),
+        "uuid": json_object.json_object.get("uuid", ""),
         "name": json_object.name,
         "description": json_object.description,
         # let assume that for us the type is the schema name:
         "type": json_object.schema.name,
-        "version": json_object.json_object.get('version', '')
+        "version": json_object.json_object.get("version", ""),
     }
     # Creation of the cluster
     # (https://github.com/MISP/misp-galaxy/blob/master/schema_clusters.json)
     cluster = {
-        "uuid": json_object.json_object.get('uuid', ''),
+        "uuid": json_object.json_object.get("uuid", ""),
         "name": json_object.name,
         "description": json_object.description,
-        "version": json_object.json_object.get('version', ''),
+        "version": json_object.json_object.get("version", ""),
         "type": json_object.schema.name,
-        "authors": json_object.json_object.get('authors', []),
+        "authors": json_object.json_object.get("authors", []),
         # let assume that for us the source is the organization name:
         "source": json_object.organization.name,
         # and the category is the schema which is validating the object:
         "category": json_object.schema.name,
-        "values": []
+        "values": [],
     }
-    for value in json_object.json_object.get('values', []):
-        cluster["values"].append({
-            "uuid": value.get("uuid", ''),
-            "value": value.get("code", ''),
-            "description": value.get("label") if \
-                    value.get("label", False) else value.get("description", ''),
-            "meta": {},
-
-        })
+    for value in json_object.json_object.get("values", []):
+        cluster["values"].append(
+            {
+                "uuid": value.get("uuid", ""),
+                "value": value.get("code", ""),
+                "description": value.get("label")
+                if value.get("label", False)
+                else value.get("description", ""),
+                "meta": {},
+            }
+        )
     return (galaxy, cluster)
 
 
@@ -91,11 +96,11 @@ def generate_tar_gz_archive(galaxy, cluster):
     # t.type = tarfile.DIRTYPE
     # tar.addfile(t)
 
-    tarinfo = tarfile.TarInfo('galaxy.json')
+    tarinfo = tarfile.TarInfo("galaxy.json")
     tarinfo.size = len(galaxy_str)
     tar.addfile(tarinfo, BytesIO(galaxy_str.encode()))
 
-    tarinfo = tarfile.TarInfo('cluster.json')
+    tarinfo = tarfile.TarInfo("cluster.json")
     tarinfo.size = len(cluster_str)
     tar.addfile(tarinfo, BytesIO(cluster_str.encode()))
 

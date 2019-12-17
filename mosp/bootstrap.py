@@ -14,15 +14,23 @@ from flask_babel import Babel, format_datetime
 from werkzeug.routing import BaseConverter, ValidationError
 
 
-def set_logging(log_path=None, log_level=logging.INFO, modules=(),
-                log_format='%(asctime)s %(levelname)s %(message)s'):
+def set_logging(
+    log_path=None,
+    log_level=logging.INFO,
+    modules=(),
+    log_format="%(asctime)s %(levelname)s %(message)s",
+):
     if not modules:
-        modules = ('bootstrap', 'runserver', 'web',)
+        modules = (
+            "bootstrap",
+            "runserver",
+            "web",
+        )
     if log_path:
         if not os.path.exists(os.path.dirname(log_path)):
             os.makedirs(os.path.dirname(log_path))
         if not os.path.exists(log_path):
-            open(log_path, 'w').close()
+            open(log_path, "w").close()
         handler = logging.FileHandler(log_path)
     else:
         handler = logging.StreamHandler()
@@ -40,23 +48,27 @@ def set_logging(log_path=None, log_level=logging.INFO, modules=(),
 application = Flask(__name__, instance_relative_config=True)
 
 # Loads the appropriate configuration
-ON_HEROKU = int(os.environ.get('HEROKU', 0)) == 1
-TESTING = os.environ.get('testing', '') == 'actions'
+ON_HEROKU = int(os.environ.get("HEROKU", 0)) == 1
+TESTING = os.environ.get("testing", "") == "actions"
 if TESTING:
     # Testing on GitHub Actions
-    application.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://mosp:password@localhost:5432/mosp'
+    application.config[
+        "SQLALCHEMY_DATABASE_URI"
+    ] = "postgres://mosp:password@localhost:5432/mosp"
 elif ON_HEROKU:
     # Deployment on Heroku
-    application.config.from_pyfile('heroku.py', silent=False)
+    application.config.from_pyfile("heroku.py", silent=False)
 else:
     try:
-        application.config.from_pyfile('production.py', silent=False)
+        application.config.from_pyfile("production.py", silent=False)
     except Exception:
-        application.config.from_pyfile('development.py', silent=False)
+        application.config.from_pyfile("development.py", silent=False)
 db = SQLAlchemy(application)
 
 
 babel = Babel(application)
+
+
 @babel.localeselector
 def get_locale():
     # if a user is logged in, use the locale from the user settings
@@ -66,7 +78,8 @@ def get_locale():
     # otherwise try to guess the language from the user accept
     # header the browser transmits.  We support de/fr/en in this
     # example.  The best match wins.
-    return request.accept_languages.best_match(['fr', 'en'])
+    return request.accept_languages.best_match(["fr", "en"])
+
 
 # @babel.timezoneselector
 # def get_timezone():
@@ -76,25 +89,27 @@ def get_locale():
 
 
 # Jinja filters
-def datetimeformat(value, format='%Y-%m-%d %H:%M'):
+def datetimeformat(value, format="%Y-%m-%d %H:%M"):
     return value.strftime(format)
+
+
 # def instance_domain_name(*args):
 #     return request.url_root.replace('http', 'https').strip("/")
 
 
-application.jinja_env.filters['datetimeformat'] = datetimeformat
-application.jinja_env.filters['datetime'] = format_datetime
+application.jinja_env.filters["datetimeformat"] = datetimeformat
+application.jinja_env.filters["datetime"] = format_datetime
 # application.jinja_env.filters['instance_domain_name'] = instance_domain_name
 
 # URL Converters
-UUID_RE = re.compile(
-    r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$')
+UUID_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
 
 
 class UUIDConverter(BaseConverter):
     """
     UUID converter for the Werkzeug routing system.
     """
+
     def __init__(self, map, strict=True):
         super(UUIDConverter, self).__init__(map)
         self.strict = strict
@@ -111,7 +126,7 @@ class UUIDConverter(BaseConverter):
         return str(value)
 
 
-application.url_map.converters['uuid'] = UUIDConverter
+application.url_map.converters["uuid"] = UUIDConverter
 
 # set_logging(application.config['LOG_PATH'])
 
