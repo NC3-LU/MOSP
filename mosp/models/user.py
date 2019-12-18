@@ -59,6 +59,9 @@ class User(db.Model, UserMixin):
         """
         return check_password_hash(self.pwdhash, password)
 
+    def generate_apikey(self):
+        self.apikey = secrets.token_urlsafe(50)
+
     def __str__(self):
         return self.login
 

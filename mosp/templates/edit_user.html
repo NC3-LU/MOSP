@@ -21,6 +21,41 @@
         {{ form.submit(class_="btn btn-default") }}
     </form>
     <br />
+    <div class="row">
+        <div class="col">
+            <form class="navbar-form navbar-right">
+                <label class="sr-only" for="inlineFormInputGroupAPIKey">API key</label>
+                <div class="input-group mb-2 mr-sm-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text mb-2">API key</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupAPIKey" value="{{ current_user.apikey }}" readonly>
+                    <div class="input-group-append">
+                        <a href="#" class="btn btn-dark mb-2" onclick="copyToClipboard()" title="Copy to clipboard"><i class="fa fa-clipboard" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="input-group-append">
+                        <a href="{{ url_for('user_bp.generate_apikey', user_id=user.id) }}" class="btn btn-primary mb-2" onclick="return confirm(_('You are going to generate a new API key.'));">{{ _('Generate new API key') }}</a>
+                    </div>
+                </div>
+          </form>
+      </div>
+    </div>
+    <br />
     <a href="{{ url_for('user_bp.delete_account', user_id=user.id) }}" class="btn btn-warning" onclick="return confirm(_('You are going to delete your account.'));">{{ _('Delete your account') }}</a>
 </div>
+<script>
+    function copyToClipboard() {
+        const copyText = document.getElementById("inlineFormInputGroupAPIKey").value;
+        const textArea = document.createElement('textarea');
+        textArea.textContent = copyText;
+        // document.body.append(textArea);
+        // textArea.select();
+        navigator.clipboard.writeText(textArea.value).then(function() {
+              /* clipboard successfully set */
+              alert('{{ _('API key copied to your clipboard.') }}');
+            }, function() {
+              /* clipboard write failed */
+        });
+    }
+</script>
 {% endblock %}

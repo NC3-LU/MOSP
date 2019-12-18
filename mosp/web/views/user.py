@@ -83,11 +83,26 @@ def process_form():
     return redirect(url_for("admin_bp.form_user", user_id=user.id))
 
 
+@user_bp.route("/generate_apikey", methods=["GET"])
+@login_required
+def generate_apikey():
+    """Generate an API key for a user."""
+    user = User.query.filter(User.id == current_user.id).first()
+    if user is None:
+        abort(404)
+    user.generate_apikey()
+    db.session.commit()
+    flash(gettext("New API key generated."), "success")
+    return redirect(url_for("user_bp.form"))
+
+
 @user_bp.route("/delete_account", methods=["GET"])
 @login_required
 def delete_account():
     """Delete the account of a user."""
     user = User.query.filter(User.id == current_user.id).first()
+    if user is None:
+        abort(404)
     db.session.delete(user)
     db.session.commit()
     flash(gettext("Account deleted."), "success")
