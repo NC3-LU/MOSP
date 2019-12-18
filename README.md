@@ -1,25 +1,27 @@
 # MONARC Objects Sharing Platform
 
-![MOSP logo](https://github.com/CASES-LU/MOSP/blob/master/mosp/static/img/logo-large.png)
+[![MOSP logo](https://github.com/CASES-LU/MOSP/blob/master/mosp/static/img/logo-large.png)](https://github.com/CASES-LU/MOSP)
 
 [![Latest release](https://img.shields.io/github/release/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/releases/latest)
-![License](https://img.shields.io/github/license/CASES-LU/MOSP.svg?style=flat-square)
-![Contributors](https://img.shields.io/github/contributors/CASES-LU/MOSP.svg?style=flat-square)
-![Stars](https://img.shields.io/github/stars/CASES-LU/MOSP.svg?style=flat-square)
+[![License](https://img.shields.io/github/license/CASES-LU/MOSP.svg?style=flat-square)](https://www.gnu.org/licenses/agpl-3.0.html)
+[![Contributors](https://img.shields.io/github/contributors/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/stargazers)
 [![Workflow](https://github.com/CASES-LU/MOSP/workflows/Python%20application/badge.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/actions?query=workflow%3A%22Python+application%22)
 
 
 ## Presentation
 
 [MOSP](https://github.com/CASES-LU/MOSP) is a platform for creating, editing
-and sharing JSON objects of any type.
+and sharing *validated* JSON objects of any type.
 
 The goal is to gather security related JSON objects, in the first place aimed
 to be used with [MONARC](https://github.com/monarc-project/MonarcAppFO).
-You can use any available schemas in order to create new JSON objects or you
-can create new JSON schemas.
 
-It is possible to interact with MOSP programmatically thanks to its API.
+You can use any available JSON schemas in order to create new JSON objects via a
+web form dynamically generated and based on the selected schema.  
+It is possible to interact with MOSP programmatically thanks to its API.  
+Some JSON objects can be exported to a
+[MISP galaxy](https://github.com/MISP/misp-galaxy).
 
 As example you can have a look at [official instance](https://objects.monarc.lu)
 operated by [CASES](https://github.com/CASES-LU) and more particularly the
@@ -49,9 +51,9 @@ $ python runserver.py
 ```
 
 
-### Deploy on Heroku
+### Deploy to Heroku
 
-With some simple commands:
+Manually with some simple commands:
 
 ```bash
 $ git clone https://github.com/CASES-LU/MOSP.git
