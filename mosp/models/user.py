@@ -1,4 +1,5 @@
 import re
+import secrets
 from datetime import datetime
 from flask_login import UserMixin
 from sqlalchemy.orm import validates
@@ -24,6 +25,7 @@ class User(db.Model, UserMixin):
     pwdhash = db.Column(db.String(), nullable=False)
     created_at = db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
+    apikey = db.Column(db.String(), default=secrets.token_urlsafe(50))
 
     public_profile = db.Column(db.Boolean(), default=True)
 
