@@ -40,6 +40,11 @@
           </form>
       </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <p>You can check the <a href="https://github.com/CASES-LU/MOSP-documentation/blob/master/index.adoc#using-the-api" target="_blank">documentation of the API</a>.</p>
+        </div>
+     </div>
     <br />
     <a href="{{ url_for('user_bp.delete_account', user_id=user.id) }}" class="btn btn-warning" onclick="return confirm(_('You are going to delete your account.'));">{{ _('Delete your account') }}</a>
 </div>
