@@ -14,3 +14,4 @@ def test_user(session):
     assert user.is_api is False
     assert user.public_profile is True
     assert user.check_password("password") is True
+    assert user.apikey != ''
