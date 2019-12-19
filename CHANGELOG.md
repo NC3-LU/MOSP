@@ -1,6 +1,13 @@
 MOSP Changelog
 ==============
 
+## 0.10 (2019-12-19)
+
+- added token based authentication for the API. Documentation is available:
+  https://github.com/CASES-LU/MOSP-documentation/blob/master/index.adoc#using-the-api
+- the project is now using poetry.
+
+
 ## 0.9 (2019-12-12)
 
 - major improvements to the structure of the backend and to the models;
