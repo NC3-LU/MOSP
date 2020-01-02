@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Get poetry from source
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 # Make poetry available to $PATH
