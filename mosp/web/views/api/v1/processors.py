@@ -17,6 +17,7 @@ def auth_func(*args, **kw):
     """
     Pre-processor used to check if a user is authenticated.
     """
+    user = None
     if request.headers.get('Authorization', False):
         token = request.headers.get('Authorization').split(' ')[1]
         user = User.query.filter(User.apikey == token).first()
