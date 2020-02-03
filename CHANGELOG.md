@@ -1,7 +1,7 @@
 MOSP Changelog
 ==============
 
-## 0.11 (2020-01-29)
+## 0.11 (2020-02-03)
 
 - fixed an issue related to the authentication via the API (which is used by
   the JSON editor);
