@@ -17,6 +17,9 @@ def auth_func(*args, **kw):
     """
     Pre-processor used to check if a user is authenticated.
     """
+    if current_user.is_authenticated:
+        return
+
     user = None
     if request.headers.get('Authorization', False):
         token = request.headers.get('Authorization').split(' ')[1]
@@ -24,18 +27,15 @@ def auth_func(*args, **kw):
 
     if request.authorization:
         user = User.query.filter(User.login == request.authorization.username).first()
-        if not user:
+        if user and not user.check_password(request.authorization.password):
             raise ProcessingException("Couldn't authenticate your user", code=401)
-        if not user.check_password(request.authorization.password):
-            raise ProcessingException("Couldn't authenticate your user", code=401)
-        if not user.is_active:
-            raise ProcessingException("Couldn't authenticate your user", code=401)
-        if not user.is_api:
-            raise ProcessingException("Couldn't authenticate your user", code=401)
-        login_user_bundle(user)
 
-    if not current_user.is_authenticated:
-        raise ProcessingException(description="Not authenticated!", code=401)
+    if not user:
+        raise ProcessingException("Couldn't authenticate your user", code=401)
+    if not user.is_active:
+        raise ProcessingException("Couldn't authenticate your user", code=401)
+
+    login_user_bundle(user)
 
 
 def check_single_object_edit_permission(instance_id, data):
