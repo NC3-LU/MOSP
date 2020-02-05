@@ -1,6 +1,6 @@
 {
     "name": "MOSP",
-    "version": "0.10.0",
+    "version": "0.11.0",
     "description": "A platform for creating, editing and sharing JSON objects.",
     "private": true,
     "scripts": {
@@ -10,7 +10,7 @@
     "license": "AGPL-3.0-or-later",
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.12.0",
-        "@json-editor/json-editor": "^1.3.5",
+        "@json-editor/json-editor": "^2.0.0",
         "bootstrap": "^4.4.1",
         "bootstrap-select": "^1.13.12",
         "code-prettify": "^0.1.0",
@@ -19,8 +19,8 @@
         "jquery": "^3.4.1",
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
-        "papaparse": "^5.1.0",
-        "popper.js": "^1.16.0"
+        "papaparse": "^5.1.1",
+        "popper.js": "^1.16.1"
     },
     "engines": {
         "npm": "6.1.0"
