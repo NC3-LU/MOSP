@@ -4,7 +4,7 @@ from flask_login import login_required, current_user
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.menu import MenuLink
-from werkzeug import generate_password_hash
+from werkzeug.security import generate_password_hash
 from flask_babel import gettext
 from datetime import datetime, timedelta
 
