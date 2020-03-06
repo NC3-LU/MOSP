@@ -19,7 +19,7 @@
             "url": "https://github.com/heroku/heroku-buildpack-nodejs"
         },
         {
-            "url": "heroku/python"
+            "url": "https://github.com/moneymeets/python-poetry-buildpack"
         }
     ],
     "env": {
