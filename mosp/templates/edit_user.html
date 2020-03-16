@@ -24,10 +24,10 @@
     <div class="row">
         <div class="col">
             <form class="navbar-form navbar-right">
-                <label class="sr-only" for="inlineFormInputGroupAPIKey">API key</label>
+                <label class="sr-only" for="inlineFormInputGroupAPIKey">{{ _('API key') }}</label>
                 <div class="input-group mb-2 mr-sm-2">
                     <div class="input-group-prepend">
-                        <div class="input-group-text mb-2">API key</div>
+                        <div class="input-group-text mb-2">{{ _('API key') }}</div>
                     </div>
                     <input type="text" class="form-control" id="inlineFormInputGroupAPIKey" value="{{ current_user.apikey }}" readonly>
                     <div class="input-group-append">
@@ -42,7 +42,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <p>You can check the <a href="https://github.com/CASES-LU/MOSP-documentation/blob/master/index.adoc#using-the-api" target="_blank">documentation of the API</a>.</p>
+            <p>{{ _('You can check the <a href="https://github.com/CASES-LU/MOSP-documentation/blob/master/index.adoc#using-the-api" target="_blank">documentation of the API</a>.') }}</p>
         </div>
      </div>
     <hr /><br />

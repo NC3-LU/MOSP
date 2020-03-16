@@ -52,7 +52,7 @@ def form():
     user = User.query.filter(User.id == current_user.id).first()
     form = ProfileForm(obj=user)
     form.populate_obj(current_user)
-    action = "Edit user"
+    action = gettext("Edit user")
     head_titles = [action]
     head_titles.append(user.login)
     return render_template(

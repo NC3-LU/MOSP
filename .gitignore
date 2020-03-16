@@ -25,6 +25,7 @@ var/log/
 # Virtualenv
 venv
 build
+mosp.egg-info/
 
 .python-version
 

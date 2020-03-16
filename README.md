@@ -46,7 +46,7 @@ $ python manager.py db_create
 $ python manager.py db_init
 $ python manager.py import_licenses_from_spdx
 $ python manager.py create_admin <username> <password>
-$ pybabel compile -d mosp/web/translations
+$ pybabel compile -d mosp/translations
 $ python runserver.py
 ```
 

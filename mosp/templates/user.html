@@ -8,8 +8,8 @@
    </div>
     <div class="row">
         <div class="col">
-           <p>{{ user.login  }} is a member since
-               {{ user.created_at | datetimeformat('%c') }} and {{ _('is the creator of the following object(s):') }}</p>
+           <p>{{ user.login  }} {{ _('is a member since') }}
+               {{ user.created_at | datetimeformat('%c') }} {{ _('and is the creator of the following object(s):') }}</p>
        </div>
    </div>
    <div class="row">

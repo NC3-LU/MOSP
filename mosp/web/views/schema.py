@@ -173,7 +173,7 @@ def get_objects(schema_id=None):
 @login_required
 def form(schema_id=None, org_id=None):
     """Returns a form in order to edit a schema."""
-    action = "Create a schema"
+    action = gettext("Create a schema")
     head_titles = [action]
 
     form = SchemaForm()
@@ -197,7 +197,7 @@ def form(schema_id=None, org_id=None):
     form.org_id.choices.extend(
         [(org.id, org.name) for org in current_user.organizations]
     )
-    action = "Edit a schema"
+    action = gettext("Edit a schema")
     head_titles = [action]
     head_titles.append(schema.name)
     return render_template(

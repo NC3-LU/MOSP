@@ -3,13 +3,13 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Welcome {{ user.login }}</h1>
+            <h1>{{ _('Welcome') }} {{ user.login }}</h1>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <p>You are a member since {{ user.created_at | datetimeformat }}.</p>
-            <p>See the <a href="{{ url_for('user_bp.get', login=user.login) }}">objects</a> you already created.</p>
+            <p>{{ _('You are a member since') }} {{ user.created_at | datetimeformat }}.</p>
+            <p>{{ _('See the') }} <a href="{{ url_for('user_bp.get', login=user.login) }}">{{ _('objects') }}</a> {{ _('you already created.') }}</p>
         </div>
     </div>
     <div class="row">
