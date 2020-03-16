@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-03-16 08:51+0100\n"
+"POT-Creation-Date: 2020-03-16 08:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
+#: mosp/templates/about.html:14
+msgid ""
+"A platform to create, edit and share JSON objects.<br />\n"
+"                    The goal is to gather security related JSON objects,\n"
+"                    in the first place aimed to be used with\n"
+"                    <a href=\"https://github.com/monarc-"
+"project/MonarcAppFO\">MONARC</a>"
+msgstr ""
+
 #: mosp/templates/about.html:19
 msgid "More information"
 msgstr ""
 
 #: mosp/templates/about.html:19
 msgid "about this instance."
+msgstr ""
+
+#: mosp/templates/about.html:21
+msgid ""
+"You are welcome to copy, modify or redistribute the\n"
+"                <a href=\"https://github.com/CASES-LU/MOSP\">source "
+"code</a>\n"
+"                according to the <a "
+"href=\"https://www.gnu.org/licenses/agpl-3.0.html\">Affero</a> GPL "
+"license."
+msgstr ""
+
+#: mosp/templates/about.html:24
+msgid ""
+"Objects distributed through this platform are distributed under the open-"
+"source license choosed by their editor."
 msgstr ""
 
 #: mosp/templates/about_more.html:7
@@ -278,6 +303,10 @@ msgstr ""
 msgid "objects"
 msgstr ""
 
+#: mosp/templates/schemas.html:14 mosp/templates/view_object.html:80
+msgid "provided by"
+msgstr ""
+
 #: mosp/templates/user.html:11
 msgid "is a member since"
 msgstr ""
@@ -369,10 +398,6 @@ msgstr ""
 
 #: mosp/templates/view_object.html:77
 msgid "Validating JSON schema"
-msgstr ""
-
-#: mosp/templates/view_object.html:80
-msgid "provided by"
 msgstr ""
 
 #: mosp/templates/view_object.html:86

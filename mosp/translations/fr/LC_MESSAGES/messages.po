@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-03-16 08:51+0100\n"
-"PO-Revision-Date: 2020-03-16 08:52+0100\n"
+"POT-Creation-Date: 2020-03-16 08:57+0100\n"
+"PO-Revision-Date: 2020-03-16 09:00+0100\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Language: fr\n"
@@ -19,6 +19,21 @@ msgstr ""
 "Generated-By: Babel 2.5.3\n"
 "X-Generator: Poedit 2.2.4\n"
 
+#: mosp/templates/about.html:14
+msgid ""
+"A platform to create, edit and share JSON objects.<br />\n"
+"                    The goal is to gather security related JSON objects,\n"
+"                    in the first place aimed to be used with\n"
+"                    <a href=\"https://github.com/monarc-project/MonarcAppFO"
+"\">MONARC</a>"
+msgstr ""
+"Une plateforme pour créer, éditer et partager des objets JSON.<br />\n"
+"                    Le but est de rassembler des objets JSON liés à la "
+"sécurité,\n"
+"                    en premier lieu destinés à être utilisé avec\n"
+"                    <a href=\"https://github.com/monarc-project/MonarcAppFO"
+"\">MONARC</a>"
+
 #: mosp/templates/about.html:19
 msgid "More information"
 msgstr "Plus d'informations"
@@ -26,6 +41,28 @@ msgstr "Plus d'informations"
 #: mosp/templates/about.html:19
 msgid "about this instance."
 msgstr "à propos de cette instance."
+
+#: mosp/templates/about.html:21
+msgid ""
+"You are welcome to copy, modify or redistribute the\n"
+"                <a href=\"https://github.com/CASES-LU/MOSP\">source code</"
+"a>\n"
+"                according to the <a href=\"https://www.gnu.org/licenses/"
+"agpl-3.0.html\">Affero</a> GPL license."
+msgstr ""
+"Vous êtes invités à copier, modifier ou redistribuer le\n"
+"                <a href=\"https://github.com/CASES-LU/MOSP\">code source</"
+"a>\n"
+"               selon la license <a href=\"https://www.gnu.org/licenses/"
+"agpl-3.0.html\">Affero GPL</a>."
+
+#: mosp/templates/about.html:24
+msgid ""
+"Objects distributed through this platform are distributed under the open-"
+"source license choosed by their editor."
+msgstr ""
+"Les objets distribués via cette plate-forme sont distribués sous la licence "
+"open-source choisie par leur éditeur."
 
 #: mosp/templates/about_more.html:7
 msgid "MOSP version"
@@ -283,6 +320,10 @@ msgstr "valide"
 msgid "objects"
 msgstr "objets"
 
+#: mosp/templates/schemas.html:14 mosp/templates/view_object.html:80
+msgid "provided by"
+msgstr "fourni par"
+
 #: mosp/templates/user.html:11
 msgid "is a member since"
 msgstr "est membre depuis"
@@ -375,10 +416,6 @@ msgstr "Organisation propriétaire"
 #: mosp/templates/view_object.html:77
 msgid "Validating JSON schema"
 msgstr "Schéma JSON validant"
-
-#: mosp/templates/view_object.html:80
-msgid "provided by"
-msgstr "fourni par"
 
 #: mosp/templates/view_object.html:86
 msgid "Creator"

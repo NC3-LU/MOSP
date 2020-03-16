@@ -11,7 +11,7 @@
                         <h5 class="mb-1">{{ schema.name }}</h5> <span class="badge badge-primary badge-pill">{{ _('validates') }} {{ schema.objects.count() }} {{ _('objects') }}</span>
                     </div>
                     <p class="mb-1">{{ schema.description }}</p>
-                    <small>provided by {{ schema.organization.name }}.</small>
+                    <small>{{ _('provided by') }} {{ schema.organization.name }}.</small>
                 </a>
             {% endfor  %}
             </div>
