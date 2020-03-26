@@ -10,7 +10,7 @@
     "license": "AGPL-3.0-or-later",
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",
-        "@json-editor/json-editor": "^2.1.0",
+        "@json-editor/json-editor": "2.0.0",
         "bootstrap": "^4.4.1",
         "bootstrap-select": "^1.13.12",
         "code-prettify": "^0.1.0",
