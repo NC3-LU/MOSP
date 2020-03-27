@@ -258,6 +258,7 @@ def process_organization_form(organization_id=None):
     new_organization = Organization(
         name=form.name.data,
         description=form.description.data,
+        website=form.website.data,
         organization_type=form.organization_type.data,
     )
     new_members = []
