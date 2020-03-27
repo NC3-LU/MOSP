@@ -138,6 +138,23 @@ def view(schema_id=None):
     )
 
 
+@schema_bp.route("/def/<int:schema_id>", methods=["GET"])
+def definition(schema_id=None):
+    """
+    Returns the defintion of a JSON schema (text/plain).
+    """
+    json_schema = Schema.query.filter(Schema.id == schema_id).first()
+    if json_schema is None:
+        abort(404)
+    result = json.dumps(
+        json_schema.json_schema, sort_keys=True, indent=4, separators=(",", ": ")
+    )
+    return Response(
+        result,
+        mimetype="text/plain"
+    )
+
+
 @schema_bp.route("/<int:schema_id>/get_objects", methods=["GET"])
 def get_objects(schema_id=None):
     """Returns all JSON objects (JsonObject.json_object) validated by the
