@@ -9,6 +9,7 @@ import uuid
 import logging
 import flask_restless
 from flask import Flask, request
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_babel import Babel, format_datetime
 from werkzeug.routing import BaseConverter, ValidationError
@@ -68,6 +69,7 @@ db = SQLAlchemy(application)
 
 babel = Babel(application)
 
+cors = CORS(application, resources={r"/schema/def/*": {"origins": "*"}})
 
 @babel.localeselector
 def get_locale():
