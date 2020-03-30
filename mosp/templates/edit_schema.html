@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='npm_components/codemirror/lib/codemirror.css') }}">
+<script src="{{ url_for('static', filename='npm_components/codemirror/lib/codemirror.js') }}"></script>
+{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -39,7 +44,7 @@
                         <div class="form-group">
                             <label for="{{ form.json_schema.id }}" class="control-label">{{ form.json_schema.label }}</label>
                             <div>
-                                {{ form.json_schema(rows='50', class_="form-control") }}
+                                {{ form.json_schema(class_="form-control") }}
                             </div>
                             {% for error in form.json_schema.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
                         </div>
@@ -66,4 +71,14 @@
         </div>
     </div>
 </div><!-- /.container -->
+<script>
+$(document).ready(function() {
+    textarea = document.getElementById("json_schema");
+    var editor = CodeMirror.fromTextArea(textarea, {
+        lineNumbers: true,
+        viewportMargin: 50,
+        mode:  "javascript"
+    });
+});
+</script>
 {% endblock %}
