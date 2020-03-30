@@ -209,7 +209,9 @@ def form(schema_id=None, org_id=None):
 
     schema = Schema.query.filter(Schema.id == schema_id).first()
     form = SchemaForm(obj=schema)
-    form.json_schema.data = json.dumps(schema.json_schema)
+    form.json_schema.data = json.dumps(
+        schema.json_schema, sort_keys=True, indent=4, separators=(",", ": ")
+    )
     form.org_id.choices = [(0, "")]
     form.org_id.choices.extend(
         [(org.id, org.name) for org in current_user.organizations]
