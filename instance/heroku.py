@@ -4,6 +4,7 @@ HOST = '0.0.0.0'
 PORT = os.environ.get('PORT')
 DEBUG = False
 TESTING = False
+INSTANCE_URL = 'http://127.0.0.1:5000'
 
 SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 SQLALCHEMY_TRACK_MODIFICATIONS = False

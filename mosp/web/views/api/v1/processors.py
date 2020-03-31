@@ -21,8 +21,8 @@ def auth_func(*args, **kw):
         return
 
     user = None
-    if request.headers.get('Authorization', False):
-        token = request.headers.get('Authorization').split(' ')[1]
+    if request.headers.get("Authorization", False):
+        token = request.headers.get("Authorization").split(" ")[1]
         user = User.query.filter(User.apikey == token).first()
 
     if request.authorization:

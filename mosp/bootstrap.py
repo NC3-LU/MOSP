@@ -71,6 +71,7 @@ babel = Babel(application)
 
 cors = CORS(application, resources={r"/schema/def/*": {"origins": "*"}})
 
+
 @babel.localeselector
 def get_locale():
     # if a user is logged in, use the locale from the user settings

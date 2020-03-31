@@ -2,6 +2,7 @@ import json
 import ast
 import operator
 import functools
+from urllib.parse import urljoin
 from flask import (
     Blueprint,
     Response,
@@ -15,9 +16,9 @@ from flask import (
 from flask_login import login_required, current_user
 from flask_babel import gettext
 from flask_paginate import Pagination, get_page_args
-from sqlalchemy import func, Boolean, Integer, desc, nullslast
+from sqlalchemy import func, Boolean, Integer, desc, nullslast, or_
 
-from mosp.bootstrap import db
+from mosp.bootstrap import db, application
 from mosp.web.forms import SchemaForm
 from mosp.models import Schema, JsonObject
 
@@ -139,20 +140,26 @@ def view(schema_id=None):
 
 
 @schema_bp.route("/def/<int:schema_id>", methods=["GET"])
-def definition(schema_id=None):
+@schema_bp.route("/def/<uuid:schema_uuid>", methods=["GET"])
+def definition(schema_id=None, schema_uuid=None):
     """
     Returns the defintion of a JSON schema (text/plain).
     """
-    json_schema = Schema.query.filter(Schema.id == schema_id).first()
+    schema_uuid_absolute = urljoin(
+        application.config["INSTANCE_URL"], "schema/def/" + str(schema_uuid)
+    )
+    json_schema = Schema.query.filter(
+        or_(
+            Schema.id == schema_id,
+            Schema.json_schema[("$id")].astext == schema_uuid_absolute,
+        )
+    ).first()
     if json_schema is None:
         abort(404)
     result = json.dumps(
         json_schema.json_schema, sort_keys=True, indent=4, separators=(",", ": ")
     )
-    return Response(
-        result,
-        mimetype="text/plain"
-    )
+    return Response(result, mimetype="text/plain")
 
 
 @schema_bp.route("/<int:schema_id>/get_objects", methods=["GET"])
