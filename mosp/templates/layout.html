@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/@fortawesome/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/code-prettify/src/prettify.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/code-prettify/styles/sunburst.css') }}">
     {% endblock %}
     <script src="{{ url_for('static', filename='npm_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='npm_components/popper.js/dist/umd/popper.min.js') }}"></script>
@@ -24,13 +26,13 @@
     <script src="{{ url_for('static', filename='npm_components/datatables.net-bs4/js/dataTables.bootstrap4.js') }}"></script>
     <script src="{{ url_for('static', filename='npm_components/lodash/lodash.min.js') }}"></script>
     <script src="{{ url_for('static', filename='npm_components/moment/min/moment.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='npm_components/code-prettify/loader/run_prettify.js') }}?skin=sunburst"></script>
+    <script src="{{ url_for('static', filename='npm_components/code-prettify/src/prettify.js') }}?skin=sunburst"></script>
     <script src="{{ url_for('static', filename='js/templates.js') }}"></script>
     <title>MOSP</title>
     {% endblock %}
 </head>
 {% block page_body %}
-<body>
+<body onload="PR.prettyPrint()">
     {% block main_menu %}
         <nav class="navbar navbar-expand-lg navbar-dark bg-MOSP-blue">
             <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/logo.png') }}" width="120px" alt="MONARC Objects Sharing Platform" title="MONARC Objects Sharing Platform" /></a>

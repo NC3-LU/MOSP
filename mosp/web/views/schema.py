@@ -207,13 +207,36 @@ def form(schema_id=None, org_id=None):
     )
 
     if schema_id is None:
+        # Creation of a new schema
+
+        # initialization of the minimum for a valid JSON schema with an ID on
+        # this platform.
+        default_minimum_json_schema = {
+            "id": "{}".format(application.config["INSTANCE_URL"], "schema/def/<UUID-of-the-schema>"),
+            "$schema": "http://json-schema.org/schema#",
+            "title": "Title of the schema",
+            "description": "Description of the purpose of this schema.",
+            "type": "object",
+            "properties": {
+            },
+            "required": []
+        }
+        form.json_schema.data = json.dumps(
+            default_minimum_json_schema, sort_keys=True, indent=4, separators=(",", ": ")
+        )
+        # set the organization id
         org_id = request.args.get("org_id", None)
         if org_id is not None:
             form.org_id.data = int(org_id)
         return render_template(
-            "edit_schema.html", action=action, head_titles=head_titles, form=form
+            "edit_schema.html",
+            action=action,
+            head_titles=head_titles,
+            form=form,
+            schema_id=schema_id,
         )
 
+    # Edition of an existing schema
     schema = Schema.query.filter(Schema.id == schema_id).first()
     form = SchemaForm(obj=schema)
     form.json_schema.data = json.dumps(
@@ -232,6 +255,7 @@ def form(schema_id=None, org_id=None):
         head_titles=head_titles,
         schema=schema,
         form=form,
+        schema_id=schema_id,
     )
 
 
