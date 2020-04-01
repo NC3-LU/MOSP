@@ -207,6 +207,8 @@ def form(schema_id=None, org_id=None):
     )
 
     if schema_id is None:
+        # Creation of a new schema
+        form.json_schema.data = {}
         org_id = request.args.get("org_id", None)
         if org_id is not None:
             form.org_id.data = int(org_id)
@@ -218,6 +220,7 @@ def form(schema_id=None, org_id=None):
             schema_id=schema_id,
         )
 
+    # Edition of an existing schema
     schema = Schema.query.filter(Schema.id == schema_id).first()
     form = SchemaForm(obj=schema)
     form.json_schema.data = json.dumps(
