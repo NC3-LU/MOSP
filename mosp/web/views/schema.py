@@ -211,7 +211,11 @@ def form(schema_id=None, org_id=None):
         if org_id is not None:
             form.org_id.data = int(org_id)
         return render_template(
-            "edit_schema.html", action=action, head_titles=head_titles, form=form
+            "edit_schema.html",
+            action=action,
+            head_titles=head_titles,
+            form=form,
+            schema_id=schema_id,
         )
 
     schema = Schema.query.filter(Schema.id == schema_id).first()
@@ -232,6 +236,7 @@ def form(schema_id=None, org_id=None):
         head_titles=head_titles,
         schema=schema,
         form=form,
+        schema_id=schema_id,
     )
 
 

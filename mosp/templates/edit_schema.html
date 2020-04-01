@@ -13,7 +13,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form action="" method="post" name="save" enctype="multipart/form-data">
+            <form action="{{ url_for('schema_bp.process_form', schema_id=schema_id) }}" method="post" name="save" enctype="multipart/form-data">
                 {{ form.hidden_tag() }}
                 <div class="form-row">
                     <div class="col">
