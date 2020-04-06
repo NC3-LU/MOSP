@@ -203,11 +203,20 @@ function initialize_editor_with_schema(schema, json_object) {
 
         if (jsoneditor) jsoneditor.destroy();
         jsoneditor = new JSONEditor($editor, {
+            // The schema for the editor
             schema: schema,
+
+            // Seed the form with a starting value
             startval: startval,
 
             // Enable fetching schemas via ajax
             ajax: true,
+
+            // Disable additional properties
+            no_additional_properties: true,
+
+            // Require all properties by default
+            required_by_default: true,
 
             theme: "bootstrap4",
             iconlib: "fontawesome5",
