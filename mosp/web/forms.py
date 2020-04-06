@@ -144,6 +144,7 @@ class SchemaForm(FlaskForm):
         lazy_gettext("Organization"),
         [validators.Required(lazy_gettext("Please select an organization"))],
         coerce=int,
+        default=0
     )
     org_id.choices = [(0, "")]
 

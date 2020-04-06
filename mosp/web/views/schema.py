@@ -278,7 +278,9 @@ def process_form(schema_id=None):
     )
 
     if not form.validate():
-        return render_template("edit_schema.html", form=form)
+        if form.org_id.data == 0:
+            flash(gettext("You must specify an organization."), "warning")
+        return redirect(url_for("schema_bp.form"))
 
     # Edit an existing schema
     if schema_id is not None:
@@ -318,7 +320,7 @@ def process_form(schema_id=None):
             "success",
         )
     except Exception:
-        return redirect(url_for("schema_bp.form", schema_id=new_schema.id))
+        return redirect(url_for("schema_bp.form"))
     return redirect(url_for("schema_bp.form", schema_id=new_schema.id))
 
 
