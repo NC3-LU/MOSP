@@ -72,12 +72,12 @@ def generate_misp_galaxy_cluster(json_object):
     for value in json_object.json_object.get("values", []):
         cluster["values"].append(
             {
-                "uuid": value.get("uuid", ""),
-                "value": value.get("code", ""),
-                "description": value.get("label")
-                if value.get("label", False)
-                else value.get("description", ""),
-                "meta": {},
+                "uuid": value.pop("uuid", ""),
+                "value": value.pop("code", ""),
+                "description": value.pop("label")
+                    if value.get("label", False)
+                    else value.pop("description", ""),
+                "meta": value,
             }
         )
     return (galaxy, cluster)
