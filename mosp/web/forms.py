@@ -13,8 +13,10 @@ from wtforms import (
     SubmitField,
     validators,
     HiddenField,
-    SelectMultipleField,
+    SelectMultipleField
 )
+from wtforms.fields.html5 import EmailField
+from wtforms.validators import Email, InputRequired
 from werkzeug.exceptions import NotFound, HTTPException
 from flask_babel import lazy_gettext
 
@@ -164,6 +166,7 @@ class UserForm(FlaskForm):
         ],
     )
     password = PasswordField(lazy_gettext("Password"))
+    email = EmailField("Email", [InputRequired("Please enter your email address."), Email("Please enter your email address.")])
     public_profile = BooleanField(lazy_gettext("Public profile"), default=True)
     is_active = BooleanField(lazy_gettext("Active"), default=True)
     is_admin = BooleanField(lazy_gettext("Admin"), default=False)
@@ -218,5 +221,6 @@ class ProfileForm(FlaskForm):
         ],
     )
     password = PasswordField(lazy_gettext("Password"))
+    email = EmailField("Email", [InputRequired("Please enter your email address."), Email("Please enter your email address.")])
     public_profile = BooleanField(lazy_gettext("Public profile"), default=True)
     submit = SubmitField(lazy_gettext("Save"))

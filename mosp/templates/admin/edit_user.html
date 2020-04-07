@@ -18,6 +18,11 @@
             {{ form.password(class_="form-control") }} {% for error in form.password.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
         </div>
 
+        <div class="form-group">
+           {{ form.email.label }}
+           {{ form.email(class_="form-control") }} {% for error in form.email.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+        </div>
+
          <div class="form-check form-check-inline">
             {{ form.public_profile(class_="form-check-input") }} {% for error in form.public_profile.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
             {{ form.public_profile.label(class_="form-check-label")  }}
