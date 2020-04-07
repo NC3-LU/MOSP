@@ -48,7 +48,7 @@ $ export FLASK_ENV=development
 $ flask db_create
 $ flask db_init
 $ flask import_licenses_from_spdx
-$ flask create_admin --nickname <nickname> --password <password>
+$ flask create_admin --login <login> --password <password>
 $ flask run
  * Serving Flask app "runserver" (lazy loading)
  * Environment: development
@@ -88,8 +88,8 @@ password.
 If you want to create other users programmatically:
 
 ```bash
-$ heroku run flask create_user --nickname <nickname> --password <password>
-$ heroku run flask create_admin --nickname <nickname> --password <password>
+$ heroku run flask create_user --login <nickname> --password <password>
+$ heroku run flask create_admin --login <nickname> --password <password>
 ```
 
 ## Contributing
