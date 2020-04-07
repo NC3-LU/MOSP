@@ -9,7 +9,7 @@ import mosp.scripts
 import mosp.models
 from mosp.bootstrap import application, db
 
-logger = logging.getLogger('commands')
+logger = logging.getLogger("commands")
 
 
 @application.cli.command("uml_graph")
@@ -30,8 +30,11 @@ def db_empty():
 def db_create():
     "Will create the database."
     with application.app_context():
-        mosp.models.db_create(db, application.config['DB_CONFIG_DICT'],
-                        application.config['DATABASE_NAME'])
+        mosp.models.db_create(
+            db,
+            application.config["DB_CONFIG_DICT"],
+            application.config["DATABASE_NAME"],
+        )
 
 
 @application.cli.command("db_init")
@@ -50,8 +53,8 @@ def import_licenses_from_spdx():
 
 
 @application.cli.command("create_user")
-@click.option('--login', default='admin', help='Login')
-@click.option('--password', default='password', help='Password')
+@click.option("--login", default="admin", help="Login")
+@click.option("--password", default="password", help="Password")
 def create_user(login, password):
     "Initializes a user"
     print("Creation of the user {} ...".format(login))
@@ -60,8 +63,8 @@ def create_user(login, password):
 
 
 @application.cli.command("create_admin")
-@click.option('--login', default='admin', help='Login')
-@click.option('--password', default='password', help='Password')
+@click.option("--login", default="admin", help="Login")
+@click.option("--password", default="password", help="Password")
 def create_admin(login, password):
     "Initializes an admin user"
     print("Creation of the admin user {} ...".format(login))

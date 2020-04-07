@@ -13,7 +13,7 @@ from wtforms import (
     SubmitField,
     validators,
     HiddenField,
-    SelectMultipleField
+    SelectMultipleField,
 )
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import Email, InputRequired
@@ -146,7 +146,7 @@ class SchemaForm(FlaskForm):
         lazy_gettext("Organization"),
         [validators.Required(lazy_gettext("Please select an organization"))],
         coerce=int,
-        default=0
+        default=0,
     )
     org_id.choices = [(0, "")]
 
@@ -166,7 +166,13 @@ class UserForm(FlaskForm):
         ],
     )
     password = PasswordField(lazy_gettext("Password"))
-    email = EmailField("Email", [InputRequired("Please enter your email address."), Email("Please enter your email address.")])
+    email = EmailField(
+        "Email",
+        [
+            InputRequired("Please enter your email address."),
+            Email("Please enter your email address."),
+        ],
+    )
     public_profile = BooleanField(lazy_gettext("Public profile"), default=True)
     is_active = BooleanField(lazy_gettext("Active"), default=True)
     is_admin = BooleanField(lazy_gettext("Admin"), default=False)
@@ -221,6 +227,12 @@ class ProfileForm(FlaskForm):
         ],
     )
     password = PasswordField(lazy_gettext("Password"))
-    email = EmailField("Email", [InputRequired("Please enter your email address."), Email("Please enter your email address.")])
+    email = EmailField(
+        "Email",
+        [
+            InputRequired("Please enter your email address."),
+            Email("Please enter your email address."),
+        ],
+    )
     public_profile = BooleanField(lazy_gettext("Public profile"), default=True)
     submit = SubmitField(lazy_gettext("Save"))
