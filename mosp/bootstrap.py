@@ -12,6 +12,7 @@ from flask import Flask, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_babel import Babel, format_datetime
+from flask_migrate import Migrate
 from werkzeug.routing import BaseConverter, ValidationError
 
 
@@ -65,7 +66,7 @@ else:
     except Exception:
         application.config.from_pyfile("development.py", silent=False)
 db = SQLAlchemy(application)
-
+migrate = Migrate(application, db)
 
 babel = Babel(application)
 
