@@ -45,10 +45,10 @@ $ poetry shell
 $ pybabel compile -d mosp/translations
 $ export FLASK_APP=runserver.py
 $ export FLASK_ENV=development
-$ python db_create
-$ python db_init
-$ python import_licenses_from_spdx
-$ python create_admin --nickname <nickname> --password <password>
+$ flask db_create
+$ flask db_init
+$ flask import_licenses_from_spdx
+$ flask create_admin --nickname <nickname> --password <password>
 $ flask run
  * Serving Flask app "runserver" (lazy loading)
  * Environment: development
