@@ -96,11 +96,11 @@ def generate_tar_gz_archive(galaxy, cluster):
     # t.type = tarfile.DIRTYPE
     # tar.addfile(t)
 
-    tarinfo = tarfile.TarInfo("galaxy.json")
+    tarinfo = tarfile.TarInfo("{}-galaxy.json".format(galaxy["name"].replace(" ", "_")))
     tarinfo.size = len(galaxy_str)
     tar.addfile(tarinfo, BytesIO(galaxy_str.encode()))
 
-    tarinfo = tarfile.TarInfo("cluster.json")
+    tarinfo = tarfile.TarInfo("{}-cluster.json".format(cluster["name"].replace(" ", "_")))
     tarinfo.size = len(cluster_str)
     tar.addfile(tarinfo, BytesIO(cluster_str.encode()))
 
