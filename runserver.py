@@ -2,6 +2,19 @@
 # -*- coding: utf-8 -*-
 
 from mosp.bootstrap import application
+from mosp import commands
+
+
+def register_commands(app):
+    """Register Click commands."""
+    app.cli.add_command(commands.uml_graph)
+    app.cli.add_command(commands.db_empty)
+    app.cli.add_command(commands.db_create)
+    app.cli.add_command(commands.db_init)
+    app.cli.add_command(commands.import_licenses_from_spdx)
+    app.cli.add_command(commands.create_admin)
+    app.cli.add_command(commands.create_user)
+
 
 with application.app_context():
 
@@ -19,6 +32,8 @@ with application.app_context():
     application.register_blueprint(views.api.v1.blueprint_organization)
     application.register_blueprint(views.api.v1.blueprint_schema)
     application.register_blueprint(views.api.v1.blueprint_object)
+
+    register_commands(application)
 
 
 if __name__ == '__main__':

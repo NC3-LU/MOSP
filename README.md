@@ -42,12 +42,21 @@ $ cd MOSP/
 $ npm install
 $ poetry install
 $ poetry shell
-$ python manager.py db_create
-$ python manager.py db_init
-$ python manager.py import_licenses_from_spdx
-$ python manager.py create_admin <username> <password>
 $ pybabel compile -d mosp/translations
-$ python runserver.py
+$ export FLASK_APP=runserver.py
+$ export FLASK_ENV=development
+$ python db_create
+$ python db_init
+$ python import_licenses_from_spdx
+$ python create_admin --nickname <nickname> --password <password>
+$ flask run
+ * Serving Flask app "runserver" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 221-873-938
 ```
 
 
@@ -65,7 +74,7 @@ $ heroku buildpacks:add --index 1 heroku/python
 $ heroku buildpacks:add --index 2 https://github.com/heroku/heroku-buildpack-nodejs
 $ git push heroku master
 $ heroku run init
-$ heroku run python manager.py import_licenses_from_spdx
+$ heroku run flask import_licenses_from_spdx
 $ heroku ps:scale web=1
 ```
 
@@ -79,8 +88,8 @@ password.
 If you want to create other users programmatically:
 
 ```bash
-$ heroku run python manager.py create_user <login> <password>
-$ heroku run python manager.py create_admin <login> <password>
+$ heroku run flask create_user --nickname <nickname> --password <password>
+$ heroku run flask create_admin --nickname <nickname> --password <password>
 ```
 
 ## Contributing

@@ -223,17 +223,6 @@ sqlalchemy = ">=0.8"
 
 [[package]]
 category = "main"
-description = "Scripting support for Flask"
-name = "flask-script"
-optional = false
-python-versions = "*"
-version = "2.0.6"
-
-[package.dependencies]
-Flask = "*"
-
-[[package]]
-category = "main"
 description = "Adds SQLAlchemy support to your Flask application."
 name = "flask-sqlalchemy"
 optional = false
@@ -584,7 +573,7 @@ version = "2.2.1"
 locale = ["Babel (>=1.3)"]
 
 [metadata]
-content-hash = "96204cefed9e9e704efb1fd184190804992904fc3b374e552b23b724f7f3552a"
+content-hash = "e671da142ba0ce44b8a4eb33bca4b4d5470b06ba2c2d27ff68a4e213e7f876f4"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -657,9 +646,6 @@ flask-principal = [
 ]
 flask-restless = [
     {file = "Flask-Restless-0.17.0.tar.gz", hash = "sha256:1de47fe80abd47239c9a1804e0ba5da1d23b9f40cfc26202d16bed37f178c2b6"},
-]
-flask-script = [
-    {file = "Flask-Script-2.0.6.tar.gz", hash = "sha256:6425963d91054cfcc185807141c7314a9c5ad46325911bd24dcb489bd0161c65"},
 ]
 flask-sqlalchemy = [
     {file = "Flask-SQLAlchemy-2.4.1.tar.gz", hash = "sha256:6974785d913666587949f7c2946f7001e4fa2cb2d19f4e69ead02e4b8f50b33d"},
