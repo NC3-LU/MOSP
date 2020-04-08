@@ -1,11 +1,14 @@
 Dear {{ user.login }},
 
-Your or someone else asked for account recovery.
+You or someone else has requested an account recovery.
 
-If it was really you, click on the following link in order to change your
+If it was really you, click on the following link to change your
 password:
 {{ instance_url }}/user/recover_account/{{ token }}
 
 The link expires at {{ expire_time.strftime('%Y-%m-%d %H:%M') }}.
 
-See you,
+Kind regards,
+
+The CASES team
+https://www.cases.lu
