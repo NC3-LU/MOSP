@@ -104,6 +104,26 @@ class AccountRecoveryForm(RedirectForm):
     submit = SubmitField(lazy_gettext("OK"))
 
 
+class AccountRecoveryNewPasswordForm(RedirectForm):
+    """Sign in form.
+    """
+    password1 = PasswordField(
+        lazy_gettext("Password"),
+        [
+            validators.Required(lazy_gettext("Please enter your new password.")),
+            validators.Length(min=6, max=100),
+        ],
+    )
+    password2 = PasswordField(
+        lazy_gettext("Password"),
+        [
+            validators.Required(lazy_gettext("Please enter your new password.")),
+            validators.Length(min=6, max=100),
+        ],
+    )
+    submit = SubmitField(lazy_gettext("OK"))
+
+
 class AddObjectForm(FlaskForm):
     """Form to create and edit JsonObject."""
     name = TextField("Name", [validators.Required(lazy_gettext("Please enter a name"))])

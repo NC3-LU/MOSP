@@ -2,7 +2,8 @@ Dear {{ user.login }},
 
 Your or someone else asked for account recovery.
 
-If it is really you click on the following link in order to confirm it:
+If it was really you, click on the following link in order to change your
+password:
 {{ instance_url }}/user/recover_account/{{ token }}
 
 The link expires at {{ expire_time.strftime('%Y-%m-%d %H:%M') }}.

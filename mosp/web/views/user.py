@@ -6,7 +6,8 @@ from flask_paginate import Pagination, get_page_args
 
 from mosp.bootstrap import db
 from mosp.models import User, JsonObject
-from mosp.web.forms import ProfileForm, AccountRecoveryForm
+from mosp.web.forms import ProfileForm, AccountRecoveryForm, AccountRecoveryNewPasswordForm
+from mosp.web.lib.user_utils import confirm_token
 from mosp.notifications import notifications
 
 
@@ -137,3 +138,37 @@ def account_recovery():
         flash(gettext("An email has been sent to you with a recover link."), "success")
 
     return redirect(url_for("index"))
+
+
+@user_bp.route("/recover_account/<string:token>", methods=["GET", "POST"])
+def confirm_account(token=None):
+    """
+    Confirm the account recovery of a user.
+    """
+    user, login = None, None
+    if token != "":
+        login = confirm_token(token)
+    if login:
+        user = User.query.filter(User.login == login).first()
+    if user is None:
+        flash(gettext("Impossible to recover this account."), "danger")
+        return redirect(url_for("login"))
+
+    form = AccountRecoveryNewPasswordForm()
+
+    if request.method == "GET":
+        if user is not None:
+            return render_template("account_recovery_set_password.html", form=form)
+        else:
+            flash(gettext("Impossible to recover this account."), "danger")
+    else:
+        if form.password1.data == form.password2.data:
+            user.pwdhash = generate_password_hash(form.password1.data)
+            db.session.add(user)
+            db.session.commit()
+            flash(gettext("Your password has been updated."), "success")
+        else:
+            flash(gettext("Password must be the same."), "danger")
+            return render_template("account_recovery_set_password.html", form=form)
+
+    return redirect(url_for("login"))
