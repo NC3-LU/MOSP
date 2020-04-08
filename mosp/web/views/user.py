@@ -122,6 +122,10 @@ def delete_account():
 
 @user_bp.route("/account_recovery", methods=["GET", "POST"])
 def account_recovery():
+    """Returns a form for the account recovery.
+    The user will have to provide the login of the account to recover. It can
+    not be done via email address since an email address is not unique.
+    """
     form = AccountRecoveryForm()
     if request.method == "GET":
         return render_template("account_recovery.html", form=form)
@@ -133,7 +137,7 @@ def account_recovery():
             )
             return redirect(url_for("index"))
 
-        # Send the recovery email
+        # Send the recovery email with the temporary token
         try:
             notifications.account_recovery(user)
         except Exception as error:
@@ -153,8 +157,10 @@ def account_recovery():
 @user_bp.route("/recover_account/<string:token>", methods=["GET", "POST"])
 def confirm_account(token=None):
     """
-    Confirm the account recovery of a user.
+    Confirm the account recovery of a user with the token that the user has
+    received previously by email.
     """
+    # Check the token
     user, login = None, None
     if token != "":
         login = confirm_token(token)
@@ -164,14 +170,19 @@ def confirm_account(token=None):
         flash(gettext("Impossible to recover this account."), "danger")
         return redirect(url_for("login"))
 
+    # Management of the Web form
     form = AccountRecoveryNewPasswordForm()
 
     if request.method == "GET":
+        # Asks the user to provide a new password, in the case the token is
+        # valid
         if user is not None:
             return render_template("account_recovery_set_password.html", form=form)
         else:
             flash(gettext("Impossible to recover this account."), "danger")
     else:
+        # Update the password of the user (if the token is valid and if the
+        # two passwards are equal)
         if form.password1.data == form.password2.data:
             user.pwdhash = generate_password_hash(form.password1.data)
             db.session.add(user)
