@@ -6,7 +6,11 @@ from flask_paginate import Pagination, get_page_args
 
 from mosp.bootstrap import db
 from mosp.models import User, JsonObject
-from mosp.web.forms import ProfileForm, AccountRecoveryForm, AccountRecoveryNewPasswordForm
+from mosp.web.forms import (
+    ProfileForm,
+    AccountRecoveryForm,
+    AccountRecoveryNewPasswordForm,
+)
 from mosp.web.lib.user_utils import confirm_token
 from mosp.notifications import notifications
 
@@ -115,6 +119,7 @@ def delete_account():
 # Account revocery
 #
 
+
 @user_bp.route("/account_recovery", methods=["GET", "POST"])
 def account_recovery():
     form = AccountRecoveryForm()
@@ -122,6 +127,11 @@ def account_recovery():
         return render_template("account_recovery.html", form=form)
     else:
         user = User.query.filter(User.login == form.login.data).first()
+        if user is None:
+            flash(
+                gettext("This user does not exist."), "danger",
+            )
+            return redirect(url_for("index"))
 
         # Send the recovery email
         try:
