@@ -40,7 +40,7 @@ def account_recovery(user):
     plaintext = render_template(
         "emails/account_recovery.txt",
         user=user,
-        platform_url=application.config["INSTANCE_URL"],
+        instance_url=application.config["INSTANCE_URL"],
         token=token,
         expire_time=expire_time,
     )
