@@ -149,7 +149,7 @@ def account_recovery():
             )
             return redirect(url_for("index"))
 
-        flash(gettext("An email has been sent to you with a recover link."), "success")
+        flash(gettext("An email with a recovery link has been sent to you."), "success")
 
     return redirect(url_for("index"))
 
