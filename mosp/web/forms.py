@@ -52,10 +52,8 @@ class RedirectForm(FlaskForm):
 
 
 class SigninForm(RedirectForm):
+    """Sign in form.
     """
-    Sign in form.
-    """
-
     login = TextField(
         lazy_gettext("Login"),
         [
@@ -93,9 +91,21 @@ class SigninForm(RedirectForm):
         return validated
 
 
+class AccountRecoveryForm(RedirectForm):
+    """Sign in form.
+    """
+    login = TextField(
+        lazy_gettext("Login"),
+        [
+            validators.Length(min=3, max=30),
+            validators.Required(lazy_gettext("Please enter your login.")),
+        ],
+    )
+    submit = SubmitField(lazy_gettext("OK"))
+
+
 class AddObjectForm(FlaskForm):
     """Form to create and edit JsonObject."""
-
     name = TextField("Name", [validators.Required(lazy_gettext("Please enter a name"))])
     description = TextAreaField(
         lazy_gettext("Description"),
@@ -154,10 +164,8 @@ class SchemaForm(FlaskForm):
 
 
 class UserForm(FlaskForm):
+    """Create or edit a user (for the administrator).
     """
-    Create or edit a user (for the administrator).
-    """
-
     login = TextField(
         lazy_gettext("Login"),
         [
@@ -189,10 +197,8 @@ class UserForm(FlaskForm):
 
 
 class OrganizationForm(FlaskForm):
+    """Create or edit an organization (for the administrator).
     """
-    Create or edit an organization (for the administrator).
-    """
-
     name = TextField(
         lazy_gettext("Name"),
         [
@@ -215,10 +221,8 @@ class OrganizationForm(FlaskForm):
 
 
 class ProfileForm(FlaskForm):
+    """Edit a profile.
     """
-    Edit a profile.
-    """
-
     login = TextField(
         lazy_gettext("Login"),
         [

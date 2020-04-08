@@ -1,0 +1,10 @@
+Dear {{ user.login }},
+
+Your or someone else asked for account recovery.
+
+If it is really you click on the following link in order to confirm it:
+{{ instance_url }}/user/recover_account/{{ token }}
+
+The link expires at {{ expire_time.strftime('%Y-%m-%d %H:%M') }}.
+
+See you,

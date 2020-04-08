@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, abort
+from flask import Blueprint, render_template, redirect, url_for, flash, abort, request
 from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash
 from flask_babel import gettext
@@ -6,7 +6,8 @@ from flask_paginate import Pagination, get_page_args
 
 from mosp.bootstrap import db
 from mosp.models import User, JsonObject
-from mosp.web.forms import ProfileForm
+from mosp.web.forms import ProfileForm, AccountRecoveryForm
+from mosp.notifications import notifications
 
 
 user_bp = Blueprint("user_bp", __name__, url_prefix="/user")
@@ -106,4 +107,33 @@ def delete_account():
     db.session.delete(user)
     db.session.commit()
     flash(gettext("Account deleted."), "success")
+    return redirect(url_for("index"))
+
+
+#
+# Account revocery
+#
+
+@user_bp.route("/account_recovery", methods=["GET", "POST"])
+def account_recovery():
+    form = AccountRecoveryForm()
+    if request.method == "GET":
+        return render_template("account_recovery.html", form=form)
+    else:
+        user = User.query.filter(User.login == form.login.data).first()
+
+        # Send the recovery email
+        try:
+            notifications.account_recovery(user)
+        except Exception as error:
+            flash(
+                gettext(
+                    "Problem while sending activation email: %(error)s", error=error
+                ),
+                "danger",
+            )
+            return redirect(url_for("index"))
+
+        flash(gettext("An email has been sent to you with a recover link."), "success")
+
     return redirect(url_for("index"))

@@ -26,28 +26,27 @@ from flask import render_template
 
 from mosp.bootstrap import application
 from mosp.notifications import emails
-# from mosp.web.lib.user_utils import generate_confirmation_token
+from mosp.web.lib.user_utils import generate_confirmation_token
 
 
-def new_account_notification(user, email):
+def account_recovery(user):
+    """Account recovery.
     """
-    Account creation notification.
-    """
-    token = generate_confirmation_token(user.nickname)
+    token = generate_confirmation_token(user.login)
     expire_time = datetime.datetime.now() + datetime.timedelta(
         seconds=application.config["TOKEN_VALIDITY_PERIOD"]
     )
 
     plaintext = render_template(
-        "emails/account_activation.txt",
+        "emails/account_recovery.txt",
         user=user,
-        platform_url=application.config["PLATFORM_URL"],
+        platform_url=application.config["INSTANCE_URL"],
         token=token,
         expire_time=expire_time,
     )
 
     emails.send(
-        to=email, subject="[MOSP] Account creation", plaintext=plaintext,
+        to=user.email, subject="[MOSP] Account recovery", plaintext=plaintext,
     )
 
 

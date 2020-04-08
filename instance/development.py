@@ -29,11 +29,13 @@ CSRF_ENABLED = True
 # slow database query threshold (in seconds)
 DATABASE_QUERY_TIMEOUT = 0.5
 
-MAIL_SERVER = 'localhost'
+# Notification
+MAIL_SERVER = "localhost"
 MAIL_PORT = 25
 MAIL_USE_TLS = False
 MAIL_USE_SSL = False
 MAIL_DEBUG = DEBUG
 MAIL_USERNAME = None
 MAIL_PASSWORD = None
-MAIL_DEFAULT_SENDER = ADMIN_EMAIL
+MAIL_DEFAULT_SENDER = "admin@admin.localhost"
+TOKEN_VALIDITY_PERIOD = 3600
