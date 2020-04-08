@@ -4,35 +4,31 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h2>{{ _('Log In') }}</h2>
-                    <form action="{{ url_for('login') }}" method="post">
-                        {{ form.hidden_tag() }}
-                        <div class="form-group">
-                        {{ form.login(class_="form-control", placeholder=_('Your login')) }}
-                        </div>
-                        {% for message in form.login.errors %}
-                            <div class="alert alert-warning" role="alert">{{ message }}</div>
-                        {% endfor %}
-                        <div class="form-group">
-                        {{ form.password(class_="form-control", placeholder=_('Your password')) }}
-                        </div>
-                        {% for message in form.password.errors %}
-                            <div class="alert alert-warning" role="alert">{{ message }}</div>
-                        {% endfor %}
-                        <div class="row">
-                            <div class="col">
-                                {{ form.submit(class_="btn btn-default") }}
-                            </div>
-                            <div class="col text-right">
-                                <a href="{{ url_for('user_bp.account_recovery') }}">Forgot your password?</a><br />
-                                <a href="{{ url_for('help') }}">Want to join the community?</a>
-                            </div>
-                        </div>
-                    </form>
+            <h2>{{ _('Log In') }}</h2>
+            <form action="{{ url_for('login') }}" method="post">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                {{ form.login(class_="form-control", placeholder=_('Your login')) }}
                 </div>
-            </div>
+                {% for message in form.login.errors %}
+                    <div class="alert alert-warning" role="alert">{{ message }}</div>
+                {% endfor %}
+                <div class="form-group">
+                {{ form.password(class_="form-control", placeholder=_('Your password')) }}
+                </div>
+                {% for message in form.password.errors %}
+                    <div class="alert alert-warning" role="alert">{{ message }}</div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        {{ form.submit(class_="btn btn-default") }}
+                    </div>
+                    <div class="col text-right">
+                        <a href="{{ url_for('help') }}#join_the_community">Register</a><br />
+                        <a href="{{ url_for('user_bp.account_recovery') }}">Forgot your password?</a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div><!-- /.container -->
