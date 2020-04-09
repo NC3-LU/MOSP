@@ -1,6 +1,27 @@
 MOSP Changelog
 ==============
 
+## 0.12 (2020-04-09)
+
+### News
+
+- added email attribute for users;
+- added password recovery feature;
+- added a view which returns the definition of a schema (text/plain). This is
+  used for external references in JSON schemas.
+
+### Improvements
+
+- improved generation of MISP clusters from an object: all values (properties)
+  not directly useful for the context of the current schema in MONARC are
+  assigned to the key 'meta';
+- migrate form Flask-Script to the built-in integration of the click command
+  line interface of Flask;
+- updated JSON-editor for the JSON objects and added a new simple editor for the
+  JSON schemas;
+- various minor improvements and bug fixes.
+
+
 ## 0.11 (2020-02-03)
 
 - fixed an issue related to the authentication via the API (which is used by
