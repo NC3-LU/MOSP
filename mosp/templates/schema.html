@@ -11,7 +11,10 @@
                     <i class="fa fa-eye" aria-hidden="true"></i>
                 </a>
                 <a role="button" class="btn btn-secondary" href="{{ url_for('schema_bp.definition', schema_id=schema.id) }}" title="{{ _('URL of the schema definition') }}">
-                    <i class="fa fa-code" aria-hidden="true"></i></i>
+                    <i class="fa fa-code" aria-hidden="true"></i>
+                </a>
+                <a role="button" class="btn btn-secondary" href="{{ url_for('schema_bp.relations', schema_id=schema.id) }}" title="{{ _('Relations') }}">
+                    <i class="fa fa-tree" aria-hidden="true"></i>
                 </a>
                 <a role="button" class="btn btn-secondary" href="{{ url_for('schema_bp.get_objects', schema_id=schema.id) }}" title="{{ _('Get all objects validated by this schema') }}">
                     <i class="fa fa-download" aria-hidden="true"></i>

@@ -162,6 +162,22 @@ def definition(schema_id=None, schema_uuid=None):
     return Response(result, mimetype="text/plain")
 
 
+@schema_bp.route("/relations/<int:schema_id>", methods=["GET"])
+def relations(schema_id=None, schema_uuid=None):
+    """
+    Display the relations of a Schema.
+    """
+    json_schema = Schema.query.filter(Schema.id == schema_id).first()
+    if json_schema is None:
+        abort(404)
+    result = json.dumps(
+        json_schema.json_schema, sort_keys=True, indent=4, separators=(",", ": ")
+    )
+    return render_template(
+        "relations_schema.html", json_schema=json_schema, json_schema_pretty=result
+    )
+
+
 @schema_bp.route("/<int:schema_id>/get_objects", methods=["GET"])
 def get_objects(schema_id=None):
     """Returns all JSON objects (JsonObject.json_object) validated by the
