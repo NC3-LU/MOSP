@@ -378,13 +378,10 @@ def findkeys(node, kv):
 def statistics():
     """
     """
-    from pprint import pprint
-    import jsonref
     import networkx as nx
     from networkx.readwrite import json_graph
 
     G = nx.DiGraph()
-
     schemas_relations = tree()
 
     for schema in Schema.query.filter().all():
@@ -393,27 +390,13 @@ def statistics():
         referrers = findkeys(schema.json_schema.get("definitions", {}), '$ref')
 
         for referrer in list(referrers):
-            # uuid = referrer.split("/")[-1]
             ref = Schema.query.filter(Schema.json_schema[('$id')].astext == referrer).first()
-
             schemas_relations[schema.name][ref.name]
-
 
     for elem in schemas_relations:
         for ref in schemas_relations[elem]:
             G.add_edge(elem, ref, weight=1)
     # write json formatted data
     d = json_graph.node_link_data(G)  # node-link format to serialize
-    print(d)
 
     return jsonify(d)
-
-    # print(schemas_relations)
-    for elem in schemas_relations:
-        print(elem)
-        for ref in schemas_relations[elem]:
-            print("  - " + ref)
-
-        # for referred in schema.json_schema.get("definitions", []):
-        #     # schemas_relations[schema.name][]
-        #     print("  -" + schema.json_schema["definitions"][referred]["$ref"])

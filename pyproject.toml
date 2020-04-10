@@ -26,7 +26,6 @@ jsonschema = "^3.2.0"
 flask-restless = "^0.17.0"
 psycopg2-binary = "^2.8.4"
 flask-cors = "^3.0.8"
-jsonref = "^0.2"
 networkx = "^2.4"
 
 [tool.poetry.dev-dependencies]

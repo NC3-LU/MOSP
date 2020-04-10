@@ -3,22 +3,18 @@
 {{ super() }}
 <script src="https://d3js.org/d3.v4.js"></script>
 <style>
-
 .links line {
   stroke: #999;
   stroke-opacity: 0.6;
 }
-
 .nodes circle {
   stroke: #fff;
   stroke-width: 1.5px;
 }
-
 text {
   font-family: sans-serif;
   font-size: 10px;
 }
-
 </style>
 {% endblock %}
 {% block content %}
@@ -54,11 +50,10 @@ text {
 
     <br />
     <div class="row">
-        <div class="col-md-12">
+        <div class="col">
             <div id="my_graph"></div>
         </div>
     </div>
-
 </div>
 <script>
 $(document).ready(function() {
@@ -84,10 +79,7 @@ var simulation = d3.forceSimulation()
     .force("charge", d3.forceManyBody())
     .force("center", d3.forceCenter(width / 2, height / 2));
 
-console.log('test');
 d3.json("http://127.0.0.1:5000/schemas/statistics.json", function(graph) {
-
-    console.log('test1');
 
   var link = svg.append("g")
       .attr("class", "links")
@@ -111,7 +103,7 @@ d3.json("http://127.0.0.1:5000/schemas/statistics.json", function(graph) {
           .on("drag", dragged)
           .on("end", dragended));
 
-  var lables = node.append("text")
+  var labels = node.append("text")
       .text(function(d) {
         return d.id;
       })
@@ -158,8 +150,6 @@ function dragended(d) {
   d.fx = null;
   d.fy = null;
 }
-
-
 });
 </script>
 {% endblock %}
