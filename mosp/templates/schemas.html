@@ -60,6 +60,8 @@ $(document).ready(function() {
             node,
             link;
 
+        var radius = 6;
+
         svg.append('defs').append('marker')
             .attrs({'id':'arrowhead',
                 'viewBox':'-0 -5 10 10',
@@ -165,7 +167,11 @@ $(document).ready(function() {
                 .attr("y2", function (d) {return d.target.y;});
 
             node
-                .attr("transform", function (d) {return "translate(" + d.x + ", " + d.y + ")";});
+                .attr("transform", function (d) {
+                    // Bounded Force Layout
+                    return "translate(" + Math.max(radius, Math.min(width - radius, d.x)) + ", " + Math.max(radius, Math.min(height - radius, d.y)) + ")";
+                });
+
 
             edgepaths.attr('d', function (d) {
                 return 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y;
