@@ -55,12 +55,8 @@ def get(per_page, schema_id=None):
     if schema is None:
         abort(404)
 
-    if not current_user.is_authenticated:
-        # Loads public objects related to the schema
-        query = JsonObject.query.filter(JsonObject.schema_id == schema.id)
-    else:
-        # Loads all objects related to the schema
-        query = JsonObject.query.filter(JsonObject.schema_id == schema.id)
+    # Loads all objects related to the schema
+    query = JsonObject.query.filter(JsonObject.schema_id == schema.id)
 
     # Search on the fields of the JSONB object
     # 1. Look for the searchable properties of the current schema. Actuallay we
