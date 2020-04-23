@@ -599,9 +599,14 @@ description = "A flexible forms validation and rendering library for Python web 
 name = "wtforms"
 optional = false
 python-versions = "*"
-version = "2.2.1"
+version = "2.3.1"
+
+[package.dependencies]
+MarkupSafe = "*"
 
 [package.extras]
+email = ["email-validator"]
+ipaddress = ["ipaddress"]
 locale = ["Babel (>=1.3)"]
 
 [metadata]
@@ -860,6 +865,6 @@ werkzeug = [
     {file = "Werkzeug-1.0.1.tar.gz", hash = "sha256:6c80b1e5ad3665290ea39320b91e1be1e0d5f60652b964a3070216de83d2e47c"},
 ]
 wtforms = [
-    {file = "WTForms-2.2.1-py2.py3-none-any.whl", hash = "sha256:e3ee092c827582c50877cdbd49e9ce6d2c5c1f6561f849b3b068c1b8029626f1"},
-    {file = "WTForms-2.2.1.tar.gz", hash = "sha256:0cdbac3e7f6878086c334aa25dc5a33869a3954e9d1e015130d65a69309b3b61"},
+    {file = "WTForms-2.3.1-py2.py3-none-any.whl", hash = "sha256:6ff8635f4caeed9f38641d48cfe019d0d3896f41910ab04494143fc027866e1b"},
+    {file = "WTForms-2.3.1.tar.gz", hash = "sha256:861a13b3ae521d6700dac3b2771970bd354a63ba7043ecc3a82b5288596a1972"},
 ]
