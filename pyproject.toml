@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mosp"
-version = "0.12"
+version = "0.13"
 description = "A platform for creating, editing and sharing JSON objects."
 authors = ["Cédric Bonhomme <cedric@cedricbonhomme.org>"]
 license = "AGPL-3.0-or-later"

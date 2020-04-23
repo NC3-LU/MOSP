@@ -1,6 +1,22 @@
 MOSP Changelog
 ==============
 
+## 0.13 (2020-04-23)
+
+### News
+
+- added new API which is returning data about relations between JSON schemas
+  hosted on the platform. These data are generated with the networkx Python
+  library and returned as JSON object compatible with D3.js;
+- added a new D3.js graph which is using the new API;
+- added a new view which presents all relations (refs) of a JSON object (self,
+  external and recursive references are supported).
+
+### Improvements
+
+- various minor improvements and bug fixes.
+
+
 ## 0.12 (2020-04-09)
 
 ### News
