@@ -62,7 +62,6 @@ class ObjectsList(Resource):
     @object_ns.expect(parser)
     @object_ns.marshal_list_with(object_list_fields)
     @object_ns.response(401, "Authorization needed")
-    @auth_func
     def get(self):
         """List all objects."""
 
