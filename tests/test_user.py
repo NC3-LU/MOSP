@@ -6,6 +6,7 @@ from mosp.models import User
 def test_user(session):
     user = User(
         login="john",
+        email="john@doe.com",
         pwdhash=generate_password_hash("password"),
         email="john@mosp.localhost"
     )
