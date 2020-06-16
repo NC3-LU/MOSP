@@ -7,11 +7,12 @@ from mosp.bootstrap import db
 from mosp.models import User
 
 
-def create_user(login, password, is_admin):
+def create_user(login, email, password, is_admin):
     """Creates a normal user or an administrator.
     """
     user = User(
         login=login,
+        email=email,
         pwdhash=generate_password_hash(password),
         is_active=True,
         is_admin=is_admin,

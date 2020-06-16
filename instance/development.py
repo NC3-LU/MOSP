@@ -10,7 +10,7 @@ DB_CONFIG_DICT = {
     'host': 'localhost',
     'port': 5432
 }
-DATABASE_NAME = 'MOSP'
+DATABASE_NAME = 'mosp'
 SQLALCHEMY_DATABASE_URI = 'postgres://{user}:{password}@{host}:{port}/{name}'.format(name=DATABASE_NAME, **DB_CONFIG_DICT)
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 

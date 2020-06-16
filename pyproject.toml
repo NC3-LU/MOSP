@@ -27,6 +27,7 @@ flask-restless = "^0.17.0"
 psycopg2-binary = "^2.8.4"
 flask-cors = "^3.0.8"
 networkx = "^2.4"
+email_validator = "^1.1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.3.1"
