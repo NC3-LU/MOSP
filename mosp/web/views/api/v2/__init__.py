@@ -4,7 +4,7 @@ from flask_restx import Api
 from mosp.bootstrap import application
 
 
-apiv2_blueprint = Blueprint("api", __name__, url_prefix="/api/v2")
+apiv2_blueprint = Blueprint("apiv2", __name__, url_prefix="/api/v2")
 
 
 def setup_api(application):
