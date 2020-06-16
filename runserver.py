@@ -35,6 +35,9 @@ with application.app_context():
     application.register_blueprint(views.api.v1.blueprint_schema)
     application.register_blueprint(views.api.v1.blueprint_object)
 
+    # API v2
+    application.register_blueprint(views.api.v2.apiv2_blueprint)
+
     register_commands(application)
 
 

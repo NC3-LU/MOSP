@@ -24,6 +24,7 @@ UPLOAD_FOLDER = './mosp/web/public/pictures/'
 ALLOWED_EXTENSIONS = set(['png'])
 
 ADMIN_EMAIL = 'info@cases.lu'
+ADMIN_URL = "https://www.cases.lu"
 
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024
 

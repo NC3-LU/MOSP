@@ -21,6 +21,7 @@ UPLOAD_FOLDER = './mosp/web/public/pictures/'
 ALLOWED_EXTENSIONS = set(['png'])
 
 ADMIN_EMAIL = 'info@cases.lu'
+ADMIN_URL = "https://www.cases.lu"
 
 LOG_PATH = './var/log/mosp.log'
 LOG_LEVEL = 'info'
