@@ -26,6 +26,9 @@ organization = organization_ns.model(
     "Organization",
     {
         "name": fields.String(description="The organization name."),
+        "description": fields.String(description="The organization description."),
+        "organization_type": fields.String(description="The type of the organization."),
+        "last_updated": fields.DateTime(description="Updated time of the schema."),
     },
 )
 
