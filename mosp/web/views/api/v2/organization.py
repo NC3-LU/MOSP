@@ -5,31 +5,30 @@ from flask import request
 from flask_restx import Namespace, Resource, fields, reqparse, abort
 
 from mosp.bootstrap import db
-from mosp.models import JsonObject
-from mosp.web.views.api.v2.common import auth_func
+from mosp.models import Organization
 
 
-object_ns = Namespace(
-    "object", description="object related operations"
+organization_ns = Namespace(
+    "organization", description="organization related operations"
 )
 
 
 # Argument Parsing
 parser = reqparse.RequestParser()
-parser.add_argument("name", type=str, help="The name of the object.")
+parser.add_argument("name", type=str, help="The name of the organization.")
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
 parser.add_argument("per_page", type=int, required=False, default=10, help="Page size")
 
 
 # Response marshalling
-object = object_ns.model(
-    "Object",
+organization = organization_ns.model(
+    "Organization",
     {
-        "name": fields.String(description="The object name."),
+        "name": fields.String(description="The organization name."),
     },
 )
 
-metadata = object_ns.model(
+metadata = organization_ns.model(
     "metadata",
     {
         "count": fields.String(
@@ -43,26 +42,26 @@ metadata = object_ns.model(
     },
 )
 
-object_list_fields = object_ns.model(
-    "ObjectsList",
+organization_list_fields = organization_ns.model(
+    "OrganizationsList",
     {
         "metadata": fields.Nested(
             metadata, description="Metada related to the result."
         ),
-        "data": fields.List(fields.Nested(object), description="List of objects."),
+        "data": fields.List(fields.Nested(organization), description="List of organizations."),
     },
 )
 
 
-@object_ns.route("/")
-class ObjectsList(Resource):
-    """Create new objects."""
+@organization_ns.route("/")
+class OrganizationsList(Resource):
+    """Create new organization."""
 
-    @object_ns.doc("list_objects")
-    @object_ns.expect(parser)
-    @object_ns.marshal_list_with(object_list_fields)
+    @organization_ns.doc("list_organizations")
+    @organization_ns.expect(parser)
+    @organization_ns.marshal_list_with(organization_list_fields)
     def get(self):
-        """List all objects."""
+        """List all organizations."""
 
         args = parser.parse_args()
         offset = args.pop("page", 1) - 1
@@ -75,30 +74,30 @@ class ObjectsList(Resource):
         }
 
         try:
-            query = JsonObject.query
+            query = Organization.query
             for arg in args:
-                if hasattr(JsonObject, arg):
-                    query = query.filter(getattr(JsonObject, arg) == args[arg])
+                if hasattr(Organization, arg):
+                    query = query.filter(getattr(Organization, arg) == args[arg])
             total = query.count()
             query = query.limit(limit)
-            objects = query.offset(offset * limit)
+            organizations = query.offset(offset * limit)
             count = total
         except Exception as e:
             print(e)
 
-        result["data"] = objects
+        result["data"] = organizations
         # result["metadata"]["total"] = total
         result["metadata"]["count"] = count
 
         return result, 200
 
-    # @object_ns.doc("create_object")
-    # @object_ns.expect(object)
-    # @object_ns.marshal_with(object, code=201)
+    # @organization_ns.doc("create_organization")
+    # @organization_ns.expect(organization)
+    # @organization_ns.marshal_with(organization, code=201)
     # @auth_func
     # def post(self):
-    #     """Create a new object."""
-    #     new_object = JsonObject(**object_ns.payload)
-    #     db.session.add(new_object)
+    #     """Create a new organization."""
+    #     new_organization = Organization(**organization_ns.payload)
+    #     db.session.add(new_organization)
     #     db.session.commit()
-    #     return new_object, 201
+    #     return new_organization, 201
