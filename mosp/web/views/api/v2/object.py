@@ -26,6 +26,9 @@ object = object_ns.model(
     "Object",
     {
         "name": fields.String(description="The object name."),
+        "description": fields.String(description="The object description."),
+        "last_updated": fields.DateTime(description="Updated time of the object."),
+        "json_object": fields.Raw(description="The object."),
     },
 )
 
