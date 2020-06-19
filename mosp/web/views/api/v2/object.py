@@ -81,13 +81,12 @@ class ObjectsList(Resource):
                     query = query.filter(getattr(JsonObject, arg) == args[arg])
             total = query.count()
             query = query.limit(limit)
-            objects = query.offset(offset * limit)
+            results = query.offset(offset * limit)
             count = total
         except Exception as e:
             print(e)
 
-        result["data"] = objects
-        # result["metadata"]["total"] = total
+        result["data"] = results
         result["metadata"]["count"] = count
 
         return result, 200

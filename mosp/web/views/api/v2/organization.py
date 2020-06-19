@@ -16,6 +16,7 @@ organization_ns = Namespace(
 # Argument Parsing
 parser = reqparse.RequestParser()
 parser.add_argument("name", type=str, help="The name of the organization.")
+parser.add_argument("organization_type", type=str, help="The type of the organization.")
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
 parser.add_argument("per_page", type=int, required=False, default=10, help="Page size")
 
@@ -80,13 +81,12 @@ class OrganizationsList(Resource):
                     query = query.filter(getattr(Organization, arg) == args[arg])
             total = query.count()
             query = query.limit(limit)
-            organizations = query.offset(offset * limit)
+            results = query.offset(offset * limit)
             count = total
         except Exception as e:
             print(e)
 
-        result["data"] = organizations
-        # result["metadata"]["total"] = total
+        result["data"] = results
         result["metadata"]["count"] = count
 
         return result, 200
