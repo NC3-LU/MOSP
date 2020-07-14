@@ -16,8 +16,10 @@ object_ns = Namespace(
 
 # Argument Parsing
 parser = reqparse.RequestParser()
-parser.add_argument("uuid", type=str, help="The UUID of the object.")
-parser.add_argument("name", type=str, help="The name of the object.")
+parser.add_argument("uuid", type=str, help="UUID of the object.")
+parser.add_argument("name", type=str, help="Name of the object.")
+parser.add_argument("organization", type=str, help="Organization name of the object.")
+parser.add_argument("schema", type=str, help="Schema name of the object.")
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
 parser.add_argument("per_page", type=int, required=False, default=10, help="Page size")
 
@@ -26,8 +28,8 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 object = object_ns.model(
     "Object",
     {
-        "name": fields.String(description="The object name."),
-        "description": fields.String(description="The object description."),
+        "name": fields.String(description="Object name."),
+        "description": fields.String(description="Object description."),
         "last_updated": fields.DateTime(description="Updated time of the object."),
         "json_object": fields.Raw(description="The object."),
     },
@@ -72,6 +74,8 @@ class ObjectsList(Resource):
         offset = args.pop("page", 1) - 1
         limit = args.pop("per_page", 10)
         object_uuid = args.pop("uuid", None)
+        object_organization = args.pop("organization", None)
+        object_schema = args.pop("schema", None)
         args = {k: v for k, v in args.items() if v is not None}
 
         result = {
@@ -79,25 +83,30 @@ class ObjectsList(Resource):
             "metadata": {"count": 0, "offset": offset, "limit": limit,},
         }
 
-        try:
-            query = JsonObject.query
-            # Filter on attribute of the object
-            for arg in args:
-                if hasattr(JsonObject, arg):
+        results = []
+        count = 0
+        query = JsonObject.query
+        # Filter on attribute of the object
+        for arg in args:
+            if hasattr(JsonObject, arg):
+                try:
                     query = query.filter(getattr(JsonObject, arg) == args[arg])
+                except Exception:
+                    pass
+        # Filter on other attributes
+        if object_organization:
+            query = query.filter(JsonObject.organization.has(name=object_organization))
+        if object_schema:
+            query = query.filter(JsonObject.schema.has(name=object_schema))
+        if object_uuid:
+            query = query.filter(
+                JsonObject.json_object[("uuid")].astext == str(object_uuid)
+            )
 
-            # Filter on other attributes
-            if object_uuid:
-                query = query.filter(
-                    JsonObject.json_object[("uuid")].astext == str(object_uuid)
-                )
-
-            total = query.count()
-            query = query.limit(limit)
-            results = query.offset(offset * limit)
-            count = total
-        except Exception as e:
-            print(e)
+        total = query.count()
+        query = query.limit(limit)
+        results = query.offset(offset * limit)
+        count = total
 
         result["data"] = results
         result["metadata"]["count"] = count
