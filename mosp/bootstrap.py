@@ -70,7 +70,10 @@ migrate = Migrate(application, db)
 
 babel = Babel(application)
 
-cors = CORS(application, resources={r"/schema/def/*": {"origins": "*"}})
+cors = CORS(
+    application,
+    resources={r"/schema/def/*": {"origins": "*"}, r"/api/v2/*": {"origins": "*"}},
+)
 
 
 @babel.localeselector

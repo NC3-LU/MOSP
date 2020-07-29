@@ -9,9 +9,7 @@ from mosp.models import JsonObject
 from mosp.web.views.api.v2.common import auth_func
 
 
-object_ns = Namespace(
-    "object", description="object related operations"
-)
+object_ns = Namespace("object", description="object related operations")
 
 
 # Argument Parsing

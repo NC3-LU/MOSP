@@ -12,9 +12,7 @@ def auth_func(func):
         if "X-API-KEY" in request.headers:
             token = request.headers.get("X-API-KEY", False)
             if token:
-                user = User.query.filter(
-                    User.apikey == token
-                ).first()
+                user = User.query.filter(User.apikey == token).first()
                 if not user:
                     abort(401, Error="Authentication required.")
         else:

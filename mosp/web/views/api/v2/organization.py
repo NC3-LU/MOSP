@@ -52,7 +52,9 @@ organization_list_fields = organization_ns.model(
         "metadata": fields.Nested(
             metadata, description="Metada related to the result."
         ),
-        "data": fields.List(fields.Nested(organization), description="List of organizations."),
+        "data": fields.List(
+            fields.Nested(organization), description="List of organizations."
+        ),
     },
 )
 

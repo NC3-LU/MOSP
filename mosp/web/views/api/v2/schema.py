@@ -8,9 +8,7 @@ from mosp.bootstrap import db
 from mosp.models import Schema
 
 
-schema_ns = Namespace(
-    "schema", description="schema related operations"
-)
+schema_ns = Namespace("schema", description="schema related operations")
 
 
 # Argument Parsing
