@@ -16,6 +16,7 @@ object_ns = Namespace("object", description="object related operations")
 parser = reqparse.RequestParser()
 parser.add_argument("uuid", type=str, help="UUID of the object.")
 parser.add_argument("name", type=str, help="Name of the object.")
+parser.add_argument("language", type=str, help="Language of the object.")
 parser.add_argument("organization", type=str, help="Organization name of the object.")
 parser.add_argument("schema", type=str, help="Schema name of the object.")
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
@@ -72,6 +73,7 @@ class ObjectsList(Resource):
         offset = args.pop("page", 1) - 1
         limit = args.pop("per_page", 10)
         object_uuid = args.pop("uuid", None)
+        object_language = args.pop("language", None)
         object_organization = args.pop("organization", None)
         object_schema = args.pop("schema", None)
         args = {k: v for k, v in args.items() if v is not None}
@@ -99,6 +101,10 @@ class ObjectsList(Resource):
         if object_uuid:
             query = query.filter(
                 JsonObject.json_object[("uuid")].astext == str(object_uuid)
+            )
+        if object_language:
+            query = query.filter(
+                JsonObject.json_object[("language")].astext == object_language
             )
 
         total = query.count()
