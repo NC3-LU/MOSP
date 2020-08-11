@@ -11,7 +11,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.14.0",
         "@json-editor/json-editor": "2.3.0",
-        "bootstrap": "^4.5.0",
+        "bootstrap": "^4.5.2",
         "bootstrap-select": "^1.13.18",
         "code-prettify": "^0.1.0",
         "codemirror": "^5.56.0",
