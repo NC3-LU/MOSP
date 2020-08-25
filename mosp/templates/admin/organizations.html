@@ -18,7 +18,7 @@
         <tr>
             <th scope="row">{{ organization.id }}</th>
             <td><a href="{{ url_for('organization_bp.get', organization_name=organization.name) }}">{{ organization.name }}</a></td>
-            <td><a href="{{ organization.website  }}" target="_blank">{{ organization.website  }}</a></td>
+            <td><a href="{{ organization.website  }}" target="_blank" rel="noopener noreferrer">{{ organization.website  }}</a></td>
             <td>{{ organization.users | count  }}</td>
             <td>
                 <a href="{{ url_for("admin_bp.form_organization", organization_id=organization.id) }}"><i class="fa fa-edit"></i></a>
