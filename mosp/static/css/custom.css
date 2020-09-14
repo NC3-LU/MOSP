@@ -12,6 +12,10 @@ img {
     padding: 2px;
 }
 
+hr {
+  background-color: #dddddd;
+}
+
 .text-primary {
     color: #006FBA !important;
 }

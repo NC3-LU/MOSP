@@ -28,12 +28,16 @@
                 <li style="list-style-type: none;"><a href="{{ url_for('schema_bp.form', org_id=org.id) }}"><i class="fa fa-plus" title="{{ _('Add a new schema in this organization') }}"></i></a></li>
                 </ul>
             {% endfor  %}
+            <hr />
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <a href="{{ url_for('schema_bp.form') }}" class="btn btn-default">{{ _('Create a new schema') }}</a>
-        </div>
+      <div class="col-md-4">
+          <a href="{{ url_for('schema_bp.form') }}" class="btn btn-default">{{ _('Create a new schema') }}</a>
+      </div>
+      <div class="col-md-6">
+          {{ _('Create a new object with one of the') }} <a href="{{ url_for('schemas_bp.list_schemas') }}">{{ _('available schemas') }}</a>.
+      </div>
     </div>
 </div>
 {% endblock %}
