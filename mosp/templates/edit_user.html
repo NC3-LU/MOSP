@@ -7,19 +7,22 @@
     <h2>{{ action | safe }}</h2>
     <form action="" method="post" name="saveprofileform" id="profileform">
         {{ form.hidden_tag() }}
-
+        <div class="form-group">
         {{ form.login.label }}
         {{ form.login(class_="form-control") }} {% for error in form.login.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-
+        </div>
+        <div class="form-group">
         {{ form.email.label }}
         {{ form.email(class_="form-control") }} {% for error in form.email.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-
+        </div>
+        <div class="form-group">
         {{ form.password.label }}
         {{ form.password(class_="form-control") }} {% for error in form.password.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-
-        {{ form.public_profile.label }}
-        {{ form.public_profile(class_="form-control") }} {% for error in form.public_profile.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-
+        </div>
+        <div class="form-check">
+        {{ form.public_profile(class_="form-check-input") }} {% for error in form.public_profile.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+        {{ form.public_profile.label(class_="form-check-label") }}
+        </div>
         <br />
         {{ form.submit(class_="btn btn-default") }}
     </form>
@@ -46,7 +49,7 @@
     <div class="row">
         <div class="col">
             <p>{{ _('You can check the <a href="https://github.com/CASES-LU/MOSP-documentation/blob/master/index.adoc#using-the-api" target="_blank">documentation of the API</a>') }}
-             or the <a href="{{ url_for('apiv2.doc') }}">documentation of the API v2</a>.</p>
+             or the <a href="{{ url_for('apiv2.doc') }}">OpenAPI Specification for the API v2</a>.</p>
         </div>
      </div>
     <hr /><br />
