@@ -7,31 +7,31 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2>{{ json_object.name }}</h2>
+            <h1>{{ json_object.name }}</h1>
         </div>
         <div class="col text-right">
             <div class="btn-group" role="group">
                 {% if current_user.is_authenticated %}
-                    <a role="button" class="btn btn-warning" title="{{ _('Delete the object') }}" href="{{ url_for('object_bp.delete', object_id=json_object.id) }}" onclick="return confirm(_('You are going to delete this object.'));">
+                    <a role="button" class="btn btn-warning" title="{{ _('Delete the object') }}" aria-label="{{ _('Delete the object') }}" href="{{ url_for('object_bp.delete', object_id=json_object.id) }}" onclick="return confirm(_('You are going to delete this object.'));">
                         <i class="fas fa-trash" aria-hidden="true"></i>
                     </a>
-                    <a role="button" class="btn btn-secondary" title="{{ _('Edit the object') }}" href="{{ url_for('object_bp.form', object_id=json_object.id) }}">
+                    <a role="button" class="btn btn-secondary" title="{{ _('Edit the object') }}" aria-label="{{ _('Edit the object') }}" href="{{ url_for('object_bp.form', object_id=json_object.id) }}">
                         <i class="fa fa-edit" aria-hidden="true"></i>
                     </a>
-                    <button type="button" class="btn btn-secondary" title="{{ _('Copy the object') }}" data-toggle="modal" data-target="#copyModal" href="#">
+                    <button type="button" class="btn btn-secondary" title="{{ _('Copy the object') }}" aria-label="{{ _('Copy the object') }}" data-toggle="modal" data-target="#copyModal" href="#">
                         <i class="fas fa-code-branch"></i>
                     </button>
                 {% endif %}
                 {% if uuid %}
-                    <a role="button" class="btn btn-secondary" title="{{ _('Short link') }}" href="{{ url_for('object_bp.get_by_uuid', object_uuid=uuid) }}">
+                    <a role="button" class="btn btn-secondary" title="{{ _('Short link') }}" aria-label="{{ _('Short link') }}" href="{{ url_for('object_bp.get_by_uuid', object_uuid=uuid) }}">
                         <i class="fa fa-link" aria-hidden="true"></i>
                     </a>
                 {% endif %}
-                <button type="button" class="btn btn-secondary" title="{{ _('Copy to clipboard') }}" onclick="copyToClipboard()" href="#">
+                <button type="button" class="btn btn-secondary" title="{{ _('Copy to clipboard') }}" aria-label="{{ _('Copy to clipboard') }}" onclick="copyToClipboard()" href="#">
                     <i class="fa fa-clipboard" aria-hidden="true"></i>
                 </button>
                 <div class="btn-group btn-group" role="group" title="{{ _('Share the object') }}">
-                    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button id="btnGroupDrop2" type="button" aria-label="{{ _('Share the object') }}" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-share-square"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop2">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="btn-group btn-group" role="group" title="{{ _('Download the object') }}">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button id="btnGroupDrop1" type="button" aria-label="{{ _('Download the object') }}" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-download" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
@@ -102,7 +102,7 @@
         <div class="col">
             <br />
             <b>{{ _('Related objects') }}</b>
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs" id="myTab" role="list">
                 <li class="nav-item">
                     <a class="nav-link active" id="refers-to-tab" data-toggle="tab" href="#refers-to" role="tab" aria-controls="refers-to" aria-selected="true">{{ _('Refers to') }} {{ json_object.refers_to | count}} {{ _('object(s)') }}</a>
                 </li>

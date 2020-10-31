@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2>{{ schema.name }}</h2>
+            <h1>{{ schema.name }}</h1>
         </div>
         <div class="col text-right">
             <div class="btn-group" role="group">
@@ -46,20 +46,20 @@
 
     <br />
 
-    <div class="row justify-content-end">
-      <div class="col-6">
-	Search on the properties of the objects
-	<form  method="get">
-	  <select id="search_key" name="search_key" class="selectpicker" data-live-search="true" data-width="auto">
-	  {% for key in search_keys %}
-	    <option value="{{ key }}" {{ 'selected' if search_key == key else '' }}>{{ key }}</option>
-	  {% endfor  %}
-	  </select>
-	  <input id="search_term" type="text" name="search_term" value="{{ search_term  }}" />
-	  <input type="submit" value="Submit" class="btn btn-secondary">
-	</form>
-      </div>
+  <div class="row justify-content-end">
+    <div class="col-6">
+      Search on the properties of the objects
+      <form method="get">
+        <select id="search_key" name="search_key" aria-label="Select a property" class="selectpicker" data-live-search="true" data-width="auto">
+          {% for key in search_keys %}
+          <option value="{{ key }}" {{ 'selected' if search_key == key else '' }}>{{ key }}</option>
+          {% endfor  %}
+        </select>
+          <input id="search_term" type="text" name="search_term" aria-label="Search term" value="{{ search_term  }}" />
+          <input type="submit" value="Submit" class="btn btn-secondary">
+      </form>
     </div>
+  </div>
 
     <br />
 

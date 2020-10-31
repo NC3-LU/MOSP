@@ -1,7 +1,7 @@
 
 
 var schemaHomeTemplate = _.template(
-    '<a href="<%= url %>" class="list-group-item list-group-item-action flex-column align-items-start">' +
+    '<a href="<%= url %>" aria-label="Read more about <%= name %>" class="list-group-item list-group-item-action flex-column align-items-start">' +
         '<div class="d-flex w-100 justify-content-between">' +
             '<h5 class="mb-1"><%= name %></h5>' +
             '<small>updated <%= last_update %></small>' +
@@ -11,7 +11,7 @@ var schemaHomeTemplate = _.template(
 
 
 var jsonObjectHomeTemplate = _.template(
-    '<a href="<%= url %>" class="list-group-item list-group-item-action flex-column align-items-start">' +
+    '<a href="<%= url %>" aria-label="Read more about <%= name %>" class="list-group-item list-group-item-action flex-column align-items-start">' +
         '<div class="d-flex w-100 justify-content-between">' +
             '<h5 class="mb-1"><%= name %></h5>' +
             '<small>updated <%= last_update %></small>' +

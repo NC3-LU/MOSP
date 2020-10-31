@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="container">
+    <h1>{{ _('Recent contributions') }}</h1>
     <div class="row">
         <div class="col">
-            <h4>{{ _('Recently updated objects') }}</h4>
+            <h2>{{ _('Updated objects') }}</h2>
             <div id="list-json-objects">
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
@@ -11,7 +12,7 @@
             </div>
         </div>
         <div class="col">
-            <h4>{{ _('Recently updated schemas') }}</h4>
+            <h2>{{ _('Updated schemas') }}</h2>
             <div id="list-schemas">
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
