@@ -19,6 +19,7 @@ def register_commands(app):
 with application.app_context():
 
     from mosp.web import views
+
     application.register_blueprint(views.schema_bp)
     application.register_blueprint(views.schemas_bp)
     application.register_blueprint(views.object_bp)
@@ -41,6 +42,5 @@ with application.app_context():
     register_commands(application)
 
 
-if __name__ == '__main__':
-    application.run(host=application.config['HOST'],
-                    port=application.config['PORT'])
+if __name__ == "__main__":
+    application.run(host=application.config["HOST"], port=application.config["PORT"])

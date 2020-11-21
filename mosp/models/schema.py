@@ -13,8 +13,7 @@ association_table_license = db.Table(
 
 
 class Schema(db.Model):
-    """Represent a JSON schema.
-    """
+    """Represent a JSON schema."""
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))

@@ -4,8 +4,7 @@ from mosp.bootstrap import db
 
 
 class Organization(db.Model):
-    """Represent an organization.
-    """
+    """Represent an organization."""
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True)

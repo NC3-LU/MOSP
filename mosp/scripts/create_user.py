@@ -8,8 +8,7 @@ from mosp.models import User
 
 
 def create_user(login, email, password, is_admin):
-    """Creates a normal user or an administrator.
-    """
+    """Creates a normal user or an administrator."""
     user = User(
         login=login,
         email=email,

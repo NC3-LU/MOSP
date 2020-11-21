@@ -10,16 +10,15 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7a6232889a35'
-down_revision = '2af9469ca54d'
+revision = "7a6232889a35"
+down_revision = "2af9469ca54d"
 branch_labels = None
 depends_on = None
 
 
 def upgrade():
-    op.drop_column('json_object', 'is_public')
+    op.drop_column("json_object", "is_public")
 
 
 def downgrade():
-    op.add_column('json_object', sa.Column('is_public', sa.Boolean(),
-                  default=True))
+    op.add_column("json_object", sa.Column("is_public", sa.Boolean(), default=True))

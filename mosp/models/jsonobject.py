@@ -22,8 +22,7 @@ association_table_jsonobject = db.Table(
 
 
 class JsonObject(db.Model):
-    """Represent a JSON object.
-    """
+    """Represent a JSON object."""
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text(), nullable=False)

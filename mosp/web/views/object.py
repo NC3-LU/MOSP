@@ -70,8 +70,7 @@ def get_json_object(object_id):
 
 @object_bp.route("/galaxy/<int:object_id>", methods=["GET"])
 def get_misp_galaxy_cluster(object_id):
-    """Return the MISP galaxy and cluster from the object.
-    """
+    """Return the MISP galaxy and cluster from the object."""
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     if json_object is None:
         abort(404)
@@ -362,8 +361,7 @@ def process_form(object_id=None):
 @login_required
 @check_object_edit_permission
 def copy(object_id=None):
-    """Copy an object from one organization to another.
-    """
+    """Copy an object from one organization to another."""
     org_id = request.args.get("org_id", None)
     if org_id is None:
         abort(404)

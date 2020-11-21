@@ -52,8 +52,7 @@ class RedirectForm(FlaskForm):
 
 
 class SigninForm(RedirectForm):
-    """Sign in form.
-    """
+    """Sign in form."""
 
     login = TextField(
         lazy_gettext("Login"),
@@ -93,8 +92,7 @@ class SigninForm(RedirectForm):
 
 
 class AccountRecoveryForm(RedirectForm):
-    """Sign in form.
-    """
+    """Sign in form."""
 
     login = TextField(
         lazy_gettext("Login"),
@@ -107,8 +105,7 @@ class AccountRecoveryForm(RedirectForm):
 
 
 class AccountRecoveryNewPasswordForm(RedirectForm):
-    """Sign in form.
-    """
+    """Sign in form."""
 
     password1 = PasswordField(
         lazy_gettext("Password"),
@@ -188,8 +185,7 @@ class SchemaForm(FlaskForm):
 
 
 class UserForm(FlaskForm):
-    """Create or edit a user (for the administrator).
-    """
+    """Create or edit a user (for the administrator)."""
 
     login = TextField(
         lazy_gettext("Login"),
@@ -222,8 +218,7 @@ class UserForm(FlaskForm):
 
 
 class OrganizationForm(FlaskForm):
-    """Create or edit an organization (for the administrator).
-    """
+    """Create or edit an organization (for the administrator)."""
 
     name = TextField(
         lazy_gettext("Name"),
@@ -247,8 +242,7 @@ class OrganizationForm(FlaskForm):
 
 
 class ProfileForm(FlaskForm):
-    """Edit a profile.
-    """
+    """Edit a profile."""
 
     login = TextField(
         lazy_gettext("Login"),

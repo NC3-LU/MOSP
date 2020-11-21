@@ -72,7 +72,11 @@ class SchemasList(Resource):
 
         result = {
             "data": [],
-            "metadata": {"count": 0, "offset": offset, "limit": limit,},
+            "metadata": {
+                "count": 0,
+                "offset": offset,
+                "limit": limit,
+            },
         }
 
         try:

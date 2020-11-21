@@ -39,8 +39,7 @@ def auth_func(*args, **kw):
 
 
 def check_single_object_edit_permission(instance_id, data):
-    """Pre-processor to edit a single object.
-    """
+    """Pre-processor to edit a single object."""
     if not current_user.is_authenticated:
         raise ProcessingException(description="Not authenticated!", code=401)
 
@@ -61,8 +60,7 @@ def check_single_object_edit_permission(instance_id, data):
 
 
 def check_object_creation_permission(data):
-    """Check if the user is authenticated and set the creator_id.
-    """
+    """Check if the user is authenticated and set the creator_id."""
     if not current_user.is_authenticated:
         raise ProcessingException(description="Not authenticated!", code=401)
 

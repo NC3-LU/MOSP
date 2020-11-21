@@ -14,9 +14,7 @@ def list_organizations():
     """Return the page which will display the list of organizations."""
     # Order by organization wich provides the most JSON objects.
     big_contributors = (
-        db.session.query(
-            JsonObject.org_id, func.count("*").label("JsonObject_count")
-        )
+        db.session.query(JsonObject.org_id, func.count("*").label("JsonObject_count"))
         .group_by(JsonObject.org_id)
         .subquery()
     )

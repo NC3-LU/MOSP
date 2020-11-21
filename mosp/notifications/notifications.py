@@ -30,8 +30,7 @@ from mosp.web.lib.user_utils import generate_confirmation_token
 
 
 def account_recovery(user):
-    """Account recovery.
-    """
+    """Account recovery."""
     token = generate_confirmation_token(user.login)
     expire_time = datetime.datetime.now() + datetime.timedelta(
         seconds=application.config["TOKEN_VALIDITY_PERIOD"]
@@ -46,7 +45,9 @@ def account_recovery(user):
     )
 
     emails.send(
-        to=user.email, subject="[MOSP] Account recovery", plaintext=plaintext,
+        to=user.email,
+        subject="[MOSP] Account recovery",
+        plaintext=plaintext,
     )
 
 
@@ -56,5 +57,7 @@ def new_password_notification(user, password):
     """
     plaintext = render_template("emails/new_password.txt", user=user, password=password)
     emails.send(
-        to=user.email, subject="[MOSP] New password", plaintext=plaintext,
+        to=user.email,
+        subject="[MOSP] New password",
+        plaintext=plaintext,
     )

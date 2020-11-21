@@ -80,7 +80,11 @@ class ObjectsList(Resource):
 
         result = {
             "data": [],
-            "metadata": {"count": 0, "offset": offset, "limit": limit,},
+            "metadata": {
+                "count": 0,
+                "offset": offset,
+                "limit": limit,
+            },
         }
 
         results = []

@@ -133,7 +133,8 @@ def account_recovery():
         user = User.query.filter(User.login == form.login.data).first()
         if user is None:
             flash(
-                gettext("This user does not exist."), "danger",
+                gettext("This user does not exist."),
+                "danger",
             )
             return redirect(url_for("index"))
 

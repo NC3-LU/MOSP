@@ -12,8 +12,7 @@ from mosp.models import JsonObject
 
 
 def check_duplicates(json_object):
-    """Check for duplicates, by UUID, of the object given in parameter.
-    """
+    """Check for duplicates, by UUID, of the object given in parameter."""
     duplicates = []
     # extract the JSON part of the JsonObject
     json_obj = json_object.json_object
@@ -42,8 +41,7 @@ def check_duplicates(json_object):
 
 
 def generate_misp_galaxy_cluster(json_object):
-    """Generates a MISP galaxy and cluster from an object.
-    """
+    """Generates a MISP galaxy and cluster from an object."""
     # Creation of the galaxy
     # (https://github.com/MISP/misp-galaxy/blob/master/schema_galaxies.json)
     galaxy = {
@@ -84,8 +82,7 @@ def generate_misp_galaxy_cluster(json_object):
 
 
 def generate_tar_gz_archive(galaxy, cluster):
-    """Generates a tar.gz archive from a MISP galaxy (galaxy and a cluster).
-    """
+    """Generates a tar.gz archive from a MISP galaxy (galaxy and a cluster)."""
     out = BytesIO()
     tar = tarfile.open(mode="w:gz", fileobj=out)
 
