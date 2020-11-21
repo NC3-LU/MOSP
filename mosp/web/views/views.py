@@ -44,7 +44,7 @@ def handle_sqlalchemy_assertion_error(error):
 @current_app.route("/", methods=["GET"])
 def index():
     """Home page."""
-    return render_template("index.html")
+    return render_template("index.html", nb_objects=JsonObject.query.count(), nb_organizations=Organization.query.count())
 
 
 @current_app.route("/about", methods=["GET"])

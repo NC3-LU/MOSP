@@ -1,6 +1,27 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="jumbotron">
+                <p class="lead">
+                    <img src="{{ url_for('static', filename='img/logo-large.png') }}"
+                        width="240px"
+                        class="img-fluid mx-auto"
+                        alt="MONARC Objects Sharing Platform"
+                        title="MONARC Objects Sharing Platform" />
+                    objects.monarc.lu is the MONARC platform for creating and
+                    sharing JSON objects related to security (such as
+                <a href="{{ url_for('schema_bp.get', schema_id=14) }}">vulnerabilities</a>,
+                <a href="{{ url_for('schema_bp.get', schema_id=15) }}">threats</a>
+                or <a href="{{ url_for('schema_bp.get', schema_id=12) }}">cybersecurity standards</a>).
+                {{ nb_objects }} items are currently available through
+                {{ nb_organizations }} <a href="{{ url_for('organizations_bp.list_organizations') }}">organizations</a>.</p>
+                <hr class="my-4">
+                <a class="btn btn-primary btn-lg" href="{{ url_for('help') }}" role="button">Learn more</a>
+            </div>
+        </div>
+    </div>
     <h1>{{ _('Recent contributions') }}</h1>
     <div class="row">
         <div class="col">

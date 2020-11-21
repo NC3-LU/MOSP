@@ -5,6 +5,16 @@
     <div class="row">
         <div class="col">
             <div>
+                <h1 id="join_the_community">Join the community</h1>
+                <p class="text-justify">
+                    You can request an account if you are <b>willing to share your objects</b> with the community.
+                    If you are interested, please don't hesitate to write to <a href="mailto:{{ config['ADMIN_EMAIL'] }}?subject=Access to MOSP">{{ config['ADMIN_EMAIL'] }}</a>.
+                </p>
+                <p class="text-justify">
+                    In the case you simply want to test MOSP you can easily deploy your own instance with this button:
+                    <a role="button" class="btn" href="https://heroku.com/deploy?template=https://github.com/CASES-LU/MOSP"><img src="https://www.herokucdn.com/deploy/button.png" /></a>
+                </p>
+                <hr />
                 <h1>Documentation</h1>
                 <p class="text-justify">
                     A user guide is available on the MONARC website
@@ -18,6 +28,7 @@
                 <p class="text-justify">
                     The OpenAPI Specification for the API v2 is available <a href="{{ url_for('apiv2.doc') }}">here</a>.
                 </p>
+                <hr />
                 <h1>Contributions</h1>
                 <p class="text-justify">Please use <a href="https://github.com/CASES-LU/MOSP/issues">GitHub</a> for:</p>
                 <ul class="list-group  list-group-flush">
@@ -25,15 +36,6 @@
                     <li class="list-group-item"><a href="https://github.com/CASES-LU/MOSP/issues/new?labels=feature+request">New feature requests</a></li>
                     <li class="list-group-item">Contributions to the <a href="https://github.com/CASES-LU/MOSP/issues/new?labels=documentation">documentation</a> or to the <a href="https://github.com/CASES-LU/MOSP/issues/new?labels=translation">translations</a> of the software</li>
                 </ul>
-                <h1 id="join_the_community">Join the community</h1>
-                <p class="text-justify">
-                    You can request an account if you are <b>willing to share your objects</b> with the community.
-                    If you are interested, please don't hesitate to write to <a href="mailto:{{ config['ADMIN_EMAIL'] }}?subject=Access to MOSP">{{ config['ADMIN_EMAIL'] }}</a>.
-                </p>
-                <p class="text-justify">
-                    In the case you simply want to test MOSP you can easily deploy your own instance with this button:
-                    <a role="button" class="btn" href="https://heroku.com/deploy?template=https://github.com/CASES-LU/MOSP"><img src="https://www.herokucdn.com/deploy/button.png" /></a>
-                </p>
             </div>
         </div>
     </div>

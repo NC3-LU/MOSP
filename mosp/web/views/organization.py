@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, abort
 from flask_paginate import Pagination, get_page_args
-from sqlalchemy import or_
+from sqlalchemy import func, desc, nullslast, or_
 
+from mosp.bootstrap import db
 from mosp.models import Organization, JsonObject, Schema
 
 organization_bp = Blueprint("organization_bp", __name__, url_prefix="/organization")
@@ -11,7 +12,20 @@ organizations_bp = Blueprint("organizations_bp", __name__, url_prefix="/organiza
 @organizations_bp.route("/", methods=["GET"])
 def list_organizations():
     """Return the page which will display the list of organizations."""
-    return render_template("organizations.html")
+    # Order by organization wich provides the most JSON objects.
+    big_contributors = (
+        db.session.query(
+            JsonObject.org_id, func.count("*").label("JsonObject_count")
+        )
+        .group_by(JsonObject.org_id)
+        .subquery()
+    )
+    organizations = (
+        db.session.query(Organization)
+        .outerjoin(big_contributors, (Organization.id == big_contributors.c.org_id))
+        .order_by(nullslast(desc(big_contributors.c.JsonObject_count)))
+    )
+    return render_template("organizations.html", organizations=organizations)
 
 
 @organization_bp.route(

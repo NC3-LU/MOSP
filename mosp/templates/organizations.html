@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ _('Contributing organizations') }}</h1>
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group">
+            {% for organization in organizations %}
+                <a href="{{ url_for('organization_bp.get', organization_id=organization.id) }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h2 class="mb-1">{{ organization.name }}</h2>
+                    </div>
+                    <p class="mb-1">{{ organization.description }}</p>
+                    <small>{{ _('Contribute with') }} {{ organization.objects.count() }} {{ _('objects') }}</small>
+                </a>
+            {% endfor  %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
