@@ -25,7 +25,7 @@
     <h1>{{ _('Recent contributions') }}</h1>
     <div class="row">
         <div class="col">
-            <h2>{{ _('Updated objects') }}</h2>
+            <h2>{{ _('Updated objects') }} <a href="{{ url_for('objects_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
             <div id="list-json-objects">
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>

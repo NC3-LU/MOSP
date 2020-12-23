@@ -1,10 +1,14 @@
 import sys
+import json
 import logging
+import datetime
 from flask import render_template, url_for, redirect, current_app, flash
 from flask_babel import gettext
+from feedgen.feed import FeedGenerator
 
 from mosp import __version__
 from mosp.models import JsonObject, Organization, User, Schema
+from mosp.bootstrap import application
 
 logger = logging.getLogger(__name__)
 
@@ -101,3 +105,48 @@ def terms():
 def human():
     """Human dot txt page."""
     return render_template("human.txt"), 200, {"Content-Type": "text/plain"}
+
+
+@current_app.route("/objects.atom", methods=["GET"])
+def objects_atom():
+    recent_objects = JsonObject.query.order_by(JsonObject.last_updated.asc()).limit(50)
+    fg = FeedGenerator()
+    fg.id(url_for("objects_atom", _external=True))
+    fg.title("Recent objects published on MOSP")
+    # fg.subtitle("")
+    fg.link(href=application.config["INSTANCE_URL"], rel="self")
+    fg.author(
+        {
+            "name": application.config["ADMIN_URL"],
+            "email": application.config["ADMIN_EMAIL"],
+        }
+    )
+    fg.language("en")
+    for recent_object in recent_objects:
+        fe = fg.add_entry()
+        fe.id(
+            url_for(
+                "object_bp.get_json_object", object_id=recent_object.id, _external=True
+            )
+        )
+        fe.title(recent_object.name)
+        fe.description(recent_object.description)
+        fe.author({"name": recent_object.organization.name})
+        fe.content(
+            json.dumps(
+                recent_object.json_object,
+                sort_keys=True,
+                indent=4,
+                separators=(",", ": "),
+            )
+        )
+        fe.published(
+            datetime.datetime.strftime(recent_object.last_updated, "%Y-%m-%dT%H:%M:%SZ")
+        )
+        fe.link(
+            href=url_for(
+                "object_bp.get_json_object", object_id=recent_object.id, _external=True
+            )
+        )
+    atomfeed = fg.atom_str(pretty=True)
+    return atomfeed
