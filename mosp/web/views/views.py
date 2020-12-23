@@ -1,7 +1,7 @@
 import sys
 import json
 import logging
-import datetime
+from datetime import timezone
 from flask import render_template, url_for, redirect, current_app, flash
 from flask_babel import gettext
 from feedgen.feed import FeedGenerator
@@ -140,9 +140,7 @@ def objects_atom():
                 separators=(",", ": "),
             )
         )
-        fe.published(
-            datetime.datetime.strftime(recent_object.last_updated, "%Y-%m-%dT%H:%M:%SZ")
-        )
+        fe.published(recent_object.last_updated.replace(tzinfo=timezone.utc))
         fe.link(
             href=url_for(
                 "object_bp.get_json_object", object_id=recent_object.id, _external=True
