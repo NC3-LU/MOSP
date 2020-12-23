@@ -109,7 +109,7 @@ def human():
 
 @current_app.route("/objects.atom", methods=["GET"])
 def objects_atom():
-    recent_objects = JsonObject.query.order_by(JsonObject.last_updated.asc()).limit(50)
+    recent_objects = JsonObject.query.order_by(JsonObject.last_updated.desc()).limit(50)
     fg = FeedGenerator()
     fg.id(url_for("objects_atom", _external=True))
     fg.title("Recent objects published on MOSP")
