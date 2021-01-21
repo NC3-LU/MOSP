@@ -7,8 +7,13 @@
 import json
 import tarfile
 from io import BytesIO
+from datetime import timezone
 from sqlalchemy import and_
+from flask import url_for
+from feedgen.feed import FeedGenerator
+
 from mosp.models import JsonObject
+from mosp.bootstrap import application
 
 
 def check_duplicates(json_object):
@@ -106,3 +111,46 @@ def generate_tar_gz_archive(galaxy, cluster):
     tar.close()
 
     return out.getvalue()
+
+
+def generate_objects_atom_feed():
+    """Generates an ATOM feed with the recent updated objects."""
+    recent_objects = JsonObject.query.order_by(JsonObject.last_updated.desc()).limit(50)
+    fg = FeedGenerator()
+    fg.id(url_for("objects_atom", _external=True))
+    fg.title("Recent objects published on MOSP")
+    # fg.subtitle("")
+    fg.link(href=application.config["INSTANCE_URL"], rel="self")
+    fg.author(
+        {
+            "name": application.config["ADMIN_URL"],
+            "email": application.config["ADMIN_EMAIL"],
+        }
+    )
+    fg.language("en")
+    for recent_object in recent_objects:
+        fe = fg.add_entry()
+        fe.id(
+            url_for(
+                "object_bp.get_json_object", object_id=recent_object.id, _external=True
+            )
+        )
+        fe.title(recent_object.name)
+        fe.description(recent_object.description)
+        fe.author({"name": recent_object.organization.name})
+        fe.content(
+            json.dumps(
+                recent_object.json_object,
+                sort_keys=True,
+                indent=4,
+                separators=(",", ": "),
+            )
+        )
+        fe.published(recent_object.last_updated.replace(tzinfo=timezone.utc))
+        fe.link(
+            href=url_for(
+                "object_bp.get_json_object", object_id=recent_object.id, _external=True
+            )
+        )
+    atomfeed = fg.atom_str(pretty=True)
+    return atomfeed

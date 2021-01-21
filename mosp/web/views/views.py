@@ -1,12 +1,11 @@
 import sys
-import json
 import logging
-from datetime import timezone
 from flask import render_template, url_for, redirect, current_app, flash
 from flask_babel import gettext
-from feedgen.feed import FeedGenerator
 
 from mosp import __version__
+from mosp.web.lib.objects_utils import generate_objects_atom_feed
+from mosp.web.lib.schemas_utils import generate_schemas_atom_feed
 from mosp.models import JsonObject, Organization, User, Schema
 from mosp.bootstrap import application
 
@@ -109,43 +108,13 @@ def human():
 
 @current_app.route("/objects.atom", methods=["GET"])
 def objects_atom():
-    """Generates an ATOM feed with the recent updated objects."""
-    recent_objects = JsonObject.query.order_by(JsonObject.last_updated.desc()).limit(50)
-    fg = FeedGenerator()
-    fg.id(url_for("objects_atom", _external=True))
-    fg.title("Recent objects published on MOSP")
-    # fg.subtitle("")
-    fg.link(href=application.config["INSTANCE_URL"], rel="self")
-    fg.author(
-        {
-            "name": application.config["ADMIN_URL"],
-            "email": application.config["ADMIN_EMAIL"],
-        }
-    )
-    fg.language("en")
-    for recent_object in recent_objects:
-        fe = fg.add_entry()
-        fe.id(
-            url_for(
-                "object_bp.get_json_object", object_id=recent_object.id, _external=True
-            )
-        )
-        fe.title(recent_object.name)
-        fe.description(recent_object.description)
-        fe.author({"name": recent_object.organization.name})
-        fe.content(
-            json.dumps(
-                recent_object.json_object,
-                sort_keys=True,
-                indent=4,
-                separators=(",", ": "),
-            )
-        )
-        fe.published(recent_object.last_updated.replace(tzinfo=timezone.utc))
-        fe.link(
-            href=url_for(
-                "object_bp.get_json_object", object_id=recent_object.id, _external=True
-            )
-        )
-    atomfeed = fg.atom_str(pretty=True)
+    """Returns an ATOM feed with the recent updated objects."""
+    atomfeed = generate_objects_atom_feed()
+    return atomfeed
+
+
+@current_app.route("/schemas.atom", methods=["GET"])
+def schemas_atom():
+    """Returns an ATOM feed with the recent updated schemas."""
+    atomfeed = generate_schemas_atom_feed()
     return atomfeed
