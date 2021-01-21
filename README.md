@@ -124,8 +124,8 @@ This software is licensed under
 [GNU Affero General Public License version 3](https://www.gnu.org/licenses/agpl-3.0.html)
 
 
-* Copyright (C) 2018-2020 Cédric Bonhomme
-* Copyright (C) 2018-2020 SMILE gie securitymadein.lu
+* Copyright (C) 2018-2021 Cédric Bonhomme
+* Copyright (C) 2018-2021 SMILE gie securitymadein.lu
 
 For more information, the [list of authors and contributors](AUTHORS.md) is
 available.
