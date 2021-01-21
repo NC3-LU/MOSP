@@ -30,11 +30,7 @@ def generate_schemas_atom_feed():
     fg.language("en")
     for recent_schema in recent_schemas:
         fe = fg.add_entry()
-        fe.id(
-            url_for(
-                "schema_bp.get", schema_id=recent_schema.id, _external=True
-            )
-        )
+        fe.id(url_for("schema_bp.get", schema_id=recent_schema.id, _external=True))
         fe.title(recent_schema.name)
         fe.description(recent_schema.description)
         fe.author({"name": recent_schema.organization.name})

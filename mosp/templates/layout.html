@@ -8,6 +8,7 @@
     <link rel="author" type="text/plain"  href="{{ url_for('human')  }}" />
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
     <link href="{{ url_for("objects_atom") }}" rel="alternate" title="Recent objects published on MOSP" type="application/atom+xml" />
+    <link href="{{ url_for("schemas_atom") }}" rel="alternate" title="Recent schemas published on MOSP" type="application/atom+xml" />
     <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" />
     {% block head_css %}
