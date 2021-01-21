@@ -109,8 +109,7 @@ def human():
 
 @current_app.route("/objects.atom", methods=["GET"])
 def objects_atom():
-    """Generates an ATOM feed with the recent updated objects.
-    """
+    """Generates an ATOM feed with the recent updated objects."""
     recent_objects = JsonObject.query.order_by(JsonObject.last_updated.desc()).limit(50)
     fg = FeedGenerator()
     fg.id(url_for("objects_atom", _external=True))
