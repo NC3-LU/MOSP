@@ -31,7 +31,6 @@ def findkeys(node, kv):
 @stats_bp.route("/schemas/relations.json", methods=["GET"])
 def digraph(software=None):
     G = nx.DiGraph()
-    schemas_relations = tree()
 
     for schema in Schema.query.filter().all():
         # referrer_id = schema.json_schema.get("$id", None)
