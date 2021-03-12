@@ -139,3 +139,4 @@ application.url_map.converters["uuid"] = UUIDConverter
 
 # Create the Flask-Restless API manager.
 manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
+print("API manager created.")

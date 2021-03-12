@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from mosp.bootstrap import manager
+from mosp.bootstrap import manager, application
 
 from mosp.models import JsonObject
 from mosp.web.views.api.v1 import processors
@@ -39,12 +39,10 @@ def get_many_postprocessor(result=None, search_params=None, **kw):
 
 
 blueprint_object = manager.create_api_blueprint(
+    'JSONObjectAPI',
     JsonObject,
-    max_results_per_page=5000,
-    results_per_page=10,
     url_prefix=url_prefix,
     methods=["GET", "POST", "PUT"],
-    exclude_columns=["creator", "creator_id"],
     postprocessors=dict(GET_MANY=[get_many_postprocessor]),
     preprocessors=dict(
         GET_MANY=[pre_get_many],
@@ -56,3 +54,6 @@ blueprint_object = manager.create_api_blueprint(
         ],
     ),
 )
+print('blueprint_object')
+
+# application.register_blueprint(blueprint_object)

@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from mosp.bootstrap import manager
+from mosp.bootstrap import manager, application
 
 from mosp.models import Schema
 from mosp.web.views.api.v1.common import url_prefix
@@ -15,11 +15,12 @@ def pre_get_many(search_params=None, **kw):
 
 
 blueprint_schema = manager.create_api_blueprint(
+    'SchemaAPI',
     Schema,
-    max_results_per_page=1000,
-    results_per_page=10,
     url_prefix=url_prefix,
     methods=["GET"],
-    exclude_columns=["creator", "creator_id", "objects"],
     preprocessors=dict(GET_MANY=[pre_get_many]),
 )
+print('blueprint_schema')
+
+# application.register_blueprint(blueprint_schema)

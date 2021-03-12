@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from mosp.bootstrap import application
+print("application")
 from mosp import commands
 
 
@@ -35,6 +36,7 @@ with application.app_context():
     application.register_blueprint(views.api_v1.blueprint_organization)
     application.register_blueprint(views.api_v1.blueprint_schema)
     application.register_blueprint(views.api_v1.blueprint_object)
+    print("Blueprints for APIv1 registered.")
 
     # API v2
     application.register_blueprint(views.api_v2.apiv2_blueprint)
