@@ -72,7 +72,11 @@ babel = Babel(application)
 
 cors = CORS(
     application,
-    resources={r"/schema/def/*": {"origins": "*"}, r"/api/v2/*": {"origins": "*"}},
+    resources={
+        r"/schema/def/*": {"origins": "*"},
+        r"/api/v2/*": {"origins": "*"},
+        r"/api/v1/*": {"origins": "*"},
+    },
 )
 
 
