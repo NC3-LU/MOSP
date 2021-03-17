@@ -30,7 +30,7 @@ object = object_ns.model(
         "name": fields.String(description="Object name."),
         "description": fields.String(description="Object description."),
         "last_updated": fields.DateTime(description="Updated time of the object."),
-        "json_object": fields.Raw(description="The object."),
+        "json_object": fields.Raw(description="The JSON object."),
     },
 )
 
@@ -121,13 +121,34 @@ class ObjectsList(Resource):
 
         return result, 200
 
-    # @object_ns.doc("create_object")
-    # @object_ns.expect(object)
-    # @object_ns.marshal_with(object, code=201)
-    # @auth_func
-    # def post(self):
-    #     """Create a new object."""
-    #     new_object = JsonObject(**object_ns.payload)
-    #     db.session.add(new_object)
-    #     db.session.commit()
-    #     return new_object, 201
+
+    @object_ns.doc("create_object")
+    @object_ns.expect([object])
+    @object_ns.marshal_list_with(object_list_fields, code=201)
+    @object_ns.response(401, "Authorization needed")
+    @auth_func
+    def post(self):
+        """Create a new object"""
+        result = {
+            "data": [],
+            "metadata": {"count": 0, "offset": 0, "limit": 0},
+        } # type: Dict[Any, Any]
+        errors = []
+        for obj in object_ns.payload:
+            try:
+                new_object = JsonObject(**obj, creator_id=current_user.id)
+                db.session.add(new_object)
+                db.session.commit()
+                result["data"].append(new_object)
+                result["metadata"]["count"] += 1
+            except (
+                sqlalchemy.exc.IntegrityError,
+                sqlalchemy.exc.InvalidRequestError,
+            ) as e:
+                logger.error("Duplicate object {}".format(object["id"]))
+                errors.append(object["id"])
+                db.session.rollback()
+
+        # if some objects can not created we return the HTTP code 207 (Multi-Status)
+        # if all objects of the batch POST request are created we simply return 201.
+        return result, 207 if errors else 201
