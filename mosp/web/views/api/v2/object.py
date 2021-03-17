@@ -1,11 +1,14 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sqlalchemy.exc
 from flask import request
+from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse, abort
 
 from mosp.bootstrap import db
 from mosp.models import JsonObject
+from mosp.web.views.api.common import check_information
 from mosp.web.views.api.v2.common import auth_func
 
 
@@ -30,6 +33,8 @@ object = object_ns.model(
         "id": fields.Integer(description="Object id."),
         "name": fields.String(description="Object name."),
         "description": fields.String(description="Object description."),
+        "org_id": fields.Integer(description="Id of the organization owning the object."),
+        "schema_id": fields.Integer(description="Id of the schema validating the object."),
         "last_updated": fields.DateTime(description="Updated time of the object."),
         "json_object": fields.Raw(description="The JSON object."),
     },
@@ -136,6 +141,9 @@ class ObjectsList(Resource):
         } # type: Dict[Any, Any]
         errors = []
         for obj in object_ns.payload:
+
+            check_information(obj)
+
             try:
                 new_object = JsonObject(**obj, creator_id=current_user.id)
                 db.session.add(new_object)
@@ -146,7 +154,7 @@ class ObjectsList(Resource):
                 sqlalchemy.exc.IntegrityError,
                 sqlalchemy.exc.InvalidRequestError,
             ) as e:
-                logger.error("Duplicate object {}".format(object["id"]))
+                logger.error("Error when creatng object {}".format(object["id"]))
                 errors.append(object["id"])
                 db.session.rollback()
 
