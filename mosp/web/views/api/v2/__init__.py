@@ -40,11 +40,12 @@ def setup_api(application):
             ),
         )
 
-    from mosp.web.views.api.v2 import object, organization, schema
+    from mosp.web.views.api.v2 import object, organization, schema, user
 
     api.add_namespace(object.object_ns, path="/object")
     api.add_namespace(organization.organization_ns, path="/organization")
     api.add_namespace(schema.schema_ns, path="/schema")
+    api.add_namespace(user.user_ns, path="/user")
 
     return api
 

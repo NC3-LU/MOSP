@@ -161,3 +161,26 @@ class ObjectsList(Resource):
         # if some objects can not created we return the HTTP code 207 (Multi-Status)
         # if all objects of the batch POST request are created we simply return 201.
         return result, 207 if errors else 201
+
+
+
+@object_ns.route("/<int:id>")
+class ObjectItem(Resource):
+    """Get object details."""
+
+    @object_ns.doc("object_get")
+    @object_ns.marshal_with(object, code=200)
+    @auth_func
+    def get(self, id):
+        return JsonObject.query.filter(JsonObject.id == id).all(), 200
+
+
+    # @object_ns.doc("object_patch")
+    # @object_ns.expect(object)
+    # @object_ns.marshal_with(object, code=201)
+    # @auth_func
+    # def patch(self, id):
+    #
+    #     obj = JsonObject.query.filter(JsonObject.id == id).all(), 200
+    #
+    #     return current_user, 201

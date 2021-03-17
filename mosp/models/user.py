@@ -8,6 +8,7 @@ from validate_email import validate_email
 
 from mosp.bootstrap import db
 
+
 association_table_organization = db.Table(
     "association_users_organizations",
     db.metadata,
