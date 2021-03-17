@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sqlalchemy.exc
+from typing import Dict, Any
 from flask import request
 from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse, abort
