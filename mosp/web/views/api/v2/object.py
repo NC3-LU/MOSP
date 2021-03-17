@@ -34,8 +34,12 @@ object = object_ns.model(
         "id": fields.Integer(description="Object id."),
         "name": fields.String(description="Object name."),
         "description": fields.String(description="Object description."),
-        "org_id": fields.Integer(description="Id of the organization owning the object."),
-        "schema_id": fields.Integer(description="Id of the schema validating the object."),
+        "org_id": fields.Integer(
+            description="Id of the organization owning the object."
+        ),
+        "schema_id": fields.Integer(
+            description="Id of the schema validating the object."
+        ),
         "last_updated": fields.DateTime(description="Updated time of the object."),
         "json_object": fields.Raw(description="The JSON object."),
     },
@@ -128,7 +132,6 @@ class ObjectsList(Resource):
 
         return result, 200
 
-
     @object_ns.doc("create_object")
     @object_ns.expect([object])
     @object_ns.marshal_list_with(object_list_fields, code=201)
@@ -139,7 +142,7 @@ class ObjectsList(Resource):
         result = {
             "data": [],
             "metadata": {"count": 0, "offset": 0, "limit": 0},
-        } # type: Dict[Any, Any]
+        }  # type: Dict[Any, Any]
         errors = []
         for obj in object_ns.payload:
 
@@ -164,7 +167,6 @@ class ObjectsList(Resource):
         return result, 207 if errors else 201
 
 
-
 @object_ns.route("/<int:id>")
 class ObjectItem(Resource):
     """Get object details."""
@@ -174,7 +176,6 @@ class ObjectItem(Resource):
     @auth_func
     def get(self, id):
         return JsonObject.query.filter(JsonObject.id == id).all(), 200
-
 
     # @object_ns.doc("object_patch")
     # @object_ns.expect(object)

@@ -51,8 +51,12 @@ user = user_ns.model(
         "id": fields.Integer(description="User id."),
         "login": fields.String(description="The user login."),
         "created_at": fields.DateTime(description="The date of creation of the user."),
-        "last_seen": fields.DateTime(description="The date of last connection of the user."),
-        "organizations": fields.List(fields.Nested(organization), description="List of organizations."),
+        "last_seen": fields.DateTime(
+            description="The date of last connection of the user."
+        ),
+        "organizations": fields.List(
+            fields.Nested(organization), description="List of organizations."
+        ),
     },
 )
 

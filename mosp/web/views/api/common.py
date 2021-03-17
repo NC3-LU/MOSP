@@ -44,9 +44,10 @@ def check_information(data):
         jsonschema.validate(data.get("json_object", {}), schema.first().json_schema)
     except jsonschema.exceptions.ValidationError as e:
         raise ProcessingException(
-            description="The object submited is not validated by the schema:\n{}".format(e.message), code=400
+            description="The object submited is not validated by the schema:\n{}".format(
+                e.message
+            ),
+            code=400,
         )
     except Exception:
-        raise ProcessingException(
-            description="Unknown error.", code=400
-        )
+        raise ProcessingException(description="Unknown error.", code=400)
