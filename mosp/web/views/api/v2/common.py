@@ -5,6 +5,7 @@ from flask import request
 from flask_restx import abort
 
 from mosp.models import User
+from mosp.web.views.common import login_user_bundle
 
 
 def auth_func(func):
@@ -13,6 +14,7 @@ def auth_func(func):
             token = request.headers.get("X-API-KEY", False)
             if token:
                 user = User.query.filter(User.apikey == token).first()
+                login_user_bundle(user)
                 if not user:
                     abort(401, Error="Authentication required.")
         else:
