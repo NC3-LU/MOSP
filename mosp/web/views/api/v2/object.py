@@ -27,6 +27,7 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 object = object_ns.model(
     "Object",
     {
+        "id": fields.Integer(description="Object id."),
         "name": fields.String(description="Object name."),
         "description": fields.String(description="Object description."),
         "last_updated": fields.DateTime(description="Updated time of the object."),
