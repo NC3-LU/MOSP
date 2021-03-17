@@ -167,11 +167,16 @@ $(document).ready(function() {
 
     $('#download-csv').click(function(e) {
         $.ajax({
-            url: "{{ url_for('json_objectapi0.json_objectapi',) }}/{{ json_object.id }}",
+            url: "{{ url_for('JSONObjectAPI.json_objectapi',) }}/{{ json_object.id }}",
             type: 'GET',
-            contentType: "application/json",
+            dataType: "json",
+            contentType: "application/vnd.api+json",
+            headers: {
+              'Accept': 'application/vnd.api+json',
+              'Content-Type':'application/json'
+            },
             success: function(result) {
-                csvContent = Papa.unparse(result.json_object.values);
+                csvContent = Papa.unparse(result.data.attributes.json_object.values);
                 csvContent.replace(/(^[ \t]*\n)/gm, "");
                 var hiddenElement = document.createElement('a');
                 hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
@@ -185,12 +190,17 @@ $(document).ready(function() {
     });
     $('#download-json').click(function(e) {
         $.ajax({
-            url: "{{ url_for('json_objectapi0.json_objectapi',) }}/{{ json_object.id }}",
+            url: "{{ url_for('JSONObjectAPI.json_objectapi',) }}/{{ json_object.id }}",
             type: 'GET',
-            contentType: "application/json",
+            dataType: "json",
+            contentType: "application/vnd.api+json",
+            headers: {
+              'Accept': 'application/vnd.api+json',
+              'Content-Type':'application/json'
+            },
             success: function(result) {
                 var hiddenElement = document.createElement('a');
-                hiddenElement.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(result.json_object.values));
+                hiddenElement.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(result.data.attributes.json_object.values));
                 hiddenElement.target = '_blank';
                 hiddenElement.download = '{{ json_object.name }}.json';
                 document.body.appendChild(hiddenElement);

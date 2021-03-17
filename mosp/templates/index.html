@@ -44,28 +44,32 @@
 </div><!-- /.container -->
 <script>
 $(document).ready(function() {
-    // $.ajax({ // Get the list of JSON schenmas
-    //     url: "{{ url_for('SchemaAPI.schemaapi',) }}",
-    //     dataType: "json",
-    //     contentType: "application/vnd.api+json",
-    //     success: function(schemas) {
-    //         $('#list-schemas').empty();
-    //         schemas.objects
-    //         .sort(function (a, b) {
-    //             return a.last_updated < b.last_updated;
-    //         })
-    //         .map(function (schema) {
-    //             var cardHTML = schemaHomeTemplate({
-    //                 'url': '/schema/'+schema.id,
-    //                 'name': schema.name,
-    //                 'description': schema.description,
-    //                 'organization': schema.organization.name,
-    //                 'last_update': moment(schema.last_updated).fromNow()
-    //              });
-    //              $('#list-schemas').append(cardHTML);
-    //         });
-    //     }
-    // });
+    $.ajax({ // Get the list of JSON schenmas
+        url: "{{ url_for('SchemaAPI.schemaapi',) }}",
+        dataType: "json",
+        contentType: "application/vnd.api+json",
+        headers: {
+          'Accept': 'application/vnd.api+json',
+          'Content-Type':'application/json'
+        },
+        success: function(result) {
+            $('#list-schemas').empty();
+            result.data
+            .sort(function (a, b) {
+                return a.last_updated < b.last_updated;
+            })
+            .map(function (schema) {
+                var cardHTML = schemaHomeTemplate({
+                    'url': '/schema/'+schema.id,
+                    'name': schema.attributes.name,
+                    'description': schema.attributes.description,
+                    'organization': schema.attributes.organization.attributes.name,
+                    'last_update': moment(schema.last_updated).fromNow()
+                 });
+                 $('#list-schemas').append(cardHTML);
+            });
+        }
+    });
     $('#list-schemas').empty();
 
     $.ajax({ // Get the list of JSON objects
@@ -76,19 +80,19 @@ $(document).ready(function() {
           'Accept': 'application/vnd.api+json',
           'Content-Type':'application/json'
         },
-        success: function(json_objects) {
+        success: function(result) {
             $('#list-json-objects').empty();
-            json_objects.objects
+            result.data
             .sort(function (a, b) {
                 return a.last_updated < b.last_updated;
             })
             .map(function (json_object) {
                 var cardHTML = jsonObjectHomeTemplate({
                     'url': '/object/view/'+json_object.id,
-                    'name': json_object.name,
-                    'description': json_object.description,
-                    'organization': json_object.organization.name,
-                    'last_update': moment(json_object.last_updated).fromNow()
+                    'name': json_object.attributes.name,
+                    'description': json_object.attributes.description,
+                    'organization': json_object.attributes.organization.attributes.name,
+                    'last_update': moment(json_object.attributes.last_updated).fromNow()
                  });
                  $('#list-json-objects').append(cardHTML);
             });

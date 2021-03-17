@@ -1,5 +1,7 @@
 from mosp.web.views.api import v1 as api_v1
+from mosp.web.views.api import v1_1 as api_v1_1
 from mosp.web.views.api import v2 as api_v2
+
 from mosp.web.views import views, session_mgmt
 from mosp.web.views.admin import admin_bp
 from mosp.web.views.schema import schema_bp, schemas_bp
