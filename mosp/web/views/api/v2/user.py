@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
+from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse, abort
 from flask_restx.inputs import date_from_iso8601
 
@@ -143,3 +144,14 @@ class UserItem(Resource):
     @auth_func
     def get(self, id):
         return User.query.filter(User.id == id).all(), 200
+
+
+@user_ns.route("/me")
+class UserSelfItem(Resource):
+    """Return known information about the requestor."""
+
+    @user_ns.doc("client_self")
+    @user_ns.marshal_with(user, code=200)
+    @auth_func
+    def get(self):
+        return current_user, 200
