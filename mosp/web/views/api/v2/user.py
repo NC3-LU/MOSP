@@ -36,6 +36,7 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 organization = user_ns.model(
     "Organization",
     {
+        "id": fields.Integer(description="Organization id."),
         "name": fields.String(description="The organization name."),
         "description": fields.String(description="The organization description."),
         "organization_type": fields.String(description="The type of the organization."),
@@ -141,9 +142,4 @@ class UserItem(Resource):
     @user_ns.marshal_with(user, code=200)
     @auth_func
     def get(self, id):
-
-        result = User.query.filter(User.id == id).first()
-
-        # result.organizations.append("test")
-
-        return [result], 200
+        return User.query.filter(User.id == id).all(), 200
