@@ -154,7 +154,7 @@ class ObjectsList(Resource):
                 sqlalchemy.exc.IntegrityError,
                 sqlalchemy.exc.InvalidRequestError,
             ) as e:
-                logger.error("Error when creatng object {}".format(object["id"]))
+                # logger.error("Error when creatng object {}".format(object["id"]))
                 errors.append(object["id"])
                 db.session.rollback()
 
