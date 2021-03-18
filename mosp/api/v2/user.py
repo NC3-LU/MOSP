@@ -8,7 +8,7 @@ from flask_restx.inputs import date_from_iso8601
 
 from mosp.bootstrap import db
 from mosp.models import User
-from mosp.web.api.v2.common import auth_func
+from mosp.api.v2.common import auth_func
 
 
 user_ns = Namespace("user", description="user related operations")

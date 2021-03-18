@@ -19,7 +19,7 @@ from flask_paginate import Pagination, get_page_args
 from sqlalchemy import func, Boolean, Integer, desc, nullslast, or_
 
 from mosp.bootstrap import db, application
-from mosp.web.forms import SchemaForm
+from mosp.forms import SchemaForm
 from mosp.models import Schema, JsonObject
 
 schema_bp = Blueprint("schema_bp", __name__, url_prefix="/schema")

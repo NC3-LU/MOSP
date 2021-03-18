@@ -26,7 +26,7 @@ from flask import render_template
 
 from mosp.bootstrap import application
 from mosp.notifications import emails
-from mosp.web.lib.user_utils import generate_confirmation_token
+from mosp.lib.user_utils import generate_confirmation_token
 
 
 def account_recovery(user):

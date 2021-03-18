@@ -28,7 +28,7 @@ from email import charset
 
 from mosp.bootstrap import application
 
-# from mosp.web.decorators import async_maker
+# from mosp.decorators import async_maker
 
 logger = logging.getLogger(__name__)
 

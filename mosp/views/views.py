@@ -4,8 +4,8 @@ from flask import render_template, url_for, redirect, current_app, flash
 from flask_babel import gettext
 
 from mosp import __version__
-from mosp.web.lib.objects_utils import generate_objects_atom_feed
-from mosp.web.lib.schemas_utils import generate_schemas_atom_feed
+from mosp.lib.objects_utils import generate_objects_atom_feed
+from mosp.lib.schemas_utils import generate_schemas_atom_feed
 from mosp.models import JsonObject, Organization, User, Schema
 from mosp.bootstrap import application
 

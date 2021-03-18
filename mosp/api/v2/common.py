@@ -5,7 +5,7 @@ from flask import request
 from flask_restx import abort, fields
 
 from mosp.models import User
-from mosp.web.views.common import login_user_bundle
+from mosp.views.common import login_user_bundle
 
 
 def auth_func(func):

@@ -4,7 +4,7 @@
 from mosp.bootstrap import manager
 
 from mosp.models import Schema
-from mosp.web.api.v1.common import url_prefix
+from mosp.api.v1.common import url_prefix
 
 
 def pre_get_many(search_params=None, **kw):

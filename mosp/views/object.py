@@ -16,9 +16,9 @@ from flask_babel import gettext
 
 from mosp.bootstrap import db
 from mosp.models import Schema, JsonObject, License
-from mosp.web.views.decorators import check_object_edit_permission
-from mosp.web.forms import AddObjectForm
-from mosp.web.lib import objects_utils
+from mosp.views.decorators import check_object_edit_permission
+from mosp.forms import AddObjectForm
+from mosp.lib import objects_utils
 
 object_bp = Blueprint("object_bp", __name__, url_prefix="/object")
 objects_bp = Blueprint("objects_bp", __name__, url_prefix="/objects")

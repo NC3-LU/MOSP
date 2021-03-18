@@ -9,8 +9,8 @@ from flask_restx import Namespace, Resource, fields, reqparse, abort
 
 from mosp.bootstrap import db
 from mosp.models import JsonObject
-from mosp.web.api.common import check_information
-from mosp.web.api.v2.common import auth_func, object_params_model, organization_params_model, metada_params_model
+from mosp.api.common import check_information
+from mosp.api.v2.common import auth_func, object_params_model, organization_params_model, metada_params_model
 
 
 object_ns = Namespace("object", description="object related operations")

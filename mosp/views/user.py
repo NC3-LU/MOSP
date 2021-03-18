@@ -6,12 +6,12 @@ from flask_paginate import Pagination, get_page_args
 
 from mosp.bootstrap import db
 from mosp.models import User, JsonObject
-from mosp.web.forms import (
+from mosp.forms import (
     ProfileForm,
     AccountRecoveryForm,
     AccountRecoveryNewPasswordForm,
 )
-from mosp.web.lib.user_utils import confirm_token
+from mosp.lib.user_utils import confirm_token
 from mosp.notifications import notifications
 
 

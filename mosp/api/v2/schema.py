@@ -5,13 +5,11 @@ from flask import request
 from flask_restx import Namespace, Resource, fields, reqparse, abort
 
 from mosp.bootstrap import db
-from mosp.models import Organization
-from mosp.web.api.v2.common import organization_params_model, metada_params_model
+from mosp.models import Schema
+from mosp.api.v2.common import schema_params_model
 
 
-organization_ns = Namespace(
-    "organization", description="organization related operations"
-)
+schema_ns = Namespace("schema", description="schema related operations")
 
 
 # Argument Parsing
@@ -23,30 +21,41 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 
 
 # Response marshalling
-organization = organization_ns.model("Organization", organization_params_model)
-metadata = organization_ns.model("metadata", metada_params_model)
-organization_list_fields = organization_ns.model(
-    "OrganizationsList",
+schema = schema_ns.model("Schema", schema_params_model)
+metadata = schema_ns.model(
+    "metadata",
+    {
+        "count": fields.String(
+            readonly=True, description="Total number of the items of the data."
+        ),
+        "offset": fields.String(
+            readonly=True,
+            description="Position of the first element of the data from the total data amount.",
+        ),
+        "limit": fields.String(readonly=True, description="Requested limit data."),
+    },
+)
+
+schema_list_fields = schema_ns.model(
+    "SchemasList",
     {
         "metadata": fields.Nested(
             metadata, description="Metada related to the result."
         ),
-        "data": fields.List(
-            fields.Nested(organization), description="List of organizations."
-        ),
+        "data": fields.List(fields.Nested(schema), description="List of schemas."),
     },
 )
 
 
-@organization_ns.route("/")
-class OrganizationsList(Resource):
-    """Create new organization."""
+@schema_ns.route("/")
+class SchemasList(Resource):
+    """Create new schema."""
 
-    @organization_ns.doc("list_organizations")
-    @organization_ns.expect(parser)
-    @organization_ns.marshal_list_with(organization_list_fields)
+    @schema_ns.doc("list_schemas")
+    @schema_ns.expect(parser)
+    @schema_ns.marshal_list_with(schema_list_fields)
     def get(self):
-        """List all organizations."""
+        """List all schemas."""
 
         args = parser.parse_args()
         offset = args.pop("page", 1) - 1
@@ -63,10 +72,10 @@ class OrganizationsList(Resource):
         }
 
         try:
-            query = Organization.query
+            query = Schema.query
             for arg in args:
-                if hasattr(Organization, arg):
-                    query = query.filter(getattr(Organization, arg) == args[arg])
+                if hasattr(Schema, arg):
+                    query = query.filter(getattr(Schema, arg) == args[arg])
             total = query.count()
             query = query.limit(limit)
             results = query.offset(offset * limit)
@@ -79,13 +88,13 @@ class OrganizationsList(Resource):
 
         return result, 200
 
-    # @organization_ns.doc("create_organization")
-    # @organization_ns.expect(organization)
-    # @organization_ns.marshal_with(organization, code=201)
+    # @schema_ns.doc("create_organization")
+    # @schema_ns.expect(organization)
+    # @schema_ns.marshal_with(organization, code=201)
     # @auth_func
     # def post(self):
     #     """Create a new organization."""
-    #     new_organization = Organization(**organization_ns.payload)
-    #     db.session.add(new_organization)
+    #     new_schema = Organization(**schema_ns.payload)
+    #     db.session.add(new_schema)
     #     db.session.commit()
-    #     return new_organization, 201
+    #     return new_schema, 201

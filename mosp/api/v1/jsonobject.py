@@ -4,8 +4,8 @@
 from mosp.bootstrap import manager
 
 from mosp.models import JsonObject
-from mosp.web.api.v1 import processors
-from mosp.web.api.v1.common import url_prefix
+from mosp.api.v1 import processors
+from mosp.api.v1.common import url_prefix
 
 
 def pre_get_many(search_params=None, **kw):

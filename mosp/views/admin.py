@@ -10,8 +10,8 @@ from datetime import datetime, timedelta
 
 from mosp.models import User, JsonObject, Schema, Organization, License
 from mosp.bootstrap import db
-from mosp.web.views.common import admin_permission
-from mosp.web.forms import UserForm, OrganizationForm
+from mosp.views.common import admin_permission
+from mosp.forms import UserForm, OrganizationForm
 
 logger = logging.getLogger(__name__)
 

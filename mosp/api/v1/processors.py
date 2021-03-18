@@ -7,8 +7,8 @@ from flask_login import current_user
 from flask_restless import ProcessingException
 
 from mosp.models import User, Schema, JsonObject
-from mosp.web.views.common import login_user_bundle
-from mosp.web.api.common import check_information
+from mosp.views.common import login_user_bundle
+from mosp.api.common import check_information
 
 logger = logging.getLogger(__name__)
 
