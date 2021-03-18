@@ -15,9 +15,9 @@ def auth_func(func):
             token = request.headers.get("X-API-KEY", False)
             if token:
                 user = User.query.filter(User.apikey == token).first()
-                login_user_bundle(user)
                 if not user:
-                    abort(401, Error="Authentication required.")
+                    abort(401, Error="Unauthorized.")
+                login_user_bundle(user)
         else:
             abort(401, Error="Authentication required.")
         return func(*args, **kwargs)
