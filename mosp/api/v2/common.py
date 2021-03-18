@@ -51,7 +51,7 @@ object_params_model = {
     "id": fields.Integer(description="Object id."),
     "name": fields.String(description="Object name."),
     "description": fields.String(description="Object description."),
-    "organization": fields.Nested(organization_params_model),
+    # "organization": fields.Nested(organization_params_model),
     "schema_id": fields.Integer(
         description="Id of the schema validating the object."
     ),
@@ -62,7 +62,19 @@ object_params_model = {
 schema_params_model = {
     "name": fields.String(description="The schema name."),
     "description": fields.String(description="The schema description."),
-    "organization": fields.Nested(organization_params_model),
+    # "organization": fields.Nested(organization_params_model),
     "last_updated": fields.DateTime(description="Updated time of the schema."),
     "json_schema": fields.Raw(description="The schena."),
+}
+
+user_params_model = {
+    "id": fields.Integer(description="User id."),
+    "login": fields.String(description="The user login."),
+    "created_at": fields.DateTime(description="The date of creation of the user."),
+    "last_seen": fields.DateTime(
+        description="The date of last connection of the user."
+    ),
+    # "organizations": fields.List(
+    #     fields.Nested(organization_params_model), description="List of organizations."
+    # ),
 }

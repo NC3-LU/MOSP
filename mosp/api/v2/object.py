@@ -29,6 +29,7 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 
 # Response marshalling
 object = object_ns.model("Object", object_params_model)
+object["organization"] = fields.Nested(object_ns.model("Organization", organization_params_model))
 metadata = object_ns.model("metadata", metada_params_model)
 
 object_list_fields = object_ns.model(

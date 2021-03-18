@@ -8,7 +8,7 @@ from flask_restx.inputs import date_from_iso8601
 
 from mosp.bootstrap import db
 from mosp.models import User
-from mosp.api.v2.common import auth_func
+from mosp.api.v2.common import auth_func, user_params_model, metada_params_model, organization_params_model
 
 
 user_ns = Namespace("user", description="user related operations")
@@ -34,46 +34,9 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 
 
 # Response marshalling
-organization = user_ns.model(
-    "Organization",
-    {
-        "id": fields.Integer(description="Organization id."),
-        "name": fields.String(description="The organization name."),
-        "description": fields.String(description="The organization description."),
-        "organization_type": fields.String(description="The type of the organization."),
-        "last_updated": fields.DateTime(description="Updated time of the schema."),
-    },
-)
-
-user = user_ns.model(
-    "User",
-    {
-        "id": fields.Integer(description="User id."),
-        "login": fields.String(description="The user login."),
-        "created_at": fields.DateTime(description="The date of creation of the user."),
-        "last_seen": fields.DateTime(
-            description="The date of last connection of the user."
-        ),
-        "organizations": fields.List(
-            fields.Nested(organization), description="List of organizations."
-        ),
-    },
-)
-
-metadata = user_ns.model(
-    "metadata",
-    {
-        "count": fields.String(
-            readonly=True, description="Total number of the items of the data."
-        ),
-        "offset": fields.String(
-            readonly=True,
-            description="Position of the first element of the data from the total data amount.",
-        ),
-        "limit": fields.String(readonly=True, description="Requested limit data."),
-    },
-)
-
+user = user_ns.model("User", user_params_model)
+user["organization"] = fields.List(fields.Nested(user_ns.model("Organization", organization_params_model)), description="List of organizations.")
+metadata = user_ns.model("metadata", metada_params_model)
 users_list_fields = user_ns.model(
     "UsersList",
     {
@@ -87,7 +50,7 @@ users_list_fields = user_ns.model(
 
 @user_ns.route("/")
 class UsersList(Resource):
-    """."""
+    """List all users."""
 
     @user_ns.doc("list_users")
     @user_ns.expect(parser)
