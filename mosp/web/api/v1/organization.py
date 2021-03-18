@@ -4,7 +4,7 @@
 from mosp.bootstrap import manager
 
 from mosp.models import Organization
-from mosp.web.views.api.v1.common import url_prefix
+from mosp.web.api.v1.common import url_prefix
 
 
 blueprint_organization = manager.create_api_blueprint(
