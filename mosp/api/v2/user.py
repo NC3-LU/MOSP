@@ -35,7 +35,7 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 
 # Response marshalling
 user = user_ns.model("User", user_params_model)
-user["organization"] = fields.List(fields.Nested(user_ns.model("Organization", organization_params_model)), description="List of organizations.")
+user["organizations"] = fields.List(fields.Nested(user_ns.model("Organization", organization_params_model)), description="List of organizations.")
 metadata = user_ns.model("metadata", metada_params_model)
 users_list_fields = user_ns.model(
     "UsersList",

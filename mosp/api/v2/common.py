@@ -41,6 +41,7 @@ metada_params_model = {
 }
 
 organization_params_model = {
+    "id": fields.Integer(description="Organization id."),
     "name": fields.String(description="The organization name."),
     "description": fields.String(description="The organization description."),
     "organization_type": fields.String(description="The type of the organization."),
@@ -60,6 +61,7 @@ object_params_model = {
 }
 
 schema_params_model = {
+    "id": fields.Integer(description="Schema id."),
     "name": fields.String(description="The schema name."),
     "description": fields.String(description="The schema description."),
     # "organization": fields.Nested(organization_params_model),
