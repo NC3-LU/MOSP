@@ -45,12 +45,10 @@
 <script>
 $(document).ready(function() {
     $.ajax({ // Get the list of JSON schenmas
-        url: "{{ url_for('schemaapi0.schemaapi',) }}",
-        dataType: "json",
-        contentType: "application/json",
-        success: function(schemas) {
+        url: "{{ url_for('apiv2.schema_schemas_list',) }}",
+        success: function(result) {
             $('#list-schemas').empty();
-            schemas.objects
+            result.data
             .sort(function (a, b) {
                 return a.last_updated < b.last_updated;
             })
@@ -68,12 +66,10 @@ $(document).ready(function() {
     });
 
     $.ajax({ // Get the list of JSON objects
-        url: "{{ url_for('json_objectapi0.json_objectapi',) }}",
-        dataType: "json",
-        contentType: "application/json",
-        success: function(json_objects) {
+        url: "{{ url_for('apiv2.object_objects_list',) }}",
+        success: function(result) {
             $('#list-json-objects').empty();
-            json_objects.objects
+            result.data
             .sort(function (a, b) {
                 return a.last_updated < b.last_updated;
             })

@@ -10,7 +10,7 @@ from flask_restx import Namespace, Resource, fields, reqparse, abort
 from mosp.bootstrap import db
 from mosp.models import JsonObject
 from mosp.web.api.common import check_information
-from mosp.web.api.v2.common import auth_func
+from mosp.web.api.v2.common import auth_func, object_params_model, organization_params_model, metada_params_model
 
 
 object_ns = Namespace("object", description="object related operations")
@@ -28,36 +28,8 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 
 
 # Response marshalling
-object = object_ns.model(
-    "Object",
-    {
-        "id": fields.Integer(description="Object id."),
-        "name": fields.String(description="Object name."),
-        "description": fields.String(description="Object description."),
-        "org_id": fields.Integer(
-            description="Id of the organization owning the object."
-        ),
-        "schema_id": fields.Integer(
-            description="Id of the schema validating the object."
-        ),
-        "last_updated": fields.DateTime(description="Updated time of the object."),
-        "json_object": fields.Raw(description="The JSON object."),
-    },
-)
-
-metadata = object_ns.model(
-    "metadata",
-    {
-        "count": fields.String(
-            readonly=True, description="Total number of the items of the data."
-        ),
-        "offset": fields.String(
-            readonly=True,
-            description="Position of the first element of the data from the total data amount.",
-        ),
-        "limit": fields.String(readonly=True, description="Requested limit data."),
-    },
-)
+object = object_ns.model("Object", object_params_model)
+metadata = object_ns.model("metadata", metada_params_model)
 
 object_list_fields = object_ns.model(
     "ObjectsList",

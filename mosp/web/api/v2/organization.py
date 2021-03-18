@@ -6,6 +6,7 @@ from flask_restx import Namespace, Resource, fields, reqparse, abort
 
 from mosp.bootstrap import db
 from mosp.models import Organization
+from mosp.web.api.v2.common import organization_params_model, metada_params_model
 
 
 organization_ns = Namespace(
@@ -22,30 +23,8 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 
 
 # Response marshalling
-organization = organization_ns.model(
-    "Organization",
-    {
-        "name": fields.String(description="The organization name."),
-        "description": fields.String(description="The organization description."),
-        "organization_type": fields.String(description="The type of the organization."),
-        "last_updated": fields.DateTime(description="Updated time of the schema."),
-    },
-)
-
-metadata = organization_ns.model(
-    "metadata",
-    {
-        "count": fields.String(
-            readonly=True, description="Total number of the items of the data."
-        ),
-        "offset": fields.String(
-            readonly=True,
-            description="Position of the first element of the data from the total data amount.",
-        ),
-        "limit": fields.String(readonly=True, description="Requested limit data."),
-    },
-)
-
+organization = organization_ns.model("Organization", organization_params_model)
+metadata = organization_ns.model("metadata", metada_params_model)
 organization_list_fields = organization_ns.model(
     "OrganizationsList",
     {

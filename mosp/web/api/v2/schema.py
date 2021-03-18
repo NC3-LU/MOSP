@@ -6,6 +6,7 @@ from flask_restx import Namespace, Resource, fields, reqparse, abort
 
 from mosp.bootstrap import db
 from mosp.models import Schema
+from mosp.web.api.v2.common import schema_params_model
 
 
 schema_ns = Namespace("schema", description="schema related operations")
@@ -20,16 +21,7 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 
 
 # Response marshalling
-schema = schema_ns.model(
-    "Schema",
-    {
-        "name": fields.String(description="The schema name."),
-        "description": fields.String(description="The schema description."),
-        "last_updated": fields.DateTime(description="Updated time of the schema."),
-        "json_schema": fields.Raw(description="The schena."),
-    },
-)
-
+schema = schema_ns.model("Schema", schema_params_model)
 metadata = schema_ns.model(
     "metadata",
     {
