@@ -96,6 +96,7 @@ class ObjectsList(Resource):
                 JsonObject.json_object[("language")].astext == object_language
             )
 
+        query = query.order_by(JsonObject.last_updated.desc())
         total = query.count()
         query = query.limit(limit)
         results = query.offset(offset * limit)

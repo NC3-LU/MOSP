@@ -77,6 +77,7 @@ class SchemasList(Resource):
             for arg in args:
                 if hasattr(Schema, arg):
                     query = query.filter(getattr(Schema, arg) == args[arg])
+            query = query.order_by(Schema.last_updated.desc())
             total = query.count()
             query = query.limit(limit)
             results = query.offset(offset * limit)
