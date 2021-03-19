@@ -50,7 +50,7 @@ $(document).ready(function() {
             $('#list-schemas').empty();
             result.data
             .sort(function (a, b) {
-                return a.last_updated < b.last_updated;
+                return new Date(b.last_updated) - new Date(a.last_updated);
             })
             .map(function (schema) {
                 var cardHTML = schemaHomeTemplate({
@@ -71,7 +71,7 @@ $(document).ready(function() {
             $('#list-json-objects').empty();
             result.data
             .sort(function (a, b) {
-                return a.last_updated < b.last_updated;
+                return new Date(b.last_updated) - new Date(a.last_updated);
             })
             .map(function (json_object) {
                 var cardHTML = jsonObjectHomeTemplate({
