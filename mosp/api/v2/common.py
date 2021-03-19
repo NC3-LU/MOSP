@@ -80,3 +80,9 @@ user_params_model = {
     #     fields.Nested(organization_params_model), description="List of organizations."
     # ),
 }
+
+licence_params_model = {
+    # "id": fields.Integer(description="License id."),
+    # "name": fields.String(description="The license name."),
+    "license_id": fields.String(description="The SPDX license id."),
+}

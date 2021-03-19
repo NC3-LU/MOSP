@@ -8,9 +8,9 @@ from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse, abort
 
 from mosp.bootstrap import db
-from mosp.models import JsonObject
+from mosp.models import JsonObject, License
 from mosp.api.common import check_information
-from mosp.api.v2.common import auth_func, object_params_model, organization_params_model, metada_params_model
+from mosp.api.v2.common import auth_func, object_params_model, organization_params_model, metada_params_model, licence_params_model
 
 
 object_ns = Namespace("object", description="object related operations")
@@ -30,6 +30,7 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 # Response marshalling
 object = object_ns.model("Object", object_params_model)
 object["organization"] = fields.Nested(object_ns.model("Organization", organization_params_model))
+object["licences"] = fields.List(fields.Nested(object_ns.model("License", licence_params_model)), description="List of licenses.")
 metadata = object_ns.model("metadata", metada_params_model)
 
 object_list_fields = object_ns.model(
@@ -121,8 +122,20 @@ class ObjectsList(Resource):
 
             check_information(obj)
 
+            obj_licenses = []
+            for license in obj.get("licenses", []):
+                obj_license = License.query.filter(License.license_id == license["license_id"]).first()
+                if obj_license:
+                    obj_licenses.append(obj_license)
+            try:
+                del obj["licenses"] # must be removed
+                del obj["organization"] # if not supplied by the client
+            except:
+                pass
+
             try:
                 new_object = JsonObject(**obj, creator_id=current_user.id)
+                new_object.licenses = obj_licenses
                 db.session.add(new_object)
                 db.session.commit()
                 result["data"].append(new_object)
@@ -132,7 +145,8 @@ class ObjectsList(Resource):
                 sqlalchemy.exc.InvalidRequestError,
             ) as e:
                 # logger.error("Error when creatng object {}".format(object["id"]))
-                errors.append(object["id"])
+                print(e)
+                #errors.append(object["id"])
                 db.session.rollback()
 
         # if some objects can not created we return the HTTP code 207 (Multi-Status)
