@@ -41,7 +41,7 @@ metada_params_model = {
 }
 
 organization_params_model = {
-    "id": fields.Integer(description="Organization id."),
+    "id": fields.Integer(description="Organization id.", readonly=True),
     "name": fields.String(description="The organization name."),
     "description": fields.String(description="The organization description."),
     "organization_type": fields.String(description="The type of the organization."),
@@ -49,7 +49,7 @@ organization_params_model = {
 }
 
 object_params_model = {
-    "id": fields.Integer(description="Object id."),
+    "id": fields.Integer(description="Object id.", readonly=True),
     "name": fields.String(description="Object name."),
     "description": fields.String(description="Object description."),
     # "organization": fields.Nested(organization_params_model),
@@ -61,7 +61,7 @@ object_params_model = {
 }
 
 schema_params_model = {
-    "id": fields.Integer(description="Schema id."),
+    "id": fields.Integer(description="Schema id.", readonly=True),
     "name": fields.String(description="The schema name."),
     "description": fields.String(description="The schema description."),
     # "organization": fields.Nested(organization_params_model),
@@ -70,7 +70,7 @@ schema_params_model = {
 }
 
 user_params_model = {
-    "id": fields.Integer(description="User id."),
+    "id": fields.Integer(description="User id.", readonly=True),
     "login": fields.String(description="The user login."),
     "created_at": fields.DateTime(description="The date of creation of the user."),
     "last_seen": fields.DateTime(
