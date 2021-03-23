@@ -13,7 +13,7 @@ def create_user(login, email, password, is_active, is_admin):
         login=login,
         email=email,
         pwdhash=generate_password_hash(password),
-        is_active=True,
+        is_active=is_active,
         is_admin=is_admin,
     )
     try:
