@@ -186,6 +186,7 @@ def confirm_account(token=None):
         # two passwards are equal)
         if form.password1.data == form.password2.data:
             user.pwdhash = generate_password_hash(form.password1.data)
+            user.is_active = True
             db.session.add(user)
             db.session.commit()
             flash(gettext("Your password has been updated."), "success")
