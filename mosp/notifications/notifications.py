@@ -61,3 +61,25 @@ def new_password_notification(user, password):
         subject="[MOSP] New password",
         plaintext=plaintext,
     )
+
+
+def confirm_account(user, password):
+    """
+    Account creation notification.
+    """
+    token = generate_confirmation_token(user.login)
+    expire_time = datetime.datetime.now() + datetime.timedelta(
+        seconds=application.config["TOKEN_VALIDITY_PERIOD"]
+    )
+
+    plaintext = render_template(
+        "emails/account_activation.txt",
+        user=user,
+        instance_url=application.config["INSTANCE_URL"],
+        token=token,
+        expire_time=expire_time,
+    )
+
+    emails.send(
+        to=email, subject="[MOSP] Account creation", plaintext=plaintext,
+    )
