@@ -7,7 +7,7 @@ from mosp.bootstrap import db
 from mosp.models import User
 
 
-def create_user(login, email, password, is_admin):
+def create_user(login, email, password, is_active, is_admin):
     """Creates a normal user or an administrator."""
     user = User(
         login=login,
@@ -16,5 +16,9 @@ def create_user(login, email, password, is_admin):
         is_active=True,
         is_admin=is_admin,
     )
-    db.session.add(user)
-    db.session.commit()
+    try:
+        db.session.add(user)
+        db.session.commit()
+        return user
+    except:
+        db.session.rollback()

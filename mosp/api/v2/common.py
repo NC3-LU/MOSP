@@ -10,6 +10,7 @@ from mosp.views.common import login_user_bundle
 
 def auth_func(func):
     """Authentication decorator."""
+
     def wrapper(*args, **kwargs):
         if "X-API-KEY" in request.headers:
             token = request.headers.get("X-API-KEY", False)
@@ -53,12 +54,8 @@ object_params_model = {
     "name": fields.String(description="Object name."),
     "description": fields.String(description="Object description."),
     # "organization": fields.Nested(organization_params_model),
-    "schema_id": fields.Integer(
-        description="Id of the schema validating the object."
-    ),
-    "org_id": fields.Integer(
-        description="Id of the organization owning the object."
-    ),
+    "schema_id": fields.Integer(description="Id of the schema validating the object."),
+    "org_id": fields.Integer(description="Id of the organization owning the object."),
     "last_updated": fields.DateTime(description="Updated time of the object."),
     "json_object": fields.Raw(description="The JSON object."),
 }

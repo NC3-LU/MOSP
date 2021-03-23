@@ -22,7 +22,9 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 
 # Response marshalling
 schema = schema_ns.model("Schema", schema_params_model)
-schema["organization"] = fields.Nested(schema_ns.model("Organization", organization_params_model))
+schema["organization"] = fields.Nested(
+    schema_ns.model("Organization", organization_params_model)
+)
 metadata = schema_ns.model(
     "metadata",
     {

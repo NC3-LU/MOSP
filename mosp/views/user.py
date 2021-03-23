@@ -155,11 +155,11 @@ def account_recovery():
     return redirect(url_for("index"))
 
 
-@user_bp.route("/recover_account/<string:token>", methods=["GET", "POST"])
+@user_bp.route("/confirm_account/<string:token>", methods=["GET", "POST"])
 def confirm_account(token=None):
     """
-    Confirm the account recovery of a user with the token that the user has
-    received previously by email.
+    Confirm the account of a user with the token that the user has received
+    previously by email.
     """
     # Check the token
     user, login = None, None
@@ -168,7 +168,7 @@ def confirm_account(token=None):
     if login:
         user = User.query.filter(User.login == login).first()
     if user is None:
-        flash(gettext("Impossible to recover this account."), "danger")
+        flash(gettext("Impossible to activate this account."), "danger")
         return redirect(url_for("login"))
 
     # Management of the Web form
@@ -180,7 +180,7 @@ def confirm_account(token=None):
         if user is not None:
             return render_template("account_recovery_set_password.html", form=form)
         else:
-            flash(gettext("Impossible to recover this account."), "danger")
+            flash(gettext("Impossible to activate this account."), "danger")
     else:
         # Update the password of the user (if the token is valid and if the
         # two passwards are equal)

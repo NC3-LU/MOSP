@@ -7,9 +7,16 @@ from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse, abort
 from flask_restx.inputs import date_from_iso8601
 
+import mosp.scripts
 from mosp.bootstrap import db
 from mosp.models import User
-from mosp.api.v2.common import auth_func, user_params_model, metada_params_model, organization_params_model
+from mosp.notifications import notifications
+from mosp.api.v2.common import (
+    auth_func,
+    user_params_model,
+    metada_params_model,
+    organization_params_model,
+)
 
 
 user_ns = Namespace("user", description="user related operations")
@@ -36,7 +43,10 @@ parser.add_argument("per_page", type=int, required=False, default=10, help="Page
 
 # Response marshalling
 user = user_ns.model("User", user_params_model)
-user["organizations"] = fields.List(fields.Nested(user_ns.model("Organization", organization_params_model)), description="List of organizations.")
+user["organizations"] = fields.List(
+    fields.Nested(user_ns.model("Organization", organization_params_model)),
+    description="List of organizations.",
+)
 metadata = user_ns.model("metadata", metada_params_model)
 users_list_fields = user_ns.model(
     "UsersList",
@@ -45,6 +55,14 @@ users_list_fields = user_ns.model(
             metadata, description="Metada related to the result."
         ),
         "data": fields.List(fields.Nested(user), description="List of users."),
+    },
+)
+
+create_user_model = user_ns.model(
+    "User",
+    {
+        "login": fields.String(description="The user login."),
+        "email": fields.String(description="The user login."),
     },
 )
 
@@ -91,16 +109,25 @@ class UsersList(Resource):
 
         return result, 200
 
-    # @user_ns.doc("create_organization")
-    # @user_ns.expect(organization)
-    # @user_ns.marshal_with(organization, code=201)
-    # @auth_func
-    # def post(self):
-    #     """Create a new organization."""
-    #     new_schema = Organization(**user_ns.payload)
-    #     db.session.add(new_schema)
-    #     db.session.commit()
-    #     return new_schema, 201
+    @user_ns.doc("user_create")
+    @user_ns.expect(create_user_model)
+    @user_ns.marshal_with(user, code=201)
+    def post(self):
+        """Create, without authentication, a new deactivated user."""
+        new_user = None
+        try:
+            new_user = mosp.scripts.create_user(
+                **user_ns.payload, password="", is_active=False, is_admin=False
+            )
+        except Exception as e:
+            # logger.error("Only admin can create new client.")
+            print(e)
+            return abort(403)
+
+        if new_user:
+            notifications.confirm_account(new_user)
+
+        return [new_user], 201
 
 
 @user_ns.route("/<int:id>")

@@ -63,7 +63,7 @@ def new_password_notification(user, password):
     )
 
 
-def confirm_account(user, password):
+def confirm_account(user):
     """
     Account creation notification.
     """
@@ -81,5 +81,7 @@ def confirm_account(user, password):
     )
 
     emails.send(
-        to=email, subject="[MOSP] Account creation", plaintext=plaintext,
+        to=user.email,
+        subject="[MOSP] Account creation",
+        plaintext=plaintext,
     )

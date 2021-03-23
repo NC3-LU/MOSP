@@ -2,7 +2,7 @@ Hello {{ user.login }},
 
 Your account has been created.
 Click on the following link in order to confirm it:
-{{ instance_url }}user/confirm_account/{{ token }}
+{{ instance_url }}/user/confirm_account/{{ token }}
 
 You will then be able to connect to {{ instance_url }}.
 You must now be associated to at least one organization
