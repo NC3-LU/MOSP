@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import secrets
 from flask import request
 from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse, abort
@@ -104,12 +105,14 @@ class UsersList(Resource):
 
 @user_ns.route("/<int:id>")
 class UserItem(Resource):
-    """Get user details."""
+    """Get user."""
 
     @user_ns.doc("user_get")
     @user_ns.marshal_with(user, code=200)
     @auth_func
     def get(self, id):
+        """Get details about the user with the specified id."""
+
         return User.query.filter(User.id == id).all(), 200
 
 
@@ -121,4 +124,20 @@ class UserSelfItem(Resource):
     @user_ns.marshal_with(user, code=200)
     @auth_func
     def get(self):
+        """Return known information about the authenticated requestor."""
+
         return current_user, 200
+
+
+@user_ns.route("/me/regenerate-token")
+class UserRegenerateToken(Resource):
+    """Return a new token for the user."""
+
+    @user_ns.doc("user_regenerate_token")
+    @auth_func
+    def get(self):
+        """Return a new token for the user."""
+
+        current_user.apikey = secrets.token_urlsafe(64)
+        db.session.commit()
+        return {"api-key": current_user.apikey}, 200
