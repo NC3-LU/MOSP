@@ -75,6 +75,6 @@ class User(db.Model, UserMixin):
 
     @validates("email")
     def validates_email(self, key, value):
-        assert 3 <= len(value) <= 30, AssertionError("maximum length for email: 256")
+        assert 3 <= len(value) <= 256, AssertionError("maximum length for email: 256")
         if validate_email(value):
             return value
