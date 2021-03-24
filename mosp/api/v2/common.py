@@ -18,6 +18,8 @@ def auth_func(func):
                 user = User.query.filter(User.apikey == token).first()
                 if not user:
                     abort(401, Error="Unauthorized.")
+                if not user.is_active:
+                    abort(401, Error="Account deactivated.")
                 login_user_bundle(user)
         else:
             abort(401, Error="Authentication required.")
