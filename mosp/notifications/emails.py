@@ -84,6 +84,8 @@ def send_smtp(to="", subject="", plaintext="", html=""):
                 application.config["MAIL_USERNAME"],
                 application.config["MAIL_PASSWORD"],
             )
+    except ConnectionRefusedError:
+            print("Problem when sending email.")
     except Exception:
         logger.exception("send_smtp raised:")
     else:
