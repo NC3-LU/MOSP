@@ -28,9 +28,16 @@
             {{ form.organization_type(class_="form-control") }} {% for error in form.organization_type.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
         </div>
 
+        <div class="form-check">
+            {{ form.is_membership_restricted(class_="form-check-input") }} {% for error in form.is_membership_restricted.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            {{ form.is_membership_restricted.label(class_="form-check-label") }}
+            <br />{{ form.is_membership_restricted.description }}
+        </div>
+        <br />
         <div class="form-group">
             {{ form.users.label }}
             {{ form.users(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }} {% for error in form.users.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            <br />{{ form.users.description }}
         </div>
 
         {{ form.submit(class_="btn btn-default") }}

@@ -232,8 +232,17 @@ class OrganizationForm(FlaskForm):
         [validators.Required(lazy_gettext("Please enter a description"))],
     )
     organization_type = TextField(lazy_gettext("Type"))
+    is_membership_restricted = BooleanField(
+        lazy_gettext("Restricted membership"),
+        default=True,
+        description="The membership model of the organization (restricted or not restricted).",
+    )
     website = TextField(lazy_gettext("Website"))
-    users = SelectMultipleField(lazy_gettext("Members"), coerce=int)
+    users = SelectMultipleField(
+        lazy_gettext("Members"),
+        coerce=int,
+        description="The members part of the organization.",
+    )
     submit = SubmitField(lazy_gettext("Save"))
 
     def __init__(self, *args, **kwargs):
