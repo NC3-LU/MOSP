@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, abort
+from flask import Blueprint, render_template, abort, flash, redirect, url_for
+from flask_login import login_required, current_user
 from flask_paginate import Pagination, get_page_args
 from sqlalchemy import func, desc, nullslast, or_
 
@@ -81,3 +82,21 @@ def get(
         objects=query_objects.offset(offset_objects).limit(per_page_objects),
         schemas=query_schemas.offset(offset_schemas).limit(per_page_schemas),
     )
+
+
+@organization_bp.route("/join/<org_id>", methods=["GET"])
+@login_required
+def join(org_id):
+    """Let an authenticated user join an organization which has no membership restriction."""
+    org = (
+        Organization.query.filter(Organization.is_membership_restricted == False)
+        .filter(Organization.id == org_id)
+        .first()
+    )
+    if org:
+        current_user.organizations.append(org)
+        db.session.commit()
+        flash("You have successfully joined the organization.", "success")
+    else:
+        flash("You can not join this organization.", "warning")
+    return redirect(url_for("organization_bp.get", organization_id=org_id))

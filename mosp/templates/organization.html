@@ -1,5 +1,26 @@
 {% extends "layout.html" %}}
 {% block content %}
+<!-- Modal -->
+<div class="modal fade" id="MOSPModal" tabindex="-1" aria-labelledby="MOSPModalJoinOrg" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="MOSPModalJoinOrg">Join an organization</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you want to join this organization ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="MOSPModalClose">Close</button>
+        <button type="button" class="btn btn-primary" id="MOSPModalOK">Join</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col">
@@ -7,7 +28,11 @@
         </div>
         {% if not organization.is_membership_restricted %}
         <div class="col text-right">
-            <h3 class="text-primary"><i class="fa fa-users" aria-hidden="true" title="Organization without membership restriction." aria-label="Organization without membership restriction."></i></h3>
+            <h3 class="text-primary">
+                <a id="join-org" href="#">
+                    <i class="fa fa-users" aria-hidden="true" title="Organization without membership restriction." aria-label="Organization without membership restriction."></i>
+                </a>
+            </h3>
         </div>
         {% endif %}
     </div>
@@ -132,6 +157,21 @@ $(document).ready(function() {
             }
         ]
     });
+
+    var MOSPModal = new bootstrap.Modal(document.getElementById('MOSPModal'), {
+        keyboard: false
+    })
+
+    document.getElementById("join-org").onclick = function(){
+        MOSPModal.show();
+    };
+
+    document.getElementById("MOSPModalOK").onclick = function(){
+      window.location = "{{ url_for('organization_bp.join', org_id=organization.id) }}";
+    };
+
+    document.getElementById("MOSPModalClose").onclick = function(){
+    };
 });
 </script>
 {% endblock %}
