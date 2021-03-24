@@ -16,8 +16,10 @@ association_table_organization = db.Table(
     db.Column("organization_id", db.Integer, db.ForeignKey("organization.id")),
 )
 
+
 def generate_token():
     return secrets.token_urlsafe(64)
+
 
 class User(db.Model, UserMixin):
     """

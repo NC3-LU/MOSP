@@ -68,6 +68,12 @@ create_user_model = user_ns.model(
         "org_id": fields.Integer(
             description="The id of an organization which has no membership restriction."
         ),
+        "apikey": fields.String(description="The user login.", readonly=True),
+        "organizations": fields.List(
+            fields.Nested(user_ns.model("Organization", organization_params_model)),
+            description="List of organizations.",
+            readonly=True,
+        ),
     },
 )
 
@@ -116,7 +122,7 @@ class UsersList(Resource):
 
     @user_ns.doc("user_create")
     @user_ns.expect(create_user_model)
-    @user_ns.marshal_with(user, code=201)
+    @user_ns.marshal_with(create_user_model, skip_none=True, code=201)
     def post(self):
         """Create, without authentication, a new deactivated user."""
         org_id_auto_join = user_ns.payload.pop("org_id", None)
