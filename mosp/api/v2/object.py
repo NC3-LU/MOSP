@@ -9,7 +9,7 @@ from flask_restx import Namespace, Resource, fields, reqparse, abort
 
 from mosp.bootstrap import db
 from mosp.models import JsonObject, License
-from mosp.api.common import check_information
+from mosp.api.common import check_submitted_object
 from mosp.api.v2.common import (
     auth_func,
     object_params_model,
@@ -132,7 +132,7 @@ class ObjectsList(Resource):
         errors = []
         for obj in object_ns.payload:
 
-            check_information(obj)
+            check_submitted_object(obj)
 
             obj_licenses = []
             for license in obj.get("licenses", []):

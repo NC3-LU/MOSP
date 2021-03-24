@@ -9,10 +9,10 @@ import jsonschema
 from flask_login import current_user
 from flask_restless import ProcessingException
 
-from mosp.models import Schema
+from mosp.models import Schema, Organization
 
 
-def check_information(data):
+def check_submitted_object(data):
     """Ensures. a user has the rights to create/edit an abject
     in a specific organization.
     Checks also the validity of the submitted JSON object against the specified
@@ -25,9 +25,15 @@ def check_information(data):
         raise ProcessingException(
             description="You must provide the id of an organization.", code=400
         )
-    if org_id not in [org.id for org in current_user.organizations]:
+    if (
+        org_id
+        not in [org.id for org in current_user.organizations]
+        + list(next(zip(* Organization.query.filter(Organization.is_membership_restricted == False) \
+        .with_entities(Organization.id) \
+        .all())))
+    ):
         raise ProcessingException(
-            description="You are not allowed to create/edit object from this organization.",
+            description="You are not allowed to create/edit object in this organization.",
             code=400,
         )
 

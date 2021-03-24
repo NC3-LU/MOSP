@@ -8,7 +8,7 @@ from flask_restless import ProcessingException
 
 from mosp.models import User, Schema, JsonObject
 from mosp.views.common import login_user_bundle
-from mosp.api.common import check_information
+from mosp.api.common import check_submitted_object
 
 logger = logging.getLogger(__name__)
 
@@ -45,7 +45,7 @@ def check_single_object_edit_permission(instance_id, data):
 
     json_object = JsonObject.query.filter(JsonObject.id == instance_id).first()
     if json_object:
-        # set the values requires by check_information()
+        # set the values requires by check_submitted_object()
         data["schema_id"] = json_object.schema.id
         data["org_id"] = json_object.organization.id
         data["creator_id"] = (
@@ -54,7 +54,7 @@ def check_single_object_edit_permission(instance_id, data):
     else:
         raise ProcessingException(description="Unknown object", code=401)
     try:
-        check_information(data)
+        check_submitted_object(data)
     except Exception as e:
         raise (e)
 
@@ -65,4 +65,4 @@ def check_object_creation_permission(data):
         raise ProcessingException(description="Not authenticated!", code=401)
 
     data["creator_id"] = current_user.id
-    check_information(data)
+    check_submitted_object(data)
