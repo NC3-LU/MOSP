@@ -5,6 +5,11 @@
         <div class="col">
             <h3 class="text-primary">{{ organization.name }}</h3>
         </div>
+        {% if not organization.is_membership_restricted %}
+        <div class="col text-right">
+            <h3 class="text-primary"><i class="fa fa-users" aria-hidden="true" title="Organization without membership restriction." aria-label="Organization without membership restriction."></i></h3>
+        </div>
+        {% endif %}
     </div>
     <div class="row">
         <div class="col-md-3">
