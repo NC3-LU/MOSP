@@ -10,6 +10,7 @@
             <th>{{ _('Name') }}</th>
             <th>{{ _('Website') }}</th>
             <th>{{ _('Members') }}</th>
+            <th>{{ _('Membership model') }}</th>
             <th>{{ _('Actions') }}</th>
         </tr>
     </thead>
@@ -20,6 +21,7 @@
             <td><a href="{{ url_for('organization_bp.get', organization_name=organization.name) }}">{{ organization.name }}</a></td>
             <td><a href="{{ organization.website  }}" target="_blank" rel="noopener noreferrer">{{ organization.website  }}</a></td>
             <td>{{ organization.users | count  }}</td>
+            <td>{{ 'Restricted' if organization.is_membership_restricted else 'Open' }}</td>
             <td>
                 <a href="{{ url_for("admin_bp.form_organization", organization_id=organization.id) }}"><i class="fa fa-edit"></i></a>
                 <a href="{{ url_for("admin_bp.delete_organization", organization_id=organization.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this organization" onclick="return confirm(_('You are going to delete this organization.'));"></i></a>
