@@ -59,7 +59,7 @@ object_params_model = {
     # "organization": fields.Nested(organization_params_model),
     "schema_id": fields.Integer(description="Id of the schema validating the object."),
     "org_id": fields.Integer(description="Id of the organization owning the object."),
-    "last_updated": fields.DateTime(description="Updated time of the object."),
+    "last_updated": fields.DateTime(description="Updated time of the object.", readonly=True),
     "json_object": fields.Raw(description="The JSON object."),
 }
 
