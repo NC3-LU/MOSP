@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from flask_restx import Namespace, Resource, fields, reqparse, abort, inputs
+from flask_restx import Namespace, Resource, fields, reqparse, inputs
 
 from mosp.bootstrap import db
 from mosp.models import Organization

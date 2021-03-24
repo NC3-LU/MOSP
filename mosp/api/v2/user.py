@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import secrets
+import sqlalchemy
+from werkzeug.security import generate_password_hash
 from flask import request
 from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse, abort
@@ -121,12 +123,19 @@ class UsersList(Resource):
 
         new_user = None
         try:
-            new_user = mosp.scripts.create_user(
-                **user_ns.payload, password="", is_active=False, is_admin=False
+            new_user = User(
+                **user_ns.payload,
+                pwdhash=generate_password_hash(""),
+                is_active=False,
+                is_admin=False,
             )
-        except Exception as e:
-            # logger.error("Only admin can create new client.")
-            print(e)
+            db.session.add(new_user)
+            db.session.commit()
+        except sqlalchemy.exc.IntegrityError:
+            db.session.rollback()
+            return abort(409, "Login already used.")
+        except Exception:
+            db.session.rollback()
             return abort(403)
 
         # when creating an account, a user can directly join an organization
