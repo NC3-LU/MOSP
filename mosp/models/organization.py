@@ -13,6 +13,8 @@ class Organization(db.Model):
     website = db.Column(db.String(100), default="")
     last_updated = db.Column(db.DateTime(), default=datetime.utcnow)
 
+    is_membership_restricted = db.Column(db.Boolean(), default=True)
+
     # relationship
     objects = db.relationship(
         "JsonObject",

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from flask_restx import Namespace, Resource, fields, reqparse, abort
+from flask_restx import Namespace, Resource, fields, reqparse, abort, inputs
 
 from mosp.bootstrap import db
 from mosp.models import Organization
@@ -18,6 +18,11 @@ organization_ns = Namespace(
 parser = reqparse.RequestParser()
 parser.add_argument("name", type=str, help="The name of the organization.")
 parser.add_argument("organization_type", type=str, help="The type of the organization.")
+parser.add_argument(
+    "is_membership_restricted",
+    type=inputs.boolean,
+    help="The membership model of the organization (restricted or not restricted).",
+)
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
 parser.add_argument("per_page", type=int, required=False, default=10, help="Page size")
 

@@ -46,6 +46,9 @@ organization_params_model = {
     "name": fields.String(description="The organization name."),
     "description": fields.String(description="The organization description."),
     "organization_type": fields.String(description="The type of the organization."),
+    "is_membership_restricted": fields.Boolean(
+        description="The membership model of the organization (restricted or not restricted)."
+    ),
     "last_updated": fields.DateTime(description="Updated time of the schema."),
 }
 
