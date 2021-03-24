@@ -9,7 +9,7 @@ from flask_restx.inputs import date_from_iso8601
 
 import mosp.scripts
 from mosp.bootstrap import db
-from mosp.models import User
+from mosp.models import User, Organization
 from mosp.notifications import notifications
 from mosp.api.v2.common import (
     auth_func,
@@ -63,6 +63,9 @@ create_user_model = user_ns.model(
     {
         "login": fields.String(description="The user login."),
         "email": fields.String(description="The user login."),
+        "org_id": fields.Integer(
+            description="The id of an organization which has no membership restriction."
+        ),
     },
 )
 
@@ -114,6 +117,8 @@ class UsersList(Resource):
     @user_ns.marshal_with(user, code=201)
     def post(self):
         """Create, without authentication, a new deactivated user."""
+        org_id_auto_join = user_ns.payload.pop("org_id", None)
+
         new_user = None
         try:
             new_user = mosp.scripts.create_user(
@@ -123,6 +128,22 @@ class UsersList(Resource):
             # logger.error("Only admin can create new client.")
             print(e)
             return abort(403)
+
+        # when creating an account, a user can directly join an organization
+        # which has no membership restriction
+        if new_user and org_id_auto_join:
+            # check if the organization exists and is without membership
+            # restriction
+            org_object = (
+                Organization.query.filter(
+                    Organization.is_membership_restricted == False
+                )
+                .filter(Organization.id == org_id_auto_join)
+                .first()
+            )
+            if org_object:
+                new_user.organizations.append(org_object)
+                db.session.commit()
 
         if new_user:
             notifications.confirm_account(new_user)
