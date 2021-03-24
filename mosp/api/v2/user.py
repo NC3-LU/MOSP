@@ -68,7 +68,7 @@ create_user_model = user_ns.model(
         "org_id": fields.Integer(
             description="The id of an organization which has no membership restriction."
         ),
-        "apikey": fields.String(description="The user login.", readonly=True),
+        "apikey": fields.String(description="The user API key.", readonly=True),
         "organizations": fields.List(
             fields.Nested(user_ns.model("Organization", organization_params_model)),
             description="List of organizations.",
