@@ -16,6 +16,8 @@ association_table_organization = db.Table(
     db.Column("organization_id", db.Integer, db.ForeignKey("organization.id")),
 )
 
+def generate_token():
+    return secrets.token_urlsafe(64)
 
 class User(db.Model, UserMixin):
     """
@@ -28,7 +30,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(256), nullable=False)
     created_at = db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
-    apikey = db.Column(db.String(100), default=secrets.token_urlsafe(64))
+    apikey = db.Column(db.String(100), default=generate_token)
 
     public_profile = db.Column(db.Boolean(), default=True)
 
@@ -63,7 +65,7 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.pwdhash, password)
 
     def generate_apikey(self):
-        self.apikey = secrets.token_urlsafe(64)
+        self.apikey = generate_token()
 
     def __str__(self):
         return self.login
