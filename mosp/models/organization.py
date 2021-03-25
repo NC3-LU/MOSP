@@ -28,3 +28,6 @@ class Organization(db.Model):
 
     def __str__(self):
         return self.name
+
+    def __eq__(self, obj):
+        return self.id == obj.id

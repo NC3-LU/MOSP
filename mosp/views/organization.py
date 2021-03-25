@@ -100,3 +100,19 @@ def join(org_id):
     else:
         flash("You can not join this organization.", "warning")
     return redirect(url_for("organization_bp.get", organization_id=org_id))
+
+
+@organization_bp.route("/leave/<org_id>", methods=["GET"])
+@login_required
+def leave(org_id):
+    """Let an authenticated user leave an organization."""
+    org = (
+        Organization.query.filter(Organization.id == org_id)
+        .first()
+    )
+    if org:
+        if current_user.is_organization_member(org.id):
+            current_user.organizations.remove(org)
+            db.session.commit()
+            flash("You left the organization successfully. ", "success")
+    return redirect(url_for("organization_bp.get", organization_id=org_id))

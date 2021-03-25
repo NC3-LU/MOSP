@@ -69,6 +69,9 @@ class User(db.Model, UserMixin):
     def generate_apikey(self):
         self.apikey = generate_token()
 
+    def is_organization_member(self, organization_id):
+        return organization_id in [org.id for org in self.organizations]
+
     def __str__(self):
         return self.login
 
