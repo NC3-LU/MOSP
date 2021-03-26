@@ -31,7 +31,8 @@ class RedirectForm(FlaskForm):
     def __init__(self, *args, **kwargs):
         super(RedirectForm, self).__init__(*args, **kwargs)
         if not self.next.data:
-            self.next.data = request.args.get("next") or request.referrer
+            # self.next.data = request.args.get("next") or request.referrer
+            self.next.data = request.args.get("next") or "user/schemas"
         try:
             ref_url = urlparse(self.next.data)
             if ref_url.path == "/":
@@ -40,7 +41,6 @@ class RedirectForm(FlaskForm):
                 # Will raise an exception if no endpoint exists for the url
                 current_app.create_url_adapter(request).match(ref_url.path)
         except NotFound:
-            print("not found")
             self.next.data = "user/schemas"
         except HTTPException:
             # Any other exceptions
