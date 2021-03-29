@@ -4,9 +4,8 @@ Your account has been created.
 Click on the following link in order to confirm it:
 {{ instance_url }}/user/confirm_account/{{ token }}
 
-You will then be able to connect to {{ instance_url }}.
-You must now be associated to at least one organization
-available on the platform:
+To publish objects, you must be at least
+in one of the organizations available on the platform:
 {{ instance_url }}/organizations
 
 The link expires at {{ expire_time.strftime('%Y-%m-%d %H:%M') }}.
