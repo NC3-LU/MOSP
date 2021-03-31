@@ -13,6 +13,7 @@
             <p>{{ _('Create and share a new object with one of the') }} <a href="{{ url_for('schemas_bp.list_schemas') }}">{{ _('available schemas') }}</a> {{ _('on the platform') }}.</p>
         </div>
     </div>
+    {% if user.organizations.count != 0 %}
     <div class="row">
         <div class="col-md-12">
             <br />
@@ -31,10 +32,21 @@
             {% endfor  %}
         </div>
     </div>
+    {% else %}
+    <div class="row">
+        <div class="col-md-12">
+            <b>{{ _('You are in no organization.') }}</b>
+            <p>You can contact the responsible of an <a href="{{ url_for('organizations_bp.list_organizations') }}">organization</a> or look for an <a href="{{ url_for('organizations_bp.list_organizations', is_membership_restricted=0) }}">organization with no membership restriction</a>.</p>
+            <p>Being part of an organization is required in order to publish an object.</p>
+        </div>
+    </div>
+    {% endif %}
+    {% if user.organizations.count != 0 %}
     <div class="row">
       <div class="col-md-12">
           <a href="{{ url_for('schema_bp.form') }}" class="btn btn-default">{{ _('Create a new schema') }}</a>
       </div>
     </div>
+    {% endif %}
 </div>
 {% endblock %}

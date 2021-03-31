@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort, flash, redirect, url_for
+from flask import Blueprint, render_template, abort, flash, redirect, url_for, request
 from flask_login import login_required, current_user
 from flask_paginate import Pagination, get_page_args
 from sqlalchemy import func, desc, nullslast, or_
@@ -14,16 +14,25 @@ organizations_bp = Blueprint("organizations_bp", __name__, url_prefix="/organiza
 def list_organizations():
     """Return the page which will display the list of organizations."""
     # Order by organization wich provides the most JSON objects.
+    is_membership_restricted = int(request.args.get('is_membership_restricted', 1)) == 1
     big_contributors = (
         db.session.query(JsonObject.org_id, func.count("*").label("JsonObject_count"))
         .group_by(JsonObject.org_id)
         .subquery()
     )
-    organizations = (
-        db.session.query(Organization)
-        .outerjoin(big_contributors, (Organization.id == big_contributors.c.org_id))
-        .order_by(nullslast(desc(big_contributors.c.JsonObject_count)))
-    )
+    if not is_membership_restricted:
+        organizations = (
+            db.session.query(Organization)
+            .filter(Organization.is_membership_restricted == False)
+            .outerjoin(big_contributors, (Organization.id == big_contributors.c.org_id))
+            .order_by(nullslast(desc(big_contributors.c.JsonObject_count)))
+        )
+    else:
+        organizations = (
+            db.session.query(Organization)
+            .outerjoin(big_contributors, (Organization.id == big_contributors.c.org_id))
+            .order_by(nullslast(desc(big_contributors.c.JsonObject_count)))
+        )
     return render_template("organizations.html", organizations=organizations)
 
 
