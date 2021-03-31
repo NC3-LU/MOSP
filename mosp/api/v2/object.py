@@ -12,6 +12,7 @@ from mosp.models import JsonObject, License
 from mosp.api.common import check_submitted_object
 from mosp.api.v2.common import (
     auth_func,
+    uuid_type,
     object_params_model,
     organization_params_model,
     metada_params_model,
@@ -29,6 +30,7 @@ parser.add_argument("name", type=str, help="Name of the object.")
 parser.add_argument("language", type=str, help="Language of the object.")
 parser.add_argument("organization", type=str, help="Organization name of the object.")
 parser.add_argument("schema", type=str, help="Schema name of the object.")
+parser.add_argument("schema_id", type=uuid_type, help="Schema UUID of the object.")
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
 parser.add_argument("per_page", type=int, required=False, default=10, help="Page size")
 

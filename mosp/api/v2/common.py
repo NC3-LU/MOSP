@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import uuid
 from flask import request
 from flask_restx import abort, fields
 
@@ -28,6 +29,15 @@ def auth_func(func):
     wrapper.__doc__ = func.__doc__
     wrapper.__name__ = func.__name__
     return wrapper
+
+
+def uuid_type(value):
+    """Parse UUID"""
+    try:
+        val = uuid.UUID(value)
+    except ValueError:
+        raise ValueError("This is not a valid UUID.")
+    return val
 
 
 # Params for models marshalling
