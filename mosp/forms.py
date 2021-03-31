@@ -111,7 +111,7 @@ class SignupForm(FlaskForm):
         lazy_gettext("Password"),
         [
             validators.Required(lazy_gettext("Please enter a password.")),
-            validators.Length(min=6, max=500),
+            validators.Length(min=20, max=500),
         ],
     )
     submit = SubmitField(lazy_gettext("Sign up"))
