@@ -106,10 +106,7 @@ def join(org_id):
 @login_required
 def leave(org_id):
     """Let an authenticated user leave an organization."""
-    org = (
-        Organization.query.filter(Organization.id == org_id)
-        .first()
-    )
+    org = Organization.query.filter(Organization.id == org_id).first()
     if org:
         if current_user.is_organization_member(org.id):
             current_user.organizations.remove(org)

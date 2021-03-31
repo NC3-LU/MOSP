@@ -8,7 +8,7 @@ from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse
 
 from mosp.bootstrap import db
-from mosp.models import JsonObject, License
+from mosp.models import JsonObject, License, Schema
 from mosp.api.common import check_submitted_object
 from mosp.api.v2.common import (
     auth_func,
@@ -30,7 +30,7 @@ parser.add_argument("name", type=str, help="Name of the object.")
 parser.add_argument("language", type=str, help="Language of the object.")
 parser.add_argument("organization", type=str, help="Organization name of the object.")
 parser.add_argument("schema", type=str, help="Schema name of the object.")
-parser.add_argument("schema_id", type=uuid_type, help="Schema UUID of the object.")
+parser.add_argument("schema_uuid", type=uuid_type, help="Schema UUID of the object.")
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
 parser.add_argument("per_page", type=int, required=False, default=10, help="Page size")
 
@@ -74,6 +74,7 @@ class ObjectsList(Resource):
         object_language = args.pop("language", None)
         object_organization = args.pop("organization", None)
         object_schema = args.pop("schema", None)
+        object_schema_uuid = args.pop("schema_uuid", None)
         args = {k: v for k, v in args.items() if v is not None}
 
         result = {
@@ -99,7 +100,15 @@ class ObjectsList(Resource):
         if object_organization:
             query = query.filter(JsonObject.organization.has(name=object_organization))
         if object_schema:
+            # Schema name of the object
             query = query.filter(JsonObject.schema.has(name=object_schema))
+        if object_schema_uuid:
+            # Schema UUID of the object
+            query = query.join(Schema).filter(
+                Schema.json_schema[("$id")].astext.like(
+                    "%" + str(object_schema_uuid) + "%"
+                )
+            )
         if object_uuid:
             query = query.filter(
                 JsonObject.json_object[("uuid")].astext == str(object_uuid)
