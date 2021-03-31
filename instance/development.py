@@ -19,6 +19,8 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 SECRET_KEY = "dev"
 SECURITY_PASSWORD_SALT = "dev"
 
+SELF_REGISTRATION = True
+
 UPLOAD_FOLDER = "./mosp/web/public/pictures/"
 ALLOWED_EXTENSIONS = set(["png"])
 

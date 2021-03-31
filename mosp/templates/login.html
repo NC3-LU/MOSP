@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-<br />
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -24,7 +23,7 @@
                         {{ form.submit(class_="btn btn-default") }}
                     </div>
                     <div class="col text-right">
-                        <a href="{{ url_for('help') }}#join_the_community">Register</a><br />
+                        <a href="{{ url_for('signup') }}">Register</a><br />
                         <a href="{{ url_for('user_bp.account_recovery') }}">Forgot your password?</a>
                     </div>
                 </div>

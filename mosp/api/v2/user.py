@@ -10,7 +10,7 @@ from flask_restx import Namespace, Resource, fields, reqparse, abort
 from flask_restx.inputs import date_from_iso8601
 
 import mosp.scripts
-from mosp.bootstrap import db
+from mosp.bootstrap import db, application
 from mosp.models import User, Organization
 from mosp.notifications import notifications
 from mosp.api.v2.common import (
@@ -125,6 +125,9 @@ class UsersList(Resource):
     @user_ns.marshal_with(create_user_model, skip_none=True, code=201)
     def post(self):
         """Create, without authentication, a new deactivated user."""
+        if not application.config["SELF_REGISTRATION"]:
+            abort(400, "Self-registration is disabled.")
+
         org_id_auto_join = user_ns.payload.pop("org_id", None)
 
         new_user = None

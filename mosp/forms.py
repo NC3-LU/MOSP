@@ -18,7 +18,7 @@ from wtforms import (
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import Email, InputRequired
 from werkzeug.exceptions import NotFound, HTTPException
-from flask_babel import lazy_gettext
+from flask_babel import lazy_gettext, gettext
 
 from mosp.models import User, Organization, License, JsonObject
 
@@ -57,7 +57,7 @@ class SigninForm(RedirectForm):
     login = TextField(
         lazy_gettext("Login"),
         [
-            validators.Length(min=3, max=30),
+            validators.Length(min=3, max=50),
             validators.Required(lazy_gettext("Please enter your login.")),
         ],
     )
@@ -88,6 +88,47 @@ class SigninForm(RedirectForm):
         if not validated:
             # intentionaly do not explain why it is impossible to login
             self.login.errors.append(lazy_gettext("Impossible to login."))
+        return validated
+
+
+class SignupForm(FlaskForm):
+    """
+    Sign up form (registration to newspipe).
+    """
+
+    login = TextField(
+        lazy_gettext("Login"),
+        [validators.Required(lazy_gettext("Please enter your login."))],
+    )
+    email = EmailField(
+        lazy_gettext("Email"),
+        [
+            validators.Length(min=6, max=256),
+            validators.Required(lazy_gettext("Please enter your email address.")),
+        ],
+    )
+    password = PasswordField(
+        lazy_gettext("Password"),
+        [
+            validators.Required(lazy_gettext("Please enter a password.")),
+            validators.Length(min=6, max=500),
+        ],
+    )
+    submit = SubmitField(lazy_gettext("Sign up"))
+
+    def validate(self):
+        validated = super().validate()
+        if User.query.filter(User.login == self.login.data).count():
+            self.login.errors.append("Login already taken")
+            validated = False
+        if self.login.data != User.make_valid_login(self.login.data):
+            self.login.errors.append(
+                lazy_gettext(
+                    "This login has invalid characters. "
+                    "Please use letters, numbers, dots and underscores only."
+                )
+            )
+            validated = False
         return validated
 
 

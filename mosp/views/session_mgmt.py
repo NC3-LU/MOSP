@@ -1,7 +1,8 @@
 import logging
 
+import sqlalchemy
 from datetime import datetime
-from flask import render_template, session, url_for, redirect, current_app
+from flask import render_template, session, url_for, redirect, current_app, flash
 from flask_login import LoginManager, logout_user, login_required, current_user
 from flask_principal import (
     Principal,
@@ -11,12 +12,14 @@ from flask_principal import (
     identity_loaded,
     session_identity_loader,
 )
-from flask_babel import lazy_gettext
+from werkzeug.security import generate_password_hash
+from flask_babel import lazy_gettext, gettext
 
-from mosp.bootstrap import db
+from mosp.bootstrap import db, application
 from mosp.models import User
 from mosp.views.common import admin_role, api_role, login_user_bundle
-from mosp.forms import SigninForm
+from mosp.forms import SigninForm, SignupForm
+from mosp.notifications import notifications
 
 Principal(current_app)
 # Create a permission with a single Need, in this case a RoleNeed.
@@ -82,3 +85,47 @@ def logout():
     session_identity_loader()
 
     return redirect(url_for("login"))
+
+
+@current_app.route("/signup", methods=["GET", "POST"])
+def signup():
+    if not application.config["SELF_REGISTRATION"]:
+        flash(gettext("Self-registration is disabled."), "warning")
+        return redirect(url_for("index"))
+    if current_user.is_authenticated:
+        return redirect(url_for("index"))
+
+    form = SignupForm()
+    if form.validate_on_submit():
+        try:
+            new_user = User(
+                login=form.login.data,
+                email=form.email.data,
+                pwdhash=generate_password_hash(form.password.data),
+                is_active=False,
+                is_admin=False,
+            )
+            db.session.add(new_user)
+            db.session.commit()
+        except sqlalchemy.exc.IntegrityError:
+            db.session.rollback()
+
+        # Send the confirmation email
+        try:
+            notifications.confirm_account(new_user)
+        except Exception as error:
+            flash(
+                gettext(
+                    "Problem while sending activation email: %(error)s", error=error
+                ),
+                "danger",
+            )
+
+        flash(
+            gettext("Your account has been created. " "Check your mail to confirm it."),
+            "success",
+        )
+
+        return redirect(url_for("index"))
+
+    return render_template("signup.html", form=form)
