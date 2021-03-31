@@ -16,7 +16,7 @@ from mosp.api.v2.common import (
     object_params_model,
     organization_params_model,
     metada_params_model,
-    licence_params_model,
+    license_params_model,
 )
 
 
@@ -40,8 +40,8 @@ object = object_ns.model("Object", object_params_model)
 object["organization"] = fields.Nested(
     object_ns.model("Organization", organization_params_model), readonly=True
 )
-object["licences"] = fields.List(
-    fields.Nested(object_ns.model("License", licence_params_model)),
+object["licenses"] = fields.List(
+    fields.Nested(object_ns.model("License", license_params_model)),
     description="List of licenses.",
 )
 metadata = object_ns.model("metadata", metada_params_model)
