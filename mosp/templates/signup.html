@@ -11,15 +11,9 @@
                     {% for error in form.login.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
                     &nbsp;<span class="text-muted">{{ _('Letters, numbers, dots and underscores only.') }}</span>
                 </div>
-                <p class="help-block"></p>
                 <div class="form-group">
                     {{ form.email(class_="form-control", placeholder=_('Your email')) }}
                     {% for error in form.email.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-                </div>
-                <div class="form-group">
-                    {{ form.password(class_="form-control", placeholder=_('Your password')) }}
-                    {% for error in form.password.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-                    &nbsp;<span class="text-muted">{{ _('Minimum 20 characters.') }}</span>
                 </div>
                 <div class="row">
                     <div class="col">

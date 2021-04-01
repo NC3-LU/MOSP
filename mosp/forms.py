@@ -65,7 +65,7 @@ class SigninForm(RedirectForm):
         lazy_gettext("Password"),
         [
             validators.Required(lazy_gettext("Please enter your password.")),
-            validators.Length(min=6, max=100),
+            validators.Length(min=6, max=500),
         ],
     )
     submit = SubmitField(lazy_gettext("Log In"))
@@ -107,13 +107,6 @@ class SignupForm(FlaskForm):
             validators.Required(lazy_gettext("Please enter your email address.")),
         ],
     )
-    password = PasswordField(
-        lazy_gettext("Password"),
-        [
-            validators.Required(lazy_gettext("Please enter a password.")),
-            validators.Length(min=20, max=500),
-        ],
-    )
     submit = SubmitField(lazy_gettext("Sign up"))
 
     def validate(self):
@@ -145,21 +138,23 @@ class AccountRecoveryForm(RedirectForm):
     submit = SubmitField(lazy_gettext("OK"))
 
 
-class AccountRecoveryNewPasswordForm(RedirectForm):
-    """Sign in form."""
+class AccountConfirmationForm(RedirectForm):
+    """Account confirmation and recovery form."""
 
     password1 = PasswordField(
         lazy_gettext("Password"),
         [
-            validators.Required(lazy_gettext("Please enter your new password.")),
-            validators.Length(min=6, max=100),
+            validators.Required(lazy_gettext("Please enter your password.")),
+            validators.Length(min=20, max=500),
+            validators.InputRequired(),
+            validators.EqualTo('password2', message='Passwords must match.'),
         ],
     )
     password2 = PasswordField(
         lazy_gettext("Password"),
         [
-            validators.Required(lazy_gettext("Please enter your new password.")),
-            validators.Length(min=6, max=100),
+            validators.Required(lazy_gettext("Please confirm your password.")),
+            validators.Length(min=20, max=500),
         ],
     )
     submit = SubmitField(lazy_gettext("OK"))

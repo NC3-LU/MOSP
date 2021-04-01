@@ -9,7 +9,7 @@ from mosp.models import User, JsonObject
 from mosp.forms import (
     ProfileForm,
     AccountRecoveryForm,
-    AccountRecoveryNewPasswordForm,
+    AccountConfirmationForm,
 )
 from mosp.lib.user_utils import confirm_token
 from mosp.notifications import notifications
@@ -172,7 +172,7 @@ def confirm_account(token=None):
         return redirect(url_for("login"))
 
     # Management of the Web form
-    form = AccountRecoveryNewPasswordForm()
+    form = AccountConfirmationForm()
 
     if request.method == "GET":
         # Asks the user to provide a new password, in the case the token is

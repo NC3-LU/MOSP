@@ -12,7 +12,6 @@ from flask_principal import (
     identity_loaded,
     session_identity_loader,
 )
-from werkzeug.security import generate_password_hash
 from flask_babel import lazy_gettext, gettext
 
 from mosp.bootstrap import db, application
@@ -101,7 +100,7 @@ def signup():
             new_user = User(
                 login=form.login.data,
                 email=form.email.data,
-                pwdhash=generate_password_hash(form.password.data),
+                pwdhash="",
                 is_active=False,
                 is_admin=False,
             )
