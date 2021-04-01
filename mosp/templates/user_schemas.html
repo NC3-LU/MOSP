@@ -13,7 +13,7 @@
             <p>{{ _('Create and share a new object with one of the') }} <a href="{{ url_for('schemas_bp.list_schemas') }}">{{ _('available schemas') }}</a> {{ _('on the platform') }}.</p>
         </div>
     </div>
-    {% if user.organizations.count != 0 %}
+    {% if user.organizations | count != 0 %}
     <div class="row">
         <div class="col-md-12">
             <br />
