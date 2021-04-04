@@ -61,11 +61,13 @@
             </div>
             {% endif %}
         {% else %}
-        <div class="col text-right">
-            <h3>
-                <i class="fa fa-users" aria-hidden="true" title="Organization without membership restriction." aria-label="Organization without membership restriction."></i>
-            <h3>
-        </div>
+            {% if not organization.is_membership_restricted %}
+            <div class="col text-right">
+                <h3>
+                    <i class="fa fa-users" aria-hidden="true" title="Organization without membership restriction." aria-label="Organization without membership restriction."></i>
+                <h3>
+            </div>
+            {% endif %}
         {% endif %}
     </div>
     <div class="row">
