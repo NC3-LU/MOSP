@@ -126,7 +126,7 @@ This software is licensed under
 
 
 * Copyright (C) 2018-2021 Cédric Bonhomme
-* Copyright (C) 2018-2021 SMILE gie securitymadein.lu
+* Copyright (C) 2018-2021 SECURITYMADEIN.LU
 
 For more information, the [list of authors and contributors](AUTHORS.md) is
 available.

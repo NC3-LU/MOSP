@@ -12,7 +12,7 @@
                     &nbsp;<span class="text-muted">{{ _('Letters, numbers, dots and underscores only.') }}</span>
                 </div>
                 <div class="form-group">
-                    {{ form.email(class_="form-control", placeholder=_('Your email')) }}
+                    {{ form.email(class_="form-control", placeholder=_('Your email address')) }}
                     {% for error in form.email.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
                 </div>
                 <div class="row">

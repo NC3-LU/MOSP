@@ -1,12 +1,11 @@
 {% extends "layout.html" %}}
 {% block content %}
 <div class="container">
-    <br />
     <div class="row">
         <div class="col">
             <h1>Terms of Service</h1>
-            <p>These terms govern use of the website <a href="https://objects.monarc.lu">https://objects.monarc.lu</a>.  To use the website, you must agree to these terms with Security Made In Lëtzebuerg, the company that runs the website.</p>
-            <p>The company may offer other products and services, under different terms.  These terms apply only to use of the website.</p>
+            <p>These terms govern use of the website <a href="https://objects.monarc.lu">https://objects.monarc.lu</a> (“the website”). To use the website, you must agree to these terms with Security Made In Lëtzebuerg (hereinafter referred to as SECURITYMADEIN.LU), the company that runs the website.</p>
+            <p>SECURITYMADEIN.LU may offer other products and services, under different terms. These terms apply only to use of the website.</p>
             <p>Skip to:</p>
             <ul>
             <li><a href="#permission">Your Permission to Use the Website</a></li>
@@ -23,7 +22,7 @@
             <li><a href="#changes">Changes</a></li>
             </ul>
             <h2><a id="permission">Your Permission to Use the Website</a></h2>
-            <p>Subject to these terms, the company gives you permission to use the website.  You can’t transfer it to anyone else.  Others need to agree to these terms for themselves to use the website.</p>
+            <p>Subject to these terms, the company gives you permission to use the website. You can’t transfer it to anyone else. Others need to agree to these terms for themselves to use the website.</p>
             <h2><a id="conditions">Conditions for Use of the Website</a></h2>
             <p>Your permission to use the website is subject to the following conditions:</p>
             <ol>
@@ -52,7 +51,7 @@
             <p>You may not send advertisements, chain letters, or other solicitations through the website, or use the website to gather addresses for commercial mailing lists.</p>
             </li>
             <li>
-            <p>You may not automate access to the website, or monitor the website, such as with a web crawler, browser plug-in or add-on, or other computer program that is not a web browser.  You may crawl the website to index it for a publicly available search engine.</p>
+            <p>You may not automate access to the website, or monitor the website, such as with a web crawler, browser plug-in or add-on, or other computer program that is not a web browser. You may crawl the website to index it for a publicly available search engine.</p>
             </li>
             <li>
             <p>You may not use the website to send e-mail to distribution lists, newsgroups, or group mail aliases.</p>
@@ -85,7 +84,7 @@
             <h2><a id="content-standards">Content Standards</a></h2>
             <ol>
             <li>
-            <p>You may not submit content to the website that is illegal, offensive, or otherwise harmful to others.  This includes content that is harassing, inappropriate, or abusive.</p>
+            <p>You may not submit content to the website that is illegal, offensive, or otherwise harmful to others. This includes content that is harassing, inappropriate, or abusive.</p>
             </li>
             <li>
             <p>You may not submit content to the website that violates the law, infringes anyone’s intellectual property rights, violates anyone’s privacy, or breaches agreements you have with others.</p>
@@ -102,22 +101,29 @@
             </ol>
             <h2><a id="your-account">Your Account</a></h2>
             <p>You must create and log into an account to use some features of the website.</p>
-            <p>To create an account, you must <a href="#contact">contact us</a>. You do not have to provide an e-mail address, only a nickname. You may close your account at any time by e-mailing <a href="mailto:{{ config['ADMIN_EMAIL'] }}">{{ config['ADMIN_EMAIL'] }}</a> or via <a href="{{ url_for('user_bp.form') }}">your profile</a> page.</p>
-            <p>You agree to be responsible for all action taken using your account, whether authorized by you or not, until you either close your account or notify the company that your account has been compromised.  You agree to notify the company immediately if you suspect your account has been compromised.  You agree to select a secure password for your account, and keep it secret.</p>
-            <p>The company may restrict, suspend, or close your account on the website according to its policy for handling copyright-related takedown requests, or if the company reasonably believes that you’ve breached these terms.</p>
+            <p>To create an account, you can <a href="#contact">contact us</a> or use <a href="{{ url_for('signup') }}">this form</a>. You must provide a valid e-mail address and a nickname. You may close your account at any time by e-mailing <a href="mailto:{{ config['ADMIN_EMAIL'] }}">{{ config['ADMIN_EMAIL'] }}</a> or via <a href="{{ url_for('user_bp.form') }}">your profile</a> page.</p>
+            <p>For this purpose, you agree to:</p>
+            <ol>
+                <li>Provide true, accurate, correct and complete information when required to register as a user of the Website (“Personal Information”) and notify immediately SECURITYMADEIN.LU of any change of Personal Information.</li>
+                <li>That you will not impersonate any other person or entity or use a false name or a name that you are not authorized to use, or disclose your password or username to any other person, or allow your password or user name to be used by any other person to access the Services.</li>
+                <li>SECURITYMADEIN.LU reserves the right to decline any application from you to register as a user of the platform in their sole discretion.</li>
+                <li>Be responsible for all action taken using your account, whether authorized by you or not, until you either close your account or notify the company that your account has been compromised. You agree to notify the company immediately if you suspect your account has been compromised. You agree to select a secure password for your account, and keep it secret.</li>
+                <li>SECURITYMADEIN.LU may restrict, suspend, or close your account on the website according to its policy for handling copyright-related takedown requests, or if the company reasonably believes that you’ve breached these terms.</li>
+                <li>SECURITYMADEIN.LU will at its own discretion decide to close your account on the website after one year on inactivity on the website. SECURITYMADEIN.LU will notify you immediately about this decision.</li>
+            </ol>
             <h2><a id="your-content">Your Content</a></h2>
-            <p>Nothing in these terms gives the company any ownership rights in intellectual property that you share with the website, such as your account information or other content you submit to the website.  Nothing in these terms gives you any ownership rights in the company’s intellectual property, either.</p>
-            <p>Between you and the company, you remain solely responsible for content you submit to the website.  You agree not to wrongly imply that content you submit to the website is sponsored or approved by the company.  These terms do not obligate the company to store, maintain, or provide copies of content you submit.</p>
+            <p>Nothing in these terms gives the company any ownership rights in intellectual property that you share with the website, such as your account information or other content you submit to the website. Nothing in these terms gives you any ownership rights in the company’s intellectual property, either.</p>
+            <p>Between you and the company, you remain solely responsible for content you submit to the website. You agree not to wrongly imply that content you submit to the website is sponsored or approved by the company. These terms do not obligate the company to store, maintain, or provide copies of content you submit.</p>
             <p>The content you submit to the website belongs to you, and you decide what permission to give others for it. If you agree to do so, you license SECURITYMADEIN.LU to provide content that you submit to the website to other users of the website for statistical purposes. That special license allows SECURITYMADEIN.LU to copy, publish, and analyze content you submit to the website.</p>
             <p>When content you submit is removed from the website, whether by you or by SECURITYMADEIN.LU, SECURITYMADEIN.LU’s special license ends when the last copy disappears from the website.</p>
             <h2><a id="disclaimers">Disclaimers</a></h2>
-            <p><em><strong>You accept all risk of using the website and content on the website.  As far as the law allows, the company provides the website as is, without any warranty whatsoever.</strong></em></p>
-            <p>The website may hyperlink to and integrate websites and services run by others.  The company does not make any warranty about services run by others, or content they may provide.  Use of services run by others may be governed by other terms between you and the one running service.</p>
+            <p><em><strong>You accept all risk of using the website and content on the website. As far as the law allows, the company provides the website as is, without any warranty whatsoever.</strong></em></p>
+            <p>The website may hyperlink to and integrate websites and services run by others. The company does not make any warranty about services run by others, or content they may provide. Use of services run by others may be governed by other terms between you and the one running service.</p>
             <h2><a id="feedback">Feedback</a></h2>
-            <p>The company welcomes your feedback and suggestions for the website.  See the <a href="#contact">Contact</a> section below for ways to get in touch with us.</p>
-            <p>You agree that the company will be free to act on feedback and suggestions you provide, and that the company won’t have to notify you that your feedback was used, get your permission to use it, or pay you.  You agree not to submit feedback or suggestions that you believe might be confidential or proprietary, to you or others.</p>
+            <p>The company welcomes your feedback and suggestions for the website. See the <a href="#contact">Contact</a> section below for ways to get in touch with us.</p>
+            <p>You agree that the company will be free to act on feedback and suggestions you provide, and that the company won’t have to notify you that your feedback was used, get your permission to use it, or pay you. You agree not to submit feedback or suggestions that you believe might be confidential or proprietary, to you or others.</p>
             <h2><a id="termination">Termination</a></h2>
-            <p>Either you or the company may end the agreement written out in these terms at any time.  When our agreement ends, your permission to use the website also ends.</p>
+            <p>Either you or the company may end the agreement written out in these terms at any time. When our agreement ends, your permission to use the website also ends.</p>
             <p>The following provisions survive the end of our agreement: <a href="#your-content">Your Content</a>, <a href="#feedback">Feedback</a>, and <a href="#disclaimers">Disclaimers</a>.</p>
             <h2><a id="disputes">Disputes</a></h2>
             <p>Luxembourg law will govern any dispute, including any legal proceedings, related to these terms or your use of the website.</p>
@@ -125,9 +131,12 @@
             <p>You may notify the company under these terms, and send questions to the company, at <a href="mailto:{{ config['ADMIN_EMAIL'] }}">{{ config['ADMIN_EMAIL'] }}</a>.</p>
             <p>The company may notify you under these terms using the e-mail address you provide for your account on the website, or by posting a message to the homepage of the website or your account page.</p>
             <h2><a id="changes">Changes</a></h2>
-            <p>SECURITYMADEIN.LU updated these terms on March 31, 2021. The goal was to simplfy the terms of use.</p>
-            <p>The company updated these terms on February 26, 2019, and may update these terms again.  The company will post all updates to the website.  For updates that contain substantial changes, the company agrees to e-mail you, if you’ve created an account and provided a valid e-mail address.  The company may also announce updates with special messages or alerts on the website.</p>
-            <p>Once you get notice of an update to these terms, you must agree to the new terms in order to keep using the website.</p>
+            <ul>
+                <li>March 31, 2021. Simplification of the terms of service.</li>
+                <li>February 26, 2019. Initial version of the terms of service.</li>
+            </ul>
+            <p>The company will post all updates to the website. Once you are noticed an update at these terms, you must accept the new terms to continue using the website.</p>
+            <p>For updates that contain substantial changes, the company agrees to e-mail you, if you’ve created an account and provided a valid e-mail address. The company may also announce updates with special messages or alerts on the website.</p>
         </div>
     </div>
 </div>
