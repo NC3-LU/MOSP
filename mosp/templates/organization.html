@@ -86,6 +86,11 @@
             <a href="{{ organization.website }}">{{ organization.website }}</a>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            {{ organization.users | count }} member{{ 's' if organization.users | count > 1 }}
+        </div>
+    </div>
     <br />
     <h4>{{ _('Shared JSON objects') }}</h4>
     <div class="row">
