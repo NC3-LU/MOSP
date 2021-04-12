@@ -238,7 +238,6 @@ class UserForm(FlaskForm):
             Email("Please enter your email address."),
         ],
     )
-    public_profile = BooleanField(lazy_gettext("Public profile"), default=True)
     is_active = BooleanField(lazy_gettext("Active"), default=True)
     is_admin = BooleanField(lazy_gettext("Admin"), default=False)
     is_api = BooleanField(lazy_gettext("API"), default=False)
@@ -304,5 +303,4 @@ class ProfileForm(FlaskForm):
             Email("Please enter your email address."),
         ],
     )
-    public_profile = BooleanField(lazy_gettext("Public profile"), default=True)
     submit = SubmitField(lazy_gettext("Save"))

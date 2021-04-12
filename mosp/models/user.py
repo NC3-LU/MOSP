@@ -34,8 +34,6 @@ class User(db.Model, UserMixin):
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     apikey = db.Column(db.String(100), default=generate_token)
 
-    public_profile = db.Column(db.Boolean(), default=True)
-
     # user rights
     is_active = db.Column(db.Boolean(), default=False)
     is_admin = db.Column(db.Boolean(), default=False)

@@ -113,7 +113,6 @@ def process_user_form(user_id=None):
     new_user = User(
         login=form.login.data,
         email=form.email.data,
-        public_profile=form.public_profile.data,
         is_active=form.is_active.data,
         is_admin=form.is_admin.data,
         is_api=form.is_api.data,

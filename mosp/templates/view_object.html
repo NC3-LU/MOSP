@@ -80,16 +80,18 @@
             <a href="{{ url_for('schema_bp.get', schema_id=json_object.schema.id) }}">{{ json_object.schema.name }}</a> ({{ _('provided by') }} <a href="{{ url_for('organization_bp.get', organization_name=json_object.schema.organization.name) }}">{{ json_object.schema.organization.name }}</a>)
         </div>
     </div>
-    {% if json_object.creator.public_profile %}
     <div class="row">
         <div class="col-md-3">
             <b>{{ _('Creator') }}</b>
         </div>
         <div class="col-md-9">
-        <a href="{{ url_for('user_bp.get', login=json_object.creator.login) }}">{{ json_object.creator.login }}</a>
+        {% if json_object.creator %}
+            <a href="{{ url_for('user_bp.get', login=json_object.creator.login) }}">{{ json_object.creator.login }}</a>
+        {% else %}
+            None (account deleted).
+        {% endif %}
         </div>
     </div>
-    {% endif %}
     <div class="row">
         <div class="col-md-3">
             <b>{{ _('License') }}</b>
