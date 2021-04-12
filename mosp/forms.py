@@ -147,7 +147,7 @@ class AccountConfirmationForm(RedirectForm):
             validators.Required(lazy_gettext("Please enter your password.")),
             validators.Length(min=20, max=500),
             validators.InputRequired(),
-            validators.EqualTo('password2', message='Passwords must match.'),
+            validators.EqualTo("password2", message="Passwords must match."),
         ],
     )
     password2 = PasswordField(
@@ -230,7 +230,12 @@ class UserForm(FlaskForm):
             validators.Required(lazy_gettext("Please enter your login.")),
         ],
     )
-    password = PasswordField(lazy_gettext("Password"))
+    password = PasswordField(
+        lazy_gettext("Password"),
+        [
+            validators.Length(min=20, max=500),
+        ],
+    )
     email = EmailField(
         "Email",
         [

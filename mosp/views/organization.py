@@ -14,7 +14,7 @@ organizations_bp = Blueprint("organizations_bp", __name__, url_prefix="/organiza
 def list_organizations():
     """Return the page which will display the list of organizations."""
     # Order by organization wich provides the most JSON objects.
-    is_membership_restricted = int(request.args.get('is_membership_restricted', 1)) == 1
+    is_membership_restricted = int(request.args.get("is_membership_restricted", 1)) == 1
     big_contributors = (
         db.session.query(JsonObject.org_id, func.count("*").label("JsonObject_count"))
         .group_by(JsonObject.org_id)
