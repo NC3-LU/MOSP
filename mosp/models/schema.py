@@ -31,7 +31,7 @@ class Schema(db.Model):
 
     # foreign keys
     org_id = db.Column(db.Integer(), db.ForeignKey("organization.id"), default=None)
-    creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), default=None)
+    creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), default=True)
 
 
 @event.listens_for(Schema, "before_update")

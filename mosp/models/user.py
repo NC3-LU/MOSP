@@ -47,12 +47,8 @@ class User(db.Model, UserMixin):
         secondary=lambda: association_table_organization,
         backref="users",
     )
-    objects = db.relationship(
-        "JsonObject", backref="creator", lazy="dynamic", cascade="all,delete-orphan"
-    )
-    schemas = db.relationship(
-        "Schema", backref="creator", lazy="dynamic", cascade="all,delete-orphan"
-    )
+    objects = db.relationship("JsonObject", backref="creator", lazy="dynamic")
+    schemas = db.relationship("Schema", backref="creator", lazy="dynamic")
 
     def get_id(self):
         """

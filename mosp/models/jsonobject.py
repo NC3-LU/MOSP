@@ -44,7 +44,7 @@ class JsonObject(db.Model):
 
     # foreign keys
     org_id = db.Column(db.Integer(), db.ForeignKey("organization.id"), nullable=False)
-    creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)
+    creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
     schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=False)
 
 
