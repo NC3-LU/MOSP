@@ -7,8 +7,7 @@ labels: bug, potential bug, needs triage
 
 This bug tracker is for tracking bugs, todos and confirmed new features.
 If you want to submit a feature request please discuss about it here:
-https://github.com/monarc-project/stats-service/discussions
-
+https://github.com/CASES-LU/MOSP/discussions
 
 **Describe the bug**
 A clear and concise description of what the bug is.
