@@ -49,6 +49,7 @@ user["organizations"] = fields.List(
     fields.Nested(user_ns.model("Organization", organization_params_model)),
     description="List of organizations.",
 )
+user["apikey"] = fields.String(description="The user API key.", readonly=True)
 metadata = user_ns.model("metadata", metada_params_model)
 users_list_fields = user_ns.model(
     "UsersList",
@@ -68,7 +69,6 @@ create_user_model = user_ns.model(
         "org_id": fields.Integer(
             description="The id of an organization which has no membership restriction."
         ),
-        "apikey": fields.String(description="The user API key.", readonly=True),
         "organizations": fields.List(
             fields.Nested(user_ns.model("Organization", organization_params_model)),
             description="List of organizations.",
@@ -166,10 +166,6 @@ class UsersList(Resource):
         if new_user:
             notifications.confirm_account(new_user)
 
-        if not new_user.is_active:
-            # do not return the API key of a not active account
-            new_user.apikey = None
-
         return [new_user], 201
 
 
@@ -177,13 +173,13 @@ class UsersList(Resource):
 class UserItem(Resource):
     """Get user."""
 
-    @user_ns.doc("user_get")
-    @user_ns.marshal_with(user, code=200)
-    @auth_func
-    def get(self, id):
-        """Get details about the user with the specified id."""
-
-        return User.query.filter(User.id == id).all(), 200
+    # @user_ns.doc("user_get")
+    # @user_ns.marshal_with(user, code=200)
+    # @auth_func
+    # def get(self, id):
+    #     """Get details about the user with the specified id."""
+    #
+    #     return User.query.filter(User.id == id).all(), 200
 
 
 @user_ns.route("/me")
@@ -194,7 +190,8 @@ class UserSelfItem(Resource):
     @user_ns.marshal_with(user, code=200)
     @auth_func
     def get(self):
-        """Return known information about the authenticated requestor."""
+        """Return known information about the authenticated requestor (including
+        the user's token)."""
 
         return current_user, 200
 
