@@ -49,7 +49,6 @@ user["organizations"] = fields.List(
     fields.Nested(user_ns.model("Organization", organization_params_model)),
     description="List of organizations.",
 )
-user["apikey"] = fields.String(description="The user API key.", readonly=True)
 metadata = user_ns.model("metadata", metada_params_model)
 users_list_fields = user_ns.model(
     "UsersList",
@@ -190,8 +189,7 @@ class UserSelfItem(Resource):
     @user_ns.marshal_with(user, code=200)
     @auth_func
     def get(self):
-        """Return known information about the authenticated requestor (including
-        the user's token)."""
+        """Return known information about the authenticated requestor."""
 
         return current_user, 200
 
