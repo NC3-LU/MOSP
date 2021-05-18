@@ -64,7 +64,7 @@ create_user_model = user_ns.model(
     "User",
     {
         "login": fields.String(description="The user login."),
-        "email": fields.String(description="The user login."),
+        "email": fields.String(description="The user email."),
         "org_id": fields.Integer(
             description="The id of an organization which has no membership restriction."
         ),
