@@ -20,7 +20,7 @@ def auth_func(func):
                 if not user:
                     abort(401, Error="Unauthorized.")
                 if not user.is_active:
-                    abort(401, Error="Account deactivated.")
+                    abort(403, Error="Account deactivated.")
                 login_user_bundle(user)
         else:
             abort(401, Error="Authentication required.")
