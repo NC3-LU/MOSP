@@ -147,9 +147,6 @@ class UsersList(Resource):
             db.session.rollback()
             return abort(403)
 
-        if not new_user.is_active:
-            new_user.apikey = None
-
         # when creating an account, a user can directly join an organization
         # which has no membership restriction
         if new_user and org_id_auto_join:
@@ -168,6 +165,9 @@ class UsersList(Resource):
 
         if new_user:
             notifications.confirm_account(new_user)
+
+        if not new_user.is_active:
+            new_user.apikey = None
 
         return [new_user], 201
 
