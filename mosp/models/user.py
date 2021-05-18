@@ -32,7 +32,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(256), nullable=False)
     created_at = db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
-    apikey = db.Column(db.String(100), default=generate_token)
+    apikey = db.Column(db.String(100), default=generate_token, unique=True)
 
     # user rights
     is_active = db.Column(db.Boolean(), default=False)

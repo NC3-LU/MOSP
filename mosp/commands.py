@@ -60,7 +60,7 @@ def create_user(login, email, password):
     "Initializes a user"
     print("Creation of the user {} ...".format(login))
     with application.app_context():
-        mosp.scripts.create_user(login, email, password, False)
+        mosp.scripts.create_user(login, email, password, True, False)
 
 
 @application.cli.command("create_admin")
@@ -71,4 +71,4 @@ def create_admin(login, email, password):
     "Initializes an admin user"
     print("Creation of the admin user {} ...".format(login))
     with application.app_context():
-        mosp.scripts.create_user(login, email, password, True)
+        mosp.scripts.create_user(login, email, password, True, True)
