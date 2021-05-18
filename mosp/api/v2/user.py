@@ -167,6 +167,7 @@ class UsersList(Resource):
             notifications.confirm_account(new_user)
 
         if not new_user.is_active:
+            # do not return the API key of a not active account
             new_user.apikey = None
 
         return [new_user], 201
