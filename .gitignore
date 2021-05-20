@@ -7,6 +7,8 @@ syntax: glob
 *.db
 *.mo
 
+docs/_build/
+
 # Emacs
 eproject.cfg
 *#

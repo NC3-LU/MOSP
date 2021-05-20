@@ -23,7 +23,7 @@ def generate_token():
 
 class User(db.Model, UserMixin):
     """
-    Represent a user.
+    Represent a user. Logins and api keys are unique, emails addresses are not.
     """
 
     id = db.Column(db.Integer, primary_key=True)
