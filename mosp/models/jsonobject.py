@@ -41,6 +41,9 @@ class JsonObject(db.Model):
         secondaryjoin=association_table_jsonobject.c.jsonobject_referred_to_by_id == id,
         backref="referred_to_by",
     )
+    versions = db.relationship(
+        "Version", backref="head", lazy="dynamic", cascade="all,delete-orphan"
+    )
 
     # foreign keys
     org_id = db.Column(db.Integer(), db.ForeignKey("organization.id"), nullable=False)
