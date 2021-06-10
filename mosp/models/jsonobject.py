@@ -3,6 +3,7 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import event
 
 from mosp.bootstrap import db
+from mosp.models.version import Version
 
 association_table_license = db.Table(
     "association_jsonobjects_licenses",
@@ -57,3 +58,14 @@ def update_modified_on_update_listener(mapper, connection, target):
     last_updated field accordingly.
     """
     target.last_updated = datetime.utcnow()
+
+    new_version = Version(
+        name=target.name,
+        description=target.description,
+        last_updated=target.last_updated,
+        json_object=target.json_object,
+        object_id=target.id,
+        creator_id=target.schema_id
+    )
+    db.session.add(new_version)
+    db.session.commit()
