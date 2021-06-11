@@ -52,20 +52,27 @@ class JsonObject(db.Model):
     schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=False)
 
 
+    def create_new_version(self, obj=None):
+        """Create a new Version object from the JsonObject given in parameter or from
+        the current object (self)."""
+        if not obj:
+            obj = self
+        new_version = Version(
+            name=obj.name,
+            description=obj.description,
+            last_updated=obj.last_updated,
+            json_object=obj.json_object,
+            object_id=obj.id,
+            creator_id=obj.creator_id
+        )
+        db.session.add(new_version)
+        db.session.commit()
+        return new_version
+
+
 @event.listens_for(JsonObject, "before_update")
 def update_modified_on_update_listener(mapper, connection, target):
     """Event listener that runs before a record is updated, and sets the
     last_updated field accordingly.
     """
     target.last_updated = datetime.utcnow()
-
-    new_version = Version(
-        name=target.name,
-        description=target.description,
-        last_updated=target.last_updated,
-        json_object=target.json_object,
-        object_id=target.id,
-        creator_id=target.schema_id
-    )
-    db.session.add(new_version)
-    db.session.commit()
