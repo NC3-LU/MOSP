@@ -257,7 +257,10 @@ def process_form(object_id=None):
 
     # Edit an existing JsonObject
     if object_id is not None:
+        # Load the object to edit and create a new Version instance for the versioning.
         json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+        new_version = json_object.create_new_version()
+
         form.schema_id.data = json_object.schema_id
         # Licenses
         new_licenses = []
