@@ -53,6 +53,7 @@ blueprint_object = manager.create_api_blueprint(
         PUT_SINGLE=[
             processors.auth_func,
             processors.check_single_object_edit_permission,
+            processors.create_new_version_before_update,
         ],
     ),
 )

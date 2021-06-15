@@ -17,5 +17,5 @@ class Version(db.Model):
 
     # foreign keys
     object_id = db.Column(db.Integer(), db.ForeignKey("json_object.id"), nullable=False)
-    #schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=True)
+    # schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=True)
     creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)

@@ -59,6 +59,11 @@ def check_single_object_edit_permission(instance_id, data):
         raise (e)
 
 
+def create_new_version_before_update(instance_id, data):
+    json_object = JsonObject.query.filter(JsonObject.id == instance_id).first()
+    new_version = json_object.create_new_version()
+
+
 def check_object_creation_permission(data):
     """Check if the user is authenticated and set the creator_id."""
     if not current_user.is_authenticated:

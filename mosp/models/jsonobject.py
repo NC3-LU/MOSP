@@ -51,7 +51,6 @@ class JsonObject(db.Model):
     creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
     schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=False)
 
-
     def create_new_version(self, obj=None):
         """Create a new Version object from the JsonObject given in parameter or from
         the current object (self)."""
@@ -63,7 +62,7 @@ class JsonObject(db.Model):
             last_updated=obj.last_updated,
             json_object=obj.json_object,
             object_id=obj.id,
-            creator_id=obj.creator_id
+            creator_id=obj.creator_id,
         )
         db.session.add(new_version)
         db.session.commit()

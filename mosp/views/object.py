@@ -245,7 +245,7 @@ def form(schema_id=None, object_id=None):
 @login_required
 @check_object_edit_permission
 def process_form(object_id=None):
-    """"Process the form to edit an object."""
+    """ "Process the form to edit an object."""
     form = AddObjectForm()
     form.org_id.choices = [(0, "")]
     form.org_id.choices.extend(
