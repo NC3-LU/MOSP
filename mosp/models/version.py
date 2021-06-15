@@ -15,6 +15,8 @@ class Version(db.Model):
     last_updated = db.Column(db.DateTime(), default=datetime.utcnow)
     json_object = db.Column(JSONB, default={})
 
+    creator = db.relationship("User", backref="versions")
+
     # foreign keys
     object_id = db.Column(db.Integer(), db.ForeignKey("json_object.id"), nullable=False)
     # schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=True)
