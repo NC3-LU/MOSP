@@ -25,17 +25,22 @@ def check_submitted_object(data):
         raise ProcessingException(
             description="You must provide the id of an organization.", code=400
         )
-    if org_id not in [org.id for org in current_user.organizations] + list(
-        next(
-            zip(
-                *Organization.query.filter(
-                    Organization.is_membership_restricted == False
+
+    try:
+        open_orgs = list(
+            next(
+                zip(
+                    *Organization.query.filter(
+                        Organization.is_membership_restricted == False
+                    )
+                    .with_entities(Organization.id)
+                    .all()
                 )
-                .with_entities(Organization.id)
-                .all()
-            )
-        )
-    ):
+            ))
+    except StopIteration:
+        open_orgs = []
+
+    if org_id not in [org.id for org in current_user.organizations] + open_orgs:
         raise ProcessingException(
             description="You are not allowed to create/edit object in this organization.",
             code=400,
