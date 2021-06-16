@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <b>{{ _('Updated') }}</b>
+        </div>
+        <div class="col-md-10 text-justify">
+            {{ version_object.last_updated | datetime }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <br />
+            <pre class="prettyprint"><code>{{ version_object.json_object }}</code></pre>
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+{% endblock %}

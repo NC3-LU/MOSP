@@ -15,7 +15,7 @@ from flask_login import login_required, current_user
 from flask_babel import gettext
 
 from mosp.bootstrap import db
-from mosp.models import Schema, JsonObject, License
+from mosp.models import Schema, JsonObject, License, Version
 from mosp.views.decorators import check_object_edit_permission
 from mosp.forms import AddObjectForm
 from mosp.lib import objects_utils
@@ -315,6 +315,7 @@ def process_form(object_id=None):
         schema_id=form.schema_id.data,
         org_id=form.org_id.data,
         creator_id=current_user.id,
+        editor_id=current_user.id,
     )
     db.session.add(new_object)
     try:
@@ -396,10 +397,19 @@ def copy(object_id=None):
     return jsonify(id=new_object.id)
 
 
-@object_bp.route("/versions/<int:object_id>", methods=["GET"])
+@object_bp.route("/<int:object_id>/versions", methods=["GET"])
 def list_versions(object_id=None):
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     if json_object is None:
         abort(404)
 
     return render_template("versions_object.html", json_object=json_object)
+
+
+@object_bp.route("/<int:object_id>/version/<int:version_id>", methods=["GET"])
+def view_version(object_id=None, version_id=None):
+    version_object = Version.query.filter(Version.id == version_id).first()
+    if version_object is None:
+        abort(404)
+
+    return render_template("view_version.html", version_object=version_object)
