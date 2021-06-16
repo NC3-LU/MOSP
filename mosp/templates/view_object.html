@@ -18,6 +18,9 @@
                     <a role="button" class="btn btn-secondary" title="{{ _('Edit the object') }}" aria-label="{{ _('Edit the object') }}" href="{{ url_for('object_bp.form', object_id=json_object.id) }}">
                         <i class="fa fa-edit" aria-hidden="true"></i>
                     </a>
+                    <a role="button" class="btn btn-secondary" title="{{ _('Previous versions') }}" aria-label="{{ _('Previous versions') }}" href="{{ url_for('object_bp.list_versions', object_id=json_object.id) }}">
+                        <i class="fa fa-history" aria-hidden="true"></i>
+                    </a>
                     <button type="button" class="btn btn-secondary" title="{{ _('Copy the object') }}" aria-label="{{ _('Copy the object') }}" data-toggle="modal" data-target="#copyModal" href="#">
                         <i class="fas fa-code-branch"></i>
                     </button>

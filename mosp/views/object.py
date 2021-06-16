@@ -104,6 +104,8 @@ def view(object_id=None):
     # res = JsonObject.query.filter(JsonObject.json_object[('mapping', 'father-uuid')].astext == 'fdsfsf')
     # res = JsonObject.query.filter(JsonObject.json_object[('mapping'), [('father-uuid')]].astext == "fdsfsf")
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    for version in json_object.versions.all():
+        print(version.last_updated)
     if json_object is None:
         abort(404)
     try:
@@ -261,6 +263,8 @@ def process_form(object_id=None):
         json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
         new_version = json_object.create_new_version()
 
+        json_object.editor_id = current_user.id
+
         form.schema_id.data = json_object.schema_id
         # Licenses
         new_licenses = []
@@ -390,3 +394,12 @@ def copy(object_id=None):
     db.session.commit()
 
     return jsonify(id=new_object.id)
+
+
+@object_bp.route("/versions/<int:object_id>", methods=["GET"])
+def list_versions(object_id=None):
+    json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    if json_object is None:
+        abort(404)
+
+    return render_template("versions_object.html", json_object=json_object)
