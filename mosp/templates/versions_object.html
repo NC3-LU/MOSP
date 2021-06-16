@@ -17,11 +17,7 @@
     <ul class="list-group">
       <li class="list-group-item">(current) {{ json_object.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=json_object.creator.login) }}">{{ json_object.creator.login }}</a> - <a href="{{ url_for('object_bp.view', object_id=json_object.id) }}">consult</a></li>
       {% for version in json_object.versions | sort(attribute='last_updated', reverse = True) %}
-        {% if loop.index != json_object.versions.count() %}
-          <li class="list-group-item">{{ version.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=version.editor.login) }}">{{ version.editor.login }}</a> - <a href="{{ url_for('object_bp.view_version', object_id=json_object.id, version_id=version.id) }}">consult</a> - <a href="">restore</a></li>
-        {% else %}
-          <li class="list-group-item">{{ version.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=version.editor.login) }}">{{ version.editor.login }}</a> - <a href="{{ url_for('object_bp.view_version', object_id=json_object.id, version_id=version.id) }}">consult</a> - <a href="">restore</a> - initial version</li>
-        {% endif %}
+        <li class="list-group-item">{{ version.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=version.editor.login) }}">{{ version.editor.login }}</a> - <a href="{{ url_for('object_bp.view_version', object_id=json_object.id, version_id=version.id) }}">consult</a> - <a href="">restore</a></li>
       {% endfor %}
     </ul>
 

@@ -10,9 +10,25 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-2">
+            <b>{{ _('Name') }}</b>
+        </div>
+        <div class="col-md-10 text-justify">
+            {{ version_object.name }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <b>{{ _('Description') }}</b>
+        </div>
+        <div class="col-md-10 text-justify">
+            {{ version_object.description }}
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <br />
-            <pre class="prettyprint"><code>{{ version_object.json_object }}</code></pre>
+            <pre class="prettyprint"><code>{{ prettyprint }}</code></pre>
         </div>
     </div>
 </div>

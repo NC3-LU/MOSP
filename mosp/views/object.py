@@ -399,6 +399,7 @@ def copy(object_id=None):
 
 @object_bp.route("/<int:object_id>/versions", methods=["GET"])
 def list_versions(object_id=None):
+    """List the revisions of the object specified with its id."""
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     if json_object is None:
         abort(404)
@@ -408,8 +409,19 @@ def list_versions(object_id=None):
 
 @object_bp.route("/<int:object_id>/version/<int:version_id>", methods=["GET"])
 def view_version(object_id=None, version_id=None):
+    """Display the specified version."""
     version_object = Version.query.filter(Version.id == version_id).first()
     if version_object is None:
         abort(404)
 
-    return render_template("view_version.html", version_object=version_object)
+    prettyprint = json.dumps(
+        version_object.json_object,
+        ensure_ascii=False,
+        sort_keys=True,
+        indent=4,
+        separators=(",", ": "),
+    )
+
+    return render_template(
+        "view_version.html", version_object=version_object, prettyprint=prettyprint
+    )
