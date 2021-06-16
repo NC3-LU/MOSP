@@ -1,5 +1,6 @@
 from datetime import datetime
 from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.orm import backref
 from sqlalchemy import event
 
 from mosp.bootstrap import db
@@ -31,6 +32,12 @@ class JsonObject(db.Model):
     last_updated = db.Column(db.DateTime(), default=datetime.utcnow)
     json_object = db.Column(JSONB, default={})
 
+    # foreign keys
+    org_id = db.Column(db.Integer(), db.ForeignKey("organization.id"), nullable=False)
+    schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=False)
+    #creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
+    editor_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
+
     # relationship
     licenses = db.relationship(
         "License", secondary=lambda: association_table_license, backref="objects"
@@ -45,12 +52,8 @@ class JsonObject(db.Model):
     versions = db.relationship(
         "Version", backref="head", lazy="dynamic", cascade="all,delete-orphan"
     )
-
-    # foreign keys
-    org_id = db.Column(db.Integer(), db.ForeignKey("organization.id"), nullable=False)
-    schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=False)
-    creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
-    #editor_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
+    #creator = db.relationship("User", backref=backref("creator", uselist=False), uselist=False, foreign_keys=[creator_id])
+    editor = db.relationship("User", backref=backref("editor", uselist=False), uselist=False, foreign_keys=[editor_id])
 
 
     def create_new_version(self, obj=None):
