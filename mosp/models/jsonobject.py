@@ -50,7 +50,7 @@ class JsonObject(db.Model):
     org_id = db.Column(db.Integer(), db.ForeignKey("organization.id"), nullable=False)
     schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=False)
     creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
-    editor_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
+    #editor_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
 
 
     def create_new_version(self, obj=None):
