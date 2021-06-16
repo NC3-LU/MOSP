@@ -1,5 +1,4 @@
 import json
-import difflib
 from datetime import datetime
 from flask import (
     Blueprint,
@@ -439,28 +438,14 @@ def view_version(object_id=None, version_id=None):
 
 @object_bp.route("/<int:object_id>/diff/<int:before>/<int:after>", methods=["GET"])
 def get_diff(object_id=None, before=None, after=None):
+    """Return a page which displays the diff between two revisions of an object."""
     version_before = Version.query.filter(Version.id == before).first()
     if object_id == after:
-        # if after is the current version of the object
+        # if 'after' is the current version of the JsonObject object
         version_after = JsonObject.query.filter(JsonObject.id == after).first()
     else:
         version_after = Version.query.filter(Version.id == after).first()
 
-    before_json = json.dumps(
-        version_before.json_object,
-        ensure_ascii=False,
-        sort_keys=True,
-        indent=4,
-        separators=(",", ": "),
-    ).split('\n')
-    after_json = json.dumps(
-        version_after.json_object,
-        ensure_ascii=False,
-        sort_keys=True,
-        indent=4,
-        separators=(",", ": "),
-    ).split('\n')
-
-    table = difflib.HtmlDiff().make_table(before_json, after_json)
+    table = objects_utils.generate_diff(version_before, version_after)
 
     return render_template("view_diff.html", diff_table=table)
