@@ -53,9 +53,18 @@ class JsonObject(db.Model):
     versions = db.relationship(
         "Version", backref="head", lazy="dynamic", cascade="all,delete-orphan"
     )
-    creator = db.relationship("User", backref=backref("creator", uselist=False), uselist=False, foreign_keys=[creator_id])
-    editor = db.relationship("User", backref=backref("editor", uselist=False), uselist=False, foreign_keys=[editor_id])
-
+    creator = db.relationship(
+        "User",
+        backref=backref("creator", uselist=False),
+        uselist=False,
+        foreign_keys=[creator_id],
+    )
+    editor = db.relationship(
+        "User",
+        backref=backref("editor", uselist=False),
+        uselist=False,
+        foreign_keys=[editor_id],
+    )
 
     def create_new_version(self, obj=None):
         """Create a new Version object from the JsonObject given in parameter or from
