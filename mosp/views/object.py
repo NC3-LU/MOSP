@@ -1,4 +1,5 @@
 import json
+import difflib
 from datetime import datetime
 from flask import (
     Blueprint,
@@ -404,7 +405,16 @@ def list_versions(object_id=None):
     if json_object is None:
         abort(404)
 
-    return render_template("versions_object.html", json_object=json_object)
+    versions = json_object.versions.order_by(Version.last_updated.asc()).all()
+    versions_branch = {}
+    before_v = None
+    for version in versions:
+        versions_branch[version.id] = before_v
+        before_v = version.id
+
+    last_revision = versions[-1]
+
+    return render_template("versions_object.html", json_object=json_object, versions_branch=versions_branch, last_revision=last_revision)
 
 
 @object_bp.route("/<int:object_id>/version/<int:version_id>", methods=["GET"])
@@ -425,3 +435,32 @@ def view_version(object_id=None, version_id=None):
     return render_template(
         "view_version.html", version_object=version_object, prettyprint=prettyprint
     )
+
+
+@object_bp.route("/<int:object_id>/diff/<int:before>/<int:after>", methods=["GET"])
+def get_diff(object_id=None, before=None, after=None):
+    version_before = Version.query.filter(Version.id == before).first()
+    if object_id == after:
+        # if after is the current version of the object
+        version_after = JsonObject.query.filter(JsonObject.id == after).first()
+    else:
+        version_after = Version.query.filter(Version.id == after).first()
+
+    before_json = json.dumps(
+        version_before.json_object,
+        ensure_ascii=False,
+        sort_keys=True,
+        indent=4,
+        separators=(",", ": "),
+    ).split('\n')
+    after_json = json.dumps(
+        version_after.json_object,
+        ensure_ascii=False,
+        sort_keys=True,
+        indent=4,
+        separators=(",", ": "),
+    ).split('\n')
+
+    table = difflib.HtmlDiff().make_table(before_json, after_json)
+
+    return render_template("view_diff.html", diff_table=table)

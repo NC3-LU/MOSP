@@ -15,12 +15,11 @@
     </div>
     <br />
     <ul class="list-group">
-      <li class="list-group-item">(current) {{ json_object.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=json_object.creator.login) }}">{{ json_object.creator.login }}</a> - <a href="{{ url_for('object_bp.view', object_id=json_object.id) }}">consult</a></li>
+      <li class="list-group-item">(current - <a href="{{ url_for('object_bp.get_diff', object_id=json_object.id, before=last_revision.id, after=json_object.id) }}">diff</a>) {{ json_object.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=json_object.creator.login) }}">{{ json_object.creator.login }}</a> - <a href="{{ url_for('object_bp.view', object_id=json_object.id) }}">consult</a></li>
       {% for version in json_object.versions | sort(attribute='last_updated', reverse = True) %}
-        <li class="list-group-item">{{ version.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=version.editor.login) }}">{{ version.editor.login }}</a> - <a href="{{ url_for('object_bp.view_version', object_id=json_object.id, version_id=version.id) }}">consult</a> - <a href="">restore</a></li>
+        <li class="list-group-item">{% if versions_branch[version.id] %}(<a href="{{ url_for('object_bp.get_diff', object_id=json_object.id, before=versions_branch[version.id], after=version.id) }}">diff</a>){% endif %} {{ version.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=version.editor.login) }}">{{ version.editor.login }}</a> - <a href="{{ url_for('object_bp.view_version', object_id=json_object.id, version_id=version.id) }}">consult</a> - <a href="">restore</a></li>
       {% endfor %}
     </ul>
-
 </div>
 <script>
 </script>
