@@ -1,4 +1,5 @@
 from datetime import datetime
+from flask_login import current_user
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import backref
 from sqlalchemy import event
@@ -35,7 +36,7 @@ class JsonObject(db.Model):
     # foreign keys
     org_id = db.Column(db.Integer(), db.ForeignKey("organization.id"), nullable=False)
     schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=False)
-    #creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
+    creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)
     editor_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
 
     # relationship
@@ -52,7 +53,7 @@ class JsonObject(db.Model):
     versions = db.relationship(
         "Version", backref="head", lazy="dynamic", cascade="all,delete-orphan"
     )
-    #creator = db.relationship("User", backref=backref("creator", uselist=False), uselist=False, foreign_keys=[creator_id])
+    creator = db.relationship("User", backref=backref("creator", uselist=False), uselist=False, foreign_keys=[creator_id])
     editor = db.relationship("User", backref=backref("editor", uselist=False), uselist=False, foreign_keys=[editor_id])
 
 

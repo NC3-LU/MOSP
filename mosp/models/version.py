@@ -16,7 +16,6 @@ class Version(db.Model):
     json_object = db.Column(JSONB, default={})
 
     # relationships
-    # creator of the version, not of the object! We never forget the initial creator.
     editor = db.relationship("User", backref="versions")
 
     # foreign keys
