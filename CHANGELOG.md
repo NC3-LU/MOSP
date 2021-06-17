@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-%%version%% (unreleased)
-------------------------
+v0.14.0 (2021-06-17)
+--------------------
 
 New
 ~~~
@@ -61,6 +61,7 @@ New
 
 Changes
 ~~~~~~~
+- Bumped version number. [Cédric Bonhomme]
 - [documentation] Updated documentation. [Cédric Bonhomme]
 - [API v2] the endpoint /user/me no more returns the token of the
   authenticated user. The idea was not that clever. [Cédric Bonhomme]
@@ -1083,5 +1084,3 @@ v0.1.0 (2018-05-13)
 - Added README. [Cédric Bonhomme]
 - Now using bootstrap 3. And improved deployment. [Cédric Bonhomme]
 - Test. [Cédric Bonhomme]
-
-
