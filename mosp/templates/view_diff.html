@@ -2,7 +2,7 @@
 {% block head %}
 {{ super() }}
 <style type="text/css">
-  table.diff {font-family:Courier; border:medium; max-width:50%; display: table; overflow-x: auto;}
+  table.diff {font-family:Courier; border:medium; font-size: 0.75rem;}
   .diff_header {background-color:#e0e0e0}
   td.diff_header {text-align:right}
   .diff_next {background-color:#c0c0c0}
@@ -22,7 +22,7 @@
     </div>
   </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col">
             <br />
             <div class="table-responsive w-100 d-block d-md-table">
               {{ diff_table | safe }}
