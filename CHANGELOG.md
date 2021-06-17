@@ -2,6 +2,246 @@ Changelog
 =========
 
 
+v0.14.0 (2021-06-17)
+--------------------
+
+New
+~~~
+- [core] Added self-registration for the users with email confirmation.
+  [Cédric Bonhomme]
+- [API] It is now possible to filter objects per schema identifiant
+  (UUID in $id). [Cédric Bonhomme]
+- [API] Added UUID type for the API. [Cédric Bonhomme]
+- [organizations] A user can now join an organization which has no
+  membership restriction and as well leave an organization. [Cédric
+  Bonhomme]
+- [API v2] Return a 409 HTTP code when a resource already exist. [Cédric
+  Bonhomme]
+- [restricted organization] Added an icon in the organzation.html
+  template which indicates if an organization has membership
+  restriction. [Cédric Bonhomme]
+- [restricted organization] A user can create an account and in the same
+  time specify the id of an organization to join which has no membership
+  restriction. [Cédric Bonhomme]
+- [restricted organization] last_updated field for object marshalling is
+  read only. [Cédric Bonhomme]
+- [restricted organization] An authenticated user can send objects in an
+  organization with no restriction on the membership. [Cédric Bonhomme]
+- [restricted organization] The table in admin/organizations.html is now
+  displaying the membership model. [Cédric Bonhomme]
+- [restricted organization] Added new input is_membership_restricted t0
+  the admin/edit_organization form. [Cédric Bonhomme]
+- [restricted organization] Added new boolean column
+  is_restricted_membeship to organization. [Cédric Bonhomme]
+- [self-registration] validation of token per email. [Cédric Bonhomme]
+- [self-registration] Added notification help for the self-registration
+  of users. [Cédric Bonhomme]
+- [API v2] Added new endpoint /me/regenerate-token in order to let an
+  authenticated user regenerate a token. [Cédric Bonhomme]
+- [API v2] Added endpoint /user/me to the user namespace of the API v2.
+  [Cédric Bonhomme]
+- [API v2] Added the user namespace with the GET List (list users) and
+  Get method (details about a user). [Cédric Bonhomme]
+- [config] Added gitchangelog configuration and fixed regex for old
+  badly formated tags of this project. [Cédric Bonhomme]
+- [style] added autoflake to check unused imports and variables. [Cédric
+  Bonhomme]
+- [views] Generation of an Atom feed of the schemas recently published
+  and updated on MOSP. [Cédric Bonhomme]
+- [views] Generation of an Atom feed of the objects recently published
+  and updated on MOSP. [Cédric Bonhomme]
+- [views] added a view which returns the list of contributing
+  organizations, available from the main page. [Cédric Bonhomme]
+- [configuration] added __init__.py in instance. [Cédric Bonhomme]
+- [api] Added namespace in the API v2 for schemas. [Cédric Bonhomme]
+- [api] Added namespace in the API v2 for organizations. [Cédric
+  Bonhomme]
+- [api v2] Added new API. [Cédric Bonhomme]
+- [style] Added .editorconfig. [Cédric Bonhomme]
+
+Changes
+~~~~~~~
+- Bumped version number. [Cédric Bonhomme]
+- [documentation] Updated documentation. [Cédric Bonhomme]
+- [API v2] the endpoint /user/me no more returns the token of the
+  authenticated user. The idea was not that clever. [Cédric Bonhomme]
+- [API v2] the token is no more returned on account creation, but is
+  returned on /user/me if the user is activated. [Cédric Bonhomme]
+- [API v2] added comment for the UsersList resource. [Cédric Bonhomme]
+- [API v2] do not return an API key for a not validated account. [Cédric
+  Bonhomme]
+- [API v2] update error message in cases of HTTP 403 error. [Cédric
+  Bonhomme]
+- [API v2]: returns HTTP code 403 for deactivated accounts. [Cédric
+  Bonhomme]
+- [GitHub] fixed link to the discussions page. [Cédric Bonhomme]
+- Added security policy. [Cédric Bonhomme]
+- [dependencies] Updated lodash. [Cédric Bonhomme]
+- [GitHub] updated issue templates. [Cédric Bonhomme]
+- [templates] Do not let an admin set a short password. [Cédric
+  Bonhomme]
+- [models] added migration script for the nullable related changes on
+  the database. [Cédric Bonhomme]
+- [models] Do not delete data from a user when deleting it's account.
+  [Cédric Bonhomme]
+- [templates] Added link to the diff for the updates to the ToS. [Cédric
+  Bonhomme]
+- [templates + documentation] Various minor changes. [Cédric Bonhomme]
+- [templates] Improved the help template. [Cédric Bonhomme]
+- [core] Improved self-registration process. [Cédric Bonhomme]
+- [core] Minimum length of password is 20 caracters. [Cédric Bonhomme]
+- [core] Minimum length of password is 20 caracters. [Cédric Bonhomme]
+- [core] Check if the user is part of at least one organization and if
+  it is not the case, provide a list of organization with no membership
+  restriction. [Cédric Bonhomme]
+- Simplified the terms. [Cédric Bonhomme]
+- [templates] Updated account activation template. [Cédric Bonhomme]
+- [routing] Do not use the request's referrer on loging redirect.
+  [Cédric Bonhomme]
+- [organizations] Added the possibility for an authenticated user to
+  join an organization which has no membership restriction. [Cédric
+  Bonhomme]
+- [API v2] the auth_func decorator now check if the account is
+  activated. [Cédric Bonhomme]
+- [API v2] After the creation of a user, it's token is sent. [Cédric
+  Bonhomme]
+- [self-registration] activate the account. [Cédric Bonhomme]
+- [API v2] IDs of objects are readonly in the API. [Cédric Bonhomme]
+- [API v2] sort the result before pagination. [Cédric Bonhomme]
+- [API v2] Is is not possible to specify the licenses of a new object to
+  create. [Cédric Bonhomme]
+- [core] Restructuration of the modules. [Cédric Bonhomme]
+- [API v2] Factorization of the model parser for the marshalling.
+  [Cédric Bonhomme]
+- [API] Restructured APIs. [Cédric Bonhomme]
+- [style] Reformat with black. [Cédric Bonhomme]
+- [API v2] Added org id in the serialization of the result. [Cédric
+  Bonhomme]
+- [API v2] API v2 is now checking the validity of submitted objects with
+  the function mosp.web.views.api.common.check_data. Closes #25. [Cédric
+  Bonhomme]
+- [API v2] Added id attribute for object marshalling. [Cédric Bonhomme]
+- [API v2] Added post method for object namespace. [Cédric Bonhomme]
+- [API v1] Return the message from jsonschema about the validation
+  errors. [Cédric Bonhomme]
+- [API v1]. Added CORS option for API v1. [Cédric Bonhomme]
+- Added weblate badge in the readme. [Cédric Bonhomme]
+- [terms] simplify terms. [Cédric Bonhomme]
+- [template] new alternate link to the ATOM feed od schemas. [Cédric
+  Bonhomme]
+- [template] make anchor relations with noopener and noreferrer. [Cédric
+  Bonhomme]
+- [template] In the index template provides the link to the schemas on
+  MOSP, not the local ones (maybe they do not exists locally...).
+  [Cédric Bonhomme]
+- [views] replaced the timezon with .replace when generating the ATOM
+  feed. [Cédric Bonhomme]
+- [views] reverse the order of the objects in the ATOM feed. [Cédric
+  Bonhomme]
+- [style] reformatted with black. [Cédric Bonhomme]
+- [templates] Fixed some display issues. [Cédric Bonhomme]
+- [templates] Be more ecplicit with the help for the users. [Cédric
+  Bonhomme]
+- [templates] Added a link to the available schemas in the user/schemas
+  template. [Cédric Bonhomme]
+- [dependencies] Updated Python dependencies. [Cédric Bonhomme]
+- [apiv2] Added language filter for objects. [Cédric Bonhomme]
+- Allow cors request for /api/v2/ routes. [Cédric Bonhomme]
+- [api v2] added more filtering possibilities to the API v2. [Cédric
+  Bonhomme]
+- [api v2] Add the possibility to filter objects (on GET list) with the
+  object UUID. [Cédric Bonhomme]
+- [dependencies] Updated dependencies. [Cédric Bonhomme]
+- [templates] Updated Help page. [Cédric Bonhomme]
+- [api] Improved response marshalling for organization. [Cédric
+  Bonhomme]
+- [api] Improved response marshalling for object. [Cédric Bonhomme]
+- [style] harmonize names of variables. [Cédric Bonhomme]
+- [api v2] Removed authentication on GET for JSON objects. [Cédric
+  Bonhomme]
+- [templates] updated edit_user template with link to the new API
+  documentation. [Cédric Bonhomme]
+
+Fix
+~~~
+- [API] fixed an issue when updating an object via the API when no orgs
+  whitout membership restriction is already defined. [Cédric Bonhomme]
+- [templates] Typo in account recovery template. [Cédric Bonhomme]
+- [templates] Added missing check for organization without membership
+  restriction. [Cédric Bonhomme]
+- [templates] fixed count on organizations. [Cédric Bonhomme]
+- [API] fixed a typo in license property of objects. [Cédric Bonhomme]
+- [templates] Fixed sorting of the table of organizations for the admin
+  panel. [Cédric Bonhomme]
+- [API v2] Typo. [Cédric Bonhomme]
+- [notifications] catch various errors when sending an email (fake
+  email, etc.) [Cédric Bonhomme]
+- [notifications] catch ConnectionRefusedError. [Cédric Bonhomme]
+- [models] Prevent to generate same API key several times. [Cédric
+  Bonhomme]
+- [models] datetime.utcnow must not be invocated in the model definition
+  of the jsonobject. [Cédric Bonhomme]
+- [template] Fix sort on date in the index page. [Cédric Bonhomme]
+- [API v2] Use the login bundle only on successful authentication.
+  [Cédric Bonhomme]
+- [API v2] Restored id parameter for schema and organization
+  marshalling. fixed the parameter organizations for the user. [Cédric
+  Bonhomme]
+- [API v2] fields.Nested must have a model as parameter. [Cédric
+  Bonhomme]
+- [API v2] Sets flask_principal identity in the authentication
+  decorator. [Cédric Bonhomme]
+- [typing] added missing import of typing.Dict and typing.Any. [Cédric
+  Bonhomme]
+- [API v2] logger is not yet accessible here. [Cédric Bonhomme]
+- [security] Potentially unsafe external link - CWE-1022. [Cédric
+  Bonhomme]
+- [security] fixed security issue GHSA-p6mc-m468-83gw. [Cédric Bonhomme]
+- [tests] Removed dupplicate keyword argument in User initialization.
+  [Cédric Bonhomme]
+- [tests] Updated the tests with the now mandatory email address.
+  [Cédric Bonhomme]
+- [commands] Fixed commands for the creation of user. [Cédric Bonhomme]
+
+Other
+~~~~~
+- Typo: [API v2] fixed type in email field description. [Cédric
+  Bonhomme]
+- Moved the apikey unset. [Cédric Bonhomme]
+- Merge branch 'master' of github.com:CASES-LU/MOSP. [Cédric Bonhomme]
+- Added JavaScript trick to block Chrome’s FLoC. [Cédric Bonhomme]
+- Translated using Weblate (French) [Cédric Bonhomme]
+
+  Currently translated at 100.0% (153 of 153 strings)
+- Translated using Weblate (French) [Anonymous]
+
+  Currently translated at 100.0% (153 of 153 strings)
+- Translated using Weblate (French) [Cédric Bonhomme]
+
+  Currently translated at 100.0% (153 of 153 strings)
+- Removed is_public_profile from user model. [Cédric Bonhomme]
+- Ch: [templates] The organization detail page now display the number of
+  member of an organization. [Cédric Bonhomme]
+- Updated layout and help templates. [Cédric Bonhomme]
+- Fix. [Cédric Bonhomme]
+- Fix. [Cédric Bonhomme]
+- Cosmethic change. [Cédric Bonhomme]
+- Reformat comment. [Cédric Bonhomme]
+- Updated dependencies. [Cédric Bonhomme]
+- Adde comment for the ATOM feed generator function. [Cédric Bonhomme]
+- Updated Python dependencies. [Cédric Bonhomme]
+- Updated JavaScript dependencies. [Cédric Bonhomme]
+- Updated dependencies. [Cédric Bonhomme]
+- Improved WCAG 2.0 compliancy (analysis with the axe extension).
+  [Cédric Bonhomme]
+- Merge branch 'master' of github.com:CASES-LU/MOSP. [Cédric Bonhomme]
+- Create codeql-analysis.yml. [Cedric]
+- Updated Python depdendencies. [Cédric Bonhomme]
+- Updated JavaScript depdendencies. [Cédric Bonhomme]
+- Updated package-lock.json. [Cédric Bonhomme]
+- Updated dependencies. [Cédric Bonhomme]
+
+
 v0.13 (2020-04-23)
 ------------------
 
