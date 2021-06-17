@@ -65,6 +65,8 @@ def generate_diff(version_before, version_after):
 
     table = difflib.HtmlDiff().make_table(before_json, after_json)
 
+    table = table.replace('<table class="diff"', '<table class="diff"')
+
     return table
 
 

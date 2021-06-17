@@ -448,4 +448,4 @@ def get_diff(object_id=None, before=None, after=None):
 
     table = objects_utils.generate_diff(version_before, version_after)
 
-    return render_template("view_diff.html", diff_table=table)
+    return render_template("view_diff.html", diff_table=table, before=version_before, after=version_after)
