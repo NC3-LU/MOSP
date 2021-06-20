@@ -15,10 +15,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
-        {{ before.last_updated }} - {{ before.editor.login }}
+        {{ before.last_updated }} - <a href="{{ url_for('user_bp.get', login=before.editor.login) }}">{{ before.editor.login }}</a>
     </div>
     <div class="col-md-6">
-        {{ after.last_updated }} - {{ after.editor.login }}
+        {{ after.last_updated }} - <a href="{{ url_for('user_bp.get', login=after.editor.login) }}">{{ after.editor.login }}</a>
     </div>
   </div>
     <div class="row">
