@@ -54,18 +54,29 @@ def generate_diff(version_before, version_after):
         sort_keys=True,
         indent=4,
         separators=(",", ": "),
-    ).split('\n')
+    ).split("\n")
     after_json = json.dumps(
         version_after.json_object,
         ensure_ascii=False,
         sort_keys=True,
         indent=4,
         separators=(",", ": "),
-    ).split('\n')
+    ).split("\n")
 
     table = difflib.HtmlDiff().make_table(before_json, after_json)
 
-    #table = table.replace('<table class="diff"', '<table class="diff"')
+    table = table.replace(
+        "<colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>",
+        '<colgroup style="width: 2%;"></colgroup> <colgroup style="width: 2%;"></colgroup> <colgroup style="width: 46%;"></colgroup>',
+        1
+    )
+    table = table.replace(
+        "<colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>",
+        '<colgroup style="width: 2%;"></colgroup> <colgroup style="width: 2%;"></colgroup> <colgroup style="width: 46%;"></colgroup>',
+        1
+    )
+
+    print(table)
 
     return table
 

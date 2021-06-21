@@ -2,7 +2,7 @@
 {% block head %}
 {{ super() }}
 <style type="text/css">
-  table.diff {font-family:Courier; border:medium; font-size: 0.75rem;}
+  table.diff {font-family:Courier; border:medium; font-size: 0.75rem; width: 100%}
   .diff_header {background-color:#e0e0e0}
   td.diff_header {text-align:right}
   .diff_next {background-color:#c0c0c0}
@@ -15,20 +15,44 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
-        {{ before.last_updated }} - <a href="{{ url_for('user_bp.get', login=before.editor.login) }}">{{ before.editor.login }}</a>
+        <b>Date</b>: {{ before.last_updated }}
     </div>
     <div class="col-md-6">
-        {{ after.last_updated }} - <a href="{{ url_for('user_bp.get', login=after.editor.login) }}">{{ after.editor.login }}</a>
+        <b>Date</b>: {{ after.last_updated }}
     </div>
   </div>
-    <div class="row">
-        <div class="col">
-            <br />
-            <div class="table-responsive w-100 d-block d-md-table">
-              {{ diff_table | safe }}
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-md-6">
+        <b>Editor</b>: <a href="{{ url_for('user_bp.get', login=before.editor.login) }}">{{ before.editor.login }}</a>
     </div>
+    <div class="col-md-6">
+        <b>Editor</b>: <a href="{{ url_for('user_bp.get', login=after.editor.login) }}">{{ after.editor.login }}</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <b>Name</b>: {{ before.name }}
+    </div>
+    <div class="col-md-6">
+        <b>Name</b>: {{ after.name }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <b>Description</b>: {{ before.description }}
+    </div>
+    <div class="col-md-6">
+        <b>Description</b>: {{ after.description }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <br />
+      <div class="table-responsive w-100 d-block d-md-table">
+        {{ diff_table | safe }}
+      </div>
+    </div>
+  </div>
 </div>
 <!-- /.container -->
 {% endblock %}
