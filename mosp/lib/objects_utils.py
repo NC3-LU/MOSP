@@ -76,8 +76,6 @@ def generate_diff(version_before, version_after):
         1
     )
 
-    print(table)
-
     return table
 
 
