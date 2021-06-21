@@ -23,15 +23,14 @@ def upgrade():
         sa.Column("id", sa.Integer(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
-    op.add_column('version', sa.Column('description', sa.Text(), nullable=False))
-    op.add_column('version', sa.Column('json_object', postgresql.JSONB(astext_type=sa.Text()), nullable=True))
-    op.add_column('version', sa.Column('last_updated', sa.DateTime(), nullable=True))
     op.add_column('version', sa.Column('name', sa.Text(), nullable=False))
+    op.add_column('version', sa.Column('description', sa.Text(), nullable=False))
+    op.add_column('version', sa.Column('last_updated', sa.DateTime(), nullable=True))
+    op.add_column('version', sa.Column('json_object', postgresql.JSONB(astext_type=sa.Text()), nullable=True))
     op.add_column('version', sa.Column('object_id', sa.Integer(), nullable=False))
-    op.add_column('version', sa.Column('editor_id', sa.Integer(), nullable=False, existing_server_default=1))
-    op.create_foreign_key(None, 'version', 'user', ['editor_id'], ['id'])
+    op.add_column('version', sa.Column('editor_id', sa.Integer(), nullable=False))
     op.create_foreign_key(None, 'version', 'json_object', ['object_id'], ['id'])
-
+    op.create_foreign_key(None, 'version', 'user', ['editor_id'], ['id'])
     op.add_column('json_object', sa.Column('editor_id', sa.Integer(), nullable=True))
     op.create_foreign_key(None, 'json_object', 'user', ['editor_id'], ['id'])
 
