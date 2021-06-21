@@ -247,7 +247,7 @@ def form(schema_id=None, object_id=None):
 @login_required
 @check_object_edit_permission
 def process_form(object_id=None):
-    """ "Process the form to edit an object."""
+    """Process the form to edit an object."""
     form = AddObjectForm()
     form.org_id.choices = [(0, "")]
     form.org_id.choices.extend(
@@ -411,9 +411,18 @@ def list_versions(object_id=None):
         versions_branch[version.id] = before_v
         before_v = version.id
 
-    last_revision = versions[-1]
+    try:
+        last_revision = versions[-1]
+    except IndexError:
+        # no revision for the object: last_revision is the object
+        last_revision = json_object
 
-    return render_template("versions_object.html", json_object=json_object, versions_branch=versions_branch, last_revision=last_revision)
+    return render_template(
+        "versions_object.html",
+        json_object=json_object,
+        versions_branch=versions_branch,
+        last_revision=last_revision,
+    )
 
 
 @object_bp.route("/<int:object_id>/version/<int:version_id>", methods=["GET"])
@@ -440,6 +449,10 @@ def view_version(object_id=None, version_id=None):
 def get_diff(object_id=None, before=None, after=None):
     """Return a page which displays the diff between two revisions of an object."""
     version_before = Version.query.filter(Version.id == before).first()
+    if not version_before:
+        # no revision for the object: compare with an empty version.
+        version_before = Version(name="", description="", json_object={})
+
     if object_id == after:
         # if 'after' is the current version of the JsonObject object
         version_after = JsonObject.query.filter(JsonObject.id == after).first()
@@ -448,4 +461,6 @@ def get_diff(object_id=None, before=None, after=None):
 
     table = objects_utils.generate_diff(version_before, version_after)
 
-    return render_template("view_diff.html", diff_table=table, before=version_before, after=version_after)
+    return render_template(
+        "view_diff.html", diff_table=table, before=version_before, after=version_after
+    )
