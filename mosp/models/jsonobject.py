@@ -77,7 +77,7 @@ class JsonObject(db.Model):
             last_updated=obj.last_updated,
             json_object=obj.json_object,
             object_id=obj.id,
-            editor_id=obj.editor_id,
+            editor_id=obj.editor_id or obj.creator_id,
         )
         db.session.add(new_version)
         db.session.commit()
