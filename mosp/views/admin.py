@@ -260,6 +260,7 @@ def process_organization_form(organization_id=None):
         description=form.description.data,
         website=form.website.data,
         organization_type=form.organization_type.data,
+        is_membership_restricted=form.is_membership_restricted.data,
     )
     new_members = []
     for user_id in form.users.data:
