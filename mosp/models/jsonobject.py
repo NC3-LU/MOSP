@@ -37,7 +37,7 @@ class JsonObject(db.Model):
     org_id = db.Column(db.Integer(), db.ForeignKey("organization.id"), nullable=False)
     schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=False)
     creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)
-    editor_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
+    editor_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)
 
     # relationship
     licenses = db.relationship(
@@ -77,7 +77,7 @@ class JsonObject(db.Model):
             last_updated=obj.last_updated,
             json_object=obj.json_object,
             object_id=obj.id,
-            editor_id=obj.editor_id or obj.creator_id,
+            editor_id=obj.editor_id,
         )
         db.session.add(new_version)
         db.session.commit()
