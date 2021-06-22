@@ -31,12 +31,10 @@ def upgrade():
     op.add_column('version', sa.Column('editor_id', sa.Integer(), nullable=False))
     op.create_foreign_key(None, 'version', 'json_object', ['object_id'], ['id'])
     op.create_foreign_key(None, 'version', 'user', ['editor_id'], ['id'])
-    op.add_column('json_object', sa.Column('editor_id', sa.Integer(), nullable=False))
+    op.add_column('json_object', sa.Column('editor_id', sa.Integer(), nullable=True))
+    op.get_bind().execute("UPDATE json_object SET editor_id = creator_id;")
+    op.alter_column("json_object", "editor_id", nullable=False)
     op.create_foreign_key(None, 'json_object', 'user', ['editor_id'], ['id'])
-
-    # bypass ORM
-    connection = op.get_bind()
-    connection.execute("UPDATE json_object SET editor_id = creator_id;")
 
 
 def downgrade():
