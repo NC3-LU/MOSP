@@ -8,6 +8,7 @@ import jsonschema
 
 from mosp.bootstrap import db
 from mosp.models.version import Version
+from mosp.models.schema import Schema
 
 association_table_license = db.Table(
     "association_jsonobjects_licenses",
@@ -87,8 +88,18 @@ class JsonObject(db.Model):
 
     def restore_from_version(self, version):
         """Update the current JsonObject (self) with the specified Version object."""
-        if not jsonschema.validate(version.json_object, self.json_schema:
-            raise Exception("JsonObject's schema and Version's schema mismatch.")
+        schema = Schema.query.filter(Schema.id == self.schema_id)
+        try:
+            # check that the Version to restore validates the current schema.
+            jsonschema.validate(version.json_object, schema.first().json_schema)
+        except jsonschema.exceptions.ValidationError as e:
+            raise ProcessingException(
+                description="The version to restore is not validated by the schema:\n{}".format(
+                    e.message
+                ),
+                code=400,
+            )
+
         self.name = version.name
         self.description = version.description
         self.json_object = version.json_object
