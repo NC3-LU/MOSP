@@ -70,12 +70,14 @@ class User(db.Model, UserMixin):
         return self.login
 
     @validates("login")
-    def validates_login(self, key, value):
+    @staticmethod
+    def validates_login(key, value):
         assert 3 <= len(value) <= 50, AssertionError("maximum length for login: 30")
         return re.sub("[^a-zA-Z0-9_\.]", "", value.strip())
 
     @validates("email")
-    def validates_email(self, key, value):
+    @staticmethod
+    def validates_email(key, value):
         assert 3 <= len(value) <= 256, AssertionError("maximum length for email: 256")
         if validate_email(value):
             return value
