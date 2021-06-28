@@ -418,7 +418,7 @@ def list_versions(object_id=None):
         last_revision = json_object
 
     return render_template(
-        "versions_object.html",
+        "list_versions.html",
         json_object=json_object,
         versions_branch=versions_branch,
         last_revision=last_revision,
@@ -454,11 +454,13 @@ def get_diff(object_id=None, before=None, after=None):
         version_before = Version(name="", description="", json_object={})
 
     if object_id == after:
-        # if 'after' is the current version of the JsonObject object
+        # if 'after' is the current version of the JsonObject object, we use the
+        # JsonObject itself
         version_after = JsonObject.query.filter(JsonObject.id == after).first()
     else:
         version_after = Version.query.filter(Version.id == after).first()
 
+    # generate the HTML diff table
     table = objects_utils.generate_diff(version_before, version_after)
 
     return render_template(
