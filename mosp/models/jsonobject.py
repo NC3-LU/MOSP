@@ -4,6 +4,8 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import backref
 from sqlalchemy import event
 
+import jsonschema
+
 from mosp.bootstrap import db
 from mosp.models.version import Version
 
@@ -85,7 +87,7 @@ class JsonObject(db.Model):
 
     def restore_from_version(self, version):
         """Update the current JsonObject (self) with the specified Version object."""
-        if self.schema_id != version.schema_id:
+        if not jsonschema.validate(version.json_object, self.json_schema:
             raise Exception("JsonObject's schema and Version's schema mismatch.")
         self.name = version.name
         self.description = version.description
