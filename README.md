@@ -20,7 +20,8 @@ to be used with [MONARC](https://github.com/monarc-project/MonarcAppFO).
 
 You can use any available JSON schemas in order to create new JSON objects via a
 web form dynamically generated and based on the selected schema.  
-It is possible to interact with MOSP programmatically thanks to its API.  
+It is possible to interact with MOSP programmatically thanks to its API
+(there is a client, [PyMOSP](https://github.com/CASES-LU/PyMOSP), if you need one).  
 Some JSON objects can be exported to a
 [MISP galaxy](https://github.com/MISP/misp-galaxy).
 
