@@ -466,3 +466,22 @@ def get_diff(object_id=None, before=None, after=None):
     return render_template(
         "view_diff.html", diff_table=table, before=version_before, after=version_after
     )
+
+
+@object_bp.route("/<int:object_id>/version/<int:version_id>/restore", methods=["GET"])
+def restore_version(object_id=None, version_id=None):
+    """Restore the specified version."""
+    version_object = Version.query.filter(Version.id == version_id).first()
+    if version_object is None:
+        abort(404)
+    json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    if json_object is None:
+        abort(404)
+
+    # create a new version of the current object
+    new_version = json_object.create_new_version()
+    # restore the selected version
+    new_object = json_object.restore_from_version(version_object)
+
+    # return the updated list of versions
+    return redirect(url_for("object_bp.list_versions", object_id=object_id))

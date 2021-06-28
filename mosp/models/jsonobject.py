@@ -83,6 +83,14 @@ class JsonObject(db.Model):
         db.session.commit()
         return new_version
 
+    def restore_from_version(self, version):
+        """Update the current JsonObject (self) with the specified Version object."""
+        self.name = version.name
+        self.description = version.description
+        self.json_object = version.json_object
+        db.session.commit()
+        return self
+
 
 @event.listens_for(JsonObject, "before_update")
 def update_modified_on_update_listener(mapper, connection, target):
