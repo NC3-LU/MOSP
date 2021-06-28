@@ -85,6 +85,8 @@ class JsonObject(db.Model):
 
     def restore_from_version(self, version):
         """Update the current JsonObject (self) with the specified Version object."""
+        if self.schema_id != version.schema_id:
+            raise Exception("JsonObject's schema and Version's schema mismatch.")
         self.name = version.name
         self.description = version.description
         self.json_object = version.json_object
