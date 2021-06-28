@@ -93,12 +93,7 @@ class JsonObject(db.Model):
             # check that the Version to restore validates the current schema.
             jsonschema.validate(version.json_object, schema.first().json_schema)
         except jsonschema.exceptions.ValidationError as e:
-            raise ProcessingException(
-                description="The version to restore is not validated by the schema:\n{}".format(
-                    e.message
-                ),
-                code=400,
-            )
+            raise Exception("The version to restore is not validated by the current schema.")
 
         self.name = version.name
         self.description = version.description
