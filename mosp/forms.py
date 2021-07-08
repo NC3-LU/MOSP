@@ -93,7 +93,7 @@ class SigninForm(RedirectForm):
 
 class SignupForm(FlaskForm):
     """
-    Sign up form (registration to newspipe).
+    Sign up form (registration to MOSP).
     """
 
     login = TextField(
