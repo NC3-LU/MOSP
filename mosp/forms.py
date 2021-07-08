@@ -93,7 +93,7 @@ class SigninForm(RedirectForm):
 
 class SignupForm(FlaskForm):
     """
-    Sign up form (registration to newspipe).
+    Sign up form (registration to MOSP).
     """
 
     login = TextField(
@@ -230,12 +230,7 @@ class UserForm(FlaskForm):
             validators.Required(lazy_gettext("Please enter your login.")),
         ],
     )
-    password = PasswordField(
-        lazy_gettext("Password"),
-        [
-            validators.Length(min=20, max=500),
-        ],
-    )
+    password = PasswordField(lazy_gettext("Password"))
     email = EmailField(
         "Email",
         [
@@ -300,7 +295,13 @@ class ProfileForm(FlaskForm):
             validators.Required(lazy_gettext("Please enter your login.")),
         ],
     )
-    password = PasswordField(lazy_gettext("Password"))
+    password = PasswordField(
+        lazy_gettext("Password"),
+        [
+            validators.Required(lazy_gettext("Please enter your password.")),
+            validators.Length(min=20, max=500),
+        ],
+    )
     email = EmailField(
         "Email",
         [

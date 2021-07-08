@@ -54,7 +54,7 @@ def schemas():
 @user_bp.route("/profile", methods=["GET"])
 @login_required
 def form():
-    """Retruns the fom to edit a user."""
+    """Returns the form to edit the current user."""
     user = User.query.filter(User.id == current_user.id).first()
     form = ProfileForm(obj=user)
     form.populate_obj(current_user)
@@ -71,11 +71,11 @@ def form():
 def process_form():
     """Process the form for the user edition."""
     form = ProfileForm()
+    user = User.query.filter(User.id == current_user.id).first()
 
     if not form.validate():
-        return render_template("edit_user.html", form=form)
+        return render_template("edit_user.html", form=form, user=user)
 
-    user = User.query.filter(User.id == current_user.id).first()
     form.populate_obj(user)
     if form.password.data:
         user.pwdhash = generate_password_hash(form.password.data)
@@ -86,7 +86,7 @@ def process_form():
         ),
         "success",
     )
-    return redirect(url_for("admin_bp.form_user", user_id=user.id))
+    return redirect(url_for("user_bp.form"))
 
 
 @user_bp.route("/generate_apikey", methods=["GET"])
