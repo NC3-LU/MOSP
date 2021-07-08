@@ -36,7 +36,8 @@ def check_submitted_object(data):
                     .with_entities(Organization.id)
                     .all()
                 )
-            ))
+            )
+        )
     except StopIteration:
         open_orgs = []
 
