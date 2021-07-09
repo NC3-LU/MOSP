@@ -36,9 +36,6 @@ def get_by_uuid(object_uuid):
         abort(404)
     if query.count() == 1:
         json_object = query.first()
-        result = json.dumps(
-            json_object.json_object, sort_keys=True, indent=4, separators=(",", ": ")
-        )
         return redirect(url_for("object_bp.view", object_id=json_object.id))
     else:
         return render_template(
