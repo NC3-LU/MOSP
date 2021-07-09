@@ -18,7 +18,7 @@ from wtforms import (
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import Email, InputRequired
 from werkzeug.exceptions import NotFound, HTTPException
-from flask_babel import lazy_gettext, gettext
+from flask_babel import lazy_gettext
 
 from mosp.models import User, Organization, License, JsonObject
 

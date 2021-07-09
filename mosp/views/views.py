@@ -7,7 +7,6 @@ from mosp import __version__
 from mosp.lib.objects_utils import generate_objects_atom_feed
 from mosp.lib.schemas_utils import generate_schemas_atom_feed
 from mosp.models import JsonObject, Organization, User, Schema
-from mosp.bootstrap import application
 
 logger = logging.getLogger(__name__)
 

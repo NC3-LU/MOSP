@@ -1,10 +1,8 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import request
-from flask_restx import Namespace, Resource, fields, reqparse, abort
+from flask_restx import Namespace, Resource, fields, reqparse
 
-from mosp.bootstrap import db
 from mosp.models import Schema
 from mosp.api.v2.common import schema_params_model, organization_params_model
 
