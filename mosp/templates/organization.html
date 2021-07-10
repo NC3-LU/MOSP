@@ -112,6 +112,7 @@
                         <tr>
                             <th>{{ _('id') }}</th>
                             <th>{{ _('Name') }}</th>
+                            <th>{{ _('Validating JSON schema') }}</th>
                             <th>{{ _('Last updated') }}</th>
                         </tr>
                     </thead>
@@ -120,6 +121,7 @@
                         <tr>
                             <td scope="row">{{ object.id }}</td>
                             <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
+                            <td>{{ object.schema.name }}</td>
                             <td class="date">{{ object.last_updated | datetime }}</td>
                         </tr>
                     {% endfor %}
@@ -188,7 +190,7 @@ $(document).ready(function() {
         paging: false,
         info: false,
         searching: false,
-        order: [[2, "desc"]],
+        order: [[3, "desc"]],
         columnDefs: [
             {
                 bSortable: false,
