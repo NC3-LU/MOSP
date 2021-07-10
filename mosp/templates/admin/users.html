@@ -12,10 +12,14 @@
 $(document).ready(function() {
 $('.table').DataTable( {
     responsive: true,
+    paging: false,
+    info: false,
+    searching: true,
+    order: [[4, 'desc']],
     columnDefs: [
         {
             bSortable: false,
-            targets: [0, 5]
+            targets: [0, 5, 6, 7]
         }
     ]
 });
