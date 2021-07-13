@@ -394,7 +394,7 @@ def copy(object_id=None):
     return jsonify(id=new_object.id)
 
 
-@object_bp.route("/<int:object_id>/versions", methods=["GET"])
+@object_bp.route("/<int:object_id>/versions/", methods=["GET"])
 def list_versions(object_id=None):
     """List the revisions of the object specified with its id."""
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
