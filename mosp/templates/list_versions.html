@@ -17,11 +17,52 @@
     <ul class="list-group">
       <li class="list-group-item">(current - <a href="{{ url_for('object_bp.get_diff', object_id=json_object.id, before=last_revision.id, after=json_object.id) }}">diff</a>) {{ json_object.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=json_object.editor.login) }}">{{ json_object.editor.login }}</a> - <a href="{{ url_for('object_bp.view', object_id=json_object.id) }}">consult</a></li>
       {% for version in json_object.versions | sort(attribute='last_updated', reverse = True) %}
-        <li class="list-group-item">{% if versions_branch[version.id] %}(<a href="{{ url_for('object_bp.get_diff', object_id=json_object.id, before=versions_branch[version.id], after=version.id) }}">diff</a>){% endif %} {{ version.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=version.editor.login) }}">{{ version.editor.login }}</a> - <a href="{{ url_for('object_bp.view_version', object_id=json_object.id, version_id=version.id) }}">consult</a> - <a href="{{ url_for('object_bp.restore_version', object_id=json_object.id, version_id=version.id)  }}">restore</a></li>
+        <li class="list-group-item" version-id="{{ version.id }}">{% if versions_branch[version.id] %}(<a href="{{ url_for('object_bp.get_diff', object_id=json_object.id, before=versions_branch[version.id], after=version.id) }}">diff</a>){% endif %} {{ version.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=version.editor.login) }}">{{ version.editor.login }}</a>
+          - <a href="{{ url_for('object_bp.view_version', object_id=json_object.id, version_id=version.id) }}">consult</a>
+          - <a data-toggle="modal" onClick="restoreVersionModal(event)" href="#">restore</a></li>
       {% endfor %}
     </ul>
+
+    <!-- Modal -->
+    <div class="modal fade" id="restoreVersionModal" tabindex="-1" role="dialog" aria-labelledby="restoreVersionModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="restoreVersionModalLabel">Restore the version</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Restore the version</p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="restoreVersion()">Restore</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 <script>
+function restoreVersionModal(event) {
+  var versionID = event.srcElement.parentNode.getAttribute('version-id');
+  document.getElementById('restoreVersionModal').setAttribute('version-id', versionID);
+  var myModal = new bootstrap.Modal(document.getElementById('restoreVersionModal'))
+  myModal.show();
+}
+function restoreVersion() {
+  var versionID = document.getElementById('restoreVersionModal').getAttribute('version-id');
+  $.ajax({
+    url: "/object/{{ json_object.id }}/version/"+versionID+"/restore",
+    type: 'GET',
+    contentType: "application/json",
+    success: function(result) {
+      window.location.replace('/object/{{ json_object.id }}/versions');
+    }
+  });
+}
 </script>
 <!-- /.container -->
 {% endblock %}
