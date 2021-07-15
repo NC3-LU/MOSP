@@ -63,6 +63,7 @@ create_user_model = user_ns.model(
     {
         "login": fields.String(description="The user login."),
         "email": fields.String(description="The user email."),
+        "apikey": fields.String(description="The user API key."),
         "org_id": fields.Integer(
             description="The id of an organization which has no membership restriction."
         ),
@@ -161,7 +162,13 @@ class UsersList(Resource):
                 db.session.commit()
 
         if new_user:
-            notifications.confirm_account(new_user)
+            try:
+                notifications.confirm_account(new_user)
+            except Exception as e:
+                print(e)
+
+        # marshalling will skip none values and we do not want to return the API key
+        new_user.apikey = None
 
         return [new_user], 201
 

@@ -82,6 +82,11 @@ class User(db.Model, UserMixin):
         if validate_email(value):
             return value
 
+    @validates("apikey")
+    @staticmethod
+    def validates_apikey(key, value):
+        assert 30 <= len(value) <= 100, AssertionError("minimum length for apikey: 30")
+
     @staticmethod
     def make_valid_login(login):
         return re.sub("[^a-zA-Z0-9_\.]", "", login)
