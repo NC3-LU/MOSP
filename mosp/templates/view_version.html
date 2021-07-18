@@ -31,6 +31,16 @@
             <pre class="prettyprint"><code>{{ prettyprint }}</code></pre>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+          <a role="button"
+              class="btn btn-secondary"
+              title="{{ _('Restore this version') }}" aria-label="{{ _('Restore this version') }}"
+              href="{{ url_for('object_bp.restore_version', object_id=version_object.object_id, version_id=version_object.id) }}">
+            Restore this version
+          </a>
+        </div>
+    </div>
 </div>
 <!-- /.container -->
 {% endblock %}
