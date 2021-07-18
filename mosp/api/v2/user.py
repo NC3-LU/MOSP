@@ -4,12 +4,10 @@
 import secrets
 import sqlalchemy
 from werkzeug.security import generate_password_hash
-from flask import request
 from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse, abort
 from flask_restx.inputs import date_from_iso8601
 
-import mosp.scripts
 from mosp.bootstrap import db, application
 from mosp.models import User, Organization
 from mosp.notifications import notifications
@@ -154,7 +152,7 @@ class UsersList(Resource):
             # restriction
             org_object = (
                 Organization.query.filter(
-                    Organization.is_membership_restricted == False
+                    Organization.is_membership_restricted == False  # noqa
                 )
                 .filter(Organization.id == org_id_auto_join)
                 .first()

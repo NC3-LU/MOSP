@@ -48,7 +48,7 @@ def on_identity_loaded(sender, identity):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.filter(User.id == user_id, User.is_active == True).first()
+    return User.query.filter(User.id == user_id, User.is_active == True).first()  # noqa
 
 
 @current_app.before_request

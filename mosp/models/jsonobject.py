@@ -4,8 +4,11 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import backref
 from sqlalchemy import event
 
+import jsonschema
+
 from mosp.bootstrap import db
 from mosp.models.version import Version
+from mosp.models.schema import Schema
 
 association_table_license = db.Table(
     "association_jsonobjects_licenses",
@@ -37,7 +40,7 @@ class JsonObject(db.Model):
     org_id = db.Column(db.Integer(), db.ForeignKey("organization.id"), nullable=False)
     schema_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=False)
     creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)
-    editor_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=True)
+    editor_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)
 
     # relationship
     licenses = db.relationship(
@@ -82,6 +85,23 @@ class JsonObject(db.Model):
         db.session.add(new_version)
         db.session.commit()
         return new_version
+
+    def restore_from_version(self, version):
+        """Update the current JsonObject (self) with the specified Version object."""
+        schema = Schema.query.filter(Schema.id == self.schema_id)
+        try:
+            # check that the Version to restore validates the current schema.
+            jsonschema.validate(version.json_object, schema.first().json_schema)
+        except jsonschema.exceptions.ValidationError as e:
+            raise Exception(
+                "The version to restore is not validated by the current schema."
+            )
+
+        self.name = version.name
+        self.description = version.description
+        self.json_object = version.json_object
+        db.session.commit()
+        return self
 
 
 @event.listens_for(JsonObject, "before_update")

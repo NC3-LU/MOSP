@@ -62,6 +62,7 @@ def check_single_object_edit_permission(instance_id, data):
 def create_new_version_before_update(instance_id, data):
     json_object = JsonObject.query.filter(JsonObject.id == instance_id).first()
     new_version = json_object.create_new_version()
+    json_object.editor_id = current_user.id
 
 
 def check_object_creation_permission(data):

@@ -3,7 +3,6 @@
 
 import sqlalchemy.exc
 from typing import Dict, Any
-from flask import request
 from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse
 
@@ -155,7 +154,7 @@ class ObjectsList(Resource):
             try:
                 del obj["licenses"]  # must be removed
                 del obj["organization"]  # if not supplied by the client
-            except:
+            except Exception:
                 pass
 
             try:

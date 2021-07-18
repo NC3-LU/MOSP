@@ -394,7 +394,7 @@ def copy(object_id=None):
     return jsonify(id=new_object.id)
 
 
-@object_bp.route("/<int:object_id>/versions", methods=["GET"])
+@object_bp.route("/<int:object_id>/versions/", methods=["GET"])
 def list_versions(object_id=None):
     """List the revisions of the object specified with its id."""
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
@@ -408,9 +408,18 @@ def list_versions(object_id=None):
         versions_branch[version.id] = before_v
         before_v = version.id
 
-    last_revision = versions[-1]
+    try:
+        last_revision = versions[-1]
+    except IndexError:
+        # no revision for the object: last_revision is the object
+        last_revision = json_object
 
-    return render_template("versions_object.html", json_object=json_object, versions_branch=versions_branch, last_revision=last_revision)
+    return render_template(
+        "list_versions.html",
+        json_object=json_object,
+        versions_branch=versions_branch,
+        last_revision=last_revision,
+    )
 
 
 @object_bp.route("/<int:object_id>/version/<int:version_id>", methods=["GET"])
@@ -437,12 +446,39 @@ def view_version(object_id=None, version_id=None):
 def get_diff(object_id=None, before=None, after=None):
     """Return a page which displays the diff between two revisions of an object."""
     version_before = Version.query.filter(Version.id == before).first()
+    if not version_before:
+        # no revision for the object: compare with an empty version.
+        version_before = Version(name="", description="", json_object={})
+
     if object_id == after:
-        # if 'after' is the current version of the JsonObject object
+        # if 'after' is the current version of the JsonObject object, we use the
+        # JsonObject itself
         version_after = JsonObject.query.filter(JsonObject.id == after).first()
     else:
         version_after = Version.query.filter(Version.id == after).first()
 
+    # generate the HTML diff table
     table = objects_utils.generate_diff(version_before, version_after)
 
-    return render_template("view_diff.html", diff_table=table, before=version_before, after=version_after)
+    return render_template(
+        "view_diff.html", diff_table=table, before=version_before, after=version_after
+    )
+
+
+@object_bp.route("/<int:object_id>/version/<int:version_id>/restore", methods=["GET"])
+def restore_version(object_id=None, version_id=None):
+    """Restore the specified version."""
+    version_object = Version.query.filter(Version.id == version_id).first()
+    if version_object is None:
+        abort(404)
+    json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    if json_object is None:
+        abort(404)
+
+    # create a new version of the current object
+    new_version = json_object.create_new_version()
+    # restore the selected version
+    new_object = json_object.restore_from_version(version_object)
+
+    # return the updated list of versions
+    return redirect(url_for("object_bp.list_versions", object_id=object_id))

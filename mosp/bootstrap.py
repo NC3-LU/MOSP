@@ -56,7 +56,7 @@ if TESTING:
     # Testing on GitHub Actions
     application.config[
         "SQLALCHEMY_DATABASE_URI"
-    ] = "postgres://mosp:password@localhost:5432/mosp"
+    ] = "postgresql://mosp:password@localhost:5432/mosp"
 elif ON_HEROKU:
     # Deployment on Heroku
     application.config.from_pyfile("heroku.py", silent=False)

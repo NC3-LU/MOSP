@@ -23,7 +23,7 @@ def list_organizations():
     if not is_membership_restricted:
         organizations = (
             db.session.query(Organization)
-            .filter(Organization.is_membership_restricted == False)
+            .filter(Organization.is_membership_restricted == False)  # noqa
             .outerjoin(big_contributors, (Organization.id == big_contributors.c.org_id))
             .order_by(nullslast(desc(big_contributors.c.JsonObject_count)))
         )
@@ -98,7 +98,7 @@ def get(
 def join(org_id):
     """Let an authenticated user join an organization which has no membership restriction."""
     org = (
-        Organization.query.filter(Organization.is_membership_restricted == False)
+        Organization.query.filter(Organization.is_membership_restricted == False)  # noqa
         .filter(Organization.id == org_id)
         .first()
     )
