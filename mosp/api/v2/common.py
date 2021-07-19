@@ -103,3 +103,9 @@ license_params_model = {
     # "name": fields.String(description="The license name."),
     "license_id": fields.String(description="The SPDX license id."),
 }
+
+version_params_model = {
+    "id": fields.Integer(description="Version id.", readonly=True),
+    "name": fields.String(description="The object name."),
+    "last_updated": fields.DateTime(description="Updated time of the schema."),
+}
