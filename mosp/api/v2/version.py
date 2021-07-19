@@ -15,6 +15,7 @@ version_ns = Namespace(
 # Argument Parsing
 parser = reqparse.RequestParser()
 parser.add_argument("name", type=str, help="The name of the object.")
+parser.add_argument("object_id", type=int, required=False, help="The id of the versioned object.")
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
 parser.add_argument("per_page", type=int, required=False, default=10, help="Page size")
 
@@ -64,6 +65,7 @@ class VersionsList(Resource):
             for arg in args:
                 if hasattr(Version, arg):
                     query = query.filter(getattr(Version, arg) == args[arg])
+
             total = query.count()
             query = query.limit(limit)
             results = query.offset(offset * limit)
