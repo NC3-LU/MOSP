@@ -44,47 +44,49 @@
 </div><!-- /.container -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    $.ajax({ // Get the list of JSON schenmas
-        url: "{{ url_for('apiv2.schema_schemas_list',) }}",
-        success: function(result) {
-            $('#list-schemas').empty();
-            result.data
-            .sort(function (a, b) {
-                return new Date(b.last_updated) - new Date(a.last_updated);
-            })
-            .map(function (schema) {
-                var cardHTML = schemaHomeTemplate({
-                    'url': '/schema/'+schema.id,
-                    'name': schema.name,
-                    'description': schema.description,
-                    'organization': schema.organization.name,
-                    'last_update': moment(schema.last_updated).fromNow()
-                 });
-                 $('#list-schemas').append(cardHTML);
-            });
-        }
-    });
+  fetch("{{ url_for('apiv2.schema_schemas_list',) }}")
+    .then(response => response.json())
+    .then(result => {
+      $('#list-schemas').empty();
+      result.data
+      .sort(function (a, b) {
+          return new Date(b.last_updated) - new Date(a.last_updated);
+      })
+      .map(function (schema) {
+          var cardHTML = schemaHomeTemplate({
+              'url': '/schema/'+schema.id,
+              'name': schema.name,
+              'description': schema.description,
+              'organization': schema.organization.name,
+              'last_update': moment(schema.last_updated).fromNow()
+           });
+           $('#list-schemas').append(cardHTML);
+      });
+    }).catch((error) => {
+      console.error('Error:', error);
+  });
 
-    $.ajax({ // Get the list of JSON objects
-        url: "{{ url_for('apiv2.object_objects_list',) }}",
-        success: function(result) {
-            $('#list-json-objects').empty();
-            result.data
-            .sort(function (a, b) {
-                return new Date(b.last_updated) - new Date(a.last_updated);
-            })
-            .map(function (json_object) {
-                var cardHTML = jsonObjectHomeTemplate({
-                    'url': '/object/view/'+json_object.id,
-                    'name': json_object.name,
-                    'description': json_object.description,
-                    'organization': json_object.organization.name,
-                    'last_update': moment(json_object.last_updated).fromNow()
-                 });
-                 $('#list-json-objects').append(cardHTML);
-            });
-        }
-    });
+  fetch("{{ url_for('apiv2.object_objects_list',) }}")
+    .then(response => response.json())
+    .then(result => {
+      $('#list-json-objects').empty();
+      result.data
+      .sort(function (a, b) {
+          return new Date(b.last_updated) - new Date(a.last_updated);
+      })
+      .map(function (json_object) {
+          var cardHTML = jsonObjectHomeTemplate({
+              'url': '/object/view/'+json_object.id,
+              'name': json_object.name,
+              'description': json_object.description,
+              'organization': json_object.organization.name,
+              'last_update': moment(json_object.last_updated).fromNow()
+           });
+           $('#list-json-objects').append(cardHTML);
+      });
+    }).catch((error) => {
+      console.error('Error:', error);
+  });
 });
 </script>
 {% endblock %}

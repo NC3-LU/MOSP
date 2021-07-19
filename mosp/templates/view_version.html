@@ -70,13 +70,11 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   document.getElementById("restore-version").onclick = function(event){
-    $.ajax({
-        url: "{{ url_for('object_bp.restore_version', object_id=version_object.object_id, version_id=version_object.id) }}",
-        type: 'GET',
-        contentType: "application/json",
-        success: function(result) {
-            window.location.replace('/object/{{ version_object.object_id }}/versions');
-        }
+    fetch("{{ url_for('object_bp.restore_version', object_id=version_object.object_id, version_id=version_object.id) }}")
+      .then(result => {
+        window.location.replace('/object/{{ version_object.object_id }}/versions');
+      }).catch((error) => {
+        console.error('Error:', error);
     });
   }
 })

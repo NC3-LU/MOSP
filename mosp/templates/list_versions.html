@@ -53,13 +53,11 @@ function restoreVersionModal(event) {
 }
 function restoreVersion() {
   var versionID = document.getElementById('restoreVersionModal').getAttribute('version-id');
-  $.ajax({
-    url: "/object/{{ json_object.id }}/version/"+versionID+"/restore",
-    type: 'GET',
-    contentType: "application/json",
-    success: function(result) {
+  fetch("/object/{{ json_object.id }}/version/"+versionID+"/restore")
+    .then(result => {
       window.location.replace('/object/{{ json_object.id }}/versions');
-    }
+    }).catch((error) => {
+      console.error('Error:', error);
   });
 }
 </script>
