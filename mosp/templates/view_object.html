@@ -167,7 +167,7 @@
     </div>
 </div>
 <script>
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
     $('.selectpicker').selectpicker();
 
     $('#download-csv').click(function(e) {
@@ -205,6 +205,7 @@ $(document).ready(function() {
         });
     });
 });
+
 function copyToClipboard() {
     const copyText = document.getElementById("jsonObject").textContent;
     const textArea = document.createElement('textarea');

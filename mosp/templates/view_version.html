@@ -33,14 +33,53 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-          <a role="button"
+          <a role="button" id="restore-button"
               class="btn btn-secondary"
-              title="{{ _('Restore this version') }}" aria-label="{{ _('Restore this version') }}"
-              href="{{ url_for('object_bp.restore_version', object_id=version_object.object_id, version_id=version_object.id) }}">
+              title="{{ _('Restore this version') }}" aria-label="{{ _('Restore this version') }}">
             Restore this version
           </a>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="restoreVersionModal" tabindex="-1" role="dialog" aria-labelledby="restoreVersionModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="restoreVersionModalLabel">Restore the version</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Restore the version ?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="restore-version">Restore</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("restore-button").onclick = function(event){
+    var myModal = new bootstrap.Modal(document.getElementById('restoreVersionModal'))
+    myModal.show();
+  }
+
+  document.getElementById("restore-version").onclick = function(event){
+    $.ajax({
+        url: "{{ url_for('object_bp.restore_version', object_id=version_object.object_id, version_id=version_object.id) }}",
+        type: 'GET',
+        contentType: "application/json",
+        success: function(result) {
+            window.location.replace('/object/{{ version_object.object_id }}/versions');
+        }
+    });
+  }
+})
+</script>
 <!-- /.container -->
 {% endblock %}

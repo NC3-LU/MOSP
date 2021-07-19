@@ -43,7 +43,7 @@
     </div>
 </div><!-- /.container -->
 <script>
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
     $.ajax({ // Get the list of JSON schenmas
         url: "{{ url_for('apiv2.schema_schemas_list',) }}",
         success: function(result) {
