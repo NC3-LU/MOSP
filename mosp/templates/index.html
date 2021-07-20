@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
   fetch("{{ url_for('apiv2.schema_schemas_list',) }}")
     .then(response => response.json())
     .then(result => {
-      $('#list-schemas').empty();
+      document.getElementById("list-schemas").innerHTML = "";
       result.data
       .sort(function (a, b) {
           return new Date(b.last_updated) - new Date(a.last_updated);
@@ -60,7 +60,9 @@ document.addEventListener("DOMContentLoaded", function() {
               'organization': schema.organization.name,
               'last_update': moment(schema.last_updated).fromNow()
            });
-           $('#list-schemas').append(cardHTML);
+           var element = document.createElement("div");
+           element.innerHTML = cardHTML;
+           document.getElementById("list-schemas").appendChild(element.firstChild);
       });
     }).catch((error) => {
       console.error('Error:', error);
@@ -69,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
   fetch("{{ url_for('apiv2.object_objects_list',) }}")
     .then(response => response.json())
     .then(result => {
-      $('#list-json-objects').empty();
+      document.getElementById("list-json-objects").innerHTML = "";
       result.data
       .sort(function (a, b) {
           return new Date(b.last_updated) - new Date(a.last_updated);
@@ -82,7 +84,9 @@ document.addEventListener("DOMContentLoaded", function() {
               'organization': json_object.organization.name,
               'last_update': moment(json_object.last_updated).fromNow()
            });
-           $('#list-json-objects').append(cardHTML);
+           var element = document.createElement("div");
+           element.innerHTML = cardHTML;
+           document.getElementById("list-json-objects").appendChild(element.firstChild);
       });
     }).catch((error) => {
       console.error('Error:', error);
