@@ -157,17 +157,14 @@ $(document).ready(function() {
     });
 
     // Get information about the JsonObject
-    var filters = [{"name": "id", "op": "eq", "val": "{{ json_object.id }}"}];
-    $.ajax({
-        url: "{{ url_for('json_objectapi0.json_objectapi',) }}/{{ json_object.id }}",
-        data: {"q": JSON.stringify({"filters": filters})},
-        dataType: "json",
-        contentType: "application/json",
-        success: function(result) {
-            initialize_editor_with_schema(result.schema.json_schema,
-                                            result.json_object);
-        }
-    });
+    fetch("{{ url_for('apiv2.object_objects_list',) }}{{ json_object.id }}")
+      .then(response => response.json())
+      .then(result => {
+        // initialize the JSON editor
+        initialize_editor_with_schema(result[0].schema.json_schema, result[0].json_object);
+      }).catch((error) => {
+        console.error('Error:', error);
+      });
 });
 
 function initialize_editor_with_schema(schema, json_object) {
