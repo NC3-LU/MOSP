@@ -258,7 +258,7 @@ def process_form(object_id=None):
     if object_id is not None:
         # Load the object to edit and create a new Version instance for the versioning.
         json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
-        new_version = json_object.create_new_version()
+        json_object.create_new_version()
 
         json_object.editor_id = current_user.id
 
@@ -476,9 +476,9 @@ def restore_version(object_id=None, version_id=None):
         abort(404)
 
     # create a new version of the current object
-    new_version = json_object.create_new_version()
+    json_object.create_new_version()
     # restore the selected version
-    new_object = json_object.restore_from_version(version_object)
+    json_object.restore_from_version(version_object)
 
     # return the updated list of versions
     return redirect(url_for("object_bp.list_versions", object_id=object_id))

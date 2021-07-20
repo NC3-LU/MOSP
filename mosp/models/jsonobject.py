@@ -1,5 +1,4 @@
 from datetime import datetime
-from flask_login import current_user
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import backref
 from sqlalchemy import event
@@ -92,7 +91,7 @@ class JsonObject(db.Model):
         try:
             # check that the Version to restore validates the current schema.
             jsonschema.validate(version.json_object, schema.first().json_schema)
-        except jsonschema.exceptions.ValidationError as e:
+        except jsonschema.exceptions.ValidationError:
             raise Exception(
                 "The version to restore is not validated by the current schema."
             )
