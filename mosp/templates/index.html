@@ -4,21 +4,24 @@
     <div class="row">
         <div class="col">
             <div class="jumbotron">
-                <p class="lead">
-                    <img src="{{ url_for('static', filename='img/logo-large.png') }}"
-                        width="240px"
-                        class="img-fluid mx-auto"
-                        alt="MONARC Objects Sharing Platform"
-                        title="MONARC Objects Sharing Platform" />
-                    objects.monarc.lu is the MONARC platform for creating and
-                    sharing JSON objects related to security (such as
+              <img src="{{ url_for('static', filename='img/logo-large.png') }}"
+                align="left"
+                width="240px"
+                class="img-fluid mx-auto"
+                alt="MONARC Objects Sharing Platform"
+                title="MONARC Objects Sharing Platform"
+                style="padding-right: 10px; padding-bottom: 5px;" />
+              <p class="lead">
+                objects.monarc.lu is the MOSP instance for creating and
+                sharing JSON objects related to cybersecurity security, such as
                 <a href="https://objects.monarc.lu/schema/14" rel="noopener noreferrer" target="_blank">vulnerabilities</a>,
                 <a href="https://objects.monarc.lu/schema/15" rel="noopener noreferrer" target="_blank">threats</a>
-                or <a href="https://objects.monarc.lu/schema/12" rel="noopener noreferrer" target="_blank">cybersecurity standards</a>).
-                {{ nb_objects }} items are currently available through
-                {{ nb_organizations }} <a href="{{ url_for('organizations_bp.list_organizations') }}">organizations</a>.</p>
-                <hr class="my-4">
-                <a class="btn btn-primary btn-lg" href="{{ url_for('help') }}" role="button">Learn more</a>
+                or <a href="https://objects.monarc.lu/schema/12" rel="noopener noreferrer" target="_blank">cybersecurity standards</a>.
+                <br />{{ nb_objects }} items are currently available through
+                {{ nb_organizations }} <a href="{{ url_for('organizations_bp.list_organizations') }}">organizations</a>.
+              </p>
+              <hr class="my-3">
+              <a class="btn btn-primary btn-lg" href="{{ url_for('help') }}" role="button">Learn more</a>
             </div>
         </div>
     </div>
