@@ -104,14 +104,18 @@ project. You can contribute to MOSP by:
 - improving the documentation;
 - creating new objects on [our instance](https://objects.monarc.lu).
 
-Feel free to fork the code, play with it, make some patches and send us
-pull requests.
+Feel free to fork the code, play with it, make some patches and send us pull requests.
 
 There is one main branch: what we consider as stable with frequent updates as
 hot-fixes.
 
 Features are developed in separated branches and then regularly merged into the
 master stable branch.
+
+[Flask](https://flask.palletsprojects.com) is used for the backend.
+Please use [black](https://github.com/psf/black) for the syntax of your Python code.
+
+[Vanilla JS](http://vanilla-js.com) is the JavaScript framework used.
 
 
 ## Documentation
