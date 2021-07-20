@@ -7,15 +7,15 @@ from mosp.models import Version
 from mosp.api.v2.common import version_params_model, metada_params_model
 
 
-version_ns = Namespace(
-    "version", description="version related operations"
-)
+version_ns = Namespace("version", description="version related operations")
 
 
 # Argument Parsing
 parser = reqparse.RequestParser()
 parser.add_argument("name", type=str, help="The name of the object.")
-parser.add_argument("object_id", type=int, required=False, help="The id of the versioned object.")
+parser.add_argument(
+    "object_id", type=int, required=False, help="The id of the versioned object."
+)
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
 parser.add_argument("per_page", type=int, required=False, default=10, help="Page size")
 
@@ -29,9 +29,7 @@ version_list_fields = version_ns.model(
         "metadata": fields.Nested(
             metadata, description="Metada related to the result."
         ),
-        "data": fields.List(
-            fields.Nested(object), description="List of versions."
-        ),
+        "data": fields.List(fields.Nested(object), description="List of versions."),
     },
 )
 

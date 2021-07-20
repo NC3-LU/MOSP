@@ -90,16 +90,25 @@ def view(object_id=None):
     """
     Display the JSON part of a JsonObject object and some related informations.
     """
+    # Examples:
     # res = JsonObject.query.filter(JsonObject.json_object.contains(
     #                     {'predicates': [{'value': 'source-type'}]}
     #                     )).all()
     # res = JsonObject.query.filter(JsonObject.json_object.contains(
     #                     {'values': [{'entry': [{'value': 'news-report'}]}]}
     #                     )).all()
-    # res = JsonObject.query.filter(JsonObject.json_object[('namespace')].astext == 'osint')
-    # res = JsonObject.query.filter(JsonObject.json_object[('father-uuid')].astext == 'fdsfsf')
-    # res = JsonObject.query.filter(JsonObject.json_object[('mapping', 'father-uuid')].astext == 'fdsfsf')
-    # res = JsonObject.query.filter(JsonObject.json_object[('mapping'), [('father-uuid')]].astext == "fdsfsf")
+    # res = JsonObject.query.filter(
+    #     JsonObject.json_object[("namespace")].astext == "osint"
+    # )
+    # res = JsonObject.query.filter(
+    #     JsonObject.json_object[("father-uuid")].astext == "fdsfsf"
+    # )
+    # res = JsonObject.query.filter(
+    #     JsonObject.json_object[("mapping", "father-uuid")].astext == "fdsfsf"
+    # )
+    # res = JsonObject.query.filter(
+    #     JsonObject.json_object[("mapping"), [("father-uuid")]].astext == "fdsfsf"
+    # )
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     for version in json_object.versions.all():
         print(version.last_updated)
