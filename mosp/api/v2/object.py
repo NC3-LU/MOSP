@@ -14,6 +14,7 @@ from mosp.api.v2.common import (
     uuid_type,
     object_params_model,
     organization_params_model,
+    schema_params_model,
     metada_params_model,
     license_params_model,
 )
@@ -53,6 +54,15 @@ object_list_fields = object_ns.model(
         ),
         "data": fields.List(fields.Nested(object), description="List of objects."),
     },
+)
+
+# Marshalling for GET/<id> (single element); also returns the schema
+object_get_id = object_ns.model("Object", object_params_model)
+object_get_id["organization"] = fields.Nested(
+    object_ns.model("Organization", organization_params_model), readonly=True
+)
+object_get_id["schema"] = fields.Nested(
+    object_ns.model("Schema", schema_params_model), readonly=True
 )
 
 
@@ -183,8 +193,7 @@ class ObjectItem(Resource):
     """Get object details."""
 
     @object_ns.doc("object_get")
-    @object_ns.marshal_with(object, code=200)
-    @auth_func
+    @object_ns.marshal_with(object_get_id, code=200)
     def get(self, id):
         return JsonObject.query.filter(JsonObject.id == id).all(), 200
 
