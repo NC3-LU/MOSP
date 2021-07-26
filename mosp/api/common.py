@@ -9,11 +9,11 @@ import jsonschema
 from flask_login import current_user
 from flask_restless import ProcessingException
 
-from mosp.models import Schema, Organization
+from mosp.models import Schema, Organization, JsonObject
 
 
 def check_submitted_object(data):
-    """Ensures. a user has the rights to create/edit an abject
+    """Ensures a user has the rights to create/edit an abject
     in a specific organization.
     Checks also the validity of the submitted JSON object against the specified
     the JSON schema.
@@ -67,3 +67,10 @@ def check_submitted_object(data):
         )
     except Exception:
         raise ProcessingException(description="Unknown error.", code=400)
+
+
+def create_new_version(instance_id):
+    """Create a new version of the object to update."""
+    json_object = JsonObject.query.filter(JsonObject.id == instance_id).first()
+    json_object.create_new_version()
+    json_object.editor_id = current_user.id

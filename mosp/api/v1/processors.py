@@ -8,7 +8,7 @@ from flask_restless import ProcessingException
 
 from mosp.models import User, JsonObject
 from mosp.views.common import login_user_bundle
-from mosp.api.common import check_submitted_object
+from mosp.api.common import check_submitted_object, create_new_version
 
 logger = logging.getLogger(__name__)
 
@@ -60,9 +60,9 @@ def check_single_object_edit_permission(instance_id, data):
 
 
 def create_new_version_before_update(instance_id, data):
-    json_object = JsonObject.query.filter(JsonObject.id == instance_id).first()
-    json_object.create_new_version()
-    json_object.editor_id = current_user.id
+    """Use the function `create_new_version` in order to create a new version of the
+    object to update."""
+    create_new_version(instance_id)
 
 
 def check_object_creation_permission(data):

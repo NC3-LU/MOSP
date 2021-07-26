@@ -3,6 +3,7 @@
 
 import uuid
 from flask import request
+from flask_login import current_user
 from flask_restx import abort, fields
 
 from mosp.models import User
@@ -13,17 +14,18 @@ def auth_func(func):
     """Authentication decorator."""
 
     def wrapper(*args, **kwargs):
-        if "X-API-KEY" in request.headers:
-            token = request.headers.get("X-API-KEY", False)
-            if token:
-                user = User.query.filter(User.apikey == token).first()
-                if not user:
-                    abort(401, Error="Unauthorized.")
-                if not user.is_active:
-                    abort(403, Error="Account is not active.")
-                login_user_bundle(user)
-        else:
-            abort(401, Error="Authentication required.")
+        if not current_user.is_authenticated:
+            if "X-API-KEY" in request.headers:
+                token = request.headers.get("X-API-KEY", False)
+                if token:
+                    user = User.query.filter(User.apikey == token).first()
+                    if not user:
+                        abort(401, Error="Unauthorized.")
+                    if not user.is_active:
+                        abort(403, Error="Account is not active.")
+                    login_user_bundle(user)
+            else:
+                abort(401, Error="Authentication required.")
         return func(*args, **kwargs)
 
     wrapper.__doc__ = func.__doc__

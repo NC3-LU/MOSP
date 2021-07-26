@@ -8,7 +8,7 @@ from flask_restx import Namespace, Resource, fields, reqparse
 
 from mosp.bootstrap import db
 from mosp.models import JsonObject, License, Schema
-from mosp.api.common import check_submitted_object
+from mosp.api.common import check_submitted_object, create_new_version
 from mosp.api.v2.common import (
     auth_func,
     uuid_type,
@@ -197,12 +197,29 @@ class ObjectItem(Resource):
     def get(self, id):
         return JsonObject.query.filter(JsonObject.id == id).all(), 200
 
-    # @object_ns.doc("object_patch")
-    # @object_ns.expect(object)
-    # @object_ns.marshal_with(object, code=201)
-    # @auth_func
-    # def patch(self, id):
-    #
-    #     obj = JsonObject.query.filter(JsonObject.id == id).all(), 200
-    #
-    #     return current_user, 201
+    @object_ns.doc("object_patch")
+    @object_ns.expect(object)
+    @object_ns.marshal_with(object, code=201)
+    @auth_func
+    def patch(self, id):
+
+        obj = JsonObject.query.filter(JsonObject.id == id).first()
+
+        data = {
+            "org_id": obj.org_id,
+            "schema_id": obj.schema_id,
+            "json_object": object_ns.payload["json_object"]
+        }
+
+        try:
+            # check the submitted object
+            check_submitted_object(data)
+            # create a new version of the object to update
+            create_new_version(JsonObject.id)
+            # update the object
+            obj.json_object = object_ns.payload["json_object"]
+            db.session.commit()
+        except Exception as e:
+            raise (e)
+
+        return obj, 201

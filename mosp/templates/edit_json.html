@@ -133,8 +133,8 @@
     document.getElementById("saveobject").onclick = function(event) {
       var json = jsoneditor.getValue();
       data = JSON.stringify({json_object: json});
-      fetch("{{ url_for('json_objectapi0.json_objectapi',) }}/{{ json_object.id }}", {
-        method: "PUT",
+      fetch("{{ url_for('apiv2.object_object_item', id=json_object.id) }}", {
+        method: "PATCH",
         headers: {
           'Content-Type': 'application/json',
         },
