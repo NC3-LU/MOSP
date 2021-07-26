@@ -34,6 +34,7 @@ def digraph(software=None):
 
     for schema in Schema.query.filter().all():
         # referrer_id = schema.json_schema.get("$id", None)
+        G.add_node(schema.id, name=schema.name)
         referrers = findkeys(schema.json_schema.get("definitions", {}), "$ref")
         for referrer in list(referrers):
             ref = Schema.query.filter(
@@ -41,6 +42,7 @@ def digraph(software=None):
             ).first()
             if not ref:
                 continue
+            G.add_node(ref.id, name=ref.name)
             G.add_edge(schema.id, ref.id, type="ref")
 
     # json formatted data
