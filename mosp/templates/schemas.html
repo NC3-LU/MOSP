@@ -17,15 +17,22 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
-            <p>{{ _('See the <a href="#references_between_schemas">links</a> between the schemas.') }}</p>
+        <div class="col">
+            <h2 id="references_between_schemas">{{ _('References between schemas') }}</h2>
+            <svg width="960" height="600"></svg>
+            <p>Double-click on a node to go to the schema page.</p>
         </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+          <h2 id="list_schemas">{{ _('List of schemas') }}</h2>
+      </div>
         <div class="col-md-6 text-right">
             <a href="{{ url_for('schema_bp.form') }}" class="btn btn-default">{{ _('Create a new schema') }}</a>
         </div>
     </div>
 
-    <br />
     <div class="row">
         <div class="col-md-12">
             <div class="list-group">
@@ -39,14 +46,6 @@
                 </a>
             {% endfor  %}
             </div>
-        </div>
-    </div>
-
-    <br />
-    <div class="row">
-        <div class="col">
-            <h1 id="references_between_schemas">{{ _('References between schemas') }}</h1>
-            <svg width="960" height="600"></svg>
         </div>
     </div>
 </div>
@@ -150,6 +149,10 @@ document.addEventListener("DOMContentLoaded", function() {
             node.append("text")
                 .attr("dy", -3)
                 .text(function (d) {return d.name;});
+
+            node.on("dblclick", function(elem) {
+              window.location.href = "/schema/" + elem.id;
+            });
 
             simulation
                 .nodes(nodes)
