@@ -70,7 +70,8 @@ class JsonObject(db.Model):
 
     def create_new_version(self, obj=None):
         """Create a new Version object from the JsonObject given in parameter or from
-        the current object (self)."""
+        the current object (self).
+        Returns the new Version object."""
         if not obj:
             obj = self
         new_version = Version(
