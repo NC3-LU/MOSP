@@ -1,4 +1,3 @@
-from collections import defaultdict
 from flask import Blueprint, jsonify
 
 from mosp.models import Schema
@@ -10,11 +9,9 @@ from networkx.readwrite import json_graph
 stats_bp = Blueprint("stats_bp", __name__, url_prefix="/stats")
 
 
-def tree():
-    return defaultdict(tree)
-
-
 def findkeys(node, kv):
+    """Generator to find the keys in graph represented as a dict structure
+    or in a list."""
     if isinstance(node, list):
         for i in node:
             for x in findkeys(i, kv):
