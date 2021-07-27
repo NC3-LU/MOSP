@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 .style("fill", function (d, i) {return colors(i);})
 
             node.append("title")
-                .text(function (d) {return d.id;});
+                .text(function (d) {return d.description;});
 
             node.append("text")
                 .attr("dy", -3)
