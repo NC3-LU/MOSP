@@ -410,24 +410,27 @@ def list_versions(object_id=None):
     if json_object is None:
         abort(404)
 
+    # Get all the versions with links to their parents:
+    #  Object <- Versio_N <- ... <- Version-3 <- Version-2 <- Version-1
     versions = json_object.versions.order_by(Version.last_updated.asc()).all()
-    versions_branch = {}
+    version_parents = {}
     before_v = None
     for version in versions:
-        versions_branch[version.id] = before_v
+        version_parents[version.id] = before_v
         before_v = version.id
 
+    # Most recent Version object related to the JsonObject
     try:
-        last_revision = versions[-1]
+        last_revision_id = versions[-1].id
     except IndexError:
-        # no revision for the object: last_revision is the object
-        last_revision = json_object
+        # no revision for the object: object never updated
+        last_revision_id = 0
 
     return render_template(
         "list_versions.html",
         json_object=json_object,
-        versions_branch=versions_branch,
-        last_revision=last_revision,
+        version_parents=version_parents,
+        last_revision_id=last_revision_id,
     )
 
 
