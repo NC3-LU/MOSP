@@ -12,6 +12,7 @@
         </div>
         <div class='col-md-2 text-right'>
             <button class='btn btn-success' id='saveobject' title="Save the object"><i class="fa fa-save" aria-hidden="true"></i></button>
+            <a class='btn btn-success' href="{{ url_for('object_bp.list_versions', object_id=json_object.id) }}" title="Revisions of the object"><i class="fa fa-history" aria-hidden="true"></i></a>
             <a class='btn btn-success' href="{{ url_for('object_bp.form', object_id=json_object.id) }}" title="Edit the object"><i class="fa fa-edit" aria-hidden="true"></i></a>
             <a class='btn btn-success' href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}" title="Get the object"><i class="fa fa-download" aria-hidden="true"></i></a>
         </div>
