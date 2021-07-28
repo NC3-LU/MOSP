@@ -478,8 +478,11 @@ def get_diff(object_id=None, before=None, after=None):
 
 
 @object_bp.route("/<int:object_id>/version/<int:version_id>/restore", methods=["GET"])
+@login_required
+@check_object_edit_permission
 def restore_version(object_id=None, version_id=None):
-    """Restore the specified version."""
+    """Restores the specified version of the JsonObject.
+    A new version is created before restoring the specified version."""
     version_object = Version.query.filter(Version.id == version_id).first()
     if version_object is None:
         abort(404)
