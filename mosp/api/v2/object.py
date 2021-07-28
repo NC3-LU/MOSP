@@ -208,7 +208,7 @@ class ObjectItem(Resource):
         data = {
             "org_id": obj.org_id,
             "schema_id": obj.schema_id,
-            "json_object": object_ns.payload["json_object"]
+            "json_object": object_ns.payload["json_object"],
         }
 
         try:
