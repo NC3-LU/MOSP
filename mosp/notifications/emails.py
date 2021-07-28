@@ -96,5 +96,5 @@ def send_smtp(to="", subject="", plaintext="", html=""):
                 msg.as_bytes().decode(encoding="UTF-8"),
             )
             s.quit()
-        except:
+        except Exception:
             pass

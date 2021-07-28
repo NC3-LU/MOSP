@@ -6,4 +6,16 @@ from mosp.views.user import user_bp
 from mosp.views.organization import organization_bp, organizations_bp
 from mosp.views.stats import stats_bp
 
-__all__ = ["views", "session_mgmt"]
+__all__ = [
+    "views",
+    "session_mgmt",
+    "admin_bp",
+    "schema_bp",
+    "schemas_bp",
+    "object_bp",
+    "objects_bp",
+    "user_bp",
+    "organization_bp",
+    "organizations_bp",
+    "stats_bp",
+]

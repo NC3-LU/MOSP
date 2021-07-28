@@ -99,8 +99,8 @@ def join(org_id):
     """Let an authenticated user join an organization which has no membership restriction."""
     org = (
         Organization.query.filter(
-            Organization.is_membership_restricted == False
-        )  # noqa
+            Organization.is_membership_restricted == False  # noqa
+        )
         .filter(Organization.id == org_id)
         .first()
     )

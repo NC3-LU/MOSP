@@ -20,5 +20,5 @@ def create_user(login, email, password, is_active, is_admin):
         db.session.add(user)
         db.session.commit()
         return user
-    except:
+    except Exception:
         db.session.rollback()

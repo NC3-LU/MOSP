@@ -42,8 +42,8 @@ def dashboard():
 @admin_permission.require(http_exception=403)
 def list_users():
     users = {}
-    users["Admins"] = User.query.filter(User.is_admin == True)
-    users["Users"] = User.query.filter(User.is_admin == False)
+    users["Admins"] = User.query.filter(User.is_admin == True)  # noqa
+    users["Users"] = User.query.filter(User.is_admin == False)  # noqa
     return render_template("admin/users.html", users=users)
 
 

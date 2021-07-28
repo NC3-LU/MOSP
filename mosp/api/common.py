@@ -31,7 +31,7 @@ def check_submitted_object(data):
             next(
                 zip(
                     *Organization.query.filter(
-                        Organization.is_membership_restricted == False
+                        Organization.is_membership_restricted == False  # noqa
                     )
                     .with_entities(Organization.id)
                     .all()
