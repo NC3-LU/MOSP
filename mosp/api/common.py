@@ -69,8 +69,8 @@ def check_submitted_object(data):
         raise ProcessingException(description="Unknown error.", code=400)
 
 
-def create_new_version(instance_id):
+def create_new_version(object_id):
     """Create a new version of the object to update."""
-    json_object = JsonObject.query.filter(JsonObject.id == instance_id).first()
+    json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     json_object.create_new_version()
     json_object.editor_id = current_user.id
