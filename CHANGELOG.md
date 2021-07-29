@@ -2,6 +2,180 @@ Changelog
 =========
 
 
+v0.15.0 (2021-07-29)
+--------------------
+
+New
+~~~
+- [object-versioning] added version namespace for the API v2. [Cédric
+  Bonhomme]
+- [object versioning] added template to display a diff and a view which
+  will trigger the processing of the diff. [Cédric Bonhomme]
+- [object versioning] added a template to check the previous state of an
+  object. [Cédric Bonhomme]
+- [object versioning] added a template to display the list of versions
+  for an object. [Cédric Bonhomme]
+- [object versioning] added first version of the new model class for the
+  versioning of the JSON objects. [Cédric Bonhomme]
+
+Changes
+~~~~~~~
+- [object-versioning] added a button to go to the list of versions of an
+  object. [Cédric Bonhomme]
+- [object-versioning] set the editor id after update of an object via
+  the API. [Cédric Bonhomme]
+- [format] format code with black. [Cédric Bonhomme]
+- [object-versioning] the object_bo.restore view is now checking the
+  permission of the user. [Cédric Bonhomme]
+- [object-versioning] improved object_bp.list_versions routes. [Cédric
+  Bonhomme]
+- [object-versioning] added node description to the digraph generation
+  in the stats blueprint. [Cédric Bonhomme]
+- [object versioning] update API v2 to support the object versioning on
+  HTTP Patch request with the same code base than the API v1. [Cédric
+  Bonhomme]
+- [object-versioning] removed unsued new_version variable. [Cédric
+  Bonhomme]
+- [templates] improved JavaScript related to the JSON editor. [Cédric
+  Bonhomme]
+- [templates] edit_json.html is now using the new API v2 in order to
+  initialize the JSON editor. [Cédric Bonhomme]
+- [API v2] ObjectItem (GET /<id>) now returns information about the
+  shema linked to an object. [Cédric Bonhomme]
+- [object-versioning] added object_id parameter to the parser for the
+  Version namespace. [Cédric Bonhomme]
+- [object-versioning] added event listener to confirm restoring a saved
+  version of an object. [Cédric Bonhomme]
+- [templates] minor update to list_versions.html. [Cédric Bonhomme]
+- Updated list_versions route. [Cédric Bonhomme]
+- [object versioning] check that the Version to restore validates the
+  current schema. [Cédric Bonhomme]
+- [object versioning] check schena of version to restore. [Cédric
+  Bonhomme]
+- [object versioning] check schena of version to restore. [Cédric
+  Bonhomme]
+- [object versioning] added a function to restore a previously saved
+  Version object in the current JsonObject. [Cédric Bonhomme]
+- [object versioning] renamed template to list versions and various
+  minor improvements. [Cédric Bonhomme]
+- [dependencies] updated sqlalchemy, alembic and other dependencies.
+  [Cédric Bonhomme]
+- [object versioning] the migration script now initializes all the
+  editor_id in the table json_object. [Cédric Bonhomme]
+- [object versioning] set editor_id to not nullable and initialize the
+  value during the migration. [Cédric Bonhomme]
+- [object versioning] fixed date format in view_diff template. [Cédric
+  Bonhomme]
+- [object versioning] initialize the editor of an object if it is not
+  already done, after creating the first revision. [Cédric Bonhomme]
+- [object versioning] removed debug print. [Cédric Bonhomme]
+- [object versioning] cleaned migration file. [Cédric Bonhomme]
+- [object versioning] updated migration file with the new editor_id
+  foreign key. [Cédric Bonhomme]
+- [object versioning] added link to editor page in the diff template.
+  [Cédric Bonhomme]
+- [object versioning] display page of revision to unauthenticated user.
+  [Cédric Bonhomme]
+- [models] added API key validation for the uses. [Cédric Bonhomme]
+- [API v2] it is now possible to create a user by specifying its API
+  key. [Cédric Bonhomme]
+- [documentation] updated README. [Cédric Bonhomme]
+- [models] removed useless use of self. [Cédric Bonhomme]
+- [object versioning] added custom CSS to the table generated with
+  HtmlDiff. [Cédric Bonhomme]
+- [object versioning] added a helper function which geneated a diff
+  between two revisions of an object. [Cédric Bonhomme]
+- [object versioning] reformat models with black. [Cédric Bonhomme]
+- [object versioning] simplify the template which displays a revision of
+  an object. [Cédric Bonhomme]
+- [object versioning] updated relations between JsonObject and User
+  objects. [Cédric Bonhomme]
+- [object versioning] added creator relationship to the Version objects.
+  [Cédric Bonhomme]
+- [object versioning] added new pre-processir for the API v1 in order to
+  automatically create a new Version object when a JsonObject object is
+  updated. [Cédric Bonhomme]
+- [object versioning] create a new Version object when a JsonObject is
+  updated. [Cédric Bonhomme]
+- [object versioning] update the method to version a current instance of
+  an JsonObject. [Cédric Bonhomme]
+- [object versioning] adapted models and created migration script for
+  the new versioning table. [Cédric Bonhomme]
+
+Fix
+~~~
+- [object-versioning] bad object id was passer to create_new_version.
+  [Cédric Bonhomme]
+- Add missing nodes to the directed graph of JSON schemas. [Cédric
+  Bonhomme]
+- [object versioning] use a simple Exception instead of a
+  flask_restless.ProcessingException when the object is not validated by
+  the schema. [Cédric Bonhomme]
+- [postgresql] fixed bad SQLALCHEMY_DATABASE_URL in bootstrap.py on
+  testing environment. [Cédric Bonhomme]
+- [object versioning] manage cases when an object has no previous
+  version. [Cédric Bonhomme]
+- [object versioning] fixed display of the diff table. [Cédric Bonhomme]
+- [admin] attribute is_membership_restricted was not retrieved and saved
+  when creating a new organization. [Cédric Bonhomme]
+- [object versioning] fixed display of the revision history table.
+  [Cédric Bonhomme]
+- [object versioning] fixed error Could not determine join condition
+  between parent/child tables on relationship User.objects. [Cédric
+  Bonhomme]
+
+Other
+~~~~~
+- Fixed some flake related warnings. [Cédric Bonhomme]
+- Set svg div width to 100% and calculate middle with a fixed value.
+  [Cédric Bonhomme]
+- Updated README. [Cédric Bonhomme]
+- Improved workflow between JSON edition, object edition and listing of
+  revisions. [Cédric Bonhomme]
+- Cleaned code is stats blueprint. [Cédric Bonhomme]
+- Improved display of the d3.js directed graph. [Cédric Bonhomme]
+- Updated dependencies. [Cédric Bonhomme]
+- Updated a comment. [Cédric Bonhomme]
+- Various templates improvements and removing old jQuery code. [Cédric
+  Bonhomme]
+- Reformatted code with black. [Cédric Bonhomme]
+- Removed some unused variables concerning the versioning of the
+  objects. [Cédric Bonhomme]
+- Improved fetching of objects and generation of the HTML card with
+  lodash. [Cédric Bonhomme]
+- Updated README. [Cédric Bonhomme]
+- Removed some dependencies to jQuery. Prefer the use of Vanilla
+  JavaScript. [Cédric Bonhomme]
+- Added a button to restore the version of an object, without
+  confirmation. [Cédric Bonhomme]
+- Merge branch 'object-versioning' of github.com:CASES-LU/MOSP into
+  object-versioning. [Cédric Bonhomme]
+- Merge branch 'master' into object-versioning. [Cédric Bonhomme]
+- Added JavaScript function and modals to confirm the version restoring.
+  [Cédric Bonhomme]
+- Merge branch 'master' into object-versioning. [Cédric Bonhomme]
+- Merge branch 'master' into object-versioning. [Cédric Bonhomme]
+- Fixed some issues detected with PyCodeStyle. [Cédric Bonhomme]
+- Merge branch 'master' into object-versioning. [Cédric Bonhomme]
+- Updated dependencies. [Cédric Bonhomme]
+- Merge branch 'master' into object-versioning. [Cédric Bonhomme]
+- Reformat. [Cédric Bonhomme]
+- Updated urllib. [Cédric Bonhomme]
+- Merge branch 'master' into object-versioning. [Cédric Bonhomme]
+- Fixed conflict. [Cédric Bonhomme]
+- Imporved some html tables. [Cédric Bonhomme]
+- Added name of validating shema in the table or shared objects by an
+  organization. [Cédric Bonhomme]
+- Fixed some issues detected with PyCodeStyle. [Cédric Bonhomme]
+- Fixed admin form to edit users. [Cédric Bonhomme]
+- Updated comment of the SignupForm. [Cédric Bonhomme]
+- Merge branch 'master' of github.com:CASES-LU/MOSP into object-
+  versioning. [Cédric Bonhomme]
+- Merge branch 'master' into object-versioning. [Cédric Bonhomme]
+- Test. [Cédric Bonhomme]
+- Merge branch 'master' into object-versioning. [Cédric Bonhomme]
+
+
 v0.14.0 (2021-06-17)
 --------------------
 
@@ -61,6 +235,7 @@ New
 
 Changes
 ~~~~~~~
+- Updated CHANGELOG. [Cédric Bonhomme]
 - Bumped version number. [Cédric Bonhomme]
 - [documentation] Updated documentation. [Cédric Bonhomme]
 - [API v2] the endpoint /user/me no more returns the token of the
