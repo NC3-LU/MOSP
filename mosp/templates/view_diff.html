@@ -14,6 +14,14 @@
 {% block content %}
 <div class="container-fluid">
   <div class="row">
+    <div class="col">
+      <a role="button" class="btn btn-secondary" title="{{ _('Previous versions') }}" aria-label="{{ _('Previous versions') }}" href="{{ url_for('object_bp.list_versions', object_id=object_id) }}">
+          Previous versions
+      </a>
+      <br /><br />
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-6">
         <b>Date</b>: {{ before.last_updated | datetime }}
     </div>
