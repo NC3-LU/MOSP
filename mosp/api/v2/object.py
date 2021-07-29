@@ -216,6 +216,7 @@ class ObjectItem(Resource):
             check_submitted_object(data)
             # create a new version of the object to update
             create_new_version(JsonObject.id)
+            obj.editor_id = current_user.id
             # update the object
             obj.json_object = object_ns.payload["json_object"]
             db.session.commit()
