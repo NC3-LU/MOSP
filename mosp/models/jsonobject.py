@@ -34,6 +34,7 @@ class JsonObject(db.Model):
     description = db.Column(db.Text(), nullable=False)
     last_updated = db.Column(db.DateTime(), default=datetime.utcnow)
     json_object = db.Column(JSONB, default={})
+    is_locked = db.Column(db.Boolean(), default=False)
 
     # foreign keys
     org_id = db.Column(db.Integer(), db.ForeignKey("organization.id"), nullable=False)
