@@ -25,6 +25,12 @@ def check_object_edit_permission(f):
             )
         if not obj.first():
             return abort(403)
+        if (
+            obj.first()
+            and obj.first().is_locked
+            and obj.first().creator_id != current_user.id
+        ):
+            return abort(403)
         return f(*args, **kwargs)
 
     return decorated_function
