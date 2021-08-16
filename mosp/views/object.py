@@ -371,6 +371,26 @@ def process_form(object_id=None):
     return redirect(url_for("object_bp.form", object_id=new_object.id))
 
 
+@object_bp.route("/lock/<int:object_id>", methods=["GET"])
+@login_required
+@check_object_edit_permission
+def lock(object_id=None):
+    """Flick the is_locked boolean value."""
+    json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    if current_user.id == json_object.creator_id:
+        json_object.is_locked = not json_object.is_locked
+        db.session.commit()
+        flash(
+            gettext(
+                "%(object_name)s successfully %(action)s.",
+                object_name=json_object.name,
+                action="locked" if json_object.is_locked else "unlocked",
+            ),
+            "success",
+        )
+    return redirect(url_for("object_bp.view", object_id=json_object.id))
+
+
 @object_bp.route("/copy/<int:object_id>", methods=["GET"])
 @login_required
 @check_object_edit_permission
