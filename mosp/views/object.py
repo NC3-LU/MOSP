@@ -410,6 +410,7 @@ def copy(object_id=None):
     new_object.org_id = org_id
     new_object.schema_id = json_object.schema_id
     new_object.creator_id = current_user.id
+    new_object.editor_id = current_user.id
     new_object.licenses = json_object.licenses
     new_object.name = json_object.name
     new_object.description = json_object.description

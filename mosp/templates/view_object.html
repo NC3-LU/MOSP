@@ -181,40 +181,39 @@
 document.addEventListener("DOMContentLoaded", function() {
     $('.selectpicker').selectpicker();
 
-    $('#download-csv').click(function(e) {
-        $.ajax({
-            url: "{{ url_for('apiv2.object_object_item', id=json_object.id) }}",
-            type: 'GET',
-            contentType: "application/json",
-            success: function(result) {
-              csvContent = Papa.unparse(result[0].json_object.values);
-              csvContent.replace(/(^[ \t]*\n)/gm, "");
-              var hiddenElement = document.createElement('a');
-              hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
-              hiddenElement.target = '_blank';
-              hiddenElement.download = '{{ json_object.name }}.csv';
-              document.body.appendChild(hiddenElement);
-              hiddenElement.click();
-              document.body.removeChild(hiddenElement);
-            }
-        });
-    });
-    $('#download-json').click(function(e) {
-        $.ajax({
-            url: "{{ url_for('apiv2.object_object_item', id=json_object.id) }}",
-            type: 'GET',
-            contentType: "application/json",
-            success: function(result) {
-              var hiddenElement = document.createElement('a');
-              hiddenElement.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(result[0].json_object.values));
-              hiddenElement.target = '_blank';
-              hiddenElement.download = '{{ json_object.name }}.json';
-              document.body.appendChild(hiddenElement);
-              hiddenElement.click();
-              document.body.removeChild(hiddenElement);
-            }
-        });
-    });
+    document.getElementById("download-csv").onclick = function(event) {
+        fetch("{{ url_for('apiv2.object_object_item', id=json_object.id) }}")
+          .then(response => response.json())
+          .then(result => {
+            csvContent = Papa.unparse(result[0].json_object.values);
+            csvContent.replace(/(^[ \t]*\n)/gm, "");
+            var hiddenElement = document.createElement('a');
+            hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
+            hiddenElement.target = '_blank';
+            hiddenElement.download = '{{ json_object.name }}.csv';
+            document.body.appendChild(hiddenElement);
+            hiddenElement.click();
+            document.body.removeChild(hiddenElement);
+          }).catch((error) => {
+            console.error('Error:', error);
+          });
+    };
+
+    document.getElementById("download-json").onclick = function(event) {
+        fetch("{{ url_for('apiv2.object_object_item', id=json_object.id) }}")
+          .then(response => response.json())
+          .then(result => {
+            var hiddenElement = document.createElement('a');
+            hiddenElement.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(result[0].json_object.values));
+            hiddenElement.target = '_blank';
+            hiddenElement.download = '{{ json_object.name }}.json';
+            document.body.appendChild(hiddenElement);
+            hiddenElement.click();
+            document.body.removeChild(hiddenElement);
+          }).catch((error) => {
+            console.error('Error:', error);
+          });
+    };
 });
 
 function copyToClipboard() {
@@ -230,18 +229,18 @@ function copyToClipboard() {
           /* clipboard write failed */
     });
 }
+
 function copyObject() {
     var e = document.getElementById("orgSelector");
     var orgID = e.options[e.selectedIndex].value;
 
-    $.ajax({
-        url: "{{ url_for('object_bp.copy', object_id=json_object.id) }}"+'?org_id='+orgID,
-        type: 'GET',
-        contentType: "application/json",
-        success: function(result) {
-            window.location.replace('/object/view/'+result.id);
-        }
-    });
+    fetch("{{ url_for('object_bp.copy', object_id=json_object.id) }}"+'?org_id='+orgID)
+      .then(response => response.json())
+      .then(result => {
+        window.location.replace('/object/view/'+result.id);
+      }).catch((error) => {
+        console.error('Error:', error);
+      });
 }
 </script>
 <!-- /.container -->
