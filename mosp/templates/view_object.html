@@ -114,6 +114,12 @@
       {{ json_object.licenses | join(', ') }}
     </div>
   </div>
+  {% if current_user.is_authenticated and json_object.is_locked and json_object.creator_id != current_user.id %}
+  <br />
+  <div class="alert alert-info">
+  {{ _('The edition of this object is restricted to its creator.') }}
+  </div>
+  {% endif %}
   <div class="row">
     <div class="col">
       <br />
