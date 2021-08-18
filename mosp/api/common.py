@@ -13,7 +13,7 @@ from mosp.models import Schema, Organization, JsonObject
 
 
 def check_submitted_object(data):
-    """Ensures a user has the rights to create/edit an abject
+    """Ensures a user has the rights to create/edit an object
     in a specific organization.
     Checks also the validity of the submitted JSON object against the specified
     the JSON schema.
