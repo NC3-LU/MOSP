@@ -208,6 +208,9 @@ class ObjectItem(Resource):
         data = {
             "org_id": obj.org_id,
             "schema_id": obj.schema_id,
+            "object_id": id,
+            "object_is_locked": obj.is_locked,
+            "object_creator_id": obj.creator_id,
             "json_object": object_ns.payload["json_object"],
         }
 

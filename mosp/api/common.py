@@ -20,7 +20,9 @@ def check_submitted_object(data):
     """
     schema_id = data.get("schema_id", None)
     org_id = data.get("org_id", None)
+    object_id = data.get("object_id", None)
 
+    # check if the user has rights in the corresponding organization.
     if org_id is None:
         raise ProcessingException(
             description="You must provide the id of an organization.", code=400
@@ -47,6 +49,18 @@ def check_submitted_object(data):
             code=400,
         )
 
+    # check if the object is locked: only its creator can edit it.
+    if (
+        object_id  # only in case of edition of an existing object
+        and data.get("object_is_locked", True)
+        and data.get("object_creator_id", 0) != current_user.id
+    ):
+        raise ProcessingException(
+            description="You are not allowed to edit this locked object.",
+            code=400,
+        )
+
+    # check if the object is validated by the JSON schema.ascii()
     if schema_id is None:
         raise ProcessingException(
             description="You must provide the id of a schema.", code=400
