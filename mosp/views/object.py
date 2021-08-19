@@ -382,7 +382,7 @@ def lock(object_id=None):
         db.session.commit()
         flash(
             gettext(
-                "%(object_name)s successfully %(action)s.",
+                "Object <i>%(object_name)s</i> successfully %(action)s.",
                 object_name=json_object.name,
                 action="locked" if json_object.is_locked else "unlocked",
             ),
