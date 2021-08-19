@@ -60,7 +60,7 @@ def check_submitted_object(data):
             code=400,
         )
 
-    # check if the object is validated by the JSON schema.ascii()
+    # check if the object is validated by the JSON schema
     if schema_id is None:
         raise ProcessingException(
             description="You must provide the id of a schema.", code=400
