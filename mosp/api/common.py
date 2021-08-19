@@ -45,7 +45,7 @@ def check_submitted_object(data):
 
     if org_id not in [org.id for org in current_user.organizations] + open_orgs:
         raise ProcessingException(
-            description="You are not allowed to create/edit object in this organization.",
+            description="You are not allowed to create/edit an object in this organization.",
             code=400,
         )
 
