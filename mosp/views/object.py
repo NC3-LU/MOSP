@@ -110,8 +110,6 @@ def view(object_id=None):
     #     JsonObject.json_object[("mapping"), [("father-uuid")]].astext == "fdsfsf"
     # )
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
-    for version in json_object.versions.all():
-        print(version.last_updated)
     if json_object is None:
         abort(404)
     try:
