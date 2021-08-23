@@ -9,7 +9,7 @@
                 <div class="form-group">
                     {{ form.login(class_="form-control", placeholder=_('Your login')) }}
                     {% for error in form.login.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-                    &nbsp;<span class="text-muted">{{ _('Letters, numbers, dots and underscores only.') }}</span>
+                    &nbsp;<span class="text-muted">{{ _('Letters, numbers, hyphens and underscores only.') }}</span>
                 </div>
                 <div class="form-group">
                     {{ form.email(class_="form-control", placeholder=_('Your email address')) }}

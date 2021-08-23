@@ -73,7 +73,7 @@ class User(db.Model, UserMixin):
     @staticmethod
     def validates_login(key, value):
         assert 3 <= len(value) <= 50, AssertionError("maximum length for login: 30")
-        return re.sub("[^a-zA-Z0-9_\.]", "", value.strip())
+        return re.sub("[^a-zA-Z0-9_-]", "", value.strip())
 
     @validates("email")
     @staticmethod
@@ -89,4 +89,4 @@ class User(db.Model, UserMixin):
 
     @staticmethod
     def make_valid_login(login):
-        return re.sub("[^a-zA-Z0-9_\.]", "", login)
+        return re.sub("[^a-zA-Z0-9_-]", "", login)
