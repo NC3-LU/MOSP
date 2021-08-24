@@ -118,7 +118,7 @@ class ObjectsList(Resource):
                     "%" + str(object_schema_uuid) + "%"
                 )
             )
-        if object_uuid:
+        if object_uuid is not None:
             query = query.filter(
                 JsonObject.json_object[("uuid")].astext == str(object_uuid)
             )
