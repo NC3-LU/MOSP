@@ -3,6 +3,7 @@
 ## Supported Versions
 
 Last stable version of MOSP always provides security updates.
+There will be no security patches for other releases (tagged or not).
 
 ## Reporting a Vulnerability
 
