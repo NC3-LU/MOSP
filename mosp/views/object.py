@@ -110,8 +110,6 @@ def view(object_id=None):
     #     JsonObject.json_object[("mapping"), [("father-uuid")]].astext == "fdsfsf"
     # )
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
-    for version in json_object.versions.all():
-        print(version.last_updated)
     if json_object is None:
         abort(404)
     try:
@@ -371,6 +369,26 @@ def process_form(object_id=None):
     return redirect(url_for("object_bp.form", object_id=new_object.id))
 
 
+@object_bp.route("/lock/<int:object_id>", methods=["GET"])
+@login_required
+@check_object_edit_permission
+def lock(object_id=None):
+    """Flick the is_locked boolean value."""
+    json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
+    if current_user.id == json_object.creator_id:
+        json_object.is_locked = not json_object.is_locked
+        db.session.commit()
+        flash(
+            gettext(
+                "Object <i>%(object_name)s</i> successfully %(action)s.",
+                object_name=json_object.name,
+                action="locked" if json_object.is_locked else "unlocked",
+            ),
+            "success",
+        )
+    return redirect(url_for("object_bp.view", object_id=json_object.id))
+
+
 @object_bp.route("/copy/<int:object_id>", methods=["GET"])
 @login_required
 @check_object_edit_permission
@@ -390,6 +408,7 @@ def copy(object_id=None):
     new_object.org_id = org_id
     new_object.schema_id = json_object.schema_id
     new_object.creator_id = current_user.id
+    new_object.editor_id = current_user.id
     new_object.licenses = json_object.licenses
     new_object.name = json_object.name
     new_object.description = json_object.description

@@ -118,7 +118,7 @@ class SignupForm(FlaskForm):
             self.login.errors.append(
                 lazy_gettext(
                     "This login has invalid characters. "
-                    "Please use letters, numbers, dots and underscores only."
+                    "Please use letters, numbers, hyphens and underscores only."
                 )
             )
             validated = False

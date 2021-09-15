@@ -13,14 +13,16 @@ from mosp.models import Schema, Organization, JsonObject
 
 
 def check_submitted_object(data):
-    """Ensures a user has the rights to create/edit an abject
+    """Ensures a user has the rights to create/edit an object
     in a specific organization.
     Checks also the validity of the submitted JSON object against the specified
     the JSON schema.
     """
     schema_id = data.get("schema_id", None)
     org_id = data.get("org_id", None)
+    object_id = data.get("object_id", None)
 
+    # check if the user has rights in the corresponding organization.
     if org_id is None:
         raise ProcessingException(
             description="You must provide the id of an organization.", code=400
@@ -43,10 +45,22 @@ def check_submitted_object(data):
 
     if org_id not in [org.id for org in current_user.organizations] + open_orgs:
         raise ProcessingException(
-            description="You are not allowed to create/edit object in this organization.",
+            description="You are not allowed to create/edit an object in this organization.",
             code=400,
         )
 
+    # check if the object is locked: only its creator can edit it.
+    if (
+        object_id  # only in case of edition of an existing object
+        and data.get("object_is_locked", True)
+        and data.get("object_creator_id", 0) != current_user.id
+    ):
+        raise ProcessingException(
+            description="You are not allowed to edit this locked object.",
+            code=400,
+        )
+
+    # check if the object is validated by the JSON schema
     if schema_id is None:
         raise ProcessingException(
             description="You must provide the id of a schema.", code=400

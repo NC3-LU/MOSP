@@ -106,12 +106,12 @@ class ObjectsList(Resource):
                 except Exception:
                     pass
         # Filter on other attributes
-        if object_organization:
+        if object_organization is not None:
             query = query.filter(JsonObject.organization.has(name=object_organization))
-        if object_schema:
+        if object_schema is not None:
             # Schema name of the object
             query = query.filter(JsonObject.schema.has(name=object_schema))
-        if object_schema_uuid:
+        if object_schema_uuid is not None:
             # Schema UUID of the object
             query = query.join(Schema).filter(
                 Schema.json_schema[("$id")].astext.like(
@@ -122,7 +122,7 @@ class ObjectsList(Resource):
             query = query.filter(
                 JsonObject.json_object[("uuid")].astext == str(object_uuid)
             )
-        if object_language:
+        if object_language is not None:
             query = query.filter(
                 JsonObject.json_object[("language")].astext == object_language
             )
@@ -208,6 +208,9 @@ class ObjectItem(Resource):
         data = {
             "org_id": obj.org_id,
             "schema_id": obj.schema_id,
+            "object_id": id,
+            "object_is_locked": obj.is_locked,
+            "object_creator_id": obj.creator_id,
             "json_object": object_ns.payload["json_object"],
         }
 

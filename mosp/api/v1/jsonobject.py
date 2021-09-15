@@ -4,7 +4,6 @@
 from mosp.bootstrap import manager
 
 from mosp.models import JsonObject
-from mosp.api.v1 import processors
 from mosp.api.v1.common import url_prefix
 
 
@@ -43,17 +42,10 @@ blueprint_object = manager.create_api_blueprint(
     max_results_per_page=5000,
     results_per_page=10,
     url_prefix=url_prefix,
-    methods=["GET", "POST", "PUT"],
+    methods=["GET"],
     exclude_columns=["creator", "creator_id"],
     postprocessors=dict(GET_MANY=[get_many_postprocessor]),
     preprocessors=dict(
         GET_MANY=[pre_get_many],
-        POST=[processors.auth_func, processors.check_object_creation_permission],
-        PUT=[processors.auth_func, processors.check_single_object_edit_permission],
-        PUT_SINGLE=[
-            processors.auth_func,
-            processors.check_single_object_edit_permission,
-            processors.create_new_version_before_update,
-        ],
     ),
 )
