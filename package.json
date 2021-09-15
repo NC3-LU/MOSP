@@ -1,6 +1,6 @@
 {
     "name": "MOSP",
-    "version": "0.11.0",
+    "version": "0.16.0",
     "description": "A platform for creating, editing and sharing JSON objects.",
     "private": true,
     "scripts": {

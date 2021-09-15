@@ -2,6 +2,62 @@ Changelog
 =========
 
 
+v0.16.0 (2021-09-15)
+--------------------
+
+New
+~~~
+- Added code of conduct. [Cédric Bonhomme]
+- [templates] added a a flag in the view_object template in order to
+  display if an object is locked or not. [Cédric Bonhomme]
+- [views] added a view to lock/unlock an object. [Cédric Bonhomme]
+- [models] added new is_locked attribute to JsonObject and created
+  Alembic migration file. [Cédric Bonhomme]
+
+Changes
+~~~~~~~
+- Updated JavaScript libraries. [Cédric Bonhomme]
+- [migrations] default value for is_locked is False. [Cédric Bonhomme]
+- The API v1 is now in read-only mode. [Cédric Bonhomme]
+- [API v2] Ensures that not empty parameters are passed to the endpoint.
+  [Cédric Bonhomme]
+- [models] updated login strings validation. [Cédric Bonhomme]
+- [views] removed listing of verions in view_object function. [Cédric
+  Bonhomme]
+- [API] updated description of an error message. [Cédric Bonhomme]
+- [templates] disable object edit button for locked objects. [Cédric
+  Bonhomme]
+- [API v2] when an object is updated via the API, the
+  check_submitted_object function checks if the object is locked and if
+  the current editor is the original creator user. [Cédric Bonhomme]
+- [templates] added a bootstrap alert info box to tell if a user is
+  locked in the view_obect template. [Cédric Bonhomme]
+- [templates] reformat tabs. [Cédric Bonhomme]
+- [templates] Removed some use of jQuery. [Cédric Bonhomme]
+- [templates] JavaScript functions to get object values as JSON and CSV
+  files are now using the API v2. [Cédric Bonhomme]
+- [decorators] updated check_object_edit_permission decorator in order
+  to take into account the new is_locked attribute of JsonObject
+  objects. [Cédric Bonhomme]
+- Updated dependencies. [Cédric Bonhomme]
+
+Fix
+~~~
+- [API v2] On ObjectsList check that the object UUID is not None.
+  [Cédric Bonhomme]
+- Typo. [Cédric Bonhomme]
+- Typo. [Cédric Bonhomme]
+
+Other
+~~~~~
+- Merge pull request #41 from CASES-LU/object-locking. [Cedric]
+
+  new: [models] added new is_locked attribute to JsonObject and created…
+- Merge branch 'master' into object-locking. [Cédric Bonhomme]
+- Improved readability of the check_object_edit_permission decorator.
+  [Cédric Bonhomme]
+
+
 v0.15.0 (2021-07-29)
 --------------------
 
@@ -126,6 +182,7 @@ Fix
 
 Other
 ~~~~~
+- Updated CHANGELOG. [Cédric Bonhomme]
 - Fixed some flake related warnings. [Cédric Bonhomme]
 - Set svg div width to 100% and calculate middle with a fixed value.
   [Cédric Bonhomme]
