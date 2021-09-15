@@ -24,7 +24,7 @@ def upgrade():
             "is_locked",
             sa.Boolean(),
             nullable=False,
-            server_default=sa.schema.DefaultClause("True"),
+            server_default=sa.schema.DefaultClause("False"),
         ),
     )
     op.alter_column(
