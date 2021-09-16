@@ -25,6 +25,13 @@ association_table_jsonobject = db.Table(
     ),
 )
 
+association_table_collection = db.Table(
+    "association_jsonobjects_collections",
+    db.metadata,
+    db.Column("json_object_id", db.Integer, db.ForeignKey("json_object.id")),
+    db.Column("collection_id", db.Integer, db.ForeignKey("collection.id")),
+)
+
 
 class JsonObject(db.Model):
     """Represent a JSON object."""
@@ -43,9 +50,14 @@ class JsonObject(db.Model):
     editor_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)
 
     # relationship
+    collections = db.relationship(
+        "Collection", secondary=lambda: association_table_collection, backref="objects"
+    )
+
     licenses = db.relationship(
         "License", secondary=lambda: association_table_license, backref="objects"
     )
+
     refers_to = db.relationship(
         "JsonObject",
         secondary=lambda: association_table_jsonobject,
@@ -53,15 +65,18 @@ class JsonObject(db.Model):
         secondaryjoin=association_table_jsonobject.c.jsonobject_referred_to_by_id == id,
         backref="referred_to_by",
     )
+
     versions = db.relationship(
         "Version", backref="head", lazy="dynamic", cascade="all,delete-orphan"
     )
+
     creator = db.relationship(
         "User",
         backref=backref("creator", uselist=False),
         uselist=False,
         foreign_keys=[creator_id],
     )
+
     editor = db.relationship(
         "User",
         backref=backref("editor", uselist=False),
