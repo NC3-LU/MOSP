@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ _('Collections') }}</h1>
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group">
+            {% for collection in collections %}
+                <a href="{{ url_for('collection_bp.get', collection_id=collection.id) }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h2 class="mb-1">{{ collection.name }}</h2>
+                    </div>
+                    <p class="mb-1">{{ collection.description }}</p>
+            {% endfor  %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
