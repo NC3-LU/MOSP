@@ -17,6 +17,7 @@ from mosp.models.schema import Schema
 from mosp.models.organization import Organization
 from mosp.models.license import License
 from mosp.models.version import Version
+from mosp.models.collection import Collection
 
 
 def mappers(*args):
@@ -30,7 +31,7 @@ def uml_graph(db):
     import sqlalchemy_schemadisplay as sasd
 
     graph = sasd.create_uml_graph(
-        mappers(User, Organization, Schema, JsonObject, License, Version),
+        mappers(User, Organization, Schema, JsonObject, License, Version, Collection),
         show_operations=False,
         show_multiplicity_one=True,
     )
