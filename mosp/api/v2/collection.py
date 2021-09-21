@@ -13,9 +13,6 @@ collection_ns = Namespace("collection", description="collection related operatio
 # Argument Parsing
 parser = reqparse.RequestParser()
 parser.add_argument("name", type=str, help="The name of the object.")
-parser.add_argument(
-    "object_id", type=int, required=False, help="The id of the versioned object."
-)
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
 parser.add_argument("per_page", type=int, required=False, default=10, help="Page size")
 
@@ -35,14 +32,14 @@ collection_list_fields = collection_ns.model(
 
 
 @collection_ns.route("/")
-class VersionsList(Resource):
-    """List all versions."""
+class CollectionsList(Resource):
+    """List all collections."""
 
-    @collection_ns.doc("list_versions")
+    @collection_ns.doc("list_collections")
     @collection_ns.expect(parser)
     @collection_ns.marshal_list_with(collection_list_fields)
     def get(self):
-        """List all versions."""
+        """List all collections."""
 
         args = parser.parse_args()
         offset = args.pop("page", 1) - 1
