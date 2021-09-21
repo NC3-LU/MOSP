@@ -15,7 +15,7 @@ class Collection(db.Model):
         unique=True,
         nullable=False,
     )
-    name = db.Column(db.String(100), unique=True)
+    name = db.Column(db.String(100), unique=True, nullable=False)
     description = db.Column(db.String(500), default="")
     date_created = db.Column(db.DateTime(), default=datetime.utcnow)
     last_updated = db.Column(db.DateTime(), default=datetime.utcnow)

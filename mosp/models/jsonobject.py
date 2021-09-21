@@ -49,7 +49,7 @@ class JsonObject(db.Model):
     creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)
     editor_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)
 
-    # relationship
+    # relationships
     collections = db.relationship(
         "Collection", secondary=lambda: association_table_collection, backref="objects"
     )
