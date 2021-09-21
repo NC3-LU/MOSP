@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from flask_babel import gettext
 
 from mosp.bootstrap import db
-from mosp.models import Collection
+from mosp.models import Collection, JsonObject
 from mosp.forms import CollectionForm
 
 collection_bp = Blueprint("collection_bp", __name__, url_prefix="/collection")
@@ -79,7 +79,13 @@ def process_form(collection_id=None):
 
     if collection_id is not None:
         collection = Collection.query.filter(Collection.id == collection_id).first()
-
+        # Objects
+        new_objects = []
+        for object_id in form.objects.data:
+            object = JsonObject.query.filter(JsonObject.id == object_id).first()
+            new_objects.append(object)
+        collection.objects = new_objects
+        del form.objects
         form.populate_obj(collection)
 
         try:
