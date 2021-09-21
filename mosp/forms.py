@@ -310,3 +310,31 @@ class ProfileForm(FlaskForm):
         ],
     )
     submit = SubmitField(lazy_gettext("Save"))
+
+
+class CollectionForm(FlaskForm):
+    """Create or edit a collection."""
+
+    name = TextField(
+        lazy_gettext("Name"),
+        [
+            validators.Length(min=3, max=100),
+            validators.Required(lazy_gettext("Please enter a name.")),
+        ],
+    )
+    description = TextAreaField(
+        lazy_gettext("Description"),
+        [validators.Required(lazy_gettext("Please enter a description"))],
+    )
+    objects = SelectMultipleField(
+        lazy_gettext("Objects"),
+        coerce=int,
+        description="The objects in the collection.",
+    )
+    submit = SubmitField(lazy_gettext("Save"))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.objects.choices = [
+            (object.id, object.name) for object in JsonObject.query.all()
+        ]

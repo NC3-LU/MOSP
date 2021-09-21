@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block head%}
+{{super()}}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>{{ action | safe }}</h2>
+    <form action="" method="post" name="saveprofileform" id="profileform">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.name.label }}
+            {{ form.name(class_="form-control") }} {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.description.label }}
+            {{ form.description(class_="form-control") }} {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+        </div>
+
+        <br />
+        <div class="form-group">
+            {{ form.objects.label }}
+            {{ form.objects(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }} {% for error in form.objects.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            <br />{{ form.objects.description }}
+        </div>
+
+        {{ form.submit(class_="btn btn-default") }}
+    </form>
+</div>
+{% endblock %}
