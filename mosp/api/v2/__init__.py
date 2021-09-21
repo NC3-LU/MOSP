@@ -40,13 +40,14 @@ def setup_api(application):
             ),
         )
 
-    from mosp.api.v2 import object, organization, schema, user, version
+    from mosp.api.v2 import object, organization, schema, user, version, collection
 
     api.add_namespace(object.object_ns, path="/object")
     api.add_namespace(organization.organization_ns, path="/organization")
     api.add_namespace(schema.schema_ns, path="/schema")
     api.add_namespace(user.user_ns, path="/user")
     api.add_namespace(version.version_ns, path="/version")
+    api.add_namespace(collection.collection_ns, path="/collection")
 
     return api
 
