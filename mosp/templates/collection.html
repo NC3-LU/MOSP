@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ collection.name }}</h1>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3">
+            <b>{{ _('UUID') }}</b>
+        </div>
+        <div class="col-md-9">
+            {{ collection.uuid }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <b>{{ _('Description') }}</b>
+        </div>
+        <div class="col-md-9">
+            {{ collection.description }}
+        </div>
+    </div>
+{% endblock %}

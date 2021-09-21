@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, abort, flash, redirect, url_for
 from flask_login import login_required, current_user
 from flask_babel import gettext
+from sqlalchemy import or_
 
 from mosp.bootstrap import db
 from mosp.models import Collection, JsonObject
@@ -17,14 +18,13 @@ def list_collections():
     return render_template("collections.html", collections=collections)
 
 
-@collection_bp.route(
-    "/<int:collection_id>",
-    defaults={"per_page": "10"},
-    methods=["GET"],
-)
-def get(collection_id=None):
+@collection_bp.route("/<int:collection_id>", methods=["GET"])
+@collection_bp.route("/<uuid:collection_uuid>", methods=["GET"])
+def get(collection_id=None, collection_uuid=None):
     """Return details about the collection."""
-    elem = Collection.query.filter(Collection.id == collection_id).first()
+    elem = Collection.query.filter(
+        or_(Collection.id == collection_id, Collection.uuid == collection_uuid)
+    ).first()
     if elem is None:
         abort(404)
 
