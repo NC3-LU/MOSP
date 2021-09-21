@@ -70,7 +70,7 @@ def form(collection_id=None):
         action=action,
         head_titles=head_titles,
         form=form,
-        collection_id=collection_id,
+        collection=collection,
     )
 
 
