@@ -4,7 +4,7 @@ from flask_babel import gettext
 from sqlalchemy import or_
 
 from mosp.bootstrap import db
-from mosp.models import Collection, JsonObject
+from mosp.models import Collection, JsonObject, User
 from mosp.forms import CollectionForm
 
 collection_bp = Blueprint("collection_bp", __name__, url_prefix="/collection")
@@ -28,9 +28,12 @@ def get(collection_id=None, collection_uuid=None):
     if elem is None:
         abort(404)
 
+    creator = User.query.filter(User.id == elem.creator_id).first()
+
     return render_template(
         "collection.html",
         collection=elem,
+        creator=creator,
     )
 
 
