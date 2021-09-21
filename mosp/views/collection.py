@@ -57,6 +57,7 @@ def form(collection_id=None):
     # Edition of an existing collection
     collection = Collection.query.filter(Collection.id == collection_id).first()
     form = CollectionForm(obj=collection)
+    form.objects.data = [object.id for object in collection.objects]
     action = gettext("Edit a collection")
     head_titles = [action]
     head_titles.append(collection.name)
