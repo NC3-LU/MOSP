@@ -51,6 +51,9 @@
                   <li class="nav-item">
                       <a class="nav-link" href="{{ url_for('organizations_bp.list_organizations') }}" title="Organizations">{{ _('Organizations') }}</a>
                   </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('collections_bp.list_collections') }}" title="Collections">{{ _('Collections') }}</a>
+                  </li>
                     {% if current_user.is_authenticated %}
                     {% if current_user.is_admin %}
                     <li class="nav-item dropdown">
@@ -80,12 +83,6 @@
                         </div>
                     </li>
                     {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('about') }}" title="{{ _('About') }}">{{ _('About') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('help') }}" title="{{ _('Help') }}">{{ _('Help') }}</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('login') }}" title="{{ _('Sign in') }}"><i class="fas fa-sign-in-alt"></i></a>
                     </li>
