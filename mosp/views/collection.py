@@ -15,7 +15,7 @@ collections_bp = Blueprint("collections_bp", __name__, url_prefix="/collections"
 @collections_bp.route("/", methods=["GET"])
 def list_collections():
     """Return the page which will display the list of collections."""
-    collections = Collection.query.all()
+    collections = Collection.query.order_by(Collection.last_updated.desc()).all()
     return render_template("collections.html", collections=collections)
 
 
