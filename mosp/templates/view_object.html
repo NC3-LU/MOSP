@@ -131,6 +131,9 @@
         <li class="nav-item">
           <a class="nav-link" id="referred-to-by-tab" data-toggle="tab" href="#referred-to-by" role="tab" aria-controls="referred-to-by" aria-selected="false">{{ _('Referred to by') }} {{ json_object.referred_to_by | count}} {{ _('object(s)') }}</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" id="referred-to-by-tab" data-toggle="tab" href="#in-collections" role="tab" aria-controls="in-collections" aria-selected="false">{{ _('Part of') }} {{ json_object.collections | count}} {{ _('collection(s)') }}</a>
+        </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="refers-to" role="tabpanel" aria-labelledby="refers-to-tab">
@@ -144,6 +147,13 @@
           <ul class="list-group  list-group-flush">
             {% for jsonobject in json_object.referred_to_by  %}
             <li class="list-group-item list-group-item-action" ><a href="{{ url_for('object_bp.view', object_id=jsonobject.id) }}">{{ jsonobject.name }}</a> ({{ _('schema') }}: <a href="{{ url_for('schema_bp.get', schema_id=jsonobject.schema.id) }}">{{ jsonobject.schema.name }}</a>)</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="tab-pane fade" id="in-collections" role="tabpanel" aria-labelledby="in-collections-tab">
+          <ul class="list-group  list-group-flush">
+            {% for collection in json_object.collections  %}
+            <li class="list-group-item list-group-item-action" ><a href="{{ url_for('collection_bp.get', collection_uuid=collection.uuid) }}">{{ collection.name }}</a></li>
             {% endfor %}
           </ul>
         </div>
