@@ -6,11 +6,14 @@
       <h1>{{ collection.name }}</h1>
     </div>
     <div class="col text-right">
-        <div class="btn-group" role="group">
-            <a role="button" class="btn btn-secondary" href="{{ url_for('collection_bp.form', collection_id=collection.id) }}" title="{{ _('Edit the collection') }}">
-                <i class="fa fa-edit" aria-hidden="true"></i>
-            </a>
-        </div>
+      <div class="btn-group" role="group">
+        <a role="button" class="btn btn-warning" title="{{ _('Delete the object') }}" aria-label="{{ _('Delete the object') }}" href="{{ url_for('collection_bp.delete', collection_id=collection.id) }}" onclick="return confirm(_('You are going to delete this collection.'));">
+          <i class="fas fa-trash" aria-hidden="true"></i>
+        </a>
+        <a role="button" class="btn btn-secondary" href="{{ url_for('collection_bp.form', collection_id=collection.id) }}" title="{{ _('Edit the collection') }}">
+          <i class="fa fa-edit" aria-hidden="true"></i>
+        </a>
+      </div>
     </div>
   </div>
   <br />
@@ -46,32 +49,32 @@
   <br />
 
   <div class="row">
-      <div class="col-md-12">
-          <div class="table-responsive-md">
-              <table id="table-objects" class="table table-hover">
-                  <caption>{{ _('Objects from this collection') }}</caption>
-                  <thead>
-                      <tr>
-                          <th>{{ _('id') }}</th>
-                          <th>{{ _('Name') }}</th>
-                          <th>{{ _('Validating JSON schema') }}</th>
-                          <th>{{ _('Organization') }}</th>
-                          <th>{{ _('Last updated') }}</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                  {% for object in collection.objects %}
-                      <tr>
-                          <td scope="row">{{object.id }}</td>
-                          <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
-                          <td>{{ object.schema.name }}</td>
-                          <td><a href="{{ url_for('organization_bp.get', organization_name=object.organization.name) }}">{{ object.organization.name }}</a></td>
-                          <td class="date">{{ object.last_updated | datetime }}</td>
-                      </tr>
-                  {% endfor %}
-                  </tbody>
-              </table>
-          </div>
+    <div class="col-md-12">
+      <div class="table-responsive-md">
+        <table id="table-objects" class="table table-hover">
+          <caption>{{ _('Objects from this collection') }}</caption>
+          <thead>
+            <tr>
+              <th>{{ _('id') }}</th>
+              <th>{{ _('Name') }}</th>
+              <th>{{ _('Validating JSON schema') }}</th>
+              <th>{{ _('Organization') }}</th>
+              <th>{{ _('Last updated') }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for object in collection.objects %}
+            <tr>
+              <td scope="row">{{object.id }}</td>
+              <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
+              <td>{{ object.schema.name }}</td>
+              <td><a href="{{ url_for('organization_bp.get', organization_name=object.organization.name) }}">{{ object.organization.name }}</a></td>
+              <td class="date">{{ object.last_updated | datetime }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
+    </div>
   </div>
-{% endblock %}
+  {% endblock %}

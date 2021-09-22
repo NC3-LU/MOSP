@@ -142,4 +142,10 @@ def delete(collection_id=None):
     elem = Collection.query.filter(Collection.id == collection_id).first()
     db.session.delete(elem)
     db.session.commit()
+    flash(
+        gettext(
+            "%(object_name)s successfully deleted.", object_name=elem.name
+        ),
+        "success",
+    )
     return redirect(url_for("collections_bp.list_collections"))
