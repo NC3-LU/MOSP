@@ -25,9 +25,11 @@
             <br />{{ form.objects.description }}
         </div>
 
+        {% if collection %}
         {% for object in collection.objects %}
         <span class="badge rounded-pill bg-success">{{ object.name }}</span>
         {% endfor %}
+        {% endif %}
 
         <br /><br />
 

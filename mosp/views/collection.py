@@ -55,7 +55,7 @@ def form(collection_id=None):
             action=action,
             head_titles=head_titles,
             form=form,
-            collection_id=collection_id,
+            collection=None,
         )
 
     # Edition of an existing collection
@@ -112,6 +112,12 @@ def process_form(collection_id=None):
         description=form.description.data,
         creator_id=current_user.id,
     )
+    # Objects
+    objects = []
+    for object_id in form.objects.data:
+        object = JsonObject.query.filter(JsonObject.id == object_id).first()
+        objects.append(object)
+    new_collection.objects = objects
     db.session.add(new_collection)
     try:
         db.session.commit()
