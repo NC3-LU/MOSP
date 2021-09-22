@@ -6,6 +6,7 @@ from sqlalchemy import or_
 from mosp.bootstrap import db
 from mosp.models import Collection, JsonObject, User
 from mosp.forms import CollectionForm
+from mosp.views.decorators import check_collection_edit_permission
 
 collection_bp = Blueprint("collection_bp", __name__, url_prefix="/collection")
 collections_bp = Blueprint("collections_bp", __name__, url_prefix="/collections")
@@ -77,6 +78,7 @@ def form(collection_id=None):
 @collection_bp.route("/create", methods=["POST"])
 @collection_bp.route("/edit/<int:collection_id>", methods=["POST"])
 @login_required
+@check_collection_edit_permission
 def process_form(collection_id=None):
     """ "Process the form to edit a collection."""
     form = CollectionForm()
