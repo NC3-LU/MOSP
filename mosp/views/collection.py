@@ -130,3 +130,16 @@ def process_form(collection_id=None):
     except Exception:
         return redirect(url_for("collection_bp.form"))
     return redirect(url_for("collection_bp.form", collection_id=new_collection.id))
+
+
+@collection_bp.route("/delete/<int:collection_id>", methods=["GET"])
+@login_required
+@check_collection_edit_permission
+def delete(collection_id=None):
+    """
+    Delete the requested collection.
+    """
+    elem = Collection.query.filter(Collection.id == collection_id).first()
+    db.session.delete(elem)
+    db.session.commit()
+    return redirect(url_for("collections_bp.list_collections"))
