@@ -35,6 +35,14 @@
   </div>
   <div class="row">
     <div class="col-md-3">
+      <b>{{ _('Created at') }}</b>
+    </div>
+    <div class="col-md-9">
+      {{ collection.date_created | datetime }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
       <b>{{ _('Creator') }}</b>
     </div>
     <div class="col-md-9">
