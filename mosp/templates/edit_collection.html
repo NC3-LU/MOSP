@@ -27,7 +27,9 @@
 
         {% if collection %}
         {% for object in collection.objects %}
-        <span class="badge rounded-pill bg-success">{{ object.name }}</span>
+        <span class="badge rounded-pill bg-success" title="{{ object.schema.name }}">{{ object.name }}
+          <a role="button" title="Remove from collection" href="{{ url_for('collection_bp.remove_from_collection', collection_id=collection.id, object_id=object.id) }}">X</a>
+        </span>
         {% endfor %}
         {% endif %}
 

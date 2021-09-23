@@ -132,6 +132,18 @@ def process_form(collection_id=None):
     return redirect(url_for("collection_bp.form", collection_id=new_collection.id))
 
 
+@collection_bp.route("/remove_from_collection/<int:collection_id>/<int:object_id>", methods=["GET"])
+@login_required
+@check_collection_edit_permission
+def remove_from_collection(collection_id=None, object_id=None):
+    """Remove an object from a collection."""
+    elem = Collection.query.filter(Collection.id == collection_id).first()
+    obj = JsonObject.query.filter(JsonObject.id == object_id).first()
+    elem.objects.remove(obj)
+    db.session.commit()
+    return redirect(url_for("collection_bp.form", collection_id=elem.id))
+
+
 @collection_bp.route("/delete/<int:collection_id>", methods=["GET"])
 @login_required
 @check_collection_edit_permission

@@ -84,6 +84,9 @@ class JsonObject(db.Model):
         foreign_keys=[editor_id],
     )
 
+    def __eq__(self, other):
+        return self.id == other.id
+
     def create_new_version(self, obj=None):
         """Create a new Version object from the JsonObject given in parameter or from
         the current object (self).
