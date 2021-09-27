@@ -13,7 +13,9 @@ collection_ns = Namespace("collection", description="collection related operatio
 # Argument Parsing
 parser = reqparse.RequestParser()
 parser.add_argument("name", type=str, help="The name of the object.")
-parser.add_argument("name_ilike", required=False, type=str, help="Part of the name of the object.")
+parser.add_argument(
+    "name_ilike", required=False, type=str, help="Part of the name of the object."
+)
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
 parser.add_argument("per_page", type=int, required=False, default=10, help="Page size")
 
@@ -64,7 +66,7 @@ class CollectionsList(Resource):
                     query = query.filter(getattr(Collection, arg) == args[arg])
 
             if name_ilike:
-                query = query.filter(Collection.name.ilike("%"+name_ilike+"%"))
+                query = query.filter(Collection.name.ilike("%" + name_ilike + "%"))
 
             total = query.count()
             query = query.limit(limit)

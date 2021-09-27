@@ -27,7 +27,9 @@ object_ns = Namespace("object", description="object related operations")
 parser = reqparse.RequestParser()
 parser.add_argument("uuid", type=str, help="UUID of the object.")
 parser.add_argument("name", type=str, help="Name of the object.")
-parser.add_argument("name_ilike", required=False, type=str, help="Part of the name of the object.")
+parser.add_argument(
+    "name_ilike", required=False, type=str, help="Part of the name of the object."
+)
 parser.add_argument("language", type=str, help="Language of the object.")
 parser.add_argument("organization", type=str, help="Organization name of the object.")
 parser.add_argument("schema", type=str, help="Schema name of the object.")
@@ -109,7 +111,7 @@ class ObjectsList(Resource):
                     pass
         # Filter on other attributes
         if name_ilike:
-            query = query.filter(JsonObject.name.ilike("%"+name_ilike+"%"))
+            query = query.filter(JsonObject.name.ilike("%" + name_ilike + "%"))
         if object_organization is not None:
             query = query.filter(JsonObject.organization.has(name=object_organization))
         if object_schema is not None:

@@ -326,15 +326,7 @@ class CollectionForm(FlaskForm):
         lazy_gettext("Description"),
         [validators.Required(lazy_gettext("Please enter a description"))],
     )
-    objects = SelectMultipleField(
-        lazy_gettext("Objects"),
-        coerce=int,
-        description="The objects in the collection.",
-    )
     submit = SubmitField(lazy_gettext("Save"))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.objects.choices = [
-            (object.id, object.name) for object in JsonObject.query.all()
-        ]

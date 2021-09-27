@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort, flash, redirect, url_for
+from flask import Blueprint, render_template, abort, flash, redirect, url_for, jsonify
 from flask_login import login_required, current_user
 from flask_babel import gettext
 from sqlalchemy import or_
@@ -61,7 +61,6 @@ def form(collection_id=None):
     # Edition of an existing collection
     collection = Collection.query.filter(Collection.id == collection_id).first()
     form = CollectionForm(obj=collection)
-    form.objects.data = [object.id for object in collection.objects]
     action = gettext("Edit a collection")
     head_titles = [action]
     head_titles.append(collection.name)
@@ -85,13 +84,6 @@ def process_form(collection_id=None):
 
     if collection_id is not None:
         collection = Collection.query.filter(Collection.id == collection_id).first()
-        # Objects
-        new_objects = []
-        for object_id in form.objects.data:
-            object = JsonObject.query.filter(JsonObject.id == object_id).first()
-            new_objects.append(object)
-        collection.objects = new_objects
-        del form.objects
         form.populate_obj(collection)
 
         try:
@@ -112,12 +104,6 @@ def process_form(collection_id=None):
         description=form.description.data,
         creator_id=current_user.id,
     )
-    # Objects
-    objects = []
-    for object_id in form.objects.data:
-        object = JsonObject.query.filter(JsonObject.id == object_id).first()
-        objects.append(object)
-    new_collection.objects = objects
     db.session.add(new_collection)
     try:
         db.session.commit()
@@ -132,7 +118,33 @@ def process_form(collection_id=None):
     return redirect(url_for("collection_bp.form", collection_id=new_collection.id))
 
 
-@collection_bp.route("/remove_from_collection/<int:collection_id>/<int:object_id>", methods=["GET"])
+@collection_bp.route(
+    "/add_to_collection/<int:collection_id>/<string:objects_id>", methods=["GET"]
+)
+@login_required
+@check_collection_edit_permission
+def add_to_collection(collection_id=None, objects_id=None):
+    """Add one or several object(s) to a collection."""
+    added_objects = []
+    elem = Collection.query.filter(Collection.id == collection_id).first()
+    for object_id in objects_id.split(","):
+        obj = JsonObject.query.filter(JsonObject.id == object_id).first()
+        if obj not in elem.objects:
+            elem.objects.append(obj)
+            try:
+                db.session.commit()
+                added_objects.append((obj.name, obj.id))
+            except Exception:
+                continue
+    return jsonify(
+        result="OK",
+        data=added_objects,
+    )
+
+
+@collection_bp.route(
+    "/remove_from_collection/<int:collection_id>/<int:object_id>", methods=["GET"]
+)
 @login_required
 @check_collection_edit_permission
 def remove_from_collection(collection_id=None, object_id=None):
@@ -155,9 +167,7 @@ def delete(collection_id=None):
     db.session.delete(elem)
     db.session.commit()
     flash(
-        gettext(
-            "%(object_name)s successfully deleted.", object_name=elem.name
-        ),
+        gettext("%(object_name)s successfully deleted.", object_name=elem.name),
         "success",
     )
     return redirect(url_for("collections_bp.list_collections"))

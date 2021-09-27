@@ -33,7 +33,9 @@ def generate_collections_atom_feed():
         fe = fg.add_entry()
         fe.id(
             url_for(
-                "collection_bp.get", collection_uuid=recent_collection.uuid, _external=True
+                "collection_bp.get",
+                collection_uuid=recent_collection.uuid,
+                _external=True,
             )
         )
         fe.title(recent_collection.name)
