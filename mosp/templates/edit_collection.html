@@ -57,7 +57,7 @@
 
   function loadSelectPicker(e) {
     inputContent = document.getElementById('inputObject').value;
-    fetch("{{ url_for('apiv2.collection_collections_list', name='') }}"+inputContent)
+    fetch("{{ url_for('apiv2.collection_collections_list', name_ilike='') }}"+inputContent)
     .then(response => response.json())
     .then(result => {
       $("#objectSelect option").remove();
