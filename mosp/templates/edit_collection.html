@@ -4,42 +4,75 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-    <h2>{{ action | safe }}</h2>
-    <form action="" method="post" name="saveprofileform" id="profileform">
-        {{ form.hidden_tag() }}
+  <h2>{{ action | safe }}</h2>
+  <form action="" method="post" name="saveprofileform" id="profileform">
+    {{ form.hidden_tag() }}
 
-        <div class="form-group">
-            {{ form.name.label }}
-            {{ form.name(class_="form-control") }} {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-        </div>
+    <div class="form-group">
+      {{ form.name.label }}
+      {{ form.name(class_="form-control") }} {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+    </div>
 
-        <div class="form-group">
-            {{ form.description.label }}
-            {{ form.description(class_="form-control") }} {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-        </div>
+    <div class="form-group">
+      {{ form.description.label }}
+      {{ form.description(class_="form-control") }} {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+    </div>
 
-        <br />
-        <div class="form-group">
-            {{ form.objects.label }}
-            {{ form.objects(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }} {% for error in form.objects.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
-            <br />{{ form.objects.description }}
-        </div>
+    <br />
+    <div class="form-group">
+      {{ form.objects.label }}
+      {{ form.objects(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }} {% for error in form.objects.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+      <br />{{ form.objects.description }}
+    </div>
 
-        {% if collection %}
-        <h4>
-        {% for object in collection.objects %}
-        <span class="badge rounded-pill bg-success" title="{{ object.schema.name }}">{{ object.name }}
-          <a role="button" title="Remove from collection" href="{{ url_for('collection_bp.remove_from_collection', collection_id=collection.id, object_id=object.id) }}">
-            <i class="fa fa-minus"></i>
-          </a>
-        </span>
-        {% endfor %}
-        </h4>
-        {% endif %}
 
-        <br /><br />
+    <input type="text" id="inputObject" name="inputObject" class="form-control" /><br />
+    <select id="objectSelect" class="selectpicker"></select>
 
-        {{ form.submit(class_="btn btn-default") }}
-    </form>
+
+    <br /><br /><br />
+
+    {% if collection %}
+    <h4>
+      {% for object in collection.objects %}
+      <span class="badge rounded-pill bg-success" title="{{ object.schema.name }}">{{ object.name }}
+        <a role="button" title="Remove from collection" href="{{ url_for('collection_bp.remove_from_collection', collection_id=collection.id, object_id=object.id) }}">
+          <i class="fa fa-minus"></i>
+        </a>
+      </span>
+      {% endfor %}
+    </h4>
+    {% endif %}
+
+    <br /><br />
+
+    {{ form.submit(class_="btn btn-default") }}
+  </form>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    $('select').selectpicker();
+    document.getElementById('inputObject').addEventListener("input", loadSelectPicker);
+  });
+
+  function loadSelectPicker(e) {
+    inputContent = document.getElementById('inputObject').value;
+    fetch("{{ url_for('apiv2.collection_collections_list', name='') }}"+inputContent)
+    .then(response => response.json())
+    .then(result => {
+      $("#objectSelect option").remove();
+      result.data
+      .sort(function (a, b) {
+        return new Date(b.last_updated) - new Date(a.last_updated);
+      })
+      .map(function (collection) {
+        $("#objectSelect").append('<option value="'+collection.id+'">'+collection.name+'</option>');
+        $("#objectSelect").val(collection.id);
+        $("#objectSelect").selectpicker("refresh");
+      });
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+</script>
 {% endblock %}
