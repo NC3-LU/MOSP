@@ -13,6 +13,8 @@ collection_ns = Namespace("collection", description="collection related operatio
 # Argument Parsing
 parser = reqparse.RequestParser()
 parser.add_argument("name", type=str, help="The name of the object.")
+parser.add_argument("name_ilike", required=False, type=str, help="List of the anrs' uuids to filter by.",
+)
 parser.add_argument("page", type=int, required=False, default=1, help="Page number")
 parser.add_argument("per_page", type=int, required=False, default=10, help="Page size")
 
@@ -44,6 +46,7 @@ class CollectionsList(Resource):
         args = parser.parse_args()
         offset = args.pop("page", 1) - 1
         limit = args.pop("per_page", 10)
+        name_ilike = args.get("name_ilike")
         args = {k: v for k, v in args.items() if v is not None}
 
         result = {
@@ -60,6 +63,9 @@ class CollectionsList(Resource):
             for arg in args:
                 if hasattr(Collection, arg):
                     query = query.filter(getattr(Collection, arg) == args[arg])
+
+                if name_ilike:
+                    query = query.filter(Collection.name.ilike("%"+name_ilike+"%"))
 
             total = query.count()
             query = query.limit(limit)
