@@ -20,10 +20,11 @@
 
     {% if collection %}
     <div class="form-group">
-        <label for="description">Type to filter objects of the list</label>
+        <label for="description">Type to filter objects from the list to be added in the collection</label>
         <input type="text" id="inputObject" name="inputObject" class="form-control" /><br />
         <select id="objectSelect" class="selectpicker" multiple="" data-width="auto"></select>
         <button id="addObject" type="button" class="btn btn-default"><i class="fa fa-plus" title="{{ _('Add to the collection') }}"></i></button>
+        <span id="nb-filtered-objects"></span>
     </div>
     <h4 id="list-objects">
       {% for object in collection.objects %}
@@ -81,6 +82,7 @@
         $("#objectSelect").selectpicker("refresh");
       });
       $("#objectSelect").selectpicker("refresh");
+      document.getElementById("nb-filtered-objects").textContent = result.metadata.count + " filtered object(s).";
     }).catch((error) => {
       console.error('Error:', error);
     });
