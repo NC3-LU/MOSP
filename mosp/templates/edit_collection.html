@@ -78,8 +78,6 @@
       })
       .map(function (object) {
         $("#objectSelect").append('<option value="'+object.id+'">'+object.name+'</option>');
-        // $("#objectSelect").val(object.id);
-        $("#objectSelect").selectpicker("refresh");
       });
       $("#objectSelect").selectpicker("refresh");
       document.getElementById("nb-filtered-objects").textContent = result.metadata.count + " filtered object(s).";
