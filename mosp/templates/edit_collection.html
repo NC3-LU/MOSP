@@ -21,6 +21,7 @@
     <br />
 
     <div class="form-group">
+        <label for="description">Type to filter objects of the list</label>
         <input type="text" id="inputObject" name="inputObject" class="form-control" /><br />
         <select id="objectSelect" class="selectpicker" multiple="" data-width="auto"></select>
         <button id="addObject" type="button" class="btn btn-default"><i class="fa fa-plus" title="{{ _('Add to the collection') }}"></i></button>
@@ -61,12 +62,10 @@
         var badge = badgeObjectFromCollection({
           'unlink_url': '/collection/remove_from_collection/{{ collection.id }}/'+object[0],
           'name': object[1],
-          'schema_name': 'test'
+          'schema_name': ''
         });
         document.getElementById("list-objects").innerHTML += badge;
       })
-
-
     }).catch((error) => {
       console.error('Error:', error);
     });
