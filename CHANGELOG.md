@@ -2,6 +2,93 @@ Changelog
 =========
 
 
+v0.17.0 (2021-09-30)
+--------------------
+
+New
+~~~
+- [views] Added new ATOM feed for the collections. [Cédric Bonhomme]
+- [API v2] Added namespace for collections. [Cédric Bonhomme]
+- [templates] added basic templates for the creation and edition of the
+  collections. And new WTF form for collections. [Cédric Bonhomme]
+- [database] Added migration script for the collections. [Cédric
+  Bonhomme]
+- [view] Added new views and routed for the collections. [Cédric
+  Bonhomme]
+- [models] Added initial changes to the models for the collections of
+  objects. [Cédric Bonhomme]
+- Added helper script in order to update the software. [Cédric Bonhomme]
+
+Changes
+~~~~~~~
+- [views] Check the existance of the collection to remove. [Cédric
+  Bonhomme]
+- [templates] Checks that inputContent is not just a bunch of empty
+  spaces. [Cédric Bonhomme]
+- [templates] Display the number of filtered objects. [Cédric Bonhomme]
+- [dependencies] Updated codemirror JavaScript libraries. [Cédric
+  Bonhomme]
+- [templates] added new label in the form to add objects in collections.
+  [Cédric Bonhomme]
+- [templates] added dynamic linking of objects to a collection. [Cédric
+  Bonhomme]
+- Object linking to collection is now more responsive. [Cédric Bonhomme]
+- [API v2] added the lookup on object name (ilike). [Cédric Bonhomme]
+- [templates] select picker now populated with ilike search. [Cédric
+  Bonhomme]
+- [API v2] added ilike search on name of collection. [Cédric Bonhomme]
+- [templates] improved display of the objects from a collection on the
+  edit page. [Cédric Bonhomme]
+- [templates] added collection creation time in the description. [Cédric
+  Bonhomme]
+- [views] added a view to remove one element from a collection. [Cédric
+  Bonhomme]
+- [templates] list related collections of an object. [Cédric Bonhomme]
+- [views] added collection deletion. [Cédric Bonhomme]
+- [templates] Added alternate link for collections ATOM feed in the
+  layout.html header. [Cédric Bonhomme]
+- [views] list collectons by order last_updated. [Cédric Bonhomme]
+- [templates] fixed indentation. [Cédric Bonhomme]
+- [templates] added link to the list of collections in the template
+  layout.html. Simplified main navbar. [Cédric Bonhomme]
+- [decorators] A collection can only be updated by its creator. [Cédric
+  Bonhomme]
+- [views] should be possible to access collection per id or uuid.
+  [Cédric Bonhomme]
+- [views] registered the collection_bp and collections_bp bluprints.
+  [Cédric Bonhomme]
+- [models] Loads the new Collection model. [Cédric Bonhomme]
+
+Fix
+~~~
+- [templates] Removed useless refresh of the select picker. [Cédric
+  Bonhomme]
+- [security] Updated datatables.net-bs4 CVE-2021-23445. [Cédric
+  Bonhomme]
+- [templates] Fixed an issue on collection creation. [Cédric Bonhomme]
+- [views] fixed creation of new collection. [Cédric Bonhomme]
+- Forgot to save new objects to add to the collection. [Cédric Bonhomme]
+- [templates] added missing closing HTML tag. [Cédric Bonhomme]
+- [views] fixed edition of collections. [Cédric Bonhomme]
+
+Other
+~~~~~
+- Merge pull request #43 from CASES-LU/object-collection. [Cedric]
+
+  Add the possibility to create collections of objects.
+- Added a input field in order to filter the bootstrap-select field.
+  [Cédric Bonhomme]
+- Updated version in package.json and added button to unlink an object
+  from a collection. [Cédric Bonhomme]
+- Bumped dependencies. [Cédric Bonhomme]
+- Listing of objects from a collection in badges when editing the
+  collection. [Cédric Bonhomme]
+- Added possibility to list collections in the home page. [Cédric
+  Bonhomme]
+- Added listing of items in a collection. [Cédric Bonhomme]
+- Save new objects in a collection. [Cédric Bonhomme]
+
+
 v0.16.0 (2021-09-15)
 --------------------
 
@@ -50,6 +137,7 @@ Fix
 
 Other
 ~~~~~
+- Updated CHANGELOG for the new release. [Cédric Bonhomme]
 - Merge pull request #41 from CASES-LU/object-locking. [Cedric]
 
   new: [models] added new is_locked attribute to JsonObject and created…
