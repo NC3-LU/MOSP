@@ -18,19 +18,13 @@
       {{ form.description(class_="form-control") }} {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
     </div>
 
-    <br />
-
+    {% if collection %}
     <div class="form-group">
         <label for="description">Type to filter objects of the list</label>
         <input type="text" id="inputObject" name="inputObject" class="form-control" /><br />
         <select id="objectSelect" class="selectpicker" multiple="" data-width="auto"></select>
         <button id="addObject" type="button" class="btn btn-default"><i class="fa fa-plus" title="{{ _('Add to the collection') }}"></i></button>
     </div>
-
-
-    <br /><br /><br />
-
-    {% if collection %}
     <h4 id="list-objects">
       {% for object in collection.objects %}
       <span class="badge rounded-pill bg-success" title="{{ object.schema.name }}">{{ object.name }}
@@ -41,9 +35,7 @@
       {% endfor %}
     </h4>
     {% endif %}
-
-    <br /><br />
-
+    <br />
     {{ form.submit(class_="btn btn-default") }}
   </form>
 </div>
@@ -53,6 +45,7 @@
     document.getElementById('inputObject').addEventListener("input", loadSelectPicker);
   });
 
+  {% if collection %}
   document.getElementById('addObject').addEventListener('click', function() {
     var ids = $('#objectSelect').val().join(',');
     fetch("{{ url_for('collection_bp.add_to_collection', collection_id=collection.id, objects_id='') }}"+ids)
@@ -70,6 +63,7 @@
       console.error('Error:', error);
     });
   });
+  {% endif %}
 
   function loadSelectPicker(e) {
     inputContent = document.getElementById('inputObject').value;
