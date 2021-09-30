@@ -68,22 +68,28 @@
 
   function loadSelectPicker(e) {
     inputContent = document.getElementById('inputObject').value;
-    fetch("{{ url_for('apiv2.object_objects_list', name_ilike='') }}"+inputContent)
-    .then(response => response.json())
-    .then(result => {
-      $("#objectSelect option").remove();
-      result.data
-      .sort(function (a, b) {
-        return new Date(b.last_updated) - new Date(a.last_updated);
-      })
-      .map(function (object) {
-        $("#objectSelect").append('<option value="'+object.id+'">'+object.name+'</option>');
+    if (inputContent && inputContent.replace(/\s/g,"") != "") {
+      fetch("{{ url_for('apiv2.object_objects_list', name_ilike='') }}"+inputContent)
+      .then(response => response.json())
+      .then(result => {
+        $("#objectSelect option").remove();
+        result.data
+        .sort(function (a, b) {
+          return new Date(b.last_updated) - new Date(a.last_updated);
+        })
+        .map(function (object) {
+          $("#objectSelect").append('<option value="'+object.id+'">'+object.name+'</option>');
+        });
+        $("#objectSelect").selectpicker("refresh");
+        document.getElementById("nb-filtered-objects").textContent = result.metadata.count + " filtered object(s).";
+      }).catch((error) => {
+        console.error('Error:', error);
       });
+    } else {
+      $("#objectSelect option").remove();
       $("#objectSelect").selectpicker("refresh");
-      document.getElementById("nb-filtered-objects").textContent = result.metadata.count + " filtered object(s).";
-    }).catch((error) => {
-      console.error('Error:', error);
-    });
+      document.getElementById("nb-filtered-objects").textContent = "";
+    }
   }
 </script>
 {% endblock %}
