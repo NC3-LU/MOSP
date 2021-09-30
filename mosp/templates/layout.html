@@ -1,133 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% block head %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="MOSP - {{ _('Create, edit and share JSON objects') }}" />
-    <link rel="author" type="text/plain"  href="{{ url_for('human')  }}" />
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
-    <link href="{{ url_for("objects_atom") }}" rel="alternate" title="Recent objects published on MOSP" type="application/atom+xml" />
-    <link href="{{ url_for("schemas_atom") }}" rel="alternate" title="Recent schemas published on MOSP" type="application/atom+xml" />
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" />
-    {% block head_css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/bootstrap/dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/bootstrap-select/dist/css/bootstrap-select.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/@fortawesome/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/code-prettify/src/prettify.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/code-prettify/styles/sunburst.css') }}">
-    {% endblock %}
-    <script type="application/javascript">document.interestCohort = null;</script>
-    <script src="{{ url_for('static', filename='npm_components/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='npm_components/popper.js/dist/umd/popper.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='npm_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='npm_components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='npm_components/datatables.net/js/jquery.dataTables.js') }}"></script>
-    <script src="{{ url_for('static', filename='npm_components/datatables.net-bs4/js/dataTables.bootstrap4.js') }}"></script>
-    <script src="{{ url_for('static', filename='npm_components/lodash/lodash.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='npm_components/moment/min/moment.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='npm_components/code-prettify/src/prettify.js') }}?skin=sunburst"></script>
-    <script src="{{ url_for('static', filename='js/templates.js') }}"></script>
-    <title>MOSP</title>
-    {% endblock %}
+  {% block head %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MOSP - {{ _('Create, edit and share JSON objects') }}" />
+  <link rel="author" type="text/plain"  href="{{ url_for('human')  }}" />
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+  <link href="{{ url_for("objects_atom") }}" rel="alternate" title="Recent objects published on MOSP" type="application/atom+xml" />
+  <link href="{{ url_for("schemas_atom") }}" rel="alternate" title="Recent schemas published on MOSP" type="application/atom+xml" />
+  <link href="{{ url_for("collections_atom") }}" rel="alternate" title="Recent collections published on MOSP" type="application/atom+xml" />
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" />
+  {% block head_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/bootstrap/dist/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/bootstrap-select/dist/css/bootstrap-select.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/@fortawesome/fontawesome-free/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/code-prettify/src/prettify.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='npm_components/code-prettify/styles/sunburst.css') }}">
+  {% endblock %}
+  <script type="application/javascript">document.interestCohort = null;</script>
+  <script src="{{ url_for('static', filename='npm_components/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='npm_components/popper.js/dist/umd/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='npm_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='npm_components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='npm_components/datatables.net/js/jquery.dataTables.js') }}"></script>
+  <script src="{{ url_for('static', filename='npm_components/datatables.net-bs4/js/dataTables.bootstrap4.js') }}"></script>
+  <script src="{{ url_for('static', filename='npm_components/lodash/lodash.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='npm_components/moment/min/moment.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='npm_components/code-prettify/src/prettify.js') }}?skin=sunburst"></script>
+  <script src="{{ url_for('static', filename='js/templates.js') }}"></script>
+  <title>MOSP</title>
+  {% endblock %}
 </head>
 {% block page_body %}
 <body onload="PR.prettyPrint()">
-    {% block main_menu %}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-MOSP-blue">
-            <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/logo.png') }}" width="120px" alt="MONARC Objects Sharing Platform" title="MONARC Objects Sharing Platform" /></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            {% block menu_links %}
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto w-100 justify-content-end">
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('schemas_bp.list_schemas') }}" title="Schemas">{{ _('Schemas') }}</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('organizations_bp.list_organizations') }}" title="Organizations">{{ _('Organizations') }}</a>
-                  </li>
-                    {% if current_user.is_authenticated %}
-                    {% if current_user.is_admin %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownAdmin">
-                        <a class="dropdown-item" href="{{ url_for('admin_bp.dashboard') }}" title="Dashboard">{{ _('Dashboard') }}</i></a>
-                        <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url_for('admin_bp.list_users') }}" title="Users">{{ _('Users') }}</i></a>
-                            <a class="dropdown-item" href="{{ url_for('admin_bp.form_user') }}" title="Users">{{ _('Add user') }}</i></a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url_for('admin_bp.list_organizations') }}" title="Organizations">{{ _('Organizations') }}</i></a>
-                            <a class="dropdown-item" href="{{ url_for('admin_bp.form_organization') }}" title="Organizations">{{ _('Add organization') }}</i></a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/admin">Expert mode</a>
-                        </div>
-                    </li>
-                    {% endif %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
-                            <span class="dropdown-item"><div class="text-muted">{{ _('Signed in as') }}</div><div class="font-weight-bold">{{ current_user.login }}</div></span>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url_for('user_bp.form') }}" title="Profile">{{ _('Profile') }}</a>
-                            <a class="dropdown-item" href="{{ url_for('user_bp.schemas') }}" title="Schemas">{{ _('Schemas') }}</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url_for('logout') }}" title="Sign out">{{ _('Sign out') }}</a>
-                        </div>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('about') }}" title="{{ _('About') }}">{{ _('About') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('help') }}" title="{{ _('Help') }}">{{ _('Help') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('login') }}" title="{{ _('Sign in') }}"><i class="fas fa-sign-in-alt"></i></a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-            {% endblock %}
-        </nav>
-    {% endblock %}
-<div class="container alert-message">
-{% block messages %}
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        <br />
-            {% for category, message in messages %}
-                <div class="alert alert-{{category}}">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {{ message | safe }}
-                </div>
-            {% endfor %}
+  {% block main_menu %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-MOSP-blue">
+    <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/logo.png') }}" width="120px" alt="MONARC Objects Sharing Platform" title="MONARC Objects Sharing Platform" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    {% block menu_links %}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto w-100 justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('schemas_bp.list_schemas') }}" title="Schemas">{{ _('Schemas') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('organizations_bp.list_organizations') }}" title="Organizations">{{ _('Organizations') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('collections_bp.list_collections') }}" title="Collections">{{ _('Collections') }}</a>
+        </li>
+        {% if current_user.is_authenticated %}
+        {% if current_user.is_admin %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i></a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownAdmin">
+            <a class="dropdown-item" href="{{ url_for('admin_bp.dashboard') }}" title="Dashboard">{{ _('Dashboard') }}</i></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ url_for('admin_bp.list_users') }}" title="Users">{{ _('Users') }}</i></a>
+            <a class="dropdown-item" href="{{ url_for('admin_bp.form_user') }}" title="Users">{{ _('Add user') }}</i></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ url_for('admin_bp.list_organizations') }}" title="Organizations">{{ _('Organizations') }}</i></a>
+            <a class="dropdown-item" href="{{ url_for('admin_bp.form_organization') }}" title="Organizations">{{ _('Add organization') }}</i></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/admin">Expert mode</a>
+          </div>
+        </li>
         {% endif %}
-    {% endwith %}
-{% endblock %}
-</div>
-<br />
-<div role="main">
-{% block content %}{% endblock %}
-</div>
-<br />
-<footer class="footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <a href="{{ url_for('about') }}">{{ _('About') }}</a>
-                &nbsp;&nbsp;
-                <a href="{{ url_for('help') }}">{{ _('Help') }}</a>
-                &nbsp;&nbsp;
-                <a href="{{ url_for('terms') }}">{{ _('Terms') }}</a>
-            </div>
-        </div>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
+            <span class="dropdown-item"><div class="text-muted">{{ _('Signed in as') }}</div><div class="font-weight-bold">{{ current_user.login }}</div></span>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ url_for('user_bp.form') }}" title="Profile">{{ _('Profile') }}</a>
+            <a class="dropdown-item" href="{{ url_for('user_bp.schemas') }}" title="Schemas">{{ _('Schemas') }}</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ url_for('logout') }}" title="Sign out">{{ _('Sign out') }}</a>
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('login') }}" title="{{ _('Sign in') }}"><i class="fas fa-sign-in-alt"></i></a>
+        </li>
+        {% endif %}
+      </ul>
     </div>
-</footer>
+    {% endblock %}
+  </nav>
+  {% endblock %}
+  <div class="container alert-message">
+    {% block messages %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <br />
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}}">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ message | safe }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% endblock %}
+  </div>
+  <br />
+  <div role="main">
+    {% block content %}{% endblock %}
+  </div>
+  <br />
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <a href="{{ url_for('about') }}">{{ _('About') }}</a>
+          &nbsp;&nbsp;
+          <a href="{{ url_for('help') }}">{{ _('Help') }}</a>
+          &nbsp;&nbsp;
+          <a href="{{ url_for('terms') }}">{{ _('Terms') }}</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 {% endblock %}
 </html>

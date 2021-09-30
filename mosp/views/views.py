@@ -6,6 +6,7 @@ from flask_babel import gettext
 from mosp import __version__
 from mosp.lib.objects_utils import generate_objects_atom_feed
 from mosp.lib.schemas_utils import generate_schemas_atom_feed
+from mosp.lib.collections_utils import generate_collections_atom_feed
 from mosp.models import JsonObject, Organization, User, Schema
 
 logger = logging.getLogger(__name__)
@@ -116,4 +117,11 @@ def objects_atom():
 def schemas_atom():
     """Returns an ATOM feed with the recent updated schemas."""
     atomfeed = generate_schemas_atom_feed()
+    return atomfeed
+
+
+@current_app.route("/collections.atom", methods=["GET"])
+def collections_atom():
+    """Returns an ATOM feed with the recent updated collections."""
+    atomfeed = generate_collections_atom_feed()
     return atomfeed

@@ -5,6 +5,7 @@ from mosp.views.object import object_bp, objects_bp
 from mosp.views.user import user_bp
 from mosp.views.organization import organization_bp, organizations_bp
 from mosp.views.stats import stats_bp
+from mosp.views.collection import collection_bp, collections_bp
 
 __all__ = [
     "views",
@@ -18,4 +19,6 @@ __all__ = [
     "organization_bp",
     "organizations_bp",
     "stats_bp",
+    "collection_bp",
+    "collections_bp",
 ]

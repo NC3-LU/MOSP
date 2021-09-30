@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+{% block head%}
+{{super()}}
+{% endblock %}
+{% block content %}
+<div class="container">
+  <h2>{{ action | safe }}</h2>
+  <form action="" method="post" name="saveprofileform" id="profileform">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.name.label }}
+      {{ form.name(class_="form-control") }} {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.description.label }}
+      {{ form.description(class_="form-control") }} {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+    </div>
+
+    {% if collection %}
+    <div class="form-group">
+        <label for="description">Type to filter objects from the list to be added in the collection</label>
+        <input type="text" id="inputObject" name="inputObject" class="form-control" /><br />
+        <select id="objectSelect" class="selectpicker" multiple="" data-width="auto"></select>
+        <button id="addObject" type="button" class="btn btn-default"><i class="fa fa-plus" title="{{ _('Add to the collection') }}"></i></button>
+        <span id="nb-filtered-objects"></span>
+    </div>
+    <h4 id="list-objects">
+      {% for object in collection.objects %}
+      <span class="badge rounded-pill bg-success" title="{{ object.schema.name }}">{{ object.name }}
+        <a role="button" title="Remove from collection" href="{{ url_for('collection_bp.remove_from_collection', collection_id=collection.id, object_id=object.id) }}">
+          <i class="fa fa-minus"></i>
+        </a>
+      </span>
+      {% endfor %}
+    </h4>
+    {% endif %}
+    <br />
+    {{ form.submit(class_="btn btn-default") }}
+  </form>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    $('selectpicker').selectpicker();
+    document.getElementById('inputObject').addEventListener("input", loadSelectPicker);
+  });
+
+  {% if collection %}
+  document.getElementById('addObject').addEventListener('click', function() {
+    var ids = $('#objectSelect').val().join(',');
+    fetch("{{ url_for('collection_bp.add_to_collection', collection_id=collection.id, objects_id='') }}"+ids)
+    .then(response => response.json())
+    .then(result => {
+      result.data.map(function (object) {
+        var badge = badgeObjectFromCollection({
+          'unlink_url': '/collection/remove_from_collection/{{ collection.id }}/'+object[0],
+          'name': object[1],
+          'schema_name': ''
+        });
+        document.getElementById("list-objects").innerHTML += badge;
+      })
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
+  });
+  {% endif %}
+
+  function loadSelectPicker(e) {
+    inputContent = document.getElementById('inputObject').value;
+    if (inputContent && inputContent.replace(/\s/g,"") != "") {
+      fetch("{{ url_for('apiv2.object_objects_list', name_ilike='') }}"+inputContent)
+      .then(response => response.json())
+      .then(result => {
+        $("#objectSelect option").remove();
+        result.data
+        .sort(function (a, b) {
+          return new Date(b.last_updated) - new Date(a.last_updated);
+        })
+        .map(function (object) {
+          $("#objectSelect").append('<option value="'+object.id+'">'+object.name+'</option>');
+        });
+        $("#objectSelect").selectpicker("refresh");
+        document.getElementById("nb-filtered-objects").textContent = result.metadata.count + " filtered object(s).";
+      }).catch((error) => {
+        console.error('Error:', error);
+      });
+    } else {
+      $("#objectSelect option").remove();
+      $("#objectSelect").selectpicker("refresh");
+      document.getElementById("nb-filtered-objects").textContent = "";
+    }
+  }
+</script>
+{% endblock %}
