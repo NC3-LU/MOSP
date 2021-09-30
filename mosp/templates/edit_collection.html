@@ -30,7 +30,7 @@
     <br /><br /><br />
 
     {% if collection %}
-    <h4>
+    <h4 id="list-objects">
       {% for object in collection.objects %}
       <span class="badge rounded-pill bg-success" title="{{ object.schema.name }}">{{ object.name }}
         <a role="button" title="Remove from collection" href="{{ url_for('collection_bp.remove_from_collection', collection_id=collection.id, object_id=object.id) }}">
@@ -57,7 +57,16 @@
     fetch("{{ url_for('collection_bp.add_to_collection', collection_id=collection.id, objects_id='') }}"+ids)
     .then(response => response.json())
     .then(result => {
-      console.log(result);
+      result.data.map(function (object) {
+        var badge = badgeObjectFromCollection({
+          'unlink_url': '/collection/remove_from_collection/{{ collection.id }}/'+object[0],
+          'name': object[1],
+          'schema_name': 'test'
+        });
+        document.getElementById("list-objects").innerHTML += badge;
+      })
+
+
     }).catch((error) => {
       console.error('Error:', error);
     });

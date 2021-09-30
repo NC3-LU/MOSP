@@ -133,7 +133,7 @@ def add_to_collection(collection_id=None, objects_id=None):
             elem.objects.append(obj)
             try:
                 db.session.commit()
-                added_objects.append((obj.name, obj.id))
+                added_objects.append((obj.id, obj.name))
             except Exception:
                 continue
     return jsonify(

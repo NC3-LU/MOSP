@@ -24,3 +24,10 @@ var collectionHomeTemplate = _.template(
   '</div>' +
   '<p class="mb-1 text-justify"><%= description %></p>' +
   '</a>');
+
+var badgeObjectFromCollection = _.template(
+  '<span class="badge rounded-pill bg-success" title="<%= schema_name %>"><%= name %> ' +
+    '<a role="button" title="Remove from collection" href="<%= unlink_url %>">' +
+      '<i class="fa fa-minus"></i>' +
+    '</a>' +
+  '</span>');
