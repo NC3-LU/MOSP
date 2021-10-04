@@ -26,8 +26,8 @@ var collectionHomeTemplate = _.template(
   '</a>');
 
 var badgeObjectFromCollection = _.template(
-  '<span class="badge rounded-pill bg-success" title="<%= schema_name %>"><%= name %> ' +
-    '<a role="button" title="Remove from collection" href="<%= unlink_url %>">' +
+  '<span class="badge rounded-pill bg-success" title="<%= schema_name %>" object-id="<%= object_id %>"><%= name %> ' +
+    '<a class="removeObject" role="button" title="Remove from collection" href="#">' +
       '<i class="fa fa-minus"></i>' +
     '</a>' +
   '</span>');

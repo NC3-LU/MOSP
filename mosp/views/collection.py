@@ -171,7 +171,10 @@ def remove_from_collection(collection_id=None, object_id=None):
     obj = JsonObject.query.filter(JsonObject.id == object_id).first()
     elem.objects.remove(obj)
     db.session.commit()
-    return redirect(url_for("collection_bp.form", collection_id=elem.id))
+    return jsonify(
+        result="OK",
+        data=[],
+    )
 
 
 @collection_bp.route("/delete/<int:collection_id>", methods=["GET"])
