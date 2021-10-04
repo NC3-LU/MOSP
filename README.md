@@ -29,7 +29,6 @@ operated by [CASES](https://github.com/CASES-LU) and more particularly the
 [MONARC project](https://github.com/monarc-project).
 The goal is to gather security related JSON objects, in the first place aimed
 to be used with MONARC.
-
 Some JSON objects can be exported to a
 [MISP galaxy](https://github.com/MISP/misp-galaxy).
 
