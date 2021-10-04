@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, abort, flash, redirect, url_for, jsonify
 from flask_login import login_required, current_user
+from flask_paginate import Pagination, get_page_args
 from flask_babel import gettext
 from sqlalchemy import or_
 
@@ -19,9 +20,13 @@ def list_collections():
     return render_template("collections.html", collections=collections)
 
 
-@collection_bp.route("/<int:collection_id>", methods=["GET"])
-@collection_bp.route("/<uuid:collection_uuid>", methods=["GET"])
-def get(collection_id=None, collection_uuid=None):
+@collection_bp.route(
+    "/<int:collection_id>", defaults={"per_page": "15"}, methods=["GET"]
+)
+@collection_bp.route(
+    "/<uuid:collection_uuid>", defaults={"per_page": "15"}, methods=["GET"]
+)
+def get(per_page, collection_id=None, collection_uuid=None):
     """Return details about the collection."""
     elem = Collection.query.filter(
         or_(Collection.id == collection_id, Collection.uuid == collection_uuid)
@@ -31,10 +36,23 @@ def get(collection_id=None, collection_uuid=None):
 
     creator = User.query.filter(User.id == elem.creator_id).first()
 
+    # Pagination
+    page, per_page, offset = get_page_args()
+    pagination = Pagination(
+        page=page,
+        total=len(elem.objects),
+        css_framework="bootstrap4",
+        search=False,
+        record_name="objects",
+        per_page=per_page,
+    )
+
     return render_template(
         "collection.html",
         collection=elem,
+        objects=elem.objects[offset:][:per_page],
         creator=creator,
+        pagination=pagination,
     )
 
 

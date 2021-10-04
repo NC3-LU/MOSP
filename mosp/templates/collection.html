@@ -57,6 +57,16 @@
   <br />
 
   <div class="row">
+      <div class="col">
+          {{ pagination.links }}
+      </div>
+  </div>
+  <div class="row">
+      <div class="col">
+          {{ pagination.info }}
+      </div>
+  </div>
+  <div class="row">
     <div class="col-md-12">
       <div class="table-responsive-md">
         <table id="table-objects" class="table table-hover">
@@ -71,7 +81,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for object in collection.objects %}
+            {% for object in objects %}
             <tr>
               <td scope="row">{{object.id }}</td>
               <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
@@ -84,5 +94,10 @@
         </table>
       </div>
     </div>
+    <div class="row">
+       <div class="col">
+           {{ pagination.links }}
+       </div>
+   </div>
   </div>
   {% endblock %}
