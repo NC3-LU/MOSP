@@ -29,9 +29,7 @@
     <h4 id="list-objects">
       {% for object in collection.objects %}
       <span class="badge rounded-pill bg-success" title="{{ object.schema.name }}" object-id="{{ object.id }}">{{ object.name }}
-        <a class="removeObject" role="button" title="Remove from collection" href="#">
-          <i class="fa fa-minus"></i>
-        </a>
+          <i class="fa fa-minus" title="Remove from collection" style="color:blue"></i>
       </span>
       {% endfor %}
     </h4>
@@ -68,16 +66,15 @@
 
   document.getElementById('list-objects').addEventListener('click', function(e) {
     if (e.target.classList.contains("fa-minus")) {
-      var id = e.target.parentElement.parentElement.getAttribute("object-id");
+      var id = e.target.parentElement.getAttribute("object-id");
       fetch("/collection/remove_from_collection/{{ collection.id }}/" + parseInt(id))
       .then(response => response.json())
       .then(result => {
-        e.target.parentElement.parentElement.remove();
+        e.target.parentElement.remove();
       }).catch((error) => {
         console.error('Error:', error);
       });
     }
-    console.log(e);
   });
 
   {% endif %}
