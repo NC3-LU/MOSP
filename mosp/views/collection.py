@@ -59,6 +59,7 @@ def get(per_page, collection_id=None, collection_uuid=None):
 @collection_bp.route("/create", methods=["GET"])
 @collection_bp.route("/edit/<int:collection_id>", methods=["GET"])
 @login_required
+@check_collection_edit_permission
 def form(collection_id=None):
     """Returns a form in order to edit a collection."""
     action = gettext("Create a collection")
