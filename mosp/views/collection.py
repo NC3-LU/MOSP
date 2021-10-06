@@ -144,6 +144,7 @@ def process_form(collection_id=None):
 @check_collection_edit_permission
 def add_to_collection(collection_id=None, objects_id=None):
     """Add one or several object(s) to a collection."""
+    result = "OK"
     added_objects = []
     elem = Collection.query.filter(Collection.id == collection_id).first()
     for object_id in objects_id.split(","):
@@ -154,9 +155,9 @@ def add_to_collection(collection_id=None, objects_id=None):
                 db.session.commit()
                 added_objects.append((obj.id, obj.name))
             except Exception:
-                continue
+                result = "KO"
     return jsonify(
-        result="OK",
+        result=result,
         data=added_objects,
     )
 
@@ -168,12 +169,16 @@ def add_to_collection(collection_id=None, objects_id=None):
 @check_collection_edit_permission
 def remove_from_collection(collection_id=None, object_id=None):
     """Remove an object from a collection."""
+    result = "OK"
     elem = Collection.query.filter(Collection.id == collection_id).first()
     obj = JsonObject.query.filter(JsonObject.id == object_id).first()
     elem.objects.remove(obj)
-    db.session.commit()
+    try:
+        db.session.commit()
+    except Exception:
+        result = "KO"
     return jsonify(
-        result="OK",
+        result=result,
         data=[],
     )
 
