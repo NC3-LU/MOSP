@@ -912,7 +912,7 @@ msgstr "Die Selbstregistrierung ist deaktiviert."
 #: mosp/views/session_mgmt.py:117 mosp/views/user.py:146
 #, python-format
 msgid "Problem while sending activation email: %(error)s"
-msgstr "Problem beim Senden der Aktivierungs-E-Mail: %(Fehler)s"
+msgstr "Problem beim Senden der Aktivierungs-E-Mail: %(error)s"
 
 #: mosp/views/session_mgmt.py:124
 msgid "Your account has been created. Check your mail to confirm it."

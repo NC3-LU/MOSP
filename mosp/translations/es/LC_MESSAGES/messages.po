@@ -885,7 +885,7 @@ msgstr "%(object_name)s ha sido eliminado con éxito."
 #: mosp/views/object.py:382
 #, python-format
 msgid "Object <i>%(object_name)s</i> successfully %(action)s."
-msgstr "Objeto < i>%(object_name)s</i> con éxito %(acción)s."
+msgstr "Objeto < i>%(object_name)s</i> con éxito %(action)s."
 
 #: mosp/views/schema.py:212
 msgid "Create a schema"
