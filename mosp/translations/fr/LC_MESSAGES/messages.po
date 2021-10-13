@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-13 14:24+0200\n"
-"PO-Revision-Date: 2021-10-13 12:44+0000\n"
+"PO-Revision-Date: 2021-10-13 13:07+0000\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: French <https://translate.monarc.lu/projects/mosp/mosp/fr/>\n"
 "Language: fr\n"
@@ -597,20 +597,16 @@ msgid "you already created."
 msgstr "que vous avez déjà créé."
 
 #: mosp/templates/user_schemas.html:13
-#, fuzzy
-#| msgid "Create a new object with this schema"
 msgid "Create and share a new object with one of the"
-msgstr "Créer un nouvel objet avec ce schéma"
+msgstr "Créez et partagez un nouvel objet avec l'un des"
 
 #: mosp/templates/user_schemas.html:13
-#, fuzzy
-#| msgid "Available schemas"
 msgid "available schemas"
-msgstr "Schémas disponibles"
+msgstr "schemas disponibles"
 
 #: mosp/templates/user_schemas.html:13
 msgid "on the platform"
-msgstr ""
+msgstr "sur la plateforme"
 
 #: mosp/templates/user_schemas.html:20
 msgid "Schemas in my organizations"
@@ -625,16 +621,12 @@ msgid "Add a new schema in this organization"
 msgstr "Créer un nouveau schéma dans cette organisation"
 
 #: mosp/templates/user_schemas.html:38
-#, fuzzy
-#| msgid "Add a new organization"
 msgid "You are in no organization."
-msgstr "Créer une nouvelle organisation"
+msgstr "Vous êtes dans aucune organisation."
 
 #: mosp/templates/view_diff.html:18 mosp/templates/view_object.html:36
-#, fuzzy
-#| msgid "Python version"
 msgid "Previous versions"
-msgstr "Version de Python"
+msgstr "Versions précédentes"
 
 #: mosp/templates/view_object.html:18
 msgid "Edit the object"
@@ -645,16 +637,12 @@ msgid "Copy the object"
 msgstr "Copier l'objet"
 
 #: mosp/templates/view_object.html:26
-#, fuzzy
-#| msgid "Download the object"
 msgid "Unlock the object"
-msgstr "Télécharger l'objet"
+msgstr "Déverrouiller l'objet"
 
 #: mosp/templates/view_object.html:30
-#, fuzzy
-#| msgid "Copy the object"
 msgid "Lock the object"
-msgstr "Copier l'objet"
+msgstr "Verrouiller l'objet"
 
 #: mosp/templates/view_object.html:40
 msgid "Short link"
@@ -698,7 +686,7 @@ msgstr "Licence"
 
 #: mosp/templates/view_object.html:120
 msgid "The edition of this object is restricted to its creator."
-msgstr ""
+msgstr "L'édition de cet objet est limitée à son créateur."
 
 #: mosp/templates/view_object.html:126
 msgid "Related objects"
@@ -718,13 +706,11 @@ msgstr "Référencé par"
 
 #: mosp/templates/view_object.html:135
 msgid "Part of"
-msgstr ""
+msgstr "Partie de"
 
 #: mosp/templates/view_object.html:135
-#, fuzzy
-#| msgid "Actions"
 msgid "collection(s)"
-msgstr "Actions"
+msgstr "collection(s)"
 
 #: mosp/templates/view_object.html:142 mosp/templates/view_object.html:149
 msgid "schema"
@@ -744,17 +730,15 @@ msgstr "Mise à jour"
 
 #: mosp/templates/view_version.html:38
 msgid "Restore this version"
-msgstr ""
+msgstr "Restaurer cette version"
 
 #: mosp/templates/admin/dashboard.html:7
 msgid "Key figures"
-msgstr ""
+msgstr "Chiffres clés"
 
 #: mosp/templates/admin/dashboard.html:13
-#, fuzzy
-#| msgid "Number of objects"
 msgid "Number of collections"
-msgstr "Nombre d'objets"
+msgstr "Nombre de collections"
 
 #: mosp/templates/admin/dashboard.html:22
 msgid "Active users"
@@ -780,22 +764,16 @@ msgid "Owner"
 msgstr "Propriétaire"
 
 #: mosp/templates/admin/dashboard.html:54
-#, fuzzy
-#| msgid "New and updated objects"
 msgid "New and updated schemas"
-msgstr "Objets nouveaux et mis à jour"
+msgstr "Schémas nouveaux et mis à jour"
 
 #: mosp/templates/admin/dashboard.html:81
-#, fuzzy
-#| msgid "New and updated objects"
 msgid "New and updated collections"
-msgstr "Objets nouveaux et mis à jour"
+msgstr "Collections nouvelles et mise à jour"
 
 #: mosp/templates/admin/organizations.html:13
-#, fuzzy
-#| msgid "Memberships"
 msgid "Membership model"
-msgstr "Adhésions"
+msgstr "Modèle d'adhésion"
 
 #: mosp/templates/admin/organizations.html:14
 #: mosp/templates/admin/template_responsive_table_users.html:12
@@ -808,7 +786,7 @@ msgstr "Créer une nouvelle organisation"
 
 #: mosp/templates/admin/template_responsive_table_users.html:7
 msgid "Email address"
-msgstr ""
+msgstr "Adresse email"
 
 #: mosp/templates/admin/template_responsive_table_users.html:8
 msgid "Member since"
@@ -880,16 +858,12 @@ msgid "Organization deleted."
 msgstr "Organisation supprimée."
 
 #: mosp/views/collection.py:65
-#, fuzzy
-#| msgid "Create a schema"
 msgid "Create a collection"
-msgstr "Créer un schéma"
+msgstr "Créer une collection"
 
 #: mosp/views/collection.py:83
-#, fuzzy
-#| msgid "Edit the object"
 msgid "Edit a collection"
-msgstr "Éditez l'objet"
+msgstr "Éditez une collection"
 
 #: mosp/views/collection.py:111 mosp/views/object.py:305
 #: mosp/views/schema.py:307
@@ -904,16 +878,14 @@ msgid "%(object_name)s successfully created."
 msgstr "%(object_name)s mis à jour avec succès."
 
 #: mosp/views/collection.py:198
-#, fuzzy, python-format
-#| msgid "%(object_name)s successfully updated."
+#, python-format
 msgid "%(object_name)s successfully deleted."
-msgstr "%(object_name)s mis à jour avec succès."
+msgstr "%(object_name)s supprimé avec succès."
 
 #: mosp/views/object.py:382
-#, fuzzy, python-format
-#| msgid "%(object_name)s successfully updated."
+#, python-format
 msgid "Object <i>%(object_name)s</i> successfully %(action)s."
-msgstr "%(object_name)s mis à jour avec succès."
+msgstr "Objet <i>%(object_name)s</i> %(action)s avec succès."
 
 #: mosp/views/schema.py:212
 msgid "Create a schema"
@@ -924,10 +896,8 @@ msgid "Edit a schema"
 msgstr "Modifier un schéma"
 
 #: mosp/views/schema.py:294
-#, fuzzy
-#| msgid "Please select an organization"
 msgid "You must specify an organization."
-msgstr "Veuillez sélectionner une organisation"
+msgstr "Veuillez sélectionner une organisation."
 
 #: mosp/views/session_mgmt.py:29
 msgid "Please log in to access this page."
@@ -935,16 +905,16 @@ msgstr "Veuillez vous connecter pour accéder à cette page."
 
 #: mosp/views/session_mgmt.py:92
 msgid "Self-registration is disabled."
-msgstr ""
+msgstr "L'auto-enregistrement est désactivé."
 
 #: mosp/views/session_mgmt.py:117 mosp/views/user.py:146
 #, python-format
 msgid "Problem while sending activation email: %(error)s"
-msgstr ""
+msgstr "Problème lors de l'envoi de l'email d'activation : %(error)s"
 
 #: mosp/views/session_mgmt.py:124
 msgid "Your account has been created. Check your mail to confirm it."
-msgstr ""
+msgstr "Votre compte a été créé. Vérifiez votre courrier pour le confirmer."
 
 #: mosp/views/user.py:61
 msgid "Edit user"
@@ -960,25 +930,23 @@ msgstr "Compte supprimé."
 
 #: mosp/views/user.py:136
 msgid "This user does not exist."
-msgstr ""
+msgstr "Cet utilisateur n'existe pas."
 
 #: mosp/views/user.py:153
 msgid "An email with a recovery link has been sent to you."
-msgstr ""
+msgstr "Un e-mail avec un lien de récupération vous a été envoyé."
 
 #: mosp/views/user.py:171 mosp/views/user.py:183
-#, fuzzy
-#| msgid "Impossible to login."
 msgid "Impossible to activate this account."
-msgstr "Impossible de se connecter."
+msgstr "Impossible d'activer ce compte."
 
 #: mosp/views/user.py:192
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Votre mot de passe a été mis à jour."
 
 #: mosp/views/user.py:194
 msgid "Password must be the same."
-msgstr ""
+msgstr "Le mot de passe doit être identique."
 
 #: mosp/views/views.py:17
 msgid "Authentication required."
