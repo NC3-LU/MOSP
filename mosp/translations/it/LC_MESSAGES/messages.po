@@ -846,12 +846,12 @@ msgstr "Utente cancellato."
 #: mosp/views/admin.py:260
 #, python-format
 msgid "Organization %(org_name)s successfully updated."
-msgstr "Organizzazione %(org_name) aggiornata con successo."
+msgstr "Organizzazione %(org_name)s aggiornata con successo."
 
 #: mosp/views/admin.py:287
 #, python-format
 msgid "Organization %(org_name)s successfully created."
-msgstr "Organizzazione %(org_name) creata con successo."
+msgstr "Organizzazione %(org_name)s creata con successo."
 
 #: mosp/views/admin.py:307
 msgid "Organization deleted."
@@ -910,7 +910,7 @@ msgstr "L'autoregistrazione è disabilitata."
 #: mosp/views/session_mgmt.py:117 mosp/views/user.py:146
 #, python-format
 msgid "Problem while sending activation email: %(error)s"
-msgstr "Problema durante l'invio dell'e-mail di attivazione: %(error)"
+msgstr "Problema durante l'invio dell'e-mail di attivazione: %(error)s"
 
 #: mosp/views/session_mgmt.py:124
 msgid "Your account has been created. Check your mail to confirm it."
