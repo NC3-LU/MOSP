@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash
 from flask_babel import gettext
 from datetime import datetime, timedelta
 
-from mosp.models import User, JsonObject, Schema, Organization, License
+from mosp.models import User, JsonObject, Schema, Organization, License, Collection
 from mosp.bootstrap import db
 from mosp.views.common import admin_permission
 from mosp.forms import UserForm, OrganizationForm
@@ -27,8 +27,21 @@ def dashboard():
     four_weeks_ago = now - timedelta(weeks=4)
     active_users = User.query.filter(User.last_seen >= on_week_ago)
     recent_objects = JsonObject.query.filter(JsonObject.last_updated >= four_weeks_ago)
+    recent_schemas = Schema.query.filter(Schema.last_updated >= four_weeks_ago)
+    recent_collections = Collection.query.filter(
+        Collection.last_updated >= four_weeks_ago
+    )
     return render_template(
-        "admin/dashboard.html", USERS=active_users, OBJECTS=recent_objects
+        "admin/dashboard.html",
+        USERS=active_users,
+        OBJECTS=recent_objects,
+        SCHEMAS=recent_schemas,
+        COLLECTIONS=recent_collections,
+        nb_objects=JsonObject.query.count(),
+        nb_schemas=Schema.query.count(),
+        nb_organizations=Organization.query.count(),
+        nb_users=User.query.count(),
+        nb_collections=Collection.query.count()
     )
 
 
