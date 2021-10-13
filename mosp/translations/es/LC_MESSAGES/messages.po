@@ -869,23 +869,23 @@ msgstr "Editar una colección"
 #: mosp/views/schema.py:307
 #, python-format
 msgid "%(object_name)s successfully updated."
-msgstr "%(nombre_del_objeto)s actualizado con éxito."
+msgstr "%(object_name)s actualizado con éxito."
 
 #: mosp/views/collection.py:130 mosp/views/object.py:361
 #: mosp/views/schema.py:329
 #, python-format
 msgid "%(object_name)s successfully created."
-msgstr "%(nombre_del_objeto)s creado con éxito."
+msgstr "%(object_name)s creado con éxito."
 
 #: mosp/views/collection.py:198
 #, python-format
 msgid "%(object_name)s successfully deleted."
-msgstr "%(nombre_del_objeto)s ha sido eliminado con éxito."
+msgstr "%(object_name)s ha sido eliminado con éxito."
 
 #: mosp/views/object.py:382
 #, python-format
 msgid "Object <i>%(object_name)s</i> successfully %(action)s."
-msgstr "Objeto < i>%(nombre_del_objeto)s</i> con éxito %(acción)s."
+msgstr "Objeto < i>%(object_name)s</i> con éxito %(acción)s."
 
 #: mosp/views/schema.py:212
 msgid "Create a schema"
