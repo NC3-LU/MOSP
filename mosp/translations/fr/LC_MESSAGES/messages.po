@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-13 14:24+0200\n"
-"PO-Revision-Date: 2021-10-13 14:25+0200\n"
+"PO-Revision-Date: 2021-10-13 12:44+0000\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: French <https://translate.monarc.lu/projects/mosp/mosp/fr/>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.5.3\n"
 
 #: mosp/forms.py:58 mosp/forms.py:100 mosp/forms.py:132 mosp/forms.py:227
@@ -49,35 +49,31 @@ msgstr "Impossible de se connecter."
 
 #: mosp/forms.py:104
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: mosp/forms.py:107
-#, fuzzy
-#| msgid "Please enter your password."
 msgid "Please enter your email address."
-msgstr "Veuillez entrer votre mot de passe."
+msgstr "Veuillez entrer votre adresse email."
 
 #: mosp/forms.py:110
-#, fuzzy
-#| msgid "Sign out"
 msgid "Sign up"
-msgstr "Déconnexion"
+msgstr "S'inscrire"
 
 #: mosp/forms.py:119
 msgid ""
 "This login has invalid characters. Please use letters, numbers, hyphens and "
 "underscores only."
 msgstr ""
+"Ce login a des caractères non valides. Veuillez utiliser des lettres, des "
+"chiffres, des traits d'union et des traits de soulignement uniquement."
 
 #: mosp/forms.py:138 mosp/forms.py:160
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: mosp/forms.py:156
-#, fuzzy
-#| msgid "Please enter your password."
 msgid "Please confirm your password."
-msgstr "Veuillez entrer votre mot de passe."
+msgstr "Veuillez confirmer votre mot de passe."
 
 #: mosp/forms.py:166 mosp/forms.py:204
 msgid "Please enter a name"
@@ -169,7 +165,7 @@ msgstr "Type"
 
 #: mosp/forms.py:271
 msgid "Restricted membership"
-msgstr ""
+msgstr "Adhésion restreinte"
 
 #: mosp/forms.py:275 mosp/templates/admin/organizations.html:11
 #: mosp/templates/organization.html:83
@@ -181,13 +177,6 @@ msgid "Members"
 msgstr "Membres"
 
 #: mosp/templates/about.html:14
-#, fuzzy
-#| msgid ""
-#| "A platform to create, edit and share JSON objects.<br />\n"
-#| "                    The goal is to gather security related JSON objects,\n"
-#| "                    in the first place aimed to be used with\n"
-#| "                    <a href=\"https://github.com/monarc-project/"
-#| "MonarcAppFO\">MONARC</a>"
 msgid ""
 "A platform to create, edit and share JSON objects.<br />\n"
 "                    The goal is to gather security related JSON objects,\n"
@@ -199,8 +188,8 @@ msgstr ""
 "                    Le but est de rassembler des objets JSON liés à la "
 "sécurité,\n"
 "                    en premier lieu destinés à être utilisé avec\n"
-"                    <a href=\"https://github.com/monarc-project/MonarcAppFO"
-"\">MONARC</a>"
+"                    <a href=\"https://github.com/monarc-project/MonarcAppFO\""
+"  rel=\"noopener noreferrer\" target=\"_blank\">MONARC</a>"
 
 #: mosp/templates/about.html:19
 msgid "More information"
@@ -211,13 +200,6 @@ msgid "about this instance."
 msgstr "à propos de cette instance."
 
 #: mosp/templates/about.html:21
-#, fuzzy
-#| msgid ""
-#| "You are welcome to copy, modify or redistribute the\n"
-#| "                <a href=\"https://github.com/CASES-LU/MOSP\">source code</"
-#| "a>\n"
-#| "                according to the <a href=\"https://www.gnu.org/licenses/"
-#| "agpl-3.0.html\">Affero</a> GPL license."
 msgid ""
 "You are welcome to copy, modify or redistribute the\n"
 "                <a href=\"https://github.com/CASES-LU/MOSP\" rel=\"noreferrer"
@@ -227,10 +209,10 @@ msgid ""
 "license."
 msgstr ""
 "Vous êtes invités à copier, modifier ou redistribuer le\n"
-"                <a href=\"https://github.com/CASES-LU/MOSP\">code source</"
-"a>\n"
-"               selon la license <a href=\"https://www.gnu.org/licenses/"
-"agpl-3.0.html\">Affero GPL</a>."
+"                <a href=\"https://github.com/CASES-LU/MOSP\" rel=\"noreferrer"
+"\" target=\"_blank\">code source</a>\n"
+"               selon la license <a href=\"https://www.gnu.org/licenses/agpl-3"
+".0.html\" rel=\"noopener noreferrer\" target=\"_blank\">Affero GPL</a>."
 
 #: mosp/templates/about.html:24
 msgid ""
@@ -271,23 +253,19 @@ msgstr "Contact"
 #: mosp/templates/account_recovery_set_password.html:12
 #: mosp/templates/admin/edit_user.html:19
 msgid "Minimum 20 characters."
-msgstr ""
+msgstr "Minimum 20 caractères."
 
 #: mosp/templates/collection.html:10 mosp/templates/view_object.html:15
 msgid "Delete the object"
 msgstr "Supprimer l'objet"
 
 #: mosp/templates/collection.html:13
-#, fuzzy
-#| msgid "Edit the object"
 msgid "Edit the collection"
-msgstr "Éditez l'objet"
+msgstr "Modifier la collection"
 
 #: mosp/templates/collection.html:16 mosp/templates/collection.html:17
-#, fuzzy
-#| msgid "Share the object"
 msgid "Share the collection"
-msgstr "Partagez l'objet"
+msgstr "Partagez la collection"
 
 #: mosp/templates/collection.html:21 mosp/templates/collection.html:22
 #: mosp/templates/collection.html:23 mosp/templates/collection.html:24
@@ -298,13 +276,11 @@ msgstr "Partagez sur"
 
 #: mosp/templates/collection.html:33
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 #: mosp/templates/collection.html:49
-#, fuzzy
-#| msgid "Create a schema"
 msgid "Created at"
-msgstr "Créer un schéma"
+msgstr "Créé le"
 
 #: mosp/templates/collection.html:57 mosp/templates/view_object.html:99
 msgid "Creator"
@@ -312,7 +288,7 @@ msgstr "Créateur"
 
 #: mosp/templates/collection.html:84
 msgid "Objects from this collection"
-msgstr ""
+msgstr "Objets de cette collection"
 
 #: mosp/templates/admin/dashboard.html:33
 #: mosp/templates/admin/dashboard.html:60
@@ -338,22 +314,16 @@ msgid "Last updated"
 msgstr "Dernière mise à jour"
 
 #: mosp/templates/collections.html:6
-#, fuzzy
-#| msgid "Available schemas"
 msgid "Available collections"
-msgstr "Schémas disponibles"
+msgstr "Collections disponibles"
 
 #: mosp/templates/collections.html:12
-#, fuzzy
-#| msgid "Create a new schema"
 msgid "Create a new collection"
-msgstr "Créer un nouveau schéma"
+msgstr "Créer une nouvelle collection"
 
 #: mosp/templates/edit_collection.html:26
-#, fuzzy
-#| msgid "Edit the object"
 msgid "Add to the collection"
-msgstr "Éditez l'objet"
+msgstr "Ajouter à la collection"
 
 #: mosp/templates/edit_json.html:119
 msgid "Edit this schema"
@@ -392,11 +362,6 @@ msgid "Generate new API key"
 msgstr "Générer une nouvelle clé API"
 
 #: mosp/templates/edit_user.html:47
-#, fuzzy
-#| msgid ""
-#| "You can check the <a href=\"https://github.com/CASES-LU/MOSP-"
-#| "documentation/blob/master/index.adoc#using-the-api\" target=\"_blank"
-#| "\">documentation of the API</a>."
 msgid ""
 "You can check the <a href=\"https://github.com/CASES-LU/MOSP-documentation/"
 "blob/master/index.adoc#using-the-api\" target=\"_blank\">documentation of "
@@ -404,7 +369,7 @@ msgid ""
 msgstr ""
 "Vous pouvez lire la <a href=\"https://github.com/CASES-LU/MOSP-documentation/"
 "blob/master/index.adoc#using-the-api\" target=\"_blank\">documentation de "
-"l'API</a>."
+"l'API</a>"
 
 #: mosp/templates/edit_user.html:52
 msgid "Delete your account"
@@ -416,23 +381,19 @@ msgstr "Clé API copiée dans votre presse-papiers."
 
 #: mosp/templates/index.html:28
 msgid "Recent contributions"
-msgstr ""
+msgstr "Contributions récentes"
 
 #: mosp/templates/index.html:31
-#, fuzzy
-#| msgid "Related objects"
 msgid "Updated objects"
-msgstr "Objets liés"
+msgstr "Objets mis à jour"
 
 #: mosp/templates/index.html:39
-#, fuzzy
-#| msgid "Recently updated schemas"
 msgid "Updated schemas"
-msgstr "Schémas récemment mis à jour"
+msgstr "Schemas mis à jour"
 
 #: mosp/templates/index.html:45
 msgid "Updated collections"
-msgstr ""
+msgstr "Collections mises à jour"
 
 #: mosp/templates/layout.html:7
 msgid "Create, edit and share JSON objects"
@@ -443,10 +404,8 @@ msgid "Schemas"
 msgstr "Schémas"
 
 #: mosp/templates/layout.html:56
-#, fuzzy
-#| msgid "Actions"
 msgid "Collections"
-msgstr "Actions"
+msgstr "Collections"
 
 #: mosp/templates/admin/dashboard.html:6 mosp/templates/layout.html:63
 msgid "Dashboard"
@@ -477,10 +436,8 @@ msgid "Sign out"
 msgstr "Déconnexion"
 
 #: mosp/templates/layout.html:88
-#, fuzzy
-#| msgid "Signed in as"
 msgid "Sign in"
-msgstr "Connecté en tant que"
+msgstr "S'identifier"
 
 #: mosp/templates/layout.html:120
 msgid "About"
@@ -515,14 +472,12 @@ msgid "# of objects validated by the schema"
 msgstr "# d'objets validés par le schéma"
 
 #: mosp/templates/organizations.html:6
-#, fuzzy
-#| msgid "Owning organization"
 msgid "Contributing organizations"
-msgstr "Organisation propriétaire"
+msgstr "Organisations contributives"
 
 #: mosp/templates/organizations.html:20
 msgid "Contribute with"
-msgstr ""
+msgstr "Contribue avec"
 
 #: mosp/templates/organizations.html:20 mosp/templates/schemas.html:42
 #: mosp/templates/user_schemas.html:12 mosp/templates/user_schemas.html:26
@@ -530,10 +485,8 @@ msgid "objects"
 msgstr "objets"
 
 #: mosp/templates/relations_schema.html:156
-#, fuzzy
-#| msgid "View the schema"
 msgid "Return to the schema"
-msgstr "Voir le schéma"
+msgstr "Retourner au schéma"
 
 #: mosp/templates/schema.html:10
 msgid "View the schema"
@@ -541,23 +494,19 @@ msgstr "Voir le schéma"
 
 #: mosp/templates/schema.html:13
 msgid "URL of the schema definition"
-msgstr ""
+msgstr "URL de la définition de schéma"
 
 #: mosp/templates/schema.html:16
-#, fuzzy
-#| msgid "Actions"
 msgid "Relations"
-msgstr "Actions"
+msgstr "Relations"
 
 #: mosp/templates/schema.html:19
 msgid "Get all objects validated by this schema"
 msgstr "Obtenir tous les objets validés par ce schéma"
 
 #: mosp/templates/schema.html:22
-#, fuzzy
-#| msgid "Edit this schema"
 msgid "Edit the schema"
-msgstr "Éditez ce schéma"
+msgstr "Éditez le schéma"
 
 #: mosp/templates/schema.html:40
 msgid "Provided by"
@@ -592,16 +541,12 @@ msgid "Available schemas"
 msgstr "Schémas disponibles"
 
 #: mosp/templates/schemas.html:21
-#, fuzzy
-#| msgid "Recently updated schemas"
 msgid "References between schemas"
-msgstr "Schémas récemment mis à jour"
+msgstr "Références entre schémas"
 
 #: mosp/templates/schemas.html:29
-#, fuzzy
-#| msgid "Edit a schema"
 msgid "List of schemas"
-msgstr "Modifier un schéma"
+msgstr "Liste des schémas"
 
 #: mosp/templates/schemas.html:32 mosp/templates/user_schemas.html:47
 msgid "Create a new schema"
@@ -616,18 +561,16 @@ msgid "provided by"
 msgstr "fourni par"
 
 #: mosp/templates/signup.html:6
-#, fuzzy
-#| msgid "Registered users"
 msgid "Register"
-msgstr "Utilisateurs enregistrés"
+msgstr "S'inscrire"
 
 #: mosp/templates/signup.html:12
 msgid "Letters, numbers, hyphens and underscores only."
-msgstr ""
+msgstr "Lettres, chiffres, traits d'union et soulignement seulement."
 
 #: mosp/templates/signup.html:15
 msgid "Your email address"
-msgstr ""
+msgstr "Votre adresse email"
 
 #: mosp/templates/user.html:11
 msgid "is a member since"
