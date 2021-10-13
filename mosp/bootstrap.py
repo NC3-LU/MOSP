@@ -89,7 +89,9 @@ def get_locale():
     # otherwise try to guess the language from the user accept
     # header the browser transmits.  We support de/fr/en in this
     # example.  The best match wins.
-    return request.accept_languages.best_match(["fr", "en", "de"])
+    return request.accept_languages.best_match(
+        ["fr", "en", "de", "es", "it", "nl", "ru"]
+    )
 
 
 # @babel.timezoneselector
