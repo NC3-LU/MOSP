@@ -41,7 +41,7 @@ def dashboard():
         nb_schemas=Schema.query.count(),
         nb_organizations=Organization.query.count(),
         nb_users=User.query.count(),
-        nb_collections=Collection.query.count()
+        nb_collections=Collection.query.count(),
     )
 
 

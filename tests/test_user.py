@@ -7,7 +7,7 @@ def test_user(session):
     user = User(
         login="john",
         pwdhash=generate_password_hash("password"),
-        email="john@mosp.localhost"
+        email="john@mosp.localhost",
     )
 
     session.add(user)
