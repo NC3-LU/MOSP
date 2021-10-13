@@ -8,79 +8,83 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-13 14:24+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-10-13 12:44+0000\n"
+"Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
+"Language-Team: German <https://translate.monarc.lu/projects/mosp/mosp/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: mosp/forms.py:58 mosp/forms.py:100 mosp/forms.py:132 mosp/forms.py:227
 #: mosp/forms.py:292
 #: mosp/templates/admin/template_responsive_table_users.html:6
 msgid "Login"
-msgstr ""
+msgstr "Anmeldung"
 
 #: mosp/forms.py:61 mosp/forms.py:101 mosp/forms.py:135 mosp/forms.py:230
 #: mosp/forms.py:295
 msgid "Please enter your login."
-msgstr ""
+msgstr "Bitte geben Sie Ihr Login ein."
 
 #: mosp/forms.py:65 mosp/forms.py:145 mosp/forms.py:154 mosp/forms.py:233
 #: mosp/forms.py:299
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 #: mosp/forms.py:67 mosp/forms.py:147 mosp/forms.py:301
 msgid "Please enter your password."
-msgstr ""
+msgstr "Bitte geben Sie Ihr Passwort ein."
 
 #: mosp/forms.py:71 mosp/templates/login.html:6
 msgid "Log In"
-msgstr ""
+msgstr "Einloggen"
 
 #: mosp/forms.py:90
 msgid "Impossible to login."
-msgstr ""
+msgstr "Unmöglich anzumelden."
 
 #: mosp/forms.py:104
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: mosp/forms.py:107
 msgid "Please enter your email address."
-msgstr ""
+msgstr "Geben Sie bitte Ihre Email-Adresse ein."
 
 #: mosp/forms.py:110
 msgid "Sign up"
-msgstr ""
+msgstr "Anmelden"
 
 #: mosp/forms.py:119
 msgid ""
 "This login has invalid characters. Please use letters, numbers, hyphens "
 "and underscores only."
 msgstr ""
+"Dieses Login hat ungültige Zeichen. Bitte verwenden Sie nur Buchstaben, "
+"Zahlen, Bindestriche und Unterstriche."
 
 #: mosp/forms.py:138 mosp/forms.py:160
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: mosp/forms.py:156
 msgid "Please confirm your password."
-msgstr ""
+msgstr "Bitte bestätigen Sie Ihr Passwort."
 
 #: mosp/forms.py:166 mosp/forms.py:204
 msgid "Please enter a name"
-msgstr ""
+msgstr "Bitte Bestätigen Sie IHR Passwort"
 
 #: mosp/forms.py:168 mosp/forms.py:206 mosp/forms.py:266 mosp/forms.py:326
 #: mosp/templates/collection.html:41 mosp/templates/organization.html:75
 #: mosp/templates/schema.html:31 mosp/templates/view_object.html:75
 #: mosp/templates/view_version.html:22
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: mosp/forms.py:169 mosp/forms.py:207 mosp/forms.py:267 mosp/forms.py:327
 msgid "Please enter a description"
