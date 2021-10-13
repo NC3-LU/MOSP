@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-13 14:24+0200\n"
-"PO-Revision-Date: 2021-10-13 12:44+0000\n"
+"PO-Revision-Date: 2021-10-13 13:07+0000\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: German <https://translate.monarc.lu/projects/mosp/mosp/de/>\n"
 "Language: de\n"
@@ -88,50 +88,50 @@ msgstr "Beschreibung"
 
 #: mosp/forms.py:169 mosp/forms.py:207 mosp/forms.py:267 mosp/forms.py:327
 msgid "Please enter a description"
-msgstr ""
+msgstr "Bitte geben Sie eine Beschreibung ein"
 
 #: mosp/forms.py:172
 msgid "Licenses"
-msgstr ""
+msgstr "Lizenzen"
 
 #: mosp/forms.py:173
 msgid "Please choose a license"
-msgstr ""
+msgstr "Bitte wählen Sie eine Lizenz"
 
 #: mosp/forms.py:176
 msgid "Refers to the objects"
-msgstr ""
+msgstr "Bezieht sich auf die Objekte"
 
 #: mosp/forms.py:178
 msgid "Referred to by the objects"
-msgstr ""
+msgstr "Von den Objekten bezeichnet"
 
 #: mosp/forms.py:180
 msgid "Validated by"
-msgstr ""
+msgstr "Bestätigt von"
 
 #: mosp/forms.py:182 mosp/forms.py:213 mosp/templates/admin/dashboard.html:35
 #: mosp/templates/admin/dashboard.html:62 mosp/templates/collection.html:90
 #: mosp/templates/schema.html:85
 msgid "Organization"
-msgstr ""
+msgstr "Organisation"
 
 #: mosp/forms.py:183 mosp/forms.py:214
 msgid "Please select an organization"
-msgstr ""
+msgstr "Bitte wählen Sie eine Organisation aus"
 
 #: mosp/forms.py:188 mosp/forms.py:220 mosp/forms.py:245 mosp/forms.py:281
 #: mosp/forms.py:312 mosp/forms.py:329
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: mosp/forms.py:210
 msgid "Please enter a JSON schema"
-msgstr ""
+msgstr "Bitte geben Sie ein JSON-Schema ein"
 
 #: mosp/forms.py:241
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: mosp/forms.py:242
 msgid "Admin"
