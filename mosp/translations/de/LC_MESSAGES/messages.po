@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-13 14:24+0200\n"
-"PO-Revision-Date: 2021-10-13 13:07+0000\n"
-"Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
+"PO-Revision-Date: 2021-10-13 14:51+0000\n"
+"Last-Translator: Juan Rocha <juan.rocha@cases.lu>\n"
 "Language-Team: German <https://translate.monarc.lu/projects/mosp/mosp/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -135,16 +135,16 @@ msgstr "Aktiv"
 
 #: mosp/forms.py:242
 msgid "Admin"
-msgstr ""
+msgstr "Verwaltung"
 
 #: mosp/forms.py:243
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: mosp/forms.py:244 mosp/templates/admin/organizations.html:4
 #: mosp/templates/layout.html:53 mosp/templates/layout.html:68
 msgid "Organizations"
-msgstr ""
+msgstr "Organisationen"
 
 #: mosp/forms.py:259 mosp/forms.py:319 mosp/templates/admin/dashboard.html:34
 #: mosp/templates/admin/dashboard.html:61
@@ -153,28 +153,28 @@ msgstr ""
 #: mosp/templates/organization.html:114 mosp/templates/organization.html:153
 #: mosp/templates/schema.html:84 mosp/templates/view_version.html:14
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: mosp/forms.py:262 mosp/forms.py:322
 msgid "Please enter a name."
-msgstr ""
+msgstr "Bitte geben Sie einen Namen ein."
 
 #: mosp/forms.py:269
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: mosp/forms.py:271
 msgid "Restricted membership"
-msgstr ""
+msgstr "Eingeschränkte Mitgliedschaft"
 
 #: mosp/forms.py:275 mosp/templates/admin/organizations.html:11
 #: mosp/templates/organization.html:83
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #: mosp/forms.py:277 mosp/templates/admin/organizations.html:12
 msgid "Members"
-msgstr ""
+msgstr "Mitglieder"
 
 #: mosp/templates/about.html:14
 msgid ""
@@ -185,14 +185,21 @@ msgid ""
 "project/MonarcAppFO\" rel=\"noopener noreferrer\" "
 "target=\"_blank\">MONARC</a>"
 msgstr ""
+"Eine Plattform zur Erstellung, Bearbeitung und gemeinsamen Nutzung von JSON-"
+"Objekten.<br />\n"
+"                    Das Ziel ist es, sicherheitsrelevante JSON-Objekte zu "
+"sammeln,\n"
+"                    in erster Linie für die Verwendung mit\n"
+"                    <a href=\"https://github.com/monarc-project/MonarcAppFO\""
+" rel=\"noopener noreferrer\" target=\"_blank\">MONARC</a>"
 
 #: mosp/templates/about.html:19
 msgid "More information"
-msgstr ""
+msgstr "Weitere Informationen"
 
 #: mosp/templates/about.html:19
 msgid "about this instance."
-msgstr ""
+msgstr "über diesen Fall."
 
 #: mosp/templates/about.html:21
 msgid ""
@@ -203,80 +210,88 @@ msgid ""
 "href=\"https://www.gnu.org/licenses/agpl-3.0.html\" rel=\"noopener "
 "noreferrer\" target=\"_blank\">Affero</a> GPL license."
 msgstr ""
+"Sie können den Quellcode gerne kopieren, verändern oder weitergeben.\n"
+"                <a href=\"https://github.com/CASES-LU/MOSP\" rel=\"noreferrer"
+"\" target=\"_blank\">Quellcode</a>\n"
+"                gemäß der <a href=\"https://www.gnu.org/licenses/agpl-3.0."
+"html\" rel=\"noopener noreferrer\" target=\"_blank\">Affero</a> GPL-Lizenz "
+"weitergeben."
 
 #: mosp/templates/about.html:24
 msgid ""
 "Objects distributed through this platform are distributed under the open-"
 "source license choosed by their editor."
 msgstr ""
+"Die über diese Plattform vertriebenen Objekte werden unter der vom "
+"Herausgeber gewählten Open-Source-Lizenz vertrieben."
 
 #: mosp/templates/about_more.html:7
 msgid "MOSP version"
-msgstr ""
+msgstr "MOSP-Version"
 
 #: mosp/templates/about_more.html:8
 msgid "Python version"
-msgstr ""
+msgstr "Python-Version"
 
 #: mosp/templates/about_more.html:9 mosp/templates/admin/dashboard.html:11
 msgid "Number of objects"
-msgstr ""
+msgstr "Anzahl der Objekte"
 
 #: mosp/templates/about_more.html:10 mosp/templates/admin/dashboard.html:12
 msgid "Number of schemas"
-msgstr ""
+msgstr "Anzahl der Schemata"
 
 #: mosp/templates/about_more.html:11 mosp/templates/admin/dashboard.html:14
 msgid "Number of organizations"
-msgstr ""
+msgstr "Anzahl der Organisationen"
 
 #: mosp/templates/about_more.html:12 mosp/templates/admin/dashboard.html:15
 msgid "Number of users"
-msgstr ""
+msgstr "Anzahl der Nutzer"
 
 #: mosp/templates/about_more.html:13
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 #: mosp/templates/account_recovery_set_password.html:12
 #: mosp/templates/admin/edit_user.html:19
 msgid "Minimum 20 characters."
-msgstr ""
+msgstr "Mindestens 20 Zeichen."
 
 #: mosp/templates/collection.html:10 mosp/templates/view_object.html:15
 msgid "Delete the object"
-msgstr ""
+msgstr "Löschen Sie das Objekt"
 
 #: mosp/templates/collection.html:13
 msgid "Edit the collection"
-msgstr ""
+msgstr "Bearbeiten Sie die Sammlung"
 
 #: mosp/templates/collection.html:16 mosp/templates/collection.html:17
 msgid "Share the collection"
-msgstr ""
+msgstr "Teilen Sie die Sammlung"
 
 #: mosp/templates/collection.html:21 mosp/templates/collection.html:22
 #: mosp/templates/collection.html:23 mosp/templates/collection.html:24
 #: mosp/templates/view_object.html:52 mosp/templates/view_object.html:53
 #: mosp/templates/view_object.html:54 mosp/templates/view_object.html:55
 msgid "Share on"
-msgstr ""
+msgstr "Weitergeben"
 
 #: mosp/templates/collection.html:33
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 #: mosp/templates/collection.html:49
 msgid "Created at"
-msgstr ""
+msgstr "Erstellt am"
 
 #: mosp/templates/collection.html:57 mosp/templates/view_object.html:99
 msgid "Creator"
-msgstr ""
+msgstr "Schöpfer"
 
 #: mosp/templates/collection.html:84
 msgid "Objects from this collection"
-msgstr ""
+msgstr "Objekte aus dieser Sammlung"
 
 #: mosp/templates/admin/dashboard.html:33
 #: mosp/templates/admin/dashboard.html:60
@@ -286,12 +301,12 @@ msgstr ""
 #: mosp/templates/collection.html:87 mosp/templates/organization.html:113
 #: mosp/templates/organization.html:152 mosp/templates/schema.html:83
 msgid "id"
-msgstr ""
+msgstr "id"
 
 #: mosp/templates/collection.html:89 mosp/templates/organization.html:115
 #: mosp/templates/view_object.html:91
 msgid "Validating JSON schema"
-msgstr ""
+msgstr "Validierung des JSON-Schemas"
 
 #: mosp/templates/admin/dashboard.html:37
 #: mosp/templates/admin/dashboard.html:64
@@ -299,55 +314,55 @@ msgstr ""
 #: mosp/templates/organization.html:116 mosp/templates/organization.html:155
 #: mosp/templates/schema.html:86
 msgid "Last updated"
-msgstr ""
+msgstr "Zuletzt aktualisiert"
 
 #: mosp/templates/collections.html:6
 msgid "Available collections"
-msgstr ""
+msgstr "Verfügbare Sammlungen"
 
 #: mosp/templates/collections.html:12
 msgid "Create a new collection"
-msgstr ""
+msgstr "Eine neue Sammlung erstellen"
 
 #: mosp/templates/edit_collection.html:26
 msgid "Add to the collection"
-msgstr ""
+msgstr "Zur Sammlung hinzufügen"
 
 #: mosp/templates/edit_json.html:119
 msgid "Edit this schema"
-msgstr ""
+msgstr "Dieses Schema bearbeiten"
 
 #: mosp/templates/edit_json.html:157
 msgid "UUID copied to your clipboard."
-msgstr ""
+msgstr "UUID in Ihre Zwischenablage kopiert."
 
 #: mosp/templates/edit_object.html:7
 msgid "validated by"
-msgstr ""
+msgstr "validiert durch"
 
 #: mosp/templates/edit_object.html:9
 msgid "Edit the definition of the object"
-msgstr ""
+msgstr "Bearbeiten Sie die Definition des Objekts"
 
 #: mosp/templates/edit_object.html:16
 msgid "View the object"
-msgstr ""
+msgstr "Ansicht des Objekts"
 
 #: mosp/templates/edit_object.html:74
 msgid "Specify whether this object is linked to other objects"
-msgstr ""
+msgstr "Angeben, ob dieses Objekt mit anderen Objekten verknüpft ist"
 
 #: mosp/templates/edit_schema.html:66
 msgid "Delete this schema"
-msgstr ""
+msgstr "Dieses Schema löschen"
 
 #: mosp/templates/edit_user.html:29 mosp/templates/edit_user.html:32
 msgid "API key"
-msgstr ""
+msgstr "API-Schlüssel"
 
 #: mosp/templates/edit_user.html:39
 msgid "Generate new API key"
-msgstr ""
+msgstr "Neuen API-Schlüssel generieren"
 
 #: mosp/templates/edit_user.html:47
 msgid ""
@@ -355,587 +370,590 @@ msgid ""
 "documentation/blob/master/index.adoc#using-the-api\" "
 "target=\"_blank\">documentation of the API</a>"
 msgstr ""
+"Sie können die <a href=\"https://github.com/CASES-LU/MOSP-documentation/blob/"
+"master/index.adoc#using-the-api\" target=\"_blank\">Dokumentation der API</"
+"a> einsehen"
 
 #: mosp/templates/edit_user.html:52
 msgid "Delete your account"
-msgstr ""
+msgstr "Ihr Konto löschen"
 
 #: mosp/templates/edit_user.html:63
 msgid "API key copied to your clipboard."
-msgstr ""
+msgstr "API-Schlüssel in Ihre Zwischenablage kopiert."
 
 #: mosp/templates/index.html:28
 msgid "Recent contributions"
-msgstr ""
+msgstr "Jüngste Beiträge"
 
 #: mosp/templates/index.html:31
 msgid "Updated objects"
-msgstr ""
+msgstr "Aktualisierte Objekte"
 
 #: mosp/templates/index.html:39
 msgid "Updated schemas"
-msgstr ""
+msgstr "Aktualisierte Schemata"
 
 #: mosp/templates/index.html:45
 msgid "Updated collections"
-msgstr ""
+msgstr "Aktualisierte Sammlungen"
 
 #: mosp/templates/layout.html:7
 msgid "Create, edit and share JSON objects"
-msgstr ""
+msgstr "JSON-Objekte erstellen, bearbeiten und freigeben"
 
 #: mosp/templates/layout.html:50 mosp/templates/layout.html:81
 msgid "Schemas"
-msgstr ""
+msgstr "Schemata"
 
 #: mosp/templates/layout.html:56
 msgid "Collections"
-msgstr ""
+msgstr "Sammlungen"
 
 #: mosp/templates/admin/dashboard.html:6 mosp/templates/layout.html:63
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
 #: mosp/templates/layout.html:65
 msgid "Users"
-msgstr ""
+msgstr "Benutzer"
 
 #: mosp/templates/layout.html:66
 msgid "Add user"
-msgstr ""
+msgstr "Benutzer hinzufügen"
 
 #: mosp/templates/layout.html:69
 msgid "Add organization"
-msgstr ""
+msgstr "Organisation hinzufügen"
 
 #: mosp/templates/layout.html:78
 msgid "Signed in as"
-msgstr ""
+msgstr "Eingetragen als"
 
 #: mosp/templates/layout.html:80
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: mosp/templates/layout.html:83
 msgid "Sign out"
-msgstr ""
+msgstr "Abmelden"
 
 #: mosp/templates/layout.html:88
 msgid "Sign in"
-msgstr ""
+msgstr "Eintragen"
 
 #: mosp/templates/layout.html:120
 msgid "About"
-msgstr ""
+msgstr "Über"
 
 #: mosp/templates/layout.html:122
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 #: mosp/templates/layout.html:124
 msgid "Terms"
-msgstr ""
+msgstr "Bedingungen"
 
 #: mosp/templates/login.html:10 mosp/templates/signup.html:10
 msgid "Your login"
-msgstr ""
+msgstr "Ihre Anmeldung"
 
 #: mosp/templates/login.html:16
 msgid "Your password"
-msgstr ""
+msgstr "Ihr Passwort"
 
 #: mosp/templates/organization.html:95 mosp/templates/organization.html:110
 msgid "Shared JSON objects"
-msgstr ""
+msgstr "Gemeinsame JSON-Objekte"
 
 #: mosp/templates/organization.html:146 mosp/templates/organization.html:149
 msgid "Shared JSON schemas"
-msgstr ""
+msgstr "Gemeinsame JSON-Schemata"
 
 #: mosp/templates/organization.html:154
 msgid "# of objects validated by the schema"
-msgstr ""
+msgstr "Anzahl der durch das Schema validierten Objekte"
 
 #: mosp/templates/organizations.html:6
 msgid "Contributing organizations"
-msgstr ""
+msgstr "Mitwirkende Organisationen"
 
 #: mosp/templates/organizations.html:20
 msgid "Contribute with"
-msgstr ""
+msgstr "Beitragen mit"
 
 #: mosp/templates/organizations.html:20 mosp/templates/schemas.html:42
 #: mosp/templates/user_schemas.html:12 mosp/templates/user_schemas.html:26
 msgid "objects"
-msgstr ""
+msgstr "Objekte"
 
 #: mosp/templates/relations_schema.html:156
 msgid "Return to the schema"
-msgstr ""
+msgstr "Rückkehr zum Schema"
 
 #: mosp/templates/schema.html:10
 msgid "View the schema"
-msgstr ""
+msgstr "Ansicht des Schemas"
 
 #: mosp/templates/schema.html:13
 msgid "URL of the schema definition"
-msgstr ""
+msgstr "URL der Schemadefinition"
 
 #: mosp/templates/schema.html:16
 msgid "Relations"
-msgstr ""
+msgstr "Beziehungen"
 
 #: mosp/templates/schema.html:19
 msgid "Get all objects validated by this schema"
-msgstr ""
+msgstr "Alle durch dieses Schema validierten Objekte abrufen"
 
 #: mosp/templates/schema.html:22
 msgid "Edit the schema"
-msgstr ""
+msgstr "Das Schema bearbeiten"
 
 #: mosp/templates/schema.html:40
 msgid "Provided by"
-msgstr ""
+msgstr "Zur Verfügung gestellt von"
 
 #: mosp/templates/schema.html:80
 msgid "Objects validated by the schema"
-msgstr ""
+msgstr "Durch das Schema validierte Objekte"
 
 #: mosp/templates/schema.html:87
 msgid "Edit"
-msgstr ""
+msgstr "bearbeiten"
 
 #: mosp/templates/schema.html:88
 msgid "Definition"
-msgstr ""
+msgstr "Definition"
 
 #: mosp/templates/schema.html:89
 msgid "Object"
-msgstr ""
+msgstr "Objekt"
 
 #: mosp/templates/schema.html:90
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: mosp/templates/schema.html:122
 msgid "Create a new object with this schema"
-msgstr ""
+msgstr "Ein neues Objekt mit diesem Schema erstellen"
 
 #: mosp/templates/schemas.html:15
 msgid "Available schemas"
-msgstr ""
+msgstr "Verfügbare Schemata"
 
 #: mosp/templates/schemas.html:21
 msgid "References between schemas"
-msgstr ""
+msgstr "Referenzen zwischen Schemata"
 
 #: mosp/templates/schemas.html:29
 msgid "List of schemas"
-msgstr ""
+msgstr "Liste der Schemata"
 
 #: mosp/templates/schemas.html:32 mosp/templates/user_schemas.html:47
 msgid "Create a new schema"
-msgstr ""
+msgstr "Ein neues Schema erstellen"
 
 #: mosp/templates/schemas.html:42 mosp/templates/user_schemas.html:26
 msgid "validates"
-msgstr ""
+msgstr "validiert"
 
 #: mosp/templates/schemas.html:45 mosp/templates/view_object.html:94
 msgid "provided by"
-msgstr ""
+msgstr "zur Verfügung gestellt von"
 
 #: mosp/templates/signup.html:6
 msgid "Register"
-msgstr ""
+msgstr "Register"
 
 #: mosp/templates/signup.html:12
 msgid "Letters, numbers, hyphens and underscores only."
-msgstr ""
+msgstr "Nur Buchstaben, Zahlen, Bindestriche und Unterstriche."
 
 #: mosp/templates/signup.html:15
 msgid "Your email address"
-msgstr ""
+msgstr "Ihre E-Mail Adresse"
 
 #: mosp/templates/user.html:11
 msgid "is a member since"
-msgstr ""
+msgstr "ist ein Mitglied seit"
 
 #: mosp/templates/user.html:12
 msgid "and is the creator of the following object(s):"
-msgstr ""
+msgstr "und ist der Ersteller des/der folgenden Objekts/Objekte:"
 
 #: mosp/templates/user_schemas.html:6
 msgid "Welcome"
-msgstr ""
+msgstr "Willkommen"
 
 #: mosp/templates/user_schemas.html:11
 msgid "You are a member since"
-msgstr ""
+msgstr "Sie sind Mitglied seit"
 
 #: mosp/templates/user_schemas.html:12
 msgid "See the"
-msgstr ""
+msgstr "Siehe die"
 
 #: mosp/templates/user_schemas.html:12
 msgid "you already created."
-msgstr ""
+msgstr "die Sie bereits erstellt haben."
 
 #: mosp/templates/user_schemas.html:13
 msgid "Create and share a new object with one of the"
-msgstr ""
+msgstr "Erstellen und teilen Sie ein neues Objekt mit einem der"
 
 #: mosp/templates/user_schemas.html:13
 msgid "available schemas"
-msgstr ""
+msgstr "verfügbare Schemata"
 
 #: mosp/templates/user_schemas.html:13
 msgid "on the platform"
-msgstr ""
+msgstr "auf der Plattform"
 
 #: mosp/templates/user_schemas.html:20
 msgid "Schemas in my organizations"
-msgstr ""
+msgstr "Schemata in meinen Organisationen"
 
 #: mosp/templates/user_schemas.html:27
 msgid "edit"
-msgstr ""
+msgstr "bearbeiten"
 
 #: mosp/templates/user_schemas.html:30
 msgid "Add a new schema in this organization"
-msgstr ""
+msgstr "Ein neues Schema in dieser Organisation hinzufügen"
 
 #: mosp/templates/user_schemas.html:38
 msgid "You are in no organization."
-msgstr ""
+msgstr "Sie sind in keiner Organisation."
 
 #: mosp/templates/view_diff.html:18 mosp/templates/view_object.html:36
 msgid "Previous versions"
-msgstr ""
+msgstr "Frühere Versionen"
 
 #: mosp/templates/view_object.html:18
 msgid "Edit the object"
-msgstr ""
+msgstr "Bearbeiten Sie das Objekt"
 
 #: mosp/templates/view_object.html:21
 msgid "Copy the object"
-msgstr ""
+msgstr "Kopieren Sie das Objekt"
 
 #: mosp/templates/view_object.html:26
 msgid "Unlock the object"
-msgstr ""
+msgstr "Entriegeln Sie das Objekt"
 
 #: mosp/templates/view_object.html:30
 msgid "Lock the object"
-msgstr ""
+msgstr "Das Objekt sperren"
 
 #: mosp/templates/view_object.html:40
 msgid "Short link"
-msgstr ""
+msgstr "Kurzer Link"
 
 #: mosp/templates/view_object.html:44
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "In die Zwischenablage kopieren"
 
 #: mosp/templates/view_object.html:47 mosp/templates/view_object.html:48
 msgid "Share the object"
-msgstr ""
+msgstr "Teilen Sie das Objekt"
 
 #: mosp/templates/view_object.html:58 mosp/templates/view_object.html:59
 msgid "Download the object"
-msgstr ""
+msgstr "Das Objekt herunterladen"
 
 #: mosp/templates/view_object.html:63
 msgid "Get the object"
-msgstr ""
+msgstr "Holen Sie das Objekt"
 
 #: mosp/templates/view_object.html:64
 msgid "Export to a MISP galaxy"
-msgstr ""
+msgstr "Export in eine MISP-Galaxie"
 
 #: mosp/templates/view_object.html:65
 msgid "Get only values in CSV"
-msgstr ""
+msgstr "Nur Werte in CSV abrufen"
 
 #: mosp/templates/view_object.html:66
 msgid "Get only values in JSON"
-msgstr ""
+msgstr "Nur Werte in JSON abrufen"
 
 #: mosp/templates/view_object.html:83
 msgid "Owning organization"
-msgstr ""
+msgstr "Besitzende Organisation"
 
 #: mosp/templates/view_object.html:111
 msgid "License"
-msgstr ""
+msgstr "Lizenz"
 
 #: mosp/templates/view_object.html:120
 msgid "The edition of this object is restricted to its creator."
-msgstr ""
+msgstr "Die Ausgabe dieses Objekts ist auf seinen Ersteller beschränkt."
 
 #: mosp/templates/view_object.html:126
 msgid "Related objects"
-msgstr ""
+msgstr "Verwandte Objekte"
 
 #: mosp/templates/view_object.html:129
 msgid "Refers to"
-msgstr ""
+msgstr "Bezieht sich auf"
 
 #: mosp/templates/view_object.html:129 mosp/templates/view_object.html:132
 msgid "object(s)"
-msgstr ""
+msgstr "Objekt(e)"
 
 #: mosp/templates/view_object.html:132
 msgid "Referred to by"
-msgstr ""
+msgstr "Bezogen auf"
 
 #: mosp/templates/view_object.html:135
 msgid "Part of"
-msgstr ""
+msgstr "Teil von"
 
 #: mosp/templates/view_object.html:135
 msgid "collection(s)"
-msgstr ""
+msgstr "Sammlung(en)"
 
 #: mosp/templates/view_object.html:142 mosp/templates/view_object.html:149
 msgid "schema"
-msgstr ""
+msgstr "Schema"
 
 #: mosp/templates/view_object.html:166
 msgid "Definition of the object"
-msgstr ""
+msgstr "Definition des Objekts"
 
 #: mosp/templates/view_object.html:243
 msgid "Object copied to your clipboard."
-msgstr ""
+msgstr "Objekt in die Zwischenablage kopiert."
 
 #: mosp/templates/view_schema.html:6 mosp/templates/view_version.html:6
 msgid "Updated"
-msgstr ""
+msgstr "Aktualisiert"
 
 #: mosp/templates/view_version.html:38
 msgid "Restore this version"
-msgstr ""
+msgstr "Diese Version wiederherstellen"
 
 #: mosp/templates/admin/dashboard.html:7
 msgid "Key figures"
-msgstr ""
+msgstr "Die wichtigsten Zahlen"
 
 #: mosp/templates/admin/dashboard.html:13
 msgid "Number of collections"
-msgstr ""
+msgstr "Anzahl der Sammlungen"
 
 #: mosp/templates/admin/dashboard.html:22
 msgid "Active users"
-msgstr ""
+msgstr "Aktive Nutzer"
 
 #: mosp/templates/admin/dashboard.html:23
 msgid "List of users connected during the last week."
-msgstr ""
+msgstr "Liste der Benutzer, die in der letzten Woche verbunden waren."
 
 #: mosp/templates/admin/dashboard.html:27
 msgid "New and updated objects"
-msgstr ""
+msgstr "Neue und aktualisierte Objekte"
 
 #: mosp/templates/admin/dashboard.html:28
 #: mosp/templates/admin/dashboard.html:55
 #: mosp/templates/admin/dashboard.html:82
 msgid "Updates since the last 4 weeks."
-msgstr ""
+msgstr "Aktualisierungen seit den letzten 4 Wochen."
 
 #: mosp/templates/admin/dashboard.html:36
 #: mosp/templates/admin/dashboard.html:63
 msgid "Owner"
-msgstr ""
+msgstr "Eigentümer"
 
 #: mosp/templates/admin/dashboard.html:54
 msgid "New and updated schemas"
-msgstr ""
+msgstr "Neue und aktualisierte Schemata"
 
 #: mosp/templates/admin/dashboard.html:81
 msgid "New and updated collections"
-msgstr ""
+msgstr "Neue und aktualisierte Sammlungen"
 
 #: mosp/templates/admin/organizations.html:13
 msgid "Membership model"
-msgstr ""
+msgstr "Mitgliedschaftsmodell"
 
 #: mosp/templates/admin/organizations.html:14
 #: mosp/templates/admin/template_responsive_table_users.html:12
 msgid "Actions"
-msgstr ""
+msgstr "Aktionen"
 
 #: mosp/templates/admin/organizations.html:35
 msgid "Add a new organization"
-msgstr ""
+msgstr "Eine neue Organisation hinzufügen"
 
 #: mosp/templates/admin/template_responsive_table_users.html:7
 msgid "Email address"
-msgstr ""
+msgstr "E-Mail Adresse"
 
 #: mosp/templates/admin/template_responsive_table_users.html:8
 msgid "Member since"
-msgstr ""
+msgstr "Mitglied seit"
 
 #: mosp/templates/admin/template_responsive_table_users.html:9
 msgid "Last seen"
-msgstr ""
+msgstr "Zuletzt gesehen"
 
 #: mosp/templates/admin/template_responsive_table_users.html:10
 msgid "Memberships"
-msgstr ""
+msgstr "Mitgliedschaften"
 
 #: mosp/templates/admin/template_responsive_table_users.html:11
 msgid "State"
-msgstr ""
+msgstr "Staat"
 
 #: mosp/templates/admin/users.html:9
 msgid "Add a new user"
-msgstr ""
+msgstr "Einen neuen Benutzer hinzufügen"
 
 #: mosp/views/admin.py:118 mosp/views/user.py:84
 #, python-format
 msgid "User %(user_login)s successfully updated."
-msgstr ""
+msgstr "Benutzer %(user_login)s erfolgreich aktualisiert."
 
 #: mosp/views/admin.py:146
 #, python-format
 msgid "User %(user_login)s successfully created."
-msgstr ""
+msgstr "Benutzer %(user_login)s erfolgreich erstellt."
 
 #: mosp/views/admin.py:160
 msgid "You can not do this change to your own user."
-msgstr ""
+msgstr "Sie können diese Änderung nicht an Ihrem eigenen Benutzer vornehmen."
 
 #: mosp/views/admin.py:165
 msgid "User {status}."
-msgstr ""
+msgstr "Benutzer {Status}."
 
 #: mosp/views/admin.py:166
 msgid "activated"
-msgstr ""
+msgstr "aktiviert"
 
 #: mosp/views/admin.py:168
 msgid "deactivated"
-msgstr ""
+msgstr "deaktiviert"
 
 #: mosp/views/admin.py:182
 msgid "You can not delete your own user."
-msgstr ""
+msgstr "Sie können Ihren eigenen Benutzer nicht löschen."
 
 #: mosp/views/admin.py:186
 msgid "User deleted."
-msgstr ""
+msgstr "Benutzer gelöscht."
 
 #: mosp/views/admin.py:260
 #, python-format
 msgid "Organization %(org_name)s successfully updated."
-msgstr ""
+msgstr "Organisation %(org_name)s erfolgreich aktualisiert."
 
 #: mosp/views/admin.py:287
 #, python-format
 msgid "Organization %(org_name)s successfully created."
-msgstr ""
+msgstr "Organisation %(org_name)s erfolgreich erstellt."
 
 #: mosp/views/admin.py:307
 msgid "Organization deleted."
-msgstr ""
+msgstr "Organisation gelöscht."
 
 #: mosp/views/collection.py:65
 msgid "Create a collection"
-msgstr ""
+msgstr "Eine Sammlung erstellen"
 
 #: mosp/views/collection.py:83
 msgid "Edit a collection"
-msgstr ""
+msgstr "Eine Sammlung bearbeiten"
 
 #: mosp/views/collection.py:111 mosp/views/object.py:305
 #: mosp/views/schema.py:307
 #, python-format
 msgid "%(object_name)s successfully updated."
-msgstr ""
+msgstr "%(object_name)s erfolgreich aktualisiert."
 
 #: mosp/views/collection.py:130 mosp/views/object.py:361
 #: mosp/views/schema.py:329
 #, python-format
 msgid "%(object_name)s successfully created."
-msgstr ""
+msgstr "%(object_name)s erfolgreich erstellt."
 
 #: mosp/views/collection.py:198
 #, python-format
 msgid "%(object_name)s successfully deleted."
-msgstr ""
+msgstr "%(object_name)s erfolgreich gelöscht."
 
 #: mosp/views/object.py:382
 #, python-format
 msgid "Object <i>%(object_name)s</i> successfully %(action)s."
-msgstr ""
+msgstr "Objekt < i>%(object_name)s</i> erfolgreich %(action)s."
 
 #: mosp/views/schema.py:212
 msgid "Create a schema"
-msgstr ""
+msgstr "Ein Schema erstellen"
 
 #: mosp/views/schema.py:268
 msgid "Edit a schema"
-msgstr ""
+msgstr "Ein Schema bearbeiten"
 
 #: mosp/views/schema.py:294
 msgid "You must specify an organization."
-msgstr ""
+msgstr "Sie müssen eine Organisation angeben."
 
 #: mosp/views/session_mgmt.py:29
 msgid "Please log in to access this page."
-msgstr ""
+msgstr "Bitte melden Sie sich an, um auf diese Seite zuzugreifen."
 
 #: mosp/views/session_mgmt.py:92
 msgid "Self-registration is disabled."
-msgstr ""
+msgstr "Die Selbstregistrierung ist deaktiviert."
 
 #: mosp/views/session_mgmt.py:117 mosp/views/user.py:146
 #, python-format
 msgid "Problem while sending activation email: %(error)s"
-msgstr ""
+msgstr "Problem beim Senden der Aktivierungs-E-Mail: %(Fehler)s"
 
 #: mosp/views/session_mgmt.py:124
 msgid "Your account has been created. Check your mail to confirm it."
-msgstr ""
+msgstr "Ihr Konto wurde erstellt. Prüfen Sie Ihre E-Mail, um es zu bestätigen."
 
 #: mosp/views/user.py:61
 msgid "Edit user"
-msgstr ""
+msgstr "Benutzer bearbeiten"
 
 #: mosp/views/user.py:101
 msgid "New API key generated."
-msgstr ""
+msgstr "Neuer API-Schlüssel generiert."
 
 #: mosp/views/user.py:114
 msgid "Account deleted."
-msgstr ""
+msgstr "Konto gelöscht."
 
 #: mosp/views/user.py:136
 msgid "This user does not exist."
-msgstr ""
+msgstr "Dieser Benutzer existiert nicht."
 
 #: mosp/views/user.py:153
 msgid "An email with a recovery link has been sent to you."
-msgstr ""
+msgstr "Sie haben eine E-Mail mit einem Wiederherstellungslink erhalten."
 
 #: mosp/views/user.py:171 mosp/views/user.py:183
 msgid "Impossible to activate this account."
-msgstr ""
+msgstr "Es ist nicht möglich, dieses Konto zu aktivieren."
 
 #: mosp/views/user.py:192
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Ihr Passwort wurde aktualisiert."
 
 #: mosp/views/user.py:194
 msgid "Password must be the same."
-msgstr ""
+msgstr "Das Passwort muss dasselbe sein."
 
 #: mosp/views/views.py:17
 msgid "Authentication required."
-msgstr ""
+msgstr "Authentifizierung erforderlich."
 
 #: mosp/views/views.py:23
 msgid "Forbidden."
-msgstr ""
+msgstr "Verboten."
