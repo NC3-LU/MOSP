@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-13 14:24+0200\n"
-"PO-Revision-Date: 2021-10-14 07:23+0000\n"
+"PO-Revision-Date: 2021-10-14 07:40+0000\n"
 "Last-Translator: Juan Rocha <juan.rocha@cases.lu>\n"
 "Language-Team: Italian <https://translate.monarc.lu/projects/mosp/mosp/it/>\n"
 "Language: it\n"
@@ -825,7 +825,7 @@ msgstr "Non potete fare questo cambiamento al vostro utente."
 
 #: mosp/views/admin.py:165
 msgid "User {status}."
-msgstr "Utente {stato}."
+msgstr "Utente {status}."
 
 #: mosp/views/admin.py:166
 msgid "activated"
