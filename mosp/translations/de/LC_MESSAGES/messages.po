@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-13 14:24+0200\n"
-"PO-Revision-Date: 2021-10-13 14:51+0000\n"
+"PO-Revision-Date: 2021-10-14 07:23+0000\n"
 "Last-Translator: Juan Rocha <juan.rocha@cases.lu>\n"
 "Language-Team: German <https://translate.monarc.lu/projects/mosp/mosp/de/>\n"
 "Language: de\n"
@@ -887,7 +887,7 @@ msgstr "%(object_name)s erfolgreich gelöscht."
 #: mosp/views/object.py:382
 #, python-format
 msgid "Object <i>%(object_name)s</i> successfully %(action)s."
-msgstr "Objekt < i>%(object_name)s</i> erfolgreich %(action)s."
+msgstr "Objekt <i>%(object_name)s</i> erfolgreich %(action)s."
 
 #: mosp/views/schema.py:212
 msgid "Create a schema"
