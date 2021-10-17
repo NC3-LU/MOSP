@@ -15,6 +15,8 @@
 [MOSP](https://github.com/CASES-LU/MOSP) is a platform for creating, editing
 and sharing *validated* JSON objects of any type.
 
+![MOSP panorama](docs/_static/MOSP-panorama.png "MOSP panorama")
+
 You can use any available JSON schemas in order to create new JSON objects via a
 Web form dynamically generated and based on the selected JSON schema.
 
