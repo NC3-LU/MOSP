@@ -8,139 +8,144 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-13 14:24+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-10-14 07:40+0000\n"
+"Last-Translator: Juan Rocha <juan.rocha@cases.lu>\n"
+"Language-Team: Russian <https://translate.monarc.lu/projects/mosp/mosp/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: mosp/forms.py:58 mosp/forms.py:100 mosp/forms.py:132 mosp/forms.py:227
 #: mosp/forms.py:292
 #: mosp/templates/admin/template_responsive_table_users.html:6
 msgid "Login"
-msgstr ""
+msgstr "Вход в систему"
 
 #: mosp/forms.py:61 mosp/forms.py:101 mosp/forms.py:135 mosp/forms.py:230
 #: mosp/forms.py:295
 msgid "Please enter your login."
-msgstr ""
+msgstr "Пожалуйста, введите свой логин."
 
 #: mosp/forms.py:65 mosp/forms.py:145 mosp/forms.py:154 mosp/forms.py:233
 #: mosp/forms.py:299
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: mosp/forms.py:67 mosp/forms.py:147 mosp/forms.py:301
 msgid "Please enter your password."
-msgstr ""
+msgstr "Пожалуйста, введите пароль."
 
 #: mosp/forms.py:71 mosp/templates/login.html:6
 msgid "Log In"
-msgstr ""
+msgstr "Войти"
 
 #: mosp/forms.py:90
 msgid "Impossible to login."
-msgstr ""
+msgstr "Невозможно войти в систему."
 
 #: mosp/forms.py:104
 msgid "Email"
-msgstr ""
+msgstr "Электронная почта"
 
 #: mosp/forms.py:107
 msgid "Please enter your email address."
-msgstr ""
+msgstr "Пожалуйста, введите свой адрес электронной почты."
 
 #: mosp/forms.py:110
 msgid "Sign up"
-msgstr ""
+msgstr "Зарегистрироваться"
 
 #: mosp/forms.py:119
 msgid ""
 "This login has invalid characters. Please use letters, numbers, hyphens "
 "and underscores only."
 msgstr ""
+"Этот логин содержит недопустимые символы. Пожалуйста, используйте только "
+"буквы, цифры, дефисы и символы подчеркивания."
 
 #: mosp/forms.py:138 mosp/forms.py:160
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: mosp/forms.py:156
 msgid "Please confirm your password."
-msgstr ""
+msgstr "Пожалуйста, подтвердите свой пароль."
 
 #: mosp/forms.py:166 mosp/forms.py:204
 msgid "Please enter a name"
-msgstr ""
+msgstr "Пожалуйста, введите имя"
 
 #: mosp/forms.py:168 mosp/forms.py:206 mosp/forms.py:266 mosp/forms.py:326
 #: mosp/templates/collection.html:41 mosp/templates/organization.html:75
 #: mosp/templates/schema.html:31 mosp/templates/view_object.html:75
 #: mosp/templates/view_version.html:22
 msgid "Description"
-msgstr ""
+msgstr "Описание"
 
 #: mosp/forms.py:169 mosp/forms.py:207 mosp/forms.py:267 mosp/forms.py:327
 msgid "Please enter a description"
-msgstr ""
+msgstr "Пожалуйста, введите описание"
 
 #: mosp/forms.py:172
 msgid "Licenses"
-msgstr ""
+msgstr "Лицензии"
 
 #: mosp/forms.py:173
 msgid "Please choose a license"
-msgstr ""
+msgstr "Пожалуйста, выберите лицензию"
 
 #: mosp/forms.py:176
 msgid "Refers to the objects"
-msgstr ""
+msgstr "Относится к объектам"
 
 #: mosp/forms.py:178
 msgid "Referred to by the objects"
-msgstr ""
+msgstr "Ссылаются на объекты"
 
 #: mosp/forms.py:180
 msgid "Validated by"
-msgstr ""
+msgstr "Подтверждено"
 
 #: mosp/forms.py:182 mosp/forms.py:213 mosp/templates/admin/dashboard.html:35
 #: mosp/templates/admin/dashboard.html:62 mosp/templates/collection.html:90
 #: mosp/templates/schema.html:85
 msgid "Organization"
-msgstr ""
+msgstr "Организация"
 
 #: mosp/forms.py:183 mosp/forms.py:214
 msgid "Please select an organization"
-msgstr ""
+msgstr "Пожалуйста, выберите организацию"
 
 #: mosp/forms.py:188 mosp/forms.py:220 mosp/forms.py:245 mosp/forms.py:281
 #: mosp/forms.py:312 mosp/forms.py:329
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 #: mosp/forms.py:210
 msgid "Please enter a JSON schema"
-msgstr ""
+msgstr "Пожалуйста, введите схему JSON"
 
 #: mosp/forms.py:241
 msgid "Active"
-msgstr ""
+msgstr "Активный"
 
 #: mosp/forms.py:242
 msgid "Admin"
-msgstr ""
+msgstr "Администратор"
 
 #: mosp/forms.py:243
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: mosp/forms.py:244 mosp/templates/admin/organizations.html:4
 #: mosp/templates/layout.html:53 mosp/templates/layout.html:68
 msgid "Organizations"
-msgstr ""
+msgstr "Организации"
 
 #: mosp/forms.py:259 mosp/forms.py:319 mosp/templates/admin/dashboard.html:34
 #: mosp/templates/admin/dashboard.html:61
@@ -149,28 +154,28 @@ msgstr ""
 #: mosp/templates/organization.html:114 mosp/templates/organization.html:153
 #: mosp/templates/schema.html:84 mosp/templates/view_version.html:14
 msgid "Name"
-msgstr ""
+msgstr "Имя"
 
 #: mosp/forms.py:262 mosp/forms.py:322
 msgid "Please enter a name."
-msgstr ""
+msgstr "Пожалуйста, введите имя."
 
 #: mosp/forms.py:269
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: mosp/forms.py:271
 msgid "Restricted membership"
-msgstr ""
+msgstr "Ограниченное членство"
 
 #: mosp/forms.py:275 mosp/templates/admin/organizations.html:11
 #: mosp/templates/organization.html:83
 msgid "Website"
-msgstr ""
+msgstr "Сайт"
 
 #: mosp/forms.py:277 mosp/templates/admin/organizations.html:12
 msgid "Members"
-msgstr ""
+msgstr "Члены"
 
 #: mosp/templates/about.html:14
 msgid ""
@@ -181,14 +186,20 @@ msgid ""
 "project/MonarcAppFO\" rel=\"noopener noreferrer\" "
 "target=\"_blank\">MONARC</a>"
 msgstr ""
+"Платформа для создания, редактирования и совместного использования JSON-"
+"объектов.<br />\n"
+"                    Цель - собрать JSON-объекты, связанные с безопасностью,\n"
+"                    в первую очередь предназначенные для использования с\n"
+"                    <a href=\"https://github.com/monarc-project/MonarcAppFO\""
+" rel=\"noopener noreferrer\" target=\"_blank\">MONARC</a>"
 
 #: mosp/templates/about.html:19
 msgid "More information"
-msgstr ""
+msgstr "Дополнительная информация"
 
 #: mosp/templates/about.html:19
 msgid "about this instance."
-msgstr ""
+msgstr "об этом экземпляре."
 
 #: mosp/templates/about.html:21
 msgid ""
@@ -199,80 +210,88 @@ msgid ""
 "href=\"https://www.gnu.org/licenses/agpl-3.0.html\" rel=\"noopener "
 "noreferrer\" target=\"_blank\">Affero</a> GPL license."
 msgstr ""
+"Вы можете копировать, изменять или распространять\n"
+"                <a href=\"https://github.com/CASES-LU/MOSP\" rel=\"noreferrer"
+"\" target=\"_blank\">исходный код</a>\n"
+"                в соответствии с <a href=\"https://www.gnu.org/licenses/"
+"agpl-3.0.html\" rel=\"noopener noreferrer\" target=\"_blank\">Affero</a> "
+"лицензией GPL."
 
 #: mosp/templates/about.html:24
 msgid ""
 "Objects distributed through this platform are distributed under the open-"
 "source license choosed by their editor."
 msgstr ""
+"Объекты, распространяемые через эту платформу, распространяются под "
+"лицензией с открытым исходным кодом, выбранной их редактором."
 
 #: mosp/templates/about_more.html:7
 msgid "MOSP version"
-msgstr ""
+msgstr "Версия MOSP"
 
 #: mosp/templates/about_more.html:8
 msgid "Python version"
-msgstr ""
+msgstr "Версия Python"
 
 #: mosp/templates/about_more.html:9 mosp/templates/admin/dashboard.html:11
 msgid "Number of objects"
-msgstr ""
+msgstr "Количество объектов"
 
 #: mosp/templates/about_more.html:10 mosp/templates/admin/dashboard.html:12
 msgid "Number of schemas"
-msgstr ""
+msgstr "Количество схем"
 
 #: mosp/templates/about_more.html:11 mosp/templates/admin/dashboard.html:14
 msgid "Number of organizations"
-msgstr ""
+msgstr "Количество организаций"
 
 #: mosp/templates/about_more.html:12 mosp/templates/admin/dashboard.html:15
 msgid "Number of users"
-msgstr ""
+msgstr "Количество пользователей"
 
 #: mosp/templates/about_more.html:13
 msgid "Contact"
-msgstr ""
+msgstr "Связаться с"
 
 #: mosp/templates/account_recovery_set_password.html:12
 #: mosp/templates/admin/edit_user.html:19
 msgid "Minimum 20 characters."
-msgstr ""
+msgstr "Минимум 20 символов."
 
 #: mosp/templates/collection.html:10 mosp/templates/view_object.html:15
 msgid "Delete the object"
-msgstr ""
+msgstr "Удалить объект"
 
 #: mosp/templates/collection.html:13
 msgid "Edit the collection"
-msgstr ""
+msgstr "Редактирование коллекции"
 
 #: mosp/templates/collection.html:16 mosp/templates/collection.html:17
 msgid "Share the collection"
-msgstr ""
+msgstr "Поделитесь коллекцией"
 
 #: mosp/templates/collection.html:21 mosp/templates/collection.html:22
 #: mosp/templates/collection.html:23 mosp/templates/collection.html:24
 #: mosp/templates/view_object.html:52 mosp/templates/view_object.html:53
 #: mosp/templates/view_object.html:54 mosp/templates/view_object.html:55
 msgid "Share on"
-msgstr ""
+msgstr "Поделиться"
 
 #: mosp/templates/collection.html:33
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 #: mosp/templates/collection.html:49
 msgid "Created at"
-msgstr ""
+msgstr "Создан в"
 
 #: mosp/templates/collection.html:57 mosp/templates/view_object.html:99
 msgid "Creator"
-msgstr ""
+msgstr "Создатель"
 
 #: mosp/templates/collection.html:84
 msgid "Objects from this collection"
-msgstr ""
+msgstr "Предметы из этой коллекции"
 
 #: mosp/templates/admin/dashboard.html:33
 #: mosp/templates/admin/dashboard.html:60
@@ -282,12 +301,12 @@ msgstr ""
 #: mosp/templates/collection.html:87 mosp/templates/organization.html:113
 #: mosp/templates/organization.html:152 mosp/templates/schema.html:83
 msgid "id"
-msgstr ""
+msgstr "id"
 
 #: mosp/templates/collection.html:89 mosp/templates/organization.html:115
 #: mosp/templates/view_object.html:91
 msgid "Validating JSON schema"
-msgstr ""
+msgstr "Проверка схемы JSON"
 
 #: mosp/templates/admin/dashboard.html:37
 #: mosp/templates/admin/dashboard.html:64
@@ -295,55 +314,55 @@ msgstr ""
 #: mosp/templates/organization.html:116 mosp/templates/organization.html:155
 #: mosp/templates/schema.html:86
 msgid "Last updated"
-msgstr ""
+msgstr "Последнее обновление"
 
 #: mosp/templates/collections.html:6
 msgid "Available collections"
-msgstr ""
+msgstr "Доступные коллекции"
 
 #: mosp/templates/collections.html:12
 msgid "Create a new collection"
-msgstr ""
+msgstr "Создайте новую коллекцию"
 
 #: mosp/templates/edit_collection.html:26
 msgid "Add to the collection"
-msgstr ""
+msgstr "Добавить в коллекцию"
 
 #: mosp/templates/edit_json.html:119
 msgid "Edit this schema"
-msgstr ""
+msgstr "Отредактируйте эту схему"
 
 #: mosp/templates/edit_json.html:157
 msgid "UUID copied to your clipboard."
-msgstr ""
+msgstr "UUID скопирован в буфер обмена."
 
 #: mosp/templates/edit_object.html:7
 msgid "validated by"
-msgstr ""
+msgstr "подтверждённый"
 
 #: mosp/templates/edit_object.html:9
 msgid "Edit the definition of the object"
-msgstr ""
+msgstr "Редактирование определения объекта"
 
 #: mosp/templates/edit_object.html:16
 msgid "View the object"
-msgstr ""
+msgstr "Просмотр объекта"
 
 #: mosp/templates/edit_object.html:74
 msgid "Specify whether this object is linked to other objects"
-msgstr ""
+msgstr "Укажите, связан ли этот объект с другими объектами"
 
 #: mosp/templates/edit_schema.html:66
 msgid "Delete this schema"
-msgstr ""
+msgstr "Удалить эту схему"
 
 #: mosp/templates/edit_user.html:29 mosp/templates/edit_user.html:32
 msgid "API key"
-msgstr ""
+msgstr "API-ключ"
 
 #: mosp/templates/edit_user.html:39
 msgid "Generate new API key"
-msgstr ""
+msgstr "Сгенерируйте новый ключ API"
 
 #: mosp/templates/edit_user.html:47
 msgid ""
@@ -351,587 +370,591 @@ msgid ""
 "documentation/blob/master/index.adoc#using-the-api\" "
 "target=\"_blank\">documentation of the API</a>"
 msgstr ""
+"Вы можете ознакомиться с <a href=\"https://github.com/CASES-LU/"
+"MOSP-documentation/blob/master/index.adoc#using-the-api\" target=\"_blank\""
+">документацией API</a>"
 
 #: mosp/templates/edit_user.html:52
 msgid "Delete your account"
-msgstr ""
+msgstr "Удалить свой аккаунт"
 
 #: mosp/templates/edit_user.html:63
 msgid "API key copied to your clipboard."
-msgstr ""
+msgstr "Ключ API скопирован в буфер обмена."
 
 #: mosp/templates/index.html:28
 msgid "Recent contributions"
-msgstr ""
+msgstr "Последние вклады"
 
 #: mosp/templates/index.html:31
 msgid "Updated objects"
-msgstr ""
+msgstr "Обновленные объекты"
 
 #: mosp/templates/index.html:39
 msgid "Updated schemas"
-msgstr ""
+msgstr "Обновленные схемы"
 
 #: mosp/templates/index.html:45
 msgid "Updated collections"
-msgstr ""
+msgstr "Обновленные коллекции"
 
 #: mosp/templates/layout.html:7
 msgid "Create, edit and share JSON objects"
-msgstr ""
+msgstr "Создание, редактирование и совместное использование объектов JSON"
 
 #: mosp/templates/layout.html:50 mosp/templates/layout.html:81
 msgid "Schemas"
-msgstr ""
+msgstr "Схемы"
 
 #: mosp/templates/layout.html:56
 msgid "Collections"
-msgstr ""
+msgstr "Коллекции"
 
 #: mosp/templates/admin/dashboard.html:6 mosp/templates/layout.html:63
 msgid "Dashboard"
-msgstr ""
+msgstr "Приборная панель"
 
 #: mosp/templates/layout.html:65
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
 
 #: mosp/templates/layout.html:66
 msgid "Add user"
-msgstr ""
+msgstr "Добавить пользователя"
 
 #: mosp/templates/layout.html:69
 msgid "Add organization"
-msgstr ""
+msgstr "Добавить организацию"
 
 #: mosp/templates/layout.html:78
 msgid "Signed in as"
-msgstr ""
+msgstr "Зарегистрировался как"
 
 #: mosp/templates/layout.html:80
 msgid "Profile"
-msgstr ""
+msgstr "Профиль"
 
 #: mosp/templates/layout.html:83
 msgid "Sign out"
-msgstr ""
+msgstr "Выписаться"
 
 #: mosp/templates/layout.html:88
 msgid "Sign in"
-msgstr ""
+msgstr "Войти"
 
 #: mosp/templates/layout.html:120
 msgid "About"
-msgstr ""
+msgstr "О сайте"
 
 #: mosp/templates/layout.html:122
 msgid "Help"
-msgstr ""
+msgstr "Помощь"
 
 #: mosp/templates/layout.html:124
 msgid "Terms"
-msgstr ""
+msgstr "Условия"
 
 #: mosp/templates/login.html:10 mosp/templates/signup.html:10
 msgid "Your login"
-msgstr ""
+msgstr "Ваш логин"
 
 #: mosp/templates/login.html:16
 msgid "Your password"
-msgstr ""
+msgstr "Ваш пароль"
 
 #: mosp/templates/organization.html:95 mosp/templates/organization.html:110
 msgid "Shared JSON objects"
-msgstr ""
+msgstr "Общие объекты JSON"
 
 #: mosp/templates/organization.html:146 mosp/templates/organization.html:149
 msgid "Shared JSON schemas"
-msgstr ""
+msgstr "Общие схемы JSON"
 
 #: mosp/templates/organization.html:154
 msgid "# of objects validated by the schema"
-msgstr ""
+msgstr "# объектов, подтвержденных схемой"
 
 #: mosp/templates/organizations.html:6
 msgid "Contributing organizations"
-msgstr ""
+msgstr "Организации, вносящие вклад"
 
 #: mosp/templates/organizations.html:20
 msgid "Contribute with"
-msgstr ""
+msgstr "Вносите свой вклад с"
 
 #: mosp/templates/organizations.html:20 mosp/templates/schemas.html:42
 #: mosp/templates/user_schemas.html:12 mosp/templates/user_schemas.html:26
 msgid "objects"
-msgstr ""
+msgstr "объекты"
 
 #: mosp/templates/relations_schema.html:156
 msgid "Return to the schema"
-msgstr ""
+msgstr "Возврат к схеме"
 
 #: mosp/templates/schema.html:10
 msgid "View the schema"
-msgstr ""
+msgstr "Просмотр схемы"
 
 #: mosp/templates/schema.html:13
 msgid "URL of the schema definition"
-msgstr ""
+msgstr "URL-адрес определения схемы"
 
 #: mosp/templates/schema.html:16
 msgid "Relations"
-msgstr ""
+msgstr "Отношения"
 
 #: mosp/templates/schema.html:19
 msgid "Get all objects validated by this schema"
-msgstr ""
+msgstr "Получить все объекты, утвержденные данной схемой"
 
 #: mosp/templates/schema.html:22
 msgid "Edit the schema"
-msgstr ""
+msgstr "Редактирование схемы"
 
 #: mosp/templates/schema.html:40
 msgid "Provided by"
-msgstr ""
+msgstr "Предоставлено"
 
 #: mosp/templates/schema.html:80
 msgid "Objects validated by the schema"
-msgstr ""
+msgstr "Объекты, подтвержденные схемой"
 
 #: mosp/templates/schema.html:87
 msgid "Edit"
-msgstr ""
+msgstr "Редактировать"
 
 #: mosp/templates/schema.html:88
 msgid "Definition"
-msgstr ""
+msgstr "Определение"
 
 #: mosp/templates/schema.html:89
 msgid "Object"
-msgstr ""
+msgstr "Объект"
 
 #: mosp/templates/schema.html:90
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: mosp/templates/schema.html:122
 msgid "Create a new object with this schema"
-msgstr ""
+msgstr "Создайте новый объект с данной схемой"
 
 #: mosp/templates/schemas.html:15
 msgid "Available schemas"
-msgstr ""
+msgstr "Доступные схемы"
 
 #: mosp/templates/schemas.html:21
 msgid "References between schemas"
-msgstr ""
+msgstr "Ссылки между схемами"
 
 #: mosp/templates/schemas.html:29
 msgid "List of schemas"
-msgstr ""
+msgstr "Список схем"
 
 #: mosp/templates/schemas.html:32 mosp/templates/user_schemas.html:47
 msgid "Create a new schema"
-msgstr ""
+msgstr "Создайте новую схему"
 
 #: mosp/templates/schemas.html:42 mosp/templates/user_schemas.html:26
 msgid "validates"
-msgstr ""
+msgstr "проверяет"
 
 #: mosp/templates/schemas.html:45 mosp/templates/view_object.html:94
 msgid "provided by"
-msgstr ""
+msgstr "предоставленный"
 
 #: mosp/templates/signup.html:6
 msgid "Register"
-msgstr ""
+msgstr "Зарегистрироваться"
 
 #: mosp/templates/signup.html:12
 msgid "Letters, numbers, hyphens and underscores only."
-msgstr ""
+msgstr "Только буквы, цифры, дефисы и подчеркивания."
 
 #: mosp/templates/signup.html:15
 msgid "Your email address"
-msgstr ""
+msgstr "Ваш адрес электронной почты"
 
 #: mosp/templates/user.html:11
 msgid "is a member since"
-msgstr ""
+msgstr "является членом клуба с"
 
 #: mosp/templates/user.html:12
 msgid "and is the creator of the following object(s):"
-msgstr ""
+msgstr "и является создателем следующего объекта (объектов):"
 
 #: mosp/templates/user_schemas.html:6
 msgid "Welcome"
-msgstr ""
+msgstr "Добро пожаловать"
 
 #: mosp/templates/user_schemas.html:11
 msgid "You are a member since"
-msgstr ""
+msgstr "Вы являетесь членом клуба с момента"
 
 #: mosp/templates/user_schemas.html:12
 msgid "See the"
-msgstr ""
+msgstr "См"
 
 #: mosp/templates/user_schemas.html:12
 msgid "you already created."
-msgstr ""
+msgstr "который вы уже создали."
 
 #: mosp/templates/user_schemas.html:13
 msgid "Create and share a new object with one of the"
-msgstr ""
+msgstr "Создайте новый объект и поделитесь им с одним из"
 
 #: mosp/templates/user_schemas.html:13
 msgid "available schemas"
-msgstr ""
+msgstr "доступные схемы"
 
 #: mosp/templates/user_schemas.html:13
 msgid "on the platform"
-msgstr ""
+msgstr "на платформе"
 
 #: mosp/templates/user_schemas.html:20
 msgid "Schemas in my organizations"
-msgstr ""
+msgstr "Схемы в моих организациях"
 
 #: mosp/templates/user_schemas.html:27
 msgid "edit"
-msgstr ""
+msgstr "редактировать"
 
 #: mosp/templates/user_schemas.html:30
 msgid "Add a new schema in this organization"
-msgstr ""
+msgstr "Добавьте новую схему в этой организации"
 
 #: mosp/templates/user_schemas.html:38
 msgid "You are in no organization."
-msgstr ""
+msgstr "Вы не состоите ни в одной организации."
 
 #: mosp/templates/view_diff.html:18 mosp/templates/view_object.html:36
 msgid "Previous versions"
-msgstr ""
+msgstr "Предыдущие версии"
 
 #: mosp/templates/view_object.html:18
 msgid "Edit the object"
-msgstr ""
+msgstr "Редактирование объекта"
 
 #: mosp/templates/view_object.html:21
 msgid "Copy the object"
-msgstr ""
+msgstr "Копирование объекта"
 
 #: mosp/templates/view_object.html:26
 msgid "Unlock the object"
-msgstr ""
+msgstr "Разблокировать объект"
 
 #: mosp/templates/view_object.html:30
 msgid "Lock the object"
-msgstr ""
+msgstr "Заблокировать объект"
 
 #: mosp/templates/view_object.html:40
 msgid "Short link"
-msgstr ""
+msgstr "Короткая ссылка"
 
 #: mosp/templates/view_object.html:44
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Копировать в буфер обмена"
 
 #: mosp/templates/view_object.html:47 mosp/templates/view_object.html:48
 msgid "Share the object"
-msgstr ""
+msgstr "Поделитесь объектом"
 
 #: mosp/templates/view_object.html:58 mosp/templates/view_object.html:59
 msgid "Download the object"
-msgstr ""
+msgstr "Скачать объект"
 
 #: mosp/templates/view_object.html:63
 msgid "Get the object"
-msgstr ""
+msgstr "Получить объект"
 
 #: mosp/templates/view_object.html:64
 msgid "Export to a MISP galaxy"
-msgstr ""
+msgstr "Экспорт в галактику MISP"
 
 #: mosp/templates/view_object.html:65
 msgid "Get only values in CSV"
-msgstr ""
+msgstr "Получение только значений в CSV"
 
 #: mosp/templates/view_object.html:66
 msgid "Get only values in JSON"
-msgstr ""
+msgstr "Получение только значений в JSON"
 
 #: mosp/templates/view_object.html:83
 msgid "Owning organization"
-msgstr ""
+msgstr "Организация-владелец"
 
 #: mosp/templates/view_object.html:111
 msgid "License"
-msgstr ""
+msgstr "Лицензия"
 
 #: mosp/templates/view_object.html:120
 msgid "The edition of this object is restricted to its creator."
-msgstr ""
+msgstr "Издание этого объекта ограничено его создателем."
 
 #: mosp/templates/view_object.html:126
 msgid "Related objects"
-msgstr ""
+msgstr "Связанные объекты"
 
 #: mosp/templates/view_object.html:129
 msgid "Refers to"
-msgstr ""
+msgstr "Относится к"
 
 #: mosp/templates/view_object.html:129 mosp/templates/view_object.html:132
 msgid "object(s)"
-msgstr ""
+msgstr "объект(ы)"
 
 #: mosp/templates/view_object.html:132
 msgid "Referred to by"
-msgstr ""
+msgstr "Ссылается на"
 
 #: mosp/templates/view_object.html:135
 msgid "Part of"
-msgstr ""
+msgstr "Часть"
 
 #: mosp/templates/view_object.html:135
 msgid "collection(s)"
-msgstr ""
+msgstr "коллекция (коллекции)"
 
 #: mosp/templates/view_object.html:142 mosp/templates/view_object.html:149
 msgid "schema"
-msgstr ""
+msgstr "схема"
 
 #: mosp/templates/view_object.html:166
 msgid "Definition of the object"
-msgstr ""
+msgstr "Определение объекта"
 
 #: mosp/templates/view_object.html:243
 msgid "Object copied to your clipboard."
-msgstr ""
+msgstr "Объект скопирован в буфер обмена."
 
 #: mosp/templates/view_schema.html:6 mosp/templates/view_version.html:6
 msgid "Updated"
-msgstr ""
+msgstr "Обновленный"
 
 #: mosp/templates/view_version.html:38
 msgid "Restore this version"
-msgstr ""
+msgstr "Восстановить эту версию"
 
 #: mosp/templates/admin/dashboard.html:7
 msgid "Key figures"
-msgstr ""
+msgstr "Основные показатели"
 
 #: mosp/templates/admin/dashboard.html:13
 msgid "Number of collections"
-msgstr ""
+msgstr "Количество коллекций"
 
 #: mosp/templates/admin/dashboard.html:22
 msgid "Active users"
-msgstr ""
+msgstr "Активные пользователи"
 
 #: mosp/templates/admin/dashboard.html:23
 msgid "List of users connected during the last week."
-msgstr ""
+msgstr "Список пользователей, подключенных за последнюю неделю."
 
 #: mosp/templates/admin/dashboard.html:27
 msgid "New and updated objects"
-msgstr ""
+msgstr "Новые и обновленные объекты"
 
 #: mosp/templates/admin/dashboard.html:28
 #: mosp/templates/admin/dashboard.html:55
 #: mosp/templates/admin/dashboard.html:82
 msgid "Updates since the last 4 weeks."
-msgstr ""
+msgstr "Обновления за последние 4 недели."
 
 #: mosp/templates/admin/dashboard.html:36
 #: mosp/templates/admin/dashboard.html:63
 msgid "Owner"
-msgstr ""
+msgstr "Владелец"
 
 #: mosp/templates/admin/dashboard.html:54
 msgid "New and updated schemas"
-msgstr ""
+msgstr "Новые и обновленные схемы"
 
 #: mosp/templates/admin/dashboard.html:81
 msgid "New and updated collections"
-msgstr ""
+msgstr "Новые и обновленные коллекции"
 
 #: mosp/templates/admin/organizations.html:13
 msgid "Membership model"
-msgstr ""
+msgstr "Модель членства"
 
 #: mosp/templates/admin/organizations.html:14
 #: mosp/templates/admin/template_responsive_table_users.html:12
 msgid "Actions"
-msgstr ""
+msgstr "Действия"
 
 #: mosp/templates/admin/organizations.html:35
 msgid "Add a new organization"
-msgstr ""
+msgstr "Добавить новую организацию"
 
 #: mosp/templates/admin/template_responsive_table_users.html:7
 msgid "Email address"
-msgstr ""
+msgstr "Адрес электронной почты"
 
 #: mosp/templates/admin/template_responsive_table_users.html:8
 msgid "Member since"
-msgstr ""
+msgstr "Член клуба с"
 
 #: mosp/templates/admin/template_responsive_table_users.html:9
 msgid "Last seen"
-msgstr ""
+msgstr "Последний раз видели"
 
 #: mosp/templates/admin/template_responsive_table_users.html:10
 msgid "Memberships"
-msgstr ""
+msgstr "Членство"
 
 #: mosp/templates/admin/template_responsive_table_users.html:11
 msgid "State"
-msgstr ""
+msgstr "Государство"
 
 #: mosp/templates/admin/users.html:9
 msgid "Add a new user"
-msgstr ""
+msgstr "Добавить нового пользователя"
 
 #: mosp/views/admin.py:118 mosp/views/user.py:84
 #, python-format
 msgid "User %(user_login)s successfully updated."
-msgstr ""
+msgstr "Пользователь %(user_login)s успешно обновлен."
 
 #: mosp/views/admin.py:146
 #, python-format
 msgid "User %(user_login)s successfully created."
-msgstr ""
+msgstr "Пользователь %(user_login)s успешно создан."
 
 #: mosp/views/admin.py:160
 msgid "You can not do this change to your own user."
-msgstr ""
+msgstr "Вы не можете вносить эти изменения для собственного пользователя."
 
 #: mosp/views/admin.py:165
 msgid "User {status}."
-msgstr ""
+msgstr "Пользователь {status}."
 
 #: mosp/views/admin.py:166
 msgid "activated"
-msgstr ""
+msgstr "активированный"
 
 #: mosp/views/admin.py:168
 msgid "deactivated"
-msgstr ""
+msgstr "деактивирован"
 
 #: mosp/views/admin.py:182
 msgid "You can not delete your own user."
-msgstr ""
+msgstr "Вы не можете удалить своего собственного пользователя."
 
 #: mosp/views/admin.py:186
 msgid "User deleted."
-msgstr ""
+msgstr "Пользователь удален."
 
 #: mosp/views/admin.py:260
 #, python-format
 msgid "Organization %(org_name)s successfully updated."
-msgstr ""
+msgstr "Организация %(org_name)s успешно обновлена."
 
 #: mosp/views/admin.py:287
 #, python-format
 msgid "Organization %(org_name)s successfully created."
-msgstr ""
+msgstr "Организация %(org_name)s успешно создана."
 
 #: mosp/views/admin.py:307
 msgid "Organization deleted."
-msgstr ""
+msgstr "Организация удалена."
 
 #: mosp/views/collection.py:65
 msgid "Create a collection"
-msgstr ""
+msgstr "Создать коллекцию"
 
 #: mosp/views/collection.py:83
 msgid "Edit a collection"
-msgstr ""
+msgstr "Редактирование коллекции"
 
 #: mosp/views/collection.py:111 mosp/views/object.py:305
 #: mosp/views/schema.py:307
 #, python-format
 msgid "%(object_name)s successfully updated."
-msgstr ""
+msgstr "%(object_name)s успешно обновлен."
 
 #: mosp/views/collection.py:130 mosp/views/object.py:361
 #: mosp/views/schema.py:329
 #, python-format
 msgid "%(object_name)s successfully created."
-msgstr ""
+msgstr "%(object_name)s успешно создан."
 
 #: mosp/views/collection.py:198
 #, python-format
 msgid "%(object_name)s successfully deleted."
-msgstr ""
+msgstr "%(object_name)s успешно удален."
 
 #: mosp/views/object.py:382
 #, python-format
 msgid "Object <i>%(object_name)s</i> successfully %(action)s."
-msgstr ""
+msgstr "Объект <i>%(object_name)s</i> успешно %(action)s."
 
 #: mosp/views/schema.py:212
 msgid "Create a schema"
-msgstr ""
+msgstr "Создайте схему"
 
 #: mosp/views/schema.py:268
 msgid "Edit a schema"
-msgstr ""
+msgstr "Редактирование схемы"
 
 #: mosp/views/schema.py:294
 msgid "You must specify an organization."
-msgstr ""
+msgstr "Вы должны указать организацию."
 
 #: mosp/views/session_mgmt.py:29
 msgid "Please log in to access this page."
-msgstr ""
+msgstr "Пожалуйста, войдите в систему, чтобы получить доступ к этой странице."
 
 #: mosp/views/session_mgmt.py:92
 msgid "Self-registration is disabled."
-msgstr ""
+msgstr "Саморегистрация отключена."
 
 #: mosp/views/session_mgmt.py:117 mosp/views/user.py:146
 #, python-format
 msgid "Problem while sending activation email: %(error)s"
-msgstr ""
+msgstr "Проблема при отправке письма активации: %(error)s"
 
 #: mosp/views/session_mgmt.py:124
 msgid "Your account has been created. Check your mail to confirm it."
 msgstr ""
+"Ваша учетная запись была создана. Проверьте свою почту для подтверждения."
 
 #: mosp/views/user.py:61
 msgid "Edit user"
-msgstr ""
+msgstr "Редактировать пользователя"
 
 #: mosp/views/user.py:101
 msgid "New API key generated."
-msgstr ""
+msgstr "Создан новый ключ API."
 
 #: mosp/views/user.py:114
 msgid "Account deleted."
-msgstr ""
+msgstr "Учетная запись удалена."
 
 #: mosp/views/user.py:136
 msgid "This user does not exist."
-msgstr ""
+msgstr "Этот пользователь не существует."
 
 #: mosp/views/user.py:153
 msgid "An email with a recovery link has been sent to you."
-msgstr ""
+msgstr "Вам было отправлено электронное письмо со ссылкой для восстановления."
 
 #: mosp/views/user.py:171 mosp/views/user.py:183
 msgid "Impossible to activate this account."
-msgstr ""
+msgstr "Невозможно активировать эту учетную запись."
 
 #: mosp/views/user.py:192
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Ваш пароль был обновлен."
 
 #: mosp/views/user.py:194
 msgid "Password must be the same."
-msgstr ""
+msgstr "Пароль должен быть одинаковым."
 
 #: mosp/views/views.py:17
 msgid "Authentication required."
-msgstr ""
+msgstr "Требуется аутентификация."
 
 #: mosp/views/views.py:23
 msgid "Forbidden."
-msgstr ""
+msgstr "Запрещено."

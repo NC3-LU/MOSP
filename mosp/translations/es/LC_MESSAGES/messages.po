@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-13 14:24+0200\n"
-"PO-Revision-Date: 2021-10-13 14:51+0000\n"
+"PO-Revision-Date: 2021-10-14 07:40+0000\n"
 "Last-Translator: Juan Rocha <juan.rocha@cases.lu>\n"
 "Language-Team: Spanish <https://translate.monarc.lu/projects/mosp/mosp/es/>\n"
 "Language: es\n"
@@ -579,7 +579,7 @@ msgstr "es miembro desde"
 
 #: mosp/templates/user.html:12
 msgid "and is the creator of the following object(s):"
-msgstr "y es el creador de los siguientes objetos:"
+msgstr "y es el creador de los siguientes objeto(s):"
 
 #: mosp/templates/user_schemas.html:6
 msgid "Welcome"
@@ -825,7 +825,7 @@ msgstr "No puedes hacer este cambio a tu propio usuario."
 
 #: mosp/views/admin.py:165
 msgid "User {status}."
-msgstr "Usuario {estado}."
+msgstr "Usuario {status}."
 
 #: mosp/views/admin.py:166
 msgid "activated"
@@ -885,7 +885,7 @@ msgstr "%(object_name)s ha sido eliminado con éxito."
 #: mosp/views/object.py:382
 #, python-format
 msgid "Object <i>%(object_name)s</i> successfully %(action)s."
-msgstr "Objeto < i>%(object_name)s</i> con éxito %(action)s."
+msgstr "Objeto <i>%(object_name)s</i> con éxito %(action)s."
 
 #: mosp/views/schema.py:212
 msgid "Create a schema"
