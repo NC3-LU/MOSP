@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-19 10:38+0200\n"
+"POT-Creation-Date: 2021-10-19 11:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -629,10 +629,6 @@ msgstr ""
 
 #: mosp/templates/organization.html:59 mosp/templates/organization.html:67
 msgid "Organization without membership restriction."
-msgstr ""
-
-#: mosp/templates/organization.html:67
-msgid "rganization without membership restriction."
 msgstr ""
 
 #: mosp/templates/organization.html:95 mosp/templates/organization.html:110
