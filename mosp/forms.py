@@ -147,7 +147,9 @@ class AccountConfirmationForm(RedirectForm):
             validators.Required(lazy_gettext("Please enter your password.")),
             validators.Length(min=20, max=500),
             validators.InputRequired(),
-            validators.EqualTo("password2", message=lazy_gettext("Passwords must match.")),
+            validators.EqualTo(
+                "password2", message=lazy_gettext("Passwords must match.")
+            ),
         ],
     )
     password2 = PasswordField(
@@ -270,7 +272,9 @@ class OrganizationForm(FlaskForm):
     is_membership_restricted = BooleanField(
         lazy_gettext("Restricted membership"),
         default=True,
-        description=lazy_gettext("The membership model of the organization (restricted or not restricted)."),
+        description=lazy_gettext(
+            "The membership model of the organization (restricted or not restricted)."
+        ),
     )
     website = TextField(lazy_gettext("Website"))
     users = SelectMultipleField(
