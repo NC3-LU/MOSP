@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-19 11:41+0200\n"
-"PO-Revision-Date: 2021-10-19 11:42+0200\n"
+"PO-Revision-Date: 2021-10-19 09:46+0000\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: French <https://translate.monarc.lu/projects/mosp/mosp/fr/>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.5.3\n"
 
 #: mosp/forms.py:58 mosp/forms.py:100 mosp/forms.py:132 mosp/forms.py:227
@@ -778,7 +778,7 @@ msgstr "Références entre schémas"
 
 #: mosp/templates/schemas.html:23
 msgid "Double-click on a node to go to the schema page."
-msgstr ""
+msgstr "Double-cliquez sur un nœud pour accéder à la page du schéma."
 
 #: mosp/templates/schemas.html:29
 msgid "List of schemas"
@@ -858,7 +858,7 @@ msgstr "Vous êtes dans aucune organisation."
 
 #: mosp/templates/user_schemas.html:39
 msgid "You can contact the responsible of an"
-msgstr ""
+msgstr "Vous pouvez contacter le responsable d'une"
 
 #: mosp/templates/user_schemas.html:39
 #, fuzzy
@@ -867,16 +867,16 @@ msgstr "Organisation"
 
 #: mosp/templates/user_schemas.html:39
 msgid "or look for an"
-msgstr ""
+msgstr "ou cherchez une"
 
 #: mosp/templates/user_schemas.html:39
 msgid "organization with no membership restriction"
-msgstr ""
+msgstr "organisation sans restriction d'adhésion"
 
 #: mosp/templates/user_schemas.html:40
 msgid ""
 "Being part of an organization is required in order to publish an object."
-msgstr ""
+msgstr "Faire partie d'une organisation est nécessaire pour publier un objet."
 
 #: mosp/templates/view_diff.html:18 mosp/templates/view_diff.html:19
 #: mosp/templates/view_object.html:36
@@ -885,7 +885,7 @@ msgstr "Versions précédentes"
 
 #: mosp/templates/view_diff.html:26 mosp/templates/view_diff.html:29
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: mosp/templates/view_diff.html:34 mosp/templates/view_diff.html:37
 #, fuzzy
@@ -1014,11 +1014,11 @@ msgstr "Liste des utilisateurs connectés au cours de la dernière semaine."
 
 #: mosp/templates/admin/dashboard.html:25
 msgid "Go to the"
-msgstr ""
+msgstr "Allez à la"
 
 #: mosp/templates/admin/dashboard.html:25
 msgid "users management page"
-msgstr ""
+msgstr "page de gestion des utilisateurs"
 
 #: mosp/templates/admin/dashboard.html:27
 msgid "New and updated objects"
