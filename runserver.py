@@ -19,7 +19,6 @@ def register_commands(app):
 with application.app_context():
 
     from mosp import views
-    import mosp.api.v1 as api_v1
     import mosp.api.v2 as api_v2
 
     application.register_blueprint(views.schema_bp)
@@ -33,11 +32,6 @@ with application.app_context():
     application.register_blueprint(views.stats_bp)
     application.register_blueprint(views.collection_bp)
     application.register_blueprint(views.collections_bp)
-
-    # API v1
-    application.register_blueprint(api_v1.blueprint_organization)
-    application.register_blueprint(api_v1.blueprint_schema)
-    application.register_blueprint(api_v1.blueprint_object)
 
     # API v2
     application.register_blueprint(api_v2.apiv2_blueprint)

@@ -30,7 +30,6 @@ analysis.
    
    models
    security-model
-   api-v1
    api-v2
    usage
 

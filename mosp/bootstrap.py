@@ -75,7 +75,6 @@ cors = CORS(
     resources={
         r"/schema/def/*": {"origins": "*"},
         r"/api/v2/*": {"origins": "*"},
-        r"/api/v1/*": {"origins": "*"},
     },
 )
 
