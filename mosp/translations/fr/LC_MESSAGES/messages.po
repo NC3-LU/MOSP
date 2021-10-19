@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-19 11:41+0200\n"
-"PO-Revision-Date: 2021-10-19 09:46+0000\n"
+"PO-Revision-Date: 2021-10-19 12:48+0200\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: French <https://translate.monarc.lu/projects/mosp/mosp/fr/>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Poedit 2.4.2\n"
 "Generated-By: Babel 2.5.3\n"
 
 #: mosp/forms.py:58 mosp/forms.py:100 mosp/forms.py:132 mosp/forms.py:227
@@ -1227,59 +1227,3 @@ msgstr "Authentification requise."
 #: mosp/views/views.py:23
 msgid "Forbidden."
 msgstr "Interdit."
-
-#: mosp/templates/organization.html:67
-msgid "rganization without membership restriction."
-msgstr ""
-
-#~ msgid "Recently updated objects"
-#~ msgstr "Objets récemment mis à jour"
-
-#~ msgid "Public profile"
-#~ msgstr "Profil public"
-
-#~ msgid ""
-#~ "See the <a href=\"{{ url_for(\"user_bp.get\", login=user."
-#~ "login) }}\">objects</a> you already created."
-#~ msgstr ""
-#~ "Voir les \"<a href=\"{{ url_for('user_bp.get', login=user."
-#~ "login) }}\">objets</a>\" que vous avez déjà créé."
-
-#~ msgid "The whole object"
-#~ msgstr "Tout l'objet"
-
-#~ msgid "To CSV"
-#~ msgstr "En CSV"
-
-#~ msgid "To JSON"
-#~ msgstr "En JSON"
-
-#~ msgid "Public object"
-#~ msgstr "Objet public"
-
-#~ msgid "Visibility"
-#~ msgstr "Visibilité"
-
-#~ msgid "Public"
-#~ msgstr "Public"
-
-#~ msgid "Private"
-#~ msgstr "Privé"
-
-#~ msgid "SHA 256 footprint"
-#~ msgstr "Empreinte SHA 256"
-
-#~ msgid "Export only values"
-#~ msgstr "Exporter uniquement les valeurs"
-
-#~ msgid "View"
-#~ msgstr "Afficher"
-
-#~ msgid "Administration"
-#~ msgstr "Administration"
-
-#~ msgid "Data"
-#~ msgstr "Données"
-
-#~ msgid "You are going to delete this account."
-#~ msgstr "Vous allez supprimer ce compte."
