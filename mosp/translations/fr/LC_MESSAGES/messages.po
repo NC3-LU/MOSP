@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-19 11:41+0200\n"
-"PO-Revision-Date: 2021-10-19 12:48+0200\n"
+"PO-Revision-Date: 2021-10-19 11:12+0000\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: French <https://translate.monarc.lu/projects/mosp/mosp/fr/>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.5.3\n"
 
 #: mosp/forms.py:58 mosp/forms.py:100 mosp/forms.py:132 mosp/forms.py:227
@@ -60,9 +60,8 @@ msgid "Sign up"
 msgstr "S'inscrire"
 
 #: mosp/forms.py:115
-#, fuzzy
 msgid "Login already taken"
-msgstr "que vous avez déjà créé."
+msgstr "Nom de connexion déjà utilisé"
 
 #: mosp/forms.py:119
 msgid ""
@@ -77,9 +76,8 @@ msgid "OK"
 msgstr "OK"
 
 #: mosp/forms.py:150
-#, fuzzy
 msgid "Passwords must match."
-msgstr "Le mot de passe doit être identique."
+msgstr "Les mots de passe doivent correspondre."
 
 #: mosp/forms.py:156
 msgid "Please confirm your password."
@@ -194,9 +192,8 @@ msgid "Members"
 msgstr "Membres"
 
 #: mosp/forms.py:279
-#, fuzzy
 msgid "The members part of the organization."
-msgstr "Nombre d'organisations"
+msgstr "Membres faisant partie de l'organisation."
 
 #: mosp/templates/about.html:14
 msgid ""
@@ -406,9 +403,8 @@ msgid "API key copied to your clipboard."
 msgstr "Clé API copiée dans votre presse-papiers."
 
 #: mosp/templates/help.html:8
-#, fuzzy
 msgid "Documentation"
-msgstr "Définition"
+msgstr "Documentation"
 
 #: mosp/templates/help.html:10
 msgid ""
@@ -451,9 +447,8 @@ msgstr ""
 "\"_blank\">PyMOSP</a>, une librairie Python pour accéder à MOSP."
 
 #: mosp/templates/help.html:21
-#, fuzzy
 msgid "Contributions"
-msgstr "Contributions récentes"
+msgstr "Contributions"
 
 #: mosp/templates/help.html:22
 msgid ""
@@ -508,9 +503,8 @@ msgid "items are currently available through"
 msgstr "articles sont actuellement disponibles au travers"
 
 #: mosp/templates/index.html:21
-#, fuzzy
 msgid "organizations"
-msgstr "Organisations"
+msgstr "organisations"
 
 #: mosp/templates/index.html:24
 msgid "Learn more"
@@ -614,14 +608,12 @@ msgid "restore"
 msgstr "restaurer"
 
 #: mosp/templates/list_versions.html:31 mosp/templates/view_version.html:49
-#, fuzzy
 msgid "Restore the version"
-msgstr "Restaurer cette version"
+msgstr "Restaurer la version"
 
 #: mosp/templates/list_versions.html:37 mosp/templates/view_version.html:55
-#, fuzzy
 msgid "Restore the version ?"
-msgstr "Restaurer cette version"
+msgstr "Restaurer la version ?"
 
 #: mosp/templates/list_versions.html:40 mosp/templates/organization.html:17
 #: mosp/templates/organization.html:37 mosp/templates/view_version.html:58
@@ -645,42 +637,36 @@ msgid "Register"
 msgstr "S'inscrire"
 
 #: mosp/templates/login.html:27
-#, fuzzy
 msgid "Forgot your password?"
-msgstr "Votre mot de passe"
+msgstr "Mot de passe oublié ?"
 
 #: mosp/templates/organization.html:8
-#, fuzzy
 msgid "Join an organization"
-msgstr "Organisation propriétaire"
+msgstr "Rejoindre une organisation"
 
 #: mosp/templates/organization.html:14
-#, fuzzy
 msgid "Do you want to join this organization ?"
-msgstr "Créer un nouveau schéma dans cette organisation"
+msgstr "Vous souhaitez rejoindre cette organisation ?"
 
 #: mosp/templates/organization.html:18
 msgid "Join"
 msgstr "Rejoindre"
 
 #: mosp/templates/organization.html:28
-#, fuzzy
 msgid "Leave the organization"
-msgstr "Créer une nouvelle organisation"
+msgstr "Quitter l'organisation"
 
 #: mosp/templates/organization.html:34
-#, fuzzy
 msgid "Do you want to leave this organization ?"
-msgstr "Créer un nouveau schéma dans cette organisation"
+msgstr "Vous souhaitez quitter cette organisation ?"
 
 #: mosp/templates/organization.html:38
 msgid "Leave"
 msgstr "Quitter"
 
 #: mosp/templates/organization.html:53
-#, fuzzy
 msgid "Leave this organization."
-msgstr "Vous êtes dans aucune organisation."
+msgstr "Quittez cette organisation."
 
 #: mosp/templates/organization.html:59 mosp/templates/organization.html:67
 msgid "Organization without membership restriction."
@@ -740,9 +726,8 @@ msgid "Provided by"
 msgstr "Fourni par"
 
 #: mosp/templates/schema.html:51
-#, fuzzy
 msgid "Search on the properties of the objects"
-msgstr "Éditez la définition de l'objet"
+msgstr "Recherche sur les propriétés des objets"
 
 #: mosp/templates/schema.html:80
 msgid "Objects validated by the schema"
@@ -861,9 +846,8 @@ msgid "You can contact the responsible of an"
 msgstr "Vous pouvez contacter le responsable d'une"
 
 #: mosp/templates/user_schemas.html:39
-#, fuzzy
 msgid "organization"
-msgstr "Organisation"
+msgstr "organisation"
 
 #: mosp/templates/user_schemas.html:39
 msgid "or look for an"
@@ -888,9 +872,8 @@ msgid "Date"
 msgstr "Date"
 
 #: mosp/templates/view_diff.html:34 mosp/templates/view_diff.html:37
-#, fuzzy
 msgid "Editor"
-msgstr "Éditer"
+msgstr "Éditeur"
 
 #: mosp/templates/view_object.html:18
 msgid "Edit the object"
