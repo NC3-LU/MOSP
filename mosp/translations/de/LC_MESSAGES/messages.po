@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-19 11:41+0200\n"
-"PO-Revision-Date: 2021-10-19 12:47+0200\n"
+"PO-Revision-Date: 2021-10-19 11:12+0000\n"
 "Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: German <https://translate.monarc.lu/projects/mosp/mosp/de/>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: mosp/forms.py:58 mosp/forms.py:100 mosp/forms.py:132 mosp/forms.py:227
@@ -60,10 +60,8 @@ msgid "Sign up"
 msgstr "Anmelden"
 
 #: mosp/forms.py:115
-#, fuzzy
-#| msgid "you already created."
 msgid "Login already taken"
-msgstr "die Sie bereits erstellt haben."
+msgstr "Anmeldung bereits erfolgt"
 
 #: mosp/forms.py:119
 msgid ""
@@ -78,10 +76,8 @@ msgid "OK"
 msgstr "OK"
 
 #: mosp/forms.py:150
-#, fuzzy
-#| msgid "Password must be the same."
 msgid "Passwords must match."
-msgstr "Das Passwort muss dasselbe sein."
+msgstr "Passwörter müssen übereinstimmen."
 
 #: mosp/forms.py:156
 msgid "Please confirm your password."
@@ -185,6 +181,8 @@ msgstr "Eingeschränkte Mitgliedschaft"
 msgid ""
 "The membership model of the organization (restricted or not restricted)."
 msgstr ""
+"Das Mitgliedschaftsmodell der Organisation (eingeschränkt oder nicht "
+"eingeschränkt)."
 
 #: mosp/forms.py:275 mosp/templates/admin/organizations.html:11
 #: mosp/templates/organization.html:83
@@ -196,10 +194,8 @@ msgid "Members"
 msgstr "Mitglieder"
 
 #: mosp/forms.py:279
-#, fuzzy
-#| msgid "Number of organizations"
 msgid "The members part of the organization."
-msgstr "Anzahl der Organisationen"
+msgstr "Mitglieder sind Teil der Organisation."
 
 #: mosp/templates/about.html:14
 msgid ""
@@ -351,6 +347,8 @@ msgstr "Eine neue Sammlung erstellen"
 #: mosp/templates/edit_collection.html:23
 msgid "Type to filter objects from the list to be added in the collection"
 msgstr ""
+"Geben Sie ein, um Objekte aus der Liste zu filtern, die der Sammlung "
+"hinzugefügt werden sollen"
 
 #: mosp/templates/edit_collection.html:26
 msgid "Add to the collection"
@@ -411,10 +409,8 @@ msgid "API key copied to your clipboard."
 msgstr "API-Schlüssel in Ihre Zwischenablage kopiert."
 
 #: mosp/templates/help.html:8
-#, fuzzy
-#| msgid "Definition"
 msgid "Documentation"
-msgstr "Definition"
+msgstr "Dokumentation"
 
 #: mosp/templates/help.html:10
 msgid ""
@@ -422,6 +418,9 @@ msgid ""
 "\"noopener noreferrer\" target=\"_blank\">user guide</a> guide is available "
 "on the MONARC website."
 msgstr ""
+"Ein <a href=\"https://www.monarc.lu/documentation/MOSP-documentation\" rel="
+"\"noopener noreferrer\" target=\"_blank\">Benutzerhandbuch</a> ist auf der "
+"MONARC-Website verfügbar."
 
 #: mosp/templates/help.html:13
 msgid ""
@@ -433,11 +432,11 @@ msgstr ""
 
 #: mosp/templates/help.html:17
 msgid "The OpenAPI Specification for the API v2 is available"
-msgstr ""
+msgstr "Die OpenAPI-Spezifikation für die API v2 ist verfügbar"
 
 #: mosp/templates/help.html:17
 msgid "here"
-msgstr ""
+msgstr "Hier"
 
 #: mosp/templates/help.html:18
 msgid ""
@@ -447,10 +446,8 @@ msgid ""
 msgstr ""
 
 #: mosp/templates/help.html:21
-#, fuzzy
-#| msgid "Recent contributions"
 msgid "Contributions"
-msgstr "Jüngste Beiträge"
+msgstr "Beiträge"
 
 #: mosp/templates/help.html:22
 msgid ""
@@ -460,11 +457,11 @@ msgstr ""
 
 #: mosp/templates/help.html:24
 msgid "Bug reports"
-msgstr ""
+msgstr "Fehlerberichte"
 
 #: mosp/templates/help.html:25
 msgid "New feature requests"
-msgstr ""
+msgstr "Neue Funktionsanfragen"
 
 #: mosp/templates/help.html:26
 msgid ""
@@ -488,17 +485,15 @@ msgstr ""
 
 #: mosp/templates/index.html:20
 msgid "items are currently available through"
-msgstr ""
+msgstr "Artikel sind derzeit erhältlich über"
 
 #: mosp/templates/index.html:21
-#, fuzzy
-#| msgid "Organizations"
 msgid "organizations"
 msgstr "Organisationen"
 
 #: mosp/templates/index.html:24
 msgid "Learn more"
-msgstr ""
+msgstr "Mehr erfahren"
 
 #: mosp/templates/index.html:28
 msgid "Recent contributions"
@@ -511,7 +506,7 @@ msgstr "Aktualisierte Objekte"
 #: mosp/templates/index.html:34 mosp/templates/index.html:42
 #: mosp/templates/index.html:48
 msgid "Loading..."
-msgstr ""
+msgstr "Wird geladen..."
 
 #: mosp/templates/index.html:39
 msgid "Updated schemas"
@@ -579,44 +574,40 @@ msgstr "Bedingungen"
 
 #: mosp/templates/list_objects.html:10
 msgid "Objects with UUID"
-msgstr ""
+msgstr "Objekte mit UUID"
 
 #: mosp/templates/list_versions.html:6
 msgid "Revision history"
-msgstr ""
+msgstr "Revisionshistorie"
 
 #: mosp/templates/list_versions.html:12
 msgid "Object created by"
-msgstr ""
+msgstr "Objekt erstellt von"
 
 #: mosp/templates/list_versions.html:18 mosp/templates/list_versions.html:21
 msgid "consult"
-msgstr ""
+msgstr "konsultieren"
 
 #: mosp/templates/list_versions.html:22
 msgid "restore"
-msgstr ""
+msgstr "wiederherstellen"
 
 #: mosp/templates/list_versions.html:31 mosp/templates/view_version.html:49
-#, fuzzy
-#| msgid "Restore this version"
 msgid "Restore the version"
-msgstr "Diese Version wiederherstellen"
+msgstr "Stellen Sie die Version wieder her"
 
 #: mosp/templates/list_versions.html:37 mosp/templates/view_version.html:55
-#, fuzzy
-#| msgid "Restore this version"
 msgid "Restore the version ?"
-msgstr "Diese Version wiederherstellen"
+msgstr "Version wiederherstellen?"
 
 #: mosp/templates/list_versions.html:40 mosp/templates/organization.html:17
 #: mosp/templates/organization.html:37 mosp/templates/view_version.html:58
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: mosp/templates/list_versions.html:41 mosp/templates/view_version.html:59
 msgid "Restore"
-msgstr ""
+msgstr "Wiederherstellen"
 
 #: mosp/templates/login.html:10 mosp/templates/signup.html:10
 msgid "Your login"
@@ -628,55 +619,43 @@ msgstr "Ihr Passwort"
 
 #: mosp/templates/login.html:26 mosp/templates/signup.html:6
 msgid "Register"
-msgstr "Register"
+msgstr "Registrieren"
 
 #: mosp/templates/login.html:27
-#, fuzzy
-#| msgid "Your password"
 msgid "Forgot your password?"
-msgstr "Ihr Passwort"
+msgstr "Passwort vergessen?"
 
 #: mosp/templates/organization.html:8
-#, fuzzy
-#| msgid "Owning organization"
 msgid "Join an organization"
-msgstr "Besitzende Organisation"
+msgstr "Treten Sie einer Organisation bei"
 
 #: mosp/templates/organization.html:14
-#, fuzzy
-#| msgid "Add a new schema in this organization"
 msgid "Do you want to join this organization ?"
-msgstr "Ein neues Schema in dieser Organisation hinzufügen"
+msgstr "Möchten Sie dieser Organisation beitreten?"
 
 #: mosp/templates/organization.html:18
 msgid "Join"
-msgstr ""
+msgstr "Verbinden"
 
 #: mosp/templates/organization.html:28
-#, fuzzy
-#| msgid "Add a new organization"
 msgid "Leave the organization"
-msgstr "Eine neue Organisation hinzufügen"
+msgstr "Verlassen Sie die Organisation"
 
 #: mosp/templates/organization.html:34
-#, fuzzy
-#| msgid "Add a new schema in this organization"
 msgid "Do you want to leave this organization ?"
-msgstr "Ein neues Schema in dieser Organisation hinzufügen"
+msgstr "Möchten Sie diese Organisation verlassen?"
 
 #: mosp/templates/organization.html:38
 msgid "Leave"
-msgstr ""
+msgstr "Verlassen"
 
 #: mosp/templates/organization.html:53
-#, fuzzy
-#| msgid "You are in no organization."
 msgid "Leave this organization."
-msgstr "Sie sind in keiner Organisation."
+msgstr "Verlassen Sie diese Organisation."
 
 #: mosp/templates/organization.html:59 mosp/templates/organization.html:67
 msgid "Organization without membership restriction."
-msgstr ""
+msgstr "Organisation ohne Mitgliedschaftsbeschränkung."
 
 #: mosp/templates/organization.html:95 mosp/templates/organization.html:110
 msgid "Shared JSON objects"
@@ -732,10 +711,8 @@ msgid "Provided by"
 msgstr "Zur Verfügung gestellt von"
 
 #: mosp/templates/schema.html:51
-#, fuzzy
-#| msgid "Edit the definition of the object"
 msgid "Search on the properties of the objects"
-msgstr "Bearbeiten Sie die Definition des Objekts"
+msgstr "Suche in den Eigenschaften der Objekte"
 
 #: mosp/templates/schema.html:80
 msgid "Objects validated by the schema"
@@ -771,7 +748,7 @@ msgstr "Referenzen zwischen Schemata"
 
 #: mosp/templates/schemas.html:23
 msgid "Double-click on a node to go to the schema page."
-msgstr ""
+msgstr "Doppelklicken Sie auf einen Knoten, um zur Schemaseite zu gelangen."
 
 #: mosp/templates/schemas.html:29
 msgid "List of schemas"
@@ -851,26 +828,26 @@ msgstr "Sie sind in keiner Organisation."
 
 #: mosp/templates/user_schemas.html:39
 msgid "You can contact the responsible of an"
-msgstr ""
+msgstr "Sie können sich an den Verantwortlichen eines"
 
 #: mosp/templates/user_schemas.html:39
-#, fuzzy
-#| msgid "Organization"
 msgid "organization"
 msgstr "Organisation"
 
 #: mosp/templates/user_schemas.html:39
 msgid "or look for an"
-msgstr ""
+msgstr "oder suche nach einem"
 
 #: mosp/templates/user_schemas.html:39
 msgid "organization with no membership restriction"
-msgstr ""
+msgstr "Organisation ohne Mitgliedschaftsbeschränkung"
 
 #: mosp/templates/user_schemas.html:40
 msgid ""
 "Being part of an organization is required in order to publish an object."
 msgstr ""
+"Um ein Objekt zu veröffentlichen, ist es erforderlich, Teil einer "
+"Organisation zu sein."
 
 #: mosp/templates/view_diff.html:18 mosp/templates/view_diff.html:19
 #: mosp/templates/view_object.html:36
@@ -879,13 +856,11 @@ msgstr "Frühere Versionen"
 
 #: mosp/templates/view_diff.html:26 mosp/templates/view_diff.html:29
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: mosp/templates/view_diff.html:34 mosp/templates/view_diff.html:37
-#, fuzzy
-#| msgid "Edit"
 msgid "Editor"
-msgstr "bearbeiten"
+msgstr "Editor"
 
 #: mosp/templates/view_object.html:18
 msgid "Edit the object"
@@ -1009,11 +984,11 @@ msgstr "Liste der Benutzer, die in der letzten Woche verbunden waren."
 
 #: mosp/templates/admin/dashboard.html:25
 msgid "Go to the"
-msgstr ""
+msgstr "Gehe zum"
 
 #: mosp/templates/admin/dashboard.html:25
 msgid "users management page"
-msgstr ""
+msgstr "Benutzerverwaltungsseite"
 
 #: mosp/templates/admin/dashboard.html:27
 msgid "New and updated objects"
