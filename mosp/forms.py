@@ -112,7 +112,7 @@ class SignupForm(FlaskForm):
     def validate(self):
         validated = super().validate()
         if User.query.filter(User.login == self.login.data).count():
-            self.login.errors.append("Login already taken")
+            self.login.errors.append(lazy_gettext("Login already taken"))
             validated = False
         if self.login.data != User.make_valid_login(self.login.data):
             self.login.errors.append(
@@ -147,7 +147,7 @@ class AccountConfirmationForm(RedirectForm):
             validators.Required(lazy_gettext("Please enter your password.")),
             validators.Length(min=20, max=500),
             validators.InputRequired(),
-            validators.EqualTo("password2", message="Passwords must match."),
+            validators.EqualTo("password2", message=lazy_gettext("Passwords must match.")),
         ],
     )
     password2 = PasswordField(
@@ -270,13 +270,13 @@ class OrganizationForm(FlaskForm):
     is_membership_restricted = BooleanField(
         lazy_gettext("Restricted membership"),
         default=True,
-        description="The membership model of the organization (restricted or not restricted).",
+        description=lazy_gettext("The membership model of the organization (restricted or not restricted)."),
     )
     website = TextField(lazy_gettext("Website"))
     users = SelectMultipleField(
         lazy_gettext("Members"),
         coerce=int,
-        description="The members part of the organization.",
+        description=lazy_gettext("The members part of the organization."),
     )
     submit = SubmitField(lazy_gettext("Save"))
 
@@ -305,8 +305,8 @@ class ProfileForm(FlaskForm):
     email = EmailField(
         "Email",
         [
-            InputRequired("Please enter your email address."),
-            Email("Please enter your email address."),
+            InputRequired(lazy_gettext("Please enter your email address.")),
+            Email(lazy_gettext("Please enter your email address.")),
         ],
     )
     submit = SubmitField(lazy_gettext("Save"))

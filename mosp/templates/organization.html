@@ -5,17 +5,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="MOSPModalJoinOrg">Join an organization</h5>
+        <h5 class="modal-title" id="MOSPModalJoinOrg">{{ _('Join an organization') }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Do you want to join this organization ?
+        {{ _('Do you want to join this organization ?') }}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="MOSPModalClose">Close</button>
-        <button type="button" class="btn btn-primary" id="MOSPModalOK">Join</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="MOSPModalClose">{{ _('Close') }}</button>
+        <button type="button" class="btn btn-primary" id="MOSPModalOK">{{ _('Join') }}</button>
       </div>
     </div>
   </div>
@@ -25,212 +25,212 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="MOSPModalLeaveOrg">Leave the organization</h5>
+        <h5 class="modal-title" id="MOSPModalLeaveOrg">{{ _('Leave the organization') }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Do you want to leave this organization ?
+        {{ _('Do you want to leave this organization ?') }}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="MOSPModalLeaveClose">Close</button>
-        <button type="button" class="btn btn-primary" id="MOSPModalLeaveOK">Leave</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="MOSPModalLeaveClose">{{ _('Close') }}</button>
+        <button type="button" class="btn btn-primary" id="MOSPModalLeaveOK">{{ _('Leave') }}</button>
       </div>
     </div>
   </div>
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <h3 class="text-primary">{{ organization.name }}</h3>
+  <div class="row">
+    <div class="col">
+      <h3 class="text-primary">{{ organization.name }}</h3>
+    </div>
+    {% if current_user.is_authenticated %}
+    {% if current_user.is_organization_member(organization.id) %}
+    <div class="col text-right">
+      <h3><a id="leave-org" href="#">
+        <i class="fa fa-user-times" aria-hidden="true" title="Leave this organization." aria-label="{{ _('Leave this organization.') }}"></i>
+      </a></h3>
+    </div>
+    {% elif not organization.is_membership_restricted %}
+    <div class="col text-right">
+      <h3><a id="join-org" href="#">
+        <i class="fa fa-users" aria-hidden="true" title="{{ _('Organization without membership restriction.') }}" aria-label="{{ _('Organization without membership restriction.') }}"></i>
+      </a></h3>
+    </div>
+    {% endif %}
+    {% else %}
+    {% if not organization.is_membership_restricted %}
+    <div class="col text-right">
+      <h3>
+        <i class="fa fa-users" aria-hidden="true" title="{{ _('Organization without membership restriction.') }}" aria-label="O{{ _('rganization without membership restriction.') }}"></i>
+        <h3>
         </div>
-        {% if current_user.is_authenticated %}
-            {% if current_user.is_organization_member(organization.id) %}
-            <div class="col text-right">
-                <h3><a id="leave-org" href="#">
-                    <i class="fa fa-user-times" aria-hidden="true" title="Leave this organization." aria-label="Leave this organization."></i>
-                </a></h3>
-            </div>
-            {% elif not organization.is_membership_restricted %}
-            <div class="col text-right">
-                <h3><a id="join-org" href="#">
-                    <i class="fa fa-users" aria-hidden="true" title="Organization without membership restriction." aria-label="Organization without membership restriction."></i>
-                </a></h3>
-            </div>
-            {% endif %}
-        {% else %}
-            {% if not organization.is_membership_restricted %}
-            <div class="col text-right">
-                <h3>
-                    <i class="fa fa-users" aria-hidden="true" title="Organization without membership restriction." aria-label="Organization without membership restriction."></i>
-                <h3>
-            </div>
-            {% endif %}
         {% endif %}
-    </div>
-    <div class="row">
+        {% endif %}
+      </div>
+      <div class="row">
         <div class="col-md-3">
-            <b>{{ _('Description') }}</b>
+          <b>{{ _('Description') }}</b>
         </div>
         <div class="col-md-9">
-            {{ organization.description }}
+          {{ organization.description }}
         </div>
-    </div>
-    <div class="row">
+      </div>
+      <div class="row">
         <div class="col-md-3">
-            <b>{{ _('Website') }}</b>
+          <b>{{ _('Website') }}</b>
         </div>
         <div class="col-md-9">
-            <a href="{{ organization.website }}">{{ organization.website }}</a>
+          <a href="{{ organization.website }}">{{ organization.website }}</a>
         </div>
-    </div>
-    <div class="row">
+      </div>
+      <div class="row">
         <div class="col">
-            {{ organization.users | count }} member{{ 's' if organization.users | count > 1 }}
+          {{ organization.users | count }} member{{ 's' if organization.users | count > 1 }}
         </div>
-    </div>
-    <br />
-    <h4>{{ _('Shared JSON objects') }}</h4>
-    <div class="row">
+      </div>
+      <br />
+      <h4>{{ _('Shared JSON objects') }}</h4>
+      <div class="row">
         <div class="col">
-            {{ pagination_objects.links }}
+          {{ pagination_objects.links }}
         </div>
-    </div>
-    <div class="row">
+      </div>
+      <div class="row">
         <div class="col">
-            {{ pagination_objects.info }}
+          {{ pagination_objects.info }}
         </div>
-    </div>
-    <div class="row">
+      </div>
+      <div class="row">
         <div class="col">
-            <div class="table-responsive-md">
-                <table id="table-objects" class="table table-hover">
-                    <caption>{{ _('Shared JSON objects') }}</caption>
-                    <thead>
-                        <tr>
-                            <th>{{ _('id') }}</th>
-                            <th>{{ _('Name') }}</th>
-                            <th>{{ _('Validating JSON schema') }}</th>
-                            <th>{{ _('Last updated') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for object in objects %}
-                        <tr>
-                            <td scope="row">{{ object.id }}</td>
-                            <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
-                            <td>{{ object.schema.name }}</td>
-                            <td class="date">{{ object.last_updated | datetime }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+          <div class="table-responsive-md">
+            <table id="table-objects" class="table table-hover">
+              <caption>{{ _('Shared JSON objects') }}</caption>
+              <thead>
+                <tr>
+                  <th>{{ _('id') }}</th>
+                  <th>{{ _('Name') }}</th>
+                  <th>{{ _('Validating JSON schema') }}</th>
+                  <th>{{ _('Last updated') }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for object in objects %}
+                <tr>
+                  <td scope="row">{{ object.id }}</td>
+                  <td><a href="{{ url_for('object_bp.view', object_id=object.id) }}">{{ object.name  }}</a></td>
+                  <td>{{ object.schema.name }}</td>
+                  <td class="date">{{ object.last_updated | datetime }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
-    </div>
-    <br /><hr /><br />
-    <div class="row">
+      </div>
+      <br /><hr /><br />
+      <div class="row">
         <div class="col">
-            {{ pagination_schemas.links }}
+          {{ pagination_schemas.links }}
         </div>
-    </div>
-    <div class="row">
+      </div>
+      <div class="row">
         <div class="col">
-            {{ pagination_schemas.info }}
+          {{ pagination_schemas.info }}
         </div>
-    </div>
-    <div class="row">
+      </div>
+      <div class="row">
         <div class="col">
-            <h4>{{ _('Shared JSON schemas') }}</h4>
-            <div class="table-responsive-md">
-                <table id="table-schemas" class="table table-hover">
-                    <caption>{{ _('Shared JSON schemas') }}</caption>
-                    <thead>
-                        <tr>
-                            <th>{{ _('id') }}</th>
-                            <th>{{ _('Name') }}</th>
-                            <th>{{ _('# of objects validated by the schema') }}</th>
-                            <th>{{ _('Last updated') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for schema in schemas %}
-                        <tr>
-                            <td scope="row">{{ schema.id }}</td>
-                            <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
-                            <td align="center">{{ schema.objects.count() }}</td>
-                            <td class="date">{{ schema.last_updated | datetime }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+          <h4>{{ _('Shared JSON schemas') }}</h4>
+          <div class="table-responsive-md">
+            <table id="table-schemas" class="table table-hover">
+              <caption>{{ _('Shared JSON schemas') }}</caption>
+              <thead>
+                <tr>
+                  <th>{{ _('id') }}</th>
+                  <th>{{ _('Name') }}</th>
+                  <th>{{ _('# of objects validated by the schema') }}</th>
+                  <th>{{ _('Last updated') }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for schema in schemas %}
+                <tr>
+                  <td scope="row">{{ schema.id }}</td>
+                  <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
+                  <td align="center">{{ schema.objects.count() }}</td>
+                  <td class="date">{{ schema.last_updated | datetime }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    $('#table-schemas').DataTable( {
-        responsive: true,
-        paging: false,
-        info: false,
-        searching: false,
-        order: [[2, "desc"]],
-        columnDefs: [
-            {
-                bSortable: false,
-                targets: [0]
-            }
-        ]
-    });
-    $('#table-objects').DataTable( {
-        responsive: true,
-        paging: false,
-        info: false,
-        searching: false,
-        order: [[3, "desc"]],
-        columnDefs: [
-            {
-                bSortable: false,
-                targets: [0]
-            }
-        ]
-    });
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        $('#table-schemas').DataTable( {
+          responsive: true,
+          paging: false,
+          info: false,
+          searching: false,
+          order: [[2, "desc"]],
+          columnDefs: [
+          {
+            bSortable: false,
+            targets: [0]
+          }
+          ]
+        });
+        $('#table-objects').DataTable( {
+          responsive: true,
+          paging: false,
+          info: false,
+          searching: false,
+          order: [[3, "desc"]],
+          columnDefs: [
+          {
+            bSortable: false,
+            targets: [0]
+          }
+          ]
+        });
 
-    var MOSPModal = new bootstrap.Modal(document.getElementById('MOSPModal'), {
-        keyboard: false
-    })
+        var MOSPModal = new bootstrap.Modal(document.getElementById('MOSPModal'), {
+          keyboard: false
+        })
 
-    var MOSPModalLeave = new bootstrap.Modal(document.getElementById('MOSPModalLeave'), {
-        keyboard: false
-    })
+        var MOSPModalLeave = new bootstrap.Modal(document.getElementById('MOSPModalLeave'), {
+          keyboard: false
+        })
 
-    document.getElementById("MOSPModalOK").onclick = function(){
-      window.location = "{{ url_for('organization_bp.join', org_id=organization.id) }}";
-    };
+        document.getElementById("MOSPModalOK").onclick = function(){
+          window.location = "{{ url_for('organization_bp.join', org_id=organization.id) }}";
+        };
 
-    document.getElementById("MOSPModalLeaveOK").onclick = function(){
-      window.location = "{{ url_for('organization_bp.leave', org_id=organization.id) }}";
-    };
+        document.getElementById("MOSPModalLeaveOK").onclick = function(){
+          window.location = "{{ url_for('organization_bp.leave', org_id=organization.id) }}";
+        };
 
-    document.getElementById("MOSPModalClose").onclick = function(){};
-    document.getElementById("MOSPModalLeaveClose").onclick = function(){};
+        document.getElementById("MOSPModalClose").onclick = function(){};
+        document.getElementById("MOSPModalLeaveClose").onclick = function(){};
 
-    var elementJoin = document.getElementById('join-org');
-    if (elementJoin != null) {
-        elementJoin.onclick = function(){
+        var elementJoin = document.getElementById('join-org');
+        if (elementJoin != null) {
+          elementJoin.onclick = function(){
             MOSPModal.show();
-        };
-    }
+          };
+        }
 
-    var elementLeave = document.getElementById('leave-org');
-    if (elementLeave != null) {
-        elementLeave.onclick = function(){
+        var elementLeave = document.getElementById('leave-org');
+        if (elementLeave != null) {
+          elementLeave.onclick = function(){
             MOSPModalLeave.show();
-        };
-    }
-});
-</script>
-{% endblock %}
+          };
+        }
+      });
+    </script>
+    {% endblock %}

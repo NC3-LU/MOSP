@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-13 14:24+0200\n"
+"POT-Creation-Date: 2021-10-19 10:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,12 +49,16 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: mosp/forms.py:107
+#: mosp/forms.py:107 mosp/forms.py:308 mosp/forms.py:309
 msgid "Please enter your email address."
 msgstr ""
 
 #: mosp/forms.py:110
 msgid "Sign up"
+msgstr ""
+
+#: mosp/forms.py:115
+msgid "Login already taken"
 msgstr ""
 
 #: mosp/forms.py:119
@@ -67,6 +71,10 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
+#: mosp/forms.py:150
+msgid "Passwords must match."
+msgstr ""
+
 #: mosp/forms.py:156
 msgid "Please confirm your password."
 msgstr ""
@@ -77,7 +85,8 @@ msgstr ""
 
 #: mosp/forms.py:168 mosp/forms.py:206 mosp/forms.py:266 mosp/forms.py:326
 #: mosp/templates/collection.html:41 mosp/templates/organization.html:75
-#: mosp/templates/schema.html:31 mosp/templates/view_object.html:75
+#: mosp/templates/schema.html:31 mosp/templates/view_diff.html:50
+#: mosp/templates/view_diff.html:53 mosp/templates/view_object.html:75
 #: mosp/templates/view_version.html:22
 msgid "Description"
 msgstr ""
@@ -147,7 +156,8 @@ msgstr ""
 #: mosp/templates/admin/dashboard.html:88
 #: mosp/templates/admin/organizations.html:10 mosp/templates/collection.html:88
 #: mosp/templates/organization.html:114 mosp/templates/organization.html:153
-#: mosp/templates/schema.html:84 mosp/templates/view_version.html:14
+#: mosp/templates/schema.html:84 mosp/templates/view_diff.html:42
+#: mosp/templates/view_diff.html:45 mosp/templates/view_version.html:14
 msgid "Name"
 msgstr ""
 
@@ -163,6 +173,10 @@ msgstr ""
 msgid "Restricted membership"
 msgstr ""
 
+#: mosp/forms.py:273
+msgid "The membership model of the organization (restricted or not restricted)."
+msgstr ""
+
 #: mosp/forms.py:275 mosp/templates/admin/organizations.html:11
 #: mosp/templates/organization.html:83
 msgid "Website"
@@ -170,6 +184,10 @@ msgstr ""
 
 #: mosp/forms.py:277 mosp/templates/admin/organizations.html:12
 msgid "Members"
+msgstr ""
+
+#: mosp/forms.py:279
+msgid "The members part of the organization."
 msgstr ""
 
 #: mosp/templates/about.html:14
@@ -305,6 +323,10 @@ msgstr ""
 msgid "Create a new collection"
 msgstr ""
 
+#: mosp/templates/edit_collection.html:23
+msgid "Type to filter objects from the list to be added in the collection"
+msgstr ""
+
 #: mosp/templates/edit_collection.html:26
 msgid "Add to the collection"
 msgstr ""
@@ -360,12 +382,104 @@ msgstr ""
 msgid "API key copied to your clipboard."
 msgstr ""
 
+#: mosp/templates/help.html:8
+msgid "Documentation"
+msgstr ""
+
+#: mosp/templates/help.html:10
+msgid ""
+"A <a href=\"https://www.monarc.lu/documentation/MOSP-documentation\" "
+"rel=\"noopener noreferrer\" target=\"_blank\">user guide</a> guide is "
+"available on the MONARC website."
+msgstr ""
+
+#: mosp/templates/help.html:13
+msgid ""
+"A more technical documentation with instructions concerning the "
+"deployment of MOSP is available\n"
+"                    in the <a href=\"https://github.com/CASES-LU/MOSP\" "
+"rel=\"noopener noreferrer\" target=\"_blank\">official repository</a>."
+msgstr ""
+
+#: mosp/templates/help.html:17
+msgid "The OpenAPI Specification for the API v2 is available"
+msgstr ""
+
+#: mosp/templates/help.html:17
+msgid "here"
+msgstr ""
+
+#: mosp/templates/help.html:18
+msgid ""
+"If you want to query MOSP programmatically you can use <a "
+"href=\"https://pypi.org/project/pymosp\"  rel=\"noopener noreferrer\" "
+"target=\"_blank\">PyMOSP</a>, a Python library to access MOSP."
+msgstr ""
+
+#: mosp/templates/help.html:21
+msgid "Contributions"
+msgstr ""
+
+#: mosp/templates/help.html:22
+msgid ""
+"Please use <a href=\"https://github.com/CASES-LU/MOSP/issues\" "
+"rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a> for:"
+msgstr ""
+
+#: mosp/templates/help.html:24
+msgid "Bug reports"
+msgstr ""
+
+#: mosp/templates/help.html:25
+msgid "New feature requests"
+msgstr ""
+
+#: mosp/templates/help.html:26
+msgid ""
+"Contributions to the <a href=\"https://github.com/CASES-"
+"LU/MOSP/issues/new?labels=documentation\" rel=\"noopener noreferrer\" "
+"target=\"_blank\">documentation</a> or to the <a "
+"href=\"https://github.com/CASES-"
+"LU/MOSP/issues/new?labels=translation\">translations</a> of the software"
+msgstr ""
+
+#: mosp/templates/index.html:15
+msgid ""
+"objects.monarc.lu is the MOSP instance for creating and\n"
+"          sharing JSON objects related to cybersecurity security, such as"
+"\n"
+"          <a href=\"https://objects.monarc.lu/schema/14\" rel=\"noopener "
+"noreferrer\" target=\"_blank\">vulnerabilities</a>,\n"
+"          <a href=\"https://objects.monarc.lu/schema/15\" rel=\"noopener "
+"noreferrer\" target=\"_blank\">threats</a>\n"
+"          or <a href=\"https://objects.monarc.lu/schema/12\" "
+"rel=\"noopener noreferrer\" target=\"_blank\">cybersecurity "
+"standards</a>."
+msgstr ""
+
+#: mosp/templates/index.html:20
+msgid "items are currently available through"
+msgstr ""
+
+#: mosp/templates/index.html:21
+msgid "organizations"
+msgstr ""
+
+#: mosp/templates/index.html:24
+msgid "Learn more"
+msgstr ""
+
 #: mosp/templates/index.html:28
 msgid "Recent contributions"
 msgstr ""
 
 #: mosp/templates/index.html:31
 msgid "Updated objects"
+msgstr ""
+
+#: mosp/templates/index.html:34 mosp/templates/index.html:42
+#: mosp/templates/index.html:48
+msgid "Loading..."
 msgstr ""
 
 #: mosp/templates/index.html:39
@@ -432,12 +546,93 @@ msgstr ""
 msgid "Terms"
 msgstr ""
 
+#: mosp/templates/list_objects.html:10
+msgid "Objects with UUID"
+msgstr ""
+
+#: mosp/templates/list_versions.html:6
+msgid "Revision history"
+msgstr ""
+
+#: mosp/templates/list_versions.html:12
+msgid "Object created by"
+msgstr ""
+
+#: mosp/templates/list_versions.html:18 mosp/templates/list_versions.html:21
+msgid "consult"
+msgstr ""
+
+#: mosp/templates/list_versions.html:22
+msgid "restore"
+msgstr ""
+
+#: mosp/templates/list_versions.html:31 mosp/templates/view_version.html:49
+msgid "Restore the version"
+msgstr ""
+
+#: mosp/templates/list_versions.html:37 mosp/templates/view_version.html:55
+msgid "Restore the version ?"
+msgstr ""
+
+#: mosp/templates/list_versions.html:40 mosp/templates/organization.html:17
+#: mosp/templates/organization.html:37 mosp/templates/view_version.html:58
+msgid "Close"
+msgstr ""
+
+#: mosp/templates/list_versions.html:41 mosp/templates/view_version.html:59
+msgid "Restore"
+msgstr ""
+
 #: mosp/templates/login.html:10 mosp/templates/signup.html:10
 msgid "Your login"
 msgstr ""
 
 #: mosp/templates/login.html:16
 msgid "Your password"
+msgstr ""
+
+#: mosp/templates/login.html:26 mosp/templates/signup.html:6
+msgid "Register"
+msgstr ""
+
+#: mosp/templates/login.html:27
+msgid "Forgot your password?"
+msgstr ""
+
+#: mosp/templates/organization.html:8
+msgid "Join an organization"
+msgstr ""
+
+#: mosp/templates/organization.html:14
+msgid "Do you want to join this organization ?"
+msgstr ""
+
+#: mosp/templates/organization.html:18
+msgid "Join"
+msgstr ""
+
+#: mosp/templates/organization.html:28
+msgid "Leave the organization"
+msgstr ""
+
+#: mosp/templates/organization.html:34
+msgid "Do you want to leave this organization ?"
+msgstr ""
+
+#: mosp/templates/organization.html:38
+msgid "Leave"
+msgstr ""
+
+#: mosp/templates/organization.html:53
+msgid "Leave this organization."
+msgstr ""
+
+#: mosp/templates/organization.html:59 mosp/templates/organization.html:67
+msgid "Organization without membership restriction."
+msgstr ""
+
+#: mosp/templates/organization.html:67
+msgid "rganization without membership restriction."
 msgstr ""
 
 #: mosp/templates/organization.html:95 mosp/templates/organization.html:110
@@ -493,6 +688,10 @@ msgstr ""
 msgid "Provided by"
 msgstr ""
 
+#: mosp/templates/schema.html:51
+msgid "Search on the properties of the objects"
+msgstr ""
+
 #: mosp/templates/schema.html:80
 msgid "Objects validated by the schema"
 msgstr ""
@@ -525,6 +724,10 @@ msgstr ""
 msgid "References between schemas"
 msgstr ""
 
+#: mosp/templates/schemas.html:23
+msgid "Double-click on a node to go to the schema page."
+msgstr ""
+
 #: mosp/templates/schemas.html:29
 msgid "List of schemas"
 msgstr ""
@@ -539,10 +742,6 @@ msgstr ""
 
 #: mosp/templates/schemas.html:45 mosp/templates/view_object.html:94
 msgid "provided by"
-msgstr ""
-
-#: mosp/templates/signup.html:6
-msgid "Register"
 msgstr ""
 
 #: mosp/templates/signup.html:12
@@ -605,8 +804,37 @@ msgstr ""
 msgid "You are in no organization."
 msgstr ""
 
-#: mosp/templates/view_diff.html:18 mosp/templates/view_object.html:36
+#: mosp/templates/user_schemas.html:39
+msgid "You can contact the responsible of an"
+msgstr ""
+
+#: mosp/templates/user_schemas.html:39
+msgid "organization"
+msgstr ""
+
+#: mosp/templates/user_schemas.html:39
+msgid "or look for an"
+msgstr ""
+
+#: mosp/templates/user_schemas.html:39
+msgid "organization with no membership restriction"
+msgstr ""
+
+#: mosp/templates/user_schemas.html:40
+msgid "Being part of an organization is required in order to publish an object."
+msgstr ""
+
+#: mosp/templates/view_diff.html:18 mosp/templates/view_diff.html:19
+#: mosp/templates/view_object.html:36
 msgid "Previous versions"
+msgstr ""
+
+#: mosp/templates/view_diff.html:26 mosp/templates/view_diff.html:29
+msgid "Date"
+msgstr ""
+
+#: mosp/templates/view_diff.html:34 mosp/templates/view_diff.html:37
+msgid "Editor"
 msgstr ""
 
 #: mosp/templates/view_object.html:18
@@ -709,7 +937,7 @@ msgstr ""
 msgid "Updated"
 msgstr ""
 
-#: mosp/templates/view_version.html:38
+#: mosp/templates/view_version.html:38 mosp/templates/view_version.html:39
 msgid "Restore this version"
 msgstr ""
 
@@ -727,6 +955,14 @@ msgstr ""
 
 #: mosp/templates/admin/dashboard.html:23
 msgid "List of users connected during the last week."
+msgstr ""
+
+#: mosp/templates/admin/dashboard.html:25
+msgid "Go to the"
+msgstr ""
+
+#: mosp/templates/admin/dashboard.html:25
+msgid "users management page"
 msgstr ""
 
 #: mosp/templates/admin/dashboard.html:27

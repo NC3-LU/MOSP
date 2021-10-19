@@ -36,8 +36,8 @@
     <div class="row">
         <div class="col-md-12">
             <b>{{ _('You are in no organization.') }}</b>
-            <p>You can contact the responsible of an <a href="{{ url_for('organizations_bp.list_organizations') }}">organization</a> or look for an <a href="{{ url_for('organizations_bp.list_organizations', is_membership_restricted=0) }}">organization with no membership restriction</a>.</p>
-            <p>Being part of an organization is required in order to publish an object.</p>
+            <p>{{ _('You can contact the responsible of an') }} <a href="{{ url_for('organizations_bp.list_organizations') }}">{{ _('organization') }}</a> {{ _('or look for an') }} <a href="{{ url_for('organizations_bp.list_organizations', is_membership_restricted=0) }}">{{ _('organization with no membership restriction') }}</a>.</p>
+            <p>{{ _('Being part of an organization is required in order to publish an object.') }}</p>
         </div>
     </div>
     {% endif %}

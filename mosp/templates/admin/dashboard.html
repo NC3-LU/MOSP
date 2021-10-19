@@ -22,7 +22,7 @@
       <h2 id="active-users">{{ _('Active users') }}</h2>
       <p>{{ _('List of users connected during the last week.') }}</p>
       {% include "./admin/template_responsive_table_users.html" %}
-      <p>Go to the <a href="{{ url_for('admin_bp.list_users') }}">users management page</a>.</p>
+      <p>{{ _('Go to the') }} <a href="{{ url_for('admin_bp.list_users') }}">{{ _('users management page') }}</a>.</p>
 
       <h2 id="objects">{{ _('New and updated objects') }}</h2>
       <p>{{ _('Updates since the last 4 weeks.') }}</p>

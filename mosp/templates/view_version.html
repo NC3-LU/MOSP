@@ -36,7 +36,7 @@
           <a role="button" id="restore-button"
               class="btn btn-secondary"
               title="{{ _('Restore this version') }}" aria-label="{{ _('Restore this version') }}">
-            Restore this version
+            {{ _('Restore this version') }}
           </a>
         </div>
     </div>
@@ -46,17 +46,17 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="restoreVersionModalLabel">Restore the version</h5>
+            <h5 class="modal-title" id="restoreVersionModalLabel">{{ _('Restore the version') }}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <p>Restore the version ?</p>
+            <p>{{ _('Restore the version ?') }}</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="restore-version">Restore</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Close') }}</button>
+            <button type="button" class="btn btn-primary" id="restore-version">{{ _('Restore') }}</button>
           </div>
         </div>
       </div>

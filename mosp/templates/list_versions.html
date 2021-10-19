@@ -3,23 +3,23 @@
 <div class="container">
   <div class="row">
       <div class="col">
-          <h1>Revision history</h1>
+          <h1>{{ _('Revision history') }}</h1>
       </div>
   </div>
     <div class="row">
         <div class="col">
             <h2>{{ json_object.name }}</h2>
-            <p>Object created by {{ json_object.creator.login }}<br />
+            <p>{{ _('Object created by') }} {{ json_object.creator.login }}<br />
             {{ json_object.versions.all() | length }} revision{% if json_object.versions.all() | length > 1 %}s{% endif %}</p>
         </div>
     </div>
     <br />
     <ul class="list-group">
-      <li class="list-group-item">(current - <a href="{{ url_for('object_bp.get_diff', object_id=json_object.id, before=last_revision_id, after=json_object.id) }}">diff</a>) {{ json_object.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=json_object.editor.login) }}">{{ json_object.editor.login }}</a> - <a href="{{ url_for('object_bp.view', object_id=json_object.id) }}">consult</a></li>
+      <li class="list-group-item">(current - <a href="{{ url_for('object_bp.get_diff', object_id=json_object.id, before=last_revision_id, after=json_object.id) }}">diff</a>) {{ json_object.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=json_object.editor.login) }}">{{ json_object.editor.login }}</a> - <a href="{{ url_for('object_bp.view', object_id=json_object.id) }}">{{ _('consult') }}</a></li>
       {% for version in json_object.versions | sort(attribute='last_updated', reverse = True) %}
         <li class="list-group-item" version-id="{{ version.id }}">{% if version_parents[version.id] %}(<a href="{{ url_for('object_bp.get_diff', object_id=json_object.id, before=version_parents[version.id], after=version.id) }}">diff</a>){% endif %} {{ version.last_updated | datetime }} <a href="{{ url_for('user_bp.get', login=version.editor.login) }}">{{ version.editor.login }}</a>
-          - <a href="{{ url_for('object_bp.view_version', object_id=json_object.id, version_id=version.id) }}">consult</a>
-          - <a data-toggle="modal" onClick="restoreVersionModal(event)" href="#">restore</a></li>
+          - <a href="{{ url_for('object_bp.view_version', object_id=json_object.id, version_id=version.id) }}">{{ _('consult') }}</a>
+          - <a data-toggle="modal" onClick="restoreVersionModal(event)" href="#">{{ _('restore') }}</a></li>
       {% endfor %}
     </ul>
 
@@ -28,17 +28,17 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="restoreVersionModalLabel">Restore the version</h5>
+            <h5 class="modal-title" id="restoreVersionModalLabel">{{ _('Restore the version') }}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <p>Restore the version ?</p>
+            <p>{{ _('Restore the version ?') }}</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="restoreVersion()">Restore</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Close') }}</button>
+            <button type="button" class="btn btn-primary" onclick="restoreVersion()">{{ _('Restore') }}</button>
           </div>
         </div>
       </div>

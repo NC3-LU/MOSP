@@ -12,16 +12,16 @@
         title="MONARC Objects Sharing Platform"
         style="padding-right: 10px; padding-bottom: 5px;" />
         <p class="lead">
-          objects.monarc.lu is the MOSP instance for creating and
+          {{ _('objects.monarc.lu is the MOSP instance for creating and
           sharing JSON objects related to cybersecurity security, such as
           <a href="https://objects.monarc.lu/schema/14" rel="noopener noreferrer" target="_blank">vulnerabilities</a>,
           <a href="https://objects.monarc.lu/schema/15" rel="noopener noreferrer" target="_blank">threats</a>
-          or <a href="https://objects.monarc.lu/schema/12" rel="noopener noreferrer" target="_blank">cybersecurity standards</a>.
-          <br />{{ nb_objects }} items are currently available through
-          {{ nb_organizations }} <a href="{{ url_for('organizations_bp.list_organizations') }}">organizations</a>.
+          or <a href="https://objects.monarc.lu/schema/12" rel="noopener noreferrer" target="_blank">cybersecurity standards</a>.') }}
+          <br />{{ nb_objects }} {{ _('items are currently available through') }}
+          {{ nb_organizations }} <a href="{{ url_for('organizations_bp.list_organizations') }}">{{ _('organizations') }}</a>.
         </p>
         <hr class="my-3">
-        <a class="btn btn-primary btn-lg" href="{{ url_for('help') }}" role="button">Learn more</a>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('help') }}" role="button">{{ _('Learn more') }}</a>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@
       <h2>{{ _('Updated objects') }} <a href="{{ url_for('objects_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
       <div id="list-json-objects">
         <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
+          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
         </div>
       </div>
     </div>
@@ -39,13 +39,13 @@
       <h2>{{ _('Updated schemas') }} <a href="{{ url_for('schemas_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
       <div id="list-schemas">
         <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
+          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
         </div>
       </div>
       <h2>{{ _('Updated collections') }} <a href="{{ url_for('collections_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
       <div id="list-collections">
         <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
+          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
         </div>
       </div>
     </div>

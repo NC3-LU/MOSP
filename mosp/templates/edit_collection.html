@@ -20,7 +20,7 @@
 
     {% if collection %}
     <div class="form-group">
-        <label for="description">Type to filter objects from the list to be added in the collection</label>
+        <label for="description">{{ _('Type to filter objects from the list to be added in the collection') }}</label>
         <input type="text" id="inputObject" name="inputObject" class="form-control" /><br />
         <select id="objectSelect" class="selectpicker" multiple="" data-width="auto"></select>
         <button id="addObject" type="button" class="btn btn-default"><i class="fa fa-plus" title="{{ _('Add to the collection') }}"></i></button>

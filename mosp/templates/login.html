@@ -23,8 +23,8 @@
                         {{ form.submit(class_="btn btn-default") }}
                     </div>
                     <div class="col text-right">
-                        <a href="{{ url_for('signup') }}">Register</a><br />
-                        <a href="{{ url_for('user_bp.account_recovery') }}">Forgot your password?</a>
+                        <a href="{{ url_for('signup') }}">{{ _('Register') }}</a><br />
+                        <a href="{{ url_for('user_bp.account_recovery') }}">{{ _('Forgot your password?') }}</a>
                     </div>
                 </div>
             </form>

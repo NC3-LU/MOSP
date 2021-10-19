@@ -7,13 +7,13 @@
 <div class="container">
     <div class="row">
       <div class="col">
-	  <h3>Objects with UUID {{ uuid }}</h3>
+	  <h3>{{ _('Objects with UUID') }} {{ uuid }}</h3>
 	  <div class="list-group list-group-flush">
 	  {% for object in objects %}
 	   <a href="{{ url_for('object_bp.view', object_id=object.id) }}" class="list-group-item list-group-item-action flex-column align-items-start">
                <div class="d-flex w-100 justify-content-between">{{ object.name }}</div>
                <small>{{ object.description }}</small>
-          </a>      
+          </a>
 	  {% endfor %}
 	  </div>
        </div>
