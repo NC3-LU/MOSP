@@ -24,9 +24,7 @@ def check_submitted_object(data):
 
     # check if the user has rights in the corresponding organization.
     if org_id is None:
-        raise abort(
-            400, description="You must provide the id of an organization."
-        )
+        raise abort(400, description="You must provide the id of an organization.")
 
     try:
         open_orgs = list(
