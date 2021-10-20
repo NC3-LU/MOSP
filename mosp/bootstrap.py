@@ -7,7 +7,6 @@ import re
 import os
 import uuid
 import logging
-import flask_restless
 from flask import Flask, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
@@ -141,6 +140,3 @@ class UUIDConverter(BaseConverter):
 application.url_map.converters["uuid"] = UUIDConverter
 
 # set_logging(application.config['LOG_PATH'])
-
-# Create the Flask-Restless API manager.
-manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)

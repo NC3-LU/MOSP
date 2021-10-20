@@ -7,7 +7,7 @@ Resources shared between all APIs.
 
 import jsonschema
 from flask_login import current_user
-from flask_restless import ProcessingException
+from flask_restx import abort
 
 from mosp.models import Schema, Organization, JsonObject
 
@@ -24,8 +24,8 @@ def check_submitted_object(data):
 
     # check if the user has rights in the corresponding organization.
     if org_id is None:
-        raise ProcessingException(
-            description="You must provide the id of an organization.", code=400
+        raise abort(
+            400, description="You must provide the id of an organization."
         )
 
     try:
@@ -44,9 +44,9 @@ def check_submitted_object(data):
         open_orgs = []
 
     if org_id not in [org.id for org in current_user.organizations] + open_orgs:
-        raise ProcessingException(
+        raise abort(
+            400,
             description="You are not allowed to create/edit an object in this organization.",
-            code=400,
         )
 
     # check if the object is locked: only its creator can edit it.
@@ -55,32 +55,30 @@ def check_submitted_object(data):
         and data.get("object_is_locked", True)
         and data.get("object_creator_id", 0) != current_user.id
     ):
-        raise ProcessingException(
+        raise abort(
+            400,
             description="You are not allowed to edit this locked object.",
-            code=400,
         )
 
     # check if the object is validated by the JSON schema
     if schema_id is None:
-        raise ProcessingException(
-            description="You must provide the id of a schema.", code=400
-        )
+        raise abort(400, description="You must provide the id of a schema.")
     schema = Schema.query.filter(Schema.id == schema_id)
     if not schema.count():
-        raise ProcessingException(description="Bad schema id", code=400)
+        raise abort(400, description="Bad schema id")
     try:
         # check the validity of the submitted object
         # (note: an empty JSON object is validated by any schema)
         jsonschema.validate(data.get("json_object", {}), schema.first().json_schema)
     except jsonschema.exceptions.ValidationError as e:
-        raise ProcessingException(
+        raise abort(
+            400,
             description="The object submited is not validated by the schema:\n{}".format(
                 e.message
             ),
-            code=400,
         )
     except Exception:
-        raise ProcessingException(description="Unknown error.", code=400)
+        raise abort(400, description="Unknown error.")
 
 
 def create_new_version(object_id):
