@@ -46,3 +46,7 @@ jobs:
         poetry run pytest
       env:
         testing: actions
+
+    - name: Type check with mypy
+      run: |
+        mypy --ignore-missing-imports mosp/models/ mosp/views/ mosp/forms.py mosp/notifications/

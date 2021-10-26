@@ -37,6 +37,7 @@ autoflake = "^1.4"
 gitchangelog = "^3.0.4"
 sphinx-book-theme = "^0.1.0"
 flake8 = "^4.0.1"
+mypy = "^0.910"
 
 [build-system]
 requires = ["poetry>=0.12"]
