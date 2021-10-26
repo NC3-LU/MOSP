@@ -32,9 +32,10 @@ login_manager.login_message_category = "info"
 logger = logging.getLogger(__name__)
 
 
-@identity_loaded.connect_via(current_app._get_current_object())
+@identity_loaded.connect_via(current_app)
 def on_identity_loaded(sender, identity):
     # Set the identity user object
+    print('identity loaded')
     identity.user = current_user
 
     # Add the UserNeed to the identity
