@@ -3,6 +3,7 @@
 
 # required imports and code exection for basic functionning
 
+from typing import Union
 import re
 import os
 import uuid
@@ -27,6 +28,7 @@ def set_logging(
             "runserver",
             "web",
         )
+    handler: Union[logging.Handler, None] = None
     if log_path:
         if not os.path.exists(os.path.dirname(log_path)):
             os.makedirs(os.path.dirname(log_path))
