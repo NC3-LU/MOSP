@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 # MOSP - A platform for creating, editing and sharing JSON objects.
-# Copyright (C) 2018-2020 Cédric Bonhomme - https://www.cedricbonhomme.org
-# Copyright (C) 2018-2020 SMILE gie - securitymadein.lu
+# Copyright (C) 2018-2021 Cédric Bonhomme - https://www.cedricbonhomme.org
+# Copyright (C) 2018-2021 SMILE gie - securitymadein.lu
 #
 # For more information: https://github.com/CASES-LU/MOSP
 #
@@ -22,8 +22,7 @@
 
 import logging
 import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+from email.mime.nonmultipart import MIMENonMultipart
 from email import charset
 
 from mosp.bootstrap import application
@@ -59,23 +58,16 @@ def send_smtp(to="", subject="", plaintext="", html=""):
     """
     Send an email.
     """
-    # Create message container - the correct MIME type is multipart/alternative.
-    msg = MIMEMultipart("alternative")
-    ch = charset.add_charset("utf-8", charset.QP)
-    msg.set_charset(ch)
+    # Create message container
+    msg = MIMENonMultipart("text", "plain", charset="utf-8")
+    # Construct a new charset which uses Quoted Printables (base64 is default)
+    cs = charset.Charset('utf-8')
+    cs.body_encoding = charset.QP
     msg["Subject"] = subject
     msg["From"] = application.config["MAIL_DEFAULT_SENDER"]
     msg["To"] = to
 
-    # Record the MIME types of both parts - text/plain and text/html.
-    part1 = MIMEText(plaintext, "plain", "utf-8")
-    # part2 = MIMEText(html, "html", "utf-8")
-
-    # Attach parts into message container.
-    # According to RFC 2046, the last part of a multipart message, in this case
-    # the HTML message, is best and preferred.
-    msg.attach(part1)
-    # msg.attach(part2)
+    msg.set_payload(plaintext, charset=cs)
 
     try:
         s = smtplib.SMTP(application.config["MAIL_SERVER"])
