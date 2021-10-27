@@ -1,3 +1,4 @@
+from typing import Union, Dict
 import json
 from datetime import datetime
 from flask import (
@@ -432,7 +433,7 @@ def list_versions(object_id=None):
     # Get all the versions with links to their parents:
     #  Object <- Versio_N <- ... <- Version-3 <- Version-2 <- Version-1
     versions = json_object.versions.order_by(Version.last_updated.asc()).all()
-    version_parents = {}
+    version_parents: Dict[int, Union[None, int]] = {}
     before_v = None
     for version in versions:
         version_parents[version.id] = before_v

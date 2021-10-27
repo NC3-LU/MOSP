@@ -39,7 +39,8 @@ class RedirectForm(FlaskForm):
                 self.next.data = "user/schemas"
             else:
                 # Will raise an exception if no endpoint exists for the url
-                current_app.create_url_adapter(request).match(ref_url.path)
+                adapter = current_app.create_url_adapter(request)
+                adapter.match(ref_url.path)  # type: ignore
         except NotFound:
             self.next.data = "user/schemas"
         except HTTPException:

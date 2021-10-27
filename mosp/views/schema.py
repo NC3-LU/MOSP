@@ -1,3 +1,4 @@
+from typing import List, Dict
 import json
 import ast
 import operator
@@ -188,7 +189,7 @@ def get_objects(schema_id=None):
         for elem in json_schema.objects
     ]
     # Flatten the list json_objects
-    flat_json_objects = functools.reduce(operator.iconcat, json_objects, [])
+    flat_json_objects: List[Dict] = functools.reduce(operator.iconcat, json_objects, [])
     # Prepare the result
     result = json.dumps(
         flat_json_objects, sort_keys=True, indent=4, separators=(",", ": ")
