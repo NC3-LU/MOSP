@@ -2,6 +2,7 @@ Hello {{ user.login }},
 
 Your account has been created.
 Click on the following link in order to confirm it:
+
 {{ instance_url }}/user/confirm_account/{{ token }}
 
 To publish objects, you must be at least
