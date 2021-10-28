@@ -2,6 +2,163 @@ Changelog
 =========
 
 
+v0.17.1 (2021-10-28)
+--------------------
+
+New
+~~~
+- Added type check with mypy. [Cédric Bonhomme]
+- [templates] added functionality to share a collection on social
+  websites via the btn-group menur. [Cédric Bonhomme]
+
+Changes
+~~~~~~~
+- [typing] specify a more generic type for the logging handler. [Cédric
+  Bonhomme]
+- Install flake via poetry. [Cédric Bonhomme]
+- Chg: added @jfrocha to human.txt files for the translations. [Cédric
+  Bonhomme]
+- [style] Reformat with black. [Cédric Bonhomme]
+- [style] code style update. [Cédric Bonhomme]
+- [API v1] API v1 has been removed. [Cédric Bonhomme]
+- [translations] purged deleted translations. [Cédric Bonhomme]
+- [translations] updated po files. [Cédric Bonhomme]
+- [translations] updated template .pot file with missing translations.
+  [Cédric Bonhomme]
+- [documentation] updated presentation panorama. [Cédric Bonhomme]
+- [documentation] Updated README. [Cédric Bonhomme]
+- [internal] add more language codes. [Cédric Bonhomme]
+- [internal] add de language code. [Cédric Bonhomme]
+- [translations] updated pot file. [Cédric Bonhomme]
+- [admin_bp] Updated admin page to reflects recent developments. [Cédric
+  Bonhomme]
+- [collection_bp] store the result of the database operation to be sent
+  in the JSON answer. [Cédric Bonhomme]
+- Improved management of objects of a collection. [Cédric Bonhomme]
+- Get the selected values from the multiple select field via simple
+  JavaScript. [Cédric Bonhomme]
+- Updated dependency pytz. [Cédric Bonhomme]
+- Improved unlinking of objects. closes #44. [Cédric Bonhomme]
+- Added pagination to the table of objects of a collection. [Cédric
+  Bonhomme]
+- Simplified template to list all collections. [Cédric Bonhomme]
+
+Fix
+~~~
+- [core] fixed error when loding new identity. [Cédric Bonhomme]
+- [forms] fixed use of the adapter to check the url requested by the
+  client. [Cédric Bonhomme]
+- [notifications] Fixed MIMEText encoding as quoted printables. [Cédric
+  Bonhomme]
+- [tests] forgot to prefix command with 'poetry run' [Cédric Bonhomme]
+- [core] removed undefined _get_current_object attribute. [Cédric
+  Bonhomme]
+- [internal] fixed import of removed module and use of deprecated use of
+  the ProcessigException in the API. Updated Flask to the version 2.0.2.
+  [Cédric Bonhomme]
+- [translations] typo. [Cédric Bonhomme]
+- [translations] do not translate Jinja variable. [Cédric Bonhomme]
+- [translations] do not translate Jinja variable. [Cédric Bonhomme]
+- [translations] do not translate Jinja variable. [Cédric Bonhomme]
+
+Other
+~~~~~
+- Merge branch 'translations' of github.com:CASES-LU/MOSP into
+  translations. [Cédric Bonhomme]
+- Translated using Weblate (French) [Cédric Bonhomme]
+
+  Currently translated at 100.0% (263 of 263 strings)
+- Added libxml2-dev and libxslt-dev to the GitHub workflow. [Cédric
+  Bonhomme]
+- Merge branch 'translations' [Cédric Bonhomme]
+- Translated using Weblate (Spanish) [Cédric Bonhomme]
+
+  Currently translated at 100.0% (263 of 263 strings)
+- Translated using Weblate (German) [Cédric Bonhomme]
+
+  Currently translated at 100.0% (263 of 263 strings)
+- Translated using Weblate (German) [Cédric Bonhomme]
+
+  Currently translated at 98.0% (258 of 263 strings)
+- Translated using Weblate (French) [Cédric Bonhomme]
+
+  Currently translated at 100.0% (263 of 263 strings)
+- Translated using Weblate (French) [Cédric Bonhomme]
+
+  Currently translated at 93.1% (246 of 264 strings)
+- Translated using Weblate (French) [Cédric Bonhomme]
+
+  Currently translated at 90.1% (238 of 264 strings)
+- Merge branch 'translations' [Cédric Bonhomme]
+- Translated using Weblate (Russian) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (Italian) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (Spanish) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (German) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (Dutch) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (Russian) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (Italian) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (Spanish) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (German) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (Italian) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (Spanish) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (German) [Juan Rocha]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Added translation using Weblate (Dutch) [Juan Rocha]
+- Added translation using Weblate (Russian) [Juan Rocha]
+- Added translation using Weblate (Italian) [Juan Rocha]
+- Added translation using Weblate (Spanish) [Juan Rocha]
+- Merge branch 'translations' [Cédric Bonhomme]
+- Translated using Weblate (German) [Cédric Bonhomme]
+
+  Currently translated at 11.7% (25 of 213 strings)
+- Translated using Weblate (French) [Cédric Bonhomme]
+
+  Currently translated at 100.0% (213 of 213 strings)
+- Translated using Weblate (German) [Cédric Bonhomme]
+
+  Currently translated at 6.5% (14 of 213 strings)
+- Translated using Weblate (French) [Cédric Bonhomme]
+
+  Currently translated at 85.9% (183 of 213 strings)
+- Added translation using Weblate (German) [Cédric Bonhomme]
+- Updated pot file. [Cédric Bonhomme]
+- Merge pull request #48 from CASES-LU/translations. [Cedric]
+
+  Translated using Weblate (French)
+- Translated using Weblate (French) [Cédric Bonhomme]
+
+  Currently translated at 100.0% (153 of 153 strings)
+- Check if collection edition is permitted for the current user. [Cédric
+  Bonhomme]
+- GitHub workflow is now using a matrix strategy. [Cédric Bonhomme]
+- Merge branch 'master' of github.com:CASES-LU/MOSP. [Cédric Bonhomme]
+- Now Python 3.9 for the GitHub workflow. [Cédric Bonhomme]
+- Updated README. [Cédric Bonhomme]
+
+
 v0.17.0 (2021-09-30)
 --------------------
 
@@ -73,6 +230,7 @@ Fix
 
 Other
 ~~~~~
+- Bumpted version numbers and updated CHANGELOG. [Cédric Bonhomme]
 - Merge pull request #43 from CASES-LU/object-collection. [Cedric]
 
   Add the possibility to create collections of objects.
