@@ -29,6 +29,7 @@ networkx = "^2.4"
 email_validator = "^1.1.1"
 flask_restx = "^0.5.1"
 feedgen = "^0.9.0"
+types-requests = "^2.26.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

@@ -4,6 +4,7 @@
 from flask_restx import Namespace, Resource, fields, reqparse
 
 from mosp.models import Schema
+from mosp.api.v2.types import ResultType
 from mosp.api.v2.common import schema_params_model, organization_params_model
 
 
@@ -63,7 +64,7 @@ class SchemasList(Resource):
         limit = args.pop("per_page", 10)
         args = {k: v for k, v in args.items() if v is not None}
 
-        result = {
+        result: ResultType = {
             "data": [],
             "metadata": {
                 "count": 0,

@@ -4,6 +4,7 @@
 from flask_restx import Namespace, Resource, fields, reqparse
 
 from mosp.models import Collection
+from mosp.api.v2.types import ResultType
 from mosp.api.v2.common import collection_params_model, metada_params_model
 
 
@@ -50,7 +51,7 @@ class CollectionsList(Resource):
         name_ilike = args.pop("name_ilike")
         args = {k: v for k, v in args.items() if v is not None}
 
-        result = {
+        result: ResultType = {
             "data": [],
             "metadata": {
                 "count": 0,

@@ -4,6 +4,7 @@
 from flask_restx import Namespace, Resource, fields, reqparse, inputs
 
 from mosp.models import Organization
+from mosp.api.v2.types import ResultType
 from mosp.api.v2.common import organization_params_model, metada_params_model
 
 
@@ -56,7 +57,7 @@ class OrganizationsList(Resource):
         limit = args.pop("per_page", 10)
         args = {k: v for k, v in args.items() if v is not None}
 
-        result = {
+        result: ResultType = {
             "data": [],
             "metadata": {
                 "count": 0,

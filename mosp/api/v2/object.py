@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from typing import List
 import sqlalchemy.exc
 from typing import Dict, Any
 from flask_login import current_user
@@ -8,6 +9,7 @@ from flask_restx import Namespace, Resource, fields, reqparse
 
 from mosp.bootstrap import db
 from mosp.models import JsonObject, License, Schema
+from mosp.api.v2.types import ResultType
 from mosp.api.common import check_submitted_object, create_new_version
 from mosp.api.v2.common import (
     auth_func,
@@ -90,7 +92,7 @@ class ObjectsList(Resource):
         name_ilike = args.pop("name_ilike")
         args = {k: v for k, v in args.items() if v is not None}
 
-        result = {
+        result: ResultType = {
             "data": [],
             "metadata": {
                 "count": 0,
@@ -155,7 +157,7 @@ class ObjectsList(Resource):
             "data": [],
             "metadata": {"count": 0, "offset": 0, "limit": 0},
         }  # type: Dict[Any, Any]
-        errors = []
+        errors: List[int] = []
         for obj in object_ns.payload:
 
             check_submitted_object(obj)

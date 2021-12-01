@@ -61,7 +61,7 @@ def send_smtp(to="", subject="", plaintext="", html=""):
     # Create message container
     msg = MIMENonMultipart("text", "plain", charset="utf-8")
     # Construct a new charset which uses Quoted Printables (base64 is default)
-    cs = charset.Charset('utf-8')
+    cs = charset.Charset("utf-8")
     cs.body_encoding = charset.QP
     msg["Subject"] = subject
     msg["From"] = application.config["MAIL_DEFAULT_SENDER"]

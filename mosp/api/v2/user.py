@@ -11,6 +11,7 @@ from flask_restx.inputs import date_from_iso8601
 from mosp.bootstrap import db, application
 from mosp.models import User, Organization
 from mosp.notifications import notifications
+from mosp.api.v2.types import ResultType
 from mosp.api.v2.common import (
     auth_func,
     user_params_model,
@@ -92,7 +93,7 @@ class UsersList(Resource):
         limit = args.pop("per_page", 10)
         args = {k: v for k, v in args.items() if v is not None}
 
-        result = {
+        result: ResultType = {
             "data": [],
             "metadata": {
                 "count": 0,

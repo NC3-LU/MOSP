@@ -49,4 +49,4 @@ jobs:
 
     - name: Type check with mypy
       run: |
-        poetry run mypy --ignore-missing-imports mosp/models/ mosp/views/ mosp/forms.py mosp/notifications/ mosp/lib/
+        poetry run mypy .
