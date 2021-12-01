@@ -10,11 +10,11 @@
     "license": "AGPL-3.0-or-later",
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.4",
-        "@json-editor/json-editor": "2.5.4",
+        "@json-editor/json-editor": "2.6.1",
         "bootstrap": "^4.6.0",
         "bootstrap-select": "^1.13.18",
         "code-prettify": "^0.1.0",
-        "codemirror": "^5.63.1",
+        "codemirror": "^5.64.0",
         "datatables": "^1.10.18",
         "datatables.net-bs4": "^1.11.3",
         "jquery": "^3.6.0",
