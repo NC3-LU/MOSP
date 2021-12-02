@@ -68,12 +68,14 @@ def generate_diff(version_before, version_after):
     # fix the width of the columns
     table = table.replace(
         "<colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>",
-        '<colgroup style="width: 2%;"></colgroup> <colgroup style="width: 2%;"></colgroup> <colgroup style="width: 46%;"></colgroup>',
+        '<colgroup style="width: 2%;"></colgroup> <colgroup style="width: 2%;">'
+        + '</colgroup> <colgroup style="width: 46%;"></colgroup>',
         1,
     )
     table = table.replace(
         "<colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>",
-        '<colgroup style="width: 2%;"></colgroup> <colgroup style="width: 2%;"></colgroup> <colgroup style="width: 46%;"></colgroup>',
+        '<colgroup style="width: 2%;"></colgroup> <colgroup style="width: 2%;">'
+        + '</colgroup> <colgroup style="width: 46%;"></colgroup>',
         1,
     )
 
