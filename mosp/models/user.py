@@ -70,21 +70,20 @@ class User(db.Model, UserMixin):
         return self.login
 
     @validates("login")
-    @staticmethod
-    def validates_login(key, value):
+    def validates_login(self, key, value):
         assert 3 <= len(value) <= 50, AssertionError("maximum length for login: 30")
         return re.sub("[^a-zA-Z0-9_-]", "", value.strip())
 
     @validates("email")
     @staticmethod
-    def validates_email(key, value):
+    def validates_email(self, key, value):
         assert 3 <= len(value) <= 256, AssertionError("maximum length for email: 256")
         if validate_email(value):
             return value
 
     @validates("apikey")
     @staticmethod
-    def validates_apikey(key, value):
+    def validates_apikey(self, key, value):
         assert 30 <= len(value) <= 100, AssertionError("minimum length for apikey: 30")
 
     @staticmethod
