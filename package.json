@@ -14,7 +14,7 @@
         "bootstrap": "^4.6.0",
         "bootstrap-select": "^1.13.18",
         "code-prettify": "^0.1.0",
-        "codemirror": "^5.64.0",
+        "codemirror": "^5.65.0",
         "datatables": "^1.10.18",
         "datatables.net-bs4": "^1.11.3",
         "jquery": "^3.6.0",
@@ -24,6 +24,7 @@
         "popper.js": "^1.16.1"
     },
     "engines": {
-        "npm": "6.1.0"
+      "node": "16.x",
+      "npm": "8.3.0"
     }
 }
