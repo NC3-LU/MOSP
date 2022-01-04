@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 # MOSP - A platform for creating, editing and sharing JSON objects.
-# Copyright (C) 2018-2020 Cédric Bonhomme - https://www.cedricbonhomme.org
-# Copyright (C) 2018-2020 SMILE gie - securitymadein.lu
+# Copyright (C) 2018-2022 Cédric Bonhomme - https://www.cedricbonhomme.org
+# Copyright (C) 2018-2022 SMILE gie - securitymadein.lu
 #
 # For more information: https://github.com/CASES-LU/MOSP
 #

@@ -7,8 +7,8 @@ MOSP is a free software written and maintained by:
 
 # Contributors
 
-* Copyright (C) 2018-2021 Cédric Bonhomme
-* Copyright (C) 2018-2021 SECURITYMADEIN.LU
+* Copyright (C) 2018-2022 Cédric Bonhomme
+* Copyright (C) 2018-2022 SECURITYMADEIN.LU
 
 MOSP is licensed under
 [GNU Affero General Public License version 3](https://www.gnu.org/licenses/agpl-3.0.html)
