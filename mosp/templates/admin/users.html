@@ -3,8 +3,27 @@
 <div class="container">
 {% for kind_user in users %}
     <h1>{{ _(kind_user) }}</h1>
+    {% if kind_user == "Users" %}
+    <div class="row">
+        <div class="col">
+            {{ pagination.links }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ pagination.info }}
+        </div>
+    </div>
+    {% endif %}
     {% set USERS = users[kind_user] %}
     {% include "./admin/template_responsive_table_users.html" %}
+    {% if kind_user == "Users" %}
+    <div class="row">
+        <div class="col">
+            {{ pagination.links }}
+        </div>
+    </div>
+    {% endif %}
 {% endfor %}
 <a href="{{ url_for('admin_bp.form_user') }}" class="btn btn-default">{{ _('Add a new user') }}</a>
 </div>
@@ -15,7 +34,6 @@ $('.table').DataTable( {
     paging: false,
     info: false,
     searching: true,
-    order: [[4, 'desc']],
     columnDefs: [
         {
             bSortable: false,

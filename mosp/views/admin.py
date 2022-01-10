@@ -4,6 +4,7 @@ from flask_login import login_required, current_user
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.menu import MenuLink
+from flask_paginate import Pagination, get_page_args
 from werkzeug.security import generate_password_hash
 from flask_babel import gettext
 from datetime import datetime, timedelta
@@ -50,14 +51,30 @@ def dashboard():
 #
 
 
-@admin_bp.route("/users", methods=["GET"])
+@admin_bp.route("/users", defaults={"per_page": "10"}, methods=["GET"])
 @login_required
 @admin_permission.require(http_exception=403)
-def list_users():
+def list_users(per_page):
     users = {}
-    users["Admins"] = User.query.filter(User.is_admin == True)  # noqa
-    users["Users"] = User.query.filter(User.is_admin == False)  # noqa
-    return render_template("admin/users.html", users=users)
+    users["Admins"] = User.query.filter(User.is_admin == True).order_by(  # noqa
+        User.last_seen.desc()
+    )
+    users["Users"] = User.query.filter(User.is_admin == False).order_by(  # noqa
+        User.last_seen.desc()
+    )
+    page, per_page, offset = get_page_args(
+        page_parameter="page", per_page_parameter="per_page"
+    )
+    pagination = Pagination(
+        page_parameter="page",
+        page=page,
+        per_page=per_page,
+        total=users["Users"].count(),
+        css_framework="bootstrap4",
+        search=False,
+    )
+    users["Users"] = users["Users"].offset(offset).limit(per_page)
+    return render_template("admin/users.html", users=users, pagination=pagination)
 
 
 @admin_bp.route("/user/create", methods=["GET"])
