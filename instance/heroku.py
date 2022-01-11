@@ -18,3 +18,6 @@ LOG_PATH = "mosp.log"
 LOG_LEVEL = "info"
 
 CSRF_ENABLED = True
+
+ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL")
+ADMIN_URL = os.environ.get("ADMIN_URL")
