@@ -46,7 +46,7 @@ There are different ways to deploy MOSP.
 $ git clone https://github.com/CASES-LU/MOSP.git
 $ cd MOSP/
 $ npm install
-$ poetry install
+$ poetry install --no-dev
 $ poetry shell
 $ pybabel compile -d mosp/translations
 $ export FLASK_APP=runserver.py
@@ -68,7 +68,15 @@ $ flask run
 
 ### Deploy to Heroku
 
-Manually with some simple commands:
+Simply with this button:
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/CASES-LU/MOSP)
+
+And voilà !
+
+The default credentials are *admin* for the login and *password* for the password.
+
+Alternatively, Deploy to Heroku manually:
 
 ```bash
 $ git clone https://github.com/CASES-LU/MOSP.git
@@ -83,13 +91,6 @@ $ heroku run init
 $ heroku run flask import_licenses_from_spdx
 $ heroku ps:scale web=1
 ```
-
-or simply with this button:
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/CASES-LU/MOSP)
-
-The default credentials are *admin* for the login and *password* for the
-password.
 
 If you want to create other users programmatically:
 
