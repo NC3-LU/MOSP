@@ -9,7 +9,7 @@
     "website": "https://github.com/CASES-LU/MOSP",
     "repository": "https://github.com/CASES-LU/MOSP",
     "scripts": {
-        "postdeploy": "pybabel compile -d mosp/translations && flask db_init && flask create_admin admin password && flask import_licenses_from_spdx"
+        "postdeploy": "pybabel compile -d mosp/translations && flask db_init && flask create_admin --login admin --email admin@example.org --password password && flask import_licenses_from_spdx"
     },
     "addons": [
         "heroku-postgresql:hobby-dev"
