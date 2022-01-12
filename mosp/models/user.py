@@ -17,7 +17,7 @@ association_table_organization = db.Table(
 )
 
 
-def generate_token():
+def generate_token() -> str:
     return secrets.token_urlsafe(64)
 
 
@@ -54,14 +54,15 @@ class User(db.Model, UserMixin):
         """
         return self.id
 
-    def check_password(self, password: str):
+    def check_password(self, password: str) -> bool:
         """
         Check the password of the user.
         """
         return check_password_hash(self.pwdhash, password)
 
-    def generate_apikey(self):
+    def generate_apikey(self) -> str:
         self.apikey = generate_token()
+        return self.apikey
 
     def is_organization_member(self, organization_id: int):
         return organization_id in [org.id for org in self.organizations]
