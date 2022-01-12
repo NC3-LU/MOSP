@@ -83,6 +83,7 @@ class User(db.Model, UserMixin):
     @validates("apikey")
     def validates_apikey(self, key, value):
         assert 30 <= len(value) <= 100, AssertionError("minimum length for apikey: 30")
+        return value
 
     @staticmethod
     def make_valid_login(login):
