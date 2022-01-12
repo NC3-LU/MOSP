@@ -48,13 +48,13 @@ class User(db.Model, UserMixin):
     # objects = db.relationship("JsonObject", backref="creator", lazy="dynamic")
     schemas = db.relationship("Schema", backref="creator", lazy="dynamic")
 
-    def get_id(self):
+    def get_id(self) -> int:
         """
         Return the id of the user.
         """
         return self.id
 
-    def check_password(self, password):
+    def check_password(self, password: str):
         """
         Check the password of the user.
         """
@@ -63,28 +63,28 @@ class User(db.Model, UserMixin):
     def generate_apikey(self):
         self.apikey = generate_token()
 
-    def is_organization_member(self, organization_id):
+    def is_organization_member(self, organization_id: int):
         return organization_id in [org.id for org in self.organizations]
 
     def __str__(self):
         return self.login
 
     @validates("login")
-    def validates_login(self, key, value):
+    def validates_login(self, key: str, value: str):
         assert 3 <= len(value) <= 50, AssertionError("maximum length for login: 30")
         return re.sub("[^a-zA-Z0-9_-]", "", value.strip())
 
     @validates("email")
-    def validates_email(self, key, value):
+    def validates_email(self, key: str, value: str) -> str:
         assert 3 <= len(value) <= 256, AssertionError("maximum length for email: 256")
-        if validate_email(value):
-            return value
+        assert validate_email(value), AssertionError("email address not valid")
+        return value
 
     @validates("apikey")
-    def validates_apikey(self, key, value):
+    def validates_apikey(self, key: str, value: str) -> str:
         assert 30 <= len(value) <= 100, AssertionError("minimum length for apikey: 30")
         return value
 
     @staticmethod
-    def make_valid_login(login):
+    def make_valid_login(login: str) -> str:
         return re.sub("[^a-zA-Z0-9_-]", "", login)

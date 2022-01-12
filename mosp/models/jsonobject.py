@@ -1,3 +1,4 @@
+from typing import Union
 from datetime import datetime
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import backref
@@ -8,6 +9,7 @@ import jsonschema
 from mosp.bootstrap import db
 from mosp.models.version import Version
 from mosp.models.schema import Schema
+
 
 association_table_license = db.Table(
     "association_jsonobjects_licenses",
@@ -87,7 +89,7 @@ class JsonObject(db.Model):
     def __eq__(self, other):
         return self.id == other.id
 
-    def create_new_version(self, obj=None):
+    def create_new_version(self, obj: Union["JsonObject", None] = None) -> Version:
         """Create a new Version object from the JsonObject given in parameter or from
         the current object (self).
         Returns the new Version object."""
@@ -105,7 +107,7 @@ class JsonObject(db.Model):
         db.session.commit()
         return new_version
 
-    def restore_from_version(self, version):
+    def restore_from_version(self, version: Version):
         """Update the current JsonObject (self) with the specified Version object."""
         schema = Schema.query.filter(Schema.id == self.schema_id)
         try:
