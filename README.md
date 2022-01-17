@@ -83,7 +83,7 @@ $ git clone https://github.com/CASES-LU/MOSP.git
 $ cd MOSP/
 $ heroku create --region eu <name-of-your-instance>
 $ heroku addons:add heroku-postgresql:hobby-dev
-$ heroku config:set APPLICATION_SETTINGS='heroku.cfg'
+$ heroku config:set HEROKU='1'
 $ heroku buildpacks:add --index 1 heroku/python
 $ heroku buildpacks:add --index 2 https://github.com/heroku/heroku-buildpack-nodejs
 $ git push heroku master
