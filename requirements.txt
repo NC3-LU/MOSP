@@ -24,24 +24,24 @@ flask-wtf==0.14.3
 flask==2.0.2; python_version >= "3.6"
 greenlet==1.1.2; python_version >= "3" and python_full_version < "3.0.0" and (platform_machine == "aarch64" or platform_machine == "ppc64le" or platform_machine == "x86_64" or platform_machine == "amd64" or platform_machine == "AMD64" or platform_machine == "win32" or platform_machine == "WIN32") and (python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.6.0") and (python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.6") or python_version >= "3" and (platform_machine == "aarch64" or platform_machine == "ppc64le" or platform_machine == "x86_64" or platform_machine == "amd64" or platform_machine == "AMD64" or platform_machine == "win32" or platform_machine == "WIN32") and (python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.6.0") and python_full_version >= "3.5.0" and (python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.6")
 idna==3.3; python_version >= "3.5" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.5"
-importlib-metadata==4.10.0; python_version < "3.9" and python_version >= "3.7"
+importlib-metadata==4.10.1; python_version < "3.9" and python_version >= "3.7"
 importlib-resources==5.4.0; python_version < "3.9" and python_version >= "3.7"
 itsdangerous==2.0.1; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
 jinja2==3.0.3; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
-jsonschema==4.3.3; python_version >= "3.7"
+jsonschema==4.4.0; python_version >= "3.7"
 lxml==4.7.1; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
 mako==1.1.6; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
 markupsafe==2.0.1; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
 networkx==2.6.3; python_version >= "3.7"
 psycopg2-binary==2.9.3; python_version >= "3.6"
-pyrsistent==0.18.0; python_version >= "3.7"
+pyrsistent==0.18.1; python_version >= "3.7"
 python-dateutil==2.8.2; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.3.0"
 pytz==2021.3; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 requests==2.27.1; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.6.0")
 six==1.16.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.3.0"
 sqlalchemy==1.4.29; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.6.0")
-types-requests==2.27.5
-types-urllib3==1.26.2
+types-requests==2.27.7
+types-urllib3==1.26.7
 typing-extensions==4.0.1; python_version >= "3.6"
 urllib3==1.26.8; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version < "4"
 validate-email==1.3
