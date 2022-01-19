@@ -235,3 +235,10 @@ class ObjectItem(Resource):
             raise (e)
 
         return obj, 201
+
+    @auth_func
+    def delete(self, id):
+        obj = JsonObject.query.filter(JsonObject.id == id).first()
+        db.session.delete(obj)
+        db.session.commit()
+        return {}, 204
