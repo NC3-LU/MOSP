@@ -3,6 +3,7 @@
 
 from typing import List
 import sqlalchemy.exc
+import logging
 from typing import Dict, Any
 from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse
@@ -21,6 +22,7 @@ from mosp.api.v2.common import (
     license_params_model,
 )
 
+logger = logging.getLogger(__name__)
 
 object_ns = Namespace("object", description="object related operations")
 
@@ -176,7 +178,7 @@ class ObjectsList(Resource):
                 pass
 
             try:
-                new_object = JsonObject(**obj, creator_id=current_user.id)
+                new_object = JsonObject(**obj, creator_id=current_user.id, editor_id=current_user.id)
                 new_object.licenses = obj_licenses
                 db.session.add(new_object)
                 db.session.commit()
@@ -186,7 +188,7 @@ class ObjectsList(Resource):
                 sqlalchemy.exc.IntegrityError,
                 sqlalchemy.exc.InvalidRequestError,
             ) as e:
-                # logger.error("Error when creatng object {}".format(object["id"]))
+                logger.error("Error when creating object {}".format(object["id"]))
                 print(e)
                 # errors.append(object["id"])
                 db.session.rollback()
