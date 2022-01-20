@@ -141,4 +141,5 @@ class UUIDConverter(BaseConverter):
 
 application.url_map.converters["uuid"] = UUIDConverter
 
-set_logging(application.config['LOG_PATH'])
+if application.config['LOG_PATH']:
+    set_logging(application.config['LOG_PATH'])
