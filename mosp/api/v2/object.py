@@ -178,7 +178,9 @@ class ObjectsList(Resource):
                 pass
 
             try:
-                new_object = JsonObject(**obj, creator_id=current_user.id, editor_id=current_user.id)
+                new_object = JsonObject(
+                    **obj, creator_id=current_user.id, editor_id=current_user.id
+                )
                 new_object.licenses = obj_licenses
                 db.session.add(new_object)
                 db.session.commit()
