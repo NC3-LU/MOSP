@@ -51,7 +51,7 @@ def dashboard():
 #
 
 
-@admin_bp.route("/users", defaults={"per_page": "10"}, methods=["GET"])
+@admin_bp.route("/users", defaults={"per_page": "50"}, methods=["GET"])
 @login_required
 @admin_permission.require(http_exception=403)
 def list_users(per_page):
