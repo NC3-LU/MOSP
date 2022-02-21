@@ -75,6 +75,13 @@ def check_submitted_object(data):
                 e.message
             ),
         )
+    except jsonschema.exceptions.SchemaError as e:
+        raise abort(
+            400,
+            description="Schema error:\n{}".format(
+                e.message
+            ),
+        )
     except Exception:
         raise abort(400, description="Unknown error.")
 

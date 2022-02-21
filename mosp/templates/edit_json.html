@@ -142,7 +142,13 @@
         body: data
       })
       .then(res => {
-        document.getElementById("toast-body").textContent = 'Object successfully updated.';
+        if (!res.ok) {
+          res.json().then(json => {
+            document.getElementById("toast-body").textContent = json.description;
+          });
+        } else {
+          document.getElementById("toast-body").textContent = 'Object successfully updated.';
+        }
       })
       .catch((error) => {
         document.getElementById("toast-body").textContent = error;
