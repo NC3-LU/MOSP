@@ -145,6 +145,7 @@
         if (!res.ok) {
           res.json().then(json => {
             document.getElementById("toast-body").textContent = json.description;
+            console.log(json.description);
           });
         } else {
           document.getElementById("toast-body").textContent = 'Object successfully updated.';
