@@ -5,6 +5,7 @@ from mosp.bootstrap import db
 
 class Event(db.Model):
     """Represent an event."""
+
     id = db.Column(db.Integer, primary_key=True)
     scope = db.Column(db.String(), nullable=False)
     action = db.Column(db.String(), nullable=False)
