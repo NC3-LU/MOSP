@@ -104,6 +104,16 @@ class ObjectsList(Resource):
             },
         }
 
+        # Log the event
+        new_event = Event(
+            scope="JsonObject",
+            subject="id={} uuid={}".format("", str(object_uuid)),
+            action="apiv2.object_objects_list:GET",
+            initiator=request.headers.get("User-Agent"),
+        )
+        db.session.add(new_event)
+        db.session.commit()
+
         results = []
         count = 0
         query = JsonObject.query
@@ -213,7 +223,7 @@ class ObjectItem(Resource):
             # Log the event
             new_event = Event(
                 scope="JsonObject",
-                subject=id,
+                subject="id={}".format(id),
                 action="apiv2.object_object_item:GET",
                 initiator=request.headers.get("User-Agent"),
             )
@@ -233,7 +243,7 @@ class ObjectItem(Resource):
             # Log the event
             new_event = Event(
                 scope="JsonObject",
-                subject=id,
+                subject="id={}".format(id),
                 action="apiv2.object_object_item:PATCH",
                 initiator="{} user-id={}".format(
                     request.headers.get("User-Agent"), current_user.id
@@ -272,7 +282,7 @@ class ObjectItem(Resource):
             # Log the event
             new_event = Event(
                 scope="JsonObject",
-                subject=id,
+                subject="id={}".format(id),
                 action="apiv2.object_object_item:DELETE",
                 initiator="{} user-id={}".format(
                     request.headers.get("User-Agent"), current_user.id
