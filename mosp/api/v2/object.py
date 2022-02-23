@@ -107,7 +107,9 @@ class ObjectsList(Resource):
         # Log the event
         new_event = Event(
             scope="JsonObject",
-            subject="id={} uuid={}".format("", str(object_uuid)),
+            subject="id={} uuid={} schema_uuid={}".format(
+                "", str(object_uuid), str(object_schema_uuid)
+            ),
             action="apiv2.object_objects_list:GET",
             initiator=request.headers.get("User-Agent"),
         )
