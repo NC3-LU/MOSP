@@ -1,6 +1,7 @@
+from collections import Counter
 from flask import Blueprint, jsonify
 
-from mosp.models import Schema
+from mosp.models import Schema, JsonObject, Event
 
 import networkx as nx
 from networkx.readwrite import json_graph
@@ -46,3 +47,24 @@ def digraph(software=None):
     d = json_graph.node_link_data(G)  # node-link format to serialize
 
     return jsonify(d)
+
+
+@stats_bp.route("/objects/most-viewed.json", methods=["GET"])
+def most_viewed_objects():
+    events = Event.query.filter(
+        Event.scope == "JsonObject", Event.action == "object_bp.view:GET"
+    ).all()
+
+    counter = Counter()
+    for event in events:
+        id = event.subject.split()[0].replace("id=", "")
+        # uuid = event.subject.split()[1]
+        counter[id] += 1
+
+    result = {}
+    for id, occurence in counter.most_common(20):
+        obj = JsonObject.query.filter(JsonObject.id == id).first()
+        if obj:
+            result[id] = {"name": obj.name, "count": occurence}
+
+    return jsonify(result)
