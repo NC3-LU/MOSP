@@ -132,7 +132,7 @@ def view(object_id=None):
     # Log the event
     new_event = Event(
         scope="JsonObject",
-        subject="{} {}".format(object_id, uuid),
+        subject="id={} uuid={}".format(object_id, uuid),
         action="object_bp.view:GET",
         initiator=request.headers.get("User-Agent"),
     )
