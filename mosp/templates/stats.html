@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block head %}
+{{ super() }}
+<script src="{{ url_for('static', filename='npm_components/chart.js/dist/chart.min.js') }}"></script>
+<style>
+  .chart-container {
+    display: block;
+    float: none;
+    width: 20%;
+    margin-top: 0px;
+    margin-right:0px;
+    margin-left:0px;
+    height: auto;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col chart-container">
+      <h2>Most viewed objects on the platform</h2>
+      <div id="spinner" class="d-flex justify-content-center">
+          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
+      </div>
+      <canvas id="objects-most-viewed"></canvas>
+    </div>
+  </div>
+</div><!-- /.container -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  var colors = ['rgba(230, 25, 75, 0.4)', 'rgba(60, 180, 75, 0.4)',
+    'rgba(255, 225, 25, 0.4)', 'rgba(0, 130, 200, 0.4)', 'rgba(245, 130, 48, 0.4)',
+    'rgba(145, 30, 180, 0.4)', 'rgba(70, 240, 240, 0.4)', 'rgba(240, 50, 230, 0.4)',
+    'rgba(210, 245, 60, 0.4)', 'rgba(250, 190, 190, 0.4)', 'rgba(0, 128, 128, 0.4)',
+    'rgb(148, 163, 209, 0.4)', 'rgba(170, 110, 40, 0.4)', 'rgb(141, 140, 255, 0.4)',
+    'rgba(128, 0, 0, 0.4)', 'rgba(170, 255, 195, 0.4)', 'rgba(128, 128, 0, 0.4)',
+    'rgba(255, 215, 180, 0.4)', 'rgba(0, 0, 128, 0.4)', 'rgb(241, 147, 241, 0.4)',
+    'rgba(255, 255, 255, 0.4)', 'rgb(129, 181, 255, 0.4)', 'rgb(229, 236, 202, 0.4)',
+    'rgb(157, 196, 241, 0.4)', 'rgb(253, 141, 211, 0.4)', 'rgb(180, 128, 253, 0.4)',
+    'rgb(255, 195, 129, 0.4)', 'rgb(204, 228, 230, 0.4)'];
+
+  fetch("/stats/objects/most-viewed.json")
+      .then(response => response.json())
+      .then(result => {
+        var element = document.getElementById("spinner");
+        element.parentNode.removeChild(element);
+
+        data = {}
+        assoc_uuid_labels = {}
+        Object.keys(result).map(function(key, index) {
+          if (data.hasOwnProperty(result[key]["uuid"])) {
+            // data[result[key]["uuid"]] += result[key]["count"];
+            data[result[key]["name"]] += result[key]["count"];
+          } else {
+            // data[result[key]["uuid"]] = result[key]["count"];
+            data[result[key]["name"]] = result[key]["count"];
+          }
+        });
+
+        var ctx = document.getElementById("objects-most-viewed").getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: Object.keys(data),
+            datasets: [{
+              label: 'Most viewed objects',
+              data: Object.values(data),
+              borderWidth: 1,
+              backgroundColor: colors
+            }],
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Most viewed objects'
+            },
+            responsive: true
+          }
+        });
+      }).catch((error) => {
+        console.error('Error:', error);
+      });
+
+
+
+
+});
+</script>
+{% endblock %}

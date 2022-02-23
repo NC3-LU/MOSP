@@ -1,5 +1,5 @@
 from collections import Counter
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, render_template
 
 from mosp.models import Schema, JsonObject, Event
 
@@ -24,6 +24,12 @@ def findkeys(node, kv):
         for j in node.values():
             for x in findkeys(j, kv):
                 yield x
+
+
+@stats_bp.route("/", methods=["GET"])
+def index():
+    """Display some stats."""
+    return render_template("stats.html")
 
 
 @stats_bp.route("/schemas/relations.json", methods=["GET"])
