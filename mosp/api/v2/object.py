@@ -235,7 +235,9 @@ class ObjectItem(Resource):
                 scope="JsonObject",
                 subject=id,
                 action="apiv2.object_object_item:PATCH",
-                initiator=request.headers.get("User-Agent"),
+                initiator="{} {}".format(
+                    request.headers.get("User-Agent"), current_user.id
+                ),
             )
             db.session.add(new_event)
             db.session.commit()
@@ -272,7 +274,9 @@ class ObjectItem(Resource):
                 scope="JsonObject",
                 subject=id,
                 action="apiv2.object_object_item:DELETE",
-                initiator=request.headers.get("User-Agent"),
+                initiator="{} {}".format(
+                    request.headers.get("User-Agent"), current_user.id
+                ),
             )
             db.session.add(new_event)
             db.session.commit()
