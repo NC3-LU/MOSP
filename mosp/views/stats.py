@@ -65,6 +65,11 @@ def most_viewed_objects():
     for id, occurence in counter.most_common(20):
         obj = JsonObject.query.filter(JsonObject.id == id).first()
         if obj:
-            result[id] = {"name": obj.name, "count": occurence}
+            result[id] = {
+                "uuid": obj.json_object.get("uuid", ""),
+                "language": obj.json_object.get("langauge", ""),
+                "name": obj.name,
+                "count": occurence,
+            }
 
     return jsonify(result)
