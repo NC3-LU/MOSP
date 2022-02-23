@@ -4,12 +4,13 @@
 from typing import List
 import sqlalchemy.exc
 import logging
+from flask import request
 from typing import Dict, Any
 from flask_login import current_user
 from flask_restx import Namespace, Resource, fields, reqparse
 
 from mosp.bootstrap import db
-from mosp.models import JsonObject, License, Schema
+from mosp.models import JsonObject, License, Schema, Event
 from mosp.api.v2.types import ResultType
 from mosp.api.common import check_submitted_object, create_new_version
 from mosp.api.v2.common import (
@@ -207,6 +208,17 @@ class ObjectItem(Resource):
     @object_ns.doc("object_get")
     @object_ns.marshal_with(object_get_id, code=200)
     def get(self, id):
+        obj = JsonObject.query.filter(JsonObject.id == id).first()
+        if obj:
+            # Log the event
+            new_event = Event(
+                scope="JsonObject",
+                subject=id,
+                action="apiv2.object_object_item:GET",
+                initiator=request.headers.get("User-Agent"),
+            )
+            db.session.add(new_event)
+            db.session.commit()
         return JsonObject.query.filter(JsonObject.id == id).all(), 200
 
     @object_ns.doc("object_patch")
@@ -216,6 +228,17 @@ class ObjectItem(Resource):
     def patch(self, id):
 
         obj = JsonObject.query.filter(JsonObject.id == id).first()
+
+        if obj:
+            # Log the event
+            new_event = Event(
+                scope="JsonObject",
+                subject=id,
+                action="apiv2.object_object_item:PATCH",
+                initiator=request.headers.get("User-Agent"),
+            )
+            db.session.add(new_event)
+            db.session.commit()
 
         data = {
             "org_id": obj.org_id,
@@ -243,6 +266,17 @@ class ObjectItem(Resource):
     @auth_func
     def delete(self, id):
         obj = JsonObject.query.filter(JsonObject.id == id).first()
-        db.session.delete(obj)
-        db.session.commit()
+        if obj:
+            # Log the event
+            new_event = Event(
+                scope="JsonObject",
+                subject=id,
+                action="apiv2.object_object_item:DELETE",
+                initiator=request.headers.get("User-Agent"),
+            )
+            db.session.add(new_event)
+            db.session.commit()
+
+            db.session.delete(obj)
+            db.session.commit()
         return {}, 204
