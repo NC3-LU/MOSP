@@ -16,7 +16,7 @@ from flask_login import login_required, current_user
 from flask_babel import gettext
 
 from mosp.bootstrap import db
-from mosp.models import Schema, JsonObject, License, Version
+from mosp.models import Schema, JsonObject, License, Version, Event
 from mosp.views.decorators import check_object_edit_permission
 from mosp.forms import AddObjectForm
 from mosp.lib import objects_utils
@@ -52,6 +52,17 @@ def get_json_object(object_id):
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     if json_object is None:
         abort(404)
+
+    # Log the event
+    new_event = Event(
+        scope="JsonObject",
+        subject="{}".format(object_id),
+        action="object_bp.get_json_object:GET",
+        initiator=request.headers.get("User-Agent"),
+    )
+    db.session.add(new_event)
+    db.session.commit()
+
     result = json.dumps(
         json_object.json_object, sort_keys=True, indent=4, separators=(",", ": ")
     )
@@ -117,6 +128,17 @@ def view(object_id=None):
         uuid = json_object.json_object["uuid"]
     except Exception:
         uuid = None
+
+    # Log the event
+    new_event = Event(
+        scope="JsonObject",
+        subject="{} {}".format(object_id, uuid),
+        action="object_bp.view:GET",
+        initiator=request.headers.get("User-Agent"),
+    )
+    db.session.add(new_event)
+    db.session.commit()
+
     result = json.dumps(
         json_object.json_object,
         ensure_ascii=False,
@@ -141,6 +163,19 @@ def delete(object_id=None):
     """
     json_object = JsonObject.query.filter(JsonObject.id == object_id).first()
     schema_id = json_object.schema_id
+
+    # Log the event
+    new_event = Event(
+        scope="JsonObject",
+        subject=object_id,
+        action="object_bp.delete:GET",
+        initiator="{} user-id={}".format(
+            request.headers.get("User-Agent"), current_user.id
+        ),
+    )
+    db.session.add(new_event)
+    db.session.commit()
+
     db.session.delete(json_object)
     db.session.commit()
     return redirect(url_for("schema_bp.get", schema_id=schema_id))
@@ -308,6 +343,18 @@ def process_form(object_id=None):
                 ),
                 "success",
             )
+
+            # Log the event
+            new_event = Event(
+                scope="JsonObject",
+                subject="{}".format(object_id),
+                action="object_bp.process_form:POST",
+                initiator="{} user-id={}".format(
+                    request.headers.get("User-Agent"), current_user.id
+                ),
+            )
+            db.session.add(new_event)
+            db.session.commit()
         except Exception as e:
             print(e)
             form.name.errors.append("Name already exists.")
