@@ -9,7 +9,15 @@ from werkzeug.security import generate_password_hash
 from flask_babel import gettext
 from datetime import datetime, timedelta
 
-from mosp.models import User, JsonObject, Schema, Organization, License, Collection
+from mosp.models import (
+    User,
+    JsonObject,
+    Schema,
+    Organization,
+    License,
+    Collection,
+    Event,
+)
 from mosp.bootstrap import db
 from mosp.views.common import admin_permission
 from mosp.forms import UserForm, OrganizationForm
@@ -350,4 +358,5 @@ admin_flask.add_view(SecureView(Organization, db.session))
 admin_flask.add_view(SecureView(Schema, db.session))
 admin_flask.add_view(SecureView(JsonObject, db.session))
 admin_flask.add_view(SecureView(License, db.session))
+admin_flask.add_view(SecureView(Event, db.session))
 admin_flask.add_link(menu_link_back_home)
