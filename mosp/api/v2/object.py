@@ -235,7 +235,7 @@ class ObjectItem(Resource):
                 scope="JsonObject",
                 subject=id,
                 action="apiv2.object_object_item:PATCH",
-                initiator="{} {}".format(
+                initiator="{} user-id={}".format(
                     request.headers.get("User-Agent"), current_user.id
                 ),
             )
@@ -274,7 +274,7 @@ class ObjectItem(Resource):
                 scope="JsonObject",
                 subject=id,
                 action="apiv2.object_object_item:DELETE",
-                initiator="{} {}".format(
+                initiator="{} user-id={}".format(
                     request.headers.get("User-Agent"), current_user.id
                 ),
             )
