@@ -17,5 +17,5 @@ class Event(db.Model):
     @validates("initiator")
     def validates_initiator(self, key: str, value: str):
         if any(bot in value for bot in ["SemrushBot", "AhrefsBot", "Googlebot"]):
-            raise AssertionError("maximum length for email: 256")
+            raise AssertionError("do not log event initiated by bots")
         return value
