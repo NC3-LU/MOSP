@@ -1,7 +1,8 @@
-from typing import Counter
 from collections import Counter
+from urllib.parse import urljoin
 from flask import Blueprint, jsonify, render_template
 
+from mosp.bootstrap import application
 from mosp.models import Schema, JsonObject, Event
 
 import networkx as nx
@@ -104,8 +105,11 @@ def most_viewed_scehmas():
 
     result = []
     for uuid, occurence in counter.most_common(10):
+        schema_uuid_absolute = urljoin(
+            application.config["INSTANCE_URL"], "schema/def/" + str(uuid)
+        )
         json_schema = Schema.query.filter(
-            Schema.json_schema[("$id")].astext == uuid,
+            Schema.json_schema[("$id")].astext == schema_uuid_absolute,
         ).first()
 
         if json_schema:
