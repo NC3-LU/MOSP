@@ -14,6 +14,7 @@
         "bootstrap": "^4.6.0",
         "bootstrap-select": "^1.13.18",
         "chart.js": "^3.7.1",
+        "chartjs-plugin-datalabels": "^2.0.0",
         "code-prettify": "^0.1.0",
         "codemirror": "^5.65.0",
         "datatables": "^1.10.18",

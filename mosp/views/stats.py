@@ -67,15 +67,49 @@ def most_viewed_objects():
         # uuid = event.subject.split()[1]
         counter[id] += 1
 
-    result = {}
-    for id, occurence in counter.most_common(20):
+    result = []
+    for id, occurence in counter.most_common(10):
         obj = JsonObject.query.filter(JsonObject.id == id).first()
         if obj:
-            result[id] = {
+            result.append({
+                "id": id,
                 "uuid": obj.json_object.get("uuid", ""),
-                "language": obj.json_object.get("langauge", ""),
+                "language": obj.json_object.get("language", ""),
                 "name": obj.name,
                 "count": occurence,
-            }
+            })
+
+    return jsonify(result)
+
+
+@stats_bp.route("/schemas/most-viewed.json", methods=["GET"])
+def most_viewed_scehmas():
+    events = Event.query.filter(
+        Event.scope == "JsonObject", Event.action == "apiv2.object_objects_list:GET"
+    ).all()
+
+    counter = Counter()
+    for event in events:
+        try:
+            # id = event.subject.split()[0].replace("id=", "")
+            # uuid = event.subject.split()[1].replace("uuid=", "")
+            schema_uuid = event.subject.split()[2].replace("schema_uuid=", "")
+            if schema_uuid:
+                counter[schema_uuid] += 1
+        except Exception:
+            continue
+
+    result = []
+    for uuid, occurence in counter.most_common(10):
+        json_schema = Schema.query.filter(
+                Schema.json_schema[("$id")].astext == uuid,
+        ).first()
+
+        if json_schema:
+            result.append({
+                "id": uuid,
+                "name": json_schema.name,
+                "count": occurence,
+            })
 
     return jsonify(result)

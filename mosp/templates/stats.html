@@ -2,6 +2,7 @@
 {% block head %}
 {{ super() }}
 <script src="{{ url_for('static', filename='npm_components/chart.js/dist/chart.min.js') }}"></script>
+<script src="{{ url_for('static', filename='npm_components/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js') }}"></script>
 <style>
   .chart-container {
     display: block;
@@ -17,8 +18,8 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col chart-container">
-      <h2>Most viewed objects on the platform</h2>
+    <div class="col-4 chart-container">
+      <h2>{{ _('Most viewed objects') }}</h2>
       <div id="spinner" class="d-flex justify-content-center">
           <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
       </div>
@@ -47,22 +48,25 @@ document.addEventListener("DOMContentLoaded", function() {
         element.parentNode.removeChild(element);
 
         data = {}
-        assoc_uuid_labels = {}
-        Object.keys(result).map(function(key, index) {
-          if (data.hasOwnProperty(result[key]["uuid"])) {
+        labels = {}
+        result.map(function(elem) {
+          if (data.hasOwnProperty(elem["uuid"])) {
             // data[result[key]["uuid"]] += result[key]["count"];
-            data[result[key]["name"]] += result[key]["count"];
+            data[elem["uuid"]] += elem["count"];
           } else {
             // data[result[key]["uuid"]] = result[key]["count"];
-            data[result[key]["name"]] = result[key]["count"];
+            data[elem["uuid"]] = elem["count"];
+            labels[elem["uuid"]] = elem["name"];
           }
         });
 
+
         var ctx = document.getElementById("objects-most-viewed").getContext('2d');
         var myChart = new Chart(ctx, {
+          plugins: [ChartDataLabels],
           type: 'pie',
           data: {
-            labels: Object.keys(data),
+            labels: Object.values(labels),
             datasets: [{
               label: 'Most viewed objects',
               data: Object.values(data),
@@ -71,20 +75,34 @@ document.addEventListener("DOMContentLoaded", function() {
             }],
           },
           options: {
-            title: {
-              display: true,
-              text: 'Most viewed objects'
-            },
-            responsive: true
+              responsive: true,
+              aspectRatio: 0.7,
+              plugins: {
+                  legend: {
+                      position: 'bottom',
+                  },
+                  datalabels: {
+                      formatter: (value, ctx) => {
+                          let sum = 0;
+                          let dataArr = ctx.chart.data.datasets[0].data;
+                          dataArr.map(data => {
+                              sum += data;
+                          });
+                          let percentage = (value*100 / sum).toFixed(0)+"%";
+                          return percentage;
+                      },
+                      anchor: 'end',
+                      align: 'start',
+                      offset: 5,
+                      display: 'auto',
+                      color: 'rgba(0,0,0,.7)',
+                  }
+              },
           }
         });
       }).catch((error) => {
         console.error('Error:', error);
       });
-
-
-
-
 });
 </script>
 {% endblock %}
