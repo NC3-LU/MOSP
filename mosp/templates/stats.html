@@ -20,10 +20,17 @@
   <div class="row">
     <div class="col-4 chart-container">
       <h2>{{ _('Most viewed objects') }}</h2>
-      <div id="spinner" class="d-flex justify-content-center">
+      <div id="spinner1" class="d-flex justify-content-center">
           <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
       </div>
       <canvas id="objects-most-viewed"></canvas>
+    </div>
+    <div class="col-4 chart-container">
+      <h2>{{ _('Most viewed schemas') }}</h2>
+      <div id="spinner2" class="d-flex justify-content-center">
+          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
+      </div>
+      <canvas id="schemas-most-viewed"></canvas>
     </div>
   </div>
 </div><!-- /.container -->
@@ -44,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
   fetch("/stats/objects/most-viewed.json")
       .then(response => response.json())
       .then(result => {
-        var element = document.getElementById("spinner");
+        var element = document.getElementById("spinner1");
         element.parentNode.removeChild(element);
 
         data = {}
@@ -103,6 +110,70 @@ document.addEventListener("DOMContentLoaded", function() {
       }).catch((error) => {
         console.error('Error:', error);
       });
+
+
+      fetch("/stats/schemas/most-viewed.json")
+          .then(response => response.json())
+          .then(result => {
+            var element = document.getElementById("spinner2");
+            element.parentNode.removeChild(element);
+
+            data = {}
+            labels = {}
+            result.map(function(elem) {
+              if (data.hasOwnProperty(elem["id"])) {
+                // data[result[key]["uuid"]] += result[key]["count"];
+                data[elem["id"]] += elem["count"];
+              } else {
+                // data[result[key]["uuid"]] = result[key]["count"];
+                data[elem["id"]] = elem["count"];
+                labels[elem["id"]] = elem["name"];
+              }
+            });
+
+
+            var ctx = document.getElementById("schemas-most-viewed").getContext('2d');
+            var myChart = new Chart(ctx, {
+              plugins: [ChartDataLabels],
+              type: 'pie',
+              data: {
+                labels: Object.values(labels),
+                datasets: [{
+                  label: 'Most viewed schemas',
+                  data: Object.values(data),
+                  borderWidth: 1,
+                  backgroundColor: colors
+                }],
+              },
+              options: {
+                  responsive: true,
+                  aspectRatio: 0.7,
+                  plugins: {
+                      legend: {
+                          position: 'bottom',
+                      },
+                      datalabels: {
+                          formatter: (value, ctx) => {
+                              let sum = 0;
+                              let dataArr = ctx.chart.data.datasets[0].data;
+                              dataArr.map(data => {
+                                  sum += data;
+                              });
+                              let percentage = (value*100 / sum).toFixed(0)+"%";
+                              return percentage;
+                          },
+                          anchor: 'end',
+                          align: 'start',
+                          offset: 5,
+                          display: 'auto',
+                          color: 'rgba(0,0,0,.7)',
+                      }
+                  },
+              }
+            });
+          }).catch((error) => {
+            console.error('Error:', error);
+          });
 });
 </script>
 {% endblock %}
