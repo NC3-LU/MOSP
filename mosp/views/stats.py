@@ -72,13 +72,15 @@ def most_viewed_objects():
     for id, occurence in counter.most_common(10):
         obj = JsonObject.query.filter(JsonObject.id == id).first()
         if obj:
-            result.append({
-                "id": id,
-                "uuid": obj.json_object.get("uuid", ""),
-                "language": obj.json_object.get("language", ""),
-                "name": obj.name,
-                "count": occurence,
-            })
+            result.append(
+                {
+                    "id": id,
+                    "uuid": obj.json_object.get("uuid", ""),
+                    "language": obj.json_object.get("language", ""),
+                    "name": obj.name,
+                    "count": occurence,
+                }
+            )
 
     return jsonify(result)
 
@@ -103,14 +105,16 @@ def most_viewed_scehmas():
     result = []
     for uuid, occurence in counter.most_common(10):
         json_schema = Schema.query.filter(
-                Schema.json_schema[("$id")].astext == uuid,
+            Schema.json_schema[("$id")].astext == uuid,
         ).first()
 
         if json_schema:
-            result.append({
-                "id": uuid,
-                "name": json_schema.name,
-                "count": occurence,
-            })
+            result.append(
+                {
+                    "id": uuid,
+                    "name": json_schema.name,
+                    "count": occurence,
+                }
+            )
 
     return jsonify(result)
