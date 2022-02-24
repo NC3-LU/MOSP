@@ -1,3 +1,4 @@
+from typing import Counter
 from collections import Counter
 from flask import Blueprint, jsonify, render_template
 
@@ -61,7 +62,7 @@ def most_viewed_objects():
         Event.scope == "JsonObject", Event.action == "object_bp.view:GET"
     ).all()
 
-    counter = Counter()
+    counter: Counter[str] = Counter()
     for event in events:
         id = event.subject.split()[0].replace("id=", "")
         # uuid = event.subject.split()[1]
@@ -88,7 +89,7 @@ def most_viewed_scehmas():
         Event.scope == "JsonObject", Event.action == "apiv2.object_objects_list:GET"
     ).all()
 
-    counter = Counter()
+    counter: Counter[str] = Counter()
     for event in events:
         try:
             # id = event.subject.split()[0].replace("id=", "")
