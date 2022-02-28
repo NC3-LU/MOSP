@@ -80,5 +80,7 @@ def clean_events():
     "Clean events"
     print("Cleaning events {} ...")
     events = Event.query.filter(Event.initiator.ilike("%{}%".format("bot/")))
+    count = events.count()
     events.delete(synchronize_session=False)
     db.session.commit()
+    print("Events deleted: {}".format(count))
