@@ -36,5 +36,6 @@ node_modules
 mosp/static/npm_components
 
 
+contrib/crawler-user-agents.json
 instance/production.py
 *.wsgi
