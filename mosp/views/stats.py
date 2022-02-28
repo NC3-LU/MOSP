@@ -73,11 +73,19 @@ def most_viewed_objects():
     for id, occurence in counter.most_common(10):
         obj = JsonObject.query.filter(JsonObject.id == id).first()
         if obj:
+            try:
+                uuid = obj.json_object.get("uuid", "")
+            except Exception:
+                uuid = ""
+            try:
+                language = obj.json_object.get("language", "")
+            except Exception:
+                language = ""
             result.append(
                 {
                     "id": id,
-                    "uuid": obj.json_object.get("uuid", ""),
-                    "language": obj.json_object.get("language", ""),
+                    "uuid": uuid,
+                    "language": language,
                     "name": obj.name,
                     "count": occurence,
                 }
