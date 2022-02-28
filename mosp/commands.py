@@ -7,6 +7,7 @@ import click
 
 import mosp.scripts
 import mosp.models
+from mosp.models import Event
 from mosp.bootstrap import application, db
 
 logger = logging.getLogger("commands")
@@ -72,3 +73,12 @@ def create_admin(login, email, password):
     print("Creation of the admin user {} ...".format(login))
     with application.app_context():
         mosp.scripts.create_user(login, email, password, True, True)
+
+
+@application.cli.command("clean_events")
+def clean_events():
+    "Clean events"
+    print("Cleaning events {} ...")
+    events = Event.query.filter(Event.initiator.ilike("%{}%".format("bot/")))
+    events.delete(synchronize_session=False)
+    db.session.commit()
