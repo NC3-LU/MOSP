@@ -19,6 +19,7 @@ class Event(db.Model):
         if any(
             bot in value
             for bot in [
+                "robot",
                 "SemrushBot",
                 "AhrefsBot",
                 "Googlebot",
