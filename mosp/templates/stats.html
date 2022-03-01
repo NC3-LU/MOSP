@@ -105,6 +105,13 @@ document.addEventListener("DOMContentLoaded", function() {
                       color: 'rgba(0,0,0,.7)',
                   }
               },
+              onClick: function(evt) {
+                if (confirm("Go to the object description page ?") == true) {
+                  var node = myChart.getElementsAtEventForMode(evt, 'point', { intersect: false });
+                  var uuid = Object.keys(labels)[node[0].index]
+                  window.location = '/object/'+uuid;
+                }
+              }
           }
         });
       }).catch((error) => {
@@ -169,6 +176,13 @@ document.addEventListener("DOMContentLoaded", function() {
                           color: 'rgba(0,0,0,.7)',
                       }
                   },
+                  onClick: function(evt) {
+                    if (confirm("Go to the object description page ?") == true) {
+                      var node = myChart.getElementsAtEventForMode(evt, 'point', { intersect: false });
+                      var id = Object.keys(labels)[node[0].index]
+                      window.location = '/object/'+id;
+                    }
+                  }
               }
             });
           }).catch((error) => {
