@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
+import json
 
 import click
 
@@ -78,9 +79,17 @@ def create_admin(login, email, password):
 @application.cli.command("clean_events")
 def clean_events():
     "Clean events"
-    print("Cleaning events {} ...")
-    events = Event.query.filter(Event.initiator.ilike("%{}%".format("bot/")))
-    count = events.count()
-    events.delete(synchronize_session=False)
+    print("Cleaning events...")
+    count = 0
+    crawlers = []
+    try:
+        with open("./contrib/crawler-user-agents.json") as json_file:
+            crawlers = json.load(json_file)
+    except Exception:
+        pass
+    for crawler in crawlers:
+        events = Event.query.filter(Event.initiator.op("~")(crawler["pattern"]))
+        count += events.count()
+        events.delete(synchronize_session=False)
     db.session.commit()
     print("Events deleted: {}".format(count))
