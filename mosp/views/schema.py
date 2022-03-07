@@ -21,7 +21,7 @@ from sqlalchemy import func, Boolean, Integer, desc, nullslast, or_
 
 from mosp.bootstrap import db, application
 from mosp.forms import SchemaForm
-from mosp.models import Schema, JsonObject
+from mosp.models import Schema, JsonObject, Event
 
 schema_bp = Blueprint("schema_bp", __name__, url_prefix="/schema")
 schemas_bp = Blueprint("schemas_bp", __name__, url_prefix="/schemas")
@@ -55,6 +55,16 @@ def get(per_page, schema_id=None):
     schema = Schema.query.filter(Schema.id == schema_id).first()
     if schema is None:
         abort(404)
+
+    # Log the event
+    new_event = Event(
+        scope="Schema",
+        subject="id={}".format(schema_id),
+        action="schema_bp.get:GET",
+        initiator=request.headers.get("User-Agent"),
+    )
+    db.session.add(new_event)
+    db.session.commit()
 
     # Loads all objects related to the schema
     query = JsonObject.query.filter(JsonObject.schema_id == schema.id)
