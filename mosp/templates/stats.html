@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (confirm("Go to the object description page ?") == true) {
                       var node = myChart.getElementsAtEventForMode(evt, 'point', { intersect: false });
                       var id = Object.keys(labels)[node[0].index]
-                      window.location = '/object/'+id;
+                      window.location = '/schema/'+id;
                     }
                   }
               }

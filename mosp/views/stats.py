@@ -95,10 +95,13 @@ def most_viewed_objects():
 
 
 @stats_bp.route("/schemas/most-viewed.json", methods=["GET"])
-def most_viewed_scehmas():
+def most_viewed_schemas():
     events = Event.query.filter(
         Event.scope == "JsonObject", Event.action == "apiv2.object_objects_list:GET"
     ).all()
+    events.extend(Event.query.filter(
+        Event.scope == "Schema", Event.action == "schema_bp.get:GET"
+    ).all())
 
     counter: Counter[str] = Counter()
     for event in events:
@@ -106,8 +109,16 @@ def most_viewed_scehmas():
             # id = event.subject.split()[0].replace("id=", "")
             # uuid = event.subject.split()[1].replace("uuid=", "")
             schema_uuid = event.subject.split()[2].replace("schema_uuid=", "")
-            if schema_uuid:
+            if schema_uuid != "":
                 counter[schema_uuid] += 1
+        except Exception:
+            continue
+        if schema_uuid:
+            continue
+        try:
+            id = event.subject
+            if id != "":
+                counter[id] += 1
         except Exception:
             continue
 
