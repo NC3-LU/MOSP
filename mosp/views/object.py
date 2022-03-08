@@ -56,7 +56,7 @@ def get_json_object(object_id):
     # Log the event
     new_event = Event(
         scope="JsonObject",
-        subject="{}".format(object_id),
+        subject="id={}".format(object_id),
         action="object_bp.get_json_object:GET",
         initiator=request.headers.get("User-Agent"),
     )
@@ -347,7 +347,7 @@ def process_form(object_id=None):
             # Log the event
             new_event = Event(
                 scope="JsonObject",
-                subject="{}".format(object_id),
+                subject="id={}".format(object_id),
                 action="object_bp.process_form:POST",
                 initiator="{} user-id={}".format(
                     request.headers.get("User-Agent"), current_user.id
