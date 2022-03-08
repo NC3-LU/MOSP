@@ -133,10 +133,13 @@ def most_viewed_schemas():
         schema_uuid_absolute = urljoin(
             application.config["INSTANCE_URL"], "schema/def/" + str(uuid)
         )
+        # load the object based on the UUID
         json_schema = Schema.query.filter(
             Schema.json_schema[("$id")].astext == schema_uuid_absolute,
         ).first()
         if not json_schema and uuid.isdigit():
+            # if no corresponding schema found, load based on the id (here uuid is the
+            # id, a digit)
             json_schema = Schema.query.filter(
                 Schema.id == uuid,
             ).first()
