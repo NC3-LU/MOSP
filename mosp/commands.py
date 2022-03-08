@@ -86,7 +86,7 @@ def clean_events():
         with open("./contrib/crawler-user-agents.json") as json_file:
             crawlers = json.load(json_file)
     except Exception:
-        pass
+        print("JSON file with list of crawler user agents not found.")
     for crawler in crawlers:
         events = Event.query.filter(Event.initiator.op("~")(crawler["pattern"]))
         count += events.count()
