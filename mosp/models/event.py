@@ -27,7 +27,7 @@ class Event(db.Model):
                 "DotBot",
                 "Twitterbot",
                 "YandexBot",
-                "Applebot"
+                "Applebot",
             ]
         ):
             raise AssertionError("do not log event initiated by bots")

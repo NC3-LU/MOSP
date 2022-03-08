@@ -66,7 +66,7 @@ def most_viewed_objects():
 
     # extract required informations from the events
     counter: Counter[str] = Counter()
-    regex = re.compile(r'id=([0-9]+)\b')
+    regex = re.compile(r"id=([0-9]+)\b")
     for event in events:
         result = regex.findall(event.subject)
         if not result:
@@ -107,7 +107,9 @@ def most_viewed_schemas():
     events = Event.query.filter(
         Event.scope == "JsonObject", Event.action == "apiv2.object_objects_list:GET"
     ).all()
-    regex = re.compile(r'schema_uuid=([0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})\b')
+    regex = re.compile(
+        r"schema_uuid=([0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})\b"
+    )
     for event in events:
         schema_uuid = event.subject.split()[2].replace("schema_uuid=", "")
         result = regex.findall(event.subject)
@@ -120,7 +122,7 @@ def most_viewed_schemas():
     events = Event.query.filter(
         Event.scope == "Schema", Event.action == "schema_bp.get:GET"
     ).all()
-    regex = re.compile(r'id=([0-9]+)\b')
+    regex = re.compile(r"id=([0-9]+)\b")
     for event in events:
         result = regex.findall(event.subject)
         if result:
