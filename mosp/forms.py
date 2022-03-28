@@ -166,7 +166,9 @@ class AccountConfirmationForm(RedirectForm):
 class AddObjectForm(FlaskForm):
     """Form to create and edit JsonObject."""
 
-    name = StringField("Name", [validators.InputRequired(lazy_gettext("Please enter a name"))])
+    name = StringField(
+        "Name", [validators.InputRequired(lazy_gettext("Please enter a name"))]
+    )
     description = TextAreaField(
         lazy_gettext("Description"),
         [validators.InputRequired(lazy_gettext("Please enter a description"))],
@@ -204,13 +206,16 @@ class AddObjectForm(FlaskForm):
 
 
 class SchemaForm(FlaskForm):
-    name = StringField("Name", [validators.InputRequired(lazy_gettext("Please enter a name"))])
+    name = StringField(
+        "Name", [validators.InputRequired(lazy_gettext("Please enter a name"))]
+    )
     description = TextAreaField(
         lazy_gettext("Description"),
         [validators.InputRequired(lazy_gettext("Please enter a description"))],
     )
     json_schema = TextAreaField(
-        "JSON schema", [validators.InputRequired(lazy_gettext("Please enter a JSON schema"))]
+        "JSON schema",
+        [validators.InputRequired(lazy_gettext("Please enter a JSON schema"))],
     )
     org_id = SelectField(
         lazy_gettext("Organization"),
