@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 from flask import request, current_app
 from flask_wtf import FlaskForm
 from wtforms import (
-    TextField,
+    StringField,
     TextAreaField,
     PasswordField,
     BooleanField,
@@ -15,7 +15,7 @@ from wtforms import (
     HiddenField,
     SelectMultipleField,
 )
-from wtforms.fields.html5 import EmailField
+from wtforms.fields import EmailField
 from wtforms.validators import Email, InputRequired
 from werkzeug.exceptions import NotFound, HTTPException
 from flask_babel import lazy_gettext
@@ -55,17 +55,17 @@ class RedirectForm(FlaskForm):
 class SigninForm(RedirectForm):
     """Sign in form."""
 
-    login = TextField(
+    login = StringField(
         lazy_gettext("Login"),
         [
             validators.Length(min=3, max=50),
-            validators.Required(lazy_gettext("Please enter your login.")),
+            validators.InputRequired(lazy_gettext("Please enter your login.")),
         ],
     )
     password = PasswordField(
         lazy_gettext("Password"),
         [
-            validators.Required(lazy_gettext("Please enter your password.")),
+            validators.InputRequired(lazy_gettext("Please enter your password.")),
             validators.Length(min=6, max=500),
         ],
     )
@@ -97,15 +97,15 @@ class SignupForm(FlaskForm):
     Sign up form (registration to MOSP).
     """
 
-    login = TextField(
+    login = StringField(
         lazy_gettext("Login"),
-        [validators.Required(lazy_gettext("Please enter your login."))],
+        [validators.InputRequired(lazy_gettext("Please enter your login."))],
     )
     email = EmailField(
         lazy_gettext("Email"),
         [
             validators.Length(min=6, max=256),
-            validators.Required(lazy_gettext("Please enter your email address.")),
+            validators.InputRequired(lazy_gettext("Please enter your email address.")),
         ],
     )
     submit = SubmitField(lazy_gettext("Sign up"))
@@ -129,11 +129,11 @@ class SignupForm(FlaskForm):
 class AccountRecoveryForm(RedirectForm):
     """Sign in form."""
 
-    login = TextField(
+    login = StringField(
         lazy_gettext("Login"),
         [
             validators.Length(min=3, max=30),
-            validators.Required(lazy_gettext("Please enter your login.")),
+            validators.InputRequired(lazy_gettext("Please enter your login.")),
         ],
     )
     submit = SubmitField(lazy_gettext("OK"))
@@ -145,7 +145,7 @@ class AccountConfirmationForm(RedirectForm):
     password1 = PasswordField(
         lazy_gettext("Password"),
         [
-            validators.Required(lazy_gettext("Please enter your password.")),
+            validators.InputRequired(lazy_gettext("Please enter your password.")),
             validators.Length(min=20, max=500),
             validators.InputRequired(),
             validators.EqualTo(
@@ -156,7 +156,7 @@ class AccountConfirmationForm(RedirectForm):
     password2 = PasswordField(
         lazy_gettext("Password"),
         [
-            validators.Required(lazy_gettext("Please confirm your password.")),
+            validators.InputRequired(lazy_gettext("Please confirm your password.")),
             validators.Length(min=20, max=500),
         ],
     )
@@ -166,14 +166,14 @@ class AccountConfirmationForm(RedirectForm):
 class AddObjectForm(FlaskForm):
     """Form to create and edit JsonObject."""
 
-    name = TextField("Name", [validators.Required(lazy_gettext("Please enter a name"))])
+    name = StringField("Name", [validators.InputRequired(lazy_gettext("Please enter a name"))])
     description = TextAreaField(
         lazy_gettext("Description"),
-        [validators.Required(lazy_gettext("Please enter a description"))],
+        [validators.InputRequired(lazy_gettext("Please enter a description"))],
     )
     licenses = SelectMultipleField(
         lazy_gettext("Licenses"),
-        [validators.Required(lazy_gettext("Please choose a license"))],
+        [validators.InputRequired(lazy_gettext("Please choose a license"))],
         coerce=int,
     )
     refers_to = SelectMultipleField(lazy_gettext("Refers to the objects"), coerce=int)
@@ -183,7 +183,7 @@ class AddObjectForm(FlaskForm):
     schema_id = HiddenField(lazy_gettext("Validated by"))
     org_id = SelectField(
         lazy_gettext("Organization"),
-        [validators.Required(lazy_gettext("Please select an organization"))],
+        [validators.InputRequired(lazy_gettext("Please select an organization"))],
         coerce=int,
     )
     org_id.choices = [(0, "")]
@@ -204,17 +204,17 @@ class AddObjectForm(FlaskForm):
 
 
 class SchemaForm(FlaskForm):
-    name = TextField("Name", [validators.Required(lazy_gettext("Please enter a name"))])
+    name = StringField("Name", [validators.InputRequired(lazy_gettext("Please enter a name"))])
     description = TextAreaField(
         lazy_gettext("Description"),
-        [validators.Required(lazy_gettext("Please enter a description"))],
+        [validators.InputRequired(lazy_gettext("Please enter a description"))],
     )
     json_schema = TextAreaField(
-        "JSON schema", [validators.Required(lazy_gettext("Please enter a JSON schema"))]
+        "JSON schema", [validators.InputRequired(lazy_gettext("Please enter a JSON schema"))]
     )
     org_id = SelectField(
         lazy_gettext("Organization"),
-        [validators.Required(lazy_gettext("Please select an organization"))],
+        [validators.InputRequired(lazy_gettext("Please select an organization"))],
         coerce=int,
         default=0,
     )
@@ -226,11 +226,11 @@ class SchemaForm(FlaskForm):
 class UserForm(FlaskForm):
     """Create or edit a user (for the administrator)."""
 
-    login = TextField(
+    login = StringField(
         lazy_gettext("Login"),
         [
             validators.Length(min=3, max=30),
-            validators.Required(lazy_gettext("Please enter your login.")),
+            validators.InputRequired(lazy_gettext("Please enter your login.")),
         ],
     )
     password = PasswordField(lazy_gettext("Password"))
@@ -258,18 +258,18 @@ class UserForm(FlaskForm):
 class OrganizationForm(FlaskForm):
     """Create or edit an organization (for the administrator)."""
 
-    name = TextField(
+    name = StringField(
         lazy_gettext("Name"),
         [
             validators.Length(min=3, max=30),
-            validators.Required(lazy_gettext("Please enter a name.")),
+            validators.InputRequired(lazy_gettext("Please enter a name.")),
         ],
     )
     description = TextAreaField(
         lazy_gettext("Description"),
-        [validators.Required(lazy_gettext("Please enter a description"))],
+        [validators.InputRequired(lazy_gettext("Please enter a description"))],
     )
-    organization_type = TextField(lazy_gettext("Type"))
+    organization_type = StringField(lazy_gettext("Type"))
     is_membership_restricted = BooleanField(
         lazy_gettext("Restricted membership"),
         default=True,
@@ -277,7 +277,7 @@ class OrganizationForm(FlaskForm):
             "The membership model of the organization (restricted or not restricted)."
         ),
     )
-    website = TextField(lazy_gettext("Website"))
+    website = StringField(lazy_gettext("Website"))
     users = SelectMultipleField(
         lazy_gettext("Members"),
         coerce=int,
@@ -293,17 +293,17 @@ class OrganizationForm(FlaskForm):
 class ProfileForm(FlaskForm):
     """Edit a profile."""
 
-    login = TextField(
+    login = StringField(
         lazy_gettext("Login"),
         [
             validators.Length(min=3, max=30),
-            validators.Required(lazy_gettext("Please enter your login.")),
+            validators.InputRequired(lazy_gettext("Please enter your login.")),
         ],
     )
     password = PasswordField(
         lazy_gettext("Password"),
         [
-            validators.Required(lazy_gettext("Please enter your password.")),
+            validators.InputRequired(lazy_gettext("Please enter your password.")),
             validators.Length(min=20, max=500),
         ],
     )
@@ -320,16 +320,16 @@ class ProfileForm(FlaskForm):
 class CollectionForm(FlaskForm):
     """Create or edit a collection."""
 
-    name = TextField(
+    name = StringField(
         lazy_gettext("Name"),
         [
             validators.Length(min=3, max=100),
-            validators.Required(lazy_gettext("Please enter a name.")),
+            validators.InputRequired(lazy_gettext("Please enter a name.")),
         ],
     )
     description = TextAreaField(
         lazy_gettext("Description"),
-        [validators.Required(lazy_gettext("Please enter a description"))],
+        [validators.InputRequired(lazy_gettext("Please enter a description"))],
     )
     submit = SubmitField(lazy_gettext("Save"))
 
