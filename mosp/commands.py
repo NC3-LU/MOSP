@@ -78,7 +78,7 @@ def create_admin(login, email, password):
 
 @application.cli.command("clean_events")
 def clean_events():
-    "Clean events"
+    "Clean events related to Web crawlers."
     print("Cleaning events...")
     count = 0
     crawlers = []
@@ -86,7 +86,7 @@ def clean_events():
         with open("./contrib/crawler-user-agents.json") as json_file:
             crawlers = json.load(json_file)
     except Exception:
-        print("JSON file with list of crawler user agents not found.")
+        print("JSON file with the list of crawler user agents not found.")
     for crawler in crawlers:
         events = Event.query.filter(Event.initiator.op("~")(crawler["pattern"]))
         count += events.count()
