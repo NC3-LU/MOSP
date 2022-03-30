@@ -323,23 +323,16 @@ Flask = ">=0.9"
 Six = "*"
 
 [[package]]
-name = "Flask-Login"
-version = "0.6.0.dev0"
+name = "flask-login"
+version = "0.6.0"
 description = "User authentication and session management for Flask."
 category = "main"
 optional = false
 python-versions = ">=3.7"
-develop = false
 
 [package.dependencies]
 Flask = ">=1.0.4"
 Werkzeug = ">=1.0.1"
-
-[package.source]
-type = "git"
-url = "https://github.com/maxcountryman/flask-login"
-reference = "main"
-resolved_reference = "0f94639858946ea8e921743db684b6da97d46385"
 
 [[package]]
 name = "flask-mail"
@@ -1216,7 +1209,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8,<4.0"
-content-hash = "bbb6ea4bdf0cfe6a5b5404d982fb19c612b8cb4a599cdf8545157cb8cbe79178"
+content-hash = "17fc279d8df2bf9f7f0214222e5dd7cd740e1940d93fa6d0d325fa56c65cbe4a"
 
 [metadata.files]
 alabaster = [
@@ -1344,7 +1337,10 @@ flask-cors = [
     {file = "Flask-Cors-3.0.10.tar.gz", hash = "sha256:b60839393f3b84a0f3746f6cdca56c1ad7426aa738b70d6c61375857823181de"},
     {file = "Flask_Cors-3.0.10-py2.py3-none-any.whl", hash = "sha256:74efc975af1194fc7891ff5cd85b0f7478be4f7f59fe158102e91abb72bb4438"},
 ]
-Flask-Login = []
+flask-login = [
+    {file = "Flask-Login-0.6.0.tar.gz", hash = "sha256:aa84fcfb4c3cf09ca58c08e816b7bce73f1349ba1cf13d00d8dffc5872d5fcf6"},
+    {file = "Flask_Login-0.6.0-py3-none-any.whl", hash = "sha256:5cb01ce4dc253967b6ac722a11e46de83b6272ef7a19cc7b5725ae636916d04d"},
+]
 flask-mail = [
     {file = "Flask-Mail-0.9.1.tar.gz", hash = "sha256:22e5eb9a940bf407bcf30410ecc3708f3c56cc44b29c34e1726fe85006935f41"},
 ]
