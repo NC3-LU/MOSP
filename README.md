@@ -8,6 +8,7 @@
 [![Stars](https://img.shields.io/github/stars/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/stargazers)
 [![Workflow](https://github.com/CASES-LU/MOSP/workflows/Python%20application/badge.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/actions?query=workflow%3A%22Python+application%22)
 [![Translation status](https://translate.monarc.lu/widgets/mosp/-/svg-badge.svg)](https://translate.monarc.lu/engage/mosp/)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 
 ## Presentation
