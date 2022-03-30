@@ -1,6 +1,7 @@
 from datetime import datetime
-from sqlalchemy.dialects.postgresql import JSONB
+
 from sqlalchemy import event
+from sqlalchemy.dialects.postgresql import JSONB
 
 from mosp.bootstrap import db
 

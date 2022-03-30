@@ -1,6 +1,4 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
 # MOSP - A platform for creating, editing and sharing JSON objects.
 # Copyright (C) 2018-2022 Cédric Bonhomme - https://www.cedricbonhomme.org
 # Copyright (C) 2018-2022 SMILE gie - securitymadein.lu
@@ -19,14 +17,13 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 import datetime
 
 from flask import render_template
 
 from mosp.bootstrap import application
-from mosp.notifications import emails
 from mosp.lib.user_utils import generate_confirmation_token
+from mosp.notifications import emails
 
 
 def account_recovery(user):

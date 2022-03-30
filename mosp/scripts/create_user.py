@@ -1,6 +1,4 @@
 #! /usr/bin/python
-# -*- coding:utf-8 -*
-
 from werkzeug.security import generate_password_hash
 
 from mosp.bootstrap import db

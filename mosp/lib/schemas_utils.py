@@ -1,16 +1,14 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
 """This file contains functions useful with schemas.
 """
-
 import json
 from datetime import timezone
-from flask import url_for
-from feedgen.feed import FeedGenerator
 
-from mosp.models import Schema
+from feedgen.feed import FeedGenerator
+from flask import url_for
+
 from mosp.bootstrap import application
+from mosp.models import Schema
 
 
 def generate_schemas_atom_feed():

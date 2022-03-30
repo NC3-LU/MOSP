@@ -1,7 +1,7 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
+from typing import Any
+from typing import List
 
-from typing import List, Any
 from typing_extensions import TypedDict
 
 

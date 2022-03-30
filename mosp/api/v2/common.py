@@ -1,10 +1,10 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import uuid
+
 from flask import request
 from flask_login import current_user
-from flask_restx import abort, fields
+from flask_restx import abort
+from flask_restx import fields
 
 from mosp.models import User
 from mosp.views.common import login_user_bundle

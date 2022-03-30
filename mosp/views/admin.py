@@ -1,26 +1,35 @@
 import logging
-from flask import Blueprint, current_app, render_template, flash, redirect, url_for
-from flask_login import login_required, current_user
-from flask_admin import Admin, AdminIndexView
+from datetime import datetime
+from datetime import timedelta
+
+from flask import Blueprint
+from flask import current_app
+from flask import flash
+from flask import redirect
+from flask import render_template
+from flask import url_for
+from flask_admin import Admin
+from flask_admin import AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.menu import MenuLink
-from flask_paginate import Pagination, get_page_args
-from werkzeug.security import generate_password_hash
 from flask_babel import gettext
-from datetime import datetime, timedelta
+from flask_login import current_user
+from flask_login import login_required
+from flask_paginate import get_page_args
+from flask_paginate import Pagination
+from werkzeug.security import generate_password_hash
 
-from mosp.models import (
-    User,
-    JsonObject,
-    Schema,
-    Organization,
-    License,
-    Collection,
-    Event,
-)
 from mosp.bootstrap import db
+from mosp.forms import OrganizationForm
+from mosp.forms import UserForm
+from mosp.models import Collection
+from mosp.models import Event
+from mosp.models import JsonObject
+from mosp.models import License
+from mosp.models import Organization
+from mosp.models import Schema
+from mosp.models import User
 from mosp.views.common import admin_permission
-from mosp.forms import UserForm, OrganizationForm
 
 logger = logging.getLogger(__name__)
 

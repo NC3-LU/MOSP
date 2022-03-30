@@ -1,11 +1,13 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
+from flask_restx import fields
+from flask_restx import Namespace
+from flask_restx import reqparse
+from flask_restx import Resource
 
-from flask_restx import Namespace, Resource, fields, reqparse
-
-from mosp.models import Version
+from mosp.api.v2.common import metada_params_model
+from mosp.api.v2.common import version_params_model
 from mosp.api.v2.types import ResultType
-from mosp.api.v2.common import version_params_model, metada_params_model
+from mosp.models import Version
 
 
 version_ns = Namespace("version", description="version related operations")

@@ -1,13 +1,21 @@
-import sys
 import logging
-from flask import render_template, url_for, redirect, current_app, flash
+import sys
+
+from flask import current_app
+from flask import flash
+from flask import redirect
+from flask import render_template
+from flask import url_for
 from flask_babel import gettext
 
 from mosp import __version__
+from mosp.lib.collections_utils import generate_collections_atom_feed
 from mosp.lib.objects_utils import generate_objects_atom_feed
 from mosp.lib.schemas_utils import generate_schemas_atom_feed
-from mosp.lib.collections_utils import generate_collections_atom_feed
-from mosp.models import JsonObject, Organization, User, Schema
+from mosp.models import JsonObject
+from mosp.models import Organization
+from mosp.models import Schema
+from mosp.models import User
 
 logger = logging.getLogger(__name__)
 
@@ -72,7 +80,7 @@ def about_more():
             version[0]
         )
     else:
-        mosp_version = "{} - {}".format(version[0], version[2][1:])
+        mosp_version = f"{version[0]} - {version[2][1:]}"
         version_url = "https://github.com/CASES-LU/MOSP/commits/{}".format(
             version[2][1:]
         )

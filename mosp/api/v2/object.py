@@ -1,27 +1,32 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
-from typing import List
-import sqlalchemy.exc
 import logging
-from flask import request
-from typing import Dict, Any
-from flask_login import current_user
-from flask_restx import Namespace, Resource, fields, reqparse
+from typing import Any
+from typing import Dict
+from typing import List
 
-from mosp.bootstrap import db
-from mosp.models import JsonObject, License, Schema, Event
+import sqlalchemy.exc
+from flask import request
+from flask_login import current_user
+from flask_restx import fields
+from flask_restx import Namespace
+from flask_restx import reqparse
+from flask_restx import Resource
+
+from mosp.api.common import check_submitted_object
+from mosp.api.common import create_new_version
+from mosp.api.v2.common import auth_func
+from mosp.api.v2.common import license_params_model
+from mosp.api.v2.common import metada_params_model
+from mosp.api.v2.common import object_params_model
+from mosp.api.v2.common import organization_params_model
+from mosp.api.v2.common import schema_params_model
+from mosp.api.v2.common import uuid_type
 from mosp.api.v2.types import ResultType
-from mosp.api.common import check_submitted_object, create_new_version
-from mosp.api.v2.common import (
-    auth_func,
-    uuid_type,
-    object_params_model,
-    organization_params_model,
-    schema_params_model,
-    metada_params_model,
-    license_params_model,
-)
+from mosp.bootstrap import db
+from mosp.models import Event
+from mosp.models import JsonObject
+from mosp.models import License
+from mosp.models import Schema
 
 logger = logging.getLogger(__name__)
 
@@ -225,7 +230,7 @@ class ObjectItem(Resource):
             # Log the event
             new_event = Event(
                 scope="JsonObject",
-                subject="id={}".format(id),
+                subject=f"id={id}",
                 action="apiv2.object_object_item:GET",
                 initiator=request.headers.get("User-Agent"),
             )
@@ -245,7 +250,7 @@ class ObjectItem(Resource):
             # Log the event
             new_event = Event(
                 scope="JsonObject",
-                subject="id={}".format(id),
+                subject=f"id={id}",
                 action="apiv2.object_object_item:PATCH",
                 initiator="{} user-id={}".format(
                     request.headers.get("User-Agent"), current_user.id
@@ -284,7 +289,7 @@ class ObjectItem(Resource):
             # Log the event
             new_event = Event(
                 scope="JsonObject",
-                subject="id={}".format(id),
+                subject=f"id={id}",
                 action="apiv2.object_object_item:DELETE",
                 initiator="{} user-id={}".format(
                     request.headers.get("User-Agent"), current_user.id

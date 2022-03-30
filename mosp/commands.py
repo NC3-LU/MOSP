@@ -1,15 +1,14 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import logging
 import json
+import logging
 
 import click
 
-import mosp.scripts
 import mosp.models
+import mosp.scripts
+from mosp.bootstrap import application
+from mosp.bootstrap import db
 from mosp.models import Event
-from mosp.bootstrap import application, db
 
 logger = logging.getLogger("commands")
 
@@ -60,7 +59,7 @@ def import_licenses_from_spdx():
 @click.option("--password", default="password", help="Password")
 def create_user(login, email, password):
     "Initializes a user"
-    print("Creation of the user {} ...".format(login))
+    print(f"Creation of the user {login} ...")
     with application.app_context():
         mosp.scripts.create_user(login, email, password, True, False)
 
@@ -71,7 +70,7 @@ def create_user(login, email, password):
 @click.option("--password", default="password", help="Password")
 def create_admin(login, email, password):
     "Initializes an admin user"
-    print("Creation of the admin user {} ...".format(login))
+    print(f"Creation of the admin user {login} ...")
     with application.app_context():
         mosp.scripts.create_user(login, email, password, True, True)
 
@@ -92,4 +91,4 @@ def clean_events():
         count += events.count()
         events.delete(synchronize_session=False)
     db.session.commit()
-    print("Events deleted: {}".format(count))
+    print(f"Events deleted: {count}")

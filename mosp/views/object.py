@@ -1,25 +1,30 @@
-from typing import Union, Dict
 import json
 from datetime import datetime
-from flask import (
-    Blueprint,
-    render_template,
-    redirect,
-    url_for,
-    flash,
-    request,
-    abort,
-    Response,
-    jsonify,
-)
-from flask_login import login_required, current_user
+from typing import Dict
+from typing import Union
+
+from flask import abort
+from flask import Blueprint
+from flask import flash
+from flask import jsonify
+from flask import redirect
+from flask import render_template
+from flask import request
+from flask import Response
+from flask import url_for
 from flask_babel import gettext
+from flask_login import current_user
+from flask_login import login_required
 
 from mosp.bootstrap import db
-from mosp.models import Schema, JsonObject, License, Version, Event
-from mosp.views.decorators import check_object_edit_permission
 from mosp.forms import AddObjectForm
 from mosp.lib import objects_utils
+from mosp.models import Event
+from mosp.models import JsonObject
+from mosp.models import License
+from mosp.models import Schema
+from mosp.models import Version
+from mosp.views.decorators import check_object_edit_permission
 
 object_bp = Blueprint("object_bp", __name__, url_prefix="/object")
 objects_bp = Blueprint("objects_bp", __name__, url_prefix="/objects")
@@ -56,7 +61,7 @@ def get_json_object(object_id):
     # Log the event
     new_event = Event(
         scope="JsonObject",
-        subject="id={}".format(object_id),
+        subject=f"id={object_id}",
         action="object_bp.get_json_object:GET",
         initiator=request.headers.get("User-Agent"),
     )
@@ -132,7 +137,7 @@ def view(object_id=None):
     # Log the event
     new_event = Event(
         scope="JsonObject",
-        subject="id={} uuid={}".format(object_id, uuid),
+        subject=f"id={object_id} uuid={uuid}",
         action="object_bp.view:GET",
         initiator=request.headers.get("User-Agent"),
     )
@@ -347,7 +352,7 @@ def process_form(object_id=None):
             # Log the event
             new_event = Event(
                 scope="JsonObject",
-                subject="id={}".format(object_id),
+                subject=f"id={object_id}",
                 action="object_bp.process_form:POST",
                 initiator="{} user-id={}".format(
                     request.headers.get("User-Agent"), current_user.id

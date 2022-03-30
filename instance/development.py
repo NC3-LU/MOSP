@@ -22,7 +22,7 @@ SECURITY_PASSWORD_SALT = "dev"
 SELF_REGISTRATION = True
 
 UPLOAD_FOLDER = "./mosp/web/public/pictures/"
-ALLOWED_EXTENSIONS = set(["png"])
+ALLOWED_EXTENSIONS = {"png"}
 
 ADMIN_EMAIL = "info@cases.lu"
 ADMIN_URL = "https://www.cases.lu"

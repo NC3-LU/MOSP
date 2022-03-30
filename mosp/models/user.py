@@ -1,10 +1,11 @@
 import re
 import secrets
 from datetime import datetime
+
 from flask_login import UserMixin
 from sqlalchemy.orm import validates
-from werkzeug.security import check_password_hash
 from validate_email import validate_email
+from werkzeug.security import check_password_hash
 
 from mosp.bootstrap import db
 

@@ -1,15 +1,13 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
 """This file contains functions useful with collections.
 """
-
 from datetime import timezone
-from flask import url_for
-from feedgen.feed import FeedGenerator
 
-from mosp.models import Collection
+from feedgen.feed import FeedGenerator
+from flask import url_for
+
 from mosp.bootstrap import application
+from mosp.models import Collection
 
 
 def generate_collections_atom_feed():

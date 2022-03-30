@@ -1,6 +1,4 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
 # MOSP - A platform for creating, editing and sharing JSON objects.
 # Copyright (C) 2018-2022 Cédric Bonhomme - https://www.cedricbonhomme.org
 # Copyright (C) 2018-2022 SMILE gie - securitymadein.lu
@@ -19,9 +17,8 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-from mosp.bootstrap import application
 from mosp import commands
+from mosp.bootstrap import application
 
 
 def register_commands(app):

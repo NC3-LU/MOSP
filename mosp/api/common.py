@@ -1,15 +1,14 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
 """
 Resources shared between all APIs.
 """
-
 import jsonschema
 from flask_login import current_user
 from flask_restx import abort
 
-from mosp.models import Schema, Organization, JsonObject
+from mosp.models import JsonObject
+from mosp.models import Organization
+from mosp.models import Schema
 
 
 def check_submitted_object(data):
@@ -78,7 +77,7 @@ def check_submitted_object(data):
     except jsonschema.exceptions.SchemaError as e:
         raise abort(
             400,
-            description="Schema error:\n{}".format(e.message),
+            description=f"Schema error:\n{e.message}",
         )
     except Exception:
         raise abort(400, description="Unknown error.")

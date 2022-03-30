@@ -1,14 +1,14 @@
-from typing import Union
 from datetime import datetime
-from sqlalchemy.dialects.postgresql import JSONB
-from sqlalchemy.orm import backref
-from sqlalchemy import event
+from typing import Union
 
 import jsonschema
+from sqlalchemy import event
+from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.orm import backref
 
 from mosp.bootstrap import db
-from mosp.models.version import Version
 from mosp.models.schema import Schema
+from mosp.models.version import Version
 
 
 association_table_license = db.Table(

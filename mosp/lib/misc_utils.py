@@ -1,8 +1,7 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import logging
-from urllib.parse import urlparse, urljoin
+from urllib.parse import urljoin
+from urllib.parse import urlparse
 
 from flask import request
 

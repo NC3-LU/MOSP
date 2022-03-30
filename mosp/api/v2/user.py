@@ -1,23 +1,26 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import secrets
-import sqlalchemy
-from werkzeug.security import generate_password_hash
-from flask_login import current_user
-from flask_restx import Namespace, Resource, fields, reqparse, abort
-from flask_restx.inputs import date_from_iso8601
 
-from mosp.bootstrap import db, application
-from mosp.models import User, Organization
-from mosp.notifications import notifications
+import sqlalchemy
+from flask_login import current_user
+from flask_restx import abort
+from flask_restx import fields
+from flask_restx import Namespace
+from flask_restx import reqparse
+from flask_restx import Resource
+from flask_restx.inputs import date_from_iso8601
+from werkzeug.security import generate_password_hash
+
+from mosp.api.v2.common import auth_func
+from mosp.api.v2.common import metada_params_model
+from mosp.api.v2.common import organization_params_model
+from mosp.api.v2.common import user_params_model
 from mosp.api.v2.types import ResultType
-from mosp.api.v2.common import (
-    auth_func,
-    user_params_model,
-    metada_params_model,
-    organization_params_model,
-)
+from mosp.bootstrap import application
+from mosp.bootstrap import db
+from mosp.models import Organization
+from mosp.models import User
+from mosp.notifications import notifications
 
 
 user_ns = Namespace("user", description="user related operations")

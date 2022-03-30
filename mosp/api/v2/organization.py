@@ -1,11 +1,14 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
+from flask_restx import fields
+from flask_restx import inputs
+from flask_restx import Namespace
+from flask_restx import reqparse
+from flask_restx import Resource
 
-from flask_restx import Namespace, Resource, fields, reqparse, inputs
-
-from mosp.models import Organization
+from mosp.api.v2.common import metada_params_model
+from mosp.api.v2.common import organization_params_model
 from mosp.api.v2.types import ResultType
-from mosp.api.v2.common import organization_params_model, metada_params_model
+from mosp.models import Organization
 
 
 organization_ns = Namespace(

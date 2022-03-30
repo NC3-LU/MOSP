@@ -1,24 +1,20 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
-from sqlalchemy.engine import reflection
 from sqlalchemy import create_engine
-from sqlalchemy.schema import (
-    MetaData,
-    Table,
-    DropTable,
-    ForeignKeyConstraint,
-    DropConstraint,
-)
+from sqlalchemy.engine import reflection
+from sqlalchemy.schema import DropConstraint
+from sqlalchemy.schema import DropTable
+from sqlalchemy.schema import ForeignKeyConstraint
+from sqlalchemy.schema import MetaData
+from sqlalchemy.schema import Table
 
-from mosp.models.user import User
-from mosp.models.jsonobject import JsonObject
-from mosp.models.schema import Schema
-from mosp.models.organization import Organization
-from mosp.models.license import License
-from mosp.models.version import Version
 from mosp.models.collection import Collection
 from mosp.models.event import Event
+from mosp.models.jsonobject import JsonObject
+from mosp.models.license import License
+from mosp.models.organization import Organization
+from mosp.models.schema import Schema
+from mosp.models.user import User
+from mosp.models.version import Version
 
 
 def mappers(*args):

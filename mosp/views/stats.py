@@ -1,13 +1,17 @@
 import re
 from collections import Counter
 from urllib.parse import urljoin
-from flask import Blueprint, jsonify, render_template
-
-from mosp.bootstrap import application
-from mosp.models import Schema, JsonObject, Event
 
 import networkx as nx
+from flask import Blueprint
+from flask import jsonify
+from flask import render_template
 from networkx.readwrite import json_graph
+
+from mosp.bootstrap import application
+from mosp.models import Event
+from mosp.models import JsonObject
+from mosp.models import Schema
 
 
 stats_bp = Blueprint("stats_bp", __name__, url_prefix="/stats")
@@ -18,15 +22,13 @@ def findkeys(node, kv):
     or in a list."""
     if isinstance(node, list):
         for i in node:
-            for x in findkeys(i, kv):
-                yield x
+            yield from findkeys(i, kv)
     elif isinstance(node, dict):
         if kv in node:
             if "http" in node[kv]:
                 yield node[kv]
         for j in node.values():
-            for x in findkeys(j, kv):
-                yield x
+            yield from findkeys(j, kv)
 
 
 @stats_bp.route("/", methods=["GET"])

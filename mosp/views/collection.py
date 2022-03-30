@@ -1,12 +1,22 @@
-from flask import Blueprint, render_template, abort, flash, redirect, url_for, jsonify
-from flask_login import login_required, current_user
-from flask_paginate import Pagination, get_page_args
+from flask import abort
+from flask import Blueprint
+from flask import flash
+from flask import jsonify
+from flask import redirect
+from flask import render_template
+from flask import url_for
 from flask_babel import gettext
+from flask_login import current_user
+from flask_login import login_required
+from flask_paginate import get_page_args
+from flask_paginate import Pagination
 from sqlalchemy import or_
 
 from mosp.bootstrap import db
-from mosp.models import Collection, JsonObject, User
 from mosp.forms import CollectionForm
+from mosp.models import Collection
+from mosp.models import JsonObject
+from mosp.models import User
 from mosp.views.decorators import check_collection_edit_permission
 
 collection_bp = Blueprint("collection_bp", __name__, url_prefix="/collection")

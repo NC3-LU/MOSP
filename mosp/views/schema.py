@@ -1,27 +1,37 @@
-from typing import List, Dict
-import json
 import ast
-import operator
 import functools
+import json
+import operator
+from typing import Dict
+from typing import List
 from urllib.parse import urljoin
-from flask import (
-    Blueprint,
-    Response,
-    render_template,
-    redirect,
-    url_for,
-    request,
-    abort,
-    flash,
-)
-from flask_login import login_required, current_user
-from flask_babel import gettext
-from flask_paginate import Pagination, get_page_args
-from sqlalchemy import func, Boolean, Integer, desc, nullslast, or_
 
-from mosp.bootstrap import db, application
+from flask import abort
+from flask import Blueprint
+from flask import flash
+from flask import redirect
+from flask import render_template
+from flask import request
+from flask import Response
+from flask import url_for
+from flask_babel import gettext
+from flask_login import current_user
+from flask_login import login_required
+from flask_paginate import get_page_args
+from flask_paginate import Pagination
+from sqlalchemy import Boolean
+from sqlalchemy import desc
+from sqlalchemy import func
+from sqlalchemy import Integer
+from sqlalchemy import nullslast
+from sqlalchemy import or_
+
+from mosp.bootstrap import application
+from mosp.bootstrap import db
 from mosp.forms import SchemaForm
-from mosp.models import Schema, JsonObject, Event
+from mosp.models import Event
+from mosp.models import JsonObject
+from mosp.models import Schema
 
 schema_bp = Blueprint("schema_bp", __name__, url_prefix="/schema")
 schemas_bp = Blueprint("schemas_bp", __name__, url_prefix="/schemas")
@@ -59,7 +69,7 @@ def get(per_page, schema_id=None):
     # Log the event
     new_event = Event(
         scope="Schema",
-        subject="id={}".format(schema_id),
+        subject=f"id={schema_id}",
         action="schema_bp.get:GET",
         initiator=request.headers.get("User-Agent"),
     )

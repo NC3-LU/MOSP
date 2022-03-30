@@ -1,7 +1,7 @@
 import pytest
 
-from mosp.bootstrap import db as _db
 from mosp.bootstrap import application
+from mosp.bootstrap import db as _db
 
 
 @pytest.fixture(scope="session")

@@ -1,20 +1,18 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
 """This file contains functions useful with JsonObject objects.
 """
-
-import json
 import difflib
+import json
 import tarfile
-from io import BytesIO
 from datetime import timezone
-from sqlalchemy import and_
-from flask import url_for
-from feedgen.feed import FeedGenerator
+from io import BytesIO
 
-from mosp.models import JsonObject
+from feedgen.feed import FeedGenerator
+from flask import url_for
+from sqlalchemy import and_
+
 from mosp.bootstrap import application
+from mosp.models import JsonObject
 
 
 def check_duplicates(json_object):

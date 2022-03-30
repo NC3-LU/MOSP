@@ -1,26 +1,29 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from urllib.parse import urlparse
-from flask import request, current_app
-from flask_wtf import FlaskForm
-from wtforms import (
-    StringField,
-    TextAreaField,
-    PasswordField,
-    BooleanField,
-    SelectField,
-    SubmitField,
-    validators,
-    HiddenField,
-    SelectMultipleField,
-)
-from wtforms.fields import EmailField
-from wtforms.validators import Email, InputRequired
-from werkzeug.exceptions import NotFound, HTTPException
-from flask_babel import lazy_gettext
 
-from mosp.models import User, Organization, License, JsonObject
+from flask import current_app
+from flask import request
+from flask_babel import lazy_gettext
+from flask_wtf import FlaskForm
+from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
+from wtforms import BooleanField
+from wtforms import HiddenField
+from wtforms import PasswordField
+from wtforms import SelectField
+from wtforms import SelectMultipleField
+from wtforms import StringField
+from wtforms import SubmitField
+from wtforms import TextAreaField
+from wtforms import validators
+from wtforms.fields import EmailField
+from wtforms.validators import Email
+from wtforms.validators import InputRequired
+
+from mosp.models import JsonObject
+from mosp.models import License
+from mosp.models import Organization
+from mosp.models import User
 
 
 class RedirectForm(FlaskForm):
@@ -29,7 +32,7 @@ class RedirectForm(FlaskForm):
     next = HiddenField()
 
     def __init__(self, *args, **kwargs):
-        super(RedirectForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if not self.next.data:
             # self.next.data = request.args.get("next") or request.referrer
             self.next.data = request.args.get("next") or "user/schemas"

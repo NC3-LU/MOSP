@@ -1,17 +1,24 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, abort, request
-from flask_login import login_required, current_user
-from werkzeug.security import generate_password_hash
+from flask import abort
+from flask import Blueprint
+from flask import flash
+from flask import redirect
+from flask import render_template
+from flask import request
+from flask import url_for
 from flask_babel import gettext
-from flask_paginate import Pagination, get_page_args
+from flask_login import current_user
+from flask_login import login_required
+from flask_paginate import get_page_args
+from flask_paginate import Pagination
+from werkzeug.security import generate_password_hash
 
 from mosp.bootstrap import db
-from mosp.models import User, JsonObject
-from mosp.forms import (
-    ProfileForm,
-    AccountRecoveryForm,
-    AccountConfirmationForm,
-)
+from mosp.forms import AccountConfirmationForm
+from mosp.forms import AccountRecoveryForm
+from mosp.forms import ProfileForm
 from mosp.lib.user_utils import confirm_token
+from mosp.models import JsonObject
+from mosp.models import User
 from mosp.notifications import notifications
 
 

@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from sqlalchemy.orm import validates
+
 from mosp.bootstrap import db
 
 

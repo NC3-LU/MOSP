@@ -1,24 +1,35 @@
 import logging
+from datetime import datetime
 
 import sqlalchemy
-from datetime import datetime
-from flask import render_template, session, url_for, redirect, current_app, flash
-from flask_login import LoginManager, logout_user, login_required, current_user
-from flask_principal import (
-    Principal,
-    AnonymousIdentity,
-    UserNeed,
-    identity_changed,
-    identity_loaded,
-    session_identity_loader,
-)
-from flask_babel import lazy_gettext, gettext
+from flask import current_app
+from flask import flash
+from flask import redirect
+from flask import render_template
+from flask import session
+from flask import url_for
+from flask_babel import gettext
+from flask_babel import lazy_gettext
+from flask_login import current_user
+from flask_login import login_required
+from flask_login import LoginManager
+from flask_login import logout_user
+from flask_principal import AnonymousIdentity
+from flask_principal import identity_changed
+from flask_principal import identity_loaded
+from flask_principal import Principal
+from flask_principal import session_identity_loader
+from flask_principal import UserNeed
 
-from mosp.bootstrap import db, application
+from mosp.bootstrap import application
+from mosp.bootstrap import db
+from mosp.forms import SigninForm
+from mosp.forms import SignupForm
 from mosp.models import User
-from mosp.views.common import admin_role, api_role, login_user_bundle
-from mosp.forms import SigninForm, SignupForm
 from mosp.notifications import notifications
+from mosp.views.common import admin_role
+from mosp.views.common import api_role
+from mosp.views.common import login_user_bundle
 
 Principal(current_app)
 # Create a permission with a single Need, in this case a RoleNeed.

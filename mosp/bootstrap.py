@@ -1,19 +1,20 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -
-
 # required imports and code exection for basic functionning
-
-from typing import Union
-import re
-import os
-import uuid
 import logging
-from flask import Flask, request
+import os
+import re
+import uuid
+from typing import Union
+
+from flask import Flask
+from flask import request
+from flask_babel import Babel
+from flask_babel import format_datetime
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
-from flask_babel import Babel, format_datetime
 from flask_migrate import Migrate
-from werkzeug.routing import BaseConverter, ValidationError
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.routing import BaseConverter
+from werkzeug.routing import ValidationError
 
 
 def set_logging(
@@ -124,7 +125,7 @@ class UUIDConverter(BaseConverter):
     """
 
     def __init__(self, map, strict=True):
-        super(UUIDConverter, self).__init__(map)
+        super().__init__(map)
         self.strict = strict
 
     def to_python(self, value):
