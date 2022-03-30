@@ -19,4 +19,3 @@ If it fixes an existing issue, please use GitHub syntax: `#<IssueID>`
 - [ ] Major
 - [ ] Minor
 - [X] Patch
-

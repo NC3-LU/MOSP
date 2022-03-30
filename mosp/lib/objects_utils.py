@@ -64,16 +64,18 @@ def generate_diff(version_before, version_after):
     table = difflib.HtmlDiff().make_table(before_json, after_json)
 
     # fix the width of the columns
+    new_string = (
+        '<colgroup style="width: 2%;"></colgroup> <colgroup style="width: 2%;">'
+    )
+    new_string += '</colgroup> <colgroup style="width: 46%;"></colgroup>'
     table = table.replace(
         "<colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>",
-        '<colgroup style="width: 2%;"></colgroup> <colgroup style="width: 2%;">'
-        + '</colgroup> <colgroup style="width: 46%;"></colgroup>',
+        new_string,
         1,
     )
     table = table.replace(
         "<colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>",
-        '<colgroup style="width: 2%;"></colgroup> <colgroup style="width: 2%;">'
-        + '</colgroup> <colgroup style="width: 46%;"></colgroup>',
+        new_string,
         1,
     )
 

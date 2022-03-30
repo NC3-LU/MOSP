@@ -27,7 +27,7 @@ analysis.
    :maxdepth: 3
    :caption: Contents:
    :hidden:
-   
+
    models
    security-model
    api-v2

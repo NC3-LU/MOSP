@@ -132,7 +132,7 @@ def signup():
             )
 
         flash(
-            gettext("Your account has been created. " "Check your mail to confirm it."),
+            gettext("Your account has been created. Check your mail to confirm it."),
             "success",
         )
 

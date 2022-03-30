@@ -101,26 +101,7 @@ $ heroku run flask create_admin --login <nickname> --password <password>
 
 ## Contributing
 
-Contributions are welcome and there are many ways to participate to the
-project. You can contribute to MOSP by:
-
-- reporting bugs;
-- suggesting enhancements or new features;
-- improving the documentation;
-- creating new objects on [our instance](https://objects.monarc.lu).
-
-Feel free to fork the code, play with it, make some patches and send us pull requests.
-
-There is one main branch: what we consider as stable with frequent updates as
-hot-fixes.
-
-Features are developed in separated branches and then regularly merged into the
-master stable branch.
-
-[Flask](https://flask.palletsprojects.com) is used for the backend.
-Please use [black](https://github.com/psf/black) for the syntax of your Python code.
-
-[Vanilla JS](http://vanilla-js.com) is the JavaScript framework used.
+Please read the [CONTRIBUTING](CONTRIBUTING.md) instructions.
 
 
 ## Documentation
