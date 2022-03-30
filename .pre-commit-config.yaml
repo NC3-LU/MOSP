@@ -1,0 +1,8 @@
+ci:
+  autoupdate_schedule: monthly
+repos:
+  - repo: https://github.com/asottile/reorder_python_imports
+    rev: v3.0.1
+    hooks:
+      - id: reorder-python-imports
+        additional_dependencies: ["setuptools>60.9"]
