@@ -10,7 +10,7 @@ python = ">=3.8,<4.0"
 SQLAlchemy = "^1.4.26"
 Flask = "^2.0.2"
 Flask-SQLAlchemy = "^2.5.1"
-Flask-Login = "^0.5.0"
+Flask-Login = { git = "https://github.com/maxcountryman/flask-login", branch = "main" }
 Flask-Principal = "^0.4.0"
 Flask-WTF = "^1.0.0"
 Flask-Migrate = "^3.1.0"
