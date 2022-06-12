@@ -1,0 +1,15 @@
+<h4>Docs by version</h4>
+{% if versions %}
+<h5>{{ _('Releases') }}</h5>
+<ul>
+  {%- for item in versions.releases | sort(attribute='name', reverse=True) %}
+  <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+  {%- endfor %}
+</ul>
+<h5>{{ _('In Development') }}</h5>
+<ul>
+  {%- for item in versions.in_development %}
+  <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+  {%- endfor %}
+</ul>
+{% endif %}
