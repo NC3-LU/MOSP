@@ -13,6 +13,11 @@ FLASK_RUN_PORT="$PORT"
 
 export FLASK_ENV FLASK_DEBUG FLASK_APP FLASK_RUN_HOST FLASK_RUN_PORT
 
+export FLASK_APP=runserver.py
+export FLASK_ENV=development
+export FLASK_RUN_HOST=0.0.0.0
+export FLASK_RUN_PORT=5000
+
 prepare_db() {
     flask db_create || true
     flask db_init
