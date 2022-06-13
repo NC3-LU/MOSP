@@ -35,7 +35,7 @@ jobs:
           file: Dockerfile
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: caseslu/mosp
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             "PYTHON_VERSION=3.10-slim-buster"
