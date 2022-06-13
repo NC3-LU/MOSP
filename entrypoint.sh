@@ -17,12 +17,13 @@ export FLASK_APP=runserver.py
 export FLASK_ENV=development
 export FLASK_RUN_HOST=0.0.0.0
 export FLASK_RUN_PORT=5000
+export MOSP_CONFIG=docker.py
 
 prepare_db() {
-    flask db_create || true
-    flask db_init
-    flask db upgrade
-    flask import_licenses_from_spdx
+    FLASK_APP=runserver.py flask db_create || true
+    FLASK_APP=runserver.py flask db_init
+    FLASK_APP=runserver.py flask db upgrade
+    FLASK_APP=runserver.py flask import_licenses_from_spdx
     flask create_admin --login admin --email admin@admin.localhost. --password password || true
 }
 
