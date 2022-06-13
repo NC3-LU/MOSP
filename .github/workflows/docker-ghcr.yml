@@ -8,7 +8,6 @@ on:
     branches: [ 'master' ]
 
 env:
-  REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
@@ -22,20 +21,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Log into registry ${{ env.REGISTRY }}
+      - name: Log into registry
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v1
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      # https://github.com/docker/metadata-action
-      - name: Extract Docker metadata
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
