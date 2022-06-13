@@ -62,11 +62,17 @@ if TESTING:
 elif ON_HEROKU:
     # Deployment on Heroku
     application.config.from_pyfile("heroku.py", silent=False)
+elif os.environ.get("MOSP_CONFIG", ""):
+    # if a specific configuration is provided by the user
+    # this does not works with mod_wsgi
+    config_file = os.environ.get("MOSP_CONFIG", "")
+    application.config.from_pyfile(config_file, silent=False)
 else:
     try:
         application.config.from_pyfile("production.py", silent=False)
     except Exception:
         application.config.from_pyfile("development.py", silent=False)
+
 db = SQLAlchemy(application)
 migrate = Migrate(application, db)
 
