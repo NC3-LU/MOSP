@@ -1,4 +1,4 @@
-name: MOSP Docker build and push to ghcr.io
+name: MOSP Docker build and push to Docker Hub
 
 on:
   push:
