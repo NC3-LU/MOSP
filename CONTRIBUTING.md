@@ -1,5 +1,16 @@
 Contributions are welcome and there are many ways to participate to the
-project. You can contribute to MOSP by:
+project.
+
+Before starting to contribute please install the Git hook scripts:
+
+```bash
+$ git clone https://github.com/CASES-LU/MOSP
+$ cd MOSP/
+$ poetry install
+$ pre-commit install
+```
+
+You can contribute to MOSP by:
 
 - reporting bugs;
 - suggesting enhancements or new features;
@@ -28,11 +39,24 @@ Please use [black](https://github.com/psf/black) for the syntax of your Python c
 [Vanilla JS](http://vanilla-js.com) is the JavaScript framework used.
 
 
-Before starting to contribute please install the Git hook scripts:
+## Building the documentation
+
+Please provide documentation when changing, removing, or adding features.
+Documentation resides in the project's [docs](docs/) folder.
 
 ```bash
-$ git clone https://github.com/CASES-LU/MOSP
-$ cd MOSP/
 $ poetry install
-$ pre-commit install
+$ make doc
 ```
+
+It will generate the main documentation.
+If you want a documenation per tags and development branches:
+
+```bash
+$ poetry install
+$ make multidoc
+```
+
+
+The documentation is available online
+[here](https://www.monarc.lu/documentation/MOSP-documentation/).
