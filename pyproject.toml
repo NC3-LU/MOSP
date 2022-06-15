@@ -32,6 +32,7 @@ flask_restx = "^0.5.1"
 feedgen = "^0.9.0"
 types-requests = "^2.26.1"
 typing-extensions = "^4.0.1"
+types-setuptools = "^57.4.17"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
