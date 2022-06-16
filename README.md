@@ -38,7 +38,8 @@ Some JSON objects can be exported to a
 
 ## Installation
 
-Instructions resides [here](docs/installation.rst).
+Instructions available in [reStructuredText](docs/installation.rst) or in
+[HTML](https://www.monarc.lu/documentation/MOSP-documentation/installation.html).
 
 
 ## Documentation
