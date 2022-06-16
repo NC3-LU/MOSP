@@ -4,8 +4,8 @@ API v2
 The API version 2 uses the OpenAPI Specification for its documentation.
 It is available `here <https://objects.monarc.lu/api/v2>`_.
 
-If you want to query MOSP programmatically you can use
-`PyMOSP <https://pypi.org/project/pymosp>`_, a Python library to access MOSP.
+If you want to query MOSP programmatically you can use PyMOSP, a Python library to
+access MOSP.
 
 Clients using this API
 ----------------------

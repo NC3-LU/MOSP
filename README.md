@@ -38,77 +38,18 @@ Some JSON objects can be exported to a
 
 ## Installation
 
-There are different ways to deploy MOSP.
-
-
-### Clone the repository and use a Python virtualenv
-
-```bash
-$ git clone https://github.com/CASES-LU/MOSP.git
-$ cd MOSP/
-$ npm install
-$ poetry install --no-dev
-$ poetry shell
-$ pybabel compile -d mosp/translations
-$ export FLASK_APP=runserver.py
-$ export FLASK_ENV=development
-$ flask db_create
-$ flask db_init
-$ flask import_licenses_from_spdx
-$ flask create_admin --login <login> --password <password>
-$ flask run
- * Serving Flask app "runserver" (lazy loading)
- * Environment: development
- * Debug mode: on
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 221-873-938
-```
-
-
-### Deploy to Heroku
-
-Simply with this button:
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/CASES-LU/MOSP)
-
-And voilà !
-
-The default credentials are *admin* for the login and *password* for the password.
-
-Alternatively, Deploy to Heroku manually:
-
-```bash
-$ git clone https://github.com/CASES-LU/MOSP.git
-$ cd MOSP/
-$ heroku create --region eu <name-of-your-instance>
-$ heroku addons:add heroku-postgresql:hobby-dev
-$ heroku config:set HEROKU='1'
-$ heroku buildpacks:add --index 1 heroku/python
-$ heroku buildpacks:add --index 2 https://github.com/heroku/heroku-buildpack-nodejs
-$ git push heroku master
-$ heroku run init
-$ heroku run flask import_licenses_from_spdx
-$ heroku ps:scale web=1
-```
-
-If you want to create other users programmatically:
-
-```bash
-$ heroku run flask create_user --login <nickname> --password <password>
-$ heroku run flask create_admin --login <nickname> --password <password>
-```
-
-## Contributing
-
-Please read the [CONTRIBUTING](CONTRIBUTING.md) instructions.
+Instructions resides [here](docs/installation.rst).
 
 
 ## Documentation
 
 A [documentation](https://www.monarc.lu/documentation/MOSP-documentation)
 is available on the MONARC website.
+
+
+## Contributing
+
+Please read the [CONTRIBUTING](CONTRIBUTING.md) instructions.
 
 
 ## License

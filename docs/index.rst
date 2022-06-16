@@ -28,6 +28,7 @@ analysis.
    :caption: Contents:
    :hidden:
 
+   installation
    models
    security-model
    api-v2
