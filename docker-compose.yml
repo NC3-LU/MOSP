@@ -1,0 +1,42 @@
+version: '3'
+services:
+
+  db:
+    image: postgres:latest
+    hostname: db
+    container_name: mosp_db
+    restart: always
+    environment:
+      - POSTGRES_USER=mosp
+      - POSTGRES_PASSWORD=mosp
+      - POSTGRES_DB=mosp
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  mosp:
+    build: .
+    container_name: mosp
+    working_dir: /mosp
+    tty: true
+    environment:
+        - FLASK_APP=runserver.py
+        - MOSP_CONFIG=docker.py
+        - ENVIRONMENT=production
+        - DEBUG=0
+        - HOST=0.0.0.0
+        - PORT=5000
+    command: "./entrypoint.sh"
+    volumes:
+      - .:/mosp:rw
+      - mosp/static
+    ports:
+        - "5000:5000"
+    expose:
+        - "5000"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

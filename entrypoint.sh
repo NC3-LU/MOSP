@@ -5,26 +5,20 @@ if [ "$DEBUG" ]; then
 fi
 set -eu
 
+FLASK_APP="$FLASK_APP"
 FLASK_ENV="$ENVIRONMENT"
 FLASK_DEBUG="$DEBUG"
-FLASK_APP="$APP"
 FLASK_RUN_HOST="$HOST"
 FLASK_RUN_PORT="$PORT"
 
 export FLASK_ENV FLASK_DEBUG FLASK_APP FLASK_RUN_HOST FLASK_RUN_PORT
 
-export FLASK_APP=runserver.py
-export FLASK_ENV=development
-export FLASK_RUN_HOST=0.0.0.0
-export FLASK_RUN_PORT=5000
-export MOSP_CONFIG=docker.py
-
 prepare_db() {
-    FLASK_APP=runserver.py flask db_create || true
-    FLASK_APP=runserver.py flask db_init
-    FLASK_APP=runserver.py flask db upgrade
-    FLASK_APP=runserver.py flask import_licenses_from_spdx
-    flask create_admin --login admin --email admin@admin.localhost. --password password || true
+    flask db_create || true
+    flask db_init
+    flask db upgrade
+    flask import_licenses_from_spdx
+    flask create_admin --login admin --email admin@admin.localhost --password password || true
 }
 
 # waiting for DB to come up
