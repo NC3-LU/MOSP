@@ -10,8 +10,6 @@ services:
       - POSTGRES_USER=mosp
       - POSTGRES_PASSWORD=mosp
       - POSTGRES_DB=mosp
-    ports:
-      - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
