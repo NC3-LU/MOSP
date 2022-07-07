@@ -36,6 +36,24 @@ analysis.
    modules
 
 
+License
+=======
+
+MOSP is licensed under
+`GNU Affero General Public License version 3 <https://www.gnu.org/licenses/agpl-3.0.html>`_.
+
+
+* Copyright (C) 2018-2022 Cédric Bonhomme
+* Copyright (C) 2018-2021 SECURITYMADEIN.LU
+
+For more information: https://github.com/CASES-LU/MOSP
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+
 Indices and tables
 ==================
 

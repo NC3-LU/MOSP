@@ -9,15 +9,15 @@ Indices and tables
 * :ref:`search`
 
 
-Models
--------
-
-.. toctree::
-   :maxdepth: 4
+mosp
+----
 
 .. automodule:: mosp
     :members:
 
+
+Models
+------
 
 .. autoclass:: mosp.models.schema.Schema
     :members:

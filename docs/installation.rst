@@ -12,6 +12,20 @@ Generally speaking, requirements are the following:
 - A PostgreSQL server >= 12.x: persistent storage.
 
 
+
+Deployment
+----------
+
+The service can be deployed via several ways:
+
+.. contents::
+    :local:
+    :depth: 1
+
+
+From the source
+~~~~~~~~~~~~~~~
+
 Creation of a PostgreSQL user:
 
 .. code-block:: bash
@@ -27,30 +41,14 @@ Creation of a PostgreSQL user:
     postgres-# \q
 
 The user name and password chosen must be specified later in the configuration file.
-
-
-
-Deployment
-----------
-
-The service can be deployed via several ways:
-
-.. contents::
-    :local:
-    :depth: 1
-
-
-From the source
-~~~~~~~~~~~~~~~
-
-Clone the repository and use a Python virtualenv.
+Get the source code and install the software:
 
 .. code-block:: bash
 
     $ sudo apt install python3-pip python3-venv
     $ curl -sSL https://install.python-poetry.org | python3 -
 
-    $ git clone https://github.com/CASES-LU/MOSP.git
+    $ git clone https://github.com/CASES-LU/MOSP
     $ cd MOSP/
     $ npm install
     $ poetry install --no-dev
@@ -75,6 +73,27 @@ Clone the repository and use a Python virtualenv.
 For production you should use `Gunicorn <https://gunicorn.org>`_ or ``mod_wsgi``.
 
 
+Docker
+~~~~~~
+
+.. code-block:: bash
+
+    $ git clone https://github.com/CASES-LU/MOSP
+    $ cd MOSP/
+    $ docker-compose up -d
+
+MOSP will be available at:
+http://127.0.0.1:5000
+
+You can connect with the login *admin* and the password *password*.
+
+If you want to connect in the container:
+
+.. code-block:: bash
+
+    $ docker exec -it mosp /bin/bash
+
+
 Heroku
 ~~~~~~
 
@@ -92,7 +111,7 @@ Alternatively, Deploy to Heroku manually:
 
 .. code-block:: bash
 
-    $ git clone https://github.com/CASES-LU/MOSP.git
+    $ git clone https://github.com/CASES-LU/MOSP
     $ cd MOSP/
     $ heroku create --region eu <name-of-your-instance>
     $ heroku addons:add heroku-postgresql:hobby-dev
