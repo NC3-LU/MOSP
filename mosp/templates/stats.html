@@ -3,6 +3,7 @@
 {{ super() }}
 <script src="{{ url_for('static', filename='npm_components/chart.js/dist/chart.min.js') }}"></script>
 <script src="{{ url_for('static', filename='npm_components/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/utils.js') }}"></script>
 <style>
   .chart-container {
     display: block;
@@ -48,7 +49,13 @@ document.addEventListener("DOMContentLoaded", function() {
     'rgb(157, 196, 241, 0.4)', 'rgb(253, 141, 211, 0.4)', 'rgb(180, 128, 253, 0.4)',
     'rgb(255, 195, 129, 0.4)', 'rgb(204, 228, 230, 0.4)'];
 
-  fetch("/stats/objects/most-viewed.json")
+
+  nb_weeks = getUrlParameter('nb_weeks');
+  if (typeof nb_weeks == 'undefined') {
+      nb_weeks = 25;
+  }
+
+  fetch("/stats/objects/most-viewed.json?nb_weeks=" + nb_weeks)
       .then(response => response.json())
       .then(result => {
         var element = document.getElementById("spinner1");
@@ -119,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
       });
 
 
-      fetch("/stats/schemas/most-viewed.json")
+      fetch("/stats/schemas/most-viewed.json?nb_weeks=" + nb_weeks)
           .then(response => response.json())
           .then(result => {
             var element = document.getElementById("spinner2");

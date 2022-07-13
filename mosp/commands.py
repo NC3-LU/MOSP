@@ -59,7 +59,7 @@ def import_licenses_from_spdx():
 @click.option("--password", default="password", help="Password")
 def create_user(login, email, password):
     "Initializes a user"
-    print(f"Creation of the user {login} ...")
+    print(f"Creation of the user {login}…")
     with application.app_context():
         mosp.scripts.create_user(login, email, password, True, False)
 
@@ -70,7 +70,7 @@ def create_user(login, email, password):
 @click.option("--password", default="password", help="Password")
 def create_admin(login, email, password):
     "Initializes an admin user"
-    print(f"Creation of the admin user {login} ...")
+    print(f"Creation of the admin user {login}…")
     with application.app_context():
         mosp.scripts.create_user(login, email, password, True, True)
 

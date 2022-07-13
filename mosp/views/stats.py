@@ -1,3 +1,4 @@
+import datetime
 import re
 from collections import Counter
 from urllib.parse import urljoin
@@ -6,6 +7,7 @@ import networkx as nx
 from flask import Blueprint
 from flask import jsonify
 from flask import render_template
+from flask import request
 from networkx.readwrite import json_graph
 
 from mosp.bootstrap import application
@@ -62,10 +64,13 @@ def digraph(software=None):
 
 @stats_bp.route("/objects/most-viewed.json", methods=["GET"])
 def most_viewed_objects():
+    nb_weeks = request.args.get("nb_weeks", default=32, type=int)
+    nb_weeks_ago = datetime.datetime.utcnow() - datetime.timedelta(weeks=nb_weeks)
     events = Event.query.filter(
-        Event.scope == "JsonObject", Event.action == "object_bp.view:GET"
+        Event.scope == "JsonObject",
+        Event.action == "object_bp.view:GET",
+        Event.date >= nb_weeks_ago,
     ).all()
-
     # extract required informations from the events
     counter: Counter[str] = Counter()
     regex = re.compile(r"id=([0-9]+)\b")
@@ -106,8 +111,12 @@ def most_viewed_schemas():
     counter: Counter[str] = Counter()
 
     # look for uuid of schemas in JsonObject scope
+    nb_weeks = request.args.get("nb_weeks", default=32, type=int)
+    nb_weeks_ago = datetime.datetime.utcnow() - datetime.timedelta(weeks=nb_weeks)
     events = Event.query.filter(
-        Event.scope == "JsonObject", Event.action == "apiv2.object_objects_list:GET"
+        Event.scope == "JsonObject",
+        Event.action == "apiv2.object_objects_list:GET",
+        Event.date >= nb_weeks_ago,
     ).all()
     regex = re.compile(
         r"schema_uuid=([0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})\b"
