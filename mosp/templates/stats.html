@@ -34,32 +34,125 @@
       <canvas id="schemas-most-viewed"></canvas>
     </div>
   </div>
+  <div class="row">
+    <div class="col">
+      <br /><br />
+      <p>Based on the last <input id="input-nb-weeks" type="number" maxlength="2" size="3" value="4" /> weeks of activity.</p>
+    </div>
+  </div>
 </div><!-- /.container -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-
-  var colors = ['rgba(230, 25, 75, 0.4)', 'rgba(60, 180, 75, 0.4)',
-    'rgba(255, 225, 25, 0.4)', 'rgba(0, 130, 200, 0.4)', 'rgba(245, 130, 48, 0.4)',
-    'rgba(145, 30, 180, 0.4)', 'rgba(70, 240, 240, 0.4)', 'rgba(240, 50, 230, 0.4)',
-    'rgba(210, 245, 60, 0.4)', 'rgba(250, 190, 190, 0.4)', 'rgba(0, 128, 128, 0.4)',
-    'rgb(148, 163, 209, 0.4)', 'rgba(170, 110, 40, 0.4)', 'rgb(141, 140, 255, 0.4)',
-    'rgba(128, 0, 0, 0.4)', 'rgba(170, 255, 195, 0.4)', 'rgba(128, 128, 0, 0.4)',
-    'rgba(255, 215, 180, 0.4)', 'rgba(0, 0, 128, 0.4)', 'rgb(241, 147, 241, 0.4)',
-    'rgba(255, 255, 255, 0.4)', 'rgb(129, 181, 255, 0.4)', 'rgb(229, 236, 202, 0.4)',
-    'rgb(157, 196, 241, 0.4)', 'rgb(253, 141, 211, 0.4)', 'rgb(180, 128, 253, 0.4)',
-    'rgb(255, 195, 129, 0.4)', 'rgb(204, 228, 230, 0.4)'];
-
-
   nb_weeks = getUrlParameter('nb_weeks');
   if (typeof nb_weeks == 'undefined') {
       nb_weeks = 4;
   }
+  inputObject = document.getElementById("input-nb-weeks");
+  inputObject.value = nb_weeks;
+  inputObject.onchange = function(){
+    nb_weeks = inputObject.value;
+    updateCharts(nb_weeks);
+  };
+  updateCharts(nb_weeks);
+});
 
+
+var ctx_objects = document.getElementById("objects-most-viewed").getContext('2d');
+var ctx_schemas = document.getElementById("schemas-most-viewed").getContext('2d');
+
+var chartObjects = new Chart(ctx_objects, {
+  plugins: [ChartDataLabels],
+  type: 'pie',
+  options: {
+      responsive: true,
+      aspectRatio: 0.7,
+      plugins: {
+          legend: {
+              position: 'bottom',
+          },
+          datalabels: {
+              formatter: (value, ctx) => {
+                  let sum = 0;
+                  let dataArr = ctx.chart.data.datasets[0].data;
+                  dataArr.map(data => {
+                      sum += data;
+                  });
+                  let percentage = (value*100 / sum).toFixed(0)+"%";
+                  return percentage;
+              },
+              anchor: 'end',
+              align: 'start',
+              offset: 5,
+              display: 'auto',
+              color: 'rgba(0,0,0,.7)',
+          }
+      },
+      // onClick: function(evt) {
+      //   if (confirm("Go to the object description page ?") == true) {
+      //     var node = chartObjects.getElementsAtEventForMode(evt, 'point', { intersect: false });
+      //     var uuid = Object.keys(labels)[node[0].index]
+      //     window.location = '/object/'+uuid;
+      //   }
+      // }
+  }
+});
+var chartSchemas = new Chart(ctx_schemas, {
+  plugins: [ChartDataLabels],
+  type: 'pie',
+  options: {
+      responsive: true,
+      aspectRatio: 0.7,
+      plugins: {
+          legend: {
+              position: 'bottom',
+          },
+          datalabels: {
+              formatter: (value, ctx) => {
+                  let sum = 0;
+                  let dataArr = ctx.chart.data.datasets[0].data;
+                  dataArr.map(data => {
+                      sum += data;
+                  });
+                  let percentage = (value*100 / sum).toFixed(0)+"%";
+                  return percentage;
+              },
+              anchor: 'end',
+              align: 'start',
+              offset: 5,
+              display: 'auto',
+              color: 'rgba(0,0,0,.7)',
+          }
+      },
+      // onClick: function(evt) {
+      //   if (confirm("Go to the object description page ?") == true) {
+      //     var node = chartSchemas.getElementsAtEventForMode(evt, 'point', { intersect: false });
+      //     var id = Object.keys(labels)[node[0].index]
+      //     window.location = '/schema/'+id;
+      //   }
+      // }
+  }
+});
+
+
+var colors = ['rgba(230, 25, 75, 0.4)', 'rgba(60, 180, 75, 0.4)',
+  'rgba(255, 225, 25, 0.4)', 'rgba(0, 130, 200, 0.4)', 'rgba(245, 130, 48, 0.4)',
+  'rgba(145, 30, 180, 0.4)', 'rgba(70, 240, 240, 0.4)', 'rgba(240, 50, 230, 0.4)',
+  'rgba(210, 245, 60, 0.4)', 'rgba(250, 190, 190, 0.4)', 'rgba(0, 128, 128, 0.4)',
+  'rgb(148, 163, 209, 0.4)', 'rgba(170, 110, 40, 0.4)', 'rgb(141, 140, 255, 0.4)',
+  'rgba(128, 0, 0, 0.4)', 'rgba(170, 255, 195, 0.4)', 'rgba(128, 128, 0, 0.4)',
+  'rgba(255, 215, 180, 0.4)', 'rgba(0, 0, 128, 0.4)', 'rgb(241, 147, 241, 0.4)',
+  'rgba(255, 255, 255, 0.4)', 'rgb(129, 181, 255, 0.4)', 'rgb(229, 236, 202, 0.4)',
+  'rgb(157, 196, 241, 0.4)', 'rgb(253, 141, 211, 0.4)', 'rgb(180, 128, 253, 0.4)',
+  'rgb(255, 195, 129, 0.4)', 'rgb(204, 228, 230, 0.4)'];
+
+function updateCharts(nb_weeks) {
   fetch("/stats/objects/most-viewed.json?nb_weeks=" + nb_weeks)
       .then(response => response.json())
       .then(result => {
         var element = document.getElementById("spinner1");
-        element.parentNode.removeChild(element);
+        if (element) {
+          element.parentNode.removeChild(element);
+        }
 
         data = {}
         labels = {}
@@ -74,53 +167,16 @@ document.addEventListener("DOMContentLoaded", function() {
           }
         });
 
-
-        var ctx = document.getElementById("objects-most-viewed").getContext('2d');
-        var myChart = new Chart(ctx, {
-          plugins: [ChartDataLabels],
-          type: 'pie',
-          data: {
-            labels: Object.values(labels),
-            datasets: [{
-              label: 'Most viewed objects',
-              data: Object.values(data),
-              borderWidth: 1,
-              backgroundColor: colors
-            }],
-          },
-          options: {
-              responsive: true,
-              aspectRatio: 0.7,
-              plugins: {
-                  legend: {
-                      position: 'bottom',
-                  },
-                  datalabels: {
-                      formatter: (value, ctx) => {
-                          let sum = 0;
-                          let dataArr = ctx.chart.data.datasets[0].data;
-                          dataArr.map(data => {
-                              sum += data;
-                          });
-                          let percentage = (value*100 / sum).toFixed(0)+"%";
-                          return percentage;
-                      },
-                      anchor: 'end',
-                      align: 'start',
-                      offset: 5,
-                      display: 'auto',
-                      color: 'rgba(0,0,0,.7)',
-                  }
-              },
-              onClick: function(evt) {
-                if (confirm("Go to the object description page ?") == true) {
-                  var node = myChart.getElementsAtEventForMode(evt, 'point', { intersect: false });
-                  var uuid = Object.keys(labels)[node[0].index]
-                  window.location = '/object/'+uuid;
-                }
-              }
-          }
-        });
+        chartObjects.data = {
+          labels: Object.values(labels),
+          datasets: [{
+            label: 'Most viewed objects',
+            data: Object.values(data),
+            borderWidth: 1,
+            backgroundColor: colors
+          }],
+        };
+        chartObjects.update();
       }).catch((error) => {
         console.error('Error:', error);
       });
@@ -130,7 +186,9 @@ document.addEventListener("DOMContentLoaded", function() {
           .then(response => response.json())
           .then(result => {
             var element = document.getElementById("spinner2");
-            element.parentNode.removeChild(element);
+            if (element) {
+              element.parentNode.removeChild(element);
+            }
 
             data = {}
             labels = {}
@@ -145,56 +203,19 @@ document.addEventListener("DOMContentLoaded", function() {
               }
             });
 
-
-            var ctx = document.getElementById("schemas-most-viewed").getContext('2d');
-            var myChart = new Chart(ctx, {
-              plugins: [ChartDataLabels],
-              type: 'pie',
-              data: {
-                labels: Object.values(labels),
-                datasets: [{
-                  label: 'Most viewed schemas',
-                  data: Object.values(data),
-                  borderWidth: 1,
-                  backgroundColor: colors
-                }],
-              },
-              options: {
-                  responsive: true,
-                  aspectRatio: 0.7,
-                  plugins: {
-                      legend: {
-                          position: 'bottom',
-                      },
-                      datalabels: {
-                          formatter: (value, ctx) => {
-                              let sum = 0;
-                              let dataArr = ctx.chart.data.datasets[0].data;
-                              dataArr.map(data => {
-                                  sum += data;
-                              });
-                              let percentage = (value*100 / sum).toFixed(0)+"%";
-                              return percentage;
-                          },
-                          anchor: 'end',
-                          align: 'start',
-                          offset: 5,
-                          display: 'auto',
-                          color: 'rgba(0,0,0,.7)',
-                      }
-                  },
-                  onClick: function(evt) {
-                    if (confirm("Go to the object description page ?") == true) {
-                      var node = myChart.getElementsAtEventForMode(evt, 'point', { intersect: false });
-                      var id = Object.keys(labels)[node[0].index]
-                      window.location = '/schema/'+id;
-                    }
-                  }
-              }
-            });
+            chartSchemas.data = {
+              labels: Object.values(labels),
+              datasets: [{
+                label: 'Most viewed objects',
+                data: Object.values(data),
+                borderWidth: 1,
+                backgroundColor: colors
+              }],
+            };
+            chartSchemas.update();
           }).catch((error) => {
             console.error('Error:', error);
           });
-});
+        }
 </script>
 {% endblock %}
