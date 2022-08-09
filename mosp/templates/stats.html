@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   nb_weeks = getUrlParameter('nb_weeks');
   if (typeof nb_weeks == 'undefined') {
-      nb_weeks = 25;
+      nb_weeks = 4;
   }
 
   fetch("/stats/objects/most-viewed.json?nb_weeks=" + nb_weeks)
