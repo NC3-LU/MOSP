@@ -101,14 +101,7 @@
           display: 'auto',
           color: 'rgba(0,0,0,.7)',
         }
-      },
-      // onClick: function(evt) {
-      //   if (confirm("Go to the object description page ?") == true) {
-      //     var node = chartObjects.getElementsAtEventForMode(evt, 'point', { intersect: false });
-      //     var uuid = Object.keys(labels)[node[0].index]
-      //     window.location = '/object/'+uuid;
-      //   }
-      // }
+      }
     }
   });
   var chartSchemas = new Chart(ctx_schemas, {
@@ -137,14 +130,7 @@
           display: 'auto',
           color: 'rgba(0,0,0,.7)',
         }
-      },
-      // onClick: function(evt) {
-      //   if (confirm("Go to the object description page ?") == true) {
-      //     var node = chartSchemas.getElementsAtEventForMode(evt, 'point', { intersect: false });
-      //     var id = Object.keys(labels)[node[0].index]
-      //     window.location = '/schema/'+id;
-      //   }
-      // }
+      }
     }
   });
 
@@ -191,6 +177,13 @@
           backgroundColor: colors
         }],
       };
+      chartObjects.options.onClick = function(evt) {
+        if (confirm("Go to the object description page ?") == true) {
+          var node = chartObjects.getElementsAtEventForMode(evt, 'point', { intersect: false });
+          var uuid = Object.keys(labels)[node[0].index]
+          window.location = '/object/'+uuid;
+        }
+      }
       chartObjects.update();
     }).catch((error) => {
       console.error('Error:', error);
@@ -227,6 +220,13 @@
           backgroundColor: colors
         }],
       };
+      chartSchemas.options.onClick = function(evt) {
+        if (confirm("Go to the object description page ?") == true) {
+          var node = chartSchemas.getElementsAtEventForMode(evt, 'point', { intersect: false });
+          var id = Object.keys(labels)[node[0].index]
+          window.location = '/schema/'+id;
+        }
+      }
       chartSchemas.update();
     }).catch((error) => {
       console.error('Error:', error);
