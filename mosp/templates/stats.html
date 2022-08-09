@@ -37,7 +37,8 @@
   <div class="row">
     <div class="col">
       <br /><br />
-      <p>Based on the last <input id="input-nb-weeks" type="number" maxlength="2" size="3" value="4" /> weeks of activity.</p>
+      <p>Based on the last <span id="span-nb-weeks"></span>  weeks of activity. Update the charts:</p>
+      <input id="input-nb-weeks" type="range" min="0" max="100" step="1" value="4" />
     </div>
   </div>
 </div><!-- /.container -->
@@ -46,11 +47,13 @@ document.addEventListener("DOMContentLoaded", function() {
   nb_weeks = getUrlParameter('nb_weeks');
   if (typeof nb_weeks == 'undefined') {
       nb_weeks = 4;
+      document.getElementById("span-nb-weeks").textContent = nb_weeks;
   }
   inputObject = document.getElementById("input-nb-weeks");
   inputObject.value = nb_weeks;
   inputObject.onchange = function(){
     nb_weeks = inputObject.value;
+    document.getElementById("span-nb-weeks").textContent = nb_weeks;
     updateCharts(nb_weeks);
   };
   updateCharts(nb_weeks);
