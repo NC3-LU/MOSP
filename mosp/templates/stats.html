@@ -54,7 +54,7 @@
 
     document.getElementById("number-nb-weeks").onchange = function(){
       nb_weeks = document.getElementById("number-nb-weeks").value;
-      if (nb_weeks > 99) {
+      if (nb_weeks < 1 || nb_weeks > 99) {
         alert("Value must be between 1 and 99.");
         document.getElementById("number-nb-weeks").value = document.getElementById("input-nb-weeks").value;
       } else {
