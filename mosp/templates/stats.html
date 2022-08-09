@@ -22,14 +22,14 @@
     <div class="col-4 chart-container">
       <h2>{{ _('Most viewed objects') }}</h2>
       <div id="spinner1" class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
+        <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
       </div>
       <canvas id="objects-most-viewed"></canvas>
     </div>
     <div class="col-4 chart-container">
       <h2>{{ _('Most viewed schemas') }}</h2>
       <div id="spinner2" class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
+        <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
       </div>
       <canvas id="schemas-most-viewed"></canvas>
     </div>
@@ -37,58 +37,70 @@
   <div class="row">
     <div class="col">
       <br /><br />
-      <p>Based on the last <span id="span-nb-weeks"></span>  weeks of activity. Update the charts:</p>
-      <input id="input-nb-weeks" type="range" min="0" max="100" step="1" value="4" />
+      <p>Based on the last <input type="number" id="number-nb-weeks" value="4" size="3" min="1" max="99" /> weeks of activity.</p>
+      <input id="input-nb-weeks" type="range" min="1" max="99" step="1" value="4" />
     </div>
   </div>
 </div><!-- /.container -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  nb_weeks = getUrlParameter('nb_weeks');
-  if (typeof nb_weeks == 'undefined') {
+  document.addEventListener("DOMContentLoaded", function() {
+    nb_weeks = getUrlParameter('nb_weeks');
+    if (typeof nb_weeks == 'undefined') {
       nb_weeks = 4;
-      document.getElementById("span-nb-weeks").textContent = nb_weeks;
-  }
-  inputObject = document.getElementById("input-nb-weeks");
-  inputObject.value = nb_weeks;
-  inputObject.onchange = function(){
-    nb_weeks = inputObject.value;
-    document.getElementById("span-nb-weeks").textContent = nb_weeks;
+    }
+    document.getElementById("number-nb-weeks").value = nb_weeks;
+    document.getElementById("input-nb-weeks").value = nb_weeks;
     updateCharts(nb_weeks);
-  };
-  updateCharts(nb_weeks);
-});
+
+    document.getElementById("number-nb-weeks").onchange = function(){
+      nb_weeks = document.getElementById("number-nb-weeks").value;
+      if (nb_weeks > 99) {
+        alert("Value must be between 1 and 99.");
+        document.getElementById("number-nb-weeks").value = document.getElementById("input-nb-weeks").value;
+      } else {
+        document.getElementById("number-nb-weeks").value = nb_weeks;
+        document.getElementById("input-nb-weeks").value = nb_weeks;
+        updateCharts(nb_weeks);
+      }
+    };
+
+    document.getElementById("input-nb-weeks").onchange = function() {
+      nb_weeks = document.getElementById("input-nb-weeks").value
+      document.getElementById("number-nb-weeks").value = nb_weeks;
+      updateCharts(nb_weeks);
+    }
+  });
 
 
-var ctx_objects = document.getElementById("objects-most-viewed").getContext('2d');
-var ctx_schemas = document.getElementById("schemas-most-viewed").getContext('2d');
+  var ctx_objects = document.getElementById("objects-most-viewed").getContext('2d');
+  var ctx_schemas = document.getElementById("schemas-most-viewed").getContext('2d');
 
-var chartObjects = new Chart(ctx_objects, {
-  plugins: [ChartDataLabels],
-  type: 'pie',
-  options: {
+  var chartObjects = new Chart(ctx_objects, {
+    plugins: [ChartDataLabels],
+    type: 'pie',
+    options: {
       responsive: true,
       aspectRatio: 0.7,
       plugins: {
-          legend: {
-              position: 'bottom',
+        legend: {
+          position: 'bottom',
+        },
+        datalabels: {
+          formatter: (value, ctx) => {
+            let sum = 0;
+            let dataArr = ctx.chart.data.datasets[0].data;
+            dataArr.map(data => {
+              sum += data;
+            });
+            let percentage = (value*100 / sum).toFixed(0)+"%";
+            return percentage;
           },
-          datalabels: {
-              formatter: (value, ctx) => {
-                  let sum = 0;
-                  let dataArr = ctx.chart.data.datasets[0].data;
-                  dataArr.map(data => {
-                      sum += data;
-                  });
-                  let percentage = (value*100 / sum).toFixed(0)+"%";
-                  return percentage;
-              },
-              anchor: 'end',
-              align: 'start',
-              offset: 5,
-              display: 'auto',
-              color: 'rgba(0,0,0,.7)',
-          }
+          anchor: 'end',
+          align: 'start',
+          offset: 5,
+          display: 'auto',
+          color: 'rgba(0,0,0,.7)',
+        }
       },
       // onClick: function(evt) {
       //   if (confirm("Go to the object description page ?") == true) {
@@ -97,34 +109,34 @@ var chartObjects = new Chart(ctx_objects, {
       //     window.location = '/object/'+uuid;
       //   }
       // }
-  }
-});
-var chartSchemas = new Chart(ctx_schemas, {
-  plugins: [ChartDataLabels],
-  type: 'pie',
-  options: {
+    }
+  });
+  var chartSchemas = new Chart(ctx_schemas, {
+    plugins: [ChartDataLabels],
+    type: 'pie',
+    options: {
       responsive: true,
       aspectRatio: 0.7,
       plugins: {
-          legend: {
-              position: 'bottom',
+        legend: {
+          position: 'bottom',
+        },
+        datalabels: {
+          formatter: (value, ctx) => {
+            let sum = 0;
+            let dataArr = ctx.chart.data.datasets[0].data;
+            dataArr.map(data => {
+              sum += data;
+            });
+            let percentage = (value*100 / sum).toFixed(0)+"%";
+            return percentage;
           },
-          datalabels: {
-              formatter: (value, ctx) => {
-                  let sum = 0;
-                  let dataArr = ctx.chart.data.datasets[0].data;
-                  dataArr.map(data => {
-                      sum += data;
-                  });
-                  let percentage = (value*100 / sum).toFixed(0)+"%";
-                  return percentage;
-              },
-              anchor: 'end',
-              align: 'start',
-              offset: 5,
-              display: 'auto',
-              color: 'rgba(0,0,0,.7)',
-          }
+          anchor: 'end',
+          align: 'start',
+          offset: 5,
+          display: 'auto',
+          color: 'rgba(0,0,0,.7)',
+        }
       },
       // onClick: function(evt) {
       //   if (confirm("Go to the object description page ?") == true) {
@@ -133,11 +145,11 @@ var chartSchemas = new Chart(ctx_schemas, {
       //     window.location = '/schema/'+id;
       //   }
       // }
-  }
-});
+    }
+  });
 
 
-var colors = ['rgba(230, 25, 75, 0.4)', 'rgba(60, 180, 75, 0.4)',
+  var colors = ['rgba(230, 25, 75, 0.4)', 'rgba(60, 180, 75, 0.4)',
   'rgba(255, 225, 25, 0.4)', 'rgba(0, 130, 200, 0.4)', 'rgba(245, 130, 48, 0.4)',
   'rgba(145, 30, 180, 0.4)', 'rgba(70, 240, 240, 0.4)', 'rgba(240, 50, 230, 0.4)',
   'rgba(210, 245, 60, 0.4)', 'rgba(250, 190, 190, 0.4)', 'rgba(0, 128, 128, 0.4)',
@@ -148,77 +160,77 @@ var colors = ['rgba(230, 25, 75, 0.4)', 'rgba(60, 180, 75, 0.4)',
   'rgb(157, 196, 241, 0.4)', 'rgb(253, 141, 211, 0.4)', 'rgb(180, 128, 253, 0.4)',
   'rgb(255, 195, 129, 0.4)', 'rgb(204, 228, 230, 0.4)'];
 
-function updateCharts(nb_weeks) {
-  fetch("/stats/objects/most-viewed.json?nb_weeks=" + nb_weeks)
-      .then(response => response.json())
-      .then(result => {
-        var element = document.getElementById("spinner1");
-        if (element) {
-          element.parentNode.removeChild(element);
+  function updateCharts(nb_weeks) {
+    fetch("/stats/objects/most-viewed.json?nb_weeks=" + nb_weeks)
+    .then(response => response.json())
+    .then(result => {
+      var element = document.getElementById("spinner1");
+      if (element) {
+        element.parentNode.removeChild(element);
+      }
+
+      data = {}
+      labels = {}
+      result.map(function(elem) {
+        if (data.hasOwnProperty(elem["uuid"])) {
+          // data[result[key]["uuid"]] += result[key]["count"];
+          data[elem["uuid"]] += elem["count"];
+        } else {
+          // data[result[key]["uuid"]] = result[key]["count"];
+          data[elem["uuid"]] = elem["count"];
+          labels[elem["uuid"]] = elem["name"];
         }
-
-        data = {}
-        labels = {}
-        result.map(function(elem) {
-          if (data.hasOwnProperty(elem["uuid"])) {
-            // data[result[key]["uuid"]] += result[key]["count"];
-            data[elem["uuid"]] += elem["count"];
-          } else {
-            // data[result[key]["uuid"]] = result[key]["count"];
-            data[elem["uuid"]] = elem["count"];
-            labels[elem["uuid"]] = elem["name"];
-          }
-        });
-
-        chartObjects.data = {
-          labels: Object.values(labels),
-          datasets: [{
-            label: 'Most viewed objects',
-            data: Object.values(data),
-            borderWidth: 1,
-            backgroundColor: colors
-          }],
-        };
-        chartObjects.update();
-      }).catch((error) => {
-        console.error('Error:', error);
       });
 
+      chartObjects.data = {
+        labels: Object.values(labels),
+        datasets: [{
+          label: 'Most viewed objects',
+          data: Object.values(data),
+          borderWidth: 1,
+          backgroundColor: colors
+        }],
+      };
+      chartObjects.update();
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
 
-      fetch("/stats/schemas/most-viewed.json?nb_weeks=" + nb_weeks)
-          .then(response => response.json())
-          .then(result => {
-            var element = document.getElementById("spinner2");
-            if (element) {
-              element.parentNode.removeChild(element);
-            }
 
-            data = {}
-            labels = {}
-            result.map(function(elem) {
-              if (data.hasOwnProperty(elem["id"])) {
-                // data[result[key]["uuid"]] += result[key]["count"];
-                data[elem["id"]] += elem["count"];
-              } else {
-                // data[result[key]["uuid"]] = result[key]["count"];
-                data[elem["id"]] = elem["count"];
-                labels[elem["id"]] = elem["name"];
-              }
-            });
+    fetch("/stats/schemas/most-viewed.json?nb_weeks=" + nb_weeks)
+    .then(response => response.json())
+    .then(result => {
+      var element = document.getElementById("spinner2");
+      if (element) {
+        element.parentNode.removeChild(element);
+      }
 
-            chartSchemas.data = {
-              labels: Object.values(labels),
-              datasets: [{
-                label: 'Most viewed objects',
-                data: Object.values(data),
-                borderWidth: 1,
-                backgroundColor: colors
-              }],
-            };
-            chartSchemas.update();
-          }).catch((error) => {
-            console.error('Error:', error);
-          });
+      data = {}
+      labels = {}
+      result.map(function(elem) {
+        if (data.hasOwnProperty(elem["id"])) {
+          // data[result[key]["uuid"]] += result[key]["count"];
+          data[elem["id"]] += elem["count"];
+        } else {
+          // data[result[key]["uuid"]] = result[key]["count"];
+          data[elem["id"]] = elem["count"];
+          labels[elem["id"]] = elem["name"];
         }
+      });
+
+      chartSchemas.data = {
+        labels: Object.values(labels),
+        datasets: [{
+          label: 'Most viewed objects',
+          data: Object.values(data),
+          borderWidth: 1,
+          backgroundColor: colors
+        }],
+      };
+      chartSchemas.update();
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
+  }
 </script>
 {% endblock %}
