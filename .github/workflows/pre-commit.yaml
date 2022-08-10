@@ -13,4 +13,5 @@ jobs:
           pip install reorder-python-imports
           pip install pyupgrade
           pip install black
+          pip install pip-audit
       - uses: pre-commit/action@v2.0.3
