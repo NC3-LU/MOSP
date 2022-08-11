@@ -1,5 +1,5 @@
 {
-    "name": "MOSP",
+    "name": "mosp",
     "version": "0.17.0",
     "description": "A platform for creating, editing and sharing JSON objects.",
     "private": true,
