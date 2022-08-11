@@ -3,8 +3,8 @@ from mosp.views import views
 from mosp.views.admin import admin_bp
 from mosp.views.collection import collection_bp
 from mosp.views.collection import collections_bp
-from mosp.views.object import object_bp
-from mosp.views.object import objects_bp
+from mosp.views.objectbp import object_bp
+from mosp.views.objectbp import objects_bp
 from mosp.views.organization import organization_bp
 from mosp.views.organization import organizations_bp
 from mosp.views.schema import schema_bp
