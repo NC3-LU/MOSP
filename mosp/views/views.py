@@ -114,6 +114,12 @@ def human():
     return render_template("human.txt"), 200, {"Content-Type": "text/plain"}
 
 
+@current_app.route("/robots.txt", methods=["GET"])
+def robots():
+    """Robots dot txt page."""
+    return render_template("robots.txt"), 200, {"Content-Type": "text/plain"}
+
+
 @current_app.route("/objects.atom", methods=["GET"])
 def objects_atom():
     """Returns an ATOM feed with the recent updated objects."""
