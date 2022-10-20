@@ -24,8 +24,8 @@ SELF_REGISTRATION = True
 UPLOAD_FOLDER = "./mosp/web/public/pictures/"
 ALLOWED_EXTENSIONS = {"png"}
 
-ADMIN_EMAIL = "info@cases.lu"
-ADMIN_URL = "https://www.cases.lu"
+ADMIN_EMAIL = "opensource@nc3.lu"
+ADMIN_URL = "https://www.nc3.lu"
 
 LOG_PATH = "./var/log/mosp.log"
 LOG_LEVEL = "info"

@@ -4,7 +4,7 @@ project.
 Before starting to contribute please install the Git hook scripts:
 
 ```bash
-$ git clone https://github.com/CASES-LU/MOSP
+$ git clone https://github.com/NC3-LU/MOSP
 $ cd MOSP/
 $ poetry install
 $ pre-commit install
@@ -30,7 +30,7 @@ to update the documentation is strongly recommended.
 
 Please, do not open directly a GitHub issue if you think you have found a
 security vulnerability. See our
-[security policy](https://github.com/CASES-LU/MOSP/security/policy)
+[security policy](https://github.com/NC3-LU/MOSP/security/policy)
 page.
 
 [Flask](https://flask.palletsprojects.com) is used for the backend.

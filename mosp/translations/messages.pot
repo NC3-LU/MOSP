@@ -211,7 +211,7 @@ msgstr ""
 #: mosp/templates/about.html:21
 msgid ""
 "You are welcome to copy, modify or redistribute the\n"
-"                <a href=\"https://github.com/CASES-LU/MOSP\" "
+"                <a href=\"https://github.com/NC3-LU/MOSP\" "
 "rel=\"noreferrer\" target=\"_blank\">source code</a>\n"
 "                according to the <a "
 "href=\"https://www.gnu.org/licenses/agpl-3.0.html\" rel=\"noopener "
@@ -369,7 +369,7 @@ msgstr ""
 
 #: mosp/templates/edit_user.html:47
 msgid ""
-"You can check the <a href=\"https://github.com/CASES-LU/MOSP-"
+"You can check the <a href=\"https://github.com/NC3-LU/MOSP-"
 "documentation/blob/master/index.adoc#using-the-api\" "
 "target=\"_blank\">documentation of the API</a>"
 msgstr ""
@@ -397,7 +397,7 @@ msgstr ""
 msgid ""
 "A more technical documentation with instructions concerning the "
 "deployment of MOSP is available\n"
-"                    in the <a href=\"https://github.com/CASES-LU/MOSP\" "
+"                    in the <a href=\"https://github.com/NC3-LU/MOSP\" "
 "rel=\"noopener noreferrer\" target=\"_blank\">official repository</a>."
 msgstr ""
 
@@ -422,7 +422,7 @@ msgstr ""
 
 #: mosp/templates/help.html:22
 msgid ""
-"Please use <a href=\"https://github.com/CASES-LU/MOSP/issues\" "
+"Please use <a href=\"https://github.com/NC3-LU/MOSP/issues\" "
 "rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a> for:"
 msgstr ""
 

@@ -10,5 +10,5 @@ The link expires at {{ expire_time.strftime('%Y-%m-%d %H:%M') }}.
 
 Kind regards,
 
-The CASES team
-https://www.cases.lu
+The NC3 Open Source team
+https://www.nc3.lu

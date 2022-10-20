@@ -48,7 +48,7 @@ Get the source code and install the software:
     $ sudo apt install python3-pip python3-venv
     $ curl -sSL https://install.python-poetry.org | python3 -
 
-    $ git clone https://github.com/CASES-LU/MOSP
+    $ git clone https://github.com/NC3-LU/MOSP
     $ cd MOSP/
     $ npm install
     $ poetry install --no-dev
@@ -78,7 +78,7 @@ Docker
 
 .. code-block:: bash
 
-    $ git clone https://github.com/CASES-LU/MOSP
+    $ git clone https://github.com/NC3-LU/MOSP
     $ cd MOSP/
     $ docker-compose up -d
 
@@ -100,7 +100,7 @@ Heroku
 Simply with this button:
 
 .. image:: https://www.herokucdn.com/deploy/button.png
-  :target: https://heroku.com/deploy?template=https://github.com/CASES-LU/MOSP
+  :target: https://heroku.com/deploy?template=https://github.com/NC3-LU/MOSP
   :alt: Latest release
 
 And voilà !
@@ -111,7 +111,7 @@ Alternatively, Deploy to Heroku manually:
 
 .. code-block:: bash
 
-    $ git clone https://github.com/CASES-LU/MOSP
+    $ git clone https://github.com/NC3-LU/MOSP
     $ cd MOSP/
     $ heroku create --region eu <name-of-your-instance>
     $ heroku addons:add heroku-postgresql:hobby-dev

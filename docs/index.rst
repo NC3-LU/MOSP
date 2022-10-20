@@ -7,7 +7,7 @@ Presentation
 ============
 
 This document is intended to be a presentation and a user guide to
-`MOSP <https://github.com/CASES-LU/MOSP>`_, a platform to create, edit and share valid
+`MOSP <https://github.com/NC3-LU/MOSP>`_, a platform to create, edit and share valid
 JSON objects.
 
 MOSP supports any kind of JSON objects, you just have to specify a JSON schema.
@@ -44,9 +44,9 @@ MOSP is licensed under
 
 
 * Copyright (C) 2018-2022 Cédric Bonhomme
-* Copyright (C) 2018-2021 SECURITYMADEIN.LU
+* Copyright (C) 2018-2021 Luxembourg House of Cybersecurity
 
-For more information: https://github.com/CASES-LU/MOSP
+For more information: https://github.com/NC3-LU/MOSP
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as

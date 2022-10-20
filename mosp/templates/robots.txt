@@ -9,7 +9,7 @@
 # - Bots which are too agressive by default. This is subjective, if you annoy
 #   our sysadmins you'll be blocked.
 #
-# Reach out to info@cases.lu if you have questions.
+# Reach out to opensource@nc3.lu if you have questions.
 
 User-agent: SemrushBot
 Disallow: /

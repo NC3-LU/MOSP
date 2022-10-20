@@ -1,19 +1,19 @@
 # MONARC Objects Sharing Platform
 
-[![MOSP logo](https://github.com/CASES-LU/MOSP/blob/master/mosp/static/img/logo-large.png)](https://github.com/CASES-LU/MOSP)
+[![MOSP logo](https://github.com/NC3-LU/MOSP/blob/master/mosp/static/img/logo-large.png)](https://github.com/NC3-LU/MOSP)
 
-[![Latest release](https://img.shields.io/github/release/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/releases/latest)
+[![Latest release](https://img.shields.io/github/release/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/NC3-LU/MOSP/releases/latest)
 [![License](https://img.shields.io/github/license/CASES-LU/MOSP.svg?style=flat-square)](https://www.gnu.org/licenses/agpl-3.0.html)
-[![Contributors](https://img.shields.io/github/contributors/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/graphs/contributors)
-[![Stars](https://img.shields.io/github/stars/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/stargazers)
-[![Workflow](https://github.com/CASES-LU/MOSP/workflows/Python%20application/badge.svg?style=flat-square)](https://github.com/CASES-LU/MOSP/actions?query=workflow%3A%22Python+application%22)
+[![Contributors](https://img.shields.io/github/contributors/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/NC3-LU/MOSP/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/CASES-LU/MOSP.svg?style=flat-square)](https://github.com/NC3-LU/MOSP/stargazers)
+[![Workflow](https://github.com/NC3-LU/MOSP/workflows/Python%20application/badge.svg?style=flat-square)](https://github.com/NC3-LU/MOSP/actions?query=workflow%3A%22Python+application%22)
 [![Translation status](https://translate.monarc.lu/widgets/mosp/-/svg-badge.svg)](https://translate.monarc.lu/engage/mosp/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 
 ## Presentation
 
-[MOSP](https://github.com/CASES-LU/MOSP) is a platform for creating, editing
+[MOSP](https://github.com/NC3-LU/MOSP) is a platform for creating, editing
 and sharing *validated* JSON objects of any type.
 
 ![MOSP panorama](docs/_static/MOSP-panorama.png "MOSP panorama")
@@ -60,7 +60,7 @@ This software is licensed under
 
 
 * Copyright (C) 2018-2022 Cédric Bonhomme
-* Copyright (C) 2018-2022 SECURITYMADEIN.LU
+* Copyright (C) 2018-2022 Luxembourg House of Cybersecurity
 
 For more information, the [list of authors and contributors](AUTHORS.md) is
 available.

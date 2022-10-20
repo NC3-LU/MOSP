@@ -27,8 +27,8 @@ LOG_LEVEL = "info"
 UPLOAD_FOLDER = "./mosp/web/public/pictures/"
 ALLOWED_EXTENSIONS = set(["png"])
 
-ADMIN_EMAIL = "info@cases.lu"
-ADMIN_URL = "https://www.cases.lu"
+ADMIN_EMAIL = "opensource@nc3.lu"
+ADMIN_URL = "https://www.nc3.lu"
 
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024
 

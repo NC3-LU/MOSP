@@ -76,14 +76,12 @@ def about_more():
     version = __version__.split("-")
     if len(version) == 1:
         mosp_version = version[0]
-        version_url = "https://github.com/CASES-LU/MOSP/releases/tag/{}".format(
+        version_url = "https://github.com/NC3-LU/MOSP/releases/tag/{}".format(
             version[0]
         )
     else:
         mosp_version = f"{version[0]} - {version[2][1:]}"
-        version_url = "https://github.com/CASES-LU/MOSP/commits/{}".format(
-            version[2][1:]
-        )
+        version_url = f"https://github.com/NC3-LU/MOSP/commits/{version[2][1:]}"
     return render_template(
         "about_more.html",
         mosp_version=mosp_version,
