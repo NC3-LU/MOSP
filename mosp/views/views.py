@@ -106,10 +106,10 @@ def terms():
     return render_template("terms.html")
 
 
-@current_app.route("/human.txt", methods=["GET"])
-def human():
+@current_app.route("/humans.txt", methods=["GET"])
+def humans():
     """Human dot txt page."""
-    return render_template("human.txt"), 200, {"Content-Type": "text/plain"}
+    return render_template("humans.txt"), 200, {"Content-Type": "text/plain"}
 
 
 @current_app.route("/robots.txt", methods=["GET"])
