@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # MOSP - A platform for creating, editing and sharing JSON objects.
-# Copyright (C) 2018-2022 Cédric Bonhomme - https://www.cedricbonhomme.org
-# Copyright (C) 2018-2022 Luxembourg House of Cybersecurity
+# Copyright (C) 2018-2023 Cédric Bonhomme - https://www.cedricbonhomme.org
+# Copyright (C) 2018-2023 Luxembourg House of Cybersecurity
 #
 # For more information: https://github.com/NC3-LU/MOSP
 #
