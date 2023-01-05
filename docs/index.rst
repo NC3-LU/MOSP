@@ -44,7 +44,7 @@ MOSP is licensed under
 
 
 * Copyright (C) 2018-2023 Cédric Bonhomme
-* Copyright (C) 2018-2021 Luxembourg House of Cybersecurity
+* Copyright (C) 2018-2023 Luxembourg House of Cybersecurity
 
 For more information: https://github.com/NC3-LU/MOSP
 
