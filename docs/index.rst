@@ -11,7 +11,7 @@ This document is intended to be a presentation and a user guide to
 JSON objects.
 
 MOSP supports any kind of JSON objects, you just have to specify a JSON schema.
-The instance `objects.monarc.lu <https://objects.monarc.lu/>`_ is operated by CASES.
+The instance `objects.monarc.lu <https://objects.monarc.lu/>`_ is operated by NC3 Luxembourg.
 It is dedicated to gather security related objects, in the first place aimed to be used
 with MONARC.
 
