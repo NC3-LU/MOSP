@@ -1,7 +1,7 @@
+import importlib
 import os
 import subprocess
 
-import pkg_resources
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -20,8 +20,8 @@ def get_version():
     ) or ""
     if not version:
         try:
-            version = pkg_resources.get_distribution("mosp").version
-        except pkg_resources.DistributionNotFound:
+            version = "v" + importlib.metadata.version("mosp")
+        except importlib.metadata.PackageNotFoundError:
             version = ""
     return version
 
