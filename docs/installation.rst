@@ -51,7 +51,7 @@ Get the source code and install the software:
     $ git clone https://github.com/NC3-LU/MOSP
     $ cd MOSP/
     $ npm install
-    $ poetry install --no-dev
+    $ poetry install --only main
     $ poetry shell
     $ pybabel compile -d mosp/translations
     $ export FLASK_APP=runserver.py
