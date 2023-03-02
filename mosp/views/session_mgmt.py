@@ -6,6 +6,7 @@ from flask import current_app
 from flask import flash
 from flask import redirect
 from flask import render_template
+from flask import request
 from flask import session
 from flask import url_for
 from flask_babel import gettext
@@ -74,7 +75,8 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for("index"))
     form = SigninForm()
-    if form.validate_on_submit():
+    # if form.validate_on_submit():
+    if request.method == "POST" and form.validate():  # fixes an issue in flask-wtf
         login_user_bundle(form.user)
         return redirect(form.redirect_target or url_for("user_bp.schemas"))
     return render_template("login.html", form=form)
