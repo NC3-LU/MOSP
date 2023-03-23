@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-19 11:41+0200\n"
-"PO-Revision-Date: 2022-02-22 18:11+0000\n"
-"Last-Translator: Ilie Voinea <voineai@gmail.com>\n"
+"PO-Revision-Date: 2023-03-23 09:30+0000\n"
+"Last-Translator: Cédric Bonhomme <cedric@cedricbonhomme.org>\n"
 "Language-Team: Romanian <https://translate.monarc.lu/projects/mosp/mosp/ro/>"
 "\n"
 "Language: ro\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: mosp/forms.py:58 mosp/forms.py:100 mosp/forms.py:132 mosp/forms.py:227
@@ -731,7 +731,7 @@ msgstr ""
 
 #: mosp/templates/schemas.html:15
 msgid "Available schemas"
-msgstr ""
+msgstr "Scheme disponibile"
 
 #: mosp/templates/schemas.html:21
 msgid "References between schemas"
@@ -836,6 +836,7 @@ msgstr ""
 #: mosp/templates/user_schemas.html:40
 msgid "Being part of an organization is required in order to publish an object."
 msgstr ""
+"A face parte dintr-o organizație este necesară pentru a publica un obiect."
 
 #: mosp/templates/view_diff.html:18 mosp/templates/view_diff.html:19
 #: mosp/templates/view_object.html:36
