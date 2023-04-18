@@ -28,7 +28,7 @@ def db(app, request):
         _db.drop_all()
 
     _db.app = app
-    _db.init_app(_db.app)
+    # _db.init_app(_db.app)
     _db.create_all()
 
     request.addfinalizer(teardown)
@@ -42,7 +42,7 @@ def session(db, request):
     transaction = connection.begin()
 
     options = dict(bind=connection, binds={})
-    session = db.create_scoped_session(options=options)
+    session = db._make_scoped_session(options=options)
 
     db.session = session
 
