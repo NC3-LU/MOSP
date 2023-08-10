@@ -108,7 +108,8 @@ def signup():
         return redirect(url_for("index"))
 
     form = SignupForm()
-    if form.validate_on_submit():
+    # if form.validate_on_submit():
+    if request.method == "POST" and form.validate():  # fixes an issue in flask-wtf
         try:
             new_user = User(
                 login=form.login.data,
