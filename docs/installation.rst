@@ -55,7 +55,8 @@ Get the source code and install the software:
     $ poetry shell
     $ pybabel compile -d mosp/translations
     $ export FLASK_APP=runserver.py
-    $ export FLASK_ENV=development
+    $ export FLASK_DEBUG=1
+    $ export MOSP_CONFIG=production.py
     $ flask db_create
     $ flask db_init
     $ flask import_licenses_from_spdx

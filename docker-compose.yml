@@ -20,9 +20,8 @@ services:
     tty: true
     environment:
         - FLASK_APP=runserver.py
+        - FLASK_DEBUG=0
         - MOSP_CONFIG=docker.py
-        - ENVIRONMENT=production
-        - DEBUG=0
         - HOST=0.0.0.0
         - PORT=5000
     command: "./entrypoint.sh"
