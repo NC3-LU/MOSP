@@ -143,10 +143,10 @@ def leave(org_id):
 def members(org_id):
     """Returns the list of members of an organization."""
     org = Organization.query.filter(Organization.id == org_id).first()
-    members = org.users
-    members.sort(key=lambda user: user.last_seen, reverse=True)
     if org:
         return render_template(
-            "organization_members.html", organization=org, members=members
+            "organization_members.html",
+            organization=org,
+            members=sorted(org.users, key=lambda user: user.last_seen, reverse=True),
         )
     return redirect(url_for("organization_bp.get", organization_id=org_id))
