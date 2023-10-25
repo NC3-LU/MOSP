@@ -88,7 +88,7 @@
       </div>
       <div class="row">
         <div class="col">
-          {{ organization.users | count }} member{{ 's' if organization.users | count > 1 }}
+          <a href="{{ url_for('organization_bp.members', org_id=organization.id) }}">{{ organization.users | count }} member{{ 's' if organization.users | count > 1 }}</a>
         </div>
       </div>
       <br />

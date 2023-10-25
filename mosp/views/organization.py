@@ -137,3 +137,16 @@ def leave(org_id):
             db.session.commit()
             flash("You left the organization successfully. ", "success")
     return redirect(url_for("organization_bp.get", organization_id=org_id))
+
+
+@organization_bp.route("/members/<org_id>", methods=["GET"])
+def members(org_id):
+    """Returns the list of members of an organization."""
+    org = Organization.query.filter(Organization.id == org_id).first()
+    members = org.users
+    members.sort(key=lambda user: user.last_seen, reverse=True)
+    if org:
+        return render_template(
+            "organization_members.html", organization=org, members=members
+        )
+    return redirect(url_for("organization_bp.get", organization_id=org_id))
