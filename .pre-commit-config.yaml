@@ -27,7 +27,7 @@ repos:
       - id: fix-byte-order-marker
       - id: trailing-whitespace
       - id: end-of-file-fixer
-  - repo: https://github.com/trailofbits/pip-audit
+  - repo: https://github.com/pypa/pip-audit
     rev: v2.6.1
     hooks:
       -   id: pip-audit
