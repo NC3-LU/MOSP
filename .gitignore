@@ -3,39 +3,29 @@ syntax: glob
 
 *.elc
 *.pyc
+*.pyo
 *~
 *.db
 *.mo
-
-docs/_build/
-
-# Emacs
 eproject.cfg
 *#
-
-# Temporary files (vim backups)
+.vscode/
+.idea/
 *.swp
-
-# Log files:
-*.log
-
-# Vagrant:
-.vagrant/
-
-var/log/
 
 # Virtualenv
 venv
-build
-mosp.egg-info/
-
+build/
+dist/
+*.egg
+*.egg-info/
 .python-version
 
-# js and node files
+# Project related
+var/log/
+docs/_build/
 node_modules
 mosp/static/npm_components
-
-
 contrib/crawler-user-agents.json
 instance/production.py
 *.wsgi
