@@ -7,6 +7,7 @@ import uuid
 from typing import Union
 
 from flask import Flask
+from flask import g
 from flask import request
 from flask_babel import Babel
 from flask_babel import format_datetime
@@ -76,7 +77,6 @@ else:
 db = SQLAlchemy(application)
 migrate = Migrate(application, db)
 
-babel = Babel(application)
 
 cors = CORS(
     application,
@@ -87,7 +87,7 @@ cors = CORS(
 )
 
 
-@babel.localeselector
+# i18n and l10n support
 def get_locale():
     # if a user is logged in, use the locale from the user settings
     # user = getattr(g, 'user', None)
@@ -101,11 +101,13 @@ def get_locale():
     )
 
 
-# @babel.timezoneselector
-# def get_timezone():
-#     user = getattr(g, 'user', None)
-#     if user is not None:
-#         return user.timezone
+def get_timezone():
+    user = getattr(g, "user", None)
+    if user is not None:
+        return user.timezone
+
+
+babel = Babel(application, locale_selector=get_locale, timezone_selector=get_timezone)
 
 
 # Jinja filters
