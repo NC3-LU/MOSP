@@ -1,7 +1,5 @@
 #! /usr/bin/env python
 import logging
-from typing import Any
-from typing import Dict
 from typing import List
 
 import sqlalchemy.exc
