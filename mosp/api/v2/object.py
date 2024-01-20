@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 import logging
+from typing import Any
+from typing import Dict
 from typing import List
 
 import sqlalchemy.exc
@@ -171,10 +173,10 @@ class ObjectsList(Resource):
     @auth_func
     def post(self):
         """Create a new object"""
-        result = {
+        result: Dict[Any, Any] = {
             "data": [],
             "metadata": {"count": 0, "offset": 0, "limit": 0},
-        }  # type: Dict[Any, Any]
+        }
         errors: List[int] = []
         for obj in object_ns.payload:
 
