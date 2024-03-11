@@ -118,6 +118,12 @@ def robots():
     return render_template("robots.txt"), 200, {"Content-Type": "text/plain"}
 
 
+@current_app.route("/.well-known/security.txt", methods=["GET"])
+def security():
+    """security dot txt page (RFC 9116)."""
+    return render_template("security.txt"), 200, {"Content-Type": "text/plain"}
+
+
 @current_app.route("/objects.atom", methods=["GET"])
 def objects_atom():
     """Returns an ATOM feed with the recent updated objects."""
