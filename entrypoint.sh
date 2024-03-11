@@ -1,17 +1,14 @@
 #!/bin/sh
 
-if [ "$DEBUG" ]; then
-    set -x
-fi
+set -x
 set -eu
 
 FLASK_APP="$FLASK_APP"
 FLASK_ENV="$ENVIRONMENT"
-FLASK_DEBUG="$DEBUG"
 FLASK_RUN_HOST="$HOST"
 FLASK_RUN_PORT="$PORT"
 
-export FLASK_ENV FLASK_DEBUG FLASK_APP FLASK_RUN_HOST FLASK_RUN_PORT
+export FLASK_ENV FLASK_APP FLASK_RUN_HOST FLASK_RUN_PORT
 
 prepare_db() {
     flask db_create || true
