@@ -2,7 +2,6 @@ import os
 
 HOST = "0.0.0.0"
 PORT = os.environ.get("PORT")
-DEBUG = False
 TESTING = False
 INSTANCE_URL = "http://127.0.0.1:5000"
 

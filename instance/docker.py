@@ -4,7 +4,6 @@ import os
 # Webserver
 HOST = os.getenv("HOST", "0.0.0.0")
 PORT = int(os.getenv("PORT", 5000))
-DEBUG = os.getenv("DEBUG", "0") == "1"
 TESTING = os.getenv("TESTING", "0") == "1"
 
 INSTANCE_URL = "http://127.0.0.1:5000"
@@ -49,7 +48,7 @@ MAIL_SERVER = "localhost"
 MAIL_PORT = 25
 MAIL_USE_TLS = False
 MAIL_USE_SSL = False
-MAIL_DEBUG = DEBUG
+MAIL_DEBUG = True
 MAIL_USERNAME = None
 MAIL_PASSWORD = None
 MAIL_DEFAULT_SENDER = "admin@admin.localhost"
