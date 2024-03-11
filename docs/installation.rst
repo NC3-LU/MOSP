@@ -54,21 +54,19 @@ Get the source code and install the software:
     $ poetry install --only main
     $ poetry shell
     $ pybabel compile -d mosp/translations
-    $ export FLASK_APP=runserver.py
-    $ export FLASK_DEBUG=1
     $ export MOSP_CONFIG=production.py
     $ flask db_create
     $ flask db_init
     $ flask import_licenses_from_spdx
     $ flask create_admin --login <login> --password <password>
-    $ flask run
-     * Serving Flask app "runserver" (lazy loading)
-     * Environment: development
+    $ flask run --debug
      * Debug mode: on
-     * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+    WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+     * Running on http://127.0.0.1:5000
+    Press CTRL+C to quit
      * Restarting with stat
      * Debugger is active!
-     * Debugger PIN: 221-873-938
+     * Debugger PIN: 834-369-202
 
 
 For production you should use `Gunicorn <https://gunicorn.org>`_ or ``mod_wsgi``.

@@ -32,15 +32,13 @@ COPY --from=node_modules /opt/node_modules/ mosp/static/npm_components/
 
 RUN pybabel compile -d mosp/translations
 
-COPY runserver.py .
+COPY app.py .
 COPY entrypoint.sh .
 
 ENV MOSP_VERSION=latest
 
 ENV HOST=0.0.0.0
 ENV PORT=5000
-ENV DEBUG=0
-ENV FLASK_APP=runserver.py
 ENV MOSP_CONFIG=docker.py
 
 VOLUME [ "/app/var" ]

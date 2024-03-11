@@ -11,8 +11,6 @@ NC='\033[0m' # No Color
 set -e
 #set -x
 
-export FLASK_APP=runserver.py
-
 git pull origin master --tags
 npm ci
 poetry install --only main

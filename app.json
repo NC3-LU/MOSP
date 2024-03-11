@@ -24,7 +24,6 @@
     ],
     "env": {
         "HEROKU": "1",
-        "FLASK_APP": "runserver.py",
         "ADMIN_EMAIL": "info@example.org",
         "ADMIN_URL": "https://www.example.org"
     }

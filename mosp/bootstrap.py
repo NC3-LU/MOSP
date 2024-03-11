@@ -27,7 +27,7 @@ def set_logging(
     if not modules:
         modules = (
             "bootstrap",
-            "runserver",
+            "app",
             "web",
         )
     handler: Union[logging.Handler, None] = None
