@@ -114,9 +114,11 @@ def generate_misp_galaxy_cluster(json_object):
             {
                 "uuid": value.pop("uuid", ""),
                 "value": value.pop("code", ""),
-                "description": value.pop("label")
-                if value.get("label", False)
-                else value.pop("description", ""),
+                "description": (
+                    value.pop("label")
+                    if value.get("label", False)
+                    else value.pop("description", "")
+                ),
                 "meta": value,
             }
         )

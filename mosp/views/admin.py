@@ -197,9 +197,9 @@ def toggle_user(user_id=None):
         db.session.commit()
         flash(
             gettext("User {status}.").format(
-                status=gettext("activated")
-                if user.is_active
-                else gettext("deactivated")
+                status=(
+                    gettext("activated") if user.is_active else gettext("deactivated")
+                )
             ),
             "success",
         )

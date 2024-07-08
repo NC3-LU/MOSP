@@ -10,7 +10,6 @@ from flask import request
 from flask import session
 from flask import url_for
 from flask_babel import gettext
-from flask_babel import lazy_gettext
 from flask_login import current_user
 from flask_login import login_required
 from flask_login import LoginManager
