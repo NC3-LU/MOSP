@@ -14,6 +14,7 @@ from flask_babel import format_datetime
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf.csrf import CSRFProtect
 from werkzeug.routing import BaseConverter
 from werkzeug.routing import ValidationError
 
@@ -74,9 +75,12 @@ else:
     except Exception:
         application.config.from_pyfile("development.py", silent=False)
 
+# Database and migration
 db = SQLAlchemy(application)
 migrate = Migrate(application, db)
 
+# Enable CSRF protection globally
+csrf = CSRFProtect(application)
 
 cors = CORS(
     application,
@@ -85,7 +89,6 @@ cors = CORS(
         r"/api/v2/*": {"origins": "*"},
     },
 )
-
 
 # i18n and l10n support
 def get_locale():
