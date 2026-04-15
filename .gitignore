@@ -21,6 +21,9 @@ dist/
 *.egg-info/
 .python-version
 
+# Claude Code
+CLAUDE.md
+
 # Project related
 var/log/
 docs/_build/
