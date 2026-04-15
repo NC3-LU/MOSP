@@ -6,6 +6,7 @@ from flask_login import current_user
 from mosp.models import Collection
 from mosp.models import JsonObject
 from mosp.models import Organization
+from mosp.models import Schema
 
 
 def check_object_edit_permission(f):
@@ -67,6 +68,35 @@ def check_collection_edit_permission(f):
 
         # check if the authenticated user is the owner of the collection
         if obj.creator_id != current_user.id:
+            return abort(403)
+
+        return f(*args, **kwargs)
+
+    return decorated_function
+
+
+def check_schema_edit_permission(f):
+    """Check if the authenticated user belongs to the organization that owns
+    the schema. Mirrors check_object_edit_permission for schema routes."""
+
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_authenticated:
+            return abort(403)
+
+        schema_id = kwargs.get("schema_id", None)
+        if schema_id is None:
+            # creation path — no schema to check yet
+            return f(*args, **kwargs)
+
+        schema = Schema.query.filter(Schema.id == schema_id).first()
+        if schema is None:
+            return abort(404)
+
+        if current_user.is_admin:
+            return f(*args, **kwargs)
+
+        if schema.org_id not in [org.id for org in current_user.organizations]:
             return abort(403)
 
         return f(*args, **kwargs)

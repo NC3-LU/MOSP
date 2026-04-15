@@ -29,6 +29,7 @@ from sqlalchemy import or_
 from mosp.bootstrap import application
 from mosp.bootstrap import db
 from mosp.forms import SchemaForm
+from mosp.views.decorators import check_schema_edit_permission
 from mosp.models import Event
 from mosp.models import JsonObject
 from mosp.models import Schema
@@ -228,6 +229,7 @@ def get_objects(schema_id=None):
 @schema_bp.route("/create", methods=["GET"])
 @schema_bp.route("/edit/<int:schema_id>", methods=["GET"])
 @login_required
+@check_schema_edit_permission
 def form(schema_id=None, org_id=None):
     """Returns a form in order to edit a schema."""
     action = gettext("Create a schema")
@@ -302,6 +304,7 @@ def form(schema_id=None, org_id=None):
 @schema_bp.route("/create", methods=["POST"])
 @schema_bp.route("/edit/<int:schema_id>", methods=["POST"])
 @login_required
+@check_schema_edit_permission
 def process_form(schema_id=None):
     """ "Process the form to edit a schema."""
     form = SchemaForm()
@@ -359,6 +362,7 @@ def process_form(schema_id=None):
 
 @schema_bp.route("/delete/<int:schema_id>", methods=["GET"])
 @login_required
+@check_schema_edit_permission
 def delete(schema_id=None):
     """
     Delete the requested schema.
