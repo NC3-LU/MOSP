@@ -29,10 +29,10 @@ from sqlalchemy import or_
 from mosp.bootstrap import application
 from mosp.bootstrap import db
 from mosp.forms import SchemaForm
-from mosp.views.decorators import check_schema_edit_permission
 from mosp.models import Event
 from mosp.models import JsonObject
 from mosp.models import Schema
+from mosp.views.decorators import check_schema_edit_permission
 
 schema_bp = Blueprint("schema_bp", __name__, url_prefix="/schema")
 schemas_bp = Blueprint("schemas_bp", __name__, url_prefix="/schemas")
@@ -317,6 +317,13 @@ def process_form(schema_id=None):
         if form.org_id.data == 0:
             flash(gettext("You must specify an organization."), "warning")
         return redirect(url_for("schema_bp.form"))
+
+    # Server-side guard: reject org_id values not belonging to the current user
+    # (WTForms does not enforce choice membership by default for SelectField).
+    if not current_user.is_admin and not current_user.is_organization_member(
+        form.org_id.data
+    ):
+        abort(403)
 
     # Edit an existing schema
     if schema_id is not None:

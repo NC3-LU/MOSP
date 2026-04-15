@@ -77,7 +77,15 @@ def check_collection_edit_permission(f):
 
 def check_schema_edit_permission(f):
     """Check if the authenticated user belongs to the organization that owns
-    the schema. Mirrors check_object_edit_permission for schema routes."""
+    the schema.
+
+    Unlike check_object_edit_permission and check_collection_edit_permission,
+    this decorator grants admins unconditional access so that site admins can
+    manage schemas belonging to any organization.
+
+    The is_authenticated guard is intentionally kept for defensive safety in
+    case this decorator is ever used without @login_required above it.
+    """
 
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -93,10 +101,13 @@ def check_schema_edit_permission(f):
         if schema is None:
             return abort(404)
 
+        # Admins can manage any schema regardless of organization.
         if current_user.is_admin:
             return f(*args, **kwargs)
 
-        if schema.org_id not in [org.id for org in current_user.organizations]:
+        # Schemas with no organization (org_id is None) are not editable by
+        # regular users — is_organization_member(None) always returns False.
+        if not current_user.is_organization_member(schema.org_id):
             return abort(403)
 
         return f(*args, **kwargs)
