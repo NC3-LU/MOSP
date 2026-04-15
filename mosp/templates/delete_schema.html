@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ _('Delete schema') }}: {{ schema.name }}</h1>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-danger" role="alert">
+                <strong>{{ _('Warning') }}</strong> —
+                {{ _('This will permanently delete the schema and all %(count)s objects validated by it.', count=object_count) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form method="POST" action="{{ url_for('schema_bp.delete_confirm', schema_id=schema.id) }}">
+                {{ form.hidden_tag() }}
+                <button type="submit" class="btn btn-danger">{{ _('Delete') }}</button>
+                <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}" class="btn btn-secondary ml-2">{{ _('Cancel') }}</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

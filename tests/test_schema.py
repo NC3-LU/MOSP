@@ -3,6 +3,8 @@ import json
 import pytest
 from werkzeug.security import generate_password_hash
 
+from mosp.bootstrap import db
+from mosp.models import JsonObject
 from mosp.models import Organization
 from mosp.models import Schema
 from mosp.models import User
@@ -131,3 +133,42 @@ def test_non_owner_cannot_delete_schema(client, session):
     login_as(client, "other_d1")
     response = client.get(f"/schema/delete/{schema.id}")
     assert response.status_code == 403
+
+
+def test_owner_can_get_delete_warning_page(client, session):
+    org = make_org(session, "OrgA_del2")
+    owner = make_user(session, "owner_d2", "owner_d2@t.local", org=org)
+    schema = make_schema(session, "Schema_d2", org, creator_id=owner.id)
+
+    login_as(client, "owner_d2")
+    response = client.get(f"/schema/delete/{schema.id}")
+    assert response.status_code == 200
+    assert b"Schema_d2" in response.data
+
+
+def test_non_owner_cannot_post_delete_schema(client, session):
+    org_a = make_org(session, "OrgA_del3")
+    org_b = make_org(session, "OrgB_del3")
+    owner = make_user(session, "owner_d3", "owner_d3@t.local", org=org_a)
+    make_user(session, "other_d3", "other_d3@t.local", org=org_b)
+    schema = make_schema(session, "Schema_d3", org_a, creator_id=owner.id)
+
+    login_as(client, "other_d3")
+    response = client.post(f"/schema/delete/{schema.id}")
+    assert response.status_code == 403
+    # Schema should still exist
+    assert db.session.get(Schema, schema.id) is not None
+
+
+def test_owner_post_delete_removes_schema(client, session):
+    org = make_org(session, "OrgA_del4")
+    owner = make_user(session, "owner_d4", "owner_d4@t.local", org=org)
+    schema = make_schema(session, "Schema_d4", org, creator_id=owner.id)
+    schema_id = schema.id
+
+    login_as(client, "owner_d4")
+    response = client.post(f"/schema/delete/{schema_id}", follow_redirects=False)
+    assert response.status_code == 302
+    assert "/schemas/" in response.headers["Location"]
+    # Schema must no longer exist in the database
+    assert db.session.get(Schema, schema_id) is None

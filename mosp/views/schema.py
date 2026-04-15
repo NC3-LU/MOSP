@@ -29,6 +29,7 @@ from sqlalchemy import or_
 from mosp.bootstrap import application
 from mosp.bootstrap import db
 from mosp.forms import SchemaForm
+from mosp.forms import SimpleForm
 from mosp.models import Event
 from mosp.models import JsonObject
 from mosp.models import Schema
@@ -372,7 +373,25 @@ def process_form(schema_id=None):
 @check_schema_edit_permission
 def delete(schema_id=None):
     """
-    Delete the requested schema.
+    Show a confirmation page before deleting the schema.
+    """
+    schema = Schema.query.filter(Schema.id == schema_id).first()
+    object_count = schema.objects.count()
+    form = SimpleForm()
+    return render_template(
+        "delete_schema.html",
+        schema=schema,
+        object_count=object_count,
+        form=form,
+    )
+
+
+@schema_bp.route("/delete/<int:schema_id>", methods=["POST"])
+@login_required
+@check_schema_edit_permission
+def delete_confirm(schema_id=None):
+    """
+    Perform the actual deletion of the schema after confirmation.
     """
     schema = Schema.query.filter(Schema.id == schema_id).first()
     db.session.delete(schema)
