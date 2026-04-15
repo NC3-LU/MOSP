@@ -15,7 +15,13 @@ prepare_db() {
     flask db_init
     flask db upgrade
     flask import_licenses_from_spdx
-    flask create_admin --login admin --email admin@admin.localhost --password password || true
+
+    if [ -n "${MOSP_ADMIN_PASSWORD:-}" ]; then
+        flask create_admin \
+            --login "${MOSP_ADMIN_LOGIN:-admin}" \
+            --email "${MOSP_ADMIN_EMAIL:-admin@admin.localhost}" \
+            --password "$MOSP_ADMIN_PASSWORD" || true
+    fi
 }
 
 # waiting for DB to come up
