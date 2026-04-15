@@ -20,7 +20,7 @@
             <form method="POST" action="{{ url_for('schema_bp.delete_confirm', schema_id=schema.id) }}">
                 {{ form.hidden_tag() }}
                 <button type="submit" class="btn btn-danger">{{ _('Delete') }}</button>
-                <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}" class="btn btn-secondary ml-2">{{ _('Cancel') }}</a>
+                <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}" class="btn btn-secondary ms-2">{{ _('Cancel') }}</a>
             </form>
         </div>
     </div>

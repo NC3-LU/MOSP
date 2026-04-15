@@ -376,6 +376,8 @@ def delete(schema_id=None):
     Show a confirmation page before deleting the schema.
     """
     schema = Schema.query.filter(Schema.id == schema_id).first()
+    if schema is None:
+        abort(404)
     object_count = schema.objects.count()
     form = SimpleForm()
     return render_template(
@@ -393,7 +395,12 @@ def delete_confirm(schema_id=None):
     """
     Perform the actual deletion of the schema after confirmation.
     """
+    form = SimpleForm()
+    if not form.validate_on_submit():
+        abort(400)
     schema = Schema.query.filter(Schema.id == schema_id).first()
+    if schema is None:
+        abort(404)
     db.session.delete(schema)
     db.session.commit()
     return redirect(url_for("schemas_bp.list_schemas"))

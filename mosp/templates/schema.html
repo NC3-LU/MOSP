@@ -22,7 +22,7 @@
                 <a role="button" class="btn btn-secondary" href="{{ url_for('schema_bp.form', schema_id=schema.id) }}" title="{{ _('Edit the schema') }}">
                     <i class="fa fa-edit" aria-hidden="true"></i>
                 </a>
-                {% if current_user.is_authenticated %}
+                {% if current_user.is_authenticated and (current_user.is_admin or current_user.is_organization_member(schema.org_id)) %}
                 <a role="button" class="btn btn-danger" href="{{ url_for('schema_bp.delete', schema_id=schema.id) }}" title="{{ _('Delete the schema') }}">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </a>

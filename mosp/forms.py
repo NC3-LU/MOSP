@@ -26,12 +26,6 @@ from mosp.models import Organization
 from mosp.models import User
 
 
-class SimpleForm(FlaskForm):
-    """A minimal form used solely for CSRF protection (e.g. confirmation pages)."""
-
-    pass
-
-
 class RedirectForm(FlaskForm):
     """Redirect form used for the redirection after the sign in."""
 
@@ -349,3 +343,9 @@ class CollectionForm(FlaskForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+
+class SimpleForm(FlaskForm):
+    """A minimal form used solely for CSRF protection (e.g. confirmation pages)."""
+
+    pass
