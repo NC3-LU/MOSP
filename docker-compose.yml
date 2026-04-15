@@ -22,6 +22,10 @@ services:
         - MOSP_CONFIG=docker.py
         - HOST=0.0.0.0
         - PORT=5000
+        # Required: set strong random values before deploying
+        # Generate with: python -c "import secrets; print(secrets.token_hex(32))"
+        - SECRET_KEY=
+        - SECURITY_PASSWORD_SALT=
     command: "./entrypoint.sh"
     volumes:
       - .:/mosp:rw

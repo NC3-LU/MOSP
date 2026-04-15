@@ -27,8 +27,8 @@ SQLALCHEMY_DATABASE_URI = "postgresql://{user}:{password}@{host}:{port}/{name}".
 )
 SQLALCHEMY_TRACK_MODIFICATIONS = os.getenv("SQLALCHEMY_TRACK_MODIFICATIONS", "0") == "1"
 
-SECRET_KEY = "LCx3BchmHRxFzkEv4BqQJyeXRLXenf"
-SECURITY_PASSWORD_SALT = "L8gTsyrpRQEF8jNWQPyvRfv7U5kJkD"
+SECRET_KEY = os.environ.get("SECRET_KEY", "")
+SECURITY_PASSWORD_SALT = os.environ.get("SECURITY_PASSWORD_SALT", "")
 
 LOG_PATH = "./var/log/mosp.log"
 LOG_LEVEL = "info"
