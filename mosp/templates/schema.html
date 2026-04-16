@@ -100,7 +100,7 @@
     <div class="col-6">
       {{ _('Search on the properties of the objects') }}
       <form method="get">
-        <select id="search_key" name="search_key" aria-label="Select a property" class="selectpicker" data-live-search="true" data-width="auto">
+        <select id="search_key" name="search_key" aria-label="Select a property" class="form-select">
           {% for key in search_keys %}
           <option value="{{ key }}" {{ 'selected' if search_key == key else '' }}>{{ key }}</option>
           {% endfor  %}
@@ -175,7 +175,6 @@
 </div>
 <script>
 $(document).ready(function() {
-    $('.selectpicker').selectpicker();
     $('#table-objects').DataTable( {
         responsive: true,
         paging: false,

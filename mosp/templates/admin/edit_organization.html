@@ -36,7 +36,8 @@
         <br />
         <div class="form-group">
             {{ form.users.label }}
-            {{ form.users(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }} {% for error in form.users.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            {{ form.users(class_="form-select") }} {% for error in form.users.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            <small class="text-muted">{{ _('Hold Ctrl / Cmd to select multiple.') }}</small>
             <br />{{ form.users.description }}
         </div>
 

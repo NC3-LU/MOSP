@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <label for="{{ form.org_id.id }}" class="control-label">{{ form.org_id.label }}</label>
                     <div>
-                        {{ form.org_id(class_="selectpicker") }}
+                        {{ form.org_id(class_="form-select") }}
                     </div>
                     {% for error in form.org_id.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
                 </div>
@@ -58,8 +58,9 @@
                 <div class="form-group">
                     <label for="{{ form.licenses.id }}" class="control-label">{{ form.licenses.label }}</label>
                     <div>
-                        {{ form.licenses(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}
+                        {{ form.licenses(class_="form-select") }}
                     </div>
+                    <small class="text-muted">{{ _('Hold Ctrl / Cmd to select multiple.') }}</small>
                     {% for error in form.licenses.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
                 </div>
 
@@ -80,7 +81,7 @@
                         <div class="form-group">
                             <label for="{{ form.refers_to.id }}" class="control-label">{{ form.refers_to.label }}</label>
                             <div>
-                                {{ form.refers_to(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}
+                                {{ form.refers_to(class_="form-select") }}
                             </div>
                             {% for error in form.refers_to.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
                         </div>
@@ -89,7 +90,7 @@
                         <div class="form-group">
                             <label for="{{ form.referred_to_by.id }}" class="control-label">{{ form.referred_to_by.label }}</label>
                             <div>
-                                {{ form.referred_to_by(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}
+                                {{ form.referred_to_by(class_="form-select") }}
                             </div>
                             {% for error in form.referred_to_by.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
                         </div>
@@ -105,9 +106,4 @@
         </div>
     </div>
 </div><!-- /.container -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    $('.selectpicker').selectpicker();
-});
-</script>
 {% endblock %}

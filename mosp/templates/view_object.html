@@ -177,7 +177,7 @@
         </div>
         <div class="modal-body">
           <p>Select a destination organization:</p>
-          <select id="orgSelector" class="selectpicker">
+          <select id="orgSelector" class="form-select">
             {% for organization in current_user.organizations%}
             <option value="{{ organization.id }}">{{ organization.name }}</option>
             {% endfor %}
@@ -193,8 +193,6 @@
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  $('.selectpicker').selectpicker();
-
   document.getElementById("download-csv").onclick = function(event) {
     fetch("{{ url_for('apiv2.object_object_item', id=json_object.id) }}")
     .then(response => response.json())

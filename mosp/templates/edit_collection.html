@@ -22,7 +22,7 @@
     <div class="form-group">
         <label for="description">{{ _('Type to filter objects from the list to be added in the collection') }}</label>
         <input type="text" id="inputObject" name="inputObject" class="form-control" /><br />
-        <select id="objectSelect" class="selectpicker" multiple="" data-width="auto"></select>
+        <select id="objectSelect" class="form-select" multiple="" style="min-height: 8rem;"></select>
         <button id="addObject" type="button" class="btn btn-default"><i class="fa fa-plus" title="{{ _('Add to the collection') }}"></i></button>
         <span id="nb-filtered-objects"></span>
     </div>
@@ -40,7 +40,6 @@
 </div>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    $('selectpicker').selectpicker();
     document.getElementById('inputObject').addEventListener("input", loadSelectPicker);
   });
 
@@ -93,14 +92,12 @@
         .map(function (object) {
           $("#objectSelect").append('<option value="'+object.id+'">'+object.name+'</option>');
         });
-        $("#objectSelect").selectpicker("refresh");
         document.getElementById("nb-filtered-objects").textContent = result.metadata.count + " filtered object(s).";
       }).catch((error) => {
         console.error('Error:', error);
       });
     } else {
       $("#objectSelect option").remove();
-      $("#objectSelect").selectpicker("refresh");
       document.getElementById("nb-filtered-objects").textContent = "";
     }
   }
