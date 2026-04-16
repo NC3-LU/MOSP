@@ -1,6 +1,7 @@
 import re
 import secrets
 from datetime import datetime
+from datetime import timezone
 
 from flask_login import UserMixin
 from sqlalchemy.orm import validates
@@ -31,8 +32,12 @@ class User(db.Model, UserMixin):
     login = db.Column(db.String(30), unique=True, nullable=False)
     pwdhash = db.Column(db.String(), nullable=False)
     email = db.Column(db.String(256), nullable=False)
-    created_at = db.Column(db.DateTime(), default=datetime.utcnow)
-    last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
+    created_at = db.Column(
+        db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
+    )
+    last_seen = db.Column(
+        db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
+    )
     apikey = db.Column(db.String(100), default=generate_token, unique=True)
 
     # user rights

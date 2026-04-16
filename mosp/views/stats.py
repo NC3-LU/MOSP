@@ -65,7 +65,7 @@ def digraph(software=None):
 @stats_bp.route("/objects/most-viewed.json", methods=["GET"])
 def most_viewed_objects():
     nb_weeks = request.args.get("nb_weeks", default=32, type=int)
-    nb_weeks_ago = datetime.datetime.utcnow() - datetime.timedelta(weeks=nb_weeks)
+    nb_weeks_ago = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) - datetime.timedelta(weeks=nb_weeks)
     events = Event.query.filter(
         Event.scope == "JsonObject",
         Event.action == "object_bp.view:GET",
@@ -112,7 +112,7 @@ def most_viewed_schemas():
 
     # look for uuid of schemas in JsonObject scope
     nb_weeks = request.args.get("nb_weeks", default=32, type=int)
-    nb_weeks_ago = datetime.datetime.utcnow() - datetime.timedelta(weeks=nb_weeks)
+    nb_weeks_ago = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) - datetime.timedelta(weeks=nb_weeks)
     events = Event.query.filter(
         Event.scope == "JsonObject",
         Event.action == "apiv2.object_objects_list:GET",

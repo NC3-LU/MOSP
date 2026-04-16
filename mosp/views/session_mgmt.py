@@ -1,5 +1,6 @@
 import logging
 from datetime import datetime
+from datetime import timezone
 
 import sqlalchemy
 from flask import current_app
@@ -65,7 +66,7 @@ def load_user(user_id):
 @current_app.before_request
 def before_request():
     if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
+        current_user.last_seen = datetime.now(timezone.utc).replace(tzinfo=None)
         db.session.commit()
 
 

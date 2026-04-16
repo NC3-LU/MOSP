@@ -1,6 +1,7 @@
 import logging
 from datetime import datetime
 from datetime import timedelta
+from datetime import timezone
 
 from flask import Blueprint
 from flask import current_app
@@ -40,7 +41,7 @@ admin_bp = Blueprint("admin_bp", __name__, url_prefix="/admin")
 @login_required
 @admin_permission.require(http_exception=403)
 def dashboard():
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
     on_week_ago = now - timedelta(weeks=1)
     four_weeks_ago = now - timedelta(weeks=4)
     active_users = User.query.filter(User.last_seen >= on_week_ago)

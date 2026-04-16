@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from datetime import timezone
 from typing import Dict
 from typing import Union
 
@@ -467,7 +468,7 @@ def copy(object_id=None):
     new_object.description = json_object.description
     new_object.json_object = json_object.json_object
     new_object.refers_to.append(json_object)
-    new_object.last_updated = datetime.utcnow()
+    new_object.last_updated = datetime.now(timezone.utc).replace(tzinfo=None)
 
     db.session.add(new_object)
     db.session.commit()

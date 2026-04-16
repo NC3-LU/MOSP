@@ -1,5 +1,6 @@
 import uuid
 from datetime import datetime
+from datetime import timezone
 
 from sqlalchemy.dialects.postgresql import UUID
 
@@ -18,8 +19,12 @@ class Collection(db.Model):
     )
     name = db.Column(db.String(100), unique=True, nullable=False)
     description = db.Column(db.String(500), default="")
-    date_created = db.Column(db.DateTime(), default=datetime.utcnow)
-    last_updated = db.Column(db.DateTime(), default=datetime.utcnow)
+    date_created = db.Column(
+        db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
+    )
+    last_updated = db.Column(
+        db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
+    )
 
     # foreign keys
     creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)

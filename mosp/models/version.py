@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import timezone
 
 from sqlalchemy.dialects.postgresql import JSONB
 
@@ -13,7 +14,9 @@ class Version(db.Model):
 
     name = db.Column(db.Text(), nullable=False)
     description = db.Column(db.Text(), nullable=False)
-    last_updated = db.Column(db.DateTime(), default=datetime.utcnow)
+    last_updated = db.Column(
+        db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
+    )
     json_object = db.Column(JSONB, default={})
 
     # relationships

@@ -209,7 +209,7 @@ class ObjectsList(Resource):
                 sqlalchemy.exc.InvalidRequestError,
             ) as e:
                 logger.error("Error when creating object {}".format(object["id"]))
-                print(e)
+                logger.error(str(e), exc_info=True)
                 # errors.append(object["id"])
                 db.session.rollback()
 

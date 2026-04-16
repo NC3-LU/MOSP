@@ -1,4 +1,6 @@
 #! /usr/bin/env python
+import logging
+
 from flask_restx import fields
 from flask_restx import Namespace
 from flask_restx import reqparse
@@ -9,6 +11,7 @@ from mosp.api.v2.common import metada_params_model
 from mosp.api.v2.types import ResultType
 from mosp.models import Collection
 
+logger = logging.getLogger(__name__)
 
 collection_ns = Namespace("collection", description="collection related operations")
 
@@ -76,7 +79,7 @@ class CollectionsList(Resource):
             results = query.offset(offset * limit)
             count = total
         except Exception as e:
-            print(e)
+            logger.error(str(e), exc_info=True)
 
         result["data"] = results
         result["metadata"]["count"] = count

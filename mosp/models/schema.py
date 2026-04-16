@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import timezone
 
 from sqlalchemy import event
 from sqlalchemy.dialects.postgresql import JSONB
@@ -19,7 +20,7 @@ class Schema(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     description = db.Column(db.String(500))
-    last_updated = db.Column(db.DateTime(), default=datetime.utcnow)
+    last_updated = db.Column(db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None))
     json_schema = db.Column(JSONB, default={})
 
     # relationship
@@ -48,4 +49,4 @@ def update_modified_on_update_listener(mapper, connection, target):
     """Event listener that runs before a record is updated, and sets the
     last_updated field accordingly.
     """
-    target.last_updated = datetime.utcnow()
+    target.last_updated = datetime.now(timezone.utc).replace(tzinfo=None)

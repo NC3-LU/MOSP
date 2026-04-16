@@ -1,4 +1,6 @@
 #! /usr/bin/env python
+import logging
+
 from flask_restx import fields
 from flask_restx import inputs
 from flask_restx import Namespace
@@ -10,6 +12,7 @@ from mosp.api.v2.common import organization_params_model
 from mosp.api.v2.types import ResultType
 from mosp.models import Organization
 
+logger = logging.getLogger(__name__)
 
 organization_ns = Namespace(
     "organization", description="organization related operations"
@@ -79,7 +82,7 @@ class OrganizationsList(Resource):
             results = query.offset(offset * limit)
             count = total
         except Exception as e:
-            print(e)
+            logger.error(str(e), exc_info=True)
 
         result["data"] = results
         result["metadata"]["count"] = count

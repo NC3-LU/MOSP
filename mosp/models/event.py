@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import timezone
 
 from sqlalchemy.orm import validates
 
@@ -13,7 +14,9 @@ class Event(db.Model):
     action = db.Column(db.String(), nullable=False)
     subject = db.Column(db.String(), nullable=False)
     initiator = db.Column(db.String())
-    date = db.Column(db.DateTime(), default=datetime.utcnow)
+    date = db.Column(
+        db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
+    )
 
     @validates("initiator")
     def validates_initiator(self, key: str, value: str):

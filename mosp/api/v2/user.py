@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+import logging
 import secrets
 
 import sqlalchemy
@@ -22,6 +23,7 @@ from mosp.models import Organization
 from mosp.models import User
 from mosp.notifications import notifications
 
+logger = logging.getLogger(__name__)
 
 user_ns = Namespace("user", description="user related operations")
 
@@ -115,7 +117,7 @@ class UsersList(Resource):
             results = query.offset(offset * limit)
             count = total
         except Exception as e:
-            print(e)
+            logger.error(str(e), exc_info=True)
 
         result["data"] = results
         result["metadata"]["count"] = count
@@ -169,7 +171,7 @@ class UsersList(Resource):
             try:
                 notifications.confirm_account(new_user)
             except Exception as e:
-                print(e)
+                logger.error(str(e), exc_info=True)
 
         # marshalling will skip none values and we do not want to return the API key
         new_user.apikey = None
