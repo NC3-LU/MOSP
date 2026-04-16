@@ -12,6 +12,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.6.0",
         "@json-editor/json-editor": "^2.15.1",
+        "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.3",
         "bootstrap-select": "^1.13.18",
         "chart.js": "^4.4.3",
@@ -22,8 +23,7 @@
         "jquery": "^3.7.1",
         "lodash": "^4.18.1",
         "moment": "^2.30.1",
-        "papaparse": "^5.4.1",
-        "popper.js": "^1.16.1"
+        "papaparse": "^5.4.1"
     },
     "devDependencies": {
         "@codemirror/lang-json": "^6.0.2",
