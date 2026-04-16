@@ -172,3 +172,61 @@ def test_owner_post_delete_removes_schema(client, session):
     assert "/schemas/" in response.headers["Location"]
     # Schema must no longer exist in the database
     assert db.session.get(Schema, schema_id) is None
+
+
+# ── Fork tests ────────────────────────────────────────────────────────────────
+
+def test_fork_creates_new_schema_with_provenance(client, session):
+    org_src = make_org(session, "OrgSrc_fork")
+    org_dst = make_org(session, "OrgDst_fork")
+    creator = make_user(session, "creator_f1", "creator_f1@t.local", org=org_src)
+    forker = make_user(session, "forker_f1", "forker_f1@t.local", org=org_dst)
+    source = make_schema(session, "SourceSchema_f1", org_src, creator_id=creator.id)
+
+    login_as(client, "forker_f1")
+    response = client.post(
+        f"/schema/fork/{source.id}",
+        data={"org_id": org_dst.id},
+        follow_redirects=False,
+    )
+    assert response.status_code == 302
+
+    # A new schema should exist with forked_from_id pointing to the source
+    forked = Schema.query.filter(Schema.forked_from_id == source.id).first()
+    assert forked is not None
+    assert forked.org_id == org_dst.id
+    assert forked.creator_id == forker.id
+
+
+def test_fork_unauthenticated_redirects_to_login(client, session):
+    org = make_org(session, "OrgAnon_fork")
+    creator = make_user(session, "creator_f2", "creator_f2@t.local", org=org)
+    source = make_schema(session, "SourceSchema_f2", org, creator_id=creator.id)
+
+    response = client.post(
+        f"/schema/fork/{source.id}",
+        data={"org_id": org.id},
+        follow_redirects=False,
+    )
+    # Flask-Login redirects unauthenticated users to the login page
+    assert response.status_code == 302
+    assert "login" in response.headers["Location"].lower()
+
+
+def test_fork_into_non_member_org_is_rejected(client, session):
+    org_src = make_org(session, "OrgSrc_forkbad")
+    org_other = make_org(session, "OrgOther_forkbad")
+    creator = make_user(session, "creator_f3", "creator_f3@t.local", org=org_src)
+    # forker_f3 belongs to org_src only, not org_other
+    make_user(session, "forker_f3", "forker_f3@t.local", org=org_src)
+    source = make_schema(session, "SourceSchema_f3", org_src, creator_id=creator.id)
+
+    login_as(client, "forker_f3")
+    response = client.post(
+        f"/schema/fork/{source.id}",
+        data={"org_id": org_other.id},
+        follow_redirects=False,
+    )
+    assert response.status_code == 403
+    # No fork should have been created
+    assert Schema.query.filter(Schema.forked_from_id == source.id).first() is None

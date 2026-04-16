@@ -368,6 +368,46 @@ def process_form(schema_id=None):
     return redirect(url_for("schema_bp.form", schema_id=new_schema.id))
 
 
+@schema_bp.route("/fork/<int:schema_id>", methods=["POST"])
+@login_required
+def fork(schema_id):
+    """Fork a schema into one of the current user's organizations."""
+    source = Schema.query.filter(Schema.id == schema_id).first()
+    if source is None:
+        abort(404)
+
+    org_id = request.form.get("org_id", type=int)
+    if not org_id:
+        flash(gettext("You must specify an organization."), "warning")
+        return redirect(url_for("schema_bp.get", schema_id=schema_id))
+
+    if not current_user.is_admin and not current_user.is_organization_member(org_id):
+        abort(403)
+
+    base_name = source.name + " (fork)"
+    name = base_name
+    suffix = 1
+    while Schema.query.filter(Schema.name == name).first() is not None:
+        suffix += 1
+        name = f"{base_name} {suffix}"
+
+    new_schema = Schema(
+        name=name,
+        description=source.description,
+        json_schema=dict(source.json_schema) if source.json_schema else {},
+        org_id=org_id,
+        creator_id=current_user.id,
+        forked_from_id=schema_id,
+    )
+    db.session.add(new_schema)
+    db.session.commit()
+    flash(
+        gettext("Schema successfully forked as %(name)s.", name=new_schema.name),
+        "success",
+    )
+    return redirect(url_for("schema_bp.form", schema_id=new_schema.id))
+
+
 @schema_bp.route("/delete/<int:schema_id>", methods=["GET"])
 @login_required
 @check_schema_edit_permission
