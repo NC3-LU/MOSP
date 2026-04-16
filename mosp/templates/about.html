@@ -3,20 +3,20 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="jumbotron">
+            <div class="p-5 bg-light rounded">
                 <img src="{{ url_for('static', filename='img/logo-large.png') }}"
                     width="480px"
                     class="img-fluid mx-auto d-block"
                     alt="MONARC Objects Sharing Platform"
                     title="MONARC Objects Sharing Platform" />
                 <br />
-                <p class="text-justify">
+                <p class="">
                     {{ _('A platform to create, edit and share JSON objects.<br />
                     The goal is to gather security related JSON objects,
                     in the first place aimed to be used with
                     <a href="https://github.com/monarc-project/MonarcAppFO" rel="noopener noreferrer" target="_blank">MONARC</a>') }}.
                 </p>
-                <p class="text-justify"><a href="{{ url_for('about_more') }}">{{ _('More information') }}</a> {{ _('about this instance.') }}</p>
+                <p class=""><a href="{{ url_for('about_more') }}">{{ _('More information') }}</a> {{ _('about this instance.') }}</p>
                 <hr class="my-4" />
                 <p>{{ _('You are welcome to copy, modify or redistribute the
                 <a href="https://github.com/NC3-LU/MOSP" rel="noreferrer" target="_blank">source code</a>

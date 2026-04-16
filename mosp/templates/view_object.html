@@ -9,7 +9,7 @@
     <div class="col">
       <h1>{{ json_object.name }}</h1>
     </div>
-    <div class="col text-right">
+    <div class="col text-end">
       <div class="btn-group" role="group">
         {% if current_user.is_authenticated %}
         <a role="button" class="btn btn-warning" title="{{ _('Delete the object') }}" aria-label="{{ _('Delete the object') }}" href="{{ url_for('object_bp.delete', object_id=json_object.id) }}" onclick="return confirm(_('You are going to delete this object.'));">
@@ -74,7 +74,7 @@
     <div class="col-md-3">
       <b>{{ _('Description') }}</b>
     </div>
-    <div class="col-md-9 text-justify">
+    <div class="col-md-9 ">
       {{ json_object.description }}
     </div>
   </div>

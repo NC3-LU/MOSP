@@ -8,18 +8,18 @@
   <form action="" method="post" name="saveprofileform" id="profileform">
     {{ form.hidden_tag() }}
 
-    <div class="form-group">
+    <div class="mb-3">
       {{ form.name.label }}
       {{ form.name(class_="form-control") }} {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       {{ form.description.label }}
       {{ form.description(class_="form-control") }} {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
     </div>
 
     {% if collection %}
-    <div class="form-group">
+    <div class="mb-3">
         <label for="description">{{ _('Type to filter objects from the list to be added in the collection') }}</label>
         <input type="text" id="inputObject" name="inputObject" class="form-control" /><br />
         <select id="objectSelect" class="form-select" multiple="" style="min-height: 8rem;"></select>

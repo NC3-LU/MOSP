@@ -5,7 +5,7 @@
     <div class="col">
       <h1>{{ collection.name }}</h1>
     </div>
-    <div class="col text-right">
+    <div class="col text-end">
       <div class="btn-group" role="group">
         <a role="button" class="btn btn-warning" title="{{ _('Delete the object') }}" aria-label="{{ _('Delete the object') }}" href="{{ url_for('collection_bp.delete', collection_id=collection.id) }}" onclick="return confirm(_('You are going to delete this collection.'));">
           <i class="fas fa-trash" aria-hidden="true"></i>

@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="jumbotron">
+      <div class="p-5 bg-light rounded">
         <img src="{{ url_for('static', filename='img/logo-large.png') }}"
         align="left"
         width="240px"
@@ -31,7 +31,7 @@
       <h2>{{ _('Updated objects') }} <a href="{{ url_for('objects_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
       <div id="list-json-objects">
         <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
+          <div class="spinner-border" role="status"><span class="visually-hidden">{{ _('Loading...') }}</span></div>
         </div>
       </div>
     </div>
@@ -39,13 +39,13 @@
       <h2>{{ _('Updated schemas') }} <a href="{{ url_for('schemas_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
       <div id="list-schemas">
         <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
+          <div class="spinner-border" role="status"><span class="visually-hidden">{{ _('Loading...') }}</span></div>
         </div>
       </div>
       <h2>{{ _('Updated collections') }} <a href="{{ url_for('collections_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
       <div id="list-collections">
         <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
+          <div class="spinner-border" role="status"><span class="visually-hidden">{{ _('Loading...') }}</span></div>
         </div>
       </div>
     </div>

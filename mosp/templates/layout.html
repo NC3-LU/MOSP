@@ -43,7 +43,7 @@
     </button>
     {% block menu_links %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto w-100 justify-content-end">
+      <ul class="navbar-nav me-auto w-100 justify-content-end">
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('schemas_bp.list_schemas') }}" title="Schemas">{{ _('Schemas') }}</a>
         </li>
@@ -76,7 +76,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-bs-toggle="dropdown" data-bs-display="static" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser">
-            <span class="dropdown-item"><div class="text-muted">{{ _('Signed in as') }}</div><div class="font-weight-bold">{{ current_user.login }}</div></span>
+            <span class="dropdown-item"><div class="text-muted">{{ _('Signed in as') }}</div><div class="fw-bold">{{ current_user.login }}</div></span>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ url_for('user_bp.form') }}" title="Profile">{{ _('Profile') }}</a>
             <a class="dropdown-item" href="{{ url_for('user_bp.schemas') }}" title="Schemas">{{ _('Schemas') }}</a>

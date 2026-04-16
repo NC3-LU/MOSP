@@ -44,13 +44,13 @@
     </div>
     {% if current_user.is_authenticated %}
     {% if current_user.is_organization_member(organization.id) %}
-    <div class="col text-right">
+    <div class="col text-end">
       <h3><a id="leave-org" href="#">
         <i class="fa fa-user-times" aria-hidden="true" title="Leave this organization." aria-label="{{ _('Leave this organization.') }}"></i>
       </a></h3>
     </div>
     {% elif not organization.is_membership_restricted %}
-    <div class="col text-right">
+    <div class="col text-end">
       <h3><a id="join-org" href="#">
         <i class="fa fa-users" aria-hidden="true" title="{{ _('Organization without membership restriction.') }}" aria-label="{{ _('Organization without membership restriction.') }}"></i>
       </a></h3>
@@ -58,7 +58,7 @@
     {% endif %}
     {% else %}
     {% if not organization.is_membership_restricted %}
-    <div class="col text-right">
+    <div class="col text-end">
       <h3>
         <i class="fa fa-users" aria-hidden="true" title="{{ _('Organization without membership restriction.') }}" aria-label="{{ _('Organization without membership restriction.') }}"></i>
         </h3>
