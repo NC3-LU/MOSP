@@ -40,7 +40,7 @@
   {% block main_menu %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-MOSP-blue">
     <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/logo.png') }}" width="120px" alt="MONARC Objects Sharing Platform" title="MONARC Objects Sharing Platform" /></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     {% block menu_links %}
@@ -61,7 +61,7 @@
         {% if current_user.is_authenticated %}
         {% if current_user.is_admin %}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i></a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i></a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownAdmin">
             <a class="dropdown-item" href="{{ url_for('admin_bp.dashboard') }}" title="Dashboard">{{ _('Dashboard') }}</a>
             <div class="dropdown-divider"></div>
@@ -76,7 +76,7 @@
         </li>
         {% endif %}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
             <span class="dropdown-item"><div class="text-muted">{{ _('Signed in as') }}</div><div class="font-weight-bold">{{ current_user.login }}</div></span>
             <div class="dropdown-divider"></div>
@@ -103,7 +103,7 @@
     <br />
     {% for category, message in messages %}
     <div class="alert alert-{{category}}">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       {{ message | safe }}
     </div>
     {% endfor %}
