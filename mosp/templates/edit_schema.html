@@ -52,10 +52,18 @@
 
                 <div class="form-group">
                     <label for="{{ form.org_id.id }}" class="control-label">{{ form.org_id.label }}</label>
+                    {% if form.org_id.choices | length <= 1 %}
+                    <div class="alert alert-warning mt-1" role="alert">
+                        {{ _('You are not a member of any organization. You must') }}
+                        <a href="{{ url_for('organizations_bp.list_organizations') }}">{{ _('join or create an organization') }}</a>
+                        {{ _('before creating a schema.') }}
+                    </div>
+                    {% else %}
                     <div>
                         {{ form.org_id(class_="form-control") }}
                     </div>
                     {% for error in form.org_id.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                    {% endif %}
                 </div>
 
                 <div class="form-group">

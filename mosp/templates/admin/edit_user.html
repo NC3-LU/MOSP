@@ -41,9 +41,18 @@
 
         <br /><br />
 
-         <div class="form-group">
+        <div class="form-group mt-3">
             {{ form.organizations.label }}
-            {{ form.organizations(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }} {% for error in form.organizations.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            {% if form.organizations.choices %}
+            {{ form.organizations(class_="form-select", size=form.organizations.choices|length if form.organizations.choices|length < 10 else 10) }}
+            {% for error in form.organizations.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            <small class="text-muted">{{ _('Hold Ctrl / Cmd to select multiple organizations.') }}</small>
+            {% else %}
+            <div class="alert alert-warning mt-1" role="alert">
+                {{ _('No organizations exist yet.') }}
+                <a href="{{ url_for('admin_bp.form_organization') }}">{{ _('Create one first.') }}</a>
+            </div>
+            {% endif %}
         </div>
 
         {{ form.submit(class_="btn btn-default") }}
