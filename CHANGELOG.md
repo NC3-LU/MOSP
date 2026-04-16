@@ -26,6 +26,9 @@ New
 
 Changes
 ~~~~~~~
+- Replace deprecated datetime.utcnow() with datetime.now(timezone.utc) across
+  all models and views (Python 3.12 compatibility).
+- Replace print() debug calls in api/v2 with proper structured logging.
 - Use postgresql:// scheme in all config files (SQLAlchemy 2.x compatibility).
 - Update JS dependencies: bootstrap 5.3.8, chart.js 4.5.1, codemirror 6.0.2,
   datatables.net-bs4 2.3.7, @json-editor/json-editor 2.16.0, papaparse 5.5.3,
