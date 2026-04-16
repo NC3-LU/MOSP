@@ -21,7 +21,7 @@
                             <div>
                                 {{ form.name(class_="form-control") }}
                             </div>
-                            {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.name.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                             <div>
                                 {{ form.description(class_="form-control") }}
                             </div>
-                            {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.description.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                             <div>
                                 {{ form.json_schema(class_="form-control") }}
                             </div>
-                            {% for error in form.json_schema.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.json_schema.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div>
                         {{ form.org_id(class_="form-control") }}
                     </div>
-                    {% for error in form.org_id.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                    {% for error in form.org_id.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                     {% endif %}
                 </div>
 

@@ -7,7 +7,7 @@
     </div>
     <div class="col text-end">
       <div class="btn-group" role="group">
-        <a role="button" class="btn btn-warning" title="{{ _('Delete the object') }}" aria-label="{{ _('Delete the object') }}" href="{{ url_for('collection_bp.delete', collection_id=collection.id) }}" onclick="return confirm(_('You are going to delete this collection.'));">
+        <a role="button" class="btn btn-warning" title="{{ _('Delete the collection') }}" aria-label="{{ _('Delete the collection') }}" href="{{ url_for('collection_bp.delete', collection_id=collection.id) }}" onclick="return confirm('{{ _('You are going to delete this collection.') }}');">
           <i class="fas fa-trash" aria-hidden="true"></i>
         </a>
         <a role="button" class="btn btn-secondary" href="{{ url_for('collection_bp.form', collection_id=collection.id) }}" title="{{ _('Edit the collection') }}">
@@ -100,6 +100,8 @@
               <td><a href="{{ url_for('organization_bp.get', organization_name=object.organization.name) }}">{{ object.organization.name }}</a></td>
               <td class="date">{{ object.last_updated | datetime }}</td>
             </tr>
+            {% else %}
+            <tr><td colspan="5" class="text-center text-muted">{{ _('No objects in this collection yet.') }}</td></tr>
             {% endfor %}
           </tbody>
         </table>

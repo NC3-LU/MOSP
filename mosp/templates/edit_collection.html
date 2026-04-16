@@ -10,18 +10,18 @@
 
     <div class="mb-3">
       {{ form.name.label }}
-      {{ form.name(class_="form-control") }} {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+      {{ form.name(class_="form-control") }} {% for error in form.name.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
     </div>
 
     <div class="mb-3">
       {{ form.description.label }}
-      {{ form.description(class_="form-control") }} {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+      {{ form.description(class_="form-control") }} {% for error in form.description.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
     </div>
 
     {% if collection %}
     <div class="mb-3">
-        <label for="description">{{ _('Type to filter objects from the list to be added in the collection') }}</label>
-        <input type="text" id="inputObject" name="inputObject" class="form-control" /><br />
+        <label for="inputObject" class="form-label">{{ _('Type to filter objects from the list to be added in the collection') }}</label>
+        <input type="text" id="inputObject" name="inputObject" class="form-control" />
         <select id="objectSelect" class="form-select" multiple="" style="min-height: 8rem;"></select>
         <button id="addObject" type="button" class="btn btn-secondary mt-1"><i class="fa fa-plus" title="{{ _('Add to the collection') }}"></i></button>
         <span id="nb-filtered-objects"></span>
@@ -29,7 +29,7 @@
     <h4 id="list-objects">
       {% for object in collection.objects %}
       <span class="badge rounded-pill bg-success" title="{{ object.schema.name }}" object-id="{{ object.id }}">{{ object.name }}
-          <i class="fa fa-minus" title="Remove from collection" style="color:blue"></i>
+          <i class="fa fa-minus text-primary" title="{{ _('Remove from collection') }}"></i>
       </span>
       {% endfor %}
     </h4>

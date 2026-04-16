@@ -10,6 +10,7 @@
     <br />
     <div class="row">
         <div class="col-md-12">
+            {% if organizations %}
             <div class="list-group">
             {% for organization in organizations %}
                 <a href="{{ url_for('organization_bp.get', organization_id=organization.id) }}" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -21,6 +22,9 @@
                 </a>
             {% endfor  %}
             </div>
+            {% else %}
+            <p class="text-muted">{{ _('No organizations yet.') }}</p>
+            {% endif %}
         </div>
     </div>
 

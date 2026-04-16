@@ -1,4 +1,4 @@
-{% extends "layout.html" %}}
+{% extends "layout.html" %}
 {% block content %}
 <!-- Modals -->
 <div class="modal fade" id="MOSPModal" tabindex="-1" aria-labelledby="MOSPModalJoinOrg" aria-hidden="true">
@@ -120,6 +120,8 @@
                   <td>{{ object.schema.name }}</td>
                   <td class="date">{{ object.last_updated | datetime }}</td>
                 </tr>
+                {% else %}
+                <tr><td colspan="4" class="text-center text-muted">{{ _('No objects published yet.') }}</td></tr>
                 {% endfor %}
               </tbody>
             </table>
@@ -156,9 +158,11 @@
                 <tr>
                   <td scope="row">{{ schema.id }}</td>
                   <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
-                  <td align="center">{{ schema.objects.count() }}</td>
+                  <td class="text-center">{{ schema.objects.count() }}</td>
                   <td class="date">{{ schema.last_updated | datetime }}</td>
                 </tr>
+                {% else %}
+                <tr><td colspan="4" class="text-center text-muted">{{ _('No schemas published yet.') }}</td></tr>
                 {% endfor %}
               </tbody>
             </table>
@@ -176,7 +180,7 @@
           order: [[2, "desc"]],
           columnDefs: [
           {
-            bSortable: false,
+            orderable: false,
             targets: [0]
           }
           ]
@@ -189,7 +193,7 @@
           order: [[3, "desc"]],
           columnDefs: [
           {
-            bSortable: false,
+            orderable: false,
             targets: [0]
           }
           ]

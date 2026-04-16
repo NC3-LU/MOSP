@@ -31,7 +31,7 @@
                             <div>
                                 {{ form.name(class_="form-control") }}
                             </div>
-                            {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.name.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                             <div>
                                 {{ form.description(class_="form-control") }}
                             </div>
-                            {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.description.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                     <div>
                         {{ form.org_id(class_="form-select") }}
                     </div>
-                    {% for error in form.org_id.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                    {% for error in form.org_id.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                 </div>
 
                 <div class="mb-3">
@@ -61,7 +61,7 @@
                         {{ form.licenses(class_="form-select") }}
                     </div>
                     <small class="text-muted">{{ _('Hold Ctrl / Cmd to select multiple.') }}</small>
-                    {% for error in form.licenses.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                    {% for error in form.licenses.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                 </div>
 
                 <div class="mb-3">
@@ -83,7 +83,7 @@
                             <div>
                                 {{ form.refers_to(class_="form-select") }}
                             </div>
-                            {% for error in form.refers_to.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.refers_to.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                     <div class="col">
@@ -92,7 +92,7 @@
                             <div>
                                 {{ form.referred_to_by(class_="form-select") }}
                             </div>
-                            {% for error in form.referred_to_by.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.referred_to_by.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
