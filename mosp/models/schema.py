@@ -33,10 +33,14 @@ class Schema(db.Model):
     # foreign keys
     org_id = db.Column(db.Integer(), db.ForeignKey("organization.id"), default=None)
     creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), default=True)
-    forked_from_id = db.Column(db.Integer(), db.ForeignKey("schema.id"), nullable=True, default=None)
+    forked_from_id = db.Column(
+        db.Integer(), db.ForeignKey("schema.id"), nullable=True, default=None
+    )
 
     # self-referential relationship for fork provenance
-    forked_from = db.relationship("Schema", remote_side="Schema.id", foreign_keys=[forked_from_id], lazy="joined")
+    forked_from = db.relationship(
+        "Schema", remote_side="Schema.id", foreign_keys=[forked_from_id], lazy="joined"
+    )
 
 
 @event.listens_for(Schema, "before_update")

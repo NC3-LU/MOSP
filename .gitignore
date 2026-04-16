@@ -24,6 +24,12 @@ dist/
 # Claude Code
 CLAUDE.md
 
+# Package manager artifacts (not used by this project)
+uv.lock
+
+# Local instance configs (not for version control)
+instance/test.py
+
 # Project related
 var/log/
 docs/_build/

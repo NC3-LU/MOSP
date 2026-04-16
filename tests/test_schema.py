@@ -121,6 +121,33 @@ def test_non_owner_cannot_post_edit_schema(client, session):
     assert response.status_code == 403
 
 
+def test_create_schema_with_forged_org_id_is_rejected(client, session):
+    """A user cannot create a schema claiming ownership of an org they don't belong to.
+
+    WTForms SelectField validates that the submitted org_id is among the declared
+    choices (which are built from current_user.organizations), so a forged org_id
+    fails form validation and results in a redirect. The important property is that
+    no schema is created for the target organization.
+    """
+    org_a = make_org(session, "OrgA_forge")
+    org_b = make_org(session, "OrgB_forge")
+    make_user(session, "user_forge", "user_forge@t.local", org=org_a)
+
+    login_as(client, "user_forge")
+    response = client.post(
+        "/schema/create",
+        data={
+            "name": "ForgedSchema",
+            "description": "attempt to own org_b",
+            "json_schema": json.dumps({"type": "object", "properties": {}}),
+            "org_id": org_b.id,  # org_b — user does not belong here
+        },
+    )
+    # Form validation rejects the forged org_id → redirect (not created)
+    assert response.status_code == 302
+    assert Schema.query.filter(Schema.org_id == org_b.id).first() is None
+
+
 # ── DELETE ownership tests ────────────────────────────────────────────────────
 
 def test_non_owner_cannot_delete_schema(client, session):
