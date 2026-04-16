@@ -1,4 +1,5 @@
 import json
+import logging
 from datetime import datetime
 from datetime import timezone
 from typing import Dict
@@ -26,6 +27,8 @@ from mosp.models import License
 from mosp.models import Schema
 from mosp.models import Version
 from mosp.views.decorators import check_object_edit_permission
+
+logger = logging.getLogger(__name__)
 
 object_bp = Blueprint("object_bp", __name__, url_prefix="/object")
 objects_bp = Blueprint("objects_bp", __name__, url_prefix="/objects")
@@ -362,7 +365,7 @@ def process_form(object_id=None):
             db.session.add(new_event)
             db.session.commit()
         except Exception as e:
-            print(e)
+            logger.error(str(e), exc_info=True)
             form.name.errors.append("Name already exists.")
         return redirect(url_for("object_bp.form", object_id=json_object.id))
 
