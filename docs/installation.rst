@@ -7,7 +7,7 @@ Prerequisites
 Generally speaking, requirements are the following:
 
 - A GNU/Linux distribution (tested on Debian and Ubuntu);
-- Python: version >= 3.8 (preferably use `pyenv <https://github.com/pyenv/pyenv>`_)
+- Python: version >= 3.11 (preferably use `pyenv <https://github.com/pyenv/pyenv>`_)
   and a dependency manager (for example `Poetry <https://python-poetry.org>`_);
 - A PostgreSQL server >= 12.x: persistent storage.
 
