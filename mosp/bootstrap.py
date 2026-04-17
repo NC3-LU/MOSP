@@ -61,6 +61,13 @@ if TESTING:
     application.config[
         "SQLALCHEMY_DATABASE_URI"
     ] = "postgresql://mosp:password@localhost:5432/mosp"
+    # Minimal defaults so the app (incl. API v2 setup) imports cleanly
+    # without requiring a real instance config file.
+    application.config.setdefault("TESTING", True)
+    application.config.setdefault("WTF_CSRF_ENABLED", False)
+    application.config.setdefault("ADMIN_EMAIL", "admin@test.local")
+    application.config.setdefault("ADMIN_URL", "http://test.local")
+    application.config.setdefault("INSTANCE_URL", "http://test.local")
 elif ON_HEROKU:
     # Deployment on Heroku
     application.config.from_pyfile("heroku.py", silent=False)
