@@ -65,6 +65,10 @@ if TESTING:
     # without requiring a real instance config file.
     application.config.setdefault("TESTING", True)
     application.config.setdefault("WTF_CSRF_ENABLED", False)
+    application.config.setdefault("SECRET_KEY", "testing-only-not-a-real-secret")
+    application.config.setdefault(
+        "SECURITY_PASSWORD_SALT", "testing-only-not-a-real-salt"
+    )
     application.config.setdefault("ADMIN_EMAIL", "admin@test.local")
     application.config.setdefault("ADMIN_URL", "http://test.local")
     application.config.setdefault("INSTANCE_URL", "http://test.local")
