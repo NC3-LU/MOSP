@@ -89,7 +89,7 @@ if not application.config.get("TESTING") and os.environ.get("testing") != "actio
         raise RuntimeError(
             "SECRET_KEY is not set or uses a known insecure default. "
             "Set the SECRET_KEY environment variable to a strong random value "
-            "(e.g. python -c \"import secrets; print(secrets.token_hex(32))\")."
+            '(e.g. python -c "import secrets; print(secrets.token_hex(32))").'
         )
     if application.config.get("SECURITY_PASSWORD_SALT", "") in _KNOWN_WEAK_KEYS:
         raise RuntimeError(
@@ -111,6 +111,7 @@ cors = CORS(
         r"/api/v2/*": {"origins": "*"},
     },
 )
+
 
 # i18n and l10n support
 def get_locale():
