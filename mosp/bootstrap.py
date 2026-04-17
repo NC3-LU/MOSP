@@ -63,15 +63,16 @@ if TESTING:
     ] = "postgresql://mosp:password@localhost:5432/mosp"
     # Minimal defaults so the app (incl. API v2 setup) imports cleanly
     # without requiring a real instance config file.
-    application.config.setdefault("TESTING", True)
-    application.config.setdefault("WTF_CSRF_ENABLED", False)
-    application.config.setdefault("SECRET_KEY", "testing-only-not-a-real-secret")
-    application.config.setdefault(
-        "SECURITY_PASSWORD_SALT", "testing-only-not-a-real-salt"
-    )
-    application.config.setdefault("ADMIN_EMAIL", "admin@test.local")
-    application.config.setdefault("ADMIN_URL", "http://test.local")
-    application.config.setdefault("INSTANCE_URL", "http://test.local")
+    # Direct assignment (not setdefault) because Flask's default_config
+    # seeds SECRET_KEY/TESTING with None/False, which would make setdefault
+    # a silent no-op.
+    application.config["TESTING"] = True
+    application.config["WTF_CSRF_ENABLED"] = False
+    application.config["SECRET_KEY"] = "testing-only-not-a-real-secret"
+    application.config["SECURITY_PASSWORD_SALT"] = "testing-only-not-a-real-salt"
+    application.config["ADMIN_EMAIL"] = "admin@test.local"
+    application.config["ADMIN_URL"] = "http://test.local"
+    application.config["INSTANCE_URL"] = "http://test.local"
 elif ON_HEROKU:
     # Deployment on Heroku
     application.config.from_pyfile("heroku.py", silent=False)
