@@ -8,6 +8,7 @@ MOSP is a free software written and maintained by:
 # Contributors
 
 * Copyright (C) 2018-2024 Cédric Bonhomme
+* Copyright (C) 2026 Philippe Parage
 * Copyright (C) 2018-2024 Luxembourg House of Cybersecurity
 
 MOSP is licensed under
