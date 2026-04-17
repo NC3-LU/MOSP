@@ -27,7 +27,7 @@
   <div class="row">
     <div class="col">
       <h2>{{ _('Updated objects') }} <a href="{{ url_for('objects_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
-      <div id="list-json-objects">
+      <div id="list-json-objects" class="list-group">
         <div class="d-flex justify-content-center">
           <div class="spinner-border" role="status"><span class="visually-hidden">{{ _('Loading...') }}</span></div>
         </div>
@@ -35,13 +35,13 @@
     </div>
     <div class="col">
       <h2>{{ _('Updated schemas') }} <a href="{{ url_for('schemas_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
-      <div id="list-schemas">
+      <div id="list-schemas" class="list-group">
         <div class="d-flex justify-content-center">
           <div class="spinner-border" role="status"><span class="visually-hidden">{{ _('Loading...') }}</span></div>
         </div>
       </div>
       <h2>{{ _('Updated collections') }} <a href="{{ url_for('collections_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
-      <div id="list-collections">
+      <div id="list-collections" class="list-group">
         <div class="d-flex justify-content-center">
           <div class="spinner-border" role="status"><span class="visually-hidden">{{ _('Loading...') }}</span></div>
         </div>
