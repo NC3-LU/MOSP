@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 {% block head %}
 {{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='npm_components/codemirror/lib/codemirror.css') }}">
-<script src="{{ url_for('static', filename='npm_components/codemirror/lib/codemirror.js') }}"></script>
+<script src="{{ url_for('static', filename='js/codemirror-bundle.js') }}"></script>
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -15,55 +14,63 @@
         <div class="col-md-12">
             <form action="{{ url_for('schema_bp.process_form', schema_id=schema_id) }}" method="post" name="save" enctype="multipart/form-data">
                 {{ form.hidden_tag() }}
-                <div class="form-row">
+                <div class="row">
                     <div class="col">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="{{ form.name.id }}" class="control-label">{{ form.name.label }}</label>
                             <div>
                                 {{ form.name(class_="form-control") }}
                             </div>
-                            {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.name.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
 
-                <div class="form-row">
+                <div class="row">
                     <div class="col">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="{{ form.description.id }}" class="control-label">{{ form.description.label }}</label>
                             <div>
                                 {{ form.description(class_="form-control") }}
                             </div>
-                            {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.description.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
 
-                <div class="form-row">
+                <div class="row">
                     <div class="col">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="{{ form.json_schema.id }}" class="control-label">{{ form.json_schema.label }}</label>
                             <div>
                                 {{ form.json_schema(class_="form-control") }}
                             </div>
-                            {% for error in form.json_schema.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.json_schema.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="{{ form.org_id.id }}" class="control-label">{{ form.org_id.label }}</label>
+                    {% if form.org_id.choices | length <= 1 %}
+                    <div class="alert alert-warning mt-1" role="alert">
+                        {{ _('You are not a member of any organization. You must') }}
+                        <a href="{{ url_for('organizations_bp.list_organizations') }}">{{ _('join or create an organization') }}</a>
+                        {{ _('before creating a schema.') }}
+                    </div>
+                    {% else %}
                     <div>
                         {{ form.org_id(class_="form-control") }}
                     </div>
-                    {% for error in form.org_id.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                    {% for error in form.org_id.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                    {% endif %}
                 </div>
 
-                <div class="form-group">
+                <div class="mb-3">
                     <div class="">
-                        {{ form.submit(class_="btn btn-default") }}
+                        {{ form.submit(class_="btn btn-secondary") }}
                         {% if action == "Edit a schema" %}
-                            <a href="{{ url_for('schema_bp.delete', schema_id=schema.id) }}" class="btn btn-warning" onclick="return confirm(_('You are going to delete this schema.'));">{{ _('Delete this schema') }}</a>
+                            <a href="{{ url_for('schema_bp.delete', schema_id=schema.id) }}" class="btn btn-warning">{{ _('Delete this schema') }}</a>
                         {% endif %}
                     </div>
                 </div>
@@ -73,10 +80,15 @@
 </div><!-- /.container -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    textarea = document.getElementById("json_schema");
-    var editor = CodeMirror.fromTextArea(textarea, {
-        lineNumbers: true,
-        mode:  "javascript"
+    var textarea = document.getElementById("json_schema");
+    var view = new CM6.EditorView({
+        doc: textarea.value,
+        extensions: [CM6.basicSetup, CM6.json()],
+        parent: textarea.parentNode
+    });
+    textarea.style.display = "none";
+    textarea.closest("form").addEventListener("submit", function() {
+        textarea.value = view.state.doc.toString();
     });
 });
 </script>

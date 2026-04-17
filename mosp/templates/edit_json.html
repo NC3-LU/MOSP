@@ -10,7 +10,7 @@
         <div class='col-md-10'>
             <h1>{{ json_object.name }}</h1>
         </div>
-        <div class='col-md-2 text-right'>
+        <div class='col-md-2 text-end'>
             <button class='btn btn-success' id='saveobject' title="Save the object"><i class="fa fa-save" aria-hidden="true"></i></button>
             <a class='btn btn-success' href="{{ url_for('object_bp.list_versions', object_id=json_object.id) }}" title="Revisions of the object"><i class="fa fa-history" aria-hidden="true"></i></a>
             <a class='btn btn-success' href="{{ url_for('object_bp.form', object_id=json_object.id) }}" title="Edit the object"><i class="fa fa-edit" aria-hidden="true"></i></a>
@@ -21,10 +21,8 @@
         <div class='col-md'>
             <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000" style="position: absolute; top: 0; right: 12px;">
                 <div class="toast-header">
-                    <i class="fa fa-comment text-success" aria-hidden="true" ></i>&nbsp;&nbsp;&nbsp;<strong class="mr-auto">Message</strong>
-                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <i class="fa fa-comment text-success" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<strong class="me-auto">Message</strong>
+                    <button type="button" class="btn-close ms-2" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
                 <div class="toast-body"><p class="lead" id="toast-body"></p></div>
             </div>
@@ -34,13 +32,13 @@
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="editobject-tab" data-toggle="tab" href="#editobject" role="tab" aria-controls="editobject" aria-selected="true">Editor</a>
+            <a class="nav-link active" id="editobject-tab" data-bs-toggle="tab" href="#editobject" role="tab" aria-controls="editobject" aria-selected="true">Editor</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Options</a>
+            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Options</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="schema-tab" data-toggle="tab" href="#schema" role="tab" aria-controls="schema" aria-selected="false">Schema</a>
+            <a class="nav-link" id="schema-tab" data-bs-toggle="tab" href="#schema" role="tab" aria-controls="schema" aria-selected="false">Schema</a>
         </li>
     </ul>
 

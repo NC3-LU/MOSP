@@ -7,39 +7,33 @@
     <h2>{{ action | safe }}</h2>
     <form action="" method="post" name="saveprofileform" id="profileform">
         {{ form.hidden_tag() }}
-        <div class="form-group">
+        <div class="mb-3">
         {{ form.login.label }}
-        {{ form.login(class_="form-control") }} {% for error in form.login.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+        {{ form.login(class_="form-control") }} {% for error in form.login.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
         </div>
-        <div class="form-group">
+        <div class="mb-3">
         {{ form.email.label }}
-        {{ form.email(class_="form-control") }} {% for error in form.email.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+        {{ form.email(class_="form-control") }} {% for error in form.email.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
         </div>
-        <div class="form-group">
+        <div class="mb-3">
         {{ form.password.label }}
-        {{ form.password(class_="form-control") }} {% for error in form.password.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+        {{ form.password(class_="form-control") }} {% for error in form.password.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
         </div>
         <br />
-        {{ form.submit(class_="btn btn-default") }}
+        {{ form.submit(class_="btn btn-secondary") }}
     </form>
     <br /><hr />
     <div class="row">
         <div class="col">
-            <form class="navbar-form navbar-right">
-                <label class="sr-only" for="inlineFormInputGroupAPIKey">{{ _('API key') }}</label>
-                <div class="input-group mb-2 mr-sm-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text mb-2">{{ _('API key') }}</div>
-                    </div>
+            <form>
+                <label class="visually-hidden" for="inlineFormInputGroupAPIKey">{{ _('API key') }}</label>
+                <div class="input-group mb-2">
+                    <span class="input-group-text">{{ _('API key') }}</span>
                     <input type="text" class="form-control" id="inlineFormInputGroupAPIKey" value="{{ current_user.apikey }}" readonly>
-                    <div class="input-group-append">
-                        <a href="#" class="btn btn-dark mb-2" onclick="copyToClipboard()" title="Copy to clipboard"><i class="fa fa-clipboard" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="input-group-append">
-                        <a href="{{ url_for('user_bp.generate_apikey', user_id=user.id) }}" class="btn btn-primary mb-2" onclick="return confirm(_('You are going to generate a new API key.'));">{{ _('Generate new API key') }}</a>
-                    </div>
+                    <a href="#" class="btn btn-dark" onclick="copyToClipboard()" title="Copy to clipboard"><i class="fa fa-clipboard" aria-hidden="true"></i></a>
+                    <a href="{{ url_for('user_bp.generate_apikey', user_id=user.id) }}" class="btn btn-primary" onclick="return confirm(_('You are going to generate a new API key.'));">{{ _('Generate new API key') }}</a>
                 </div>
-          </form>
+            </form>
       </div>
     </div>
     <div class="row">

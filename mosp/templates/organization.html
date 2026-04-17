@@ -1,4 +1,4 @@
-{% extends "layout.html" %}}
+{% extends "layout.html" %}
 {% block content %}
 <!-- Modals -->
 <div class="modal fade" id="MOSPModal" tabindex="-1" aria-labelledby="MOSPModalJoinOrg" aria-hidden="true">
@@ -6,15 +6,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="MOSPModalJoinOrg">{{ _('Join an organization') }}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         {{ _('Do you want to join this organization ?') }}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="MOSPModalClose">{{ _('Close') }}</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="MOSPModalClose">{{ _('Close') }}</button>
         <button type="button" class="btn btn-primary" id="MOSPModalOK">{{ _('Join') }}</button>
       </div>
     </div>
@@ -26,15 +24,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="MOSPModalLeaveOrg">{{ _('Leave the organization') }}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         {{ _('Do you want to leave this organization ?') }}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="MOSPModalLeaveClose">{{ _('Close') }}</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="MOSPModalLeaveClose">{{ _('Close') }}</button>
         <button type="button" class="btn btn-primary" id="MOSPModalLeaveOK">{{ _('Leave') }}</button>
       </div>
     </div>
@@ -48,13 +44,13 @@
     </div>
     {% if current_user.is_authenticated %}
     {% if current_user.is_organization_member(organization.id) %}
-    <div class="col text-right">
+    <div class="col text-end">
       <h3><a id="leave-org" href="#">
         <i class="fa fa-user-times" aria-hidden="true" title="Leave this organization." aria-label="{{ _('Leave this organization.') }}"></i>
       </a></h3>
     </div>
     {% elif not organization.is_membership_restricted %}
-    <div class="col text-right">
+    <div class="col text-end">
       <h3><a id="join-org" href="#">
         <i class="fa fa-users" aria-hidden="true" title="{{ _('Organization without membership restriction.') }}" aria-label="{{ _('Organization without membership restriction.') }}"></i>
       </a></h3>
@@ -62,7 +58,7 @@
     {% endif %}
     {% else %}
     {% if not organization.is_membership_restricted %}
-    <div class="col text-right">
+    <div class="col text-end">
       <h3>
         <i class="fa fa-users" aria-hidden="true" title="{{ _('Organization without membership restriction.') }}" aria-label="{{ _('Organization without membership restriction.') }}"></i>
         </h3>
@@ -124,6 +120,8 @@
                   <td>{{ object.schema.name }}</td>
                   <td class="date">{{ object.last_updated | datetime }}</td>
                 </tr>
+                {% else %}
+                <tr><td colspan="4" class="text-center text-muted">{{ _('No objects published yet.') }}</td></tr>
                 {% endfor %}
               </tbody>
             </table>
@@ -160,9 +158,11 @@
                 <tr>
                   <td scope="row">{{ schema.id }}</td>
                   <td><a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}">{{ schema.name  }}</a></td>
-                  <td align="center">{{ schema.objects.count() }}</td>
+                  <td class="text-center">{{ schema.objects.count() }}</td>
                   <td class="date">{{ schema.last_updated | datetime }}</td>
                 </tr>
+                {% else %}
+                <tr><td colspan="4" class="text-center text-muted">{{ _('No schemas published yet.') }}</td></tr>
                 {% endfor %}
               </tbody>
             </table>
@@ -180,7 +180,7 @@
           order: [[2, "desc"]],
           columnDefs: [
           {
-            bSortable: false,
+            orderable: false,
             targets: [0]
           }
           ]
@@ -193,7 +193,7 @@
           order: [[3, "desc"]],
           columnDefs: [
           {
-            bSortable: false,
+            orderable: false,
             targets: [0]
           }
           ]

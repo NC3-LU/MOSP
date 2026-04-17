@@ -9,16 +9,16 @@
     <div class="col">
       <h1>{{ json_object.name }}</h1>
     </div>
-    <div class="col text-right">
+    <div class="col text-end">
       <div class="btn-group" role="group">
         {% if current_user.is_authenticated %}
-        <a role="button" class="btn btn-warning" title="{{ _('Delete the object') }}" aria-label="{{ _('Delete the object') }}" href="{{ url_for('object_bp.delete', object_id=json_object.id) }}" onclick="return confirm(_('You are going to delete this object.'));">
+        <a role="button" class="btn btn-warning" title="{{ _('Delete the object') }}" aria-label="{{ _('Delete the object') }}" href="{{ url_for('object_bp.delete', object_id=json_object.id) }}" onclick="return confirm('{{ _('You are going to delete this object.') }}');">
           <i class="fas fa-trash" aria-hidden="true"></i>
         </a>
         <a role="button" class="btn btn-secondary {% if json_object.is_locked and json_object.creator_id != current_user.id %}disabled{% endif %}" title="{{ _('Edit the object') }}" aria-label="{{ _('Edit the object') }}" href="{{ url_for('object_bp.form', object_id=json_object.id) }}">
           <i class="fa fa-edit" aria-hidden="true"></i>
         </a>
-        <button type="button" class="btn btn-secondary" title="{{ _('Copy the object') }}" aria-label="{{ _('Copy the object') }}" data-toggle="modal" data-target="#copyModal" href="#">
+        <button type="button" class="btn btn-secondary" title="{{ _('Copy the object') }}" aria-label="{{ _('Copy the object') }}" data-bs-toggle="modal" data-bs-target="#copyModal" href="#">
           <i class="fas fa-code-branch"></i>
         </button>
         {% if current_user.id == json_object.creator_id %}
@@ -45,10 +45,10 @@
           <i class="fa fa-clipboard" aria-hidden="true"></i>
         </button>
         <div class="btn-group btn-group" role="group" title="{{ _('Share the object') }}">
-          <button id="btnGroupDrop2" type="button" aria-label="{{ _('Share the object') }}" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button id="btnGroupDrop2" type="button" aria-label="{{ _('Share the object') }}" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-share-square"></i>
           </button>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop2">
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnGroupDrop2">
             <a class="dropdown-item" href="https://twitter.com/intent/tweet?url={{ url_for('object_bp.view', object_id=json_object.id, _external=True) }}&text=%27{{ json_object.name }}%27%20%23MONARC%20object%20on%20%23MOSP" rel="noreferrer" target="_blank">{{ _('Share on') }} Twitter</a>
             <a class="dropdown-item" href="https://reddit.com/submit?url={{ url_for('object_bp.view', object_id=json_object.id, _external=True) }}&title=%27{{ json_object.name }}%27%20%23MONARC%20object%20on%20%23MOSP" rel="noreferrer" target="_blank">{{ _('Share on') }} Reddit</a>
             <a class="dropdown-item" href="https://api.pinboard.in/v1/posts/add?url={{ url_for('object_bp.view', object_id=json_object.id, _external=True) }}&description=%27{{ json_object.name }}%27%20%23MONARC%20object%20on%20%23MOSP" target="_blank" title="Share on Pinboard">{{ _('Share on') }} Pinboard</a>
@@ -56,10 +56,10 @@
           </div>
         </div>
         <div class="btn-group btn-group" role="group" title="{{ _('Download the object') }}">
-          <button id="btnGroupDrop1" type="button" aria-label="{{ _('Download the object') }}" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button id="btnGroupDrop1" type="button" aria-label="{{ _('Download the object') }}" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-download" aria-hidden="true"></i>
           </button>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="btnGroupDrop1">
             <a class="dropdown-item" href="{{ url_for('object_bp.get_json_object', object_id=json_object.id) }}" title="{{ _('Get the object') }}">{{ _('Get the object') }}</a>
             <a class="dropdown-item" href="{{ url_for('object_bp.get_misp_galaxy_cluster', object_id=json_object.id) }}" title="{{ _('Export to a MISP galaxy') }}">{{ _('Export to a MISP galaxy') }}</a>
             <a id="download-csv" class="dropdown-item" href="#" title="{{ _('Get only values in CSV') }}">{{ _('Get only values in CSV') }}</a>
@@ -74,7 +74,7 @@
     <div class="col-md-3">
       <b>{{ _('Description') }}</b>
     </div>
-    <div class="col-md-9 text-justify">
+    <div class="col-md-9 ">
       {{ json_object.description }}
     </div>
   </div>
@@ -126,13 +126,13 @@
       <b>{{ _('Related objects') }}</b>
       <ul class="nav nav-tabs" id="myTab" role="list">
         <li class="nav-item">
-          <a class="nav-link active" id="refers-to-tab" data-toggle="tab" href="#refers-to" role="tab" aria-controls="refers-to" aria-selected="true">{{ _('Refers to') }} {{ json_object.refers_to | count}} {{ _('object(s)') }}</a>
+          <a class="nav-link active" id="refers-to-tab" data-bs-toggle="tab" href="#refers-to" role="tab" aria-controls="refers-to" aria-selected="true">{{ _('Refers to') }} {{ json_object.refers_to | count}} {{ _('object(s)') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="referred-to-by-tab" data-toggle="tab" href="#referred-to-by" role="tab" aria-controls="referred-to-by" aria-selected="false">{{ _('Referred to by') }} {{ json_object.referred_to_by | count}} {{ _('object(s)') }}</a>
+          <a class="nav-link" id="referred-to-by-tab" data-bs-toggle="tab" href="#referred-to-by" role="tab" aria-controls="referred-to-by" aria-selected="false">{{ _('Referred to by') }} {{ json_object.referred_to_by | count}} {{ _('object(s)') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="referred-to-by-tab" data-toggle="tab" href="#in-collections" role="tab" aria-controls="in-collections" aria-selected="false">{{ _('Part of') }} {{ json_object.collections | count}} {{ _('collection(s)') }}</a>
+          <a class="nav-link" id="referred-to-by-tab" data-bs-toggle="tab" href="#in-collections" role="tab" aria-controls="in-collections" aria-selected="false">{{ _('Part of') }} {{ json_object.collections | count}} {{ _('collection(s)') }}</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
@@ -173,20 +173,18 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Copy the object</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <p>Select a destination organization:</p>
-          <select id="orgSelector" class="selectpicker">
+          <select id="orgSelector" class="form-select">
             {% for organization in current_user.organizations%}
             <option value="{{ organization.id }}">{{ organization.name }}</option>
             {% endfor %}
           </select>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" onclick="copyObject()">Copy</button>
         </div>
       </div>
@@ -195,8 +193,6 @@
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  $('.selectpicker').selectpicker();
-
   document.getElementById("download-csv").onclick = function(event) {
     fetch("{{ url_for('apiv2.object_object_item', id=json_object.id) }}")
     .then(response => response.json())

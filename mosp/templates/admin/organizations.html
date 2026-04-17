@@ -23,8 +23,8 @@
             <td>{{ organization.users | count  }}</td>
             <td>{{ 'Restricted' if organization.is_membership_restricted else 'Open' }}</td>
             <td>
-                <a href="{{ url_for("admin_bp.form_organization", organization_id=organization.id) }}"><i class="fa fa-edit"></i></a>
-                <a href="{{ url_for("admin_bp.delete_organization", organization_id=organization.id) }}"><i class="fa fa-remove" aria-hidden="true" title="Delete this organization" onclick="return confirm(_('You are going to delete this organization.'));"></i></a>
+                <a href="{{ url_for("admin_bp.form_organization", organization_id=organization.id) }}" title="{{ _('Edit this organization') }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                <a href="{{ url_for("admin_bp.delete_organization", organization_id=organization.id) }}" onclick="return confirm('{{ _('You are going to delete this organization.') }}');" title="{{ _('Delete this organization') }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </td>
         </tr>
     {% endfor %}
@@ -32,7 +32,7 @@
     </table>
 </div>
 <br />
-<a href="{{ url_for('admin_bp.form_organization') }}" class="btn btn-default">{{ _('Add a new organization') }}</a>
+<a href="{{ url_for('admin_bp.form_organization') }}" class="btn btn-secondary">{{ _('Add a new organization') }}</a>
 </div>
 <script>
 $(document).ready(function() {
@@ -40,7 +40,7 @@ $('#table-organizations').DataTable( {
     responsive: true,
     columnDefs: [
         {
-            bSortable: false,
+            orderable: false,
             targets: [0, 5]
         }
     ]

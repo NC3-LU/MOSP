@@ -8,14 +8,15 @@
   </div>
 
   <div class="row">
-      <div class="col text-right">
-          <a href="{{ url_for('collection_bp.form') }}" class="btn btn-default">{{ _('Create a new collection') }}</a>
+      <div class="col text-end">
+          <a href="{{ url_for('collection_bp.form') }}" class="btn btn-secondary">{{ _('Create a new collection') }}</a>
       </div>
   </div>
 
     <br />
     <div class="row">
         <div class="col-md-12">
+            {% if collections %}
             <div class="list-group">
             {% for collection in collections %}
                 <a href="{{ url_for('collection_bp.get', collection_uuid=collection.uuid) }}" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -26,6 +27,9 @@
                 </a>
             {% endfor  %}
             </div>
+            {% else %}
+            <p class="text-muted">{{ _('No collections available yet.') }}</p>
+            {% endif %}
         </div>
     </div>
 

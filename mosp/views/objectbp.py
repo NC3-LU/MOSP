@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+import logging
 from typing import Dict
 from typing import Union
 
@@ -24,7 +24,10 @@ from mosp.models import JsonObject
 from mosp.models import License
 from mosp.models import Schema
 from mosp.models import Version
+from mosp.models._datetime import utcnow_naive
 from mosp.views.decorators import check_object_edit_permission
+
+logger = logging.getLogger(__name__)
 
 object_bp = Blueprint("object_bp", __name__, url_prefix="/object")
 objects_bp = Blueprint("objects_bp", __name__, url_prefix="/objects")
@@ -361,7 +364,7 @@ def process_form(object_id=None):
             db.session.add(new_event)
             db.session.commit()
         except Exception as e:
-            print(e)
+            logger.error(str(e), exc_info=True)
             form.name.errors.append("Name already exists.")
         return redirect(url_for("object_bp.form", object_id=json_object.id))
 
@@ -467,7 +470,7 @@ def copy(object_id=None):
     new_object.description = json_object.description
     new_object.json_object = json_object.json_object
     new_object.refers_to.append(json_object)
-    new_object.last_updated = datetime.utcnow()
+    new_object.last_updated = utcnow_naive()
 
     db.session.add(new_object)
     db.session.commit()

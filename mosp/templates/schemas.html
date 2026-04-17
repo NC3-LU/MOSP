@@ -28,24 +28,28 @@
       <div class="col-md-6">
           <h2 id="list_schemas">{{ _('List of schemas') }}</h2>
       </div>
-        <div class="col-md-6 text-right">
-            <a href="{{ url_for('schema_bp.form') }}" class="btn btn-default">{{ _('Create a new schema') }}</a>
+        <div class="col-md-6 text-end">
+            <a href="{{ url_for('schema_bp.form') }}" class="btn btn-secondary">{{ _('Create a new schema') }}</a>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
+            {% if schemas %}
             <div class="list-group">
             {% for schema in schemas %}
                 <a href="{{ url_for('schema_bp.get', schema_id=schema.id) }}" class="list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">{{ schema.name }}</h5> <span class="badge badge-primary badge-pill">{{ _('validates') }} {{ schema.objects.count() }} {{ _('objects') }}</span>
+                        <h5 class="mb-1">{{ schema.name }}</h5> <span class="badge bg-primary rounded-pill">{{ _('validates') }} {{ schema.objects.count() }} {{ _('objects') }}</span>
                     </div>
                     <p class="mb-1">{{ schema.description }}</p>
                     <small>{{ _('provided by') }} {{ schema.organization.name }}.</small>
                 </a>
             {% endfor  %}
             </div>
+            {% else %}
+            <p class="text-muted">{{ _('No schemas available yet.') }}</p>
+            {% endif %}
         </div>
     </div>
 </div>

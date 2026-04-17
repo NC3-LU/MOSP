@@ -1,4 +1,6 @@
 #! /usr/bin/env python
+import logging
+
 from flask_restx import fields
 from flask_restx import Namespace
 from flask_restx import reqparse
@@ -9,6 +11,7 @@ from mosp.api.v2.common import version_params_model
 from mosp.api.v2.types import ResultType
 from mosp.models import Version
 
+logger = logging.getLogger(__name__)
 
 version_ns = Namespace("version", description="version related operations")
 
@@ -72,7 +75,7 @@ class VersionsList(Resource):
             results = query.offset(offset * limit)
             count = total
         except Exception as e:
-            print(e)
+            logger.error(str(e), exc_info=True)
 
         result["data"] = results
         result["metadata"]["count"] = count

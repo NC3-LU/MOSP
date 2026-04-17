@@ -22,6 +22,12 @@ services:
         - MOSP_CONFIG=docker.py
         - HOST=0.0.0.0
         - PORT=5000
+        # Required: set SECRET_KEY and SECURITY_PASSWORD_SALT via a .env file
+        # or by passing them as environment variables before running docker-compose.
+        # Generate with: python -c "import secrets; print(secrets.token_hex(32))"
+        # Example .env file:
+        #   SECRET_KEY=<output of above command>
+        #   SECURITY_PASSWORD_SALT=<output of above command again>
     command: "./entrypoint.sh"
     volumes:
       - .:/mosp:rw

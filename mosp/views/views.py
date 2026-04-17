@@ -28,8 +28,7 @@ def authentication_required(error):
 
 @current_app.errorhandler(403)
 def authentication_failed(error):
-    flash(gettext("Forbidden."), "danger")
-    return redirect(url_for("login"))
+    return render_template("errors/403.html"), 403
 
 
 @current_app.errorhandler(404)

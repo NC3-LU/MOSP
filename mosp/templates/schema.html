@@ -5,7 +5,7 @@
         <div class="col">
             <h1>{{ schema.name }}</h1>
         </div>
-        <div class="col text-right">
+        <div class="col text-end">
             <div class="btn-group" role="group">
                 <a role="button" class="btn btn-secondary" href="{{ url_for('schema_bp.view', schema_id=schema.id) }}" title="{{ _('View the schema') }}">
                     <i class="fa fa-eye" aria-hidden="true"></i>
@@ -19,12 +19,51 @@
                 <a role="button" class="btn btn-secondary" href="{{ url_for('schema_bp.get_objects', schema_id=schema.id) }}" title="{{ _('Get all objects validated by this schema') }}">
                     <i class="fa fa-download" aria-hidden="true"></i>
                 </a>
+                {% if current_user.is_authenticated and (current_user.is_admin or current_user.is_organization_member(schema.org_id)) %}
                 <a role="button" class="btn btn-secondary" href="{{ url_for('schema_bp.form', schema_id=schema.id) }}" title="{{ _('Edit the schema') }}">
                     <i class="fa fa-edit" aria-hidden="true"></i>
                 </a>
+                {% endif %}
+                {% if current_user.is_authenticated and (current_user.is_admin or current_user.is_organization_member(schema.org_id)) %}
+                <a role="button" class="btn btn-danger" href="{{ url_for('schema_bp.delete', schema_id=schema.id) }}" title="{{ _('Delete the schema') }}">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+                {% endif %}
+                {% if current_user.is_authenticated and current_user.organizations %}
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#forkModal" title="{{ _('Fork this schema') }}">
+                    <i class="fa fa-code-fork" aria-hidden="true"></i> {{ _('Fork') }}
+                </button>
+                {% endif %}
             </div>
         </div>
     </div>
+    {% if current_user.is_authenticated and current_user.organizations %}
+    <div class="modal fade" id="forkModal" tabindex="-1" aria-labelledby="forkModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="forkModalLabel">{{ _('Fork schema') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ _('Close') }}"></button>
+                </div>
+                <form method="POST" action="{{ url_for('schema_bp.fork', schema_id=schema.id) }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="modal-body">
+                        <label for="fork_org_id" class="form-label">{{ _('Fork into organization') }}</label>
+                        <select id="fork_org_id" name="org_id" class="form-select" required>
+                            {% for org in current_user.organizations %}
+                            <option value="{{ org.id }}">{{ org.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Cancel') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ _('Fork') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %}
     <br />
     <div class="row">
         <div class="col-md-3">
@@ -44,18 +83,29 @@
         </div>
     </div>
 
+    {% if schema.forked_from %}
+    <div class="row">
+        <div class="col-md-3">
+            <b>{{ _('Provenance') }}</b>
+        </div>
+        <div class="col-md-9">
+            <span class="badge bg-secondary">{{ _('Forked from') }} <a href="{{ url_for('schema_bp.get', schema_id=schema.forked_from.id) }}" class="text-white">{{ schema.forked_from.name }}</a></span>
+        </div>
+    </div>
+    {% endif %}
+
     <br />
 
   <div class="row justify-content-end">
     <div class="col-6">
       {{ _('Search on the properties of the objects') }}
       <form method="get">
-        <select id="search_key" name="search_key" aria-label="Select a property" class="selectpicker" data-live-search="true" data-width="auto">
+        <select id="search_key" name="search_key" aria-label="Select a property" class="form-select">
           {% for key in search_keys %}
           <option value="{{ key }}" {{ 'selected' if search_key == key else '' }}>{{ key }}</option>
           {% endfor  %}
         </select>
-          <input id="search_term" type="text" name="search_term" aria-label="Search term" value="{{ search_term  }}" />
+          <input id="search_term" type="text" name="search_term" aria-label="Search term" value="{{ search_term  }}" class="form-control mt-1" />
           <input type="submit" value="Submit" class="btn btn-secondary">
       </form>
     </div>
@@ -100,8 +150,10 @@
                             <td><a href="{{ url_for('object_bp.form', object_id=object.id) }}" {% if not current_user.is_authenticated %}class="disabled"{% endif %}><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                             <td><a href="{{ url_for('object_bp.edit_json', object_id=object.id) }}" {% if not current_user.is_authenticated %}class="disabled"{% endif %}><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                             <td><a href="{{ url_for('object_bp.get_json_object', object_id=object.id) }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
-                            <td><a href="{{ url_for('object_bp.delete', object_id=object.id) }}" {% if not current_user.is_authenticated %}class="disabled"{% endif %}><i class="fa fa-trash" aria-hidden="true" onclick="return confirm(_('You are going to delete this object.'));"></i></a></td>
+                            <td><a href="{{ url_for('object_bp.delete', object_id=object.id) }}" {% if not current_user.is_authenticated %}class="disabled"{% endif %} onclick="return confirm('{{ _('You are going to delete this object.') }}');"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                         </tr>
+                    {% else %}
+                        <tr><td colspan="8" class="text-center text-muted">{{ _('No objects validated by this schema yet.') }}</td></tr>
                     {% endfor %}
                     </tbody>
                 </table>
@@ -125,7 +177,6 @@
 </div>
 <script>
 $(document).ready(function() {
-    $('.selectpicker').selectpicker();
     $('#table-objects').DataTable( {
         responsive: true,
         paging: false,
@@ -133,7 +184,7 @@ $(document).ready(function() {
         searching: true,
         order: [[3, 'desc']],
         columnDefs: [{
-            bSortable: false,
+            orderable: false,
             targets: [0, 4, 5, 6, 7]
         }]
     });

@@ -1,7 +1,9 @@
 import ast
+import copy
 import functools
 import json
 import operator
+import secrets
 from typing import Dict
 from typing import List
 from urllib.parse import urljoin
@@ -29,9 +31,11 @@ from sqlalchemy import or_
 from mosp.bootstrap import application
 from mosp.bootstrap import db
 from mosp.forms import SchemaForm
+from mosp.forms import SimpleForm
 from mosp.models import Event
 from mosp.models import JsonObject
 from mosp.models import Schema
+from mosp.views.decorators import check_schema_edit_permission
 
 schema_bp = Blueprint("schema_bp", __name__, url_prefix="/schema")
 schemas_bp = Blueprint("schemas_bp", __name__, url_prefix="/schemas")
@@ -228,6 +232,7 @@ def get_objects(schema_id=None):
 @schema_bp.route("/create", methods=["GET"])
 @schema_bp.route("/edit/<int:schema_id>", methods=["GET"])
 @login_required
+@check_schema_edit_permission
 def form(schema_id=None, org_id=None):
     """Returns a form in order to edit a schema."""
     action = gettext("Create a schema")
@@ -302,6 +307,7 @@ def form(schema_id=None, org_id=None):
 @schema_bp.route("/create", methods=["POST"])
 @schema_bp.route("/edit/<int:schema_id>", methods=["POST"])
 @login_required
+@check_schema_edit_permission
 def process_form(schema_id=None):
     """ "Process the form to edit a schema."""
     form = SchemaForm()
@@ -314,6 +320,13 @@ def process_form(schema_id=None):
         if form.org_id.data == 0:
             flash(gettext("You must specify an organization."), "warning")
         return redirect(url_for("schema_bp.form"))
+
+    # Server-side guard: reject org_id values not belonging to the current user
+    # (WTForms does not enforce choice membership by default for SelectField).
+    if not current_user.is_admin and not current_user.is_organization_member(
+        form.org_id.data
+    ):
+        abort(403)
 
     # Edit an existing schema
     if schema_id is not None:
@@ -357,13 +370,79 @@ def process_form(schema_id=None):
     return redirect(url_for("schema_bp.form", schema_id=new_schema.id))
 
 
+@schema_bp.route("/fork/<int:schema_id>", methods=["POST"])
+@login_required
+def fork(schema_id):
+    """Fork a schema into one of the current user's organizations."""
+    source = Schema.query.filter(Schema.id == schema_id).first()
+    if source is None:
+        abort(404)
+
+    org_id = request.form.get("org_id", type=int)
+    if not org_id:
+        flash(gettext("You must specify an organization."), "warning")
+        return redirect(url_for("schema_bp.get", schema_id=schema_id))
+
+    if not current_user.is_admin and not current_user.is_organization_member(org_id):
+        abort(403)
+
+    # Use a random suffix rather than an incrementing counter so two concurrent
+    # forks of the same source cannot resolve to the same name. Schema.name is
+    # String(100); budget room for the source name and the suffix.
+    suffix = secrets.token_hex(3)
+    base = source.name[: 100 - len(" (fork) ") - len(suffix)]
+    name = f"{base} (fork) {suffix}"
+
+    new_schema = Schema(
+        name=name,
+        description=source.description,
+        json_schema=copy.deepcopy(source.json_schema) if source.json_schema else {},
+        org_id=org_id,
+        creator_id=current_user.id,
+        forked_from_id=schema_id,
+    )
+    db.session.add(new_schema)
+    db.session.commit()
+    flash(
+        gettext("Schema successfully forked as %(name)s.", name=new_schema.name),
+        "success",
+    )
+    return redirect(url_for("schema_bp.form", schema_id=new_schema.id))
+
+
 @schema_bp.route("/delete/<int:schema_id>", methods=["GET"])
 @login_required
+@check_schema_edit_permission
 def delete(schema_id=None):
     """
-    Delete the requested schema.
+    Show a confirmation page before deleting the schema.
     """
     schema = Schema.query.filter(Schema.id == schema_id).first()
+    if schema is None:
+        abort(404)
+    object_count = schema.objects.count()
+    form = SimpleForm()
+    return render_template(
+        "delete_schema.html",
+        schema=schema,
+        object_count=object_count,
+        form=form,
+    )
+
+
+@schema_bp.route("/delete/<int:schema_id>", methods=["POST"])
+@login_required
+@check_schema_edit_permission
+def delete_confirm(schema_id=None):
+    """
+    Perform the actual deletion of the schema after confirmation.
+    """
+    form = SimpleForm()
+    if not form.validate_on_submit():
+        abort(400)
+    schema = Schema.query.filter(Schema.id == schema_id).first()
+    if schema is None:
+        abort(404)
     db.session.delete(schema)
     db.session.commit()
     return redirect(url_for("schemas_bp.list_schemas"))

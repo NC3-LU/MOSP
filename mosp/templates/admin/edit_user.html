@@ -8,45 +8,54 @@
     <form action="" method="post" name="saveprofileform" id="profileform">
         {{ form.hidden_tag() }}
 
-         <div class="form-group">
+         <div class="mb-3">
             {{ form.login.label }}
-            {{ form.login(class_="form-control") }} {% for error in form.login.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            {{ form.login(class_="form-control") }} {% for error in form.login.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
         </div>
 
-         <div class="form-group">
+         <div class="mb-3">
             {{ form.password.label }}
-            {{ form.password(class_="form-control") }} {% for error in form.password.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            {{ form.password(class_="form-control") }} {% for error in form.password.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
             <span class="text-muted">{{ _('Minimum 20 characters.') }}</span>
         </div>
 
-        <div class="form-group">
+        <div class="mb-3">
            {{ form.email.label }}
-           {{ form.email(class_="form-control") }} {% for error in form.email.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+           {{ form.email(class_="form-control") }} {% for error in form.email.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
         </div>
 
          <div class="form-check form-check-inline">
-            {{ form.is_active(class_="form-check-input") }} {% for error in form.is_active.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            {{ form.is_active(class_="form-check-input") }} {% for error in form.is_active.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
             {{ form.is_active.label(class_="form-check-label")  }}
         </div>
 
          <div class="form-check form-check-inline">
-            {{ form.is_admin(class_="form-check-input") }} {% for error in form.is_admin.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            {{ form.is_admin(class_="form-check-input") }} {% for error in form.is_admin.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
             {{ form.is_admin.label(class_="form-check-label")  }}
         </div>
 
          <div class="form-check form-check-inline">
-            {{ form.is_api(class_="form-check-input") }} {% for error in form.is_api.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            {{ form.is_api(class_="form-check-input") }} {% for error in form.is_api.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
             {{ form.is_api.label(class_="form-check-label")  }}
         </div>
 
         <br /><br />
 
-         <div class="form-group">
+        <div class="mb-3 mt-3">
             {{ form.organizations.label }}
-            {{ form.organizations(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }} {% for error in form.organizations.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+            {% if form.organizations.choices %}
+            {{ form.organizations(class_="form-select", size=form.organizations.choices|length if form.organizations.choices|length < 10 else 10) }}
+            {% for error in form.organizations.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            <small class="text-muted">{{ _('Hold Ctrl / Cmd to select multiple organizations.') }}</small>
+            {% else %}
+            <div class="alert alert-warning mt-1" role="alert">
+                {{ _('No organizations exist yet.') }}
+                <a href="{{ url_for('admin_bp.form_organization') }}">{{ _('Create one first.') }}</a>
+            </div>
+            {% endif %}
         </div>
 
-        {{ form.submit(class_="btn btn-default") }}
+        {{ form.submit(class_="btn btn-secondary") }}
     </form>
 </div>
 {% endblock %}

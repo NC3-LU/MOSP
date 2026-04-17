@@ -3,14 +3,12 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="jumbotron">
+      <div class="p-5 bg-light rounded">
         <img src="{{ url_for('static', filename='img/logo-large.png') }}"
-        align="left"
         width="240px"
-        class="img-fluid mx-auto"
+        class="img-fluid float-start me-3 mb-2"
         alt="MONARC Objects Sharing Platform"
-        title="MONARC Objects Sharing Platform"
-        style="padding-right: 10px; padding-bottom: 5px;" />
+        title="MONARC Objects Sharing Platform" />
         <p class="lead">
           {{ _('objects.monarc.lu is the MOSP instance for creating and
           sharing JSON objects related to cybersecurity security, such as
@@ -29,23 +27,23 @@
   <div class="row">
     <div class="col">
       <h2>{{ _('Updated objects') }} <a href="{{ url_for('objects_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
-      <div id="list-json-objects">
+      <div id="list-json-objects" class="list-group">
         <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
+          <div class="spinner-border" role="status"><span class="visually-hidden">{{ _('Loading...') }}</span></div>
         </div>
       </div>
     </div>
     <div class="col">
       <h2>{{ _('Updated schemas') }} <a href="{{ url_for('schemas_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
-      <div id="list-schemas">
+      <div id="list-schemas" class="list-group">
         <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
+          <div class="spinner-border" role="status"><span class="visually-hidden">{{ _('Loading...') }}</span></div>
         </div>
       </div>
       <h2>{{ _('Updated collections') }} <a href="{{ url_for('collections_atom') }}"><i class="fas fa-rss" aria-hidden="true"></i></a></h2>
-      <div id="list-collections">
+      <div id="list-collections" class="list-group">
         <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"><span class="sr-only">{{ _('Loading...') }}</span></div>
+          <div class="spinner-border" role="status"><span class="visually-hidden">{{ _('Loading...') }}</span></div>
         </div>
       </div>
     </div>

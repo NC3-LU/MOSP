@@ -5,8 +5,8 @@
 {% block content %}
 <div class="container">
     <div class="alert alert-danger">
-        <h1>Internal Server Error</h1>
-        <p>Something bad just happened! Go to the <a href="{{ url_for('index') }}">home page</a>.</p>
+        <h1>{{ _('Forbidden') }}</h1>
+        <p>{{ _('You do not have permission to access this resource.') }} <a href="{{ url_for('index') }}">{{ _('Go to the home page.') }}</a></p>
     </div>
 </div>
 {% endblock %}

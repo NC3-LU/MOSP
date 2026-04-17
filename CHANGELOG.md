@@ -2,6 +2,39 @@ Changelog
 =========
 
 
+v0.18.0 (2026-04-16)
+---------------------
+
+Security
+~~~~~~~~
+- Enforce SECRET_KEY and SECURITY_PASSWORD_SALT from environment variables;
+  raise RuntimeError on startup if a known-weak value is detected (closes #79).
+- Add ownership authorization to schema edit and delete routes (IDOR fix);
+  users may only modify schemas belonging to their organization.
+- Validate org_id server-side on schema creation to prevent privilege escalation.
+- Upgrade Flask (3.1.3), Werkzeug (3.1.8), flask-cors (6.0.2), requests (2.33.1),
+  certifi, and idna to fix multiple published CVEs.
+
+New
+~~~
+- Schema delete is now a two-step flow: a GET confirmation page showing the
+  cascade-delete count, followed by a POST to perform the deletion (closes #4).
+- Schema fork: any authenticated user can copy a public schema into their own
+  organization via a modal dialog; forked schemas display a provenance badge
+  linking back to the source (closes #3).
+- Proper HTTP 403 error page replacing the previous redirect-to-login behavior.
+
+Changes
+~~~~~~~
+- Replace deprecated datetime.utcnow() with datetime.now(timezone.utc) across
+  all models and views (Python 3.12 compatibility).
+- Replace print() debug calls in api/v2 with proper structured logging.
+- Use postgresql:// scheme in all config files (SQLAlchemy 2.x compatibility).
+- Update JS dependencies: bootstrap 5.3.8, chart.js 4.5.1, codemirror 6.0.2,
+  datatables.net-bs4 2.3.7, @json-editor/json-editor 2.16.0, papaparse 5.5.3,
+  @fortawesome/fontawesome-free 6.7.2.
+
+
 v0.17.1 (2021-10-28)
 --------------------
 

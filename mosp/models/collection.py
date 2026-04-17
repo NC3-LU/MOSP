@@ -1,9 +1,9 @@
 import uuid
-from datetime import datetime
 
 from sqlalchemy.dialects.postgresql import UUID
 
 from mosp.bootstrap import db
+from mosp.models._datetime import utcnow_naive
 
 
 class Collection(db.Model):
@@ -18,8 +18,8 @@ class Collection(db.Model):
     )
     name = db.Column(db.String(100), unique=True, nullable=False)
     description = db.Column(db.String(500), default="")
-    date_created = db.Column(db.DateTime(), default=datetime.utcnow)
-    last_updated = db.Column(db.DateTime(), default=datetime.utcnow)
+    date_created = db.Column(db.DateTime(), default=utcnow_naive)
+    last_updated = db.Column(db.DateTime(), default=utcnow_naive)
 
     # foreign keys
     creator_id = db.Column(db.Integer(), db.ForeignKey("user.id"), nullable=False)

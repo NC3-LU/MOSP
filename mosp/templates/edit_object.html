@@ -10,7 +10,7 @@
                 {% endif %}
             </p>
         </div>
-        <div class="col text-right">
+        <div class="col text-end">
             <div class="btn-group" role="group">
                 {% if action == "Edit an object" %}
                 <a role="button" class="btn btn-secondary" href="{{ url_for('object_bp.view', object_id=object_id) }}" title="{{ _('View the object') }}">
@@ -24,48 +24,49 @@
         <div class="col-md-12">
             <form action="" method="post" name="save" enctype="multipart/form-data">
                 {{ form.hidden_tag() }}
-                <div class="form-row">
+                <div class="row">
                     <div class="col">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="{{ form.name.id }}" class="control-label">{{ form.name.label }}</label>
                             <div>
                                 {{ form.name(class_="form-control") }}
                             </div>
-                            {% for error in form.name.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.name.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
-                <div class="form-row">
+                <div class="row">
                     <div class="col">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="{{ form.description.id }}" class="control-label">{{ form.description.label }}</label>
                             <div>
                                 {{ form.description(class_="form-control") }}
                             </div>
-                            {% for error in form.description.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.description.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="{{ form.org_id.id }}" class="control-label">{{ form.org_id.label }}</label>
                     <div>
-                        {{ form.org_id(class_="selectpicker") }}
+                        {{ form.org_id(class_="form-select") }}
                     </div>
-                    {% for error in form.org_id.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                    {% for error in form.org_id.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                 </div>
 
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="{{ form.licenses.id }}" class="control-label">{{ form.licenses.label }}</label>
                     <div>
-                        {{ form.licenses(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}
+                        {{ form.licenses(class_="form-select") }}
                     </div>
-                    {% for error in form.licenses.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                    <small class="text-muted">{{ _('Hold Ctrl / Cmd to select multiple.') }}</small>
+                    {% for error in form.licenses.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                 </div>
 
-                <div class="form-group">
+                <div class="mb-3">
                     <div class="">
-                        {{ form.submit(class_="btn btn-default") }}
+                        {{ form.submit(class_="btn btn-secondary") }}
                     </div>
                 </div>
 
@@ -77,37 +78,32 @@
 
                 <div class="row">
                     <div class="col">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="{{ form.refers_to.id }}" class="control-label">{{ form.refers_to.label }}</label>
                             <div>
-                                {{ form.refers_to(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}
+                                {{ form.refers_to(class_="form-select") }}
                             </div>
-                            {% for error in form.refers_to.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.refers_to.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                     <div class="col">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="{{ form.referred_to_by.id }}" class="control-label">{{ form.referred_to_by.label }}</label>
                             <div>
-                                {{ form.referred_to_by(class_="selectpicker", **{'data-live-search':'true', 'data-width':'auto'}) }}
+                                {{ form.referred_to_by(class_="form-select") }}
                             </div>
-                            {% for error in form.referred_to_by.errors %} <span style="color: red;">{{ error }}<br /></span>{% endfor %}
+                            {% for error in form.referred_to_by.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="mb-3">
                     <div class="">
-                        {{ form.submit(class_="btn btn-default") }}
+                        {{ form.submit(class_="btn btn-secondary") }}
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div><!-- /.container -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    $('.selectpicker').selectpicker();
-});
-</script>
 {% endblock %}

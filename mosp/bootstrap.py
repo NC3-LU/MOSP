@@ -61,6 +61,18 @@ if TESTING:
     application.config[
         "SQLALCHEMY_DATABASE_URI"
     ] = "postgresql://mosp:password@localhost:5432/mosp"
+    # Minimal defaults so the app (incl. API v2 setup) imports cleanly
+    # without requiring a real instance config file.
+    # Direct assignment (not setdefault) because Flask's default_config
+    # seeds SECRET_KEY/TESTING with None/False, which would make setdefault
+    # a silent no-op.
+    application.config["TESTING"] = True
+    application.config["WTF_CSRF_ENABLED"] = False
+    application.config["SECRET_KEY"] = "testing-only-not-a-real-secret"
+    application.config["SECURITY_PASSWORD_SALT"] = "testing-only-not-a-real-salt"
+    application.config["ADMIN_EMAIL"] = "admin@test.local"
+    application.config["ADMIN_URL"] = "http://test.local"
+    application.config["INSTANCE_URL"] = "http://test.local"
 elif ON_HEROKU:
     # Deployment on Heroku
     application.config.from_pyfile("heroku.py", silent=False)
@@ -74,6 +86,28 @@ else:
         application.config.from_pyfile("production.py", silent=False)
     except Exception:
         application.config.from_pyfile("development.py", silent=False)
+
+_KNOWN_WEAK_KEYS = {
+    "",
+    "dev",
+    "SECRET KEY",
+    "SECURITY PASSWORD SALT",
+    "LCx3BchmHRxFzkEv4BqQJyeXRLXenf",
+    "L8gTsyrpRQEF8jNWQPyvRfv7U5kJkD",  # old SECURITY_PASSWORD_SALT default
+}
+
+if not application.config.get("TESTING") and os.environ.get("testing") != "actions":
+    if application.config.get("SECRET_KEY", "") in _KNOWN_WEAK_KEYS:
+        raise RuntimeError(
+            "SECRET_KEY is not set or uses a known insecure default. "
+            "Set the SECRET_KEY environment variable to a strong random value "
+            '(e.g. python -c "import secrets; print(secrets.token_hex(32))").'
+        )
+    if application.config.get("SECURITY_PASSWORD_SALT", "") in _KNOWN_WEAK_KEYS:
+        raise RuntimeError(
+            "SECURITY_PASSWORD_SALT is not set or uses a known insecure default. "
+            "Set the SECURITY_PASSWORD_SALT environment variable."
+        )
 
 # Database and migration
 db = SQLAlchemy(application)
@@ -89,6 +123,7 @@ cors = CORS(
         r"/api/v2/*": {"origins": "*"},
     },
 )
+
 
 # i18n and l10n support
 def get_locale():
