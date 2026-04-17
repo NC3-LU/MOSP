@@ -1,7 +1,5 @@
 import json
 import logging
-from datetime import datetime
-from datetime import timezone
 from typing import Dict
 from typing import Union
 
@@ -26,6 +24,7 @@ from mosp.models import JsonObject
 from mosp.models import License
 from mosp.models import Schema
 from mosp.models import Version
+from mosp.models._datetime import utcnow_naive
 from mosp.views.decorators import check_object_edit_permission
 
 logger = logging.getLogger(__name__)
@@ -471,7 +470,7 @@ def copy(object_id=None):
     new_object.description = json_object.description
     new_object.json_object = json_object.json_object
     new_object.refers_to.append(json_object)
-    new_object.last_updated = datetime.now(timezone.utc).replace(tzinfo=None)
+    new_object.last_updated = utcnow_naive()
 
     db.session.add(new_object)
     db.session.commit()

@@ -1,9 +1,7 @@
-from datetime import datetime
-from datetime import timezone
-
 from sqlalchemy.orm import validates
 
 from mosp.bootstrap import db
+from mosp.models._datetime import utcnow_naive
 
 
 class Event(db.Model):
@@ -14,9 +12,7 @@ class Event(db.Model):
     action = db.Column(db.String(), nullable=False)
     subject = db.Column(db.String(), nullable=False)
     initiator = db.Column(db.String())
-    date = db.Column(
-        db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
-    )
+    date = db.Column(db.DateTime(), default=utcnow_naive)
 
     @validates("initiator")
     def validates_initiator(self, key: str, value: str):

@@ -70,7 +70,7 @@
                     <div class="">
                         {{ form.submit(class_="btn btn-secondary") }}
                         {% if action == "Edit a schema" %}
-                            <a href="{{ url_for('schema_bp.delete', schema_id=schema.id) }}" class="btn btn-warning" onclick="return confirm(_('You are going to delete this schema.'));">{{ _('Delete this schema') }}</a>
+                            <a href="{{ url_for('schema_bp.delete', schema_id=schema.id) }}" class="btn btn-warning">{{ _('Delete this schema') }}</a>
                         {% endif %}
                     </div>
                 </div>

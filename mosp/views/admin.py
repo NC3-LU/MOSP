@@ -1,7 +1,5 @@
 import logging
-from datetime import datetime
 from datetime import timedelta
-from datetime import timezone
 
 from flask import Blueprint
 from flask import current_app
@@ -30,6 +28,7 @@ from mosp.models import License
 from mosp.models import Organization
 from mosp.models import Schema
 from mosp.models import User
+from mosp.models._datetime import utcnow_naive
 from mosp.views.common import admin_permission
 
 logger = logging.getLogger(__name__)
@@ -41,7 +40,7 @@ admin_bp = Blueprint("admin_bp", __name__, url_prefix="/admin")
 @login_required
 @admin_permission.require(http_exception=403)
 def dashboard():
-    now = datetime.now(timezone.utc).replace(tzinfo=None)
+    now = utcnow_naive()
     on_week_ago = now - timedelta(weeks=1)
     four_weeks_ago = now - timedelta(weeks=4)
     active_users = User.query.filter(User.last_seen >= on_week_ago)

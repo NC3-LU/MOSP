@@ -1,7 +1,9 @@
 import ast
+import copy
 import functools
 import json
 import operator
+import secrets
 from typing import Dict
 from typing import List
 from urllib.parse import urljoin
@@ -384,17 +386,17 @@ def fork(schema_id):
     if not current_user.is_admin and not current_user.is_organization_member(org_id):
         abort(403)
 
-    base_name = source.name + " (fork)"
-    name = base_name
-    suffix = 1
-    while Schema.query.filter(Schema.name == name).first() is not None:
-        suffix += 1
-        name = f"{base_name} {suffix}"
+    # Use a random suffix rather than an incrementing counter so two concurrent
+    # forks of the same source cannot resolve to the same name. Schema.name is
+    # String(100); budget room for the source name and the suffix.
+    suffix = secrets.token_hex(3)
+    base = source.name[: 100 - len(" (fork) ") - len(suffix)]
+    name = f"{base} (fork) {suffix}"
 
     new_schema = Schema(
         name=name,
         description=source.description,
-        json_schema=dict(source.json_schema) if source.json_schema else {},
+        json_schema=copy.deepcopy(source.json_schema) if source.json_schema else {},
         org_id=org_id,
         creator_id=current_user.id,
         forked_from_id=schema_id,

@@ -1,9 +1,7 @@
-from datetime import datetime
-from datetime import timezone
-
 from sqlalchemy.dialects.postgresql import JSONB
 
 from mosp.bootstrap import db
+from mosp.models._datetime import utcnow_naive
 
 
 class Version(db.Model):
@@ -14,9 +12,7 @@ class Version(db.Model):
 
     name = db.Column(db.Text(), nullable=False)
     description = db.Column(db.Text(), nullable=False)
-    last_updated = db.Column(
-        db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
-    )
+    last_updated = db.Column(db.DateTime(), default=utcnow_naive)
     json_object = db.Column(JSONB, default={})
 
     # relationships

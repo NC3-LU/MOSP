@@ -1,6 +1,4 @@
 import logging
-from datetime import datetime
-from datetime import timezone
 
 import sqlalchemy
 from flask import current_app
@@ -27,6 +25,7 @@ from mosp.bootstrap import db
 from mosp.forms import SigninForm
 from mosp.forms import SignupForm
 from mosp.models import User
+from mosp.models._datetime import utcnow_naive
 from mosp.notifications import notifications
 from mosp.views.common import admin_role
 from mosp.views.common import api_role
@@ -66,7 +65,7 @@ def load_user(user_id):
 @current_app.before_request
 def before_request():
     if current_user.is_authenticated:
-        current_user.last_seen = datetime.now(timezone.utc).replace(tzinfo=None)
+        current_user.last_seen = utcnow_naive()
         db.session.commit()
 
 

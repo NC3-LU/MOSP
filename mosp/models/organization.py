@@ -1,7 +1,5 @@
-from datetime import datetime
-from datetime import timezone
-
 from mosp.bootstrap import db
+from mosp.models._datetime import utcnow_naive
 
 
 class Organization(db.Model):
@@ -12,9 +10,7 @@ class Organization(db.Model):
     description = db.Column(db.String(500), default="")
     organization_type = db.Column(db.String(100), default="")
     website = db.Column(db.String(100), default="")
-    last_updated = db.Column(
-        db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
-    )
+    last_updated = db.Column(db.DateTime(), default=utcnow_naive)
 
     is_membership_restricted = db.Column(db.Boolean(), default=True)
 

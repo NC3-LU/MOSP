@@ -1,5 +1,3 @@
-from datetime import datetime
-from datetime import timezone
 from typing import Union
 
 import jsonschema
@@ -8,6 +6,7 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import backref
 
 from mosp.bootstrap import db
+from mosp.models._datetime import utcnow_naive
 from mosp.models.schema import Schema
 from mosp.models.version import Version
 
@@ -42,9 +41,7 @@ class JsonObject(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text(), nullable=False)
     description = db.Column(db.Text(), nullable=False)
-    last_updated = db.Column(
-        db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
-    )
+    last_updated = db.Column(db.DateTime(), default=utcnow_naive)
     json_object = db.Column(JSONB, default={})
     is_locked = db.Column(db.Boolean(), default=False)
 
@@ -133,4 +130,4 @@ def update_modified_on_update_listener(mapper, connection, target):
     """Event listener that runs before a record is updated, and sets the
     last_updated field accordingly.
     """
-    target.last_updated = datetime.now(timezone.utc).replace(tzinfo=None)
+    target.last_updated = utcnow_naive()

@@ -1,10 +1,8 @@
-from datetime import datetime
-from datetime import timezone
-
 from sqlalchemy import event
 from sqlalchemy.dialects.postgresql import JSONB
 
 from mosp.bootstrap import db
+from mosp.models._datetime import utcnow_naive
 
 association_table_license = db.Table(
     "association_schemas_licenses",
@@ -20,7 +18,7 @@ class Schema(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     description = db.Column(db.String(500))
-    last_updated = db.Column(db.DateTime(), default=lambda: datetime.now(timezone.utc).replace(tzinfo=None))
+    last_updated = db.Column(db.DateTime(), default=utcnow_naive)
     json_schema = db.Column(JSONB, default={})
 
     # relationship
@@ -38,9 +36,11 @@ class Schema(db.Model):
         db.Integer(), db.ForeignKey("schema.id"), nullable=True, default=None
     )
 
-    # self-referential relationship for fork provenance
+    # self-referential relationship for fork provenance. Default lazy (select)
+    # so bulk Schema queries don't JOIN on every load; only loaded when
+    # schema.forked_from is accessed (i.e. the schema detail page).
     forked_from = db.relationship(
-        "Schema", remote_side="Schema.id", foreign_keys=[forked_from_id], lazy="joined"
+        "Schema", remote_side="Schema.id", foreign_keys=[forked_from_id]
     )
 
 
@@ -49,4 +49,4 @@ def update_modified_on_update_listener(mapper, connection, target):
     """Event listener that runs before a record is updated, and sets the
     last_updated field accordingly.
     """
-    target.last_updated = datetime.now(timezone.utc).replace(tzinfo=None)
+    target.last_updated = utcnow_naive()
