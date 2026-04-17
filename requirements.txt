@@ -127,9 +127,9 @@ flask-admin==1.6.1 ; python_version >= "3.8" and python_version < "4.0" \
 flask-babel==4.0.0 ; python_version >= "3.8" and python_version < "4.0" \
     --hash=sha256:638194cf91f8b301380f36d70e2034c77ee25b98cb5d80a1626820df9a6d4625 \
     --hash=sha256:dbeab4027a3f4a87678a11686496e98e1492eb793cbdd77ab50f4e9a2602a593
-flask-cors==3.0.10 ; python_version >= "3.8" and python_version < "4.0" \
-    --hash=sha256:74efc975af1194fc7891ff5cd85b0f7478be4f7f59fe158102e91abb72bb4438 \
-    --hash=sha256:b60839393f3b84a0f3746f6cdca56c1ad7426aa738b70d6c61375857823181de
+flask-cors==6.0.0 ; python_version >= "3.8" and python_version < "4.0" \
+    --hash=sha256:4592c1570246bf7beee96b74bc0adbbfcb1b0318f6ba05c412e8909eceec3393 \
+    --hash=sha256:6332073356452343a8ccddbfec7befdc3fdd040141fe776ec9b94c262f058657
 flask-login==0.6.3 ; python_version >= "3.8" and python_version < "4.0" \
     --hash=sha256:5e23d14a607ef12806c699590b89d0f0e0d67baeec599d75947bf9c147330333 \
     --hash=sha256:849b25b82a436bf830a054e74214074af59097171562ab10bfa999e6b78aae5d
