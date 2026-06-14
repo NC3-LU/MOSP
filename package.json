@@ -27,6 +27,6 @@
     "devDependencies": {
         "@codemirror/lang-json": "^6.0.2",
         "codemirror": "^6.0.2",
-        "esbuild": "^0.28.0"
+        "esbuild": "^0.28.1"
     }
 }
